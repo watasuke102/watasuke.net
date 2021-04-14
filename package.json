@@ -1,0 +1,20 @@
+{
+  "name": "watasuke.tk",
+  "version": "1.0.0",
+  "description": "[https://watasuke.tk](https://watasuke.tk)で公開される（予定の）ページ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/watasuke102/watasuke.tk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/watasuke102/watasuke.tk/issues"
+  },
+  "homepage": "https://github.com/watasuke102/watasuke.tk#readme"
+}
