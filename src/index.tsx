@@ -9,6 +9,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './style/main.scss';
 
 ReactDOM.render(
   <p>hello</p>,
