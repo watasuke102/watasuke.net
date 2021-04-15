@@ -14,6 +14,10 @@ export default function Profile() {
   return (
     <div className='Profile-container'>
       <h2>プロフィール</h2>
+      <p>
+        文字ばっかりのプロフィールです<br />
+        技術的なものはポートフォリオを御覧ください
+      </p>
       <h2>基本情報</h2>
       <p>とある高専生のわたすけ（@Watasuke102）です。<br />
         2004/10/21生まれです。2020年に高専に入学しました。<br />

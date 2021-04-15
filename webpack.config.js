@@ -9,7 +9,12 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js'
   },
-  devServer: { port: 3000, hot: true, open: true },
+  devServer: {
+    port: 3000,
+    hot: true,
+    open: true,
+    historyApiFallback: true
+  },
 
   module: {
     rules: [
