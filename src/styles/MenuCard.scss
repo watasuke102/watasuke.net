@@ -1,0 +1,52 @@
+/*!
+ * MenuCard.scss
+ *
+ * CopyRight (c) 2021 Watasuke
+ * Email  : <watasuke102@gmail.com>
+ * Twitter: @Watasuke102
+ * This software is released under the MIT SUSHI-WARE License.
+ */
+
+ @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+ 
+ 
+ .MenuCard-container {
+  $translate-time: 0.2s;
+  width: 128px;
+  padding: 15px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  p {
+    font-size: 30px;
+    font-weight: bold;
+    color: #aaaaff;
+    /* aみたいにする */
+    margin: 1px 0;
+    text-decoration: underline;
+    transition: $translate-time;
+  }
+  span {
+    color: #eee;
+    font-size: 80px;
+    user-select: none;
+    /* ちょっと右にずれてるので、下の文字と揃える */
+    margin-left: -6px;
+    transition: $translate-time;
+  }
+  
+  background-color: #0000;
+  transition: $translate-time;
+  &:hover {
+    background-color: #dddf;
+    p {
+      color: #222277;
+      transition: $translate-time;
+    }
+    span {
+      color: #222;
+      transition: $translate-time;
+    }
+    transition: $translate-time;
+  }
+}

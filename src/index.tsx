@@ -9,9 +9,10 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './style/main.scss';
+import Top from './pages/Top';
+import './styles/main.scss';
 
 ReactDOM.render(
-  <p>hello</p>,
+  <Top />,
   document.getElementById('main')
 );

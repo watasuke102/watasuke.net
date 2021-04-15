@@ -29,8 +29,13 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader',
-        ]
+        ],
+        exclude: /node_modules/
       },
+      {
+        test: /\.(png|jpg|svg)$/,
+        loader: 'file-loader'
+      }
     ]
   },
 
@@ -39,6 +44,6 @@ module.exports = {
     new MiniCssExtractPlugin({ filename: 'main.css' }),
   ],
   resolve: {
-    extensions: ['.js', '.ts', '.tsx', '.css', 'scss']
+    extensions: ['.js', '.ts', '.tsx', '.css', '.scss']
   }
 }
