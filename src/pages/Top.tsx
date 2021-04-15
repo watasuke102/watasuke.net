@@ -17,7 +17,7 @@ export default function Top() {
   return (
     <div className='top-container'>
       <div className='top-icon_and_name'>
-        <img width={150} src={Icon} alt='icon' />
+        <img width={150} height={150} src={Icon} alt='icon' loading='lazy' />
         <h2>Welcome</h2>
       </div>
       <div className='top-menu'>
