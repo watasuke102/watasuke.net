@@ -8,6 +8,7 @@
  */
 
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import '../styles/MenuCard.scss';
 
 interface Props {
@@ -17,8 +18,9 @@ interface Props {
 }
 
 export default function MenuCard(props: Props) {
+  const history = useHistory();
   return (
-    <div className='MenuCard-container' onClick={() => null}>
+    <div className='MenuCard-container' onClick={() => history.push(props.url)}>
       <span className='material-icons'>{props.icon}</span>
       <br />
       <p>{props.text}</p>

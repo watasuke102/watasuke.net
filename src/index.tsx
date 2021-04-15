@@ -9,10 +9,17 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Top from './pages/Top';
+import { BrowserRouter, Route } from 'react-router-dom';
 import './styles/main.scss';
 
+// Components
+import Top from './pages/Top';
+import Profile from './pages/Profile';
+
 ReactDOM.render(
-  <Top />,
+  <BrowserRouter>
+    <Route exact path="/" component={Top} />
+    <Route exact path="/profile" component={Profile} />
+  </BrowserRouter>,
   document.getElementById('main')
 );
