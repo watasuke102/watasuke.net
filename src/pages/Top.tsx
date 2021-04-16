@@ -9,6 +9,7 @@
 
 import React from 'react';
 import MenuCard from '../components/MenuCard';
+import Background from '../components/Background';
 import Icon from '../assets/icon.jpg';
 import '../styles/top.scss';
 
@@ -16,6 +17,7 @@ export default function Top() {
   console.log(Icon);
   return (
     <div className='top-container'>
+      <Background />
       <div className='top-icon_and_name'>
         <img width={150} src={Icon} alt='icon' loading='lazy' />
         <h2>Welcome</h2>
