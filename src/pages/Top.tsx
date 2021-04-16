@@ -16,17 +16,19 @@ import '../styles/top.scss';
 export default function Top() {
   console.log(Icon);
   return (
-    <div className='top-container'>
+    <>
       <Background />
-      <div className='top-icon_and_name'>
-        <img width={150} src={Icon} alt='icon' loading='lazy' />
-        <h2>Welcome</h2>
+      <div className='top-container'>
+        <div className='top-icon_and_name'>
+          <img width={150} src={Icon} alt='icon' loading='lazy' />
+          <h2>Welcome</h2>
+        </div>
+        <div className='top-menu'>
+          <MenuCard text='Blog' url='/blog' icon='edit' />
+          <MenuCard text='Profile' url='/profile' icon='format_list_bulleted' />
+          <MenuCard text='Portfolio' url='/portfolio' icon='flight_takeoff' />
+        </div>
       </div>
-      <div className='top-menu'>
-        <MenuCard text='Blog' url='/blog' icon='edit' />
-        <MenuCard text='Profile' url='/profile' icon='format_list_bulleted' />
-        <MenuCard text='Portfolio' url='/portfolio' icon='flight_takeoff' />
-      </div>
-    </div>
+    </>
   );
 }

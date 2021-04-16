@@ -10,43 +10,70 @@
 import React from 'react';
 import '../styles/Background'
 
-export default class Background extends React.Component {
+
+interface FigureInfo {
+  x: number,
+  y: number,
+  size: number,
+};
+
+enum Figure {
+  triangle, circle, cube
+}
+
+function rand(x: number) {
+  return Math.floor(Math.random() * x);
+}
+
+export default class Background extends React.Component<any> {
   private canvas_ref = React.createRef<HTMLCanvasElement>();
-
-  componentDidMount() {
-    this.UpdateCanvasSize();
-    window.addEventListener('resize', this.UpdateCanvasSize);
+  private pos: FigureInfo[] = [];
+  constructor(props: any) {
+    super(props);
+    // sizeのランダム範囲
+    const align = 10;
+    // 三角形
+    this.pos[Figure.triangle] = { x: 0, y: 0, size: 160 + rand(align) };
+    // 円
+    this.pos[Figure.circle] = { x: 0, y: 0, size: 100 + rand(align) };
+    // 正方形
+    this.pos[Figure.cube] = { x: 0, y: 0, size: 400 + rand(align) };
+    this.InitToBasePositions();
   }
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.UpdateCanvasSize);
+
+  InitToBasePositions() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    // 三角形
+    this.pos[Figure.triangle].x = width - 150;
+    this.pos[Figure.triangle].y = 450;
+    // 円
+    this.pos[Figure.circle].x = 160;
+    this.pos[Figure.circle].y = 140;
+    // 正方形
+    this.pos[Figure.cube].x = 0;
+    this.pos[Figure.cube].y = height;
   }
 
-  UpdateCanvasSize = () => {
+  // Animation() だとrequestAnimationFrameが機能しない
+  Animation = () => {
+    requestAnimationFrame(this.Animation);
+    console.log('ANIMARTION');
     const canvas = this.canvas_ref.current;
-    if (canvas) {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    this.Animation();
-  }
-
-  Animation() {
-    const canvas = this.canvas_ref.current;
-    if (!canvas) {
-      console.error('canvas is invalid');
-      return;
-    }
+    if (!canvas) return;
     const context = canvas.getContext('2d');
-    if (!context) {
-      console.error('context is invalid');
-      return;
-    }
-    interface Vec { x: number, y: number, size: number }
-    let pos: Vec = { x: 240, y: 200, size: 200 };
+    if (!context) return;
 
-    // canvasに正三角形を描画
-    context.strokeStyle = '#00ff00';
-    context.lineWidth = 10;
+    // =====================
+    // 描画
+    this.InitToBasePositions();
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    let pos: FigureInfo;
+
+    // 三角形
+    pos = this.pos[Figure.triangle];
+    context.strokeStyle = '#3dd651';
+    context.lineWidth = 7;
     context.lineCap = 'round';
     context.beginPath();
     pos.y -= (pos.size / 2);
@@ -58,6 +85,44 @@ export default class Background extends React.Component {
     context.lineTo(pos.x, pos.y);
     context.closePath();
     context.stroke();
+
+    // 円
+    pos = this.pos[Figure.circle];
+    context.lineWidth = 18;
+    context.strokeStyle = '#e47f45';
+    context.beginPath();
+    context.arc(pos.x, pos.y, pos.size, 0, 2 * Math.PI);
+    context.closePath();
+    context.stroke();
+
+    // 正方形
+    pos = this.pos[Figure.cube];
+    context.lineWidth = 25;
+    context.strokeStyle = '#3d5ada';
+    // 中央座標から左上の座標を求める
+    pos.x -= pos.size / 2;
+    pos.y -= pos.size / 2;
+    context.strokeRect(pos.x, pos.y, pos.size, pos.size);
+
+  }
+
+  componentDidMount() {
+    this.UpdateCanvasSize();
+    requestAnimationFrame(this.Animation);
+    window.addEventListener('resize', this.UpdateCanvasSize);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.UpdateCanvasSize);
+  }
+
+  // UpdateCanvasSize() とするとEventListenerから呼んだときにrefがundefinedになる
+  UpdateCanvasSize = () => {
+    const canvas = this.canvas_ref.current;
+    if (canvas) {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    this.InitToBasePositions();
   }
 
   render() {
