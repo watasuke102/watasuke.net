@@ -80,8 +80,12 @@ export default class Background extends React.Component<any> {
     let base_pos: FigureInfo;
 
     // 三角形
+    // animation_x -> 大きさの変化値, animation_y -> アニメーションの進行度
     {
       base_pos = this.pos[Figure.triangle];
+      base_pos.x += (base_pos.animation_x * 100);
+      base_pos.y -= (base_pos.animation_x * 100);
+      //base_pos.size += base_pos.animation_x;
       context.strokeStyle = '#3dd651';
       context.lineWidth = 14;
       context.lineCap = 'round';
@@ -95,6 +99,8 @@ export default class Background extends React.Component<any> {
       context.lineTo(base_pos.x, base_pos.y);
       context.closePath();
       context.stroke();
+
+      // アニメーション
     }
 
     // 円
@@ -109,10 +115,10 @@ export default class Background extends React.Component<any> {
       context.stroke();
 
       // アニメーション
-      this.pos[Figure.circle].animation_x += 0.5;
-      this.pos[Figure.circle].animation_y -= 0.002;
+      this.pos[Figure.circle].animation_x += 0.2;
+      this.pos[Figure.circle].animation_y -= 0.001;
       // 完全に消えてしばらく経ったら
-      if (this.pos[Figure.circle].animation_y <= -0.3) {
+      if (this.pos[Figure.circle].animation_y <= -0.25) {
         this.pos[Figure.circle].animation_x = 0;
         this.pos[Figure.circle].animation_y = 1;
       }

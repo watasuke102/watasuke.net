@@ -22,7 +22,6 @@ export default function MenuCard(props: Props) {
   return (
     <div className='MenuCard-container' onClick={() => history.push(props.url)}>
       <span className='material-icons'>{props.icon}</span>
-      <br />
       <p>{props.text}</p>
     </div>
   );
