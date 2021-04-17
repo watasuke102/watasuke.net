@@ -15,6 +15,7 @@ interface Vec { x: number, y: number };
 
 interface FigureInfo extends Vec {
   size: number,
+  color: string,
   animation_x: number,
   animation_y: number,
 };
@@ -37,17 +38,18 @@ export default class Background extends React.Component<any> {
     const align = 10;
     // 三角形
     this.pos[Figure.triangle] = {
-      x: 0, y: 0, size: 170 + rand(align),
+      x: 0, y: 0, size: 170 + rand(align), color: '#3dd651',
       animation_x: rand(360), animation_y: rand(360)
     };
     // 円
+    // これだけ色指定を0～255のrgbで指定
     this.pos[Figure.circle] = {
-      x: 0, y: 0, size: 0 + rand(align),
+      x: 0, y: 0, size: 0, color: '228,127,69',
       animation_x: 0, animation_y: 1
     };
     // 正方形
     this.pos[Figure.cube] = {
-      x: 0, y: 0, size: 334 + rand(align),
+      x: 0, y: 0, size: 334 + rand(align), color: '#3d5ada',
       animation_x: 0, animation_y: 0
     };
     this.InitToBasePositions();
@@ -88,7 +90,7 @@ export default class Background extends React.Component<any> {
       // ちょっと変えたかったので、x, yでそれぞれsin, cosを使ってる
       base_pos.x += Math.cos(base_pos.animation_x / 180 * Math.PI) * 6;
       base_pos.y += Math.sin(base_pos.animation_y / 180 * Math.PI) * 6;
-      context.strokeStyle = '#3dd651';
+      context.strokeStyle = base_pos.color;
       context.lineWidth = 14;
       context.lineCap = 'round';
       context.beginPath();
@@ -113,7 +115,7 @@ export default class Background extends React.Component<any> {
     {
       base_pos = this.pos[Figure.circle];
       context.lineWidth = 8;
-      context.strokeStyle = `rgba(228,127,69, ${base_pos.animation_y})`;
+      context.strokeStyle = `rgba(${base_pos.color}, ${base_pos.animation_y})`;
       context.beginPath();
       context.arc(base_pos.x, base_pos.y, base_pos.size + base_pos.animation_x, 0, 2 * Math.PI);
       context.closePath();
@@ -160,7 +162,7 @@ export default class Background extends React.Component<any> {
       left_bottom = rotate(left_bottom);
       // 座標計算おわり
 
-      context.strokeStyle = '#3d5ada';
+      context.strokeStyle = base_pos.color;
       context.lineWidth = 34;
       context.lineCap = 'round';
       context.beginPath();
