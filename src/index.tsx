@@ -13,7 +13,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import './styles/main.scss';
 
 // Components
-import Top from './pages/Top';
+import Top from './pages';
 import Profile from './pages/Profile';
 
 ReactDOM.render(

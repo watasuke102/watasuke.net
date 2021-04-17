@@ -4,7 +4,9 @@
   "description": "[https://watasuke.tk](https://watasuke.tk)で公開される（予定の）ページ",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve"
+    "build": "gatsby build",
+    "dev": "gatsby develop -H 0.0.0.0",
+    "serve": "gatsby serve"
   },
   "repository": {
     "type": "git",
@@ -21,23 +23,10 @@
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "@types/react-router-dom": "^5.1.7",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^5.2.1",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.3.1",
-    "mini-css-extract-plugin": "^1.4.1",
-    "node-sass": "^5.0.0",
-    "path": "^0.12.7",
+    "gatsby": "^3.3.0",
+    "gatsby-plugin-sass": "^4.3.0",
+    "gatsby-plugin-typescript": "^3.3.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
-    "sass-loader": "^11.0.1",
-    "style-loader": "^2.0.0",
-    "ts-loader": "^8.1.0",
-    "typescript": "^4.2.4",
-    "webpack": "^5.32.0",
-    "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
+    "typescript": "^4.2.4"
   }
 }

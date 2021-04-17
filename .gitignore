@@ -5,3 +5,6 @@ node_modules/
 # Article用のやつは残しておく
 /app
 !/app/api/article
+
+/.cache
+/public
