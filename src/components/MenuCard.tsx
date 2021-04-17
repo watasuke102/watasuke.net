@@ -8,6 +8,7 @@
  */
 
 import React from 'react';
+import { navigate } from 'gatsby';
 import '../styles/MenuCard.scss';
 
 interface Props {
@@ -18,7 +19,7 @@ interface Props {
 
 export default function MenuCard(props: Props) {
   return (
-    <div className='MenuCard-container' onClick={() => null}>
+    <div className='MenuCard-container' onClick={() => navigate(props.url)}>
       <span className='material-icons'>{props.icon}</span>
       <p>{props.text}</p>
     </div>

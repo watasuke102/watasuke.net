@@ -1,12 +1,6 @@
 version: '3'
 
 services:
-  front:
-    build: .
-    ports:
-      - '3000:3000'
-    volumes:
-      - .:/front
 
 # from https://zenn.dev/nosu/articles/a0956568ee2170
   strapi:
@@ -20,7 +14,7 @@ services:
       DATABASE_PASSWORD: strapi
       DATABASE_SSL: 'false'
     volumes:
-      - ./app:/srv/app
+      - ./strapi:/srv/app
     ports:
       - '1337:1337'
     depends_on:
@@ -31,7 +25,7 @@ services:
     image: mysql
     command: mysqld --default-authentication-plugin=mysql_native_password
     volumes:
-      - ./data:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
     ports:
     - '3334:3306'
     environment:

@@ -6,7 +6,7 @@ Reactです
 ## how to use
 `docker-compose up -d --build`するだけ
 
-これをするとappフォルダができるので、/app/apiに/articleフォルダをコピーしてね
+これをするとappフォルダができるので、/app/apiに/articleフォルダをコピー (`cp -r article app/api`) してね
 
 ## LICENSE
 MIT SUSHI-WARE LICENSE
