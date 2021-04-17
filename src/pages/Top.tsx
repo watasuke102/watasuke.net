@@ -14,7 +14,6 @@ import Icon from '../assets/icon.jpg';
 import '../styles/top.scss';
 
 export default function Top() {
-  console.log(Icon);
   return (
     <>
       <Background />

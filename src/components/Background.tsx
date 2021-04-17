@@ -38,7 +38,7 @@ export default class Background extends React.Component<any> {
     // 三角形
     this.pos[Figure.triangle] = {
       x: 0, y: 0, size: 170 + rand(align),
-      animation_x: 0, animation_y: 0
+      animation_x: rand(360), animation_y: rand(360)
     };
     // 円
     this.pos[Figure.circle] = {
@@ -70,6 +70,7 @@ export default class Background extends React.Component<any> {
   // Animation() だとrequestAnimationFrameが機能しない
   Animation = () => {
     requestAnimationFrame(this.Animation);
+    if (!this.canvas_ref) return;
     const canvas = this.canvas_ref.current;
     if (!canvas) return;
     const context = canvas.getContext('2d');
@@ -80,12 +81,13 @@ export default class Background extends React.Component<any> {
     let base_pos: FigureInfo;
 
     // 三角形
-    // animation_x -> 大きさの変化値, animation_y -> アニメーションの進行度
+    // animation_x -> x座標アニメーションの進行度, animation_y -> y座標アニメーションの進行度
     {
       base_pos = this.pos[Figure.triangle];
-      base_pos.x += (base_pos.animation_x * 100);
-      base_pos.y -= (base_pos.animation_x * 100);
-      //base_pos.size += base_pos.animation_x;
+      // 周期関数（三角関数）でアニメーション
+      // ちょっと変えたかったので、x, yでそれぞれsin, cosを使ってる
+      base_pos.x += Math.cos(base_pos.animation_x / 180 * Math.PI) * 6;
+      base_pos.y += Math.sin(base_pos.animation_y / 180 * Math.PI) * 6;
       context.strokeStyle = '#3dd651';
       context.lineWidth = 14;
       context.lineCap = 'round';
@@ -101,6 +103,9 @@ export default class Background extends React.Component<any> {
       context.stroke();
 
       // アニメーション
+      this.pos[Figure.triangle].animation_x += 0.8;
+      this.pos[Figure.triangle].animation_y += 0.8;
+
     }
 
     // 円
