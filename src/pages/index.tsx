@@ -8,6 +8,7 @@
  */
 
 import React from 'react';
+import { StaticImage } from 'gatsby-plugin-image';
 import MenuCard from '../components/MenuCard';
 import Background from '../components/Background';
 import '../styles/main.scss';
@@ -19,6 +20,7 @@ export default function Top() {
       <Background />
       <div className='top-container'>
         <div className='top-icon_and_name'>
+          <StaticImage width={150} src='../assets/icon.jpg' alt='icon' />
           <h2>Welcome</h2>
         </div>
         <div className='top-menu'>
