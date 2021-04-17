@@ -1,1 +1,7 @@
 node_modules/
+# MySQL
+/data
+# Strapi
+# Article用のやつは残しておく
+/app
+!/app/api/article
