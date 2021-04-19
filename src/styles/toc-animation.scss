@@ -1,0 +1,71 @@
+/*!
+ * toc-animation.scss
+ *
+ * CopyRight (c) 2021 Watasuke
+ * Email  : <watasuke102@gmail.com>
+ * Twitter: @Watasuke102
+ * This software is released under the MIT SUSHI-WARE License.
+ */
+
+.toc-animation {
+  padding: 20px 40px;
+  border-radius: 10px;
+  border: 1px solid;
+  //height: 300px;
+  max-height: 300px;
+  overflow-y: auto;
+  li {
+    margin: 5px 0;
+    &::marker {
+      content: '- ';
+    }
+  }
+}
+/*
+.toc-animation-exit-done {
+  height: 0;
+  opacity: 0;
+  transition: all 0.2s ease-out;
+}
+.toc-animation-exit-active {
+  height: 0;
+  opacity: 0;
+  transition: all 0.2s ease-out;
+}
+
+.toc-animation-enter-active {
+  height: 300px;
+  opacity: 1;
+  transition: all 0.2s ease-out;
+}
+
+.toc-animation-enter-done {
+  height: 300px;
+  opacity: 1;
+  transition: all 0.2s ease-out;
+}
+/*/
+.toc-animation-exit-done {
+  max-height: 0px;
+  opacity: 0;
+  transition: all 0.2s ease-out;
+}
+.toc-animation-exit-active {
+  overflow-y: hidden;
+  max-height: 0px;
+  opacity: 0;
+  transition: all 0.2s ease-out;
+}
+
+.toc-animation-enter-active {
+  max-height: 300px;
+  opacity: 1;
+  transition: all 0.2s ease-out;
+}
+
+.toc-animation-enter-done {
+  max-height: 300px;
+  opacity: 1;
+  transition: all 0.2s ease-out;
+}
+/**/

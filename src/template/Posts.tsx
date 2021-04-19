@@ -8,7 +8,8 @@
  */
 
 import React from 'react';
-import { Remark as MarkdownRenderer } from 'react-remark';
+import { Remark } from 'react-remark';
+import { CSSTransition } from 'react-transition-group';
 import Article from '../types/Article';
 import '../styles/main.scss';
 import '../styles/Posts.scss';
@@ -25,13 +26,12 @@ export default (prop: Props) => {
   const data = prop.pageContext;
   // 見出し要素を見つけるための正規表現
   const head = /^\#\#* (.*)/;
-  // 内容を行ごとに検証、見出しの項目名だけ抜き取って配列に格納
+  // 内容をstripで行ごとに検証、filterで見出しの行だけ取り出し、
+  // # (見出しを示す記号）を削除して配列に格納
   const toc = data.body
     .split('\n')
     .filter(str => str.match(head))
     .map(str => str.replace(head, '$1'));
-  console.log(toc);
-
   // クリックするとそこまで飛べる目次を生成する
   const table_of_contents = toc.map(str => {
     return (
@@ -49,21 +49,23 @@ export default (prop: Props) => {
       <div className='Posts-body'>
         {/* 目次 */}
         <div className='Posts-table_of_contents_container'>
-          <div className='Posts-close_button' onClick={() => { console.log(!tocOpening); SetTocOpening(!tocOpening); }}>
+          <div className='Posts-close_button' onClick={() => SetTocOpening(!tocOpening)}>
             <span className='material-icons'>
               {tocOpening ? 'expand_less' : 'expand_more'}
             </span>
           </div>
           <h2>目次</h2>
-          <ul style={{ height: tocOpening ? 'auto' : 0 }}>
-            {table_of_contents}
-          </ul>
+          <CSSTransition in={tocOpening} timeout={1000} classNames='toc-animation'>
+            <ul className='toc-animation'>
+              {table_of_contents}
+            </ul>
+          </CSSTransition>
         </div>
 
         {/* 画像のURLを置き換える */}
-        <MarkdownRenderer remarkPlugins={[Toc, Slug]}>
+        <Remark remarkPlugins={[Toc, Slug]}>
           {data.body.replace('/uploads/', 'http://localhost:1337/uploads/')}
-        </MarkdownRenderer>
+        </Remark>
       </div>
     </>
   )

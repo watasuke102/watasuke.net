@@ -31,6 +31,7 @@
     "gatsby-transformer-sharp": "^3.3.0",
     "react": "^17.0.2",
     "react-remark": "^2.0.3",
+    "react-transition-group": "^4.4.1",
     "remark": "^13.0.0",
     "remark-slug": "^6.0.0",
     "remark-stringify": "^8.1.1",
