@@ -25,20 +25,22 @@ interface Props {
 export default (prop: Props) => {
   const data = prop.pageContext;
   // 見出し要素を見つけるための正規表現
-  const head = /^\#\#* (.*)/;
+  const heading_regexp = /^\#\#* (.*)/;
+  let heading_count: number = 0;
   // 内容をstripで行ごとに検証、filterで見出しの行だけ取り出し、
   // # (見出しを示す記号）を削除して配列に格納
   const toc = data.body
     .split('\n')
-    .filter(str => str.match(head))
-  //.map(str => str.replace(head, '$1'));
+    .filter(str => str.match(heading_regexp))
+  //.map(str => str.replace(heading_regexp, '$1'));
   // クリックするとそこまで飛べる目次を生成する
   const table_of_contents =
     <div className='Posts-table_of_contents'>
       {
         toc.map(str => {
+          heading_count++;
           const count = str.match(/\#/g)?.length;
-          str = str.replace(head, '$1');
+          str = str.replace(heading_regexp, '$1');
           return (
             <li id={`toc-${count}`}>
               <a href={`#${str}`}>
@@ -58,7 +60,10 @@ export default (prop: Props) => {
       <div className='Posts-body'>
         <h1>{data.title}</h1>
         {/* 目次 */}
-        <div className='Posts-table_of_contents_container'>
+        {
+          // 見出しが2つ以下なら表示しない
+          (heading_count > 2) &&
+          <div className='Posts-table_of_contents_container'>
           <div className='Posts-close_button' onClick={() => SetTocOpening(!tocOpening)}>
             <span className='material-icons'>
               {tocOpening ? 'expand_less' : 'expand_more'}
@@ -71,6 +76,7 @@ export default (prop: Props) => {
             </ol>
           </CSSTransition>
         </div>
+        }
 
         <hr />
 
