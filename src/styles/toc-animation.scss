@@ -11,13 +11,13 @@
   padding: 20px 40px;
   border-radius: 10px;
   border: 1px solid;
-  //height: 300px;
   max-height: 300px;
   overflow-y: auto;
   li {
     margin: 5px 0;
     &::marker {
-      content: '- ';
+      background-color: black;
+      border: solid 1px white;
     }
   }
 }

@@ -9,9 +9,14 @@
 
 @import 'toc-animation';
 
+$bg-color: #1f221f;
+
+html {
+  margin: 25px 20px;
+}
+
 h1 {
   margin-left: 5px;
-  width: 85%;
   border-bottom: solid 5px #16b900;
 }
 
@@ -20,10 +25,20 @@ h1 {
 }
 
 .Posts-body {
-  margin-left: 15px;
   width: 70%;
-  background-color: #1f221f;
+  background-color: $bg-color;
   padding: 15px;
+  hr {
+    margin-bottom: 50px;
+  }
+}
+
+.Posts-table_of_contents {
+  #toc-1 { font-weight: bolder; }
+  #toc-3 { margin-left: 20px; }
+  #toc-4 { margin-left: 40px; }
+  #toc-5 { margin-left: 60px; }
+  #toc-6 { margin-left: 80px; }
 }
 
 // 目次部分
@@ -47,5 +62,30 @@ $button-size: 30px;
   span {
     font-size: $button-size;
     margin: auto;
+  }
+}
+
+// サイドバー
+.Posts-side {
+  width: 25%;
+  margin-left: 20px;
+}
+.Posts-side_toc {
+  position: sticky;
+  top: 20px;
+  height: auto;
+  padding: 10px;
+  background-color: $bg-color;
+  li {
+    padding: 5px 10px;
+    background-color: #3f443f;
+    margin: 10px 0;
+    &::marker {
+      content: '';
+    }
+    a {
+      display: block;
+      width: auto;
+    }
   }
 }

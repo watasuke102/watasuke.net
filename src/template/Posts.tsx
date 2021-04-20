@@ -31,22 +31,32 @@ export default (prop: Props) => {
   const toc = data.body
     .split('\n')
     .filter(str => str.match(head))
-    .map(str => str.replace(head, '$1'));
+  //.map(str => str.replace(head, '$1'));
   // クリックするとそこまで飛べる目次を生成する
-  const table_of_contents = toc.map(str => {
-    return (
-      <li>
-        <a href={`#${str}`}>{str}</a>
-      </li>
-    )
-  })
+  const table_of_contents =
+    <div className='Posts-table_of_contents'>
+      {
+        toc.map(str => {
+          const count = str.match(/\#/g)?.length;
+          str = str.replace(head, '$1');
+          return (
+            <li id={`toc-${count}`}>
+              <a href={`#${str}`}>
+                {str}
+              </a>
+            </li>
+          )
+        })
+      }
+    </div>
 
   const [tocOpening, SetTocOpening] = React.useState(true);
 
   return (
-    <>
-      <h1>{data.title}</h1>
+    <div className='Posts-container' >
+      {/* 記事メイン部分 */}
       <div className='Posts-body'>
+        <h1>{data.title}</h1>
         {/* 目次 */}
         <div className='Posts-table_of_contents_container'>
           <div className='Posts-close_button' onClick={() => SetTocOpening(!tocOpening)}>
@@ -56,17 +66,26 @@ export default (prop: Props) => {
           </div>
           <h2>目次</h2>
           <CSSTransition in={tocOpening} timeout={1000} classNames='toc-animation'>
-            <ul className='toc-animation'>
+            <ol className='toc-animation'>
               {table_of_contents}
-            </ul>
+            </ol>
           </CSSTransition>
         </div>
+
+        <hr />
 
         {/* 画像のURLを置き換える */}
         <Remark remarkPlugins={[Toc, Slug]}>
           {data.body.replace('/uploads/', 'http://localhost:1337/uploads/')}
         </Remark>
       </div>
-    </>
+
+      {/* サイドバー */}
+      <div className='Posts-side'>
+        <div className='Posts-side_toc'>
+          {table_of_contents}
+        </div>
+      </div>
+    </div>
   )
 }
