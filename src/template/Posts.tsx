@@ -24,9 +24,9 @@ interface Props {
 
 export default (prop: Props) => {
   const data = prop.pageContext;
+  let heading_count: number = 0;
   // 見出し要素を見つけるための正規表現
   const heading_regexp = /^\#\#* (.*)/;
-  let heading_count: number = 0;
   // 内容をstripで行ごとに検証、filterで見出しの行だけ取り出し、
   // # (見出しを示す記号）を削除して配列に格納
   const toc = data.body
@@ -64,18 +64,18 @@ export default (prop: Props) => {
           // 見出しが2つ以下なら表示しない
           (heading_count > 2) &&
           <div className='Posts-table_of_contents_container'>
-          <div className='Posts-close_button' onClick={() => SetTocOpening(!tocOpening)}>
-            <span className='material-icons'>
-              {tocOpening ? 'expand_less' : 'expand_more'}
-            </span>
+            <div className='Posts-close_button' onClick={() => SetTocOpening(!tocOpening)}>
+              <span className='material-icons'>
+                {tocOpening ? 'expand_less' : 'expand_more'}
+              </span>
+            </div>
+            <h2>目次</h2>
+            <CSSTransition in={tocOpening} timeout={1000} classNames='toc-animation'>
+              <ol className='toc-animation'>
+                {table_of_contents}
+              </ol>
+            </CSSTransition>
           </div>
-          <h2>目次</h2>
-          <CSSTransition in={tocOpening} timeout={1000} classNames='toc-animation'>
-            <ol className='toc-animation'>
-              {table_of_contents}
-            </ol>
-          </CSSTransition>
-        </div>
         }
 
         <hr />
