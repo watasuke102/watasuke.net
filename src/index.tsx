@@ -14,7 +14,7 @@ import './styles/main.scss';
 
 // Components
 import Top from './pages';
-import Profile from './pages/Profile';
+import Profile from './pages/profile';
 
 ReactDOM.render(
   <BrowserRouter>
