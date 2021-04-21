@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sitedata",
+  "info": {
+    "name": "Sitedata"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "body": {
+      "type": "richtext"
+    }
+  }
+}
