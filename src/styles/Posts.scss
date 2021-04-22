@@ -73,12 +73,12 @@ $button-size: 30px;
 .Posts-side_toc {
   position: sticky;
   top: 20px;
-  height: auto;
   padding: 10px;
+  max-height: 80vh;
+  overflow-y: scroll;
   background-color: $bg-color;
   li {
     padding: 5px 10px;
-    background-color: #3f443f;
     margin: 10px 0;
     &::marker {
       content: '';
@@ -86,6 +86,11 @@ $button-size: 30px;
     a {
       display: block;
       width: auto;
+    }
+
+    background-color: #fff2;
+    &:hover {
+      background-color: #fff4;
     }
   }
 }
