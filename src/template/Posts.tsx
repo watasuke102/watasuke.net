@@ -10,6 +10,7 @@
 import React from 'react';
 import { Remark } from 'react-remark';
 import { CSSTransition } from 'react-transition-group';
+import ProfileCard from '../components/ProfileCard';
 import Article from '../types/Article';
 import '../styles/main.scss';
 import '../styles/Posts.scss';
@@ -24,7 +25,6 @@ interface Props {
 
 export default (prop: Props) => {
   const data = prop.pageContext;
-  let heading_count: number = 0;
   // 見出し要素を見つけるための正規表現
   const heading_regexp = /^\#\#* (.*)/;
   // 内容をstripで行ごとに検証、filterで見出しの行だけ取り出し、
@@ -38,7 +38,6 @@ export default (prop: Props) => {
     <div className='Posts-table_of_contents'>
       {
         toc.map(str => {
-          heading_count++;
           const count = str.match(/\#/g)?.length;
           str = str.replace(heading_regexp, '$1');
           return (
@@ -53,32 +52,34 @@ export default (prop: Props) => {
     </div>
 
   const [tocOpening, SetTocOpening] = React.useState(true);
+  // 目次を表示するかどうか (見出しが2つ以下なら表示しない)
+  const is_show_toc = table_of_contents.props.children.length > 2;
 
   return (
     <div className='Posts-container' >
       {/* 記事メイン部分 */}
       <div className='Posts-body'>
         <h1>{data.title}</h1>
-        {/* 目次 */}
         {
-          // 見出しが2つ以下なら表示しない
-          (heading_count > 2) &&
-          <div className='Posts-table_of_contents_container'>
-            <div className='Posts-close_button' onClick={() => SetTocOpening(!tocOpening)}>
-              <span className='material-icons'>
-                {tocOpening ? 'expand_less' : 'expand_more'}
-              </span>
+          is_show_toc &&
+          <>
+            <div className='Posts-table_of_contents_container'>
+              <div className='Posts-close_button' onClick={() => SetTocOpening(!tocOpening)}>
+                <span className='material-icons'>
+                  {tocOpening ? 'expand_less' : 'expand_more'}
+                </span>
+              </div>
+              <h2>目次</h2>
+              <CSSTransition in={tocOpening} timeout={1000} classNames='toc-animation'>
+                <ol className='toc-animation'>
+                  {table_of_contents}
+                </ol>
+              </CSSTransition>
             </div>
-            <h2>目次</h2>
-            <CSSTransition in={tocOpening} timeout={1000} classNames='toc-animation'>
-              <ol className='toc-animation'>
-                {table_of_contents}
-              </ol>
-            </CSSTransition>
-          </div>
+            <hr />
+          </>
         }
 
-        <hr />
 
         {/* 画像のURLを置き換える */}
         <Remark remarkPlugins={[Toc, Slug]}>
@@ -88,9 +89,13 @@ export default (prop: Props) => {
 
       {/* サイドバー */}
       <div className='Posts-side'>
-        <div className='Posts-side_toc'>
-          {table_of_contents}
-        </div>
+        <ProfileCard />
+        {
+          is_show_toc &&
+          <div className='Posts-side_toc'>
+            {table_of_contents}
+          </div>
+        }
       </div>
     </div>
   )
