@@ -10,6 +10,7 @@
 export default interface Article {
   title: string,
   body: string,
+  tags: string,
   thumbnail: string,
   published_at: string,
   updated_at: string,
