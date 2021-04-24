@@ -1,0 +1,23 @@
+/*!
+ * Background.scss
+ *
+ * CopyRight (c) 2021 Watasuke
+ * Email  : <watasuke102@gmail.com>
+ * Twitter: @Watasuke102
+ * This software is released under the MIT SUSHI-WARE License.
+ */
+
+ .blog-container {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   h2 {
+     font-size: 1.2em;
+   }
+   div {
+     width: 200px;
+     background-color: rgb(60, 100, 70);
+     margin: 50px;
+   }
+}
+
