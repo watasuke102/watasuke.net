@@ -9,6 +9,7 @@
 
 import React from 'react';
 import Background from '../components/Background';
+import '../styles/main.scss';
 import '../styles/Profile.scss';
 
 export default function Profile() {

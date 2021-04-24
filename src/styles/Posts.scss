@@ -9,13 +9,9 @@
 
 @import 'toc-animation';
 
-$bg-color: #1f221f;
+$second-bg-color: #1f221f;
 
-html {
-  margin: 25px 20px;
-}
-
-h1 {
+.Posts-title {
   margin-left: 5px;
   border-bottom: solid 5px #16b900;
 }
@@ -26,7 +22,7 @@ h1 {
 
 .Posts-body {
   width: 70%;
-  background-color: $bg-color;
+  background-color: $second-bg-color;
   padding: 15px;
   hr {
     margin-bottom: 50px;
@@ -76,7 +72,7 @@ $button-size: 30px;
   padding: 10px;
   max-height: 80vh;
   overflow-y: scroll;
-  background-color: $bg-color;
+  background-color: $second-bg-color;
   li {
     padding: 5px 10px;
     margin: 10px 0;

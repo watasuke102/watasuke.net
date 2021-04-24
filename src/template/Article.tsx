@@ -59,7 +59,9 @@ export default (prop: Props) => {
     <div className='Posts-container' >
       {/* 記事メイン部分 */}
       <div className='Posts-body'>
-        <h1>{data.title}</h1>
+        <h1 className='Posts-title'>
+          {data.title}
+        </h1>
         {
           is_show_toc &&
           <>

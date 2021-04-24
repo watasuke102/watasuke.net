@@ -1,0 +1,38 @@
+/*!
+ * Background.scss
+ *
+ * CopyRight (c) 2021 Watasuke
+ * Email  : <watasuke102@gmail.com>
+ * Twitter: @Watasuke102
+ * This software is released under the MIT SUSHI-WARE License.
+ */
+
+ .ArticleList-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  background-color: #1f221f33;
+  h2 {
+    font-size: 1.2em;
+  }
+}
+
+.ArticleList-card {
+  width: 250px;
+  padding: 20px;
+  margin: 20px;
+
+  color: inherit;
+  background-color: #414e42;
+  transition: background-color 0.5s;
+  &:hover{
+    cursor: pointer;
+    background-color: #505f51;
+    transition: background-color 0.5s;
+  }
+
+  h2 {
+    height: 2.5em;
+  }
+}
