@@ -44,7 +44,7 @@ export default (prop: Props) => {
           str = str.replace(heading_regexp, '$1');
           return (
             <li id={`toc-${count}`}>
-              <a href={`#${str}`}>
+              <a href={`#${str.toLowerCase()}`}>
                 {str}
               </a>
             </li>
