@@ -9,6 +9,7 @@
 
 import React from 'react';
 import { Remark } from 'react-remark';
+import { StaticImage } from 'gatsby-plugin-image';
 import { CSSTransition } from 'react-transition-group';
 import ProfileCard from '../components/ProfileCard';
 import TagContainer from '../components/TagContainer';
@@ -55,6 +56,10 @@ export default (prop: Props) => {
   const [tocOpening, SetTocOpening] = React.useState(true);
   // 目次を表示するかどうか (見出しが2つ以下なら表示しない)
   const is_show_toc = table_of_contents.props.children.length > 2;
+  console.log(data.thumbnail);
+  const thumbnail = (data.thumbnail) ?
+    <img src={data.thumbnail.replace('/uploads/', 'http://localhost:1337/uploads/')} alt='thumbnail' decoding="async" />
+    : <StaticImage src='../assets/thumbnail.jpg' alt='thumbnail' />
 
   return (
     <div className='Article-container' >
@@ -63,6 +68,16 @@ export default (prop: Props) => {
         <h1 className='Article-title'>
           {data.title}
         </h1>
+        {/* サムネ */}
+        {thumbnail}
+        {/* 公開日と更新日 */}
+        <div className='Article-date'>
+          <span className='material-icons'>schedule</span>
+          <p>{data.published_at.slice(0, 10)}</p>
+          <span className='material-icons'>update</span>
+          <p>{data.updated_at.slice(0, 10)}</p>
+        </div>
+        {/* タグ */}
         <TagContainer tags={data.tags} />
         {
           is_show_toc &&

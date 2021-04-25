@@ -11,13 +11,23 @@
 
 $second-bg-color: #1f221f;
 
+
+.Article-container {
+  display: flex;
+}
+
 .Article-title {
   margin-left: 5px;
   border-bottom: solid 5px #16b900;
 }
 
-.Article-container {
+.Article-date {
   display: flex;
+  justify-content: flex-end;
+  span {
+    margin-left: 10px;
+    margin-right: 4px;
+  }
 }
 
 .Article-body {
@@ -26,6 +36,17 @@ $second-bg-color: #1f221f;
   padding: 15px;
   hr {
     margin-bottom: 50px;
+  }
+  img {
+    width: 100%;
+    max-height: 400px;
+    margin: auto;
+    object-fit: cover;
+  }
+  blockquote {
+    border-left: solid 5px white;
+    padding-left: 10px;
+    color: #bbb;
   }
 }
 
