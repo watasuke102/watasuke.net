@@ -24,6 +24,7 @@ export default function Top() {
           <h2>Welcome</h2>
         </div>
         <div className='top-menu'>
+          <MenuCard text="What's this" url='/about' icon='info' />
           <MenuCard text='Blog' url='/blog' icon='edit' />
           <MenuCard text='Profile' url='/profile' icon='format_list_bulleted' />
           <MenuCard text='Portfolio' url='/portfolio' icon='flight_takeoff' />
