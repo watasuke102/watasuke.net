@@ -13,7 +13,7 @@ const fetch = require('node-fetch');
 // サイトのデータ登録
 exports.createSchemaCustomization = ({ actions }) => {
   actions.createTypes(`
-    type Tags @dontInfer {
+    type Tag @dontInfer {
       slug: String,
       name: String
     }
@@ -25,7 +25,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       thumbnail: String,
       published_at: String,
       updated_at: String,
-      tags: [Tags],
+      tags: [Tag],
     }
   `);
 }
@@ -64,6 +64,21 @@ exports.sourceNodes = async ({ actions, createContentDigest }) => {
       }
     })
   })
+
+  // タグ一覧を登録
+  response = await fetch('http://localhost:1337/tags');
+  const tags = await response.json();
+  tags.forEach(item => {
+    actions.createNode({
+      id: String(item.id),
+      slug: item.slug,
+      name: item.name,
+      internal: {
+        type: 'Tags',
+        contentDigest: createContentDigest(item),
+      }
+    });
+  })
 }
 
 
@@ -73,42 +88,39 @@ exports.createPages = async ({ graphql, actions }) => {
   const response = await graphql(`
     query {
       allArticles {
-        edges {
-          node {
+        nodes {
+          slug
+          title
+          body
+          tags {
+            name
             slug
-            title
-            body
-            tags {
-              name
-              slug
-            }
-            thumbnail
-            published_at
-            updated_at
           }
+          thumbnail
+          published_at
+          updated_at
         }
       }
     }
   `)
-  const articles = response.data.allArticles.edges;
-  let tag_list = [];
-  articles.forEach(({ node }) => {
+  const articles = response.data.allArticles.nodes;
+  let tag_list = new Set();
+  articles.forEach(item => {
     actions.createPage({
-      path: `/blog/article/${node['slug']}`,
+      path: `/blog/article/${item['slug']}`,
       component: path.resolve('./src/template/Article.tsx'),
-      context: node
+      context: item
     });
-    // タグを抽出する
-    node.tags.forEach(tag => tag_list.push(tag));
+    item.tags.forEach(tag => tag_list.add(tag));
   });
-  // タグ一覧から重複を排除し、ページを作る
+  // タグを含む記事の一覧ページを作る
   if (tag_list.length != 0) {
-    Array.from(new Set(tag_list)).forEach((tag, i) => {
+    for (let tag of tag_list) {
       actions.createPage({
         path: `/blog/tag/${tag['slug']}`,
         component: path.resolve('./src/template/Tag.tsx'),
         context: tag
       });
-    });
+    }
   }
 }

@@ -21,20 +21,17 @@ interface Props {
   },
   data: {
     allArticles: {
-      edges: [{
-        node: Article;
-      }]
+      nodes: Article[];
     }
   }
 }
 
 export default ({ pageContext, data }: Props) => {
-  console.log(pageContext);
   return (
     <>
       <h1>{pageContext.name}</h1>
       <div className='blog-container'>
-        <ArticleList page={0} list={data.allArticles.edges} />
+        <ArticleList page={0} list={data.allArticles.nodes} />
       </div>
     </>
   );
@@ -43,19 +40,17 @@ export default ({ pageContext, data }: Props) => {
 export const query = graphql`
 query($slug: String) {
   allArticles(filter: {tags: {elemMatch: {slug: {eq: $slug}}}}) {
-    edges {
-      node {
+    nodes {
+      slug
+      title
+      body
+      tags {
+        name
         slug
-        title
-        body
-        tags {
-          name
-          slug
-        }
-        thumbnail
-        published_at
-        updated_at
       }
+      thumbnail
+      published_at
+      updated_at
     }
   }
 }`;

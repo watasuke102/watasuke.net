@@ -20,19 +20,17 @@ type Props = {
   },
   data: {
     allArticles: {
-      edges: [{
-        node: Article;
-      }]
+      nodes: Article[]
     }
   }
 }
 
-export default function Blog({data }: Props) {
+export default function Blog({ data }: Props) {
   return (
     <>
       <h1>記事一覧</h1>
       <div className='blog-container'>
-        <ArticleList page={0} list={data.allArticles.edges}/>
+        <ArticleList page={0} list={data.allArticles.nodes} />
       </div>
     </>
   );
@@ -41,19 +39,17 @@ export default function Blog({data }: Props) {
 export const query = graphql`
 query {
   allArticles {
-    edges {
-      node {
+    nodes {
+      slug
+      title
+      body
+      tags {
+        name
         slug
-        title
-        body
-        tags {
-          name
-          slug
-        }
-        thumbnail
-        published_at
-        updated_at
       }
+      thumbnail
+      published_at
+      updated_at
     }
   }
 }`;

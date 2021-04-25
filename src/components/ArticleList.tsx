@@ -16,15 +16,11 @@ import Article from '../types/Article';
 import '../styles/ArticleList.scss';
 
 interface Props {
-  list: {
-    node: Article
-  }[],
+  list: Article[],
   page: number,
-  tag?: string
 }
 
 export default function ArticleList(props: Props) {
-
   const article_count = 10;
   const page_number = props.page;
   const begin = page_number * article_count;
@@ -33,17 +29,17 @@ export default function ArticleList(props: Props) {
   let article_cards: object[] = [];
   props.list
     .slice(begin, last)
-    .forEach(({ node }) => {
+    .forEach(article => {
       article_cards.push(
-        <div className='ArticleList-card' onClick={() => navigate('/blog/article/' + node.slug)}>
-          <Thumbnail url={node.thumbnail} />
+        <div className='ArticleList-card' onClick={() => navigate('/blog/article/' + article.slug)}>
+          <Thumbnail url={article.thumbnail} />
           <div className='ArticleList-text'>
-            <h2>{node.title}</h2>
-            <TagContainer tags={node.tags} />
+            <h2>{article.title}</h2>
+            <TagContainer tags={article.tags} />
             <p>
               {
                 // 140字に制限して内容を表示、超過分は...で
-                RemoveMD(node.body.slice(0, 140) + ((node.body.length > 140) ? ' ...' : ''))
+                RemoveMD(article.body.slice(0, 140) + ((article.body.length > 140) ? ' ...' : ''))
               }
             </p>
           </div>
