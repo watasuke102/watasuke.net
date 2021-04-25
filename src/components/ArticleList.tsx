@@ -9,8 +9,8 @@
 
 import React from 'react';
 import { navigate } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
 import RemoveMD from 'remove-markdown';
+import Thumbnail from './Thumbnail'
 import TagContainer from './TagContainer'
 import Article from '../types/Article';
 import '../styles/ArticleList.scss';
@@ -36,14 +36,17 @@ export default function ArticleList(props: Props) {
     .forEach(({ node }) => {
       article_cards.push(
         <div className='ArticleList-card' onClick={() => navigate('/blog/article/' + node.slug)}>
-          <h2>{node.title}</h2>
-          <TagContainer tags={node.tags} />
-          <p>
-            {
-              // 140字に制限して内容を表示、超過分は...で
-              RemoveMD(node.body.slice(0, 140) + ((node.body.length > 140) ? ' ...' : ''))
-            }
-          </p>
+          <Thumbnail url={node.thumbnail} />
+          <div className='ArticleList-text'>
+            <h2>{node.title}</h2>
+            <TagContainer tags={node.tags} />
+            <p>
+              {
+                // 140字に制限して内容を表示、超過分は...で
+                RemoveMD(node.body.slice(0, 140) + ((node.body.length > 140) ? ' ...' : ''))
+              }
+            </p>
+          </div>
         </div>
       )
     });

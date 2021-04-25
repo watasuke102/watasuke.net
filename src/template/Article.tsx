@@ -1,5 +1,5 @@
 /*!
- * profile/index.tsx
+ * Article.tsx
  *
  * CopyRight (c) 2021 Watasuke
  * Email  : <watasuke102@gmail.com>
@@ -11,6 +11,7 @@ import React from 'react';
 import { Remark } from 'react-remark';
 import { StaticImage } from 'gatsby-plugin-image';
 import { CSSTransition } from 'react-transition-group';
+import Thumbnail from '../components/Thumbnail';
 import ProfileCard from '../components/ProfileCard';
 import TagContainer from '../components/TagContainer';
 import Article from '../types/Article';
@@ -60,9 +61,6 @@ export default (prop: Props) => {
   const [tocOpening, SetTocOpening] = React.useState(true);
   // 目次を表示するかどうか (見出しが2つ以下なら表示しない)
   const is_show_toc = table_of_contents.props.children.length > 2;
-  const thumbnail = (data.thumbnail) ?
-    <img src={data.thumbnail.replace('/uploads/', 'http://localhost:1337/uploads/')} alt='thumbnail' decoding="async" />
-    : <StaticImage src='../assets/thumbnail.jpg' alt='thumbnail' />
 
   return (
     <div className='Article-container' >
@@ -72,7 +70,7 @@ export default (prop: Props) => {
           {data.title}
         </h1>
         {/* サムネ */}
-        {thumbnail}
+        <Thumbnail url={data.thumbnail} />
         {/* 公開日と更新日 */}
         <div className='Article-date'>
           <span className='material-icons'>schedule</span>
