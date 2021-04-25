@@ -103,10 +103,10 @@ exports.createPages = async ({ graphql, actions }) => {
   });
   // タグ一覧から重複を排除し、ページを作る
   if (tag_list.length != 0) {
-    Array.from(new Set(tag_list)).forEach(tag => {
+    Array.from(new Set(tag_list)).forEach((tag, i) => {
       actions.createPage({
         path: `/blog/tag/${tag['slug']}`,
-        component: path.resolve('./src/template/Article.tsx'),
+        component: path.resolve('./src/template/Tag.tsx'),
         context: tag
       });
     });

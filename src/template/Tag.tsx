@@ -1,5 +1,5 @@
 /*!
- * Top.tsx
+ * profile/index.tsx
  *
  * CopyRight (c) 2021 Watasuke
  * Email  : <watasuke102@gmail.com>
@@ -10,13 +10,14 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import ArticleList from '../components/ArticleList';
-import '../styles/main.scss';
-import '../styles/blog.scss';
 import Article from '../types/Article';
+import '../styles/main.scss';
+import '../styles/Posts.scss';
 
-type Props = {
-  location: {
-    hash: string
+interface Props {
+  pageContext: {
+    slug: string,
+    name: string,
   },
   data: {
     allArticles: {
@@ -27,20 +28,21 @@ type Props = {
   }
 }
 
-export default function Blog({data }: Props) {
+export default ({ pageContext, data }: Props) => {
+  console.log(pageContext);
   return (
     <>
-      <h1>記事一覧</h1>
+      <h1>{pageContext.name}</h1>
       <div className='blog-container'>
-        <ArticleList page={0} list={data.allArticles.edges}/>
+        <ArticleList page={0} list={data.allArticles.edges} />
       </div>
     </>
   );
 }
 
 export const query = graphql`
-query {
-  allArticles {
+query($slug: String) {
+  allArticles(filter: {tags: {elemMatch: {slug: {eq: $slug}}}}) {
     edges {
       node {
         slug
