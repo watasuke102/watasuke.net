@@ -30,7 +30,7 @@ export default function Blog({ data }: Props) {
     <>
       <h1>記事一覧</h1>
       <div className='blog-container'>
-        <ArticleList page={0} list={data.allArticles.nodes} />
+        <ArticleList list={data.allArticles.nodes} />
       </div>
     </>
   );

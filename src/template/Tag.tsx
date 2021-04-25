@@ -31,7 +31,7 @@ export default ({ pageContext, data }: Props) => {
     <>
       <h1>{pageContext.name}</h1>
       <div className='blog-container'>
-        <ArticleList page={0} list={data.allArticles.nodes} />
+        <ArticleList list={data.allArticles.nodes} />
       </div>
     </>
   );

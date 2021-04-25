@@ -8,12 +8,14 @@
  */
 
 .ArticleList-container {
+  width: 95%;
+  padding: 10px;
+  background-color: #1f221f;
+}
+.ArticleList-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 90%;
-  padding: 10px;
-  background-color: #1f221f;
   img {
     width: 100%;
     height: 150px;
@@ -53,4 +55,37 @@
 
 .ArticleList-text {
   padding: 0 15px;
+}
+
+// ボタン
+.ArticleList-button_container {
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ArticleList-button {
+  display: flex;
+  border: solid 3px #bbb;
+  background-color: none;
+  transition: background-color 0.5s;
+  span {
+    font-size: 50px;
+    color: inherit;
+    transition: color 0.5s;
+  }
+  &:hover {
+    background-color: #bbb;
+    transition: background-color 0.5s;
+    cursor: pointer;
+    span {
+      color: #222;
+      transition: color 0.5s;
+    }
+  }
+}
+
+.ArticleList-empty {
+  width: 50px;
+  height: 50px;
 }
