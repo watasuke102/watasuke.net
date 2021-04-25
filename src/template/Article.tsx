@@ -9,7 +9,6 @@
 
 import React from 'react';
 import { Remark } from 'react-remark';
-import { StaticImage } from 'gatsby-plugin-image';
 import { CSSTransition } from 'react-transition-group';
 import Thumbnail from '../components/Thumbnail';
 import ProfileCard from '../components/ProfileCard';
