@@ -48,6 +48,15 @@ $second-bg-color: #1f221f;
     padding-left: 10px;
     color: #bbb;
   }
+  // タグのCSSを上書き
+  .TagContainer-container {
+    a {
+      font-size: 1em;
+      color: #151615;
+      background-color: #c7c7c7;
+    }
+    margin-bottom: 15px;
+  }
 }
 
 .Article-table_of_contents {
@@ -110,16 +119,6 @@ $button-size: 30px;
       background-color: #fff4;
     }
   }
-}
-
-// タグのCSSを上書き
-.TagContainer-container {
-  a {
-    font-size: 1em;
-    color: #363835;
-    background-color: #d1d8ce;
-  }
-  margin-bottom: 15px;
 }
 
 // コードの言語表示の見た目変更
