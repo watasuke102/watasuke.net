@@ -21,30 +21,7 @@
     }
   }
 }
-/*
-.toc-animation-exit-done {
-  height: 0;
-  opacity: 0;
-  transition: all 0.2s ease-out;
-}
-.toc-animation-exit-active {
-  height: 0;
-  opacity: 0;
-  transition: all 0.2s ease-out;
-}
 
-.toc-animation-enter-active {
-  height: 300px;
-  opacity: 1;
-  transition: all 0.2s ease-out;
-}
-
-.toc-animation-enter-done {
-  height: 300px;
-  opacity: 1;
-  transition: all 0.2s ease-out;
-}
-/*/
 .toc-animation-exit-done {
   max-height: 0px;
   opacity: 0;

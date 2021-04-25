@@ -12,7 +12,7 @@ import { graphql } from 'gatsby';
 import ArticleList from '../components/ArticleList';
 import Article from '../types/Article';
 import '../styles/main.scss';
-import '../styles/Posts.scss';
+import '../styles/blog.scss';
 
 interface Props {
   pageContext: {

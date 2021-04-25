@@ -11,9 +11,10 @@ import React from 'react';
 import { Remark } from 'react-remark';
 import { CSSTransition } from 'react-transition-group';
 import ProfileCard from '../components/ProfileCard';
+import TagContainer from '../components/TagContainer';
 import Article from '../types/Article';
 import '../styles/main.scss';
-import '../styles/Posts.scss';
+import '../styles/Article.scss';
 
 // Remark関連
 import Slug from 'remark-slug';
@@ -35,7 +36,7 @@ export default (prop: Props) => {
   //.map(str => str.replace(heading_regexp, '$1'));
   // クリックするとそこまで飛べる目次を生成する
   const table_of_contents =
-    <div className='Posts-table_of_contents'>
+    <div className='Article-table_of_contents'>
       {
         toc.map(str => {
           const count = str.match(/\#/g)?.length;
@@ -56,17 +57,18 @@ export default (prop: Props) => {
   const is_show_toc = table_of_contents.props.children.length > 2;
 
   return (
-    <div className='Posts-container' >
+    <div className='Article-container' >
       {/* 記事メイン部分 */}
-      <div className='Posts-body'>
-        <h1 className='Posts-title'>
+      <div className='Article-body'>
+        <h1 className='Article-title'>
           {data.title}
         </h1>
+        <TagContainer tags={data.tags} />
         {
           is_show_toc &&
           <>
-            <div className='Posts-table_of_contents_container'>
-              <div className='Posts-close_button' onClick={() => SetTocOpening(!tocOpening)}>
+            <div className='Article-table_of_contents_container'>
+              <div className='Article-close_button' onClick={() => SetTocOpening(!tocOpening)}>
                 <span className='material-icons'>
                   {tocOpening ? 'expand_less' : 'expand_more'}
                 </span>
@@ -90,11 +92,11 @@ export default (prop: Props) => {
       </div>
 
       {/* サイドバー */}
-      <div className='Posts-side'>
+      <div className='Article-side'>
         <ProfileCard />
         {
           is_show_toc &&
-          <div className='Posts-side_toc'>
+          <div className='Article-side_toc'>
             {table_of_contents}
           </div>
         }

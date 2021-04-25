@@ -35,7 +35,7 @@ export default function ArticleList(props: Props) {
     .slice(begin, last)
     .forEach(({ node }) => {
       article_cards.push(
-        <div className='ArticleList-card' onClick={() => navigate('article/' + node.slug)}>
+        <div className='ArticleList-card' onClick={() => navigate('/blog/article/' + node.slug)}>
           <h2>{node.title}</h2>
           <TagContainer tags={node.tags} />
           <p>
