@@ -8,9 +8,10 @@
  */
 
 import React from 'react';
-import { useStaticQuery, navigate, graphql } from 'gatsby';
+import { navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import RemoveMD from 'remove-markdown';
+import TagContainer from './TagContainer'
 import Article from '../types/Article';
 import '../styles/ArticleList.scss';
 
@@ -23,21 +24,20 @@ interface Props {
 }
 
 export default function ArticleList(props: Props) {
-  const article_count = 10;
 
+  const article_count = 10;
   const page_number = props.page;
-  const tag_filter = (props.tag) ? `( filter: {tags: {elemMatch: {slug: {eq: "${props.tag}"}}}} )` : '';
-  console.log(tag_filter)
-  let article_cards: object[] = [];
   const begin = page_number * article_count;
   const last = page_number * article_count + article_count;
   // 記事からarticle_count個取り出す
+  let article_cards: object[] = [];
   props.list
     .slice(begin, last)
     .forEach(({ node }) => {
       article_cards.push(
         <div className='ArticleList-card' onClick={() => navigate('article/' + node.slug)}>
           <h2>{node.title}</h2>
+          <TagContainer tags={node.tags} />
           <p>
             {
               // 140字に制限して内容を表示、超過分は...で

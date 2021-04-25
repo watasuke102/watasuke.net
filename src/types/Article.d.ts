@@ -11,7 +11,10 @@ export default interface Article {
   slug: string,
   title: string,
   body: string,
-  tags: string,
+  tags: {
+    slug: string,
+    name: string,
+  }[],
   thumbnail: string,
   published_at: string,
   updated_at: string,
