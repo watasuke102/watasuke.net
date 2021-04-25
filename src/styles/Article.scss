@@ -11,7 +11,6 @@
 
 $second-bg-color: #1f221f;
 
-
 .Article-container {
   display: flex;
 }
@@ -120,4 +119,17 @@ $button-size: 30px;
     background-color: #d1d8ce;
   }
   margin-bottom: 15px;
+}
+
+// コードの言語表示の見た目変更
+.toolbar {
+  opacity: 1 !important;
+  span {
+    font-size: 1.1em !important;
+    position: absolute !important;
+    top: -31.5px !important;
+    right: -3.2px !important;
+    border-radius: 5px 5px 0 0 !important;
+    box-shadow: none !important;
+  }
 }

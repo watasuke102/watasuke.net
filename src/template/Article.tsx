@@ -21,11 +21,15 @@ import '../styles/Article.scss';
 import Slug from 'remark-slug';
 import Toc from 'remark-toc';
 
+// コードのシンタックスハイライト
+import Prism from 'prismjs';
+
 interface Props {
   pageContext: Article
 }
 
 export default (prop: Props) => {
+  React.useEffect(() => { setTimeout(Prism.highlightAll, 0) });
   const data = prop.pageContext;
   // 見出し要素を見つけるための正規表現
   const heading_regexp = /^\#\#* (.*)/;
@@ -56,7 +60,6 @@ export default (prop: Props) => {
   const [tocOpening, SetTocOpening] = React.useState(true);
   // 目次を表示するかどうか (見出しが2つ以下なら表示しない)
   const is_show_toc = table_of_contents.props.children.length > 2;
-  console.log(data.thumbnail);
   const thumbnail = (data.thumbnail) ?
     <img src={data.thumbnail.replace('/uploads/', 'http://localhost:1337/uploads/')} alt='thumbnail' decoding="async" />
     : <StaticImage src='../assets/thumbnail.jpg' alt='thumbnail' />
