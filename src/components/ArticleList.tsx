@@ -42,7 +42,14 @@ export default function ArticleList(props: Props) {
     .forEach(article => {
       article_cards.push(
         <div className='ArticleList-card' onClick={() => navigate('/blog/article/' + article.slug)}>
-          <Thumbnail url={article.thumbnail} />
+          <div className='ArticleList-thumbnail'>
+            <Thumbnail url={article.thumbnail} />
+          </div>
+          <div className='ArticleList-date'>
+            <span>
+              {article.published_at.slice(0, 10)}
+            </span>
+          </div>
           <div className='ArticleList-text'>
             <h2>{article.title}</h2>
             <TagContainer tags={article.tags} />

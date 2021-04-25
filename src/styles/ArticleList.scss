@@ -12,16 +12,21 @@
   padding: 10px;
   background-color: #1f221f;
 }
+
+.ArticleList-thumbnail {
+  height: 150px;
+  img {
+    height: 150px;
+    width: 100%;
+    margin: auto;
+    object-fit: cover;
+  }
+}
+
 .ArticleList-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  img {
-    width: 100%;
-    height: 150px;
-    margin: auto;
-    object-fit: cover;
-  }
   h2 {
     font-size: 1.2em;
     height: 2.5em;
@@ -51,11 +56,20 @@
     background-color: #ffffff65;
     transition: background-color 0.4s;
   }
+  .ArticleList-text {
+    padding: 0 15px;
+  }
+  .ArticleList-date {
+    position: relative;
+    span {
+      position: absolute;
+      bottom: 0; right: 0;
+      padding: 2px;
+      background-color: #1f221fbb;
+    }
+  }
 }
 
-.ArticleList-text {
-  padding: 0 15px;
-}
 
 // ボタン
 .ArticleList-button_container {
