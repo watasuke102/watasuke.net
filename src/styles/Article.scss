@@ -24,6 +24,10 @@ $second-bg-color: #1f221f;
   margin-top: 10px;
   display: flex;
   justify-content: flex-end;
+}
+.Article-date_publish, .Article-date_update {
+  display: flex;
+  margin: 0 5px;
   span {
     margin-left: 10px;
     margin-right: 4px;
@@ -134,12 +138,15 @@ $button-size: 30px;
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 500px) {
   .Article-body {
     width: 110%;
     margin: auto;
+    img {
+      max-height: 200px;
+    }
   }
-  .Article-side {
+  .Article-side, .Article-date_publish {
     display: none;
   }
 }

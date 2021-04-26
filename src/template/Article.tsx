@@ -72,10 +72,14 @@ export default (prop: Props) => {
         <Thumbnail url={data.thumbnail} />
         {/* 公開日と更新日 */}
         <div className='Article-date'>
-          <span className='material-icons'>schedule</span>
-          <p>{data.published_at.slice(0, 10)}</p>
-          <span className='material-icons'>update</span>
-          <p>{data.updated_at.slice(0, 10)}</p>
+          <div className='Article-date_publish'>
+            <span className='material-icons'>schedule</span>
+            <p>{data.published_at.slice(0, 10)}</p>
+          </div>
+          <div className='Article-date_update'>
+            <span className='material-icons'>update</span>
+            <p>{data.updated_at.slice(0, 10)}</p>
+          </div>
         </div>
         {/* タグ */}
         <TagContainer tags={data.tags} />
