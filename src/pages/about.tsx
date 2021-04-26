@@ -1,5 +1,5 @@
 /*!
- * portfolio.tsx
+ * about.tsx
  *
  * CopyRight (c) 2021 Watasuke
  * Email  : <watasuke102@gmail.com>
@@ -11,7 +11,7 @@ import { Link } from 'gatsby';
 import Background from '../components/Background';
 import React from 'react';
 
-export default function Portfolio() {
+export default () => {
   return (
     <div>
       <Background />

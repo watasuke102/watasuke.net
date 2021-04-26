@@ -12,7 +12,7 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import '../styles/ProfileCard.scss'
 
-export default function ProfileCard() {
+export default () => {
   const profile_text = useStaticQuery(graphql`
     query {
       siteData(slug: {eq: "short-profile"}) {

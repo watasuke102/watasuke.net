@@ -1,5 +1,5 @@
 /*!
- * Top.tsx
+ * blog.tsx
  *
  * CopyRight (c) 2021 Watasuke
  * Email  : <watasuke102@gmail.com>
@@ -25,7 +25,7 @@ type Props = {
   }
 }
 
-export default function Blog({ data }: Props) {
+export default ({ data }: Props) => {
   return (
     <>
       <h1>記事一覧</h1>

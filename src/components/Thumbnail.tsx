@@ -12,7 +12,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 
 interface Props { url: string }
 
-export default function Thumbnail({ url }: Props) {
+export default ({ url }: Props) => {
   return (
     <div className='Thumbnail'>
       {(url) ?

@@ -10,7 +10,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 
-export default function Portfolio() {
+export default () => {
   return (
     <div>
       製作中<br />

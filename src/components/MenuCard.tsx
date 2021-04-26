@@ -17,7 +17,7 @@ interface Props {
   url: string
 }
 
-export default function MenuCard(props: Props) {
+export default (props: Props) => {
   return (
     <div className='MenuCard-container' onClick={() => navigate(props.url)}>
       <span className='material-icons'>{props.icon}</span>

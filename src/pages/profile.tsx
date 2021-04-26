@@ -1,5 +1,5 @@
 /*!
- * Profile.tsx
+ * profile.tsx
  *
  * CopyRight (c) 2021 Watasuke
  * Email  : <watasuke102@gmail.com>
@@ -15,7 +15,7 @@ import '../styles/main.scss';
 
 interface Props { data: { siteData: { body: string } } }
 
-export default function Profile({ data }: Props) {
+export default ({ data }: Props) => {
   return (
     <>
       <Background />

@@ -1,5 +1,5 @@
 /*!
- * Top.tsx
+ * index.tsx
  *
  * CopyRight (c) 2021 Watasuke
  * Email  : <watasuke102@gmail.com>
@@ -14,7 +14,7 @@ import Background from '../components/Background';
 import '../styles/main.scss';
 import '../styles/top.scss';
 
-export default function Top() {
+export default () => {
   return (
     <>
       <Background />
