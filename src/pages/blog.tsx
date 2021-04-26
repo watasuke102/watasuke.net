@@ -39,7 +39,7 @@ export default ({ data }: Props) => {
 
 export const query = graphql`
 query {
-  allArticles {
+  allArticles(sort: {fields: published_at, order: DESC}) {
     nodes {
       slug
       title

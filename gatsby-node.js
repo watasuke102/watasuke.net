@@ -87,7 +87,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // 投稿ページ
   const response = await graphql(`
     query {
-      allArticles {
+      allArticles(sort: {fields: published_at, order: DESC}) {
         nodes {
           slug
           title

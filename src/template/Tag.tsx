@@ -40,7 +40,10 @@ export default ({ pageContext, data }: Props) => {
 
 export const query = graphql`
 query($slug: String) {
-  allArticles(filter: {tags: {elemMatch: {slug: {eq: $slug}}}}) {
+  allArticles(
+    sort: {fields: published_at, order: DESC},
+    filter: {tags: {elemMatch: {slug: {eq: $slug}}}}
+  ) {
     nodes {
       slug
       title
