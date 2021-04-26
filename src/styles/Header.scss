@@ -1,0 +1,51 @@
+/*!
+ * Header.scss
+ *
+ * CopyRight (c) 2021 Watasuke
+ * Email  : <watasuke102@gmail.com>
+ * Twitter: @Watasuke102
+ * This software is released under the MIT SUSHI-WARE License.
+ */
+
+.Header-container {
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  align-items: center;
+  top: 0; left: 0;
+  height: 50px;
+  padding: 10px;
+  width: 100vw;
+  background-color: #00000099;
+
+  a {
+    color: #eee;
+  }
+  .Header-title {
+    font-size: 1.5em;
+    margin-left: 10px;
+    a {
+      text-decoration: none;
+    }
+  }
+  .Header-links {
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .Header-container {
+    display: block;
+    height: 80px;
+
+    .Header-links {
+      width: 100%;
+    }
+
+    .Header-title {
+      width: 100%;
+    }
+  }
+}

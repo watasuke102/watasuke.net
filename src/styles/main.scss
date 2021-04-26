@@ -17,6 +17,7 @@ html {
   background-color: #2f332f;
   color: #eee;
   margin: 25px 20px;
+  margin-top: 50px;
 
   a {
     color: #8888ff;
@@ -29,5 +30,11 @@ html {
 
   .material-icons {
     user-select: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  html {
+    margin-top: 80px;
   }
 }
