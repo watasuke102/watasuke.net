@@ -133,3 +133,13 @@ $button-size: 30px;
     box-shadow: none !important;
   }
 }
+
+@media screen and (max-width: 700px) {
+  .Article-body {
+    width: 110%;
+    margin: auto;
+  }
+  .Article-side {
+    display: none;
+  }
+}
