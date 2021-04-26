@@ -11,6 +11,7 @@ import React from 'react';
 import { Remark } from 'react-remark';
 import { CSSTransition } from 'react-transition-group';
 import Thumbnail from '../components/Thumbnail';
+import Layout from '../components/Layout';
 import ProfileCard from '../components/ProfileCard';
 import TagContainer from '../components/TagContainer';
 import Article from '../types/Article';
@@ -62,64 +63,66 @@ export default (prop: Props) => {
   const is_show_toc = table_of_contents.props.children.length > 2;
 
   return (
-    <div className='Article-container' >
-      {/* 記事メイン部分 */}
-      <div className='Article-body'>
-        <h1 className='Article-title'>
-          {data.title}
-        </h1>
-        {/* サムネ */}
-        <Thumbnail url={data.thumbnail} />
-        {/* 公開日と更新日 */}
-        <div className='Article-date'>
-          <div className='Article-date_publish'>
-            <span className='material-icons'>schedule</span>
-            <p>{data.published_at.slice(0, 10)}</p>
-          </div>
-          <div className='Article-date_update'>
-            <span className='material-icons'>update</span>
-            <p>{data.updated_at.slice(0, 10)}</p>
-          </div>
-        </div>
-        {/* タグ */}
-        <TagContainer tags={data.tags} />
-        {
-          is_show_toc &&
-          <>
-            <div className='Article-table_of_contents_container'>
-              <div className='Article-close_button' onClick={() => SetTocOpening(!tocOpening)}>
-                <span className='material-icons'>
-                  {tocOpening ? 'expand_less' : 'expand_more'}
-                </span>
-              </div>
-              <h2>目次</h2>
-              <CSSTransition in={tocOpening} timeout={1000} classNames='toc-animation'>
-                <ol className='toc-animation'>
-                  {table_of_contents}
-                </ol>
-              </CSSTransition>
+    <Layout>
+      <div className='Article-container' >
+        {/* 記事メイン部分 */}
+        <div className='Article-body'>
+          <h1 className='Article-title'>
+            {data.title}
+          </h1>
+          {/* サムネ */}
+          <Thumbnail url={data.thumbnail} />
+          {/* 公開日と更新日 */}
+          <div className='Article-date'>
+            <div className='Article-date_publish'>
+              <span className='material-icons'>schedule</span>
+              <p>{data.published_at.slice(0, 10)}</p>
             </div>
-            <hr />
-          </>
-        }
-
-
-        {/* 画像のURLを置き換える */}
-        <Remark remarkPlugins={[Toc, Slug]}>
-          {data.body.replace('/uploads/', 'http://localhost:1337/uploads/')}
-        </Remark>
-      </div>
-
-      {/* サイドバー */}
-      <div className='Article-side'>
-        <ProfileCard />
-        {
-          is_show_toc &&
-          <div className='Article-side_toc'>
-            {table_of_contents}
+            <div className='Article-date_update'>
+              <span className='material-icons'>update</span>
+              <p>{data.updated_at.slice(0, 10)}</p>
+            </div>
           </div>
-        }
+          {/* タグ */}
+          <TagContainer tags={data.tags} />
+          {
+            is_show_toc &&
+            <>
+              <div className='Article-table_of_contents_container'>
+                <div className='Article-close_button' onClick={() => SetTocOpening(!tocOpening)}>
+                  <span className='material-icons'>
+                    {tocOpening ? 'expand_less' : 'expand_more'}
+                  </span>
+                </div>
+                <h2>目次</h2>
+                <CSSTransition in={tocOpening} timeout={1000} classNames='toc-animation'>
+                  <ol className='toc-animation'>
+                    {table_of_contents}
+                  </ol>
+                </CSSTransition>
+              </div>
+              <hr />
+            </>
+          }
+
+
+          {/* 画像のURLを置き換える */}
+          <Remark remarkPlugins={[Toc, Slug]}>
+            {data.body.replace('/uploads/', 'http://localhost:1337/uploads/')}
+          </Remark>
+        </div>
+
+        {/* サイドバー */}
+        <div className='Article-side'>
+          <ProfileCard />
+          {
+            is_show_toc &&
+            <div className='Article-side_toc'>
+              {table_of_contents}
+            </div>
+          }
+        </div>
       </div>
-    </div>
+    </Layout>
   )
 }

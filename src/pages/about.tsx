@@ -8,12 +8,13 @@
  */
 
 import { Link } from 'gatsby';
+import Layout from '../components/Layout';
 import Background from '../components/Background';
 import React from 'react';
 
 export default () => {
   return (
-    <div>
+    <Layout>
       <Background />
       <h1>このサイトについて</h1>
       <p>わたすけのへやです</p>
@@ -22,6 +23,6 @@ export default () => {
         <Link to='/profile'>プロフィール</Link>
         が置いてあります
       </p>
-    </div>
+    </Layout>
   )
 }

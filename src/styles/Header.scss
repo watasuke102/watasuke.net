@@ -8,6 +8,7 @@
  */
 
 .Header-container {
+  z-index: 1;
   display: flex;
   justify-content: space-around;
   position: fixed;
@@ -16,13 +17,14 @@
   height: 50px;
   padding: 10px;
   width: 100vw;
-  background-color: #00000099;
+  font-size: 1.1em;
+  background-color: #000000bb;
 
   a {
     color: #eee;
   }
   .Header-title {
-    font-size: 1.5em;
+    font-size: 1.4em;
     margin-left: 10px;
     a {
       text-decoration: none;

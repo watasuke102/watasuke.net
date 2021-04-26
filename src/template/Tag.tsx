@@ -9,6 +9,7 @@
 
 import React from 'react';
 import { graphql } from 'gatsby';
+import Layout from '../components/Layout';
 import ArticleList from '../components/ArticleList';
 import Article from '../types/Article';
 import '../styles/main.scss';
@@ -28,12 +29,12 @@ interface Props {
 
 export default ({ pageContext, data }: Props) => {
   return (
-    <>
+    <Layout>
       <h1>{pageContext.name}</h1>
       <div className='blog-container'>
         <ArticleList list={data.allArticles.nodes} />
       </div>
-    </>
+    </Layout>
   );
 }
 

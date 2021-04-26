@@ -15,6 +15,8 @@ export default () => {
     <div>
       製作中<br />
       <Link to='/blog'>ブログ</Link>などはどうでしょうか
+      <br /><br />
+      <Link to='/'>トップにもどる</Link>
     </div>
   )
 }
