@@ -1,0 +1,32 @@
+/*!
+ * portfolio.scss
+ *
+ * CopyRight (c) 2021 Watasuke
+ * Email  : <watasuke102@gmail.com>
+ * Twitter: @Watasuke102
+ * This software is released under the MIT SUSHI-WARE License.
+ */
+
+#portfolio-container {
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  width: 100vw;
+  padding: 15px;
+  li {
+    height: 200px;
+  }
+  // スクロールバー関連
+  overflow-y: scroll;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.portfolio-scroll {
+  position: fixed;
+  top: 0; right: 0;
+  width: 5px;
+  background-color: #eee;
+}
