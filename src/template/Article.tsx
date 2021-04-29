@@ -74,13 +74,15 @@ export default (prop: Props) => {
           <Thumbnail url={data.thumbnail} />
           {/* 公開日と更新日 */}
           <div className='Article-date'>
-            <div className='Article-date_publish'>
-              <i className="fas fa-upload"></i>
-              <p>{data.published_at.slice(0, 10)}</p>
-            </div>
             <div className='Article-date_update'>
+              <p className='desc'>記事の更新日</p>
               <i className="fas fa-history"></i>
               <p>{data.updated_at.slice(0, 10)}</p>
+            </div>
+            <div className='Article-date_publish'>
+              <p className='desc'>記事の投稿日</p>
+              <i className="fas fa-upload"></i>
+              <p>{data.published_at.slice(0, 10)}</p>
             </div>
           </div>
           {/* タグ */}

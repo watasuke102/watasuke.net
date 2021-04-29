@@ -26,6 +26,7 @@ $second-bg-color: #1f221f;
   justify-content: flex-end;
 }
 .Article-date_publish, .Article-date_update {
+  position: relative;
   display: flex;
   margin: 0 5px;
   align-items: center;
@@ -36,6 +37,20 @@ $second-bg-color: #1f221f;
   i {
     margin-left: 10px;
     margin-right: 4px;
+  }
+
+  // マウスホバー時に説明を表示
+  .desc {
+    position: absolute;
+    top: -2em;
+    width: 100%;
+    text-align: center;
+    background-color: #151615;
+    opacity: 0;
+  }
+  &:hover{
+    cursor: pointer;
+   .desc { opacity: 1; }
   }
 }
 
