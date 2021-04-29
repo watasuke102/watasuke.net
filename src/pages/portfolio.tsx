@@ -8,9 +8,8 @@
  */
 
 import React from 'react';
-import { gsap } from 'gsap';
-import '../styles/portfolio.scss'
-import { isPostfixUnaryExpression } from 'typescript';
+import { gsap, Power4 } from 'gsap';
+import '../styles/portfolio.scss';
 
 enum Position {
   reached_top = -1,
@@ -26,6 +25,26 @@ interface States {
 
 export default class Portfolio extends React.Component<any, States> {
   private container: HTMLElement | null;
+
+  private pages: object[] = [
+    (<>
+      <li>0</li><li>1</li><li>2</li>
+      <li>3</li><li>4</li><li>5</li>
+    </>),
+    (<>
+      <li>A</li><li>B</li><li>C</li>
+      <li>D</li><li>E</li><li>F</li>
+    </>),
+    (<>
+      <li>3</li><li>4</li><li>5</li>
+      <li>0</li><li>1</li><li>2</li>
+    </>),
+    (<>
+      <li>D</li><li>E</li><li>F</li>
+      <li>A</li><li>B</li><li>C</li>
+    </>),
+  ]
+
   constructor(props: any) {
     super(props);
     this.state = { current_page: 0, scroll_height: 0, place: Position.none };
@@ -48,74 +67,105 @@ export default class Portfolio extends React.Component<any, States> {
       scroll_height: this.container.clientHeight * percent
     });
   }
-  UpdatePage() {
+
+  // ページ切り替えアニメーションの開始
+  // 実際にstate.current_pageを切り替えるのはアニメーション内
+  UpdatePage(e: WheelEvent) {
+    console.log(e.deltaY);
     if (this.state.place == Position.none) return;
-    if (this.state.place == Position.reached_bottom) {
+    // 次のページに移動させる
+    if (
+      this.state.place == Position.reached_bottom &&
+      this.state.current_page != (this.pages.length - 1) &&
+      e.deltaY > 0 // 下にスクロールしていた場合
+    ) {
       this.CreateTransition(Position.reached_bottom);
-      this.setState((state) => {
-        return {
-          current_page: state.current_page + 1,
-          place: Position.none
-        };
-      });
-    } else if (this.state.place == Position.reached_top && this.state.current_page != 0) {
+      this.setState({ place: Position.none });
+      // 前のページに移動させる
+    } else if (
+      this.state.place == Position.reached_top &&
+      this.state.current_page != 0 &&
+      e.deltaY < 0 // 下にスクロールしていた場合
+    ) {
       this.CreateTransition(Position.reached_top);
-      this.setState((state) => {
-        return {
-          current_page: state.current_page - 1,
-          place: Position.none
-        };
-      });
+      this.setState({ place: Position.none });
     }
   }
   componentDidMount() {
     this.container = document.getElementById('portfolio-container');
     window.addEventListener('scroll', () => this.UpdateScrollBar(), true);
-    window.addEventListener('wheel', () => this.UpdatePage(), true);
+    window.addEventListener('wheel', (e) => this.UpdatePage(e), true);
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', () => this.UpdateScrollBar(), true);
-    window.addEventListener('wheel', () => this.UpdatePage(), true);
+    window.addEventListener('wheel', (e) => this.UpdatePage(e), true);
   }
 
+  // ページ移動アニメーションの実行
   CreateTransition(pos: Position) {
-    if (!this.container) return;
+    if (!this.container)
+      return;
+    // Elements
     const scroll_bar = document.getElementById('portfolio-scroll');
-    const direction = (pos === Position.reached_bottom) ? -1 : 1;
+    const container_2nd = document.getElementById(
+      (pos === Position.reached_top) ?
+        'portfolio-container_previous' : 'portfolio-container_after'
+    );
+    // ページを戻る際は予め下までスクロールしておく
+    if (pos === Position.reached_top)
+      container_2nd?.scrollTo(0, container_2nd.scrollHeight);
+    // アニメーション関連
+    const duration = 1; // アニメーションにかかる時間
+    const direction = (pos === Position.reached_top) ? 1 : -1;
     const timeline = gsap.timeline();
     timeline
-      .to(this.container, {
-        y: this.container.clientHeight * direction,
-        duration: 0.5
-      })
       .to(scroll_bar, {
         opacity: 0,
-        duration: 0.5
+        duration: duration
+      })
+      .to(this.container, {
+        ease: Power4.easeOut,
+        translateY: direction + '00%',
+        duration: duration
       }, '<')
+      .to(container_2nd, {
+        ease: Power4.easeOut,
+        translateY: '0%',
+        duration: duration
+      }, '<') // ページ移動前になにもないページで待機させたければ'<'を削除する
+      // もとに戻す
       .to(this.container, {
         y: 0,
-        duration: 0.5
-      }, "+=1")
+        duration: 0
+      })
+      .to(container_2nd, {
+        translateY: (-direction) + '00%',
+        duration: 0
+      }, '<')
       .to(scroll_bar, {
         opacity: 1,
         duration: 0
-      });
-    // (0, 0)までスクロールするとplaceがreached_topになるので
-    timeline.call(() => this.container?.scrollTo(0, 1), undefined, 0.5);
+      }, '<');
+    // 内容を入れ替え
+    timeline.call(() => this.setState((state) => {
+      return { current_page: state.current_page - direction }
+    }), undefined, duration);
+    // 一番端までスクロールするとplaceがreachedになるので
+    const scroll_to = (pos === Position.reached_top) ? this.container.scrollHeight - 1 : 1;
+    timeline.call(() => this.container?.scrollTo(0, scroll_to), undefined, 0.5);
   }
 
   render() {
     return (
       <>
+        <div id='portfolio-container_previous'>
+          {this.pages[this.state.current_page - 1]}
+        </div>
         <div id='portfolio-container'>
-          <li>0</li>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-          <li>6</li>
-
+          {this.pages[this.state.current_page]}
+        </div>
+        <div id='portfolio-container_after'>
+          {this.pages[this.state.current_page + 1]}
         </div>
         <h1>page: {this.state.current_page}</h1>
         <div style={{ height: this.state.scroll_height }} id='portfolio-scroll' />
