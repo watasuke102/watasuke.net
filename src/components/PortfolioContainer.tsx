@@ -128,6 +128,7 @@ export default class PortfolioContainer extends React.Component<Props, States> {
       .to(container_2nd, {
         duration: 0,
         translateY: (-direction) + '00%',
+        onComplete: this.UpdateScrollBar
       }, '<')
       .to(scroll_bar, { opacity: 1, duration: 0 }, '<');
     // 内容を入れ替え

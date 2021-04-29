@@ -1,0 +1,46 @@
+/*!
+ * portfolio.scss
+ *
+ * CopyRight (c) 2021 Watasuke
+ * Email  : <watasuke102@gmail.com>
+ * Twitter: @Watasuke102
+ * This software is released under the MIT SUSHI-WARE License.
+ */
+
+// 全ページ共通
+#portfolio-container {
+  div[id^="portfolio"] {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100vw; min-height: 100vh;
+  }
+}
+
+.icon-and-text {
+  display: flex;
+  span {
+    margin-right: 5px;
+  }
+}
+
+#portfolio-1 {
+  background-color: #4b4692;
+  h2 {
+    font-size: 4em;
+    text-align: center;
+  }
+
+  .avatar-and-name {
+    display: flex;
+    justify-content: center;
+    .separator { width: 20px; }
+    .name-main {
+      font-weight: bold;
+      font-size: 2.5em;
+      margin-bottom: 2px;
+    }
+    .name-sub {
+      color: #ccc;
+    }
+  }
+}
