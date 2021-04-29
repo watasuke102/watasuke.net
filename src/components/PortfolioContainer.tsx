@@ -34,7 +34,7 @@ export default class PortfolioContainer extends React.Component<Props, States> {
     super(props);
     this.state = { current_page: 0, scroll_height: 0, place: Position.none };
     this.container = null;
-    document.getElementById('portfolio-container');
+    document.getElementById('PortfolioContainer-container');
   }
 
   UpdateScrollBar() {
@@ -82,7 +82,7 @@ export default class PortfolioContainer extends React.Component<Props, States> {
     }
   }
   componentDidMount() {
-    this.container = document.getElementById('portfolio-container');
+    this.container = document.getElementById('PortfolioContainer-container');
     window.addEventListener('scroll', () => this.UpdateScrollBar(), true);
     window.addEventListener('wheel', (e) => this.UpdatePage(e), true);
   }
@@ -96,10 +96,10 @@ export default class PortfolioContainer extends React.Component<Props, States> {
     if (!this.container)
       return;
     // Elements
-    const scroll_bar = document.getElementById('portfolio-scroll');
+    const scroll_bar = document.getElementById('PortfolioContainer-scroll');
     const container_2nd = document.getElementById(
       (pos === Position.reached_top) ?
-        'portfolio-container_previous' : 'portfolio-container_after'
+        'PortfolioContainer-container_previous' : 'PortfolioContainer-container_after'
     );
     // ページを戻る際は予め下までスクロールしておく
     if (pos === Position.reached_top)
@@ -142,16 +142,16 @@ export default class PortfolioContainer extends React.Component<Props, States> {
   render() {
     return (
       <>
-        <div id='portfolio-container_previous'>
+        <div id='PortfolioContainer-container_previous'>
           {this.props.children[this.state.current_page - 1]}
         </div>
-        <div id='portfolio-container'>
+        <div id='PortfolioContainer-container'>
           {this.props.children[this.state.current_page]}
         </div>
-        <div id='portfolio-container_after'>
+        <div id='PortfolioContainer-container_after'>
           {this.props.children[this.state.current_page + 1]}
         </div>
-        <div style={{ height: this.state.scroll_height }} id='portfolio-scroll' />
+        <div style={{ height: this.state.scroll_height }} id='PortfolioContainer-scroll' />
       </>
     );
   }

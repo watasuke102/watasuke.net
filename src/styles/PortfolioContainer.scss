@@ -1,5 +1,5 @@
 /*!
- * portfolio.scss
+ * PortfolioContainer.scss
  *
  * CopyRight (c) 2021 Watasuke
  * Email  : <watasuke102@gmail.com>
@@ -7,9 +7,9 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 
-#portfolio-container, 
-#portfolio-container_previous,
-#portfolio-container_after {
+#PortfolioContainer-container, 
+#PortfolioContainer-container_previous,
+#PortfolioContainer-container_after {
   background-color: #249b2ea0;
   position: fixed;
   top: 0; left: 0;
@@ -34,16 +34,16 @@
     display: none;
   }
 }
-#portfolio-container_previous {
+#PortfolioContainer-container_previous {
   background-color: #910121a0;
   transform: translateY(-100%);
 }
-#portfolio-container_after {
+#PortfolioContainer-container_after {
   background-color: #4301e9a0;
   transform: translateY(100%);
 }
 
-#portfolio-scroll {
+#PortfolioContainer-scroll {
   position: fixed;
   top: 0; right: 0;
   width: 5px;
