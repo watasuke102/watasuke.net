@@ -18,7 +18,7 @@ enum Position {
 }
 
 interface Props {
-  children: React.ReactNode[]
+  children: React.ReactNode[],
 }
 
 interface States {
