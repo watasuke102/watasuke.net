@@ -25,9 +25,19 @@ export default () => {
             <div>
               <p className='name-main'>わたすけ</p>
               <p className='name-sub'>Watasuke</p>
-              <div className='icon-and-text'>
-                <span className='material-icons'>email</span>
-                <p>watasuke102@gmail.com</p>
+              <div>
+                <div className='icon-and-text'>
+                  <i className="fab fa-twitter"></i>
+                  <p>@Watasuke102</p>
+                </div>
+                <div className='icon-and-text'>
+                  <i className="fab fa-github"></i>
+                  <p>watasuke102</p>
+                </div>
+                <div className='icon-and-text'>
+                  <i className="fas fa-envelope"></i>
+                  <p>watasuke102@gmail.com</p>
+                </div>
               </div>
             </div>
           </div>

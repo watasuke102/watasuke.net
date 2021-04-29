@@ -18,9 +18,10 @@
 
 .icon-and-text {
   display: flex;
-  span {
-    margin-right: 5px;
-  }
+  align-items: center;
+  margin: 5px 0;
+  p { margin: 0; }
+  i { margin-right: 10px; }
 }
 
 #portfolio-1 {
