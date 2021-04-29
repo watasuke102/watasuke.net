@@ -24,7 +24,8 @@ interface Props {
 interface States {
   current_page: number,
   scroll_height: number,
-  place: Position
+  is_moving_page: boolean
+  place: Position,
 }
 
 export default class PortfolioContainer extends React.Component<Props, States> {
@@ -32,13 +33,25 @@ export default class PortfolioContainer extends React.Component<Props, States> {
 
   constructor(props: Props) {
     super(props);
-    this.state = { current_page: 0, scroll_height: 0, place: Position.none };
+    this.state = {
+      current_page: 0,
+      scroll_height: 0,
+      is_moving_page: false,
+      place: Position.none,
+    };
     this.container = null;
     document.getElementById('PortfolioContainer-container');
   }
 
   UpdateScrollBar() {
     if (!this.container) return;
+    console.log('scroll listener');
+
+    // 要素がスクロール不可能だった場合は非表示
+    if (this.container && this.container.clientHeight >= this.container.scrollHeight) {
+      this.setState({ scroll_height: 0 });
+      return;
+    }
     // 画面全体に対するスクロール量の割合
     const percent = this.container.scrollTop / (this.container.scrollHeight - this.container.clientHeight);
     // 画面一番下に到達してしばらくしてから移動できるようにする
@@ -56,6 +69,11 @@ export default class PortfolioContainer extends React.Component<Props, States> {
   // ページ切り替えアニメーションの開始
   // 実際にstate.current_pageを切り替えるのはアニメーション内
   UpdatePage(e: WheelEvent) {
+    if (this.state.is_moving_page) {
+      e.preventDefault();
+      return;
+    }
+    console.log('WHEEl');
     let changeable: boolean = false;
     // 要素がスクロール不可能だった場合は常にページ移動可能に
     if (this.container && this.container.clientHeight >= this.container.scrollHeight)
@@ -81,20 +99,23 @@ export default class PortfolioContainer extends React.Component<Props, States> {
       this.setState({ place: Position.none });
     }
   }
+  ScrollListener = () => this.UpdateScrollBar();
+  WheelListener = (e: WheelEvent) => this.UpdatePage(e);
   componentDidMount() {
     this.container = document.getElementById('PortfolioContainer-container');
-    window.addEventListener('scroll', () => this.UpdateScrollBar(), true);
-    window.addEventListener('wheel', (e) => this.UpdatePage(e), true);
+    window.addEventListener('scroll', this.ScrollListener, true);
+    window.addEventListener('wheel', this.WheelListener, { passive: false });
   }
   componentWillUnmount() {
-    window.removeEventListener('scroll', () => this.UpdateScrollBar(), true);
-    window.addEventListener('wheel', (e) => this.UpdatePage(e), true);
+    window.removeEventListener('scroll', this.ScrollListener, true);
+    window.removeEventListener('wheel', this.WheelListener);
   }
 
   // ページ移動アニメーションの実行
   CreateTransition(pos: Position) {
     if (!this.container)
       return;
+    this.setState({ is_moving_page: true });
     // Elements
     const scroll_bar = document.getElementById('PortfolioContainer-scroll');
     const container_2nd = document.getElementById(
@@ -119,6 +140,10 @@ export default class PortfolioContainer extends React.Component<Props, States> {
         duration: duration,
         ease: Power4.easeOut,
         translateY: '0%',
+        onComplete: () => {
+          this.UpdateScrollBar();
+          this.setState({ is_moving_page: false });
+        },
       }, '<') // ページ移動前になにもないページで待機させたければ'<'を削除する
       // もとに戻す
       .to(this.container, {
@@ -128,7 +153,6 @@ export default class PortfolioContainer extends React.Component<Props, States> {
       .to(container_2nd, {
         duration: 0,
         translateY: (-direction) + '00%',
-        onComplete: this.UpdateScrollBar
       }, '<')
       .to(scroll_bar, { opacity: 1, duration: 0 }, '<');
     // 内容を入れ替え
@@ -136,7 +160,7 @@ export default class PortfolioContainer extends React.Component<Props, States> {
       return { current_page: state.current_page - direction }
     }), undefined, duration);
     // 一番端までスクロールするとplaceがreachedになるので
-    const scroll_to = (pos === Position.reached_top) ? this.container.scrollHeight - 1 : 1;
+    const scroll_to = (pos === Position.reached_top) ? this.container.scrollHeight : 0;
     timeline.call(() => this.container?.scrollTo(0, scroll_to), undefined, 0.5);
   }
 
