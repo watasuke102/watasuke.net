@@ -10,7 +10,7 @@
 import React from 'react';
 import Header from '../components/Header';
 
-interface Props { children: object }
+interface Props { children: React.ReactNode[] }
 
 export default ({ children }: Props) => {
   return (
