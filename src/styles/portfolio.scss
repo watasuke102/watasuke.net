@@ -8,6 +8,7 @@
  */
 
 #portfolio-container {
+  background-color: #249b2ed0;
   position: fixed;
   top: 0; left: 0;
   height: 100vh;
@@ -15,6 +16,9 @@
   padding: 15px;
   li {
     height: 200px;
+  }
+  h1 {
+    position: fixed;
   }
   // スクロールバー関連
   overflow-y: scroll;
@@ -24,7 +28,7 @@
   }
 }
 
-.portfolio-scroll {
+#portfolio-scroll {
   position: fixed;
   top: 0; right: 0;
   width: 5px;
