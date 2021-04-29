@@ -28,18 +28,27 @@ export default class Portfolio extends React.Component<any, States> {
 
   private pages: object[] = [
     (<>
+      <h2>Page 0</h2>
       <li>0</li><li>1</li><li>2</li>
       <li>3</li><li>4</li><li>5</li>
     </>),
     (<>
+      <h2>Page 1</h2>
       <li>A</li><li>B</li><li>C</li>
       <li>D</li><li>E</li><li>F</li>
     </>),
     (<>
+      <h2>Page 2</h2>
       <li>3</li><li>4</li><li>5</li>
       <li>0</li><li>1</li><li>2</li>
     </>),
+    (
+      <div>
+        <p>text</p>
+      </div>
+    ),
     (<>
+      <h2>Page 3</h2>
       <li>D</li><li>E</li><li>F</li>
       <li>A</li><li>B</li><li>C</li>
     </>),
@@ -71,11 +80,16 @@ export default class Portfolio extends React.Component<any, States> {
   // ページ切り替えアニメーションの開始
   // 実際にstate.current_pageを切り替えるのはアニメーション内
   UpdatePage(e: WheelEvent) {
-    console.log(e.deltaY);
-    if (this.state.place == Position.none) return;
+    let changeable: boolean = false;
+    // 要素がスクロール不可能だった場合は常にページ移動可能に
+    if (this.container && this.container.clientHeight >= this.container.scrollHeight)
+      changeable = true;
+    // 要素がスクロール可能かつ画面端までスクロールしてなければページ移動しない
+    if (!changeable && this.state.place == Position.none) return;
+
     // 次のページに移動させる
     if (
-      this.state.place == Position.reached_bottom &&
+      (this.state.place == Position.reached_bottom || changeable) &&
       this.state.current_page != (this.pages.length - 1) &&
       e.deltaY > 0 // 下にスクロールしていた場合
     ) {
@@ -83,9 +97,9 @@ export default class Portfolio extends React.Component<any, States> {
       this.setState({ place: Position.none });
       // 前のページに移動させる
     } else if (
-      this.state.place == Position.reached_top &&
+      (this.state.place == Position.reached_top || changeable) &&
       this.state.current_page != 0 &&
-      e.deltaY < 0 // 下にスクロールしていた場合
+      e.deltaY < 0 // 上にスクロールしていた場合
     ) {
       this.CreateTransition(Position.reached_top);
       this.setState({ place: Position.none });
@@ -116,36 +130,30 @@ export default class Portfolio extends React.Component<any, States> {
       container_2nd?.scrollTo(0, container_2nd.scrollHeight);
     // アニメーション関連
     const duration = 1; // アニメーションにかかる時間
-    const direction = (pos === Position.reached_top) ? 1 : -1;
+    const direction = -pos;
     const timeline = gsap.timeline();
     timeline
-      .to(scroll_bar, {
-        opacity: 0,
-        duration: duration
-      })
+      .to(scroll_bar, { opacity: 0, duration: duration })
       .to(this.container, {
+        duration: duration,
         ease: Power4.easeOut,
         translateY: direction + '00%',
-        duration: duration
       }, '<')
       .to(container_2nd, {
+        duration: duration,
         ease: Power4.easeOut,
         translateY: '0%',
-        duration: duration
       }, '<') // ページ移動前になにもないページで待機させたければ'<'を削除する
       // もとに戻す
       .to(this.container, {
+        duration: 0,
         y: 0,
-        duration: 0
       })
       .to(container_2nd, {
+        duration: 0,
         translateY: (-direction) + '00%',
-        duration: 0
       }, '<')
-      .to(scroll_bar, {
-        opacity: 1,
-        duration: 0
-      }, '<');
+      .to(scroll_bar, { opacity: 1, duration: 0 }, '<');
     // 内容を入れ替え
     timeline.call(() => this.setState((state) => {
       return { current_page: state.current_page - direction }
