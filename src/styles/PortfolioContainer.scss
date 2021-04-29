@@ -16,14 +16,6 @@
   height: 100vh;
   width: 100vw;
   padding: 15px;
-  li {
-    height: 250px;
-    border: 2px solid;
-    margin: 20px;
-  }
-  h1 {
-    position: fixed;
-  }
   // スクロールバー関連
   overflow-y: scroll;
   scrollbar-width: none;
@@ -32,11 +24,9 @@
   }
 }
 #PortfolioContainer-container_previous {
-  background-color: #910121a0;
   transform: translateY(-100%);
 }
 #PortfolioContainer-container_after {
-  background-color: #4301e9a0;
   transform: translateY(100%);
 }
 
