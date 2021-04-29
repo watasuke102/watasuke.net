@@ -75,11 +75,11 @@ export default (prop: Props) => {
           {/* 公開日と更新日 */}
           <div className='Article-date'>
             <div className='Article-date_publish'>
-              <span className='material-icons'>schedule</span>
+              <i className="fas fa-upload"></i>
               <p>{data.published_at.slice(0, 10)}</p>
             </div>
             <div className='Article-date_update'>
-              <span className='material-icons'>update</span>
+              <i className="fas fa-history"></i>
               <p>{data.updated_at.slice(0, 10)}</p>
             </div>
           </div>
@@ -90,9 +90,11 @@ export default (prop: Props) => {
             <>
               <div className='Article-table_of_contents_container'>
                 <div className='Article-close_button' onClick={() => SetTocOpening(!tocOpening)}>
-                  <span className='material-icons'>
-                    {tocOpening ? 'expand_less' : 'expand_more'}
-                  </span>
+                  {tocOpening ?
+                    <i className="fas fa-angle-up"></i>
+                    :
+                    <i className="fas fa-angle-down"></i>
+                  }
                 </div>
                 <h2>目次</h2>
                 <CSSTransition in={tocOpening} timeout={1000} classNames='toc-animation'>
