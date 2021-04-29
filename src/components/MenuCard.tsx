@@ -20,7 +20,7 @@ interface Props {
 export default (props: Props) => {
   return (
     <div className='MenuCard-container' onClick={() => navigate(props.url)}>
-      <span className='material-icons'>{props.icon}</span>
+      <i className={props.icon}></i>
       <p>{props.text}</p>
     </div>
   );

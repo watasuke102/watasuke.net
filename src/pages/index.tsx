@@ -24,10 +24,10 @@ export default () => {
           <h2>Welcome</h2>
         </div>
         <div className='top-menu'>
-          <MenuCard text="What's this" url='/about' icon='info' />
-          <MenuCard text='Blog' url='/blog' icon='edit' />
-          <MenuCard text='Profile' url='/profile' icon='format_list_bulleted' />
-          <MenuCard text='Portfolio' url='/portfolio' icon='flight_takeoff' />
+          <MenuCard text="What's this" url='/about' icon='fas fa-info-circle' />
+          <MenuCard text='Blog' url='/blog' icon='fas fa-pen' />
+          <MenuCard text='Profile' url='/profile' icon='fas fa-user' />
+          <MenuCard text='Portfolio' url='/portfolio' icon='fas fa-rocket' />
         </div>
       </div>
     </>
