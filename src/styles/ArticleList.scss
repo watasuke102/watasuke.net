@@ -83,8 +83,9 @@
   border: solid 3px #bbb;
   background-color: none;
   transition: background-color 0.5s;
-  span {
-    font-size: 50px;
+  i {
+    font-size: 30px;
+    padding: 10px;
     color: inherit;
     transition: color 0.5s;
   }
@@ -92,7 +93,7 @@
     background-color: #bbb;
     transition: background-color 0.5s;
     cursor: pointer;
-    span {
+    i {
       color: #222;
       transition: color 0.5s;
     }
