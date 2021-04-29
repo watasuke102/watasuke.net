@@ -13,6 +13,7 @@ $second-bg-color: #1f221f;
 
 .Article-container {
   display: flex;
+  margin-top: 20px;
 }
 
 .Article-title {
@@ -124,7 +125,7 @@ $button-size: 40px;
 }
 .Article-side_toc {
   position: sticky;
-  top: 20px;
+  top: 60px;
   padding: 10px;
   max-height: 80vh;
   overflow-y: scroll;
