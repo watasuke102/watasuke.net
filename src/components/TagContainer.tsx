@@ -21,7 +21,7 @@ interface Props {
 export default ({ tags }: Props) => {
   return (
     <div className='TagContainer-container'>
-      <span className='material-icons'>local_offer</span>
+      <i className="fas fa-tag"></i>
 
       {tags.map(tag => {
         return (
