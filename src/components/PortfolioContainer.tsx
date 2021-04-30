@@ -78,7 +78,6 @@ export default class PortfolioContainer extends React.Component<Props, States> {
       changeable = true;
     // 要素がスクロール可能かつ画面端までスクロールしてなければページ移動しない
     if (!changeable && this.state.place == Position.none) return;
-
     // 次のページに移動させる
     if (
       (this.state.place == Position.reached_bottom || changeable) &&
@@ -125,8 +124,15 @@ export default class PortfolioContainer extends React.Component<Props, States> {
         ease: Power4.easeOut,
         translateY: '0%',
         onComplete: () => {
-          this.UpdateScrollBar();
-          this.setState({ is_moving_page: false });
+          this.setState((state) => {
+            return {
+              current_page: state.current_page - direction,
+              is_moving_page: false,
+              // スクロール位置は一番上のはず
+              place: Position.reached_top,
+              scroll_height: 0,
+            }
+          });
         },
       }, '<') // ページ移動前になにもないページで待機させたければ'<'を削除する
       // もとに戻す
@@ -139,10 +145,6 @@ export default class PortfolioContainer extends React.Component<Props, States> {
         translateY: (-direction) + '00%',
       }, '<')
       .to(scroll_bar, { opacity: 1, duration: 0 }, '<');
-    // 内容を入れ替え
-    timeline.call(() => this.setState((state) => {
-      return { current_page: state.current_page - direction }
-    }), undefined, duration);
   }
 
   ScrollListener = () => this.UpdateScrollBar();
