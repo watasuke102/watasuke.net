@@ -1,0 +1,22 @@
+/*!
+ * SkillCard.scss
+ *
+ * CopyRight (c) 2021 Watasuke
+ * Email  : <watasuke102@gmail.com>
+ * Twitter: @Watasuke102
+ * This software is released under the MIT SUSHI-WARE License.
+ */
+ 
+.SkillCard-container {
+  margin: 20px 15px;
+  padding: 6px 10px;
+  background-color: #2b2b2b99;
+  .name {
+    font-size: 1.5em;
+    font-weight: bold;
+    //border-bottom: 1px solid #eee;
+  }
+  .body {
+    margin-bottom: 5px;
+  }
+}

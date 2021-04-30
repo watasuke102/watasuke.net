@@ -71,5 +71,28 @@
 }
 
 #portfolio-1 {
+  background-color: #92466c;
   text-align: center;
+}
+
+#portfolio-2 {
+  background-color: #926846;
+  #skill-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 120px;
+
+    .categoly {
+      .heading {
+        font-size: 2em;
+        margin-left: 15px;
+      }
+    }
+    @media screen and (max-width: 920px) {
+      flex-direction: column;
+      margin: 0 60px;
+      margin-bottom: 50px;
+    }
+  }
 }
