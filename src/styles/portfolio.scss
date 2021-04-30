@@ -13,6 +13,13 @@
     position: absolute;
     left: 0; top: 0;
     width: 100vw; min-height: 100vh;
+    h2 {
+      font-size: 4em;
+      text-align: center;
+    }
+  }
+  li {
+    height: 200px;
   }
 }
 
@@ -41,12 +48,8 @@
   }
 }
 
-#portfolio-1 {
+#portfolio-0 {
   background-color: #4b4692;
-  h2 {
-    font-size: 4em;
-    text-align: center;
-  }
 
   .avatar-and-name {
     position: absolute;
@@ -65,4 +68,8 @@
       color: #ccc;
     }
   }
+}
+
+#portfolio-1 {
+  text-align: center;
 }

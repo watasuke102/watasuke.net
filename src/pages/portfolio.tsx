@@ -17,7 +17,7 @@ export default () => {
     <div id='portfolio-container'>
       <Container>
 
-        <div id='portfolio-1'>
+        <div id='portfolio-0'>
           <h2>Hi there👋</h2>
           <div className='avatar-and-name'>
             <StaticImage width={250} src='../assets/icon.jpg' alt='icon' />
@@ -44,17 +44,18 @@ export default () => {
           <div className='next-page' />
         </div>
 
-        <>
-          <h2>Page 1</h2>
-          <li>A</li><li>B</li><li>C</li>
-          <li>D</li><li>E</li><li>F</li>
-        </>
+        <div id='portfolio-1'>
+          <h2>About me</h2>
+          <p>2004年生まれの高専生です</p>
+          <p>プログラミングでツールを作ったり、フロントエンド開発したりしています</p>
+          <p>AR/MRを始めとするxRに興味があります</p>
+        </div>
 
-        <>
-          <h2>Page 2</h2>
+        <div id='portfolio-2'>
+          <h2>Works</h2>
           <li>3</li><li>4</li><li>5</li>
           <li>0</li><li>1</li><li>2</li>
-        </>
+        </div>
 
         <div>
           <p>text</p>
