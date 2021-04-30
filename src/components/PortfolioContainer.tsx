@@ -45,7 +45,6 @@ export default class PortfolioContainer extends React.Component<Props, States> {
 
   UpdateScrollBar() {
     if (!this.container) return;
-    console.log('scroll listener');
 
     // 要素がスクロール不可能だった場合は非表示
     if (this.container && this.container.clientHeight >= this.container.scrollHeight) {
@@ -73,7 +72,6 @@ export default class PortfolioContainer extends React.Component<Props, States> {
       e.preventDefault();
       return;
     }
-    console.log('WHEEl');
     let changeable: boolean = false;
     // 要素がスクロール不可能だった場合は常にページ移動可能に
     if (this.container && this.container.clientHeight >= this.container.scrollHeight)
@@ -99,17 +97,6 @@ export default class PortfolioContainer extends React.Component<Props, States> {
       this.setState({ place: Position.none });
     }
   }
-  ScrollListener = () => this.UpdateScrollBar();
-  WheelListener = (e: WheelEvent) => this.UpdatePage(e);
-  componentDidMount() {
-    this.container = document.getElementById('PortfolioContainer-container');
-    window.addEventListener('scroll', this.ScrollListener, true);
-    window.addEventListener('wheel', this.WheelListener, { passive: false });
-  }
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.ScrollListener, true);
-    window.removeEventListener('wheel', this.WheelListener);
-  }
 
   // ページ移動アニメーションの実行
   CreateTransition(pos: Position) {
@@ -122,9 +109,6 @@ export default class PortfolioContainer extends React.Component<Props, States> {
       (pos === Position.reached_top) ?
         'PortfolioContainer-container_previous' : 'PortfolioContainer-container_after'
     );
-    // ページを戻る際は予め下までスクロールしておく
-    if (pos === Position.reached_top)
-      container_2nd?.scrollTo(0, container_2nd.scrollHeight);
     // アニメーション関連
     const duration = 1; // アニメーションにかかる時間
     const direction = -pos;
@@ -159,10 +143,20 @@ export default class PortfolioContainer extends React.Component<Props, States> {
     timeline.call(() => this.setState((state) => {
       return { current_page: state.current_page - direction }
     }), undefined, duration);
-    // 一番端までスクロールするとplaceがreachedになるので
-    const scroll_to = (pos === Position.reached_top) ? this.container.scrollHeight : 0;
-    timeline.call(() => this.container?.scrollTo(0, scroll_to), undefined, 0.5);
   }
+
+  ScrollListener = () => this.UpdateScrollBar();
+  WheelListener = (e: WheelEvent) => this.UpdatePage(e);
+  componentDidMount() {
+    this.container = document.getElementById('PortfolioContainer-container');
+    window.addEventListener('scroll', this.ScrollListener, true);
+    window.addEventListener('wheel', this.WheelListener, { passive: false });
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.ScrollListener, true);
+    window.removeEventListener('wheel', this.WheelListener);
+  }
+
 
   render() {
     return (
