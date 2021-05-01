@@ -9,6 +9,7 @@
 
 import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
+import Head from '../components/Head';
 import MenuCard from '../components/MenuCard';
 import Background from '../components/Background';
 import '../styles/main.scss';
@@ -17,6 +18,10 @@ import '../styles/top.scss';
 export default () => {
   return (
     <>
+      <Head
+        title={''} desc={'プログラミングやゲームについてのブログ、プロフィール、ポートフォリオなど'}
+        url={''}
+      />
       <Background />
       <div className='top-container'>
         <div className='top-icon_and_name'>

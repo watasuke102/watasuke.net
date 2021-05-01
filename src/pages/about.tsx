@@ -8,6 +8,7 @@
  */
 
 import { Link } from 'gatsby';
+import Head from '../components/Head';
 import Layout from '../components/Layout';
 import Background from '../components/Background';
 import React from 'react';
@@ -15,6 +16,10 @@ import React from 'react';
 export default () => {
   return (
     <Layout>
+      <Head
+        title={'このサイトについて'} desc={'このサイトについての説明'}
+        url={'/about'}
+      />
       <Background />
       <h1>このサイトについて</h1>
       <p>わたすけのへやです</p>

@@ -31,7 +31,8 @@ export default (props: Props) => {
     }
     `).file.publicURL;
   }
-  const title = props.title + ' - わたすけのへや';
+  const title = (props.title.length === 0) ?
+    'わたすけのへや' : props.title + ' - わたすけのへや';
   const url = 'https://watasuke.tk' + props.url;
   // 140字に制限して内容を表示、超過分は...で
   const desc = props.desc.slice(0, 140) + ((props.desc.length > 140) ? ' ...' : '');

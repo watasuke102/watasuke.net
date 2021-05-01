@@ -9,6 +9,7 @@
 
 import React from 'react';
 import { graphql } from 'gatsby';
+import Head from '../components/Head';
 import Layout from '../components/Layout';
 import ArticleList from '../components/ArticleList';
 import '../styles/main.scss';
@@ -29,6 +30,10 @@ type Props = {
 export default ({ data }: Props) => {
   return (
     <Layout>
+      <Head
+        title={'ブログ'} desc={'投稿した記事の一覧ページです'}
+        url={'/blog'}
+      />
       <h1>記事一覧</h1>
       <div className='blog-container'>
         <ArticleList list={data.allArticles.nodes} />

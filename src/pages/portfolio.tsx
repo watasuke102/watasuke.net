@@ -9,6 +9,7 @@
 
 import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
+import Head from '../components/Head';
 import SkillCard from '../components/SkillCard';
 import Container from '../components/PortfolioContainer';
 import '../styles/portfolio.scss'
@@ -17,6 +18,10 @@ import { Link } from 'gatsby';
 export default () => {
   return (
     <div id='portfolio-container'>
+      <Head
+        title={'ポートフォリオ'} desc={'ポートフォリオです'}
+        url={'/portfolio'}
+      />
       <Container>
 
         <div id='portfolio-0'>

@@ -10,8 +10,10 @@
 import React from 'react';
 import { Remark } from 'react-remark';
 import { CSSTransition } from 'react-transition-group';
-import Thumbnail from '../components/Thumbnail';
+import RemoveMD from 'remove-markdown';
+import Head from '../components/Head';
 import Layout from '../components/Layout';
+import Thumbnail from '../components/Thumbnail';
 import ProfileCard from '../components/ProfileCard';
 import TagListCard from '../components/TagListCard';
 import TagContainer from '../components/TagContainer';
@@ -65,6 +67,10 @@ export default (prop: Props) => {
 
   return (
     <Layout>
+      <Head
+        title={data.title} desc={RemoveMD(data.body)}
+        url={'/blog/article/' + data.slug} thumbnail={data.thumbnail}
+      />
       <div className='Article-container' >
         {/* 記事メイン部分 */}
         <div className='Article-body'>

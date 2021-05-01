@@ -10,6 +10,7 @@
 import { graphql, Link } from 'gatsby';
 import React from 'react';
 import { Remark } from 'react-remark';
+import Head from '../components/Head';
 import Layout from '../components/Layout';
 import Background from '../components/Background';
 import '../styles/main.scss';
@@ -19,6 +20,10 @@ interface Props { data: { siteData: { body: string } } }
 export default ({ data }: Props) => {
   return (
     <Layout>
+      <Head
+        title={'プロフィール'} desc={'わたすけのプロフィール'}
+        url={'/profile'}
+      />
       <Background />
       <h1>プロフィール</h1>
       <p>
