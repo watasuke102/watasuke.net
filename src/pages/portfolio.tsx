@@ -12,6 +12,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import SkillCard from '../components/SkillCard';
 import Container from '../components/PortfolioContainer';
 import '../styles/portfolio.scss'
+import { Link } from 'gatsby';
 
 export default () => {
   return (
@@ -167,7 +168,7 @@ export default () => {
 
         <div id='portfolio-4'>
           <h2>Address</h2>
-          <div>
+          <div className='container'>
             <div className='card'>
               <i className="fab fa-twitter" />
               <a href='https://twitter.com/Watasuke102'>Twitter (@Watasuke102)</a>
@@ -205,8 +206,26 @@ export default () => {
               </p>
             </div>
           </div>
+
+          <div className='next-page' />
         </div>
 
+        <div id='portfolio-5'>
+          <div>
+            <h2>Thank you for visiting my site!</h2>
+            <div className='links'>
+              <Link to='/'>トップ</Link>
+              <span>・</span>
+              <Link to='/blog'>ブログ</Link>
+              <span>・</span>
+              <Link to='/profile'>プロフィール</Link>
+            </div>
+          </div>
+          <p>
+            Copyright(C) 2021 Watasuke<br />
+            Powered by Gatsby
+          </p>
+        </div>
       </Container >
     </div>
   );
