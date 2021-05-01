@@ -33,9 +33,12 @@ module.exports = {
 
     // Google Analytics
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: config.trackingId
+        pluginConfig: { head: true },
+        trackingIds: [
+          config.trackingId
+        ],
       }
     },
   ]
