@@ -7,7 +7,7 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import React from 'react';
 import { Remark } from 'react-remark';
 import Layout from '../components/Layout';
@@ -21,6 +21,11 @@ export default ({ data }: Props) => {
     <Layout>
       <Background />
       <h1>プロフィール</h1>
+      <p>
+        技術的な項目については
+        <Link to='/portfolio'>ポートフォリオ</Link>
+        を御覧ください
+      </p>
       <Remark>
         {data.siteData.body}
       </Remark>
