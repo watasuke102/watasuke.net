@@ -17,7 +17,7 @@ export default () => {
   return (
     <div id='portfolio-container'>
       <Container>
-        {/*
+
         <div id='portfolio-0'>
           <h2>Hi there👋</h2>
           <div className='avatar-and-name'>
@@ -90,7 +90,7 @@ export default () => {
           </div>
           <div className='next-page' />
         </div>
-*/}
+
         <div id='portfolio-3'>
           <h2>Works</h2>
           <p className='page-desc'>
@@ -106,7 +106,7 @@ export default () => {
                 <a href='https://github.com/watasuke102/TAGether'>TAGether</a>
                 <p>
                   クラス内でテスト対策問題を共有するサービスです。<br />
-                  使用技術: React/Next.js/TypeScript/MySQL/PHP
+                  使用技術: React, Next.js, TypeScript, MySQL, PHP
                 </p>
               </div>
             </div>
@@ -130,7 +130,7 @@ export default () => {
                 <a href='https://github.com/watasuke102/ExpNote'>ExpNote</a>
                 <p>
                   簡易的な所持金管理ツールです。<br />
-                  使用技術: Flutter/Dart
+                  使用技術: Flutter, Dart
                 </p>
               </div>
             </div>
@@ -142,7 +142,7 @@ export default () => {
                 <a href='https://github.com/FascodeNet/alterlinux-i3-manager'>alterlinux-i3-manager</a>
                 <p>
                   Alter Linux i3wm エディション用のGUI設定ツールです。<br />
-                  使用技術: C++/Qt
+                  使用技術: C++, Qt
                 </p>
               </div>
             </div>

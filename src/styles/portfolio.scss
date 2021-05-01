@@ -18,9 +18,6 @@
       text-align: center;
     }
   }
-  li {
-    height: 200px;
-  }
 }
 
 .icon-and-text {
@@ -73,6 +70,10 @@
 #portfolio-1 {
   background-color: #92466c;
   text-align: center;
+  p {
+    margin: 0 30px;
+    font-size: 1.2em;
+  }
 }
 
 #portfolio-2 {
