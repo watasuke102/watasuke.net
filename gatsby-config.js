@@ -1,3 +1,5 @@
+const config = require('./config.js');
+
 module.exports = {
   plugins: [
     `gatsby-plugin-typescript`,
@@ -13,7 +15,7 @@ module.exports = {
         background_color: `#9955ff`,
         theme_color: `#9955ff`,
         display: `minimal-ui`,
-        icon: `src/assets/icon.jpg`, // This path is relative to the root of the site.
+        icon: `src/assets/icon.jpg`,
       },
     },
 
@@ -30,13 +32,11 @@ module.exports = {
     },
 
     // Google Analytics
-    /**
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: 'a'
+        trackingId: config.trackingId
       }
     },
-    /**/
   ]
 }
