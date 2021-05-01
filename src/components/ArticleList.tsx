@@ -72,7 +72,7 @@ export default (props: Props) => {
       {
         (current_page === 1) ? <div className='ArticleList-empty'></div> :
           <div className='ArticleList-button' onClick={BeforePage}>
-            <i className="fas fa-chevron-left"></i>
+            <i className="fas fa-chevron-left" />
           </div>
       }
       {/* 現在ページと合計ページの表示 */}
@@ -82,7 +82,7 @@ export default (props: Props) => {
       {
         (current_page === max_page) ? <div className='ArticleList-empty'></div> :
           <div className='ArticleList-button' onClick={NextPage}>
-            <i className="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right" />
           </div>
       }
     </div>

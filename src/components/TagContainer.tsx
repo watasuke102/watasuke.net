@@ -21,7 +21,7 @@ interface Props {
 export default ({ tags }: Props) => {
   return (
     <div className='TagContainer-container'>
-      <i className="fas fa-tag"></i>
+      <i className="fas fa-tag" />
 
       {tags.map(tag => {
         return (

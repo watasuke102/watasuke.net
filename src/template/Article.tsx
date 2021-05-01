@@ -76,12 +76,12 @@ export default (prop: Props) => {
           <div className='Article-date'>
             <div className='Article-date_update'>
               <p className='desc'>記事の更新日</p>
-              <i className="fas fa-history"></i>
+              <i className="fas fa-history" />
               <p>{data.updated_at.slice(0, 10)}</p>
             </div>
             <div className='Article-date_publish'>
               <p className='desc'>記事の投稿日</p>
-              <i className="fas fa-upload"></i>
+              <i className="fas fa-upload" />
               <p>{data.published_at.slice(0, 10)}</p>
             </div>
           </div>
@@ -93,9 +93,9 @@ export default (prop: Props) => {
               <div className='Article-table_of_contents_container'>
                 <div className='Article-close_button' onClick={() => SetTocOpening(!tocOpening)}>
                   {tocOpening ?
-                    <i className="fas fa-angle-up"></i>
+                    <i className="fas fa-angle-up" />
                     :
-                    <i className="fas fa-angle-down"></i>
+                    <i className="fas fa-angle-down" />
                   }
                 </div>
                 <h2>目次</h2>
