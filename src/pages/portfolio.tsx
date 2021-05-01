@@ -18,7 +18,6 @@ export default () => {
     <div id='portfolio-container'>
       <Container>
         {/*
-
         <div id='portfolio-0'>
           <h2>Hi there👋</h2>
           <div className='avatar-and-name'>
@@ -29,15 +28,15 @@ export default () => {
               <p className='name-sub'>Watasuke</p>
               <div>
                 <div className='icon-and-text'>
-                  <i className="fab fa-twitter"></i>
+                  <i className="fab fa-twitter" />
                   <p>@Watasuke102</p>
                 </div>
                 <div className='icon-and-text'>
-                  <i className="fab fa-github"></i>
+                  <i className="fab fa-github" />
                   <p>watasuke102</p>
                 </div>
                 <div className='icon-and-text'>
-                  <i className="fas fa-envelope"></i>
+                  <i className="fas fa-envelope" />
                   <p>watasuke102@gmail.com</p>
                 </div>
               </div>
@@ -53,8 +52,6 @@ export default () => {
           <p>AR/MRを始めとするxRに興味があります</p>
           <div className='next-page' />
         </div>
-
-        */}
 
         <div id='portfolio-2'>
           <h2>Skills</h2>
@@ -85,23 +82,62 @@ export default () => {
               <SkillCard name='MySQL' />
               <SkillCard name='CSS/SCSS' />
               <SkillCard name='AviUtl' />
-              <SkillCard name='Blender' body='高度なモデリングはできません'/>
+              <SkillCard name='Blender' body='高度なモデリングはできません' />
+              <SkillCard name='DTM' body='かなり低頻度' />
               <SkillCard name='Go' body='興味があります' />
               <SkillCard name='Rust' body='興味があります' />
             </div>
           </div>
           <div className='next-page' />
         </div>
-
-        <div>
-          <p>text</p>
+*/}
+        <div id='portfolio-3'>
+          <h2>Works</h2>
+          void
+          <div className='next-page' />
         </div>
 
-        <>
-          <h2>Page 3</h2>
-          <li>D</li><li>E</li><li>F</li>
-          <li>A</li><li>B</li><li>C</li>
-        </>
+        <div id='portfolio-4'>
+          <h2>Address</h2>
+          <div>
+            <div className='card'>
+              <i className="fab fa-twitter" />
+              <a href='https://twitter.com/Watasuke102'>Twitter (@Watasuke102)</a>
+              <p className='desc'>
+                メンションもしくはDMに反応します<br />
+                （恐らく最速で反応できる連絡手段です）
+              </p>
+            </div>
+            <div className='card'>
+              <i className="fas fa-envelope" />
+              <a href='mailto:watasuke102@google.com'>Email (watasuke102@google.com)</a>
+              <p className='desc'>
+                気づかないかもしれません
+              </p>
+            </div>
+            <div className='card'>
+              <i className="fab fa-github" />
+              <a href='https://github.com/watasuke102'>GitHub</a>
+              <p className='desc'>
+                いろいろつくってます
+              </p>
+            </div>
+            <div className='card'>
+              <i className="fab fa-soundcloud" />
+              <a href='https://soundcloud.com/watasuke'>SoundCloud</a>
+              <p className='desc'>
+                今までに作った曲を投稿しています
+              </p>
+            </div>
+            <div className='card'>
+              <i className="fas fa-box-open" />
+              <a href='https://peing.net/ja/watasuke102'>質問箱</a>
+              <p className='desc'>
+                匿名で質問ができます
+              </p>
+            </div>
+          </div>
+        </div>
 
       </Container >
     </div>
