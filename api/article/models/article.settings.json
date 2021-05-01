@@ -30,6 +30,11 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "tags": {
+      "via": "articles",
+      "collection": "tags",
+      "dominant": true
     }
   }
 }
