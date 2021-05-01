@@ -142,7 +142,6 @@ export default class PortfolioContainer extends React.Component<Props, States> {
           if (this.container) {
             const scroll_to = (pos === Position.reached_top) ?
               99999 : 0;
-            console.log(scroll_to);
             this.container?.scrollTo(0, scroll_to);
           }
         },

@@ -12,18 +12,20 @@ import React from 'react';
 import '../styles/TagContainer.scss'
 
 interface Props {
+  disable_icon?: boolean,
   tags: {
     slug: string,
     name: string,
   }[]
 }
 
-export default ({ tags }: Props) => {
+export default (props: Props) => {
+  console.log(props.disable_icon);
   return (
     <div className='TagContainer-container'>
-      <i className="fas fa-tag" />
+      {!props.disable_icon && <i className="fas fa-tag" />}
 
-      {tags.map(tag => {
+      {props.tags.map(tag => {
         return (
           <Link to={'/blog/tag/' + tag.slug}>
             {tag.name}

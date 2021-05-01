@@ -10,7 +10,7 @@
 .ArticleList-container {
   width: 95%;
   padding: 10px;
-  background-color: #1f221f;
+  //background-color: #1f221f;
 }
 
 .ArticleList-thumbnail {
@@ -46,14 +46,14 @@
   margin: 20px;
 
   color: inherit;
-  background-color: #ffffff48;
+  background-color: #1f221f;
   transition: background-color 0.4s;
   &:hover{
     h2 {
       border-bottom: 1px solid;
     }
     cursor: pointer;
-    background-color: #ffffff65;
+    background-color: #414141;
     transition: background-color 0.4s;
   }
   .ArticleList-text {

@@ -13,6 +13,7 @@ import { CSSTransition } from 'react-transition-group';
 import Thumbnail from '../components/Thumbnail';
 import Layout from '../components/Layout';
 import ProfileCard from '../components/ProfileCard';
+import TagListCard from '../components/TagListCard';
 import TagContainer from '../components/TagContainer';
 import Article from '../types/Article';
 import '../styles/main.scss';
@@ -119,6 +120,7 @@ export default (prop: Props) => {
         {/* サイドバー */}
         <div className='Article-side'>
           <ProfileCard />
+          <TagListCard />
           {
             is_show_toc &&
             <div className='Article-side_toc'>

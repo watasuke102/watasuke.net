@@ -19,11 +19,19 @@
   }
 
   a {
-    font-size: 0.75rem;
+    font-size: 0.8em;
+    font-weight: bold;
     margin-right: 10px;
     margin-bottom: 5px;
-    padding: 1px 10px;
-    border-radius: 20px;
-    background-color: #161616b6;
+    padding: 2px 10px 2px 5px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    
+    color: #111;
+    background-color: #e4e4e4;
+    &:hover {
+      color: #4444bb;
+      transition: color 0.3s;
+    }
   }
 }

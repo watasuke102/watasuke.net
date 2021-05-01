@@ -73,15 +73,6 @@ $second-bg-color: #1f221f;
     padding-left: 10px;
     color: #bbb;
   }
-  // タグのCSSを上書き
-  .TagContainer-container {
-    a {
-      font-size: 1em;
-      color: #151615;
-      background-color: #c7c7c7;
-    }
-    margin-bottom: 15px;
-  }
 }
 
 .Article-table_of_contents {
@@ -94,6 +85,7 @@ $second-bg-color: #1f221f;
 
 // 目次部分
 .Article-table_of_contents_container {
+  margin-top: 50px;
   padding: 5px 20px;
   background-color: #404e40;
   font-size: 22px;
