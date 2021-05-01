@@ -14,6 +14,10 @@
 // icon
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css');
 
+* {
+  scroll-behavior: auto;
+}
+
 body {
   font-family: 'M PLUS 1p', sans-serif;
   background-color: #2f332f;

@@ -1,9 +1,4 @@
 module.exports = {
-  siteMetadata: {
-    title: `watasuke.tk`,
-    description: `my profile and portfolio`,
-    author: `@Watasuke102`,
-  },
   plugins: [
     `gatsby-plugin-typescript`,
     `gatsby-plugin-sass`,
@@ -21,7 +16,7 @@ module.exports = {
         icon: `src/assets/icon.jpg`, // This path is relative to the root of the site.
       },
     },
-
+    
     // 画像読み込み
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,

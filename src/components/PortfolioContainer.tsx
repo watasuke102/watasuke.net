@@ -13,8 +13,8 @@ import '../styles/PortfolioContainer.scss';
 
 enum Position {
   reached_top = -1,
-  none = 0,
-  reached_bottom = 1,
+  none,
+  reached_bottom,
 }
 
 interface Props {
@@ -59,6 +59,8 @@ export default class PortfolioContainer extends React.Component<Props, States> {
       setTimeout(() => this.setState({ place: Position.reached_top }), interval);
     } else if (percent === 1) {
       setTimeout(() => this.setState({ place: Position.reached_bottom }), interval);
+    } else {
+      this.setState({ place: Position.none });
     }
     this.setState({
       scroll_height: this.container.clientHeight * percent
@@ -108,6 +110,10 @@ export default class PortfolioContainer extends React.Component<Props, States> {
       (pos === Position.reached_top) ?
         'PortfolioContainer-container_previous' : 'PortfolioContainer-container_after'
     );
+    // ページを戻る際は予め下までスクロールしておく
+    if (pos === Position.reached_top)
+      container_2nd?.scrollTo(0, container_2nd.scrollHeight);
+
     // アニメーション関連
     const duration = 1; // アニメーションにかかる時間
     const direction = -pos;
@@ -133,8 +139,14 @@ export default class PortfolioContainer extends React.Component<Props, States> {
               scroll_height: 0,
             }
           });
+          if (this.container) {
+            const scroll_to = (pos === Position.reached_top) ?
+              99999 : 0;
+            console.log(scroll_to);
+            this.container?.scrollTo(0, scroll_to);
+          }
         },
-      }, '<') // ページ移動前になにもないページで待機させたければ'<'を削除する
+      }, '<')
       // もとに戻す
       .to(this.container, {
         duration: 0,
