@@ -40,7 +40,6 @@ export default class PortfolioContainer extends React.Component<Props, States> {
       place: Position.none,
     };
     this.container = null;
-    document.getElementById('PortfolioContainer-container');
   }
 
   UpdateScrollBar() {

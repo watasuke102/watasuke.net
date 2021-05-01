@@ -56,17 +56,19 @@ export default class Background extends React.Component<any> {
   }
 
   InitToBasePositions() {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    // 三角形
-    this.pos[Figure.triangle].x = width - 150;
-    this.pos[Figure.triangle].y = 450;
-    // 円
-    this.pos[Figure.circle].x = 160;
-    this.pos[Figure.circle].y = 140;
-    // 正方形
-    this.pos[Figure.cube].x = width / 2;
-    this.pos[Figure.cube].y = height;
+    if (typeof window !== `undefined`) {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      // 三角形
+      this.pos[Figure.triangle].x = width - 150;
+      this.pos[Figure.triangle].y = 450;
+      // 円
+      this.pos[Figure.circle].x = 160;
+      this.pos[Figure.circle].y = 140;
+      // 正方形
+      this.pos[Figure.cube].x = width / 2;
+      this.pos[Figure.cube].y = height;
+    }
   }
 
   // Animation() だとrequestAnimationFrameが機能しない
