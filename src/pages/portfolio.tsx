@@ -93,7 +93,75 @@ export default () => {
 */}
         <div id='portfolio-3'>
           <h2>Works</h2>
-          void
+          <p className='page-desc'>
+            下線が付いている作品名をクリックすると、
+            作品ページやGitHubリポジトリにジャンプします
+          </p>
+          <div className='container'>
+
+            <div className='card'>
+              <StaticImage width={400} alt='tagether'
+                src='../assets/works/tagether.jpg' />
+              <div className='desc'>
+                <a href='https://github.com/watasuke102/TAGether'>TAGether</a>
+                <p>
+                  クラス内でテスト対策問題を共有するサービスです。<br />
+                  使用技術: React/Next.js/TypeScript/MySQL/PHP
+                </p>
+              </div>
+            </div>
+
+            <div className='card'>
+              <StaticImage width={400} alt='timetree-noticebot'
+                src='../assets/works/timetree-noticebot.jpg' />
+              <div className='desc'>
+                <a href='https://github.com/watasuke102/TimeTree-NoticeBot'>TimeTree-NoticeBot</a>
+                <p>
+                  指定したTimeTreeカレンダーの予定を朝8時および予定開始10分前にDiscordへ通知します。<br />
+                  使用技術: Python
+                </p>
+              </div>
+            </div>
+
+            <div className='card'>
+              <StaticImage width={350} alt='expnote'
+                src='../assets/works/expnote.jpg' />
+              <div className='desc'>
+                <a href='https://github.com/watasuke102/ExpNote'>ExpNote</a>
+                <p>
+                  簡易的な所持金管理ツールです。<br />
+                  使用技術: Flutter/Dart
+                </p>
+              </div>
+            </div>
+
+            <div className='card'>
+              <StaticImage width={350} alt='alterlinux-i3-manager'
+                src='../assets/works/alterlinux-i3-manager.jpg' />
+              <div className='desc'>
+                <a href='https://github.com/FascodeNet/alterlinux-i3-manager'>alterlinux-i3-manager</a>
+                <p>
+                  Alter Linux i3wm エディション用のGUI設定ツールです。<br />
+                  使用技術: C++/Qt
+                </p>
+              </div>
+            </div>
+
+            <div className='card'>
+              <StaticImage alt='MIT-SUSHI-WARE'
+                src='../assets/works/MIT-SUSHI-WARE.jpg' />
+              <div className='desc'>
+                <a href='https://github.com/watasuke102/mit-sushi-ware'>MIT SUSHI-WARE LICENSE</a>
+                <p>
+                  SUSHI-WARE LICENSEのフォーク<br />
+                  作者(著作権者)の著作権表示を残しつつソフトウェアを自由に利用してもらうことができる、
+                  ユーモアのあるライセンスです。
+                </p>
+              </div>
+            </div>
+
+          </div>
+
           <div className='next-page' />
         </div>
 
