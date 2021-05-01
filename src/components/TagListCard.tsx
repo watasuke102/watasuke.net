@@ -23,7 +23,6 @@ export default () => {
       }
     }    
   `);
-  console.log(tags);
   return (
     <div className='TagListCard-container'>
       <h3>タグ</h3>
