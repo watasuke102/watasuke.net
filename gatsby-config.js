@@ -16,7 +16,7 @@ module.exports = {
         icon: `src/assets/icon.jpg`, // This path is relative to the root of the site.
       },
     },
-    
+
     // 画像読み込み
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
@@ -28,5 +28,15 @@ module.exports = {
         path: `${__dirname}/src/assets`,
       },
     },
+
+    // Google Analytics
+    /**
+    {
+      resolve: "gatsby-plugin-google-analytics",
+      options: {
+        trackingId: 'a'
+      }
+    },
+    /**/
   ]
 }
