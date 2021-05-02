@@ -1,12 +1,14 @@
 # watasuke.tk
 
-[https://watasuke.tk](https://watasuke.tk)で公開される（予定の）ページのソース  
+[https://watasuke.tk](https://watasuke.tk)で公開されているページのソース  
 React+Gatsbyです
 
 ## how to use
-`docker-compose up -d --build`するだけ
+開発は`docker-compose up -d --build` の後に npm i`して `npm run dev` する
 
-これをするとstrapiフォルダができるので、/strapi/apiに/apiフォルダをコピー (`cp -r api strapi/`) してね
+docker-compose up後にstrapiフォルダができるので、/strapi/apiに/apiフォルダをコピー (`cp -r api strapi/`) する
+
+sitedataにはprofileとshort-profileを追加
 
 ## LICENSE
 MIT SUSHI-WARE LICENSE
