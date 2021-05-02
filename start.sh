@@ -9,6 +9,11 @@
 # 
 set -e
 
+# strapi
+cd strapi
+npm start &
+
+# gatsby
 git pull
 npm i 
 npm run build 
