@@ -39,6 +39,7 @@ export default (props: Props) => {
 
   return (
     <Helmet>
+      <html lang='ja' />
       <title>{title}</title>
       <meta property='Description' content={desc} />
       <meta property='og:type' content='website' />
