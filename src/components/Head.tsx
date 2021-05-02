@@ -19,11 +19,11 @@ interface Props {
 }
 
 export default (props: Props) => {
-  let image: string;
+  let image: string = 'https://watasuke.tk';
   if (props.thumbnail) {
-    image = 'https://watasuke.tk' + props.thumbnail;
+    image += props.thumbnail;
   } else {
-    image = useStaticQuery(graphql`
+    image += useStaticQuery(graphql`
     query {
       file(name: {eq: "thumbnail"}) {
         publicURL

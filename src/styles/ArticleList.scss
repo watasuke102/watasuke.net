@@ -29,7 +29,8 @@
   justify-content: space-between;
   h2 {
     font-size: 1.2em;
-    height: 2.5em;
+    //height: 2.5em;
+    padding-bottom: 16px;
   }
   &::before, &::after {
     order: 1;
@@ -57,6 +58,7 @@
     transition: background-color 0.4s;
   }
   .ArticleList-text {
+    margin-top: auto;
     padding: 0 15px;
   }
   .ArticleList-date {
