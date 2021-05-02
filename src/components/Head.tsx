@@ -40,6 +40,7 @@ export default (props: Props) => {
   return (
     <Helmet>
       <title>{title}</title>
+      <meta property='Description' content={desc} />
       <meta property='og:type' content='website' />
       <meta property='og:url' content={url} />
       <meta property='og:title' content={title} />
