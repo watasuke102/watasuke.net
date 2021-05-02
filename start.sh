@@ -14,6 +14,7 @@ cd strapi
 npm start &
 
 # gatsby
+cd ../
 git pull
 npm i 
 npm run build 
