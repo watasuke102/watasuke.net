@@ -41,12 +41,12 @@ export default (props: Props) => {
     <Helmet>
       <html lang='ja' />
       <title>{title}</title>
-      <meta property='Description' content={desc} />
       <meta property='og:type' content='website' />
       <meta property='og:url' content={url} />
       <meta property='og:title' content={title} />
       <meta property='og:description' content={desc} />
       <meta property='og:image' content={image} />
+      <meta name='description' content={desc} />
       <meta name='twitter:card' content='summary_large_image' />
       <meta name='twitter:site' content='@Watasuke102' />
       <meta name='twitter:creator' content='@Watasuke102' />
