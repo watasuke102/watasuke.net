@@ -20,7 +20,6 @@ interface Props {
 }
 
 export default (props: Props) => {
-  console.log(props.disable_icon);
   return (
     <div className='TagContainer-container'>
       {!props.disable_icon && <i className="fas fa-tag" />}
