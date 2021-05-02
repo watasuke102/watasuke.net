@@ -1,9 +1,14 @@
 const config = require('./config.js');
 
 module.exports = {
+  siteMetadata: {
+    siteUrl: `https://watasuke.tk`,
+  },
+
   plugins: [
     `gatsby-plugin-typescript`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-sitemap`,
 
     // マニフェスト設定
     {
