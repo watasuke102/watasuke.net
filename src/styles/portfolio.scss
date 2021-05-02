@@ -64,6 +64,12 @@
     .name-sub {
       color: #ccc;
     }
+
+    @media screen and (max-width: 700px) {
+      flex-direction: column;
+      margin: 0 60px;
+      padding-bottom: 50px;
+    }
   }
 }
 
@@ -82,7 +88,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-bottom: 120px;
+    padding-bottom: 120px;
 
     .categoly {
       .heading {
@@ -93,7 +99,7 @@
     @media screen and (max-width: 920px) {
       flex-direction: column;
       margin: 0 60px;
-      margin-bottom: 50px;
+      padding-bottom: 50px;
     }
   }
 }
@@ -104,7 +110,7 @@
     text-align: center;
   }
   .container {
-    margin-bottom: 120px;
+    padding-bottom: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -152,7 +158,7 @@
   background-color: #3c767a;
 
   .container {
-    margin-bottom: 120px;
+    padding-bottom: 120px;
   }
 
   .card {

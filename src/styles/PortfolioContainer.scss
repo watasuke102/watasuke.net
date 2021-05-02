@@ -35,3 +35,15 @@
   width: 5px;
   background-color: #eee;
 }
+
+#PortfolioContainer-mobile {
+  margin: -50px -20px;
+  overflow-x: hidden;
+  div[id^="portfolio"] {
+    position: relative !important;
+    left: 0;
+    h2 {
+      margin-top: 0;
+    }
+  }
+}
