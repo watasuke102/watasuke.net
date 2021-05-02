@@ -21,7 +21,7 @@ interface Props {
 export default (props: Props) => {
   let image: string;
   if (props.thumbnail) {
-    image = props.thumbnail;
+    image = 'https://watasuke.tk' + props.thumbnail;
   } else {
     image = useStaticQuery(graphql`
     query {
@@ -39,6 +39,7 @@ export default (props: Props) => {
 
   return (
     <Helmet>
+      <title>{title}</title>
       <meta property='og:url' content={url} />
       <meta property='og:title' content={title} />
       <meta property='og:description' content={desc} />

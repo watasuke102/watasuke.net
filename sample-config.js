@@ -6,7 +6,8 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
+
 module.exports = {
-  // Google Analytics トラッキングID
+  // Google Analytics 測定ID
   trackingId: "a",
 }
