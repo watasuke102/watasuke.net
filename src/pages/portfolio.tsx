@@ -27,7 +27,7 @@ export default () => {
         <div id='portfolio-0'>
           <h2>Hi there👋</h2>
           <div className='avatar-and-name'>
-            <StaticImage width={250} src='../assets/icon.jpg' alt='icon' />
+            <StaticImage height={200} src='../assets/icon.jpg' alt='icon' />
             <div className='separator' />
             <div>
               <p className='name-main'>わたすけ</p>

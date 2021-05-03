@@ -37,7 +37,10 @@
 }
 
 #PortfolioContainer-mobile {
-  margin: -50px -20px;
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  width: 100vw;
   overflow-x: hidden;
   div[id^="portfolio"] {
     position: relative !important;

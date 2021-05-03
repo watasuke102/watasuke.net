@@ -72,7 +72,6 @@
       flex-direction: column;
       padding-bottom: 120px;
       img {
-        width: 80%;
         margin: auto;
       }
     }
@@ -105,8 +104,13 @@
         margin-left: 15px;
       }
     }
+    @media screen and (max-width: 500px) {
+      display: block;
+      margin: 0 10px !important;
+      font-size: 0.7em;
+    }
     @media screen and (max-width: 920px) {
-      flex-direction: column;
+      display: block;
       margin: 0 60px;
     }
   }
@@ -116,6 +120,7 @@
 #portfolio-3 {
   background-color: #4e773a;
   .page-desc {
+    margin: 0 20px;
     text-align: center;
   }
   .container {
