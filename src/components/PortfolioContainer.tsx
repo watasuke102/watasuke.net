@@ -171,7 +171,7 @@ export default class PortfolioContainer extends React.Component<Props, States> {
 
 
   render() {
-    if (typeof navigator !== `undefined`)
+    if (typeof window !== `undefined`)
       if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
         return (
           <div id='PortfolioContainer-mobile'>
