@@ -69,7 +69,7 @@ export default () => {
               <SkillCard name='HTML' />
             </div>
             <div className='categoly'>
-              <p className='heading'>Frameworks</p>
+              <p className='heading'>Frameworks/Libraries</p>
               <SkillCard name='React' body='Next.js, Gatsbyを使ったことがあります' />
               <SkillCard name='Qt' />
               <SkillCard name='OpenSiv3D' />
