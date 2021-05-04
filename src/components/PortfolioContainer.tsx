@@ -171,27 +171,30 @@ export default class PortfolioContainer extends React.Component<Props, States> {
 
 
   render() {
-    if (typeof window !== `undefined`)
+    if (typeof navigator !== `undefined`) {
       if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
         return (
-          <div id='PortfolioContainer-mobile'>
+          <div id='PortfolioContainer-container_mobile'>
             {this.props.children}
           </div>
         )
+      } else {
+        return (
+          <>
+            <div id='PortfolioContainer-container_previous'>
+              {this.props.children[this.state.current_page - 1]}
+            </div>
+            <div id='PortfolioContainer-container'>
+              {this.props.children[this.state.current_page]}
+            </div>
+            <div id='PortfolioContainer-container_after'>
+              {this.props.children[this.state.current_page + 1]}
+            </div>
+            <div style={{ height: this.state.scroll_height }} id='PortfolioContainer-scroll' />
+          </>
+        );
       }
-    return (
-      <>
-        <div id='PortfolioContainer-container_previous'>
-          {this.props.children[this.state.current_page - 1]}
-        </div>
-        <div id='PortfolioContainer-container'>
-          {this.props.children[this.state.current_page]}
-        </div>
-        <div id='PortfolioContainer-container_after'>
-          {this.props.children[this.state.current_page + 1]}
-        </div>
-        <div style={{ height: this.state.scroll_height }} id='PortfolioContainer-scroll' />
-      </>
-    );
+    }
+    return <></>
   }
 }
