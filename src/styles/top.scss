@@ -34,7 +34,7 @@
 @media screen and (max-width: 700px) {
   .top-menu {
     display: grid;
-    width: 95%;
+    width: 100%;
     // MenuCardのwidthが180px
     grid-template-columns: 180px 180px;
     justify-content: space-around;
