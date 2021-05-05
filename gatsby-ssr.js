@@ -5,8 +5,7 @@ exports.onPreRenderHTML = function onPreRenderHTML({
   getHeadComponents,
   replaceHeadComponents,
 }) {
-  const headComponents = getHeadComponents();
-  headComponents.sort((a, b) => {
+  const headComponents = getHeadComponents().sort((a, b) => {
     if (a.type === 'meta')
       return -1;
     if (b.type === 'meta')

@@ -9,6 +9,7 @@ module.exports = {
     `gatsby-plugin-typescript`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-react-helmet`,
 
     // マニフェスト設定
     {
