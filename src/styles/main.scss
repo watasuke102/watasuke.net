@@ -37,10 +37,18 @@ body {
   i {
     user-select: none;
   }
+
+  table {
+    th {
+      text-align: center;
+      padding: 5px 15px;
+      border-bottom: 2px solid white;
+    }
+  }
 }
 
 @media screen and (max-width: 500px) {
-  html {
+  body {
     margin-top: 80px;
   }
 }
