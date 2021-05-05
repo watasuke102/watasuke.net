@@ -22,8 +22,9 @@ import '../styles/main.scss';
 import '../styles/Article.scss';
 
 // Remark関連
-import Slug from 'remark-slug';
+import Gfm from 'remark-gfm';
 import Toc from 'remark-toc';
+import Slug from 'remark-slug';
 
 // コードのシンタックスハイライト
 import Prism from 'prismjs';
@@ -117,8 +118,8 @@ export default (prop: Props) => {
           }
 
 
-          {/* 画像のURLを置き換える */}
-          <Remark remarkPlugins={[Toc, Slug]}>
+          <Remark remarkPlugins={[Gfm, Toc, Slug]}>
+            {/* 画像のURLを置き換える */}
             {data.body.replace('/uploads/', 'http://localhost:1337/uploads/')}
           </Remark>
         </div>

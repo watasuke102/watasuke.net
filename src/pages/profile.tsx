@@ -10,6 +10,7 @@
 import { graphql, Link } from 'gatsby';
 import React from 'react';
 import { Remark } from 'react-remark';
+import Gfm from 'remark-gfm';
 import Head from '../components/Head';
 import Layout from '../components/Layout';
 import Background from '../components/Background';
@@ -31,7 +32,7 @@ export default ({ data }: Props) => {
         <Link to='/portfolio'>ポートフォリオ</Link>
         を御覧ください
       </p>
-      <Remark>
+      <Remark remarkPlugins={[Gfm]}>
         {data.siteData.body}
       </Remark>
     </Layout>
