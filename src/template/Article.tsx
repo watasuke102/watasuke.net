@@ -20,6 +20,7 @@ import TagContainer from '../components/TagContainer';
 import Article from '../types/Article';
 import '../styles/main.scss';
 import '../styles/Article.scss';
+import { imageUrl } from '../../config';
 
 // Remark関連
 import Gfm from 'remark-gfm';
@@ -120,7 +121,7 @@ export default (prop: Props) => {
 
           <Remark remarkPlugins={[Gfm, Toc, Slug]}>
             {/* 画像のURLを置き換える */}
-            {data.body.replace('/uploads/', 'http://localhost:1337/uploads/')}
+            {data.body.replace('/uploads/', `${imageUrl}/uploads/`)}
           </Remark>
         </div>
 

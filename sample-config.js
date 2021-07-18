@@ -8,6 +8,8 @@
  */
 
 module.exports = {
+  // 画像がある場所
+  imageUrl: "http://localhost:1337",
   // Google Analytics 測定ID
   trackingId: "a",
 }

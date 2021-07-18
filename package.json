@@ -1,7 +1,7 @@
 {
   "name": "watasuke.tk",
   "version": "1.0.0",
-  "description": "[https://watasuke.tk](https://watasuke.tk)で公開される（予定の）ページ",
+  "description": "[https://watasuke.tk](https://watasuke.tk)で公開されているページ",
   "main": "index.js",
   "scripts": {
     "build": "gatsby build",
@@ -43,6 +43,7 @@
     "react": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-remark": "^2.0.3",
+    "react-side-effect": "^2.1.1",
     "react-transition-group": "^4.4.1",
     "remark": "^13.0.0",
     "remark-gfm": "^1.0.0",
