@@ -59,11 +59,19 @@ $second-bg-color: #1f221f;
   width: 70%;
   background-color: $second-bg-color;
   padding: 15px;
-  .Thumbnail {
+  * {
+    margin: 10px 0;
+  }
+  .Thumbnail img {
     width: 100%;
     max-height: 400px;
     margin: auto;
     object-fit: cover;
+  }
+  img {
+    display: block;
+    width: 95%;
+    margin: 0 auto;
   }
   hr {
     margin-bottom: 50px;
@@ -72,6 +80,9 @@ $second-bg-color: #1f221f;
     border-left: solid 5px white;
     padding-left: 10px;
     color: #bbb;
+  }
+  ol, ul {
+    margin-left: 15px;
   }
 }
 
