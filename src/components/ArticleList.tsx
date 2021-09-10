@@ -53,7 +53,7 @@ export default (props: Props) => {
           <div className='ArticleList-text'>
             <h2>{article.title}</h2>
             <TagContainer tags={article.tags} />
-            <p>
+            <p className='ArticleList-description'>
               {
                 // 140字に制限して内容を表示、超過分は...で
                 RemoveMD(article.body.slice(0, 140) + ((article.body.length > 140) ? ' ...' : ''))

@@ -4,11 +4,13 @@
 React+Gatsbyです
 
 ## how to use
-開発は `docker-compose up -d --build` の後に `npm i` して `npm run dev` する
+開発： `docker-compose up -d --build` の後に `npm i` して `npm run dev` する
 
 docker-compose up後にstrapiフォルダができるので、/strapi/apiに/apiフォルダをコピー (`cp -r api strapi/`) する
 
 sitedataにはprofileとshort-profileを追加
+
+http://localhost:1337/admin で記事を編集し、http://localhost:8000 で確認
 
 ## LICENSE
 MIT SUSHI-WARE LICENSE
