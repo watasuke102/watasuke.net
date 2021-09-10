@@ -148,7 +148,7 @@ $button-size: 40px;
 // コードの言語表示の見た目変更
 .toolbar {
   opacity: 1 !important;
-  span {
+  div>span {
     font-size: 1.1em !important;
     position: absolute !important;
     top: -31.5px !important;
