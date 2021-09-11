@@ -30,7 +30,6 @@ export default (props: Props) => {
           const kind = e.getAttribute('property');
           const value = e.getAttribute('content');
           if (!kind || !value) return;
-          console.log(kind, value);
           switch (kind) {
             case 'og:title':
               set_title(value); break;

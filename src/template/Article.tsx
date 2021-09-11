@@ -41,7 +41,6 @@ interface Node {
 }
 
 function Link(props: Node): React.ReactElement {
-  console.log(props);
   // [Display](url)の形式であった場合は
   if (props.children[0] !== props.href) {
     return <a href={props.href}>{props.children[0]}</a>
