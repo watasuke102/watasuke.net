@@ -47,7 +47,7 @@ export default (props: Props) => {
 
 
   return (
-    <div className='EmbedCard-container' onClick={() => url !== '' && window.open(url)}>
+    <div className='EmbedCard-container' onClick={() => url !== '' && window.open(props.url)}>
       <div className='EmbedCard-img_wrapper'>
         <img src={image} alt={title} />
       </div>
