@@ -34,8 +34,47 @@ interface Props {
   pageContext: Article
 }
 
+interface Node {
+  children: Array<string>,
+  href: string
+}
+
+function Link(props: Node): React.ReactElement {
+  console.log(props);
+  // [Display](url)の形式であった場合は
+  if (props.children[0] !== props.href) {
+    return <a href={props.href}>{props.children[0]}</a>
+  }
+  // Twitter
+  if (props.href.slice(0, 19) === 'https://twitter.com') {
+    return <div dangerouslySetInnerHTML={{
+      __html: `<blockquote class="twitter-tweet"><a href="${props.href}">ツイート</a>を読み込み中...</blockquote>`
+    }} />;
+  }
+  // YouTube
+  if (props.href.slice(0, 23) === 'https://www.youtube.com') {
+    return <div className='youtube-wrapper' dangerouslySetInnerHTML={{
+      __html:
+        `<iframe src="https://www.youtube.com/embed/${props.href.slice(32)}"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        title="YouTube video player" allowfullscreen></iframe>`
+    }} />;
+  }
+  return <a href={props.href}>{props.children[0]}</a>
+}
+
 export default (prop: Props) => {
-  React.useEffect(() => { setTimeout(Prism.highlightAll, 0) });
+  React.useEffect(() => {
+    setTimeout(() => {
+      // Twitter embed
+      const script = document.createElement('script');
+      script.src = 'https://platform.twitter.com/widgets.js';
+      script.async = true;
+      document.body.appendChild(script);
+      //Prismjs
+      Prism.highlightAll()
+    }, 0);
+  }, []);
   const data = prop.pageContext;
   // 見出し要素を見つけるための正規表現
   const heading_regexp = /^\#\#* (.*)/;
@@ -119,7 +158,8 @@ export default (prop: Props) => {
           }
 
 
-          <Remark remarkPlugins={[Gfm, Toc, Slug]}>
+          <Remark remarkPlugins={[Gfm, Toc, Slug]}
+            rehypeReactOptions={{ components: { a: Link } }}>
             {/* 画像のURLを置き換える */}
             {data.body.replace('/uploads/', `${imageUrl}/uploads/`)}
           </Remark>
@@ -136,7 +176,7 @@ export default (prop: Props) => {
             </div>
           }
         </div>
-      </div>
-    </Layout>
+      </div >
+    </Layout >
   )
 }
