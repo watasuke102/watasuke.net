@@ -60,7 +60,8 @@ function Link(props: Node): React.ReactElement {
         title="YouTube video player" allowfullscreen></iframe>`
     }} />;
   }
-  return <EmbedCard url={props.href} />
+  return <a href={props.href}>{props.children[0]}</a>;
+  //<EmbedCard url={props.href} />;
 }
 
 export default (prop: Props) => {
