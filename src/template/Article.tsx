@@ -20,6 +20,7 @@ import TagContainer from '../components/TagContainer';
 import Article from '../types/Article';
 import '../styles/main.scss';
 import '../styles/Article.scss';
+import EmbedCard from '../components/EmbedCard';
 import { imageUrl } from '../../config';
 
 // Remark関連
@@ -115,6 +116,7 @@ export default (prop: Props) => {
       <div className='Article-container' >
         {/* 記事メイン部分 */}
         <div className='Article-body'>
+          <EmbedCard url='https://watasuke.tk' />
           <h1 className='Article-title'>
             {data.title}
           </h1>

@@ -1,0 +1,56 @@
+/*!
+ * EmbedCard.scss
+ *
+ * CopyRight (c) 2021 Watasuke
+ * Email  : <watasuke102@gmail.com>
+ * Twitter: @Watasuke102
+ * This software is released under the MIT SUSHI-WARE License.
+ */
+
+.EmbedCard-container {
+  width: 100%;
+  margin: 15px auto;
+  padding: 10px;
+
+  border-radius: 15px;
+  background-color: #4e4e4e;
+  transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-4px);
+    transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  .EmbedCard-img_wrapper {
+    margin: auto;
+    width: 90%;
+    img {
+      width: 100%; height: 100%;
+    }
+  }
+  .EmbedCard-text {
+    display: flex;
+    flex-direction: column;
+    .title {
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+    .url {
+      font-size: 0.9em;
+      color: #c4c4c4;
+      text-decoration: underline;
+    }
+  }
+
+  
+  @media screen and (min-width: 800px) {
+    display: flex;
+    .EmbedCard-img_wrapper {
+      width: 40%;
+    }
+    .EmbedCard-text {
+      margin-left: 10px;
+    }
+  }
+}
+
