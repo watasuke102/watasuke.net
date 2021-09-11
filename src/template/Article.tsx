@@ -61,7 +61,7 @@ function Link(props: Node): React.ReactElement {
         title="YouTube video player" allowfullscreen></iframe>`
     }} />;
   }
-  return <a href={props.href}>{props.children[0]}</a>
+  return <EmbedCard url={props.href} />
 }
 
 export default (prop: Props) => {
@@ -116,7 +116,6 @@ export default (prop: Props) => {
       <div className='Article-container' >
         {/* 記事メイン部分 */}
         <div className='Article-body'>
-          <EmbedCard url='https://watasuke.tk' />
           <h1 className='Article-title'>
             {data.title}
           </h1>
