@@ -7,7 +7,7 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 
-import { Link } from 'gatsby';
+import {Link} from 'gatsby';
 import Head from '../components/Head';
 import Layout from '../components/Layout';
 import Background from '../components/Background';
@@ -16,18 +16,14 @@ import React from 'react';
 export default () => {
   return (
     <Layout>
-      <Head
-        title={'このサイトについて'} desc={'このサイトについての説明'}
-        url={'/about'}
-      />
+      <Head title={'このサイトについて'} desc={'このサイトについての説明'} url={'/about'} />
       <Background />
       <h1>このサイトについて</h1>
       <p>わたすけのへやです</p>
       <p>
-        <Link to='/blog'>ブログ</Link>や
-        <Link to='/profile'>プロフィール</Link>
+        <Link to='/blog'>ブログ</Link>や<Link to='/profile'>プロフィール</Link>
         が置いてあります
       </p>
     </Layout>
-  )
-}
+  );
+};

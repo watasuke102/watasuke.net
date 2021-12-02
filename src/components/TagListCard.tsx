@@ -8,7 +8,7 @@
  */
 
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import {graphql, useStaticQuery} from 'gatsby';
 import TagContainer from './TagContainer';
 import '../styles/TagListCard.scss';
 
@@ -21,12 +21,12 @@ export default () => {
           name
         }
       }
-    }    
+    }
   `);
   return (
     <div className='TagListCard-container'>
       <h3>タグ</h3>
       <TagContainer tags={tags.allTags.nodes} disable_icon={true} />
     </div>
-  )
-}
+  );
+};

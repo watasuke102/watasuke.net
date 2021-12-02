@@ -8,9 +8,9 @@
  */
 
 import React from 'react';
-import { graphql, Link, useStaticQuery } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
-import '../styles/ProfileCard.scss'
+import {graphql, Link, useStaticQuery} from 'gatsby';
+import {StaticImage} from 'gatsby-plugin-image';
+import '../styles/ProfileCard.scss';
 
 export default () => {
   const profile_text = useStaticQuery(graphql`
@@ -18,7 +18,7 @@ export default () => {
       siteData(slug: {eq: "short-profile"}) {
         body
       }
-    }  
+    }
   `);
   return (
     <div className='ProfileCard-container'>
@@ -30,5 +30,5 @@ export default () => {
         プロフィール詳細は<Link to='/profile'>こちら</Link>
       </p>
     </div>
-  )
-}
+  );
+};

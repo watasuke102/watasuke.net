@@ -7,15 +7,15 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 
-import { graphql, useStaticQuery } from 'gatsby';
+import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import {Helmet} from 'react-helmet';
 
 interface Props {
-  title: string,
-  desc: string,
-  url: string, // '/'から始まる
-  thumbnail?: string
+  title: string;
+  desc: string;
+  url: string; // '/'から始まる
+  thumbnail?: string;
 }
 
 export default (props: Props) => {
@@ -24,18 +24,17 @@ export default (props: Props) => {
     image += props.thumbnail;
   } else {
     image += useStaticQuery(graphql`
-    query {
-      file(name: {eq: "thumbnail"}) {
-        publicURL
+      query {
+        file(name: {eq: "thumbnail"}) {
+          publicURL
+        }
       }
-    }
     `).file.publicURL;
   }
-  const title = (props.title.length === 0) ?
-    'わたすけのへや' : props.title + ' - わたすけのへや';
+  const title = props.title.length === 0 ? 'わたすけのへや' : props.title + ' - わたすけのへや';
   const url = 'https://watasuke.tk' + props.url;
   // 140字に制限して内容を表示、超過分は...で
-  const desc = props.desc.slice(0, 140) + ((props.desc.length > 140) ? ' ...' : '');
+  const desc = props.desc.slice(0, 140) + (props.desc.length > 140 ? ' ...' : '');
 
   return (
     <Helmet>
@@ -56,4 +55,4 @@ export default (props: Props) => {
       <meta name='twitter:description' content={desc} />
     </Helmet>
   );
-}
+};

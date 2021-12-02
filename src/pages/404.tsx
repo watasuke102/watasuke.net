@@ -10,7 +10,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import Background from '../components/Background';
-import '../styles/404.scss'
+import '../styles/404.scss';
 
 export default () => {
   return (
@@ -20,5 +20,5 @@ export default () => {
         <h1>404</h1>
       </div>
     </Layout>
-  )
-}
+  );
+};

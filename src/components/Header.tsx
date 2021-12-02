@@ -8,14 +8,14 @@
  */
 
 import React from 'react';
-import { Link } from 'gatsby';
-import '../styles/Header.scss'
+import {Link} from 'gatsby';
+import '../styles/Header.scss';
 
 export default () => {
   return (
     <div className='Header-container'>
       <div className='Header-title'>
-        <Link to='/' >わたすけのへや</Link>
+        <Link to='/'>わたすけのへや</Link>
       </div>
       <div className='Header-links'>
         <Link to='/blog'>Blog</Link>
@@ -23,5 +23,5 @@ export default () => {
         <Link to='/about'>About this site</Link>
       </div>
     </div>
-  )
-}
+  );
+};

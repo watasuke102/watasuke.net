@@ -31,9 +31,10 @@
     font-size: 1.2em;
     padding-bottom: 16px;
   }
-  &::before, &::after {
+  &::before,
+  &::after {
     order: 1;
-    content: "";
+    content: '';
     width: 250px;
     padding: 20px;
     margin: 20px;
@@ -48,7 +49,7 @@
   color: inherit;
   background-color: #1f241f;
   transition: background-color 0.4s;
-  &:hover{
+  &:hover {
     h2 {
       border-bottom: 1px solid;
     }
@@ -64,7 +65,8 @@
     position: relative;
     span {
       position: absolute;
-      bottom: 0; right: 0;
+      bottom: 0;
+      right: 0;
       padding: 2px;
       background-color: #1f221fbb;
     }
@@ -73,7 +75,6 @@
     word-wrap: break-word;
   }
 }
-
 
 // ボタン
 .ArticleList-button_container {

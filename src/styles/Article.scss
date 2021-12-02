@@ -26,7 +26,8 @@ $second-bg-color: #1f221f;
   display: flex;
   justify-content: flex-end;
 }
-.Article-date_publish, .Article-date_update {
+.Article-date_publish,
+.Article-date_update {
   position: relative;
   display: flex;
   margin: 0 5px;
@@ -49,9 +50,11 @@ $second-bg-color: #1f221f;
     background-color: #151615;
     opacity: 0;
   }
-  &:hover{
+  &:hover {
     cursor: pointer;
-   .desc { opacity: 1; }
+    .desc {
+      opacity: 1;
+    }
   }
 }
 
@@ -81,11 +84,21 @@ $second-bg-color: #1f221f;
 }
 
 .Article-table_of_contents {
-  #toc-1 { font-weight: bolder; }
-  #toc-3 { margin-left: 20px; }
-  #toc-4 { margin-left: 40px; }
-  #toc-5 { margin-left: 60px; }
-  #toc-6 { margin-left: 80px; }
+  #toc-1 {
+    font-weight: bolder;
+  }
+  #toc-3 {
+    margin-left: 20px;
+  }
+  #toc-4 {
+    margin-left: 40px;
+  }
+  #toc-5 {
+    margin-left: 60px;
+  }
+  #toc-6 {
+    margin-left: 80px;
+  }
 }
 
 // 目次部分
@@ -94,7 +107,7 @@ $second-bg-color: #1f221f;
   padding: 5px 20px;
   background-color: #404e40;
   font-size: 1.3em;
-  h2 { 
+  h2 {
     margin: 0;
     text-align: center;
   }
@@ -103,8 +116,10 @@ $second-bg-color: #1f221f;
 $button-size: 40px;
 .Article-close_button {
   position: relative;
-  top: 10px; right: 10px;
-  width: $button-size; height: $button-size;
+  top: 10px;
+  right: 10px;
+  width: $button-size;
+  height: $button-size;
   background-color: #688f77;
   // アイコン
   i {
@@ -148,7 +163,7 @@ $button-size: 40px;
 // コードの言語表示の見た目変更
 .toolbar {
   opacity: 1 !important;
-  div>span {
+  div > span {
     font-size: 1.1em !important;
     position: absolute !important;
     top: -31.5px !important;
@@ -166,14 +181,15 @@ $button-size: 40px;
       max-height: 200px;
     }
   }
-  .Article-side, .Article-date_publish {
+  .Article-side,
+  .Article-date_publish {
     display: none;
   }
 }
-.youtube-wrapper{
+.youtube-wrapper {
   position: relative;
-  padding-bottom: 56.25%; // 9/16 
-  iframe{
+  padding-bottom: 56.25%; // 9/16
+  iframe {
     position: absolute;
     top: 0;
     left: 0;

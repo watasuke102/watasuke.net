@@ -8,18 +8,21 @@
  */
 
 import React from 'react';
-import { StaticImage } from 'gatsby-plugin-image';
-import { imageUrl } from '../../config';
+import {StaticImage} from 'gatsby-plugin-image';
+import {imageUrl} from '../../config';
 
-interface Props { url: string }
+interface Props {
+  url: string;
+}
 
-export default ({ url }: Props) => {
+export default ({url}: Props) => {
   return (
     <div className='Thumbnail'>
-      {(url) ?
-        <img src={url.replace('/uploads/', `${imageUrl}/uploads/`)} alt='thumbnail' decoding="async" />
-        : <StaticImage src='../assets/thumbnail.jpg' alt='thumbnail' />
-      }
+      {url ? (
+        <img src={url.replace('/uploads/', `${imageUrl}/uploads/`)} alt='thumbnail' decoding='async' />
+      ) : (
+        <StaticImage src='../assets/thumbnail.jpg' alt='thumbnail' />
+      )}
     </div>
-  )
-}
+  );
+};

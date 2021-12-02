@@ -7,31 +7,26 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 
-import { Link } from 'gatsby';
+import {Link} from 'gatsby';
 import React from 'react';
-import '../styles/TagContainer.scss'
+import '../styles/TagContainer.scss';
 
 interface Props {
-  disable_icon?: boolean,
+  disable_icon?: boolean;
   tags: {
-    slug: string,
-    name: string,
-  }[]
+    slug: string;
+    name: string;
+  }[];
 }
 
 export default (props: Props) => {
   return (
     <div className='TagContainer-container'>
-      {!props.disable_icon && <i className="fas fa-tag" />}
+      {!props.disable_icon && <i className='fas fa-tag' />}
 
       {props.tags.map(tag => {
-        return (
-          <Link to={'/blog/tag/' + tag.slug}>
-            {tag.name}
-          </Link>
-        );
+        return <Link to={'/blog/tag/' + tag.slug}>{tag.name}</Link>;
       })}
-
-    </div >
+    </div>
   );
-}
+};

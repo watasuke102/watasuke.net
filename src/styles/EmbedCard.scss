@@ -25,7 +25,8 @@
     margin: auto;
     width: 90%;
     img {
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
     }
   }
   .EmbedCard-text {
@@ -42,7 +43,6 @@
     }
   }
 
-  
   @media screen and (min-width: 800px) {
     display: flex;
     .EmbedCard-img_wrapper {
@@ -53,4 +53,3 @@
     }
   }
 }
-

@@ -8,7 +8,7 @@
  */
 
 import React from 'react';
-import { graphql } from 'gatsby';
+import {graphql} from 'gatsby';
 import Head from '../components/Head';
 import Layout from '../components/Layout';
 import ArticleList from '../components/ArticleList';
@@ -18,21 +18,22 @@ import '../styles/blog.scss';
 
 interface Props {
   pageContext: {
-    slug: string,
-    name: string,
-  },
+    slug: string;
+    name: string;
+  };
   data: {
     allArticles: {
       nodes: Article[];
-    }
-  }
+    };
+  };
 }
 
-export default ({ pageContext, data }: Props) => {
+export default ({pageContext, data}: Props) => {
   return (
     <Layout>
       <Head
-        title={pageContext.name} desc={'タグ' + pageContext.name + 'が付けられた記事'}
+        title={pageContext.name}
+        desc={'タグ' + pageContext.name + 'が付けられた記事'}
         url={'/blog/tag/' + pageContext.slug}
       />
       <h1>{pageContext.name}</h1>
@@ -41,25 +42,23 @@ export default ({ pageContext, data }: Props) => {
       </div>
     </Layout>
   );
-}
+};
 
 export const query = graphql`
-query($slug: String) {
-  allArticles(
-    sort: {fields: published_at, order: DESC},
-    filter: {tags: {elemMatch: {slug: {eq: $slug}}}}
-  ) {
-    nodes {
-      slug
-      title
-      body
-      tags {
-        name
+  query ($slug: String) {
+    allArticles(sort: {fields: published_at, order: DESC}, filter: {tags: {elemMatch: {slug: {eq: $slug}}}}) {
+      nodes {
         slug
+        title
+        body
+        tags {
+          name
+          slug
+        }
+        thumbnail
+        published_at
+        updated_at
       }
-      thumbnail
-      published_at
-      updated_at
     }
   }
-}`;
+`;

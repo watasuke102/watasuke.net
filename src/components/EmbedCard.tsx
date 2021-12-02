@@ -12,7 +12,7 @@ import '../styles/main.scss';
 import '../styles/EmbedCard.scss';
 
 interface Props {
-  url: string,
+  url: string;
 }
 
 export default (props: Props) => {
@@ -22,7 +22,7 @@ export default (props: Props) => {
   const [description, set_description] = React.useState('');
   const [image, set_image] = React.useState('');
   React.useEffect(() => {
-    fetch(props.url)
+    fetch(props.url.replace('https', 'http'))
       .then(res => res.text())
       .then(res => {
         const doc = new DOMParser().parseFromString(res, 'text/html');
@@ -32,18 +32,21 @@ export default (props: Props) => {
           if (!kind || !value) return;
           switch (kind) {
             case 'og:title':
-              set_title(value); break;
+              set_title(value);
+              break;
             case 'og:url':
-              set_url(value); break;
+              set_url(value);
+              break;
             case 'og:description':
-              set_description(value); break;
+              set_description(value);
+              break;
             case 'og:image':
-              set_image(value); break;
+              set_image(value);
+              break;
           }
         });
       });
   }, []);
-
 
   return (
     <div className='EmbedCard-container' onClick={() => url !== '' && window.open(props.url)}>
@@ -55,6 +58,6 @@ export default (props: Props) => {
         <span className='url'>{url}</span>
         <span className='description'>{description}</span>
       </div>
-    </div >
+    </div>
   );
-}
+};

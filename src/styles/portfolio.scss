@@ -9,10 +9,12 @@
 
 // 全ページ共通
 #portfolio-container {
-  div[id^="portfolio"] {
+  div[id^='portfolio'] {
     position: absolute;
-    left: 0; top: 0;
-    width: 100vw; min-height: 100vh;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    min-height: 100vh;
     h2 {
       font-size: 4em;
       text-align: center;
@@ -24,14 +26,20 @@
   display: flex;
   align-items: center;
   margin: 5px 0;
-  p { margin: 0; }
-  i { margin-right: 10px; }
+  p {
+    margin: 0;
+  }
+  i {
+    margin-right: 10px;
+  }
 }
 
 .next-page {
   position: absolute;
-  left: 50%; bottom: 60px;
-  width: 60px; height: 60px;
+  left: 50%;
+  bottom: 60px;
+  width: 60px;
+  height: 60px;
   margin-top: auto;
   border-right: 2px solid #eee;
   border-bottom: 2px solid #eee;
@@ -39,9 +47,16 @@
   animation: 5s moving_arrow infinite ease-in-out;
 
   @keyframes moving_arrow {
-      0% { bottom: 20px; }
-     50% { bottom: 30px; opacity: 0.5; }
-    100% { bottom: 20px; }
+    0% {
+      bottom: 20px;
+    }
+    50% {
+      bottom: 30px;
+      opacity: 0.5;
+    }
+    100% {
+      bottom: 20px;
+    }
   }
 }
 
@@ -51,12 +66,15 @@
 
   .avatar-and-name {
     position: absolute;
-    left: 50%; top: 50%;
+    left: 50%;
+    top: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     justify-content: center;
-    .separator { width: 20px; }
+    .separator {
+      width: 20px;
+    }
     .name-main {
       font-weight: bold;
       font-size: 2.5em;
@@ -164,7 +182,6 @@
         }
       }
     }
-    
   }
 }
 
@@ -179,11 +196,12 @@
   .card {
     margin: 30px auto;
     border-radius: 10px;
-    background-color:  #3d3d3d;
+    background-color: #3d3d3d;
 
     display: grid;
     align-items: center;
-    width: 500px; height: 130px;
+    width: 500px;
+    height: 130px;
     grid-template-rows: 50px 80px;
     grid-template-columns: 150px 350px;
 
@@ -202,10 +220,10 @@
       align-items: baseline;
     }
 
-    
     @media screen and (max-width: 550px) {
       padding: 0 15px;
-      width: 70%; height: auto;
+      width: 70%;
+      height: auto;
       display: flex;
       flex-direction: column;
       a {

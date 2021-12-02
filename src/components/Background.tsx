@@ -8,20 +8,24 @@
  */
 
 import React from 'react';
-import '../styles/Background.scss'
+import '../styles/Background.scss';
 
-
-interface Vec { x: number, y: number };
+interface Vec {
+  x: number;
+  y: number;
+}
 
 interface FigureInfo extends Vec {
-  size: number,
-  color: string,
-  animation_x: number,
-  animation_y: number,
-};
+  size: number;
+  color: string;
+  animation_x: number;
+  animation_y: number;
+}
 
 enum Figure {
-  triangle, circle, cube
+  triangle,
+  circle,
+  cube,
 }
 
 function rand(x: number) {
@@ -38,19 +42,31 @@ export default class Background extends React.Component<any> {
     const align = 10;
     // 三角形
     this.pos[Figure.triangle] = {
-      x: 0, y: 0, size: 170 + rand(align), color: '#3dd651',
-      animation_x: rand(360), animation_y: rand(360)
+      x: 0,
+      y: 0,
+      size: 170 + rand(align),
+      color: '#3dd651',
+      animation_x: rand(360),
+      animation_y: rand(360),
     };
     // 円
     // これだけ色指定を0～255のrgbで指定
     this.pos[Figure.circle] = {
-      x: 0, y: 0, size: 0, color: '228,127,69',
-      animation_x: 0, animation_y: 1
+      x: 0,
+      y: 0,
+      size: 0,
+      color: '228,127,69',
+      animation_x: 0,
+      animation_y: 1,
     };
     // 正方形
     this.pos[Figure.cube] = {
-      x: 0, y: 0, size: 334 + rand(align), color: '#3d5ada',
-      animation_x: 0, animation_y: 0
+      x: 0,
+      y: 0,
+      size: 334 + rand(align),
+      color: '#3d5ada',
+      animation_x: 0,
+      animation_y: 0,
     };
     this.InitToBasePositions();
   }
@@ -90,13 +106,13 @@ export default class Background extends React.Component<any> {
       base_pos = this.pos[Figure.triangle];
       // 周期関数（三角関数）でアニメーション
       // ちょっと変えたかったので、x, yでそれぞれsin, cosを使ってる
-      base_pos.x += Math.cos(base_pos.animation_x / 180 * Math.PI) * 6;
-      base_pos.y += Math.sin(base_pos.animation_y / 180 * Math.PI) * 6;
+      base_pos.x += Math.cos((base_pos.animation_x / 180) * Math.PI) * 6;
+      base_pos.y += Math.sin((base_pos.animation_y / 180) * Math.PI) * 6;
       context.strokeStyle = base_pos.color;
       context.lineWidth = 14;
       context.lineCap = 'round';
       context.beginPath();
-      base_pos.y -= (base_pos.size / 2);
+      base_pos.y -= base_pos.size / 2;
       context.moveTo(base_pos.x, base_pos.y);
       base_pos.x += base_pos.size * Math.cos(Math.PI / 3);
       base_pos.y += base_pos.size * Math.sin(Math.PI / 3);
@@ -109,11 +125,10 @@ export default class Background extends React.Component<any> {
       // アニメーション
       this.pos[Figure.triangle].animation_x += 0.8;
       this.pos[Figure.triangle].animation_y += 0.8;
-
     }
 
     // 円
-    // animation_x -> 半径 (増加量), animation_y -> 
+    // animation_x -> 半径 (増加量), animation_y ->
     {
       base_pos = this.pos[Figure.circle];
       context.lineWidth = 8;
@@ -138,13 +153,13 @@ export default class Background extends React.Component<any> {
     // animation_x -> 角度
     {
       base_pos = this.pos[Figure.cube];
-      const rad = base_pos.animation_x / 180 * Math.PI;
+      const rad = (base_pos.animation_x / 180) * Math.PI;
 
       // 中央座標から4隅の座標を求める
-      let left_top: Vec = { x: base_pos.x - base_pos.size / 2, y: base_pos.y - base_pos.size / 2 };
-      let right_bottom: Vec = { x: left_top.x + base_pos.size, y: left_top.y + base_pos.size };
-      let right_top: Vec = { x: right_bottom.x, y: left_top.y };
-      let left_bottom: Vec = { x: left_top.x, y: right_bottom.y };
+      let left_top: Vec = {x: base_pos.x - base_pos.size / 2, y: base_pos.y - base_pos.size / 2};
+      let right_bottom: Vec = {x: left_top.x + base_pos.size, y: left_top.y + base_pos.size};
+      let right_top: Vec = {x: right_bottom.x, y: left_top.y};
+      let left_bottom: Vec = {x: left_top.x, y: right_bottom.y};
       // 原点中心に回転する方法しか見当たらなかったので
       // 図形の中央を原点まで移動させ、回転させたあとに戻す
       const rotate = (prop: Vec) => {
@@ -152,12 +167,12 @@ export default class Background extends React.Component<any> {
         prop.y -= base_pos.y;
         let result: Vec = {
           x: prop.x * Math.cos(rad) - prop.y * Math.sin(rad),
-          y: prop.x * Math.sin(rad) + prop.y * Math.cos(rad)
+          y: prop.x * Math.sin(rad) + prop.y * Math.cos(rad),
         };
         result.x += base_pos.x;
         result.y += base_pos.y;
         return result;
-      }
+      };
       left_top = rotate(left_top);
       right_top = rotate(right_top);
       right_bottom = rotate(right_bottom);
@@ -182,7 +197,7 @@ export default class Background extends React.Component<any> {
       // アニメーション
       this.pos[Figure.cube].animation_x += 0.07;
     }
-  }
+  };
 
   componentDidMount() {
     this.UpdateCanvasSize();
@@ -201,7 +216,7 @@ export default class Background extends React.Component<any> {
       canvas.height = window.innerHeight;
     }
     this.InitToBasePositions();
-  }
+  };
 
   render() {
     return <canvas ref={this.canvas_ref} className='Background-canvas' />;

@@ -11,8 +11,8 @@ import React from 'react';
 import '../styles/SkillCard.scss';
 
 interface Props {
-  name: string,
-  body?: string,
+  name: string;
+  body?: string;
 }
 
 export default (props: Props) => {
@@ -22,4 +22,4 @@ export default (props: Props) => {
       {props.body && <p className='body'>{props.body}</p>}
     </div>
   );
-}
+};

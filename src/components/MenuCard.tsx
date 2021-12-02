@@ -8,13 +8,13 @@
  */
 
 import React from 'react';
-import { navigate } from 'gatsby';
+import {navigate} from 'gatsby';
 import '../styles/MenuCard.scss';
 
 interface Props {
-  icon: string,
-  text: string,
-  url: string
+  icon: string;
+  text: string;
+  url: string;
 }
 
 export default (props: Props) => {
@@ -24,4 +24,4 @@ export default (props: Props) => {
       <p>{props.text}</p>
     </div>
   );
-}
+};

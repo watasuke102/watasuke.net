@@ -8,5 +8,5 @@
  */
 
 declare module 'remark-slug' {
-  export default function slug()
+  export default function slug();
 }
