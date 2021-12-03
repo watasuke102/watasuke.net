@@ -11,7 +11,7 @@ const path = require('path');
 const fetch = require('node-fetch');
 
 // サイトのデータ登録
-exports.createSchemaCustomization = ({ actions }) => {
+exports.createSchemaCustomization = ({actions}) => {
   actions.createTypes(`
     type Tag @dontInfer {
       slug: String,
@@ -28,8 +28,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       tags: [Tag],
     }
   `);
-}
-exports.sourceNodes = async ({ actions, createContentDigest }) => {
+};
+exports.sourceNodes = async ({actions, createContentDigest}) => {
   let response;
   // サイトのデータ（プロフィールとかなんとか）を登録
   response = await fetch('http://localhost:1337/sitedata');
@@ -42,9 +42,11 @@ exports.sourceNodes = async ({ actions, createContentDigest }) => {
       internal: {
         type: 'SiteData',
         contentDigest: createContentDigest(item),
-      }
-    })
-  })
+      },
+    });
+  });
+
+  let url_list = [];
   // ブログ記事を登録
   response = await fetch('http://localhost:1337/articles');
   const articles = await response.json();
@@ -55,15 +57,49 @@ exports.sourceNodes = async ({ actions, createContentDigest }) => {
       title: item.title,
       body: item.body,
       tags: item.tags,
-      thumbnail: (item.thumbnail) ? item.thumbnail.formats.thumbnail.url : null,
+      thumbnail: item.thumbnail ? item.thumbnail.formats.thumbnail.url : null,
       published_at: item.published_at,
       updated_at: item.updated_at,
       internal: {
         type: 'Articles',
         contentDigest: createContentDigest(item),
-      }
-    })
-  })
+      },
+    });
+    let urls = item.body.match(/https?:\/\/[\w/:%#\$&\?~\.=\+\-]+/g);
+    if (urls) {
+      url_list = url_list.concat(urls);
+    }
+  });
+
+  // 各URL（重複排除）のOGPタグを登録
+  console.log('* Start collectiong OGP...');
+  console.log('* url_list: ', Array.from(new Set(url_list)));
+  Array.from(new Set(url_list)).forEach(async (url, i) => {
+    // TwitterとYouTubeは専用の埋め込みがあるのでいらない
+    if (url.slice(0, 19) === 'https://twitter.com' || url.slice(0, 23) === 'https://www.youtube.com') return;
+    let OgpParser = require('ogp-parser');
+    const ogp = await OgpParser(url);
+    console.log('**********************');
+    console.log(`url: ${url}`);
+    console.log(ogp);
+    let desc = '';
+    if (ogp.seo.description) {
+      desc = ogp.seo.description.reduce((prev, cur) => prev + cur);
+    } else if (ogp.ogp['og:description']) {
+      desc = ogp.ogp['og:description'].reduce((prev, cur) => prev + cur);
+    }
+    actions.createNode({
+      id: String(i),
+      url: url,
+      title: ogp.title,
+      description: desc,
+      image: ogp.ogp['og:image'] ? ogp.ogp['og:image'][0] : '',
+      internal: {
+        type: 'ogp',
+        contentDigest: createContentDigest(url),
+      },
+    });
+  });
 
   // タグ一覧を登録
   response = await fetch('http://localhost:1337/tags');
@@ -76,14 +112,13 @@ exports.sourceNodes = async ({ actions, createContentDigest }) => {
       internal: {
         type: 'Tags',
         contentDigest: createContentDigest(item),
-      }
+      },
     });
-  })
-}
-
+  });
+};
 
 // ページ作成
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({graphql, actions}) => {
   // 投稿ページ
   const response = await graphql(`
     query {
@@ -102,14 +137,14 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `)
+  `);
   const articles = response.data.allArticles.nodes;
   let tag_list = new Set();
   articles.forEach(item => {
     actions.createPage({
       path: `/blog/article/${item['slug']}`,
       component: path.resolve('./src/template/Article.tsx'),
-      context: item
+      context: item,
     });
     item.tags.forEach(tag => tag_list.add(tag));
   });
@@ -119,8 +154,8 @@ exports.createPages = async ({ graphql, actions }) => {
       actions.createPage({
         path: `/blog/tag/${tag['slug']}`,
         component: path.resolve('./src/template/Tag.tsx'),
-        context: tag
+        context: tag,
       });
     }
   }
-}
+};

@@ -68,8 +68,8 @@ function Link(props: Node): React.ReactElement {
       />
     );
   }
-  return <a href={props.href}>{props.children[0]}</a>;
-  //<EmbedCard url={props.href} />;
+  return <EmbedCard url={props.href} />;
+  //<a href={props.href}>{props.children[0]}</a>;
 }
 
 export default (prop: Props) => {
