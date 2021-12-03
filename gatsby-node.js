@@ -77,28 +77,29 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
   Array.from(new Set(url_list)).forEach(async (url, i) => {
     // TwitterとYouTubeは専用の埋め込みがあるのでいらない
     if (url.slice(0, 19) === 'https://twitter.com' || url.slice(0, 23) === 'https://www.youtube.com') return;
-    let OgpParser = require('ogp-parser');
-    const ogp = await OgpParser(url);
-    console.log('**********************');
-    console.log(`url: ${url}`);
-    console.log(ogp);
-    let desc = '';
-    if (ogp.seo.description) {
-      desc = ogp.seo.description.reduce((prev, cur) => prev + cur);
-    } else if (ogp.ogp['og:description']) {
-      desc = ogp.ogp['og:description'].reduce((prev, cur) => prev + cur);
+    try {
+      let OgpParser = require('ogp-parser');
+      const ogp = await OgpParser(url);
+      let desc = '';
+      if (ogp.seo.description) {
+        desc = ogp.seo.description.reduce((prev, cur) => prev + cur);
+      } else if (ogp.ogp['og:description']) {
+        desc = ogp.ogp['og:description'].reduce((prev, cur) => prev + cur);
+      }
+      actions.createNode({
+        id: String(i),
+        url: url,
+        title: ogp.title,
+        description: desc,
+        image: ogp.ogp['og:image'] ? ogp.ogp['og:image'][0] : '',
+        internal: {
+          type: 'ogp',
+          contentDigest: createContentDigest(url),
+        },
+      });
+    } catch {
+      continue;
     }
-    actions.createNode({
-      id: String(i),
-      url: url,
-      title: ogp.title,
-      description: desc,
-      image: ogp.ogp['og:image'] ? ogp.ogp['og:image'][0] : '',
-      internal: {
-        type: 'ogp',
-        contentDigest: createContentDigest(url),
-      },
-    });
   });
 
   // タグ一覧を登録
@@ -148,6 +149,7 @@ exports.createPages = async ({graphql, actions}) => {
     });
     item.tags.forEach(tag => tag_list.add(tag));
   });
+
   // タグを含む記事の一覧ページを作る
   if (tag_list.length != 0) {
     for (let tag of tag_list) {
