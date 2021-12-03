@@ -97,8 +97,8 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
           contentDigest: createContentDigest(url),
         },
       });
-    } catch {
-      continue;
+    } catch (e) {
+      console.error(`[ERROR] cannot fetch OGP data from ${url}`);
     }
   });
 
