@@ -13,7 +13,23 @@ const fetch = require('node-fetch');
 // サイトのデータ登録
 exports.createSchemaCustomization = ({actions}) => {
   actions.createTypes(`
+    type Ogp implements Node @dontInfer {
+      url: String,
+      title: String,
+      description: String,
+      image: String
+    }
+    type SiteData implements Node @dontInfer {
+      slug: String,
+      body: String
+    }
+
     type Tag @dontInfer {
+      slug: String,
+      name: String
+    }
+    
+    type Tags implements Node @dontInfer {
       slug: String,
       name: String
     }
@@ -25,7 +41,7 @@ exports.createSchemaCustomization = ({actions}) => {
       thumbnail: String,
       published_at: String,
       updated_at: String,
-      tags: [Tag],
+      tags: [Tag]
     }
   `);
 };
@@ -36,7 +52,7 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
   const data = await response.json();
   data.forEach(item => {
     actions.createNode({
-      id: String(item.id),
+      id: `SiteData_${item.id}`,
       slug: item.slug,
       body: item.body,
       internal: {
@@ -50,9 +66,11 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
   // ブログ記事を登録
   response = await fetch('http://localhost:1337/articles');
   const articles = await response.json();
+  console.log('** Creating article nodes...');
   articles.forEach(item => {
+    //console.log(`${item.title} (${item.slug}) tag: `, item.tags);
     actions.createNode({
-      id: String(item.id),
+      id: `Article_${item.id}`,
       slug: item.slug,
       title: item.title,
       body: item.body,
@@ -87,13 +105,13 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
         desc = ogp.ogp['og:description'].reduce((prev, cur) => prev + cur);
       }
       actions.createNode({
-        id: String(i),
+        id: `Ogp_${i}`,
         url: url,
         title: ogp.title,
         description: desc,
         image: ogp.ogp['og:image'] ? ogp.ogp['og:image'][0] : '',
         internal: {
-          type: 'ogp',
+          type: 'Ogp',
           contentDigest: createContentDigest(url),
         },
       });
@@ -107,7 +125,7 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
   const tags = await response.json();
   tags.forEach(item => {
     actions.createNode({
-      id: String(item.id),
+      id: `Tags_${item.id}`,
       slug: item.slug,
       name: item.name,
       internal: {
@@ -147,7 +165,7 @@ exports.createPages = async ({graphql, actions}) => {
       component: path.resolve('./src/template/Article.tsx'),
       context: item,
     });
-    item.tags.forEach(tag => tag_list.add(tag));
+    if (Array.isArray(item.tags)) item.tags.forEach(tag => tag_list.add(tag));
   });
 
   // タグを含む記事の一覧ページを作る
