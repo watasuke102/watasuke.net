@@ -156,7 +156,7 @@ export default (prop: Props) => {
 
           <Remark remarkPlugins={[Gfm, Toc, Slug]} rehypeReactOptions={{components: {a: Link}}}>
             {/* 画像のURLを置き換える */}
-            {data.body.replace(/uploads/g, `${imageUrl}/uploads`)}
+            {data.body.replace(/\/uploads/g, `${imageUrl}/uploads`)}
           </Remark>
         </div>
 
