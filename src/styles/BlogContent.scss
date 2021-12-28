@@ -1,0 +1,74 @@
+/*!
+ * BlogContent.scss
+ *
+ * CopyRight (c) 2021 Watasuke
+ * Email  : <watasuke102@gmail.com>
+ * Twitter: @Watasuke102
+ * This software is released under the MIT SUSHI-WARE License.
+ */
+
+@import 'toc-animation';
+
+.BlogContent-container {
+  .Thumbnail img {
+    width: 100%;
+    max-height: 400px;
+    margin: auto;
+    object-fit: cover;
+  }
+  hr {
+    margin-bottom: 50px;
+  }
+  blockquote {
+    border-left: solid 5px white;
+    padding-left: 10px;
+    color: #bbb;
+  }
+}
+
+// 目次部分
+.BlogContent-table_of_contents_container {
+  margin-top: 50px;
+  padding: 5px 20px;
+  background-color: #404e40;
+  font-size: 1.3em;
+  h2 {
+    margin: 0;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .BlogContent-body {
+    width: 110%;
+    margin: auto;
+  }
+  .BlogContent-body_img {
+    max-height: 250px;
+  }
+}
+
+.BlogContent-body_img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 90%;
+  max-height: 400px;
+}
+
+$button-size: 40px;
+.BlogContent-close_button {
+  position: relative;
+  top: 10px;
+  right: 10px;
+  width: $button-size;
+  height: $button-size;
+  background-color: #688f77;
+  // アイコン
+  i {
+    position: inherit;
+    left: 7px;
+    font-size: $button-size;
+    margin: auto;
+  }
+}

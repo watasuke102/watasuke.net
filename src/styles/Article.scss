@@ -62,45 +62,6 @@ $second-bg-color: #1f221f;
   width: 70%;
   background-color: $second-bg-color;
   padding: 15px;
-  .Thumbnail img {
-    width: 100%;
-    max-height: 400px;
-    margin: auto;
-    object-fit: cover;
-  }
-  hr {
-    margin-bottom: 50px;
-  }
-  blockquote {
-    border-left: solid 5px white;
-    padding-left: 10px;
-    color: #bbb;
-  }
-}
-
-.Article-body_img {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: 90%;
-  max-height: 400px;
-}
-.Article-table_of_contents {
-  #toc-1 {
-    font-weight: bolder;
-  }
-  #toc-3 {
-    margin-left: 20px;
-  }
-  #toc-4 {
-    margin-left: 40px;
-  }
-  #toc-5 {
-    margin-left: 60px;
-  }
-  #toc-6 {
-    margin-left: 80px;
-  }
 }
 
 // 目次部分
@@ -112,23 +73,6 @@ $second-bg-color: #1f221f;
   h2 {
     margin: 0;
     text-align: center;
-  }
-}
-
-$button-size: 40px;
-.Article-close_button {
-  position: relative;
-  top: 10px;
-  right: 10px;
-  width: $button-size;
-  height: $button-size;
-  background-color: #688f77;
-  // アイコン
-  i {
-    position: inherit;
-    left: 7px;
-    font-size: $button-size;
-    margin: auto;
   }
 }
 
