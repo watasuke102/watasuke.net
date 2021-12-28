@@ -69,7 +69,6 @@ function Link(props: Node): React.ReactElement {
     );
   }
   return <EmbedCard url={props.href} />;
-  //<a href={props.href}>{props.children[0]}</a>;
 }
 
 export default (prop: Props) => {
@@ -109,6 +108,13 @@ export default (prop: Props) => {
   const [tocOpening, SetTocOpening] = React.useState(true);
   // 目次を表示するかどうか (見出しが2つ以下なら表示しない)
   const is_show_toc = table_of_contents.props.children.length > 2;
+
+  const rehype_react_options = {
+    components: {
+      a: Link,
+      img: props => <img className='Article-body_img' {...props} />,
+    },
+  };
 
   return (
     <Layout>
@@ -154,7 +160,7 @@ export default (prop: Props) => {
             </>
           )}
 
-          <Remark remarkPlugins={[Gfm, Toc, Slug]} rehypeReactOptions={{components: {a: Link}}}>
+          <Remark remarkPlugins={[Gfm, Toc, Slug]} rehypeReactOptions={rehype_react_options}>
             {/* 画像のURLを置き換える */}
             {data.body.replace(/\/uploads/g, `${imageUrl}/uploads`)}
           </Remark>

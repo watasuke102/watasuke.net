@@ -68,11 +68,6 @@ $second-bg-color: #1f221f;
     margin: auto;
     object-fit: cover;
   }
-  img {
-    display: block;
-    width: 95%;
-    margin: 0 auto;
-  }
   hr {
     margin-bottom: 50px;
   }
@@ -83,6 +78,13 @@ $second-bg-color: #1f221f;
   }
 }
 
+.Article-body_img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 90%;
+  max-height: 400px;
+}
 .Article-table_of_contents {
   #toc-1 {
     font-weight: bolder;
@@ -177,10 +179,11 @@ $button-size: 40px;
   .Article-body {
     width: 110%;
     margin: auto;
-    img {
-      max-height: 200px;
-    }
   }
+  .Article-body_img {
+    max-height: 250px;
+  }
+
   .Article-side,
   .Article-date_publish {
     display: none;
