@@ -18,7 +18,9 @@ import TagContainer from '../components/TagContainer';
 import Article from '../types/Article';
 import '../styles/main.scss';
 import '../styles/Article.scss';
+import '../styles/TableOfContents.scss';
 import BlogContent from '../components/BlogContent';
+import ExtractHeading from '../utils/ExtractHeading';
 
 interface Props {
   pageContext: Article;
@@ -26,28 +28,8 @@ interface Props {
 
 export default (prop: Props) => {
   const data = prop.pageContext;
-  // 見出し要素を見つけるための正規表現
-  const heading_regexp = /^\#\#* (.*)/;
-  // 内容をstripで行ごとに検証、filterで見出しの行だけ取り出し、
-  // # (見出しを示す記号）を削除して配列に格納
-  const toc = data.body.split('\n').filter(str => str.match(heading_regexp));
   // クリックするとそこまで飛べる目次を生成する
-  const table_of_contents = (
-    <div className='Article-table_of_contents'>
-      {toc.map(str => {
-        const count = str.match(/\#/g)?.length;
-        str = str.replace(heading_regexp, '$1');
-        return (
-          <li id={`toc-${count}`}>
-            <a href={`#${str.toLowerCase()}`}>{str}</a>
-          </li>
-        );
-      })}
-    </div>
-  );
-
-  // 目次を表示するかどうか (見出しが2つ以下なら表示しない)
-  const is_show_toc = table_of_contents.props.children.length > 2;
+  const table_of_contents = ExtractHeading(data.body);
 
   return (
     <Layout>
@@ -79,14 +61,22 @@ export default (prop: Props) => {
           {/* タグ */}
           <TagContainer tags={data.tags} />
 
-          <BlogContent body={data.body} tocComponent={table_of_contents} />
+          <BlogContent body={data.body} />
         </div>
 
         {/* サイドバー */}
         <div className='Article-side'>
           <ProfileCard />
           <TagListCard />
-          {is_show_toc && <div className='Article-side_toc'>{table_of_contents}</div>}
+          {table_of_contents.length > 2 && (
+            <div className='Article-side_toc'>
+              {table_of_contents.map(item => (
+                <li className={`toc-${item.size}`}>
+                  <a href={`#${item.body.toLowerCase()}`}>{item.body}</a>
+                </li>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </Layout>

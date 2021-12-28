@@ -14,6 +14,7 @@ import EmbedCard from '../components/EmbedCard';
 import {imageUrl} from '../../config';
 
 import '../styles/BlogContent.scss';
+import '../styles/TableOfContents.scss';
 
 // Remark関連
 import Gfm from 'remark-gfm';
@@ -22,10 +23,10 @@ import Slug from 'remark-slug';
 
 // コードのシンタックスハイライト
 import Prism from 'prismjs';
+import ExtractHeading from '../utils/ExtractHeading';
 
 interface Props {
   body: string;
-  tocComponent?: React.ReactElement;
 }
 
 interface Node {
@@ -85,11 +86,12 @@ export default (props: Props) => {
   };
 
   const [tocOpening, SetTocOpening] = React.useState(true);
+  const table_of_contents = ExtractHeading(props.body);
   return (
     <div className='BlogContent-container'>
       {
         // 見出しが2個未満だったら目次を出しても違和感がある気がする
-        props.tocComponent && (
+        table_of_contents.length > 2 && (
           <>
             <div className='BlogContent-table_of_contents_container'>
               <div className='BlogContent-close_button' onClick={() => SetTocOpening(!tocOpening)}>
@@ -97,7 +99,13 @@ export default (props: Props) => {
               </div>
               <h2>目次</h2>
               <CSSTransition in={tocOpening} timeout={1000} classNames='toc-animation'>
-                <ol className='toc-animation'>{props.tocComponent}</ol>
+                <ol className='toc-animation'>
+                  {table_of_contents.map(item => (
+                    <li className={`toc-${item.size}`}>
+                      <a href={`#${item.body.toLowerCase()}`}>{item.body}</a>
+                    </li>
+                  ))}
+                </ol>
               </CSSTransition>
             </div>
             <hr />
