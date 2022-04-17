@@ -48,7 +48,12 @@ exports.createSchemaCustomization = ({actions}) => {
 exports.sourceNodes = async ({actions, createContentDigest}) => {
   let response;
   // サイトのデータ（プロフィールとかなんとか）を登録
-  response = await fetch('http://localhost:1337/sitedata');
+  let failed = false;
+  response = await fetch('http://localhost:1337/sitedata').catch(_ => {
+    console.log('[INFO] Failed to fetch from API. Cancel to create node.');
+    failed = true;
+  });
+  if (failed) return;
   const data = await response.json();
   data.forEach(item => {
     actions.createNode({

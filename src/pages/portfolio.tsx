@@ -44,7 +44,7 @@ export default () => {
               </div>
             </div>
           </div>
-          <div className='next-page' />
+          <div className='next-page'><span>Scroll</span></div>
         </div>
 
         <div id='portfolio-1'>
