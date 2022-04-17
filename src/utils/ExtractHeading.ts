@@ -1,13 +1,13 @@
 /*!
  * ExtractHeading.scss
  *
- * CopyRight (c) 2021 Watasuke
+ * CopyRight (c) 2021-2022 Watasuke
  * Email  : <watasuke102@gmail.com>
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
 
-import Heading from "../types/Heading";
+import Heading from '../types/Heading';
 
 /*
 マークダウンから見出しだけを抽出する
@@ -27,7 +27,7 @@ this is normal text.
 */
 
 export default function ExtractHeading(str: string): Heading[] {
-  console.log(str)
+  console.log(str);
   // 見出し要素を見つけるための正規表現
   // 文頭が1個以上の# + 空白 + 何らかの文字列
   const heading_regexp = /^\#+ (.*)/;
@@ -38,9 +38,9 @@ export default function ExtractHeading(str: string): Heading[] {
     .filter(str => str.match(heading_regexp))
     .map(str => {
       return {
-        size:  str.match(/\#/g)?.length ?? -1,
+        size: str.match(/\#/g)?.length ?? -1,
         body: str.replace(heading_regexp, '$1'),
-      }
+      };
     });
   return result;
 }

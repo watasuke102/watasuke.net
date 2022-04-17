@@ -1,7 +1,7 @@
 /*!
  * portfolio.tsx
  *
- * CopyRight (c) 2021 Watasuke
+ * CopyRight (c) 2021-2022 Watasuke
  * Email  : <watasuke102@gmail.com>
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
@@ -44,7 +44,9 @@ export default () => {
               </div>
             </div>
           </div>
-          <div className='next-page'><span>Scroll</span></div>
+          <div className='next-page'>
+            <span>Scroll</span>
+          </div>
         </div>
 
         <div id='portfolio-1'>
@@ -213,7 +215,7 @@ export default () => {
             </div>
           </div>
           <p>
-            Copyright(C) 2021 Watasuke
+            Copyright (C) 2021-2022 Watasuke
             <br />
             Powered by Gatsby
           </p>
