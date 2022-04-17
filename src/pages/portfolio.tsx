@@ -115,11 +115,11 @@ export default () => {
             <div className='card'>
               <StaticImage width={400} alt='timetree-noticebot' src='../assets/works/timetree-noticebot.jpg' />
               <div className='desc'>
-                <a href='https://github.com/watasuke102/TimeTree-NoticeBot'>TimeTree-NoticeBot</a>
+                <a href='https://github.com/watasuke102/TimeTree-NoticeBot-rust'>TimeTree-NoticeBot</a>
                 <p>
                   指定したTimeTreeカレンダーの予定を朝8時および予定開始10分前にDiscordへ通知します。
                   <br />
-                  使用技術: Python
+                  使用技術: Rust
                 </p>
               </div>
             </div>
