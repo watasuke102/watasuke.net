@@ -20,41 +20,41 @@ export default () => {
     <div id='portfolio-container'>
       <Head title={'ポートフォリオ'} desc={'ポートフォリオです'} url={'/portfolio'} />
       <Container>
-        <div id='portfolio-0'>
-          <h2>Hi there👋</h2>
-          <div className='avatar-and-name'>
-            <StaticImage height={200} src='../assets/icon.jpg' alt='icon' />
-            <div className='separator' />
-            <div>
-              <p className='name-main'>わたすけ</p>
-              <p className='name-sub'>Watasuke</p>
+        <div id='portfolio-welcome'>
+          <h2 className='greeting'>Hi there👋</h2>
+
+          <div className='center'>
+            <div className='avatar-and-name'>
+              <StaticImage height={200} src='../assets/icon.jpg' alt='icon' />
+              <div className='separator' />
               <div>
-                <div className='icon-and-text'>
-                  <i className='fab fa-twitter' />
-                  <p>@Watasuke102</p>
-                </div>
-                <div className='icon-and-text'>
-                  <i className='fab fa-github' />
-                  <p>watasuke102</p>
-                </div>
-                <div className='icon-and-text'>
-                  <i className='fas fa-envelope' />
-                  <p>watasuke102@gmail.com</p>
+                <p className='name-main'>わたすけ</p>
+                <p className='name-sub'>Watasuke</p>
+                <div>
+                  <div className='icon-and-text'>
+                    <i className='fab fa-twitter' />
+                    <p>@Watasuke102</p>
+                  </div>
+                  <div className='icon-and-text'>
+                    <i className='fab fa-github' />
+                    <p>watasuke102</p>
+                  </div>
+                  <div className='icon-and-text'>
+                    <i className='fas fa-envelope' />
+                    <p>watasuke102@gmail.com</p>
+                  </div>
                 </div>
               </div>
+            </div>
+            <div className='bio'>
+              <p>2004年生まれの高専生です</p>
+              <p>プログラミングでツールを作ったり、フロントエンド開発したりしています</p>
+              <p>AR/MR を始めとする xR や HCI の力で、人間のやることを減らすのが目標です</p>
             </div>
           </div>
           <div className='next-page'>
             <span>Scroll</span>
           </div>
-        </div>
-
-        <div id='portfolio-1'>
-          <h2>About me</h2>
-          <p>2004年生まれの高専生です</p>
-          <p>プログラミングでツールを作ったり、フロントエンド開発したりしています</p>
-          <p>AR/MRを始めとするxRに興味があります</p>
-          <div className='next-page' />
         </div>
 
         <div id='portfolio-2'>
@@ -63,6 +63,7 @@ export default () => {
             <div className='categoly'>
               <p className='heading'>Languages</p>
               <SkillCard name='C/C++' body='使用歴が最も長い言語です' />
+              <SkillCard name='Rust' body='DiscordのBot、自作OSに' />
               <SkillCard name='TypeScript' body='Reactと一緒に使います' />
               <SkillCard name='HTML' />
             </div>
@@ -79,7 +80,7 @@ export default () => {
               <SkillCard name='Linux' body='Arch Linuxを主に使用しています' />
               <SkillCard name='Git' body='コミットなど基本的な知識はあります' />
               <SkillCard name='GitHub' />
-              <SkillCard name='Docker' />
+              <SkillCard name='Docker' body='このサイトは一部docker-composeによって運用されています' />
             </div>
             <div className='categoly'>
               <p className='heading'>Other</p>
@@ -88,8 +89,6 @@ export default () => {
               <SkillCard name='AviUtl' />
               <SkillCard name='Blender' body='高度なモデリングはできません' />
               <SkillCard name='DTM' body='かなり低頻度' />
-              <SkillCard name='Go' body='興味があります' />
-              <SkillCard name='Rust' body='興味があります' />
             </div>
           </div>
           <div className='next-page' />

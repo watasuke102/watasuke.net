@@ -71,17 +71,17 @@
 }
 
 // first page
-#portfolio-0 {
+#portfolio-welcome {
   background-color: #4b4692;
-
+  
+  .greeting {
+    margin-bottom: 64px;
+  }
   .avatar-and-name {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 64px;
     .separator {
       width: 20px;
     }
@@ -104,15 +104,15 @@
       }
     }
   }
-}
 
-// about me
-#portfolio-1 {
-  background-color: #92466c;
-  text-align: center;
-  p {
-    margin: 0 30px;
-    font-size: 1.2em;
+  .bio {
+    width: 100%;
+    text-align: center;
+    p {
+      margin-bottom: 4px;
+    }
+    // for scroll-indicator
+    padding-bottom: 128px;
   }
 }
 
