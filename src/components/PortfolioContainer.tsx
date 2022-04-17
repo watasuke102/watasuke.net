@@ -8,7 +8,6 @@
  */
 
 import React from 'react';
-import {gsap, Power4} from 'gsap';
 import {AnimatePresence, motion} from 'framer-motion';
 import '../styles/PortfolioContainer.scss';
 
@@ -85,31 +84,15 @@ export default class PortfolioContainer extends React.Component<Props, States> {
       this.state.current_page != this.props.children.length - 1 &&
       e.deltaY > 0 // 下にスクロールしていた場合
     ) {
-      this.CreateTransition(Position.reached_bottom);
-      this.setState({place: Position.none});
+      this.setState({place: Position.reached_bottom, is_moving_page: true});
       // 前のページに移動させる
     } else if (
       (this.state.place == Position.reached_top || changeable) &&
       this.state.current_page != 0 &&
       e.deltaY < 0 // 上にスクロールしていた場合
     ) {
-      this.CreateTransition(Position.reached_top);
-      this.setState({place: Position.none});
+      this.setState({place: Position.reached_top, is_moving_page: true});
     }
-  }
-
-  // ページ移動アニメーションの実行
-  CreateTransition(pos: Position) {
-    if (!this.container) return;
-    // Elements
-    document.getElementById('PortfolioContainer-container')?.scrollTo(0, 0);
-    this.setState({
-      current_page: this.state.current_page + pos,
-      is_moving_page: false,
-      // スクロール位置は一番上のはず
-      place: Position.reached_top,
-      scroll_height: 0,
-    });
   }
 
   ScrollListener = () => this.UpdateScrollBar();
@@ -138,6 +121,20 @@ export default class PortfolioContainer extends React.Component<Props, States> {
                   animate={{opacity: 1, scale: 1}}
                   exit={{opacity: 0, scale: 0.9}}
                   transition={{duration: 0.5, ease: 'circOut'}}
+                  onAnimationComplete={() => {
+                    if (this.state.is_moving_page) {
+                      // フェードアウト後、スクロールをリセットしてページ切り替え
+                      document.getElementById('PortfolioContainer-container')?.scrollTo(0, 0);
+                      this.setState((state, _) => {
+                        console.log(state);
+                        return {
+                          is_moving_page: false,
+                          current_page: state.current_page + state.place,
+                          place: Position.reached_top,
+                        };
+                      });
+                    }
+                  }}
                   id='PortfolioContainer-container'
                 >
                   {this.props.children[this.state.current_page]}
