@@ -56,7 +56,7 @@ export default class PortfolioContainer extends React.Component<Props, States> {
     const interval = 100;
     if (percent === 0) {
       setTimeout(() => this.setState({place: Position.reached_top}), interval);
-    } else if (percent === 1) {
+    } else if (percent >= 0.98) {
       setTimeout(() => this.setState({place: Position.reached_bottom}), interval);
     } else {
       this.setState({place: Position.none});
