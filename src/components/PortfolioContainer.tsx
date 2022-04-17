@@ -9,6 +9,7 @@
 
 import React from 'react';
 import {gsap, Power4} from 'gsap';
+import {AnimatePresence, motion} from 'framer-motion';
 import '../styles/PortfolioContainer.scss';
 
 enum Position {
@@ -100,68 +101,15 @@ export default class PortfolioContainer extends React.Component<Props, States> {
   // ページ移動アニメーションの実行
   CreateTransition(pos: Position) {
     if (!this.container) return;
-    this.setState({is_moving_page: true});
     // Elements
-    const scroll_bar = document.getElementById('PortfolioContainer-scroll');
-    const container_2nd = document.getElementById(
-      pos === Position.reached_top ? 'PortfolioContainer-container_previous' : 'PortfolioContainer-container_after',
-    );
-    // ページを戻る際は予め下までスクロールしておく
-    if (pos === Position.reached_top) container_2nd?.scrollTo(0, container_2nd.scrollHeight);
-
-    // アニメーション関連
-    const duration = 1; // アニメーションにかかる時間
-    const direction = -pos;
-    const timeline = gsap.timeline();
-    timeline
-      .to(scroll_bar, {opacity: 0, duration: duration})
-      .to(
-        this.container,
-        {
-          duration: duration,
-          ease: Power4.easeOut,
-          translateY: direction + '00%',
-        },
-        '<',
-      )
-      .to(
-        container_2nd,
-        {
-          duration: duration,
-          ease: Power4.easeOut,
-          translateY: '0%',
-          onComplete: () => {
-            this.setState(state => {
-              return {
-                current_page: state.current_page - direction,
-                is_moving_page: false,
-                // スクロール位置は一番上のはず
-                place: Position.reached_top,
-                scroll_height: 0,
-              };
-            });
-            if (this.container) {
-              const scroll_to = pos === Position.reached_top ? 99999 : 0;
-              this.container?.scrollTo(0, scroll_to);
-            }
-          },
-        },
-        '<',
-      )
-      // もとに戻す
-      .to(this.container, {
-        duration: 0,
-        y: 0,
-      })
-      .to(
-        container_2nd,
-        {
-          duration: 0,
-          translateY: -direction + '00%',
-        },
-        '<',
-      )
-      .to(scroll_bar, {opacity: 1, duration: 0}, '<');
+    document.getElementById('PortfolioContainer-container')?.scrollTo(0, 0);
+    this.setState({
+      current_page: this.state.current_page + pos,
+      is_moving_page: false,
+      // スクロール位置は一番上のはず
+      place: Position.reached_top,
+      scroll_height: 0,
+    });
   }
 
   ScrollListener = () => this.UpdateScrollBar();
@@ -183,9 +131,19 @@ export default class PortfolioContainer extends React.Component<Props, States> {
       } else {
         return (
           <>
-            <div id='PortfolioContainer-container_previous'>{this.props.children[this.state.current_page - 1]}</div>
-            <div id='PortfolioContainer-container'>{this.props.children[this.state.current_page]}</div>
-            <div id='PortfolioContainer-container_after'>{this.props.children[this.state.current_page + 1]}</div>
+            <AnimatePresence>
+              {!this.state.is_moving_page && (
+                <motion.div
+                  initial={{opacity: 0, scale: 0.9}}
+                  animate={{opacity: 1, scale: 1}}
+                  exit={{opacity: 0, scale: 0.9}}
+                  transition={{duration: 0.5, ease: 'circOut'}}
+                  id='PortfolioContainer-container'
+                >
+                  {this.props.children[this.state.current_page]}
+                </motion.div>
+              )}
+            </AnimatePresence>
             <div style={{height: this.state.scroll_height}} id='PortfolioContainer-scroll' />
           </>
         );
