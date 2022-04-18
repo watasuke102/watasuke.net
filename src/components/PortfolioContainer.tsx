@@ -28,6 +28,8 @@ interface States {
   place: Position;
 }
 
+const BackgroundColors = ['#4b4692', '#98c379', '#e06c75', '#61afef', '#2f332f'];
+
 export default class PortfolioContainer extends React.Component<Props, States> {
   private container: HTMLElement | null;
 
@@ -113,7 +115,12 @@ export default class PortfolioContainer extends React.Component<Props, States> {
         return <div id='PortfolioContainer-container_mobile'>{this.props.children}</div>;
       } else {
         return (
-          <>
+          <motion.div
+            initial={{backgroundColor: '#2f332f'}}
+            animate={{backgroundColor: BackgroundColors[this.state.current_page]}}
+            transition={{duration: 1}}
+            id='PortfolioContainer-background'
+          >
             <AnimatePresence>
               {!this.state.is_moving_page && (
                 <motion.div
@@ -123,16 +130,14 @@ export default class PortfolioContainer extends React.Component<Props, States> {
                   transition={{duration: 0.5, ease: 'circOut'}}
                   onAnimationComplete={() => {
                     if (this.state.is_moving_page) {
-                      // フェードアウト後、スクロールをリセットしてページ切り替え
+                      console.log(this.props.children[0]?.valueOf());
+                      // フェードアウト後なら、スクロールをリセットしてページ切り替え
                       document.getElementById('PortfolioContainer-container')?.scrollTo(0, 0);
-                      this.setState((state, _) => {
-                        console.log(state);
-                        return {
-                          is_moving_page: false,
-                          current_page: state.current_page + state.place,
-                          place: Position.reached_top,
-                        };
-                      });
+                      this.setState(state => ({
+                        is_moving_page: false,
+                        current_page: state.current_page + state.place,
+                        place: Position.reached_top,
+                      }));
                     }
                   }}
                   id='PortfolioContainer-container'
@@ -142,7 +147,7 @@ export default class PortfolioContainer extends React.Component<Props, States> {
               )}
             </AnimatePresence>
             <div style={{height: this.state.scroll_height}} id='PortfolioContainer-scroll' />
-          </>
+          </motion.div>
         );
       }
     }
