@@ -33,7 +33,7 @@ export default function PortfolioContainer(props: Props) {
   const place_ref = React.useRef(Position.none);
   place_ref.current = place;
 
-  const [current_page, SetCurrentPage] = React.useState(3);
+  const [current_page, SetCurrentPage] = React.useState(0);
   const current_page_ref = React.useRef(0);
   current_page_ref.current = current_page;
 
