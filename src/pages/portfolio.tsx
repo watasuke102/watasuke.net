@@ -8,19 +8,25 @@
  */
 
 import React from 'react';
+import {Link} from 'gatsby';
+import {motion} from 'framer-motion';
 import {StaticImage} from 'gatsby-plugin-image';
 import Head from '../components/Head';
 import SkillCard from '../components/SkillCard';
 import Container from '../components/PortfolioContainer';
 import '../styles/portfolio.scss';
-import {Link} from 'gatsby';
 
 export default () => {
   return (
     <div id='portfolio-container'>
       <Head title={'ポートフォリオ'} desc={'ポートフォリオです'} url={'/portfolio'} />
       <Container>
-        <div id='portfolio-welcome'>
+        <motion.div
+          id='portfolio-welcome'
+          initial={{opacity: 0}}
+          animate={{opacity: 1}}
+          transition={{delay: 0.5, duration: 1}}
+        >
           <h2 className='greeting'>Hi there👋</h2>
 
           <div className='center'>
@@ -46,7 +52,12 @@ export default () => {
                 </div>
               </div>
             </div>
-            <div className='bio'>
+            <motion.div
+              className='bio'
+              initial={{opacity: 0}}
+              animate={{opacity: 1}}
+              transition={{delay: 1.5, duration: 1}}
+            >
               <p>2004年生まれの高専生です</p>
               <p>プログラミングでツールを作ったり、フロントエンド開発したりしています</p>
               <p>
@@ -56,12 +67,12 @@ export default () => {
                 </a>
                 のが目標です
               </p>
-            </div>
+            </motion.div>
           </div>
           <div className='next-page'>
             <span>Scroll</span>
           </div>
-        </div>
+        </motion.div>
 
         <div id='portfolio-skills'>
           <h2>Skills</h2>
