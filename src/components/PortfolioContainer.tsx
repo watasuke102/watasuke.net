@@ -33,7 +33,7 @@ export default function PortfolioContainer(props: Props) {
   const place_ref = React.useRef(Position.none);
   place_ref.current = place;
 
-  const [current_page, SetCurrentPage] = React.useState(0);
+  const [current_page, SetCurrentPage] = React.useState(3);
   const current_page_ref = React.useRef(0);
   current_page_ref.current = current_page;
 
@@ -98,9 +98,6 @@ export default function PortfolioContainer(props: Props) {
   };
 
   React.useEffect(() => {
-    bg_control.start({
-      backgroundColor: BackgroundColors[0],
-    });
     document.getElementById('PortfolioContainer-container')?.addEventListener('scroll', UpdateScrollBar);
     window.addEventListener('wheel', StartPageTransition);
     return () => {
@@ -133,7 +130,7 @@ export default function PortfolioContainer(props: Props) {
     } else {
       return (
         <motion.div
-          initial={{backgroundColor: BackgroundColors[0]}}
+          initial={{backgroundColor: BackgroundColors[current_page_ref.current]}}
           animate={bg_control}
           transition={{duration: 1}}
           id='PortfolioContainer-background'

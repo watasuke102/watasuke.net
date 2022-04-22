@@ -74,6 +74,9 @@
 #portfolio-welcome {
   //background-color: #4b4692;
   
+  a {
+    color: #eee;
+  }
   .greeting {
     margin-bottom: 64px;
   }
@@ -117,7 +120,7 @@
 }
 
 // Skills
-#portfolio-2 {
+#portfolio-skills {
   //background-color: #926846;
   #skill-container {
     display: flex;
@@ -145,7 +148,7 @@
 }
 
 // Works
-#portfolio-3 {
+#portfolio-works {
   //background-color: #4e773a;
   .page-desc {
     margin: 0 20px;
@@ -196,7 +199,7 @@
 }
 
 // Address
-#portfolio-4 {
+#portfolio-links {
   //background-color: #3c767a;
 
   .container {
@@ -206,23 +209,28 @@
   .card {
     margin: 30px auto;
     border-radius: 10px;
+    color: #eeeeee;
     background-color: #3d3d3d;
+    text-decoration: none;
 
     display: grid;
     align-items: center;
-    width: 500px;
+    width: 550px;
     height: 130px;
-    grid-template-rows: 50px 80px;
-    grid-template-columns: 150px 350px;
+    grid-template-rows: 50px 1fr;
+    grid-template-columns: 150px 1fr;
 
     i {
       grid-row: 1 / 3;
       font-size: 70px;
       text-align: center;
     }
-    a {
+    .head {
       grid-column: 2;
-      color: #ffffff;
+      font-size: 1.4em;
+      font-weight: bold;
+      color: #eeeeee;
+      text-decoration: underline;
     }
     p {
       grid-row: 2;
@@ -248,7 +256,7 @@
 }
 
 // final page
-#portfolio-5 {
+#portfolio-last {
   text-align: center;
   display: flex;
   flex-direction: column;

@@ -49,7 +49,13 @@ export default () => {
             <div className='bio'>
               <p>2004年生まれの高専生です</p>
               <p>プログラミングでツールを作ったり、フロントエンド開発したりしています</p>
-              <p>AR/MR を始めとする xR や HCI の力で、人間のやることを減らすのが目標です</p>
+              <p>
+                AR/MR を始めとする xR や HCI の力で、
+                <a href='https://scrapbox.io/watasuke/%E5%A4%A2%E3%83%BB%E5%B0%86%E6%9D%A5%E5%83%8F%EF%BC%9F'>
+                  人間のやることを減らす
+                </a>
+                のが目標です
+              </p>
             </div>
           </div>
           <div className='next-page'>
@@ -57,7 +63,7 @@ export default () => {
           </div>
         </div>
 
-        <div id='portfolio-2'>
+        <div id='portfolio-skills'>
           <h2>Skills</h2>
           <div id='skill-container'>
             <div className='categoly'>
@@ -94,7 +100,7 @@ export default () => {
           <div className='next-page' />
         </div>
 
-        <div id='portfolio-3'>
+        <div id='portfolio-works'>
           <h2>Works</h2>
           <p className='page-desc'>
             下線が付いている作品名をクリックすると、 作品ページやGitHubリポジトリにジャンプします
@@ -165,44 +171,53 @@ export default () => {
           <div className='next-page' />
         </div>
 
-        <div id='portfolio-4'>
-          <h2>Address</h2>
+        <div id='portfolio-links'>
+          <h2>Links</h2>
           <div className='container'>
-            <div className='card'>
+            <a href='https://twitter.com/Watasuke102' className='card'>
               <i className='fab fa-twitter' />
-              <a href='https://twitter.com/Watasuke102'>Twitter (@Watasuke102)</a>
+              <span className='head'>Twitter (@Watasuke102)</span>
               <p className='desc'>
-                メンションもしくはDMに反応します
-                <br />
+                メンションもしくはDMに反応します <br />
                 （恐らく最速で反応できる連絡手段です）
               </p>
-            </div>
-            <div className='card'>
-              <i className='fas fa-envelope' />
-              <a href='mailto:watasuke102@google.com'>Email (watasuke102@google.com)</a>
-              <p className='desc'>気づかないかもしれません</p>
-            </div>
-            <div className='card'>
+            </a>
+            <a href='https://github.com/watasuke102' className='card'>
               <i className='fab fa-github' />
-              <a href='https://github.com/watasuke102'>GitHub</a>
+              <span className='head'>GitHub</span>
               <p className='desc'>いろいろつくってます</p>
-            </div>
-            <div className='card'>
+            </a>
+            <a href='https://scrapbox.io/watasuke' className='card'>
+              <i className='fas fa-edit' />
+              <span className='head'>Scrapbox</span>
+              <p className='desc'>自分語りなどをしています</p>
+            </a>
+            <a href='https://soundcloud.com/watasuke' className='card'>
               <i className='fab fa-soundcloud' />
-              <a href='https://soundcloud.com/watasuke'>SoundCloud</a>
+              <span className='head'>SoundCloud</span>
               <p className='desc'>今までに作った曲を投稿しています</p>
-            </div>
-            <div className='card'>
+            </a>
+            <a href='https://watasuke.tk' className='card'>
+              <i className='fab fa-youtube' />
+              <span className='head'>YouTube</span>
+              <p className='desc'>稀に何らかの動画を上げます</p>
+            </a>
+            <a href='https://peing.net/ja/watasuke102' className='card'>
               <i className='fas fa-box-open' />
-              <a href='https://peing.net/ja/watasuke102'>質問箱</a>
+              <span className='head'>質問箱</span>
               <p className='desc'>匿名で質問ができます</p>
-            </div>
+            </a>
+            <a className='card' href='mailto:watasuke102@gmail.com'>
+              <i className='fas fa-envelope' />
+              <span className='head'>Email (watasuke102@google.com)</span>
+              <p className='desc'>気づかないかもしれません</p>
+            </a>
           </div>
 
           <div className='next-page' />
         </div>
 
-        <div id='portfolio-5'>
+        <div id='portfolio-last'>
           <div>
             <h2>Thank you for visiting my site!</h2>
             <div className='links'>
