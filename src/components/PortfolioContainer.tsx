@@ -126,7 +126,11 @@ export default function PortfolioContainer(props: Props) {
 
   if (typeof navigator !== `undefined`) {
     if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
-      return <div id='PortfolioContainer-container_mobile'>{props.children}</div>;
+      return (
+        <div id='PortfolioContainer-container_mobile' style={{backgroundColor: BackgroundColors[0]}}>
+          {props.children}
+        </div>
+      );
     } else {
       return (
         <motion.div
