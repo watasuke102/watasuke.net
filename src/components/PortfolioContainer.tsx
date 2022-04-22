@@ -21,7 +21,9 @@ interface Props {
   children: React.ReactNode[];
 }
 
-const BackgroundColors = ['#4b4692', '#98c379', '#e06c75', '#61afef', '#2f332f'];
+// onedark like
+// const BackgroundColors = ['#4b4692', '#61afef', '#98c379', '#e06c75', '#2f332f'];
+const BackgroundColors = ['#4b4692', '#468492', '#5a9246', '#925d46', '#2f332f'];
 
 export default function PortfolioContainer(props: Props) {
   const [scroll_height, SetScrollHeight] = React.useState(0);
@@ -31,7 +33,7 @@ export default function PortfolioContainer(props: Props) {
   const place_ref = React.useRef(Position.none);
   place_ref.current = place;
 
-  const [current_page, SetCurrentPage] = React.useState(2);
+  const [current_page, SetCurrentPage] = React.useState(0);
   const current_page_ref = React.useRef(0);
   current_page_ref.current = current_page;
 
@@ -96,6 +98,9 @@ export default function PortfolioContainer(props: Props) {
   };
 
   React.useEffect(() => {
+    bg_control.start({
+      backgroundColor: BackgroundColors[0],
+    });
     document.getElementById('PortfolioContainer-container')?.addEventListener('scroll', UpdateScrollBar);
     window.addEventListener('wheel', StartPageTransition);
     return () => {
@@ -115,13 +120,20 @@ export default function PortfolioContainer(props: Props) {
     }
   }, [is_moving_page]);
 
+  // 背景色要素とページ数は一致していなければならない
+  if (BackgroundColors.length != props.children.length) {
+    throw Error(
+      `[ERROR] BackgroundColors.len != children.len (${BackgroundColors.length} != ${props.children.length})`,
+    );
+  }
+
   if (typeof navigator !== `undefined`) {
     if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
       return <div id='PortfolioContainer-container_mobile'>{props.children}</div>;
     } else {
       return (
         <motion.div
-          initial={{backgroundColor: '#2f332f'}}
+          initial={{backgroundColor: BackgroundColors[0]}}
           animate={bg_control}
           transition={{duration: 1}}
           id='PortfolioContainer-background'

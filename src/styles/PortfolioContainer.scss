@@ -6,13 +6,16 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-#PortfolioContainer-container {
+#PortfolioContainer-container,
+#PortfolioContainer-background {
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
   width: 100vw;
   padding: 15px;
+}
+#PortfolioContainer-container {
   // スクロールバー関連
   overflow-y: scroll;
   scrollbar-width: none;
