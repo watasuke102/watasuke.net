@@ -8,7 +8,7 @@
  */
 
 import React from 'react';
-import '../styles/SkillCard.scss';
+import '../../styles/SkillCard.scss';
 
 interface Props {
   name: string;

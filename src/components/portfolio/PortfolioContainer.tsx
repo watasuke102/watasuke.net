@@ -9,7 +9,7 @@
 
 import React from 'react';
 import {AnimatePresence, motion, useAnimation} from 'framer-motion';
-import '../styles/PortfolioContainer.scss';
+import '../../styles/PortfolioContainer.scss';
 
 enum Position {
   reached_top = -1,
@@ -33,7 +33,7 @@ export default function PortfolioContainer(props: Props) {
   const place_ref = React.useRef(Position.none);
   place_ref.current = place;
 
-  const [current_page, SetCurrentPage] = React.useState(0);
+  const [current_page, SetCurrentPage] = React.useState(2);
   const current_page_ref = React.useRef(0);
   current_page_ref.current = current_page;
 
