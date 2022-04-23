@@ -56,7 +56,7 @@ export default function PortfolioContainer(props: Props) {
     const interval = 100;
     if (percent === 0) {
       setTimeout(() => SetPlace(Position.reached_top), interval);
-    } else if (percent >= 0.98) {
+    } else if (percent >= 0.999) {
       setTimeout(() => SetPlace(Position.reached_bottom), interval);
     } else {
       SetPlace(Position.none);

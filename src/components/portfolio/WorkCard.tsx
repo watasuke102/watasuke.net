@@ -9,7 +9,6 @@
 
 import React from 'react';
 import {motion} from 'framer-motion';
-import {StaticImage} from 'gatsby-plugin-image';
 import '../../styles/WorkCard.scss';
 
 interface Props {
@@ -26,7 +25,7 @@ export default (props: Props) => {
       initial={{opacity: 0, y: 30}}
       whileInView={{opacity: 1, y: 0}}
       transition={{duration: 0.5}}
-      viewport={{amount: 0.3}}
+      viewport={{once: true, amount: 0.8}}
     >
       {props.image}
       <div className='desc'>

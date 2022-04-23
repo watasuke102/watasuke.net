@@ -8,6 +8,7 @@
  */
 
 import React from 'react';
+import {motion} from 'framer-motion';
 import '../../styles/SkillCard.scss';
 
 interface Props {
@@ -17,9 +18,15 @@ interface Props {
 
 export default (props: Props) => {
   return (
-    <div className='SkillCard-container'>
+    <motion.div
+      className='SkillCard-container'
+      initial={{opacity: 0, y: 30}}
+      whileInView={{opacity: 1, y: 0}}
+      transition={{duration: 0.5}}
+      viewport={{once: true, amount: 0.3}}
+    >
       <p className='name'>{props.name}</p>
       {props.body && <p className='body'>{props.body}</p>}
-    </div>
+    </motion.div>
   );
 };
