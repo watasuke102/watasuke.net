@@ -37,6 +37,10 @@ export default function PortfolioContainer(props: Props) {
   const current_page_ref = React.useRef(0);
   current_page_ref.current = current_page;
 
+  const [next_page, SetNextPage] = React.useState(0);
+  const next_page_ref = React.useRef(0);
+  next_page_ref.current = next_page;
+
   const [is_moving_page, SetIsMovingPage] = React.useState(false);
   const is_moving_page_ref = React.useRef(is_moving_page);
   is_moving_page_ref.current = is_moving_page;
@@ -85,7 +89,7 @@ export default function PortfolioContainer(props: Props) {
       e.deltaY > 0 // 下にスクロールしていた場合
     ) {
       SetIsMovingPage(true);
-      SetPlace(Position.reached_bottom);
+      SetNextPage(current => current + 1);
       // 前のページに移動させる
     } else if (
       (place_ref.current === Position.reached_top || changeable) &&
@@ -93,7 +97,7 @@ export default function PortfolioContainer(props: Props) {
       e.deltaY < 0 // 上にスクロールしていた場合
     ) {
       SetIsMovingPage(true);
-      SetPlace(Position.reached_top);
+      SetNextPage(current => current - 1);
     }
   };
 
@@ -109,11 +113,11 @@ export default function PortfolioContainer(props: Props) {
   const OnAnimationComplete = React.useCallback(() => {
     if (is_moving_page_ref.current) {
       // フェードアウト後なら、スクロールをリセットしてページ切り替え
+      bg_control.start({backgroundColor: BackgroundColors[next_page_ref.current]});
       document.getElementById('PortfolioContainer-container')?.scrollTo(0, 0);
-      SetCurrentPage(current => current + place_ref.current);
+      SetCurrentPage(next_page_ref.current);
       SetPlace(Position.reached_top);
       SetIsMovingPage(false);
-      bg_control.start({backgroundColor: BackgroundColors[current_page_ref.current]});
     }
   }, [is_moving_page]);
 
@@ -154,6 +158,21 @@ export default function PortfolioContainer(props: Props) {
             )}
           </AnimatePresence>
           <div style={{height: scroll_height}} id='PortfolioContainer-scroll' />
+
+          <div id='PortfolioContainer-page_indicator'>
+            {['Welcome', 'Skills', 'Works', 'Links'].map((str, index) => (
+              <div
+                key={index}
+                className={'indicator_container' + (index === current_page ? ' current' : '')}
+                onClick={() => {
+                  SetNextPage(index);
+                  SetIsMovingPage(true);
+                }}
+              >
+                <span className='name'>{str}</span>
+              </div>
+            ))}
+          </div>
         </motion.div>
       );
     }
