@@ -10,6 +10,7 @@
 import React from 'react';
 import {motion} from 'framer-motion';
 import '../../styles/WorkCard.scss';
+import { FadeWithScroll } from '../../utils/FadeWithScroll';
 
 interface Props {
   title: string;
@@ -22,10 +23,7 @@ export default (props: Props) => {
   return (
     <motion.div
       className='WorkCard-container'
-      initial={{opacity: 0, y: 30}}
-      whileInView={{opacity: 1, y: 0}}
-      transition={{duration: 0.5}}
-      viewport={{once: true, amount: 0.8}}
+    {...FadeWithScroll}
     >
       {props.image}
       <div className='desc'>

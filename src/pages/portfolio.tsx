@@ -17,6 +17,7 @@ import SkillCard from '../components/portfolio/SkillCard';
 import Container from '../components/portfolio/PortfolioContainer';
 import '../styles/portfolio.scss';
 import TextAnimation from '../components/portfolio/TextAnimation';
+import LinkCard from '../components/portfolio/LinkCard';
 
 export default () => {
   return (
@@ -175,44 +176,53 @@ export default () => {
         <div id='portfolio-links'>
           <h2>Links</h2>
           <div className='container'>
-            <a href='https://twitter.com/Watasuke102' className='card'>
-              <i className='fab fa-twitter' />
-              <span className='head'>Twitter (@Watasuke102)</span>
-              <p className='desc'>
-                メンションもしくはDMに反応します <br />
-                （恐らく最速で反応できる連絡手段です）
-              </p>
-            </a>
-            <a href='https://github.com/watasuke102' className='card'>
-              <i className='fab fa-github' />
-              <span className='head'>GitHub</span>
-              <p className='desc'>いろいろつくってます</p>
-            </a>
-            <a href='https://scrapbox.io/watasuke' className='card'>
-              <i className='fas fa-edit' />
-              <span className='head'>Scrapbox</span>
-              <p className='desc'>自分語りなどをしています</p>
-            </a>
-            <a href='https://soundcloud.com/watasuke' className='card'>
-              <i className='fab fa-soundcloud' />
-              <span className='head'>SoundCloud</span>
-              <p className='desc'>今までに作った曲を投稿しています</p>
-            </a>
-            <a href='https://watasuke.tk' className='card'>
-              <i className='fab fa-youtube' />
-              <span className='head'>YouTube</span>
-              <p className='desc'>稀に何らかの動画を上げます</p>
-            </a>
-            <a href='https://peing.net/ja/watasuke102' className='card'>
-              <i className='fas fa-box-open' />
-              <span className='head'>質問箱</span>
-              <p className='desc'>匿名で質問ができます</p>
-            </a>
-            <a className='card' href='mailto:watasuke102@gmail.com'>
-              <i className='fas fa-envelope' />
-              <span className='head'>Email (watasuke102@google.com)</span>
-              <p className='desc'>気づかないかもしれません</p>
-            </a>
+            <LinkCard
+              title='Twitter (@Watasuke102)'
+              url='https://twitter.com/Watasuke102'
+              icon='fab fa-twitter'
+              desc='メンションもしくはDMに反応します\n （恐らく最速で反応できる連絡手段です）'
+            />
+            <LinkCard
+              title='GitHub'
+              url='https://github.com/watasuke102'
+              icon='fab fa-github'
+              desc='いろいろつくってます'
+            />
+
+            <LinkCard
+              title='Scrapbox'
+              url='https://scrapbox.io/watasuke'
+              icon='fas fa-edit'
+              desc='自分語りなどをしています'
+            />
+
+            <LinkCard
+              title='SoundCloud'
+              url='https://soundcloud.com/watasuke'
+              icon='fab fa-soundcloud'
+              desc='今までに作った曲を投稿しています'
+            />
+
+            <LinkCard
+              title='YouTube'
+              url='https://watasuke.tk'
+              icon='fab fa-youtube'
+              desc='稀に何らかの動画を上げます'
+            />
+
+            <LinkCard
+              title='質問箱'
+              url='https://peing.net/ja/watasuke102'
+              icon='fas fa-box-open'
+              desc='匿名で質問ができます'
+            />
+
+            <LinkCard
+              title='Email (watasuke102@google.com)'
+              url='mailto:watasuke102@gmail.com'
+              icon='fas fa-envelope'
+              desc='気づかないかもしれません'
+            />
           </div>
 
           <div className='next-page' />
