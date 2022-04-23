@@ -16,6 +16,7 @@ import WorkCard from '../components/portfolio/WorkCard';
 import SkillCard from '../components/portfolio/SkillCard';
 import Container from '../components/portfolio/PortfolioContainer';
 import '../styles/portfolio.scss';
+import TextAnimation from '../components/portfolio/TextAnimation';
 
 export default () => {
   return (
@@ -53,22 +54,38 @@ export default () => {
                 </div>
               </div>
             </div>
-            <motion.div
-              className='bio'
-              initial={{opacity: 0}}
-              animate={{opacity: 1}}
-              transition={{delay: 1.5, duration: 1}}
-            >
-              <p>2004年生まれの高専生です</p>
-              <p>プログラミングでツールを作ったり、フロントエンド開発したりしています</p>
-              <p>
-                AR/MR を始めとする xR や HCI の力で、
-                <a href='https://scrapbox.io/watasuke/%E5%A4%A2%E3%83%BB%E5%B0%86%E6%9D%A5%E5%83%8F%EF%BC%9F'>
-                  人間のやることを減らす
-                </a>
-                のが目標です
-              </p>
-            </motion.div>
+            <div className='bio'>
+              <TextAnimation
+                body={[
+                  {
+                    type: 'plain',
+                    text: '2004年生まれの高専生です',
+                    break: true,
+                  },
+                  {
+                    type: 'plain',
+                    text: 'プログラミングでツールを作ったり、フロントエンド開発したりしています',
+                    break: true,
+                  },
+                  {
+                    type: 'plain',
+                    text: 'AR/MR を始めとする xR や HCI の力で、',
+                    break: false,
+                  },
+                  {
+                    type: 'link',
+                    link: 'https://scrapbox.io/watasuke/%E5%A4%A2%E3%83%BB%E5%B0%86%E6%9D%A5%E5%83%8F%EF%BC%9F',
+                    text: '人間のやることを減らす',
+                    break: false,
+                  },
+                  {
+                    type: 'plain',
+                    text: 'のが目標です',
+                    break: true,
+                  },
+                ]}
+              />
+            </div>
           </div>
           <div className='next-page'>
             <span>Scroll</span>
