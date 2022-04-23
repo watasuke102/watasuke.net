@@ -8,7 +8,7 @@
  */
 
 import React from 'react';
-import {motion} from 'framer-motion';
+import {motion, Variants} from 'framer-motion';
 import '../../styles/SkillCard.scss';
 
 interface TextAnimationBody {
@@ -21,25 +21,31 @@ interface Props {
   body: TextAnimationBody[];
 }
 
+const Transition = {transition: {duration: 0, delayChildren: 1.5, staggerChildren: 0.01}};
 const Container = {
-  from: {},
-  to: {transition: {duration: 0, delayChildren: 1.5, staggerChildren: 0.01}},
+  fade_to: Transition,
+  move_to: Transition,
 };
-const Letter = {
-  from: {opacity: 0, y: '120%'},
-  to: {opacity: 1, y: 0},
+const Letter: Variants = {
+  fade_from: {opacity: 0},
+  fade_to: {opacity: 1, transition: {duration: 1}},
+
+  move_from: {y: '150%'},
+  move_to: {y: 0, transition: {duration: 0.5, ease: 'circOut'}},
 };
 
 export default (props: Props) => {
   return (
-    <motion.div variants={Container} initial={'from'} animate={'to'}>
+    <motion.div variants={Container} initial={['fade_from', 'move_from']} animate={['fade_to', 'move_to']}>
       {props.body.map(body => {
         const text = (
           <>
             {body.text.split('').map(char => (
-              <motion.span style={{display: 'inline-block'}} variants={Letter} transition={{duration: 1.5}}>
-                {char}
-              </motion.span>
+              <span style={{display: 'inline-block', overflow: 'hidden'}}>
+                <motion.span style={{display: 'inline-block'}} variants={Letter}>
+                  {char}
+                </motion.span>
+              </span>
             ))}
             {body.break === true && <br />}
           </>
