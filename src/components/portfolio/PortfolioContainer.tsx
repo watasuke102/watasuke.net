@@ -33,7 +33,7 @@ export default function PortfolioContainer(props: Props) {
   const place_ref = React.useRef(Position.none);
   place_ref.current = place;
 
-  const [current_page, SetCurrentPage] = React.useState(2);
+  const [current_page, SetCurrentPage] = React.useState(0);
   const current_page_ref = React.useRef(0);
   current_page_ref.current = current_page;
 
@@ -77,19 +77,19 @@ export default function PortfolioContainer(props: Props) {
     const container = document.getElementById('PortfolioContainer-container');
     if (container && container.clientHeight >= container.scrollHeight) changeable = true;
     // 要素がスクロール可能かつ画面端までスクロールしてなければページ移動しない
-    if (!changeable && place_ref.current == Position.none) return;
+    if (!changeable && place_ref.current === Position.none) return;
     // 次のページに移動させる
     if (
-      (place_ref.current == Position.reached_bottom || changeable) &&
-      current_page_ref.current != props.children.length - 1 &&
+      (place_ref.current === Position.reached_bottom || changeable) &&
+      current_page_ref.current !== props.children.length - 1 &&
       e.deltaY > 0 // 下にスクロールしていた場合
     ) {
       SetIsMovingPage(true);
       SetPlace(Position.reached_bottom);
       // 前のページに移動させる
     } else if (
-      (place_ref.current == Position.reached_top || changeable) &&
-      current_page_ref.current != 0 &&
+      (place_ref.current === Position.reached_top || changeable) &&
+      current_page_ref.current !== 0 &&
       e.deltaY < 0 // 上にスクロールしていた場合
     ) {
       SetIsMovingPage(true);
@@ -118,9 +118,9 @@ export default function PortfolioContainer(props: Props) {
   }, [is_moving_page]);
 
   // 背景色要素とページ数は一致していなければならない
-  if (BackgroundColors.length != props.children.length) {
+  if (BackgroundColors.length !== props.children.length) {
     throw Error(
-      `[ERROR] BackgroundColors.len != children.len (${BackgroundColors.length} != ${props.children.length})`,
+      `[ERROR] BackgroundColors.len !== children.len (${BackgroundColors.length} !== ${props.children.length})`,
     );
   }
 
