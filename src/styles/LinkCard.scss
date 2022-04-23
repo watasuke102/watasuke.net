@@ -11,7 +11,7 @@
   margin: 30px auto;
   border-radius: 10px;
   color: #eeeeee;
-  background-color: #3d3d3d;
+  background-color: #3d3d3dee;
   text-decoration: none;
 
   display: grid;
@@ -30,13 +30,16 @@
     grid-column: 2;
     font-size: 1.4em;
     font-weight: bold;
-    color: #eeeeee;
     text-decoration: underline;
   }
   p {
     grid-row: 2;
     grid-column: 2;
     align-items: baseline;
+  }
+
+  &:hover {
+    text-decoration: none;
   }
 
   @media screen and (max-width: 550px) {

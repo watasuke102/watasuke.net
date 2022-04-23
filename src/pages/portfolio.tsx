@@ -188,35 +188,30 @@ export default () => {
               icon='fab fa-github'
               desc='いろいろつくってます'
             />
-
             <LinkCard
               title='Scrapbox'
               url='https://scrapbox.io/watasuke'
               icon='fas fa-edit'
               desc='自分語りなどをしています'
             />
-
             <LinkCard
               title='SoundCloud'
               url='https://soundcloud.com/watasuke'
               icon='fab fa-soundcloud'
               desc='今までに作った曲を投稿しています'
             />
-
             <LinkCard
               title='YouTube'
               url='https://watasuke.tk'
               icon='fab fa-youtube'
               desc='稀に何らかの動画を上げます'
             />
-
             <LinkCard
               title='質問箱'
               url='https://peing.net/ja/watasuke102'
               icon='fas fa-box-open'
               desc='匿名で質問ができます'
             />
-
             <LinkCard
               title='Email (watasuke102@google.com)'
               url='mailto:watasuke102@gmail.com'
@@ -224,7 +219,6 @@ export default () => {
               desc='気づかないかもしれません'
             />
           </div>
-
           <div className='next-page' />
         </div>
 
