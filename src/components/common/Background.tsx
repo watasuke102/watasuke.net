@@ -8,7 +8,7 @@
  */
 
 import React from 'react';
-import '../styles/Background.scss';
+import '@/common/Background.scss';
 
 interface Vec {
   x: number;

@@ -1,4 +1,5 @@
 const config = require('./config.js');
+const path = require('path');
 
 module.exports = {
   siteMetadata: {
@@ -11,6 +12,17 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
 
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          '@': path.resolve(__dirname, 'src/components'),
+          '@utils': path.resolve(__dirname, 'src/utils'),
+          '@mytypes': path.resolve(__dirname, 'src/types'),
+        },
+        extensions: [],
+      },
+    },
     // マニフェスト設定
     {
       resolve: `gatsby-plugin-manifest`,

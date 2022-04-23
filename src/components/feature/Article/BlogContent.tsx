@@ -10,11 +10,11 @@
 import React from 'react';
 import {Remark} from 'react-remark';
 import {CSSTransition} from 'react-transition-group';
-import EmbedCard from '../components/EmbedCard';
-import {imageUrl} from '../../config';
+import EmbedCard from '@/feature/Article/EmbedCard';
+import {imageUrl} from '../../../../config';
 
-import '../styles/BlogContent.scss';
-import '../styles/TableOfContents.scss';
+import './BlogContent.scss';
+import './TableOfContents.scss';
 
 // Remark関連
 import Gfm from 'remark-gfm';
@@ -23,7 +23,7 @@ import Slug from 'remark-slug';
 
 // コードのシンタックスハイライト
 import Prism from 'prismjs';
-import ExtractHeading from '../utils/ExtractHeading';
+import ExtractHeading from '@utils/ExtractHeading';
 
 interface Props {
   body: string;

@@ -9,7 +9,7 @@
 
 import React from 'react';
 import {AnimatePresence, motion, useAnimation} from 'framer-motion';
-import '../../styles/PortfolioContainer.scss';
+import './PortfolioContainer.scss';
 
 enum Position {
   reached_top = -1,

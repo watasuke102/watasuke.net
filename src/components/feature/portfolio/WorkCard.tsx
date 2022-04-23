@@ -9,8 +9,8 @@
 
 import React from 'react';
 import {motion} from 'framer-motion';
-import '../../styles/WorkCard.scss';
-import { FadeWithScroll } from '../../utils/FadeWithScroll';
+import {FadeWithScroll} from '@utils/FadeWithScroll';
+import './WorkCard.scss';
 
 interface Props {
   title: string;
@@ -21,10 +21,7 @@ interface Props {
 
 export default (props: Props) => {
   return (
-    <motion.div
-      className='WorkCard-container'
-    {...FadeWithScroll}
-    >
+    <motion.div className='WorkCard-container' {...FadeWithScroll}>
       {props.image}
       <div className='desc'>
         <a href={props.url}>{props.title}</a>

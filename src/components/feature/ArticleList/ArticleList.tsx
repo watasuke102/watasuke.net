@@ -8,12 +8,12 @@
  */
 
 import React from 'react';
-import {navigate} from 'gatsby';
 import RemoveMD from 'remove-markdown';
-import Thumbnail from './Thumbnail';
-import TagContainer from './TagContainer';
-import Article from '../types/Article';
-import '../styles/ArticleList.scss';
+import {navigate} from 'gatsby';
+import Thumbnail from '@/feature/Article/Thumbnail';
+import TagContainer from '@/feature/ArticleLayout/TagContainer';
+import Article from '@mytypes/Article';
+import './ArticleList.scss';
 
 interface Props {
   list: Article[];

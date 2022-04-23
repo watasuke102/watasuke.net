@@ -8,9 +8,9 @@
  */
 
 import React from 'react';
-import Layout from '../components/Layout';
-import Background from '../components/Background';
-import '../styles/404.scss';
+import Layout from '@/common/Layout';
+import Background from '@/common/Background';
+import '@/pages/404.scss';
 
 export default () => {
   return (

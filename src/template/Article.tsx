@@ -9,18 +9,18 @@
 
 import React from 'react';
 import RemoveMD from 'remove-markdown';
-import Head from '../components/Head';
-import Layout from '../components/Layout';
-import Thumbnail from '../components/Thumbnail';
-import ProfileCard from '../components/ProfileCard';
-import TagListCard from '../components/TagListCard';
-import TagContainer from '../components/TagContainer';
-import Article from '../types/Article';
-import '../styles/main.scss';
-import '../styles/Article.scss';
-import '../styles/TableOfContents.scss';
-import BlogContent from '../components/BlogContent';
-import ExtractHeading from '../utils/ExtractHeading';
+import Head from '@/common/Head';
+import Layout from '@/common/Layout';
+import Thumbnail from '@/feature/Article/Thumbnail';
+import BlogContent from '@/feature/Article/BlogContent';
+import ProfileCard from '@/feature/ArticleLayout/ProfileCard';
+import TagListCard from '@/feature/ArticleLayout/TagListCard';
+import TagContainer from '@/feature/ArticleLayout/TagContainer';
+import ExtractHeading from '@utils/ExtractHeading';
+import Article from '@mytypes/Article';
+import '@/common/main.scss';
+import '@/feature/Article/Article.scss';
+import '@/feature/Article/TableOfContents.scss';
 
 interface Props {
   pageContext: Article;

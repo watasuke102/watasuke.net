@@ -9,8 +9,7 @@
 
 import React from 'react';
 import {graphql, useStaticQuery} from 'gatsby';
-import '../styles/main.scss';
-import '../styles/EmbedCard.scss';
+import './EmbedCard.scss';
 
 interface Props {
   url: string;

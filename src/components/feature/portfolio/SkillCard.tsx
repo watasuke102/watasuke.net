@@ -9,7 +9,7 @@
 
 import React from 'react';
 import {motion} from 'framer-motion';
-import '../../styles/SkillCard.scss';
+import './SkillCard.scss';
 
 interface Props {
   name: string;

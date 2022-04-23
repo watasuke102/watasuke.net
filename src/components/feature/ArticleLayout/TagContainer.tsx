@@ -7,9 +7,9 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 
-import {Link} from 'gatsby';
 import React from 'react';
-import '../styles/TagContainer.scss';
+import {Link} from 'gatsby';
+import './TagContainer.scss';
 
 interface Props {
   disable_icon?: boolean;

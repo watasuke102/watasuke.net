@@ -9,7 +9,7 @@
 
 import React from 'react';
 import {Link} from 'gatsby';
-import '../styles/Header.scss';
+import './Header.scss';
 
 export default () => {
   return (

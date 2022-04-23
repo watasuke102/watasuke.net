@@ -9,7 +9,7 @@
 
 import React from 'react';
 import {StaticImage} from 'gatsby-plugin-image';
-import {imageUrl} from '../../config';
+import {imageUrl} from '../../../../config';
 
 interface Props {
   url: string;
@@ -21,7 +21,7 @@ export default ({url}: Props) => {
       {url ? (
         <img src={url.replace('/uploads/', `${imageUrl}/uploads/`)} alt='thumbnail' decoding='async' />
       ) : (
-        <StaticImage src='../assets/thumbnail.jpg' alt='thumbnail' />
+        <StaticImage src='../../../assets/thumbnail.jpg' alt='thumbnail' />
       )}
     </div>
   );

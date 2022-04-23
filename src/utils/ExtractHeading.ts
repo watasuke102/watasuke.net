@@ -7,7 +7,7 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 
-import Heading from '../types/Heading';
+import Heading from '@mytypes/Heading';
 
 /*
 マークダウンから見出しだけを抽出する

@@ -9,8 +9,8 @@
 
 import React from 'react';
 import {motion} from 'framer-motion';
-import {FadeWithScroll} from '../../utils/FadeWithScroll';
-import '../../styles/LinkCard.scss';
+import {FadeWithScroll} from '@utils/FadeWithScroll';
+import './LinkCard.scss';
 
 interface Props {
   title: string;

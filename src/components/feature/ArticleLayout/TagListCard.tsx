@@ -10,7 +10,7 @@
 import React from 'react';
 import {graphql, useStaticQuery} from 'gatsby';
 import TagContainer from './TagContainer';
-import '../styles/TagListCard.scss';
+import './TagListCard.scss';
 
 export default () => {
   const tags = useStaticQuery(graphql`

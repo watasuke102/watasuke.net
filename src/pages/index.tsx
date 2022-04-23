@@ -9,11 +9,11 @@
 
 import React from 'react';
 import {StaticImage} from 'gatsby-plugin-image';
-import Head from '../components/Head';
-import MenuCard from '../components/MenuCard';
-import Background from '../components/Background';
-import '../styles/main.scss';
-import '../styles/top.scss';
+import Head from '@/common/Head';
+import MenuCard from '@/common/MenuCard';
+import Background from '@/common/Background';
+import '@/common/main.scss';
+import '@/pages/top.scss';
 
 export default () => {
   return (

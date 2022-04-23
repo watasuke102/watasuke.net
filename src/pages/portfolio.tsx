@@ -11,13 +11,13 @@ import React from 'react';
 import {Link} from 'gatsby';
 import {motion} from 'framer-motion';
 import {StaticImage} from 'gatsby-plugin-image';
-import Head from '../components/Head';
-import WorkCard from '../components/portfolio/WorkCard';
-import SkillCard from '../components/portfolio/SkillCard';
-import Container from '../components/portfolio/PortfolioContainer';
-import '../styles/portfolio.scss';
-import TextAnimation from '../components/portfolio/TextAnimation';
-import LinkCard from '../components/portfolio/LinkCard';
+import Head from '@/common/Head';
+import LinkCard from '@/feature/portfolio/LinkCard';
+import WorkCard from '@/feature/portfolio/WorkCard';
+import SkillCard from '@/feature/portfolio/SkillCard';
+import Container from '@/feature/portfolio/PortfolioContainer';
+import TextAnimation from '@/feature/portfolio/TextAnimation';
+import '@/pages/portfolio.scss';
 
 export default () => {
   return (

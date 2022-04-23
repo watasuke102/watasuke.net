@@ -9,12 +9,12 @@
 
 import React from 'react';
 import {graphql} from 'gatsby';
-import Head from '../components/Head';
-import Layout from '../components/Layout';
-import ArticleList from '../components/ArticleList';
-import Article from '../types/Article';
-import '../styles/main.scss';
-import '../styles/blog.scss';
+import Head from '@/common/Head';
+import Layout from '@/common/Layout';
+import ArticleList from '@/feature/ArticleList/ArticleList';
+import Article from '@mytypes/Article';
+import '@/common/main.scss';
+import '@/pages/blog.scss';
 
 interface Props {
   pageContext: {

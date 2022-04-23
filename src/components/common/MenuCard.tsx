@@ -9,7 +9,7 @@
 
 import React from 'react';
 import {navigate} from 'gatsby';
-import '../styles/MenuCard.scss';
+import './MenuCard.scss';
 
 interface Props {
   icon: string;

@@ -7,9 +7,9 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 
-import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import {Helmet} from 'react-helmet';
+import {graphql, useStaticQuery} from 'gatsby';
 
 interface Props {
   title: string;

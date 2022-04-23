@@ -11,10 +11,10 @@ import {graphql, Link} from 'gatsby';
 import React from 'react';
 import {Remark} from 'react-remark';
 import Gfm from 'remark-gfm';
-import Head from '../components/Head';
-import Layout from '../components/Layout';
-import Background from '../components/Background';
-import '../styles/main.scss';
+import Head from '@/common/Head';
+import Layout from '@/common/Layout';
+import Background from '@/common/Background';
+import '@/common/main.scss';
 
 interface Props {
   data: {siteData: {body: string}};

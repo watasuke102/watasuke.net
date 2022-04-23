@@ -9,7 +9,6 @@
 
 import React from 'react';
 import {motion, Variants} from 'framer-motion';
-import '../../styles/SkillCard.scss';
 
 interface TextAnimationBody {
   text: string;
