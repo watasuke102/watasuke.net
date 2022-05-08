@@ -48,7 +48,6 @@ export default ({url}: Props) => {
     }
   `);
   const {title, description, image} = GetOgpFromUrl(ogp_list.allOgp.nodes, url);
-  console.log(ogp_list);
 
   return (
     <div className='EmbedCard-container' onClick={() => url !== '' && window.open(url)}>

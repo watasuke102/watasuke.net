@@ -27,7 +27,6 @@ this is normal text.
 */
 
 export default function ExtractHeading(str: string): Heading[] {
-  console.log(str);
   // 見出し要素を見つけるための正規表現
   // 文頭が1個以上の# + 空白 + 何らかの文字列
   const heading_regexp = /^\#+ (.*)/;
