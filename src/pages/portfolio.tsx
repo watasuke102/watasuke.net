@@ -70,7 +70,12 @@ export default () => {
                   },
                   {
                     type: 'plain',
-                    text: 'AR/MR を始めとする xR や HCI の力で、',
+                    text: 'ウェアラブルコンピューティングや AR/MR を始めとする xR、 HCI 等に興味があります',
+                    break: true,
+                  },
+                  {
+                    type: 'plain',
+                    text: 'これらの技術などを活用して、',
                     break: false,
                   },
                   {
