@@ -53,13 +53,13 @@ export default ({url}: Props) => {
     <div className='EmbedCard-container' onClick={() => url !== '' && window.open(url)}>
       {image !== '' && (
         <div className='EmbedCard-img_wrapper'>
-          <img src={image} alt={title} />
+          <img src={image} alt={title ?? url} />
         </div>
       )}
       <div className='EmbedCard-text'>
-        <span className='title'>{title}</span>
+        <span className='title'>{title ?? url}</span>
         <span className='url'>{url}</span>
-        <span className='description'>{description}</span>
+        <span className='description'>{description ?? ''}</span>
       </div>
     </div>
   );

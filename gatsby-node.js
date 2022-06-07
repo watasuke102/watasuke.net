@@ -95,7 +95,7 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
   });
 
   // 各URL（重複排除）のOGPタグを登録
-  console.log('* Start collectiong OGP...');
+  console.log('* Start collecting OGP...');
   console.log('* url_list: ', Array.from(new Set(url_list)));
   Array.from(new Set(url_list)).forEach(async (url, i) => {
     // TwitterとYouTubeは専用の埋め込みがあるのでいらない
