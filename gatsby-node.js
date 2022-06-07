@@ -112,8 +112,8 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
       actions.createNode({
         id: `Ogp_${i}`,
         url: url,
-        title: ogp.title,
-        description: desc,
+        title: ogp.title ?? url,
+        description: desc ?? '',
         image: ogp.ogp['og:image'] ? ogp.ogp['og:image'][0] : '',
         internal: {
           type: 'Ogp',
