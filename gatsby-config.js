@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://watasuke.tk`,
+    siteUrl: `https://watasuke.net`,
   },
 
   plugins: [
@@ -27,8 +27,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `watasuke.tk`,
-        short_name: `watasuke.tk`,
+        name: `watasuke.net`,
+        short_name: `watasuke.net`,
         start_url: `/`,
         background_color: `#9955ff`,
         theme_color: `#9955ff`,

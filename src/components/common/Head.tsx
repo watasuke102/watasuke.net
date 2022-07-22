@@ -19,7 +19,7 @@ interface Props {
 }
 
 export default (props: Props) => {
-  let image: string = 'https://watasuke.tk';
+  let image: string = 'https://watasuke.net';
   if (props.thumbnail) {
     image += props.thumbnail;
   } else {
@@ -32,7 +32,7 @@ export default (props: Props) => {
     `).file.publicURL;
   }
   const title = props.title.length === 0 ? 'わたすけのへや' : props.title + ' - わたすけのへや';
-  const url = 'https://watasuke.tk' + props.url;
+  const url = 'https://watasuke.net' + props.url;
   // 140字に制限して内容を表示、超過分は...で
   const desc = props.desc.slice(0, 140) + (props.desc.length > 140 ? ' ...' : '');
 
