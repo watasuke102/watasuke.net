@@ -10,6 +10,7 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
 import {graphql, useStaticQuery} from 'gatsby';
+import config from '../../../config';
 
 interface Props {
   title: string;
@@ -40,6 +41,7 @@ export default (props: Props) => {
     <Helmet>
       <html lang='ja' />
       <title>{title}</title>
+      <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${config.adsenseId}`} />
       <meta property='og:type' content='website' />
       <meta property='og:url' content={url} />
       <meta property='og:title' content={title} />
