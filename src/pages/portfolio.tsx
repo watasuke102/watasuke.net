@@ -207,7 +207,7 @@ export default () => {
             />
             <LinkCard
               title='YouTube'
-              url='https://www.youtube.com/channel/UCAX7m91OThALVORxdyKEhNA'
+              url='https://www.youtube.com/@watasuke'
               icon='fab fa-youtube'
               desc='稀に何らかの動画を上げます'
             />
