@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/watasuke102/watasuke.tk.git"
+    "url": "git+https://github.com/watasuke102/watasuke.net.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/watasuke102/watasuke.tk/issues"
+    "url": "https://github.com/watasuke102/watasuke.net/issues"
   },
-  "homepage": "https://github.com/watasuke102/watasuke.tk#readme",
+  "homepage": "https://github.com/watasuke102/watasuke.net#readme",
   "dependencies": {
     "@types/prismjs": "^1.26.0",
     "@types/react": "^18.0.21",
