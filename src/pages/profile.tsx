@@ -9,7 +9,7 @@
 
 import {graphql, Link} from 'gatsby';
 import React from 'react';
-import {Remark} from 'react-remark';
+import ReactMarkdown from 'react-markdown';
 import Gfm from 'remark-gfm';
 import Head from '@/common/Head';
 import Layout from '@/common/Layout';
@@ -31,7 +31,7 @@ export default ({data}: Props) => {
         <Link to='/portfolio'>ポートフォリオ</Link>
         を御覧ください
       </p>
-      <Remark remarkPlugins={[Gfm]}>{data.siteData.body}</Remark>
+      <ReactMarkdown remarkPlugins={[Gfm]} children={data.siteData.body} />
     </Layout>
   );
 };
