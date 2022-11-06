@@ -66,7 +66,7 @@ export default (props: Props) => {
   // 最初のページでは戻るボタンを非表示に、最後のページでは進むボタンを非表示に
   // （ページ数を中央に表示するため、非表示にする代わりにdivを返す）
   const page_status = (
-    <div className='ArticleList-button_container'>
+    <section className='ArticleList-button_container'>
       {current_page === 1 ? (
         <div className='ArticleList-empty'></div>
       ) : (
@@ -85,7 +85,7 @@ export default (props: Props) => {
           <i className='fas fa-chevron-right' />
         </div>
       )}
-    </div>
+    </section>
   );
 
   return (
