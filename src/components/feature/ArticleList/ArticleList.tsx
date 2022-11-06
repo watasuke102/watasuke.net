@@ -10,7 +10,6 @@
 import React from 'react';
 import RemoveMD from 'remove-markdown';
 import {navigate} from 'gatsby';
-import Thumbnail from '@/feature/Article/Thumbnail';
 import TagContainer from '@/feature/ArticleLayout/TagContainer';
 import Article from '@mytypes/Article';
 import './ArticleList.scss';
@@ -34,33 +33,34 @@ export default (props: Props) => {
   };
 
   // 記事一覧の作成
-  let article_cards: object[] = [];
   const begin = (current_page - 1) * article_count;
   const last = (current_page - 1) * article_count + article_count;
-  props.list
+  const article_cards = props.list
     .slice(begin, last) // 記事からarticle_count個取り出す
-    .forEach(article => {
-      article_cards.push(
-        <div className='ArticleList-card' onClick={() => navigate('/blog/article/' + article.slug)}>
-          <div className='ArticleList-thumbnail'>
-            <Thumbnail url={article.thumbnail} />
-          </div>
+    .map(article => (
+      <section className='ArticleList-card' onClick={() => navigate('/blog/article/' + article.slug)}>
+        {/* <div className='ArticleList-thumbnail'>
+          <Thumbnail url={article.thumbnail} />
+        </div> */}
+        <div className='ArticleList-info'>
           <div className='ArticleList-date'>
             <span>{article.published_at.slice(0, 10)}</span>
           </div>
-          <div className='ArticleList-text'>
-            <h2>{article.title}</h2>
+          <div>
             <TagContainer tags={article.tags} />
-            <p className='ArticleList-description'>
-              {
-                // 140字に制限して内容を表示、超過分は...で
-                RemoveMD(article.body.slice(0, 140) + (article.body.length > 140 ? ' ...' : ''))
-              }
-            </p>
           </div>
-        </div>,
-      );
-    });
+        </div>
+        <div className='ArticleList-text'>
+          <h2>{article.title}</h2>
+          <p className='ArticleList-description'>
+            {
+              // 140字に制限して内容を表示、超過分は...で
+              RemoveMD(article.body.slice(0, 140) + (article.body.length > 140 ? ' ...' : ''))
+            }
+          </p>
+        </div>
+      </section>
+    ));
 
   // ページ上下に表示する、ページ切り替え用のボタンと現在のページ
   // 最初のページでは戻るボタンを非表示に、最後のページでは進むボタンを非表示に

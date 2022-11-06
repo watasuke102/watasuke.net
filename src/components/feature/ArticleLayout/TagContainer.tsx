@@ -24,9 +24,11 @@ export default (props: Props) => {
     <div className='TagContainer-container'>
       {!props.disable_icon && <i className='fas fa-tag' />}
 
-      {props.tags.map(tag => {
-        return <Link to={'/blog/tag/' + tag.slug}>{tag.name}</Link>;
-      })}
+      <div>
+        {props.tags.map(tag => {
+          return <Link to={'/blog/tag/' + tag.slug}>{tag.name}</Link>;
+        })}
+      </div>
     </div>
   );
 };
