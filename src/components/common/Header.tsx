@@ -13,7 +13,7 @@ import './Header.scss';
 
 export default () => {
   return (
-    <div className='Header-container'>
+    <header className='Header-container'>
       <div className='Header-title'>
         <Link to='/'>わたすけのへや</Link>
       </div>
@@ -22,6 +22,6 @@ export default () => {
         <Link to='/profile'>Profile</Link>
         <Link to='/about'>About this site</Link>
       </div>
-    </div>
+    </header>
   );
 };
