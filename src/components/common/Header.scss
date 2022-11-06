@@ -27,6 +27,7 @@
     color: color.$fg;
   }
   .Header-title {
+    white-space: nowrap;
     font-size: 1.7em;
     margin-left: 10px;
     a {
