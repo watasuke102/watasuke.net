@@ -25,6 +25,7 @@ import Raw from 'rehype-raw';
 // コードのシンタックスハイライト
 import Prism from 'prismjs';
 import ExtractHeading from '@utils/ExtractHeading';
+import {AnimatePresence, motion} from 'framer-motion';
 
 interface Props {
   body: string;
@@ -94,15 +95,28 @@ export default (props: Props) => {
                 </div>
                 <span className='heading'>目次</span>
               </div>
-              <CSSTransition in={tocOpening} timeout={1000} classNames='toc-animation'>
-                <ol className='toc-animation'>
-                  {table_of_contents.map(item => (
-                    <li className={`toc-${item.size}`}>
-                      <a href={`#${item.body.toLowerCase()}`}>{item.body}</a>
-                    </li>
-                  ))}
-                </ol>
-              </CSSTransition>
+              <AnimatePresence>
+                <motion.div
+                  className='toc'
+                  animate={{
+                    opacity: tocOpening ? 1 : 0,
+                    maxHeight: tocOpening ? 300 : 0,
+                    overflowY: tocOpening ? 'scroll' : 'hidden',
+                  }}
+                  transition={{
+                    ease: 'easeOut',
+                    duration: 0.3,
+                  }}
+                >
+                  <ol>
+                    {table_of_contents.map(item => (
+                      <li className={`toc-${item.size}`}>
+                        <a href={`#${item.body.toLowerCase()}`}>{item.body}</a>
+                      </li>
+                    ))}
+                  </ol>
+                </motion.div>
+              </AnimatePresence>
             </div>
             <hr />
           </>

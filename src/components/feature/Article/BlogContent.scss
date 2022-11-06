@@ -8,7 +8,6 @@
  */
 
 @use '../../common/color.scss';
-@import 'toc-animation';
 
 .BlogContent-container {
   .Thumbnail img {
@@ -30,9 +29,20 @@
 // 目次部分
 .BlogContent-table_of_contents_container {
   margin-top: 50px;
-  padding: 5px 20px;
+  padding: 12px 20px;
   background-color: color.$bg;
-  font-size: 1.1em;
+  font-size: 1.2em;
+
+  .toc {
+    padding-left: 12px;
+    border: 1px solid;
+    ol {
+      $padding: 8px;
+      padding-top: $padding;
+      padding-bottom: $padding;
+      margin: 0;
+    }
+  }
 
   .top_items {
     display: flex;
