@@ -12,12 +12,18 @@
 .MenuCard-container {
   $translate-time: 0.2s;
   width: 180px;
-  padding: 15px 25px;
-  border-radius: 10px;
+  padding: 16px 24px;
+  border-color: color.$transparent;
   cursor: pointer;
 
+  &:focus {
+    outline: none;
+    border-radius: 0px;
+    border-color: color.$fg;
+  }
+
   p {
-    font-size: 30px;
+    font-size: 1.8em;
     font-weight: bold;
     color: color.$p0;
     // aみたいにする
@@ -27,6 +33,7 @@
     color: color.$fg;
     font-size: 80px;
     margin-bottom: 10px;
+    transition: color $translate-time;
   }
 
   transition: transform $translate-time;
@@ -35,5 +42,9 @@
     text-decoration: underline;
     transform: scale(111%);
     transition: transform $translate-time;
+    i {
+      color: #ffffff;
+      transition: color $translate-time;
+    }
   }
 }

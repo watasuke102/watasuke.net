@@ -19,9 +19,9 @@ interface Props {
 
 export default (props: Props) => {
   return (
-    <div className='MenuCard-container' onClick={() => navigate(props.url)}>
+    <button className='MenuCard-container' onClick={() => navigate(props.url)}>
       <i className={props.icon} />
       <p>{props.text}</p>
-    </div>
+    </button>
   );
 };

@@ -26,7 +26,7 @@ export default () => {
           <h2>Welcome</h2>
         </div>
         <div className='top-menu'>
-          <MenuCard text="What's this" url='/about' icon='fas fa-info-circle' />
+          <MenuCard text='About' url='/about' icon='fas fa-info-circle' />
           <MenuCard text='Blog' url='/blog' icon='fas fa-pen' />
           <MenuCard text='Profile' url='/profile' icon='fas fa-user' />
           <MenuCard text='Portfolio' url='/portfolio' icon='fas fa-rocket' />
