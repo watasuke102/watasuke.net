@@ -7,6 +7,7 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 
+@use '../../common/color.scss';
 @import 'toc-animation';
 
 .BlogContent-container {
@@ -30,7 +31,7 @@
 .BlogContent-table_of_contents_container {
   margin-top: 50px;
   padding: 5px 20px;
-  background-color: #404e40;
+  background-color: color.$bg;
   font-size: 1.3em;
   h2 {
     margin: 0;
@@ -63,12 +64,16 @@ $button-size: 40px;
   right: 10px;
   width: $button-size;
   height: $button-size;
-  background-color: #688f77;
+  color: color.$bg;
+  background-color: color.$fg;
   // アイコン
   i {
     position: inherit;
     left: 7px;
     font-size: $button-size;
     margin: auto;
+  }
+  &:hover {
+    cursor: pointer;
   }
 }

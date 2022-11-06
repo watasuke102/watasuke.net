@@ -7,6 +7,8 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 
+@use '../../common/color.scss';
+
 @import 'toc-animation';
 
 $second-bg-color: #1f221f;
@@ -18,7 +20,7 @@ $second-bg-color: #1f221f;
 
 .Article-title {
   margin-left: 5px;
-  border-bottom: solid 5px #16b900;
+  border-bottom: solid 5px color.$p0;
 }
 
 .Article-date {
@@ -62,18 +64,6 @@ $second-bg-color: #1f221f;
   width: 70%;
   background-color: $second-bg-color;
   padding: 15px;
-}
-
-// 目次部分
-.Article-table_of_contents_container {
-  margin-top: 50px;
-  padding: 5px 20px;
-  background-color: #404e40;
-  font-size: 1.3em;
-  h2 {
-    margin: 0;
-    text-align: center;
-  }
 }
 
 // サイドバー

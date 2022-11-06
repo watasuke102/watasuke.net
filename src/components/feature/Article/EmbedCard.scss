@@ -7,6 +7,8 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 
+@use '../../common/color.scss';
+
 .EmbedCard-container {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -16,8 +18,8 @@
   padding: 10px;
 
   word-break: break-all;
-  border-radius: 15px;
-  background-color: #4e4e4e;
+  border-radius: 4px;
+  border: 2px solid color.$fg;
   transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   &:hover {
     cursor: pointer;
@@ -50,8 +52,9 @@
       font-weight: bold;
     }
     .url {
-      font-size: 0.9em;
-      color: #c4c4c4;
+      font-size: 0.8em;
+      margin: 8px 0;
+      // color: #c4c4c4;
       text-decoration: underline;
     }
   }
