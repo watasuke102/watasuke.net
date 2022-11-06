@@ -51,7 +51,9 @@ export default ({url}: Props) => {
 
   return (
     <div className='EmbedCard-container' onClick={() => url !== '' && window.open(url)}>
-      {image !== '' && (
+      {image === '' ? (
+        <span className='EmbedCard-img_fallback'>{'[OGP image not found]'}</span>
+      ) : (
         <div className='EmbedCard-img_wrapper'>
           <img src={image} alt={title ?? url} />
         </div>
