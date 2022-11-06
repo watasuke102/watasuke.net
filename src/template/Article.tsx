@@ -41,7 +41,7 @@ export default (prop: Props) => {
       />
       <div className='Article-container'>
         {/* 記事メイン部分 */}
-        <div className='Article-body'>
+        <section className='Article-body'>
           <h1 className='Article-title'>{data.title}</h1>
           {/* サムネ */}
           <Thumbnail url={data.thumbnail} />
@@ -62,20 +62,20 @@ export default (prop: Props) => {
           <TagContainer tags={data.tags} />
 
           <BlogContent body={data.body} />
-        </div>
+        </section>
 
         {/* サイドバー */}
         <div className='Article-side'>
           <ProfileCard />
           <TagListCard />
           {table_of_contents.length > 2 && (
-            <div className='Article-side_toc'>
+            <section className='Article-side_toc'>
               {table_of_contents.map(item => (
                 <li className={`toc-${item.size}`}>
                   <a href={`#${item.body.toLowerCase()}`}>{item.body}</a>
                 </li>
               ))}
-            </div>
+            </section>
           )}
         </div>
       </div>

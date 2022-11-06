@@ -24,9 +24,9 @@ export default () => {
     }
   `);
   return (
-    <div className='TagListCard-container'>
+    <section className='TagListCard-container'>
       <h3>タグ</h3>
       <TagContainer tags={tags.allTags.nodes} disable_icon={true} />
-    </div>
+    </section>
   );
 };

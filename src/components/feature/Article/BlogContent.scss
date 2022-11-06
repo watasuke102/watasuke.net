@@ -32,10 +32,36 @@
   margin-top: 50px;
   padding: 5px 20px;
   background-color: color.$bg;
-  font-size: 1.3em;
-  h2 {
-    margin: 0;
-    text-align: center;
+  font-size: 1.1em;
+
+  .top_items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &::after {
+      content: '';
+    }
+    .close_button {
+      $button-size: 40px;
+      width: $button-size;
+      height: $button-size;
+      color: color.$bg;
+      background-color: color.$fg;
+      text-align: center;
+      // アイコン
+      i {
+        font-size: $button-size;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .heading {
+      font-size: 1.9em;
+      margin: 8px 0;
+      text-align: center;
+    }
   }
 }
 
@@ -55,25 +81,4 @@
   height: auto;
   max-width: 90%;
   max-height: 400px;
-}
-
-$button-size: 40px;
-.BlogContent-close_button {
-  position: relative;
-  top: 10px;
-  right: 10px;
-  width: $button-size;
-  height: $button-size;
-  color: color.$bg;
-  background-color: color.$fg;
-  // アイコン
-  i {
-    position: inherit;
-    left: 7px;
-    font-size: $button-size;
-    margin: auto;
-  }
-  &:hover {
-    cursor: pointer;
-  }
 }

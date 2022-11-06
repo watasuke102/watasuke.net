@@ -82,16 +82,18 @@ export default (props: Props) => {
   const [tocOpening, SetTocOpening] = React.useState(true);
   const table_of_contents = ExtractHeading(props.body);
   return (
-    <div className='BlogContent-container'>
+    <section className='BlogContent-container'>
       {
         // 見出しが2個未満だったら目次を出しても違和感がある気がする
         table_of_contents.length > 2 && (
           <>
             <div className='BlogContent-table_of_contents_container'>
-              <div className='BlogContent-close_button' onClick={() => SetTocOpening(!tocOpening)}>
-                {tocOpening ? <i className='fas fa-angle-up' /> : <i className='fas fa-angle-down' />}
+              <div className='top_items'>
+                <div className='close_button' onClick={() => SetTocOpening(!tocOpening)}>
+                  {tocOpening ? <i className='fas fa-angle-up' /> : <i className='fas fa-angle-down' />}
+                </div>
+                <span className='heading'>目次</span>
               </div>
-              <h2>目次</h2>
               <CSSTransition in={tocOpening} timeout={1000} classNames='toc-animation'>
                 <ol className='toc-animation'>
                   {table_of_contents.map(item => (
@@ -118,6 +120,6 @@ export default (props: Props) => {
       {/* <Remark remarkPlugins={[Gfm, Toc, Slug]} rehypeReactOptions={rehype_react_options}>
         {/* 画像のURLを置き換える /}
       </Remark> */}
-    </div>
+    </section>
   );
 };

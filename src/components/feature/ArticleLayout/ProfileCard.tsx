@@ -21,7 +21,7 @@ export default () => {
     }
   `);
   return (
-    <div className='ProfileCard-container'>
+    <section className='ProfileCard-container'>
       <StaticImage width={80} src='../../../assets/icon.jpg' alt='icon' />
       <p>わたすけ</p>
       <p className='ProfileCard-body'>
@@ -29,6 +29,6 @@ export default () => {
         <br />
         プロフィール詳細は<Link to='/profile'>こちら</Link>
       </p>
-    </div>
+    </section>
   );
 };
