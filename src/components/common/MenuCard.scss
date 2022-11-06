@@ -7,6 +7,8 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 
+@use './color';
+
 .MenuCard-container {
   $translate-time: 0.2s;
   width: 180px;
@@ -17,31 +19,21 @@
   p {
     font-size: 30px;
     font-weight: bold;
-    color: #aaaaff;
+    color: color.$p0;
     // aみたいにする
     margin: 1px 0;
-    text-decoration: underline;
-    transition: color $translate-time;
   }
   i {
-    color: #eee;
+    color: color.$fg;
     font-size: 80px;
     margin-bottom: 10px;
-    transition: color $translate-time;
   }
 
-  background-color: #0000;
-  transition: background-color $translate-time;
+  transition: transform $translate-time;
   &:hover {
-    background-color: #dddf;
-    p {
-      color: #222277;
-      transition: color $translate-time;
-    }
-    i {
-      color: #222;
-      transition: color $translate-time;
-    }
-    transition: background-color $translate-time;
+    color: color.$p0;
+    text-decoration: underline;
+    transform: scale(111%);
+    transition: transform $translate-time;
   }
 }

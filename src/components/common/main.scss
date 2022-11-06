@@ -6,11 +6,12 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
+@use './color';
 
 // reseter.css
 @import url('https://cdn.jsdelivr.net/gh/krishdevdb/reseter.css@1.20/css/reseter.min.css');
 // font
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400&display=swap');
 // icon
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css');
 
@@ -20,16 +21,16 @@
 
 body {
   font-family: 'M PLUS 1p', sans-serif;
-  background-color: #2f332f;
-  color: #eee;
+  background-color: color.$bg;
+  color: color.$fg;
   padding: 25px 20px;
   padding-top: 50px;
 
   a {
-    color: #8888ff;
+    color: color.$p0;
     text-decoration: underline;
     &:hover {
-      color: #aaaaff;
+      color: color.$p0;
       transition: color 0.3s;
     }
   }
@@ -42,7 +43,7 @@ body {
     th {
       text-align: center;
       padding: 5px 15px;
-      border-bottom: 2px solid white;
+      border-bottom: 2px solid color.$fg;
     }
   }
 }

@@ -6,6 +6,7 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
+@use './color';
 
 .Header-container {
   z-index: 1;
@@ -17,15 +18,16 @@
   left: 0;
   height: 50px;
   padding: 10px;
+  margin-bottom: 16px;
   width: 100vw;
   font-size: 1.1em;
-  background-color: #070707bb;
+  background-color: color.$transparent-half;
 
   a {
-    color: #eee;
+    color: color.$fg;
   }
   .Header-title {
-    font-size: 1.4em;
+    font-size: 1.7em;
     margin-left: 10px;
     a {
       text-decoration: none;
