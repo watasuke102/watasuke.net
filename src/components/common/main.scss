@@ -24,7 +24,7 @@ body {
   background-color: color.$bg;
   color: color.$fg;
   padding: 25px 20px;
-  padding-top: 50px;
+  padding-top: 56px;
 
   a {
     color: color.$p0;
@@ -48,8 +48,8 @@ body {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 550px) {
   body {
-    margin-top: 80px;
+    margin-top: 48px;
   }
 }

@@ -21,7 +21,7 @@
   margin-bottom: 16px;
   width: 100vw;
   font-size: 1.1em;
-  background-color: color.$transparent-half;
+  background-color: color.$transparent-header;
 
   a {
     color: color.$fg;
@@ -40,10 +40,10 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 550px) {
   .Header-container {
     display: block;
-    height: 80px;
+    height: 88px;
 
     .Header-links {
       width: 100%;
