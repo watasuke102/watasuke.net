@@ -34,8 +34,37 @@ const Letter: Variants = {
 };
 
 export default (props: Props) => {
+  const [completed, SetCompleted] = React.useState(false);
+
+  if (completed) {
+    return (
+      <>
+        {' '}
+        {props.body.map(body => {
+          const text = (
+            <>
+              <span style={{display: 'inline-block', overflow: 'hidden'}}>{body.text}</span>
+              {body.break === true && <br />}
+            </>
+          );
+          switch (body.type) {
+            case 'plain':
+              return <span>{text}</span>;
+            case 'link':
+              return <a href={body.link ?? ''}>{text}</a>;
+          }
+        })}
+      </>
+    );
+  }
+
   return (
-    <motion.div variants={Container} initial={['fade_from', 'move_from']} animate={['fade_to', 'move_to']}>
+    <motion.div
+      variants={Container}
+      initial={['fade_from', 'move_from']}
+      animate={['fade_to', 'move_to']}
+      onAnimationComplete={() => SetCompleted(true)}
+    >
       {props.body.map(body => {
         const text = (
           <>
