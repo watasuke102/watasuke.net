@@ -9,8 +9,6 @@
 
 @use '../../common/color.scss';
 
-$second-bg-color: #1f221f;
-
 .Article-container {
   display: flex;
   margin-top: 20px;
@@ -60,7 +58,7 @@ $second-bg-color: #1f221f;
 
 .Article-body {
   width: 70%;
-  background-color: $second-bg-color;
+  border-right: 1px solid color.$fg;
   padding: 15px;
 }
 
@@ -77,13 +75,10 @@ $second-bg-color: #1f221f;
     margin-bottom: 16px;
     text-align: center;
   }
-  background-color: #1f221f;
+  border: solid 2px color.$fg;
   padding: 5px 10px;
   padding-bottom: 20px;
   margin-bottom: 30px;
-  // .TagContainer-container {
-  //   justify-content: space-between;
-  // }
 }
 .Article-side_toc {
   position: sticky;
@@ -91,7 +86,9 @@ $second-bg-color: #1f221f;
   padding: 10px;
   max-height: 80vh;
   overflow-y: scroll;
-  background-color: $second-bg-color;
+  background-color: color.$fg;
+  // border: solid 2px color.$fg;
+
   li {
     padding: 5px 10px;
     margin: 10px 0;
@@ -103,9 +100,9 @@ $second-bg-color: #1f221f;
       width: auto;
     }
 
-    background-color: #fff2;
+    background-color: rgba(color.$bg, 0.85);
     &:hover {
-      background-color: #fff4;
+      background-color: rgba(color.$bg, 1);
     }
   }
 }

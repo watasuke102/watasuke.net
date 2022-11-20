@@ -7,9 +7,11 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 
+@use '../../common/color.scss';
+
 .ProfileCard-container {
   text-align: center;
-  background-color: #1f221f;
+  border: solid 2px color.$fg;
   padding: 10px 10px;
   margin-bottom: 30px;
   img {
