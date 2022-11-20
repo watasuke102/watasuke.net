@@ -9,8 +9,7 @@
 
 import React from 'react';
 import {graphql, useStaticQuery} from 'gatsby';
-import TagContainer from './TagContainer';
-import './TagListCard.scss';
+import TagContainer from '../../feature/ArticleLayout/TagContainer';
 
 export default () => {
   const tags = useStaticQuery(graphql`
@@ -23,10 +22,5 @@ export default () => {
       }
     }
   `);
-  return (
-    <section className='TagListCard-container'>
-      <h3>タグ</h3>
-      <TagContainer tags={tags.allTags.nodes} disable_icon={true} />
-    </section>
-  );
+  return <TagContainer tags={tags.allTags.nodes} disable_icon={true} />;
 };

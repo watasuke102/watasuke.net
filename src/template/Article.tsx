@@ -67,7 +67,10 @@ export default (prop: Props) => {
         {/* サイドバー */}
         <div className='Article-side'>
           <ProfileCard />
-          <TagListCard />
+          <section className='Article-side_tag'>
+            <span className='head'>タグ</span>
+            <AllTagList />
+          </section>
           {table_of_contents.length > 2 && (
             <section className='Article-side_toc'>
               {table_of_contents.map(item => (

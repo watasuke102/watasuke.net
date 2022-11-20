@@ -69,6 +69,22 @@ $second-bg-color: #1f221f;
   width: 25%;
   margin-left: 20px;
 }
+.Article-side_tag {
+  .head {
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  background-color: #1f221f;
+  padding: 5px 10px;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  // .TagContainer-container {
+  //   justify-content: space-between;
+  // }
+}
 .Article-side_toc {
   position: sticky;
   top: 60px;
