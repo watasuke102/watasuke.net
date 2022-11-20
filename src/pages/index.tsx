@@ -28,7 +28,7 @@ export default () => {
       <Background />
       <div className='top-container'>
         <div className='top-icon_and_name'>
-          <StaticImage width={150} src='../assets/icon.jpg' alt='icon' />
+          <StaticImage loading='eager' placeholder='none' width={150} src='../assets/icon.jpg' alt='icon' />
           <h2>Welcome</h2>
         </div>
         <div className='top-menu'>

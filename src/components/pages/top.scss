@@ -7,6 +7,10 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 
+.gatsby-image-wrapper [data-main-image] {
+  transition: none !important;
+}
+
 .top-container {
   width: 95%;
   position: absolute;
