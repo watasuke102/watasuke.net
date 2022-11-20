@@ -22,7 +22,7 @@ export const GenBreadcrumb = (position: number, name: string, item?: string): Br
     // 実際は1-indexed + pos1 は 'Top'
     position: position + 2,
     name: name,
-    item: item && `https://watasuke.net${item}`,
+    item: item && `https://watasuke.net${item}/`,
   };
   return breadcrumb;
 };
