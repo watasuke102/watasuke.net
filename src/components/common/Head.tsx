@@ -8,8 +8,9 @@
  */
 
 import React from 'react';
-import {Helmet} from 'react-helmet';
+import {Helmet, HelmetProvider} from 'react-helmet-async';
 import {graphql, useStaticQuery} from 'gatsby';
+import Breadcrumb from '@mytypes/Breadcrumb';
 import config from '../../../config';
 
 interface Props {
@@ -17,6 +18,8 @@ interface Props {
   desc: string;
   url: string; // '/'から始まる
   thumbnail?: string;
+  hide_breadcrumb?: boolean;
+  breadcrumb_list: Breadcrumb[];
 }
 
 export default (props: Props) => {
@@ -32,29 +35,50 @@ export default (props: Props) => {
       }
     `).file.publicURL;
   }
-  const title = props.title.length === 0 ? 'わたすけのへや' : props.title + ' - わたすけのへや';
-  const url = 'https://watasuke.net' + props.url;
+  const title = props.title.length === 0 ? 'わたすけのへや' : `${props.title} - わたすけのへや`;
+  const url = `https://watasuke.net${props.url}`;
   // 140字に制限して内容を表示、超過分は...で
   const desc = props.desc.slice(0, 140) + (props.desc.length > 140 ? ' ...' : '');
 
+  const breadcrumb_list = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Top',
+        item: 'https://watasuke.net',
+      },
+      ...props.breadcrumb_list,
+    ],
+  };
+
   return (
-    <Helmet>
-      <html lang='ja' />
-      <title>{title}</title>
-      <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${config.adsenseId}`} />
-      <meta property='og:type' content='website' />
-      <meta property='og:url' content={url} />
-      <meta property='og:title' content={title} />
-      <meta property='og:description' content={desc} />
-      <meta property='og:image' content={image} />
-      <meta name='description' content={desc} />
-      <meta name='twitter:card' content='summary_large_image' />
-      <meta name='twitter:site' content='@Watasuke102' />
-      <meta name='twitter:creator' content='@Watasuke102' />
-      <meta name='twitter:title' content={title} />
-      <meta name='twitter:url' content={url} />
-      <meta name='twitter:image' content={image} />
-      <meta name='twitter:description' content={desc} />
-    </Helmet>
+    <HelmetProvider>
+      <Helmet>
+        <html lang='ja' />
+        <title>{title}</title>
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${config.adsenseId}`}
+        />
+        <meta property='og:type' content='website' />
+        <meta property='og:url' content={url} />
+        <meta property='og:title' content={title} />
+        <meta property='og:description' content={desc} />
+        <meta property='og:image' content={image} />
+        <meta name='description' content={desc} />
+        <meta name='twitter:card' content='summary_large_image' />
+        <meta name='twitter:site' content='@Watasuke102' />
+        <meta name='twitter:creator' content='@Watasuke102' />
+        <meta name='twitter:title' content={title} />
+        <meta name='twitter:url' content={url} />
+        <meta name='twitter:image' content={image} />
+        <meta name='twitter:description' content={desc} />
+
+        <script type='application/ld+json'>{JSON.stringify(breadcrumb_list)}</script>
+      </Helmet>
+    </HelmetProvider>
   );
 };

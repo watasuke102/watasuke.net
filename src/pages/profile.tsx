@@ -15,6 +15,7 @@ import Head from '@/common/Head';
 import Layout from '@/common/Layout';
 import Background from '@/common/Background';
 import '@/common/main.scss';
+import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 interface Props {
   data: {siteData: {body: string}};
@@ -23,7 +24,12 @@ interface Props {
 export default ({data}: Props) => {
   return (
     <Layout>
-      <Head title={'プロフィール'} desc={'わたすけのプロフィール'} url={'/profile'} />
+      <Head
+        title={'プロフィール'}
+        desc={'わたすけのプロフィール'}
+        url={'/profile'}
+        breadcrumb_list={[GenBreadcrumb(0, 'Profile')]}
+      />
       <Background />
       <h1>プロフィール</h1>
       <p>

@@ -13,6 +13,7 @@ import Head from '@/common/Head';
 import Layout from '@/common/Layout';
 import ArticleList from '@/feature/ArticleList/ArticleList';
 import Article from '@mytypes/Article';
+import {GenBreadcrumb} from '@utils/Breadcrumb';
 import '@/common/main.scss';
 import '@/pages/blog.scss';
 
@@ -35,6 +36,11 @@ export default ({pageContext, data}: Props) => {
         title={pageContext.name}
         desc={'タグ' + pageContext.name + 'が付けられた記事'}
         url={'/blog/tag/' + pageContext.slug}
+        breadcrumb_list={[
+          GenBreadcrumb(0, 'Blog', '/blog'),
+          GenBreadcrumb(1, 'Tag', '/blog/tag'),
+          GenBreadcrumb(2, pageContext.name),
+        ]}
       />
       <h1>{pageContext.name}</h1>
       <div className='blog-container'>

@@ -15,6 +15,7 @@ import ArticleList from '@/feature/ArticleList/ArticleList';
 import Article from '@mytypes/Article';
 import '@/common/main.scss';
 import '@/pages/blog.scss';
+import { GenBreadcrumb } from '@utils/Breadcrumb';
 
 type Props = {
   location: {
@@ -30,7 +31,12 @@ type Props = {
 export default ({data}: Props) => {
   return (
     <Layout>
-      <Head title={'ブログ'} desc={'投稿した記事の一覧ページです'} url={'/blog'} />
+      <Head
+        title={'ブログ'}
+        desc={'投稿した記事の一覧ページです'}
+        url={'/blog'}
+        breadcrumb_list={[GenBreadcrumb(0, 'Blog')]}
+      />
       <h1>記事一覧</h1>
       <div className='blog-container'>
         <ArticleList list={data.allArticles.nodes} />

@@ -18,11 +18,18 @@ import SkillCard from '@/feature/portfolio/SkillCard';
 import Container from '@/feature/portfolio/PortfolioContainer';
 import TextAnimation from '@/feature/portfolio/TextAnimation';
 import '@/pages/portfolio.scss';
+import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 export default () => {
   return (
     <div id='portfolio-container'>
-      <Head title={'ポートフォリオ'} desc={'ポートフォリオです'} url={'/portfolio'} />
+      <Head
+        title={'ポートフォリオ'}
+        desc={'ポートフォリオです'}
+        url={'/portfolio'}
+        hide_breadcrumb
+        breadcrumb_list={[GenBreadcrumb(0, 'Portfolio')]}
+      />
       <Container>
         <motion.div
           id='portfolio-welcome'

@@ -14,9 +14,10 @@ import Layout from '@/common/Layout';
 import Thumbnail from '@/feature/Article/Thumbnail';
 import BlogContent from '@/feature/Article/BlogContent';
 import ProfileCard from '@/feature/ArticleLayout/ProfileCard';
-import TagListCard from '@/feature/ArticleLayout/TagListCard';
+import {AllTagList} from '@/common/AllTagList';
 import TagContainer from '@/feature/ArticleLayout/TagContainer';
 import ExtractHeading from '@utils/ExtractHeading';
+import {GenBreadcrumb} from '@utils/Breadcrumb';
 import Article from '@mytypes/Article';
 import '@/common/main.scss';
 import '@/feature/Article/Article.scss';
@@ -38,6 +39,11 @@ export default (prop: Props) => {
         desc={RemoveMD(data.body)}
         url={'/blog/article/' + data.slug}
         thumbnail={data.thumbnail}
+        breadcrumb_list={[
+          GenBreadcrumb(0, 'Blog', '/blog'),
+          GenBreadcrumb(1, 'Article', '/blog/article'),
+          GenBreadcrumb(2, data.title),
+        ]}
       />
       <div className='Article-container'>
         {/* 記事メイン部分 */}

@@ -18,7 +18,13 @@ import '@/pages/top.scss';
 export default () => {
   return (
     <>
-      <Head title={''} desc={'プログラミングやゲームについてのブログ、プロフィール、ポートフォリオなど'} url={''} />
+      <Head
+        title={''}
+        desc={'プログラミングやゲームについてのブログ、プロフィール、ポートフォリオなど'}
+        url={''}
+        hide_breadcrumb
+        breadcrumb_list={[]}
+      />
       <Background />
       <div className='top-container'>
         <div className='top-icon_and_name'>

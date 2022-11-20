@@ -12,11 +12,17 @@ import {Link} from 'gatsby';
 import Head from '@/common/Head';
 import Layout from '@/common/Layout';
 import Background from '@/common/Background';
+import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 export default () => {
   return (
     <Layout>
-      <Head title={'このサイトについて'} desc={'このサイトについての説明'} url={'/about'} />
+      <Head
+        title={'このサイトについて'}
+        desc={'このサイトについての説明'}
+        url={'/about'}
+        breadcrumb_list={[GenBreadcrumb(0, 'About')]}
+      />
       <Background />
       <h1>このサイトについて</h1>
       <p>わたすけのへやです</p>
