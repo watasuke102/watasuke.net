@@ -49,7 +49,6 @@ export default (props: Props) => {
     },
     ...props.breadcrumb_list,
   ];
-  console.log(breadcrumb_list);
 
   return (
     <>
@@ -88,21 +87,18 @@ export default (props: Props) => {
       {/* FIXME: Headコンポーネントでレンダリングするのはあんまり良くない気がする */}
       {!props.hide_breadcrumb && (
         <section>
-          {breadcrumb_list.map((e, i) => {
-            console.log(e, i);
-            return (
-              <>
-                {e.item ? (
-                  <a key={`a_${i}`} href={e.item}>
-                    {e.name}
-                  </a>
-                ) : (
-                  <span key={`s_${i}`}>{e.name}</span>
-                )}
-                {i !== breadcrumb_list.length - 1 && <span key={`sep_${i}`}>{' > '}</span>}
-              </>
-            );
-          })}
+          {breadcrumb_list.map((e, i) => (
+            <>
+              {e.item ? (
+                <a key={`a_${i}`} href={e.item}>
+                  {e.name}
+                </a>
+              ) : (
+                <span key={`s_${i}`}>{e.name}</span>
+              )}
+              {i !== breadcrumb_list.length - 1 && <span key={`sep_${i}`}>{' > '}</span>}
+            </>
+          ))}
         </section>
       )}
     </>
