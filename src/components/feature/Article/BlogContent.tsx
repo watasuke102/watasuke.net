@@ -9,7 +9,6 @@
 
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import {CSSTransition} from 'react-transition-group';
 import EmbedCard from '@/feature/Article/EmbedCard';
 import {imageUrl} from '../../../../config';
 
