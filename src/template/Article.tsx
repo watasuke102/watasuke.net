@@ -39,11 +39,7 @@ export default (prop: Props) => {
         desc={RemoveMD(data.body)}
         url={'/blog/article/' + data.slug}
         thumbnail={data.thumbnail}
-        breadcrumb_list={[
-          GenBreadcrumb(0, 'Blog', '/blog'),
-          GenBreadcrumb(1, 'Article', '/blog/article'),
-          GenBreadcrumb(2, data.title),
-        ]}
+        breadcrumb_list={[GenBreadcrumb(0, 'Blog', '/blog'), GenBreadcrumb(1, 'Article'), GenBreadcrumb(2, data.title)]}
       />
       <div className='Article-container'>
         {/* 記事メイン部分 */}
