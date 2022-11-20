@@ -16,7 +16,6 @@ import Article from '@mytypes/Article';
 import '@/common/main.scss';
 import '@/pages/blog.scss';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
-import {AllTagList} from '@/common/AllTagList';
 
 type Props = {
   location: {
@@ -33,18 +32,12 @@ export default ({data}: Props) => {
   return (
     <Layout>
       <Head
-        title={'ブログ'}
-        desc={'投稿した記事・タグの一覧ページです'}
-        url={'/blog'}
-        breadcrumb_list={[GenBreadcrumb(0, 'Blog')]}
+        title={'記事一覧'}
+        desc={'投稿した記事の一覧ページです'}
+        url={'/blog/article'}
+        breadcrumb_list={[GenBreadcrumb(0, 'Blog', '/blog'), GenBreadcrumb(0, 'Article')]}
       />
-      <h1>ブログ</h1>
-      <h2>タグ一覧</h2>
-      <AllTagList />
-
-      <hr />
-
-      <h2>記事一覧</h2>
+      <h1>記事一覧</h1>
       <div className='blog-container'>
         <ArticleList list={data.allArticles.nodes} />
       </div>
@@ -52,7 +45,6 @@ export default ({data}: Props) => {
   );
 };
 
-// FIXME: コンポーネントに分ける
 export const query = graphql`
   query {
     allArticles(sort: {fields: published_at, order: DESC}) {
