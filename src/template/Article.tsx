@@ -14,14 +14,13 @@ import Layout from '@/common/Layout';
 import Thumbnail from '@/feature/Article/Thumbnail';
 import BlogContent from '@/feature/Article/BlogContent';
 import ProfileCard from '@/feature/ArticleLayout/ProfileCard';
-import {AllTagList} from '@/common/AllTagList';
-import TagContainer from '@/feature/ArticleLayout/TagContainer';
 import ExtractHeading from '@utils/ExtractHeading';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import Article from '@mytypes/Article';
 import '@/common/main.scss';
 import '@/feature/Article/Article.scss';
 import '@/feature/Article/TableOfContents.scss';
+import {AllTagList, TagContainer} from '@/feature/Tag';
 
 interface Props {
   pageContext: Article;

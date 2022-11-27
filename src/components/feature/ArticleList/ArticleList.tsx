@@ -10,7 +10,7 @@
 import React from 'react';
 import RemoveMD from 'remove-markdown';
 import {navigate} from 'gatsby';
-import TagContainer from '@/feature/ArticleLayout/TagContainer';
+import {TagContainer} from '@/feature/Tag';
 import Article from '@mytypes/Article';
 import './ArticleList.scss';
 

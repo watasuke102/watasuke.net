@@ -9,7 +9,7 @@
 
 import React from 'react';
 import {graphql, useStaticQuery} from 'gatsby';
-import TagContainer from '../../feature/ArticleLayout/TagContainer';
+import TagContainer from './TagContainer';
 
 export default () => {
   const tags = useStaticQuery(graphql`
