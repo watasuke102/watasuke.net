@@ -6,9 +6,8 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-
-import React from 'react';
 import {motion} from 'framer-motion';
+import React from 'react';
 import {FadeWithScroll} from '@utils/FadeWithScroll';
 import './LinkCard.scss';
 

@@ -6,11 +6,10 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-
-import React from 'react';
-import Layout from '@/common/Layout';
-import Background from '@/common/Background';
 import '@/pages/404.scss';
+import React from 'react';
+import Background from '@/common/Background';
+import Layout from '@/common/Layout';
 
 export default () => {
   return (

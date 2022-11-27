@@ -6,10 +6,9 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-
-import React from 'react';
 import {graphql, Link, useStaticQuery} from 'gatsby';
 import {StaticImage} from 'gatsby-plugin-image';
+import React from 'react';
 import './ProfileCard.scss';
 
 export default () => {

@@ -6,21 +6,20 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-
 import React from 'react';
 import RemoveMD from 'remove-markdown';
 import Head from '@/common/Head';
 import Layout from '@/common/Layout';
-import Thumbnail from '@/feature/Article/Thumbnail';
-import BlogContent from '@/feature/Article/BlogContent';
-import ProfileCard from '@/feature/ArticleLayout/ProfileCard';
-import ExtractHeading from '@utils/ExtractHeading';
-import {GenBreadcrumb} from '@utils/Breadcrumb';
-import Article from '@mytypes/Article';
 import '@/common/main.scss';
 import '@/feature/Article/Article.scss';
+import BlogContent from '@/feature/Article/BlogContent';
 import '@/feature/Article/TableOfContents.scss';
+import Thumbnail from '@/feature/Article/Thumbnail';
+import ProfileCard from '@/feature/ArticleLayout/ProfileCard';
 import {AllTagList, TagContainer} from '@/feature/Tag';
+import {GenBreadcrumb} from '@utils/Breadcrumb';
+import ExtractHeading from '@utils/ExtractHeading';
+import Article from '@mytypes/Article';
 
 interface Props {
   pageContext: Article;

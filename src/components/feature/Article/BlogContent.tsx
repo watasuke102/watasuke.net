@@ -6,25 +6,21 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import EmbedCard from '@/feature/Article/EmbedCard';
 import {imageUrl} from '../../../../config';
-
-import './BlogContent.scss';
-import './TableOfContents.scss';
-
-// Remark関連
-import Gfm from 'remark-gfm';
-import Toc from 'remark-toc';
-import Slug from 'remark-slug';
-import Raw from 'rehype-raw';
-
+import {AnimatePresence, motion} from 'framer-motion';
 // コードのシンタックスハイライト
 import Prism from 'prismjs';
+import React from 'react';
+import ReactMarkdown from 'react-markdown';
+import Raw from 'rehype-raw';
+// Remark関連
+import Gfm from 'remark-gfm';
+import Slug from 'remark-slug';
+import Toc from 'remark-toc';
+import EmbedCard from '@/feature/Article/EmbedCard';
 import ExtractHeading from '@utils/ExtractHeading';
-import {AnimatePresence, motion} from 'framer-motion';
+import './BlogContent.scss';
+import './TableOfContents.scss';
 
 interface Props {
   body: string;

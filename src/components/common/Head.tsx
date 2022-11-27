@@ -6,12 +6,11 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-
+import config from '../../../config';
+import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import {Helmet, HelmetProvider} from 'react-helmet-async';
-import {graphql, useStaticQuery} from 'gatsby';
 import Breadcrumb from '@mytypes/Breadcrumb';
-import config from '../../../config';
 
 interface Props {
   title: string;

@@ -6,9 +6,8 @@
  * Twitter: @Watasuke102
  * software is released under the MIT SUSHI-WARE License.
  */
-
-import React from 'react';
 import {AnimatePresence, motion, useAnimation} from 'framer-motion';
+import React from 'react';
 import './PortfolioContainer.scss';
 
 enum Position {

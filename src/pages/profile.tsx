@@ -6,14 +6,13 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-
 import {graphql, Link} from 'gatsby';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Gfm from 'remark-gfm';
+import Background from '@/common/Background';
 import Head from '@/common/Head';
 import Layout from '@/common/Layout';
-import Background from '@/common/Background';
 import '@/common/main.scss';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 

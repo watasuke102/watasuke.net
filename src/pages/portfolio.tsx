@@ -6,18 +6,17 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-
-import React from 'react';
-import {Link} from 'gatsby';
+import '@/pages/portfolio.scss';
 import {motion} from 'framer-motion';
+import {Link} from 'gatsby';
 import {StaticImage} from 'gatsby-plugin-image';
+import React from 'react';
 import Head from '@/common/Head';
 import LinkCard from '@/feature/portfolio/LinkCard';
-import WorkCard from '@/feature/portfolio/WorkCard';
-import SkillCard from '@/feature/portfolio/SkillCard';
 import Container from '@/feature/portfolio/PortfolioContainer';
+import SkillCard from '@/feature/portfolio/SkillCard';
 import TextAnimation from '@/feature/portfolio/TextAnimation';
-import '@/pages/portfolio.scss';
+import WorkCard from '@/feature/portfolio/WorkCard';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 export default () => {

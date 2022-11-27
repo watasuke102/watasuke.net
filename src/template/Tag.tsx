@@ -6,16 +6,15 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-
-import React from 'react';
+import '@/pages/blog.scss';
 import {graphql} from 'gatsby';
+import React from 'react';
 import Head from '@/common/Head';
 import Layout from '@/common/Layout';
-import ArticleList from '@/feature/ArticleList/ArticleList';
-import Article from '@mytypes/Article';
-import {GenBreadcrumb} from '@utils/Breadcrumb';
 import '@/common/main.scss';
-import '@/pages/blog.scss';
+import ArticleList from '@/feature/ArticleList/ArticleList';
+import {GenBreadcrumb} from '@utils/Breadcrumb';
+import Article from '@mytypes/Article';
 
 interface Props {
   pageContext: {

@@ -6,9 +6,8 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-
-import React from 'react';
 import {navigate} from 'gatsby';
+import React from 'react';
 import './MenuCard.scss';
 
 interface Props {

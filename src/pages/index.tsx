@@ -6,14 +6,13 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-
-import React from 'react';
+import '@/pages/top.scss';
 import {StaticImage} from 'gatsby-plugin-image';
+import React from 'react';
+import Background from '@/common/Background';
 import Head from '@/common/Head';
 import MenuCard from '@/common/MenuCard';
-import Background from '@/common/Background';
 import '@/common/main.scss';
-import '@/pages/top.scss';
 
 export default () => {
   return (

@@ -6,10 +6,9 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-
-import React from 'react';
-import {StaticImage} from 'gatsby-plugin-image';
 import {imageUrl} from '../../../../config';
+import {StaticImage} from 'gatsby-plugin-image';
+import React from 'react';
 
 interface Props {
   url: string;

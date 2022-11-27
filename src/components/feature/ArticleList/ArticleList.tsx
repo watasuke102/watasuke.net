@@ -6,10 +6,9 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-
+import {navigate} from 'gatsby';
 import React from 'react';
 import RemoveMD from 'remove-markdown';
-import {navigate} from 'gatsby';
 import {TagContainer} from '@/feature/Tag';
 import Article from '@mytypes/Article';
 import './ArticleList.scss';
