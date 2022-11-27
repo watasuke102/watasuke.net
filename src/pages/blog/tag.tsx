@@ -14,7 +14,7 @@ import Layout from '@/common/Layout';
 import '@/common/main.scss';
 import '@/pages/blog.scss';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
-import {AllTagList} from '@/common/AllTagList';
+import {AllTagList} from '@/feature/Tag';
 
 export default () => {
   return (

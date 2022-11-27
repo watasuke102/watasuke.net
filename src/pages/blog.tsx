@@ -16,7 +16,7 @@ import Article from '@mytypes/Article';
 import '@/common/main.scss';
 import '@/pages/blog.scss';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
-import {AllTagList} from '@/common/AllTagList';
+import {AllTagList} from '@/feature/Tag';
 
 type Props = {
   location: {
