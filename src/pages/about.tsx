@@ -12,11 +12,15 @@ import Background from '@/common/Background';
 import Layout from '@/common/Layout';
 import Seo from '@/common/Seo';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
+import Breadcrumb from '@/common/Breadcrumb';
+
+const breadcrumb_list = GenBreadcrumb([{name: 'About'}]);
 
 export default () => {
   return (
     <Layout>
       <Background />
+      <Breadcrumb breadcrumb_list={breadcrumb_list} />
       <h1>このサイトについて</h1>
       <p>わたすけのへやです</p>
       <p>
@@ -67,6 +71,6 @@ export const Head = () => (
     title={'このサイトについて'}
     desc={'このサイトについての説明'}
     url={'/about'}
-    breadcrumb_list={[GenBreadcrumb(0, 'About')]}
+    breadcrumb_list={breadcrumb_list}
   />
 );

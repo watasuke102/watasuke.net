@@ -9,6 +9,7 @@
 import '@/pages/blog.scss';
 import {graphql} from 'gatsby';
 import React from 'react';
+import Breadcrumb from '@/common/Breadcrumb';
 import Layout from '@/common/Layout';
 import Seo from '@/common/Seo';
 import '@/common/main.scss';
@@ -28,19 +29,13 @@ interface Props {
   };
 }
 
+const breadcrumb_list = (name: string) =>
+  GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Article', item: '/blog/article'}, {name: name}]);
+
 export default ({pageContext, data}: Props) => {
   return (
     <Layout>
-      <Seo
-        title={pageContext.name}
-        desc={'タグ' + pageContext.name + 'が付けられた記事'}
-        url={'/blog/tag/' + pageContext.slug}
-        breadcrumb_list={[
-          GenBreadcrumb(0, 'Blog', '/blog'),
-          GenBreadcrumb(1, 'Tag', '/blog/tag'),
-          GenBreadcrumb(2, pageContext.name),
-        ]}
-      />
+      <Breadcrumb breadcrumb_list={breadcrumb_list(pageContext.name)} />
       <h1>{pageContext.name}</h1>
       <div className='blog-container'>
         <ArticleList list={data.allArticles.nodes} />
@@ -67,3 +62,12 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head = ({pageContext}: Props) => (
+  <Seo
+    title={pageContext.name}
+    desc={'タグ' + pageContext.name + 'が付けられた記事'}
+    url={'/blog/tag/' + pageContext.slug}
+    breadcrumb_list={breadcrumb_list(pageContext.name)}
+  />
+);

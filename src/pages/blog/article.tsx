@@ -27,6 +27,8 @@ type Props = {
   };
 };
 
+const breadcrumb_list = GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Article'}]);
+
 export default ({data}: Props) => {
   return (
     <Layout>
@@ -62,6 +64,6 @@ export const Head = () => (
     title={'記事一覧'}
     desc={'投稿した記事の一覧ページです'}
     url={'/blog/article'}
-    breadcrumb_list={[GenBreadcrumb(0, 'Blog', '/blog'), GenBreadcrumb(0, 'Article')]}
+    breadcrumb_list={breadcrumb_list}
   />
 );

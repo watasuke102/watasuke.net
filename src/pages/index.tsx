@@ -13,6 +13,9 @@ import Background from '@/common/Background';
 import MenuCard from '@/common/MenuCard';
 import Seo from '@/common/Seo';
 import '@/common/main.scss';
+import {GenBreadcrumb} from '@utils/Breadcrumb';
+
+const breadcrumb_list = GenBreadcrumb([]);
 
 export default () => {
   return (
@@ -39,7 +42,6 @@ export const Head = () => (
     title={''}
     desc={'プログラミングやゲームについてのブログ、プロフィール、ポートフォリオなど'}
     url={''}
-    hide_breadcrumb
-    breadcrumb_list={[]}
+    breadcrumb_list={breadcrumb_list}
   />
 );

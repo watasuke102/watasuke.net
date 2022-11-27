@@ -11,6 +11,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Gfm from 'remark-gfm';
 import Background from '@/common/Background';
+import Breadcrumb from '@/common/Breadcrumb';
 import Layout from '@/common/Layout';
 import Seo from '@/common/Seo';
 import '@/common/main.scss';
@@ -20,10 +21,13 @@ interface Props {
   data: {siteData: {body: string}};
 }
 
+const breadcrumb_list = GenBreadcrumb([{name: 'Profile'}]);
+
 export default ({data}: Props) => {
   return (
     <Layout>
       <Background />
+      <Breadcrumb breadcrumb_list={breadcrumb_list} />
       <h1>プロフィール</h1>
       <p>
         技術的な項目については
@@ -44,10 +48,5 @@ export const query = graphql`
 `;
 
 export const Head = () => (
-  <Seo
-    title={'プロフィール'}
-    desc={'わたすけのプロフィール'}
-    url={'/profile'}
-    breadcrumb_list={[GenBreadcrumb(0, 'Profile')]}
-  />
+  <Seo title={'プロフィール'} desc={'わたすけのプロフィール'} url={'/profile'} breadcrumb_list={breadcrumb_list} />
 );

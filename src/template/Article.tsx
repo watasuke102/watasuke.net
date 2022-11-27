@@ -8,6 +8,7 @@
  */
 import React from 'react';
 import RemoveMD from 'remove-markdown';
+import Breadcrumb from '@/common/Breadcrumb';
 import Layout from '@/common/Layout';
 import Seo from '@/common/Seo';
 import '@/common/main.scss';
@@ -25,6 +26,9 @@ interface Props {
   pageContext: Article;
 }
 
+const breadcrumb_list = (title: string) =>
+  GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Article', item: '/blog/article'}, {name: title}]);
+
 export default (prop: Props) => {
   const data = prop.pageContext;
   // クリックするとそこまで飛べる目次を生成する
@@ -32,17 +36,7 @@ export default (prop: Props) => {
 
   return (
     <Layout>
-      <Seo
-        title={data.title}
-        desc={RemoveMD(data.body)}
-        url={'/blog/article/' + data.slug}
-        thumbnail={data.thumbnail}
-        breadcrumb_list={[
-          GenBreadcrumb(0, 'Blog', '/blog'),
-          GenBreadcrumb(1, 'Article', '/blog/article'),
-          GenBreadcrumb(2, data.title),
-        ]}
-      />
+      <Breadcrumb breadcrumb_list={breadcrumb_list(data.title)} />
       <div className='Article-container'>
         {/* 記事メイン部分 */}
         <section className='Article-body'>
@@ -89,3 +83,13 @@ export default (prop: Props) => {
     </Layout>
   );
 };
+
+export const Head = ({pageContext}: Props) => (
+  <Seo
+    title={pageContext.title}
+    desc={RemoveMD(pageContext.body)}
+    url={'/blog/article/' + pageContext.slug}
+    thumbnail={pageContext.thumbnail}
+    breadcrumb_list={breadcrumb_list(pageContext.title)}
+  />
+);

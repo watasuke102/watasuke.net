@@ -9,6 +9,7 @@
 import '@/pages/blog.scss';
 import {graphql} from 'gatsby';
 import React from 'react';
+import Breadcrumb from '@/common/Breadcrumb';
 import Layout from '@/common/Layout';
 import Seo from '@/common/Seo';
 import '@/common/main.scss';
@@ -28,9 +29,12 @@ type Props = {
   };
 };
 
+const breadcrumb_list = GenBreadcrumb([{name: 'Blog'}]);
+
 export default ({data}: Props) => {
   return (
     <Layout>
+      <Breadcrumb breadcrumb_list={breadcrumb_list} />
       <h1>ブログ</h1>
       <h2>タグ一覧</h2>
       <AllTagList />
@@ -70,6 +74,6 @@ export const Head = () => (
     title={'ブログ'}
     desc={'投稿した記事・タグの一覧ページです'}
     url={'/blog'}
-    breadcrumb_list={[GenBreadcrumb(0, 'Blog')]}
+    breadcrumb_list={breadcrumb_list}
   />
 );

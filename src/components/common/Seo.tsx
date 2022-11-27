@@ -9,15 +9,14 @@
 import config from '../../../config';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
-import Breadcrumb from '@mytypes/Breadcrumb';
+import BreadcrumbItem from '@mytypes/Breadcrumb';
 
 interface Props {
   title: string;
   desc: string;
   url: string; // '/'から始まる
   thumbnail?: string;
-  hide_breadcrumb?: boolean;
-  breadcrumb_list: Breadcrumb[];
+  breadcrumb_list: BreadcrumbItem[];
 }
 
 export default (props: Props) => {
@@ -37,16 +36,6 @@ export default (props: Props) => {
   const url = `https://watasuke.net${props.url}`;
   // 140字に制限して内容を表示、超過分は...で
   const desc = props.desc.slice(0, 140) + (props.desc.length > 140 ? ' ...' : '');
-
-  const breadcrumb_list = [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Top',
-      item: 'https://watasuke.net',
-    },
-    ...props.breadcrumb_list,
-  ];
 
   return (
     <>
@@ -70,7 +59,12 @@ export default (props: Props) => {
         {JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',
-          itemListElement: breadcrumb_list,
+          itemListElement: props.breadcrumb_list.map(e => {
+            if (e.item) {
+              e.item = `https://watasuke.net${e.item}/`;
+            }
+            return e;
+          }),
         })}
       </script>
     </>

@@ -19,6 +19,8 @@ import TextAnimation from '@/feature/portfolio/TextAnimation';
 import WorkCard from '@/feature/portfolio/WorkCard';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
+const breadcrumb_list = GenBreadcrumb([{name: 'Portfolio'}]);
+
 export default () => {
   return (
     <div id='portfolio-container'>
@@ -249,11 +251,5 @@ export default () => {
 };
 
 export const Head = () => (
-  <Seo
-    title={'ポートフォリオ'}
-    desc={'ポートフォリオです'}
-    url={'/portfolio'}
-    hide_breadcrumb
-    breadcrumb_list={[GenBreadcrumb(0, 'Portfolio')]}
-  />
+  <Seo title={'ポートフォリオ'} desc={'ポートフォリオです'} url={'/portfolio'} breadcrumb_list={breadcrumb_list} />
 );
