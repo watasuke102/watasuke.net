@@ -47,7 +47,20 @@ export default ({url}: Props) => {
       }
     }
   `);
-  const {title, description, image} = GetOgpFromUrl(ogp_list.allOgp.nodes, url);
+
+  let title: string;
+  let desc: string;
+  let image: string;
+  try {
+    const ogp = GetOgpFromUrl(ogp_list.allOgp.nodes, url);
+    title = ogp.title;
+    desc = ogp.description;
+    image = ogp.image;
+  } catch (e) {
+    title = url;
+    desc = '';
+    image = '';
+  }
 
   return (
     <div className='EmbedCard-container' onClick={() => url !== '' && window.open(url)}>
@@ -55,13 +68,13 @@ export default ({url}: Props) => {
         <span className='EmbedCard-img_fallback'>{'[OGP image not found]'}</span>
       ) : (
         <div className='EmbedCard-img_wrapper'>
-          <img src={image} alt={title ?? url} />
+          <img src={image} alt={title} />
         </div>
       )}
       <div className='EmbedCard-text'>
-        <span className='title'>{title ?? url}</span>
+        <span className='title'>{title}</span>
         <span className='url'>{url}</span>
-        <span className='description'>{description ?? ''}</span>
+        <span className='description'>{desc ?? ''}</span>
       </div>
     </div>
   );
