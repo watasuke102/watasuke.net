@@ -9,8 +9,8 @@
 import '@/pages/blog.scss';
 import {graphql} from 'gatsby';
 import React from 'react';
-import Head from '@/common/Head';
 import Layout from '@/common/Layout';
+import Seo from '@/common/Seo';
 import '@/common/main.scss';
 import ArticleList from '@/feature/ArticleList/ArticleList';
 import {AllTagList} from '@/feature/Tag';
@@ -31,12 +31,6 @@ type Props = {
 export default ({data}: Props) => {
   return (
     <Layout>
-      <Head
-        title={'ブログ'}
-        desc={'投稿した記事・タグの一覧ページです'}
-        url={'/blog'}
-        breadcrumb_list={[GenBreadcrumb(0, 'Blog')]}
-      />
       <h1>ブログ</h1>
       <h2>タグ一覧</h2>
       <AllTagList />
@@ -70,3 +64,12 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head = () => (
+  <Seo
+    title={'ブログ'}
+    desc={'投稿した記事・タグの一覧ページです'}
+    url={'/blog'}
+    breadcrumb_list={[GenBreadcrumb(0, 'Blog')]}
+  />
+);

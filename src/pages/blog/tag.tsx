@@ -8,8 +8,8 @@
  */
 import '@/pages/blog.scss';
 import React from 'react';
-import Head from '@/common/Head';
 import Layout from '@/common/Layout';
+import Seo from '@/common/Seo';
 import '@/common/main.scss';
 import {AllTagList} from '@/feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
@@ -17,14 +17,17 @@ import {GenBreadcrumb} from '@utils/Breadcrumb';
 export default () => {
   return (
     <Layout>
-      <Head
-        title={'タグ'}
-        desc={'タグの一覧ページです'}
-        url={'/tag'}
-        breadcrumb_list={[GenBreadcrumb(0, 'Blog', '/blog'), GenBreadcrumb(1, 'Tag')]}
-      />
       <h1>タグ一覧</h1>
       <AllTagList />
     </Layout>
   );
 };
+
+export const Head = () => (
+  <Seo
+    title={'タグ'}
+    desc={'タグの一覧ページです'}
+    url={'/tag'}
+    breadcrumb_list={[GenBreadcrumb(0, 'Blog', '/blog'), GenBreadcrumb(1, 'Tag')]}
+  />
+);

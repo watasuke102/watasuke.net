@@ -8,8 +8,8 @@
  */
 import React from 'react';
 import RemoveMD from 'remove-markdown';
-import Head from '@/common/Head';
 import Layout from '@/common/Layout';
+import Seo from '@/common/Seo';
 import '@/common/main.scss';
 import '@/feature/Article/Article.scss';
 import BlogContent from '@/feature/Article/BlogContent';
@@ -32,7 +32,7 @@ export default (prop: Props) => {
 
   return (
     <Layout>
-      <Head
+      <Seo
         title={data.title}
         desc={RemoveMD(data.body)}
         url={'/blog/article/' + data.slug}

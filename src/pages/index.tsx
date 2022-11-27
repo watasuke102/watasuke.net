@@ -10,20 +10,13 @@ import '@/pages/top.scss';
 import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
 import Background from '@/common/Background';
-import Head from '@/common/Head';
 import MenuCard from '@/common/MenuCard';
+import Seo from '@/common/Seo';
 import '@/common/main.scss';
 
 export default () => {
   return (
     <>
-      <Head
-        title={''}
-        desc={'プログラミングやゲームについてのブログ、プロフィール、ポートフォリオなど'}
-        url={''}
-        hide_breadcrumb
-        breadcrumb_list={[]}
-      />
       <Background />
       <div className='top-container'>
         <div className='top-icon_and_name'>
@@ -40,3 +33,13 @@ export default () => {
     </>
   );
 };
+
+export const Head = () => (
+  <Seo
+    title={''}
+    desc={'プログラミングやゲームについてのブログ、プロフィール、ポートフォリオなど'}
+    url={''}
+    hide_breadcrumb
+    breadcrumb_list={[]}
+  />
+);

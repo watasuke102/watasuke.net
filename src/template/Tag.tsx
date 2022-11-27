@@ -9,8 +9,8 @@
 import '@/pages/blog.scss';
 import {graphql} from 'gatsby';
 import React from 'react';
-import Head from '@/common/Head';
 import Layout from '@/common/Layout';
+import Seo from '@/common/Seo';
 import '@/common/main.scss';
 import ArticleList from '@/feature/ArticleList/ArticleList';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
@@ -31,7 +31,7 @@ interface Props {
 export default ({pageContext, data}: Props) => {
   return (
     <Layout>
-      <Head
+      <Seo
         title={pageContext.name}
         desc={'タグ' + pageContext.name + 'が付けられた記事'}
         url={'/blog/tag/' + pageContext.slug}

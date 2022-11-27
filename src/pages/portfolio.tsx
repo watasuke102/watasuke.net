@@ -11,7 +11,7 @@ import {motion} from 'framer-motion';
 import {Link} from 'gatsby';
 import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
-import Head from '@/common/Head';
+import Seo from '@/common/Seo';
 import LinkCard from '@/feature/portfolio/LinkCard';
 import Container from '@/feature/portfolio/PortfolioContainer';
 import SkillCard from '@/feature/portfolio/SkillCard';
@@ -22,13 +22,6 @@ import {GenBreadcrumb} from '@utils/Breadcrumb';
 export default () => {
   return (
     <div id='portfolio-container'>
-      <Head
-        title={'ポートフォリオ'}
-        desc={'ポートフォリオです'}
-        url={'/portfolio'}
-        hide_breadcrumb
-        breadcrumb_list={[GenBreadcrumb(0, 'Portfolio')]}
-      />
       <Container>
         <motion.div
           id='portfolio-welcome'
@@ -254,3 +247,13 @@ export default () => {
     </div>
   );
 };
+
+export const Head = () => (
+  <Seo
+    title={'ポートフォリオ'}
+    desc={'ポートフォリオです'}
+    url={'/portfolio'}
+    hide_breadcrumb
+    breadcrumb_list={[GenBreadcrumb(0, 'Portfolio')]}
+  />
+);

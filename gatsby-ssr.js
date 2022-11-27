@@ -1,3 +1,7 @@
+exports.onRenderBody = ({ setHtmlAttributes }) => {
+  setHtmlAttributes({ lang: "ja" })
+}
+
 // Twitterカード表示のため、metaタグを上に持っていく
 // https://kakkiii-blog.dev/posts/510/
 

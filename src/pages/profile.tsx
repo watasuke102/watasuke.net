@@ -11,8 +11,8 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Gfm from 'remark-gfm';
 import Background from '@/common/Background';
-import Head from '@/common/Head';
 import Layout from '@/common/Layout';
+import Seo from '@/common/Seo';
 import '@/common/main.scss';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
@@ -23,12 +23,6 @@ interface Props {
 export default ({data}: Props) => {
   return (
     <Layout>
-      <Head
-        title={'プロフィール'}
-        desc={'わたすけのプロフィール'}
-        url={'/profile'}
-        breadcrumb_list={[GenBreadcrumb(0, 'Profile')]}
-      />
       <Background />
       <h1>プロフィール</h1>
       <p>
@@ -48,3 +42,12 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head = () => (
+  <Seo
+    title={'プロフィール'}
+    desc={'わたすけのプロフィール'}
+    url={'/profile'}
+    breadcrumb_list={[GenBreadcrumb(0, 'Profile')]}
+  />
+);

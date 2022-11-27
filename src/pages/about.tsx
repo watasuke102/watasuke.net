@@ -9,19 +9,13 @@
 import {Link} from 'gatsby';
 import React from 'react';
 import Background from '@/common/Background';
-import Head from '@/common/Head';
 import Layout from '@/common/Layout';
+import Seo from '@/common/Seo';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 export default () => {
   return (
     <Layout>
-      <Head
-        title={'このサイトについて'}
-        desc={'このサイトについての説明'}
-        url={'/about'}
-        breadcrumb_list={[GenBreadcrumb(0, 'About')]}
-      />
       <Background />
       <h1>このサイトについて</h1>
       <p>わたすけのへやです</p>
@@ -67,3 +61,12 @@ export default () => {
     </Layout>
   );
 };
+
+export const Head = () => (
+  <Seo
+    title={'このサイトについて'}
+    desc={'このサイトについての説明'}
+    url={'/about'}
+    breadcrumb_list={[GenBreadcrumb(0, 'About')]}
+  />
+);
