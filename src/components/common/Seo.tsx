@@ -61,7 +61,7 @@ export default (props: Props) => {
           '@type': 'BreadcrumbList',
           itemListElement: props.breadcrumb_list.map(e => {
             if (e.item) {
-              e.item = `https://watasuke.net${e.item}/`;
+              e.item = `https://watasuke.net${e.item}`;
             }
             return e;
           }),
