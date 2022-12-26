@@ -24,6 +24,14 @@
     padding-left: 10px;
     color: #bbb;
   }
+  pre:not([class]) {
+    background-color: #2d2d2d;
+    padding: 1em;
+    font-size: 1em;
+    code {
+      font-family: 'Consolas';
+    }
+  }
 }
 
 // 目次部分
