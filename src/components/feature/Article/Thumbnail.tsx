@@ -18,7 +18,12 @@ export default ({url}: Props) => {
   return (
     <div className='Thumbnail'>
       {url ? (
-        <img src={url.replace('/uploads/', `${imageUrl}/uploads/`)} alt='thumbnail' decoding='async' />
+        <img
+          src={url.replace('/uploads/', `${imageUrl}/uploads/`)}
+          alt='thumbnail'
+          decoding='async'
+          style={{width: '100%'}}
+        />
       ) : (
         <StaticImage src='../../../assets/thumbnail.jpg' alt='thumbnail' />
       )}

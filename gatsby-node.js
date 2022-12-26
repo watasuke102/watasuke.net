@@ -80,7 +80,7 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
       title: item.title,
       body: item.body,
       tags: item.tags,
-      thumbnail: item.thumbnail ? item.thumbnail.formats.thumbnail.url : null,
+      thumbnail: item.thumbnail ? item.thumbnail.formats.large.url : null,
       published_at: item.published_at,
       updated_at: item.updated_at,
       internal: {
