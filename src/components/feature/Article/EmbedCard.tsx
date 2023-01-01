@@ -62,7 +62,7 @@ export default ({url}: Props) => {
   }
 
   return (
-    <div className='EmbedCard-container' onClick={() => url !== '' && window.open(url)}>
+    <a className='EmbedCard-container' href={url}>
       {image === '' ? (
         <span className='EmbedCard-img_fallback'>{'[OGP image not found]'}</span>
       ) : (
@@ -75,6 +75,6 @@ export default ({url}: Props) => {
         <span className='url'>{url}</span>
         <span className='description'>{desc ?? ''}</span>
       </div>
-    </div>
+    </a>
   );
 };
