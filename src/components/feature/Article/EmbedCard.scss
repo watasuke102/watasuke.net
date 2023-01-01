@@ -57,7 +57,8 @@
   }
 
   .EmbedCard-img_fallback {
-    display: inline-block;
+    display: block;
+    text-align: center;
     margin: auto;
   }
   .EmbedCard-img_wrapper {
