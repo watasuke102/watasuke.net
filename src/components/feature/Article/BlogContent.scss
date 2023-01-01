@@ -37,12 +37,18 @@
     color: #bbb;
   }
   pre:not([class]) {
-    background-color: #2d2d2d;
+    background-color: color.$code-bg;
     padding: 1em;
     font-size: 1em;
     code {
       font-family: 'Consolas';
     }
+  }
+  code {
+    padding: 2px;
+    border-radius: 4px;
+    background-color: color.$code-bg;
+    font-family: 'Consolas';
   }
 }
 
