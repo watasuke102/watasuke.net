@@ -1,7 +1,7 @@
 /*!
  * article.tsx
  *
- * CopyRight (c) 2021-2022 Watasuke
+ * CopyRight (c) 2021-2023 Watasuke
  * Email  : <watasuke102@gmail.com>
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
@@ -70,10 +70,5 @@ export const query = graphql`
 `;
 
 export const Head = () => (
-  <Seo
-    title={'ブログ'}
-    desc={'投稿した記事・タグの一覧ページです'}
-    url={'/blog'}
-    breadcrumb_list={breadcrumb_list}
-  />
+  <Seo title={'ブログ'} desc={'投稿した記事・タグの一覧ページです'} url={'/blog'} breadcrumb_list={breadcrumb_list} />
 );

@@ -1,7 +1,7 @@
 /*!
  * about.tsx
  *
- * CopyRight (c) 2021-2022 Watasuke
+ * CopyRight (c) 2021-2023 Watasuke
  * Email  : <watasuke102@gmail.com>
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
@@ -9,10 +9,10 @@
 import {Link} from 'gatsby';
 import React from 'react';
 import Background from '@/common/Background';
+import Breadcrumb from '@/common/Breadcrumb';
 import Layout from '@/common/Layout';
 import Seo from '@/common/Seo';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
-import Breadcrumb from '@/common/Breadcrumb';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'About'}]);
 
