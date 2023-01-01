@@ -20,6 +20,7 @@ import Toc from 'remark-toc';
 import EmbedCard from '@/feature/Article/EmbedCard';
 import ExtractHeading from '@utils/ExtractHeading';
 import './BlogContent.scss';
+import ImageViewer from './ImageViewer';
 import './TableOfContents.scss';
 
 interface Props {
@@ -120,7 +121,7 @@ export default (props: Props) => {
       <ReactMarkdown
         components={{
           a: Link,
-          img: props => <img className='BlogContent-body_img' {...props} />,
+          img: props => <ImageViewer src={props.src || ''} alt={props.alt} />,
         }}
         remarkPlugins={[Gfm, Toc, Slug]}
         rehypePlugins={[Raw]}
