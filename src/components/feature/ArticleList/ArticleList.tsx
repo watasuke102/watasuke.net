@@ -6,11 +6,9 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-import {Link} from 'gatsby';
 import React from 'react';
-import RemoveMD from 'remove-markdown';
-import {TagContainer} from '@/feature/Tag';
 import Article from '@mytypes/Article';
+import {ArticleCard} from '../ArticleCard';
 import './ArticleList.scss';
 
 interface Props {
@@ -36,35 +34,7 @@ export default (props: Props) => {
   const last = (current_page - 1) * article_count + article_count;
   const article_cards = props.list
     .slice(begin, last) // 記事からarticle_count個取り出す
-    .map(article => (
-      <Link
-        to={'/blog/article/' + article.slug}
-        className='ArticleList-card'
-        key={article.slug}
-        aria-label={article.title}
-      >
-        {/* <div className='ArticleList-thumbnail'>
-          <Thumbnail url={article.thumbnail} />
-        </div> */}
-        <div className='ArticleList-info'>
-          <div className='ArticleList-date'>
-            <span>{article.published_at.slice(0, 10)}</span>
-          </div>
-          <div>
-            <TagContainer tags={article.tags} />
-          </div>
-        </div>
-        <div className='ArticleList-text'>
-          <h2 className='ArticleList-title'>{article.title}</h2>
-          <p className='ArticleList-description'>
-            {
-              // 140字に制限して内容を表示、超過分は...で
-              RemoveMD(article.body.slice(0, 140) + (article.body.length > 140 ? ' ...' : ''))
-            }
-          </p>
-        </div>
-      </Link>
-    ));
+    .map(article => <ArticleCard article={article} />);
 
   // ページ上下に表示する、ページ切り替え用のボタンと現在のページ
   // 最初のページでは戻るボタンを非表示に、最後のページでは進むボタンを非表示に

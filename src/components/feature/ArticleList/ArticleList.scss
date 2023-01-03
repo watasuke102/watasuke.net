@@ -24,66 +24,6 @@
   }
 }
 
-.ArticleList-card {
-  display: flex;
-  flex-direction: column;
-  margin: 8px;
-  padding: 8px 12px;
-
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid color.$fg;
-  transition: background-color 0.3s;
-  &:hover {
-    color: inherit;
-    text-decoration: none;
-    background-color: rgba(color.$fg, 0.15);
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    .ArticleList-title {
-      text-decoration: underline;
-    }
-  }
-
-  .ArticleList-thumbnail {
-    height: 150px;
-    img {
-      height: 150px !important;
-      width: 100%;
-      margin: auto;
-      object-fit: cover;
-    }
-  }
-
-  .ArticleList-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    .ArticleList-date > span {
-      position: relative;
-      padding: 4px;
-      margin-right: 12px;
-      white-space: nowrap;
-      color: color.$bg;
-      background-color: color.$fg;
-    }
-  }
-  .ArticleList-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    .ArticleList-description {
-      position: relative;
-      word-wrap: break-word;
-      margin: 0;
-    }
-  }
-}
-
 // ボタン
 .ArticleList-button_container {
   margin: 15px 0;
