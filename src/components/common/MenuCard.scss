@@ -13,26 +13,27 @@
   $translate-time: 0.2s;
   width: 180px;
   padding: 16px 24px;
-  border-color: color.$transparent;
-  cursor: pointer;
+  border: 2px solid color.$transparent;
+  border-radius: 0px;
+  text-align: center;
+  text-decoration: none;
 
   &:focus {
     outline: none;
-    border-radius: 0px;
     border-color: color.$fg;
   }
 
-  p {
+  span {
+    display: block;
     font-size: 1.8em;
     font-weight: bold;
     color: color.$p0;
-    // aみたいにする
-    margin: 1px 0;
   }
   i {
     color: color.$fg;
     font-size: 80px;
-    margin-bottom: 10px;
+    width: 100%;
+    margin-bottom: 12px;
     transition: color $translate-time;
   }
 

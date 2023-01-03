@@ -6,7 +6,7 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-import {navigate} from 'gatsby';
+import {Link} from 'gatsby';
 import React from 'react';
 import './MenuCard.scss';
 
@@ -18,9 +18,9 @@ interface Props {
 
 export default (props: Props) => {
   return (
-    <button className='MenuCard-container' onClick={() => navigate(props.url)}>
+    <Link to={props.url} className='MenuCard-container' aria-label={props.text}>
       <i className={props.icon} />
-      <p>{props.text}</p>
-    </button>
+      <span>{props.text}</span>
+    </Link>
   );
 };
