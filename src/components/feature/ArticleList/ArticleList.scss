@@ -31,12 +31,19 @@
   padding: 8px 12px;
 
   color: inherit;
+  text-decoration: none;
   border: 1px solid color.$fg;
   transition: background-color 0.3s;
   &:hover {
+    color: inherit;
+    text-decoration: none;
     background-color: rgba(color.$fg, 0.15);
     cursor: pointer;
     transition: background-color 0.3s;
+
+    .ArticleList-title {
+      text-decoration: underline;
+    }
   }
 
   .ArticleList-thumbnail {

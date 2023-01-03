@@ -6,7 +6,7 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-import {navigate} from 'gatsby';
+import {Link, navigate} from 'gatsby';
 import React from 'react';
 import RemoveMD from 'remove-markdown';
 import {TagContainer} from '@/feature/Tag';
@@ -37,7 +37,12 @@ export default (props: Props) => {
   const article_cards = props.list
     .slice(begin, last) // 記事からarticle_count個取り出す
     .map(article => (
-      <section className='ArticleList-card' onClick={() => navigate('/blog/article/' + article.slug)}>
+      <Link
+        to={'/blog/article/' + article.slug}
+        className='ArticleList-card'
+        key={article.slug}
+        aria-label={article.title}
+      >
         {/* <div className='ArticleList-thumbnail'>
           <Thumbnail url={article.thumbnail} />
         </div> */}
@@ -50,7 +55,7 @@ export default (props: Props) => {
           </div>
         </div>
         <div className='ArticleList-text'>
-          <h2>{article.title}</h2>
+          <h2 className='ArticleList-title'>{article.title}</h2>
           <p className='ArticleList-description'>
             {
               // 140字に制限して内容を表示、超過分は...で
@@ -58,7 +63,7 @@ export default (props: Props) => {
             }
           </p>
         </div>
-      </section>
+      </Link>
     ));
 
   // ページ上下に表示する、ページ切り替え用のボタンと現在のページ
