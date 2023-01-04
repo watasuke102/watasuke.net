@@ -14,7 +14,7 @@ interface Props {
   url: string;
 }
 
-export default ({url}: Props) => {
+export const Thumbnail = ({url}: Props): React.ReactElement => {
   return (
     <div className='Thumbnail'>
       {url ? (

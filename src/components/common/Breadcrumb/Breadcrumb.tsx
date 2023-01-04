@@ -14,7 +14,7 @@ interface Props {
   breadcrumb_list: BreadcrumbItem[];
 }
 
-export default (props: Props) => {
+export const Breadcrumb = (props: Props): React.ReactElement => {
   return (
     <section>
       {props.breadcrumb_list.map((e, i) => (

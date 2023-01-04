@@ -18,7 +18,7 @@ interface Props {
   desc: string;
 }
 
-export default (props: Props) => {
+export const LinkCard = (props: Props): React.ReactElement => {
   return (
     <motion.a href={props.url} className='LinkCard-container' {...FadeWithScroll}>
       <i className={props.icon} />

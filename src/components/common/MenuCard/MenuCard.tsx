@@ -16,7 +16,7 @@ interface Props {
   url: string;
 }
 
-export default (props: Props) => {
+export const MenuCard = (props: Props): React.ReactElement => {
   return (
     <Link to={props.url} className='MenuCard-container' aria-label={props.text}>
       <i className={props.icon} />

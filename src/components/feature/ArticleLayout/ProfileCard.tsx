@@ -11,7 +11,7 @@ import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
 import './ProfileCard.scss';
 
-export default () => {
+export const ProfileCard = (): React.ReactElement => {
   const profile_text = useStaticQuery(graphql`
     query {
       siteData(slug: {eq: "short-profile"}) {

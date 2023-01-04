@@ -6,14 +6,14 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
+import {Header} from '@/common';
 import React from 'react';
-import Header from '@/common/Header';
 
 interface Props {
   children: React.ReactNode;
 }
 
-export default ({children}: Props) => {
+export const Layout = ({children}: Props): React.ReactElement => {
   return (
     <>
       <Header />

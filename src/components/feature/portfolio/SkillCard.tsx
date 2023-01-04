@@ -15,7 +15,7 @@ interface Props {
   body?: string;
 }
 
-export default (props: Props) => {
+export const SkillCard = (props: Props): React.ReactElement => {
   return (
     <motion.div
       className='SkillCard-container'

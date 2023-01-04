@@ -32,7 +32,7 @@ const Letter: Variants = {
   move_to: {y: 0, transition: {duration: 0.5, ease: 'circOut'}},
 };
 
-export default (props: Props) => {
+export const TextAnimation = (props: Props): React.ReactElement => {
   const [completed, SetCompleted] = React.useState(false);
 
   if (completed) {
@@ -67,8 +67,8 @@ export default (props: Props) => {
       {props.body.map(body => {
         const text = (
           <>
-            {body.text.split('').map(char => (
-              <span style={{display: 'inline-block', overflow: 'hidden'}}>
+            {body.text.split('').map((char, i) => (
+              <span key={`${i}${char}`} style={{display: 'inline-block', overflow: 'hidden'}}>
                 <motion.span style={{display: 'inline-block'}} variants={Letter}>
                   {char}
                 </motion.span>

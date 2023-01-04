@@ -4,6 +4,7 @@
   "description": "[https://watasuke.net](https://watasuke.net)で公開されているページ",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint src",
     "fmt": "prettier --write src/",
     "build": "gatsby build",
     "dev": "gatsby develop -H 0.0.0.0",
@@ -58,6 +59,11 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.48.0",
+    "@typescript-eslint/parser": "^5.48.0",
+    "eslint": "^8.31.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.31.11",
     "prettier": "^2.7.1"
   }
 }

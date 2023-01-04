@@ -7,7 +7,7 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 import React from 'react';
-import '@/common/Background.scss';
+import './Background.scss';
 
 interface Vec {
   x: number;
@@ -31,12 +31,12 @@ function rand(x: number) {
   return Math.floor(Math.random() * x);
 }
 
-export default class Background extends React.Component<any> {
+export default class Background extends React.Component<unknown> {
   private canvas_ref = React.createRef<HTMLCanvasElement>();
   private pos: FigureInfo[] = [];
 
-  constructor(props: any) {
-    super(props);
+  constructor(p: unknown) {
+    super(p);
     // sizeのランダム範囲
     const align = 10;
     // 三角形
@@ -70,8 +70,8 @@ export default class Background extends React.Component<any> {
     this.InitToBasePositions();
   }
 
-  InitToBasePositions() {
-    if (typeof window !== `undefined`) {
+  InitToBasePositions(): void {
+    if (typeof window !== 'undefined') {
       const width = window.innerWidth;
       const height = window.innerHeight;
       // 三角形
@@ -87,7 +87,7 @@ export default class Background extends React.Component<any> {
   }
 
   // Animation() だとrequestAnimationFrameが機能しない
-  Animation = () => {
+  Animation = (): void => {
     requestAnimationFrame(this.Animation);
     if (!this.canvas_ref) return;
     const canvas = this.canvas_ref.current;
@@ -164,7 +164,7 @@ export default class Background extends React.Component<any> {
       const rotate = (prop: Vec) => {
         prop.x -= base_pos.x;
         prop.y -= base_pos.y;
-        let result: Vec = {
+        const result: Vec = {
           x: prop.x * Math.cos(rad) - prop.y * Math.sin(rad),
           y: prop.x * Math.sin(rad) + prop.y * Math.cos(rad),
         };
@@ -198,17 +198,17 @@ export default class Background extends React.Component<any> {
     }
   };
 
-  componentDidMount() {
+  componentDidMount(): void {
     this.UpdateCanvasSize();
     requestAnimationFrame(this.Animation);
     window.addEventListener('resize', this.UpdateCanvasSize);
   }
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     window.removeEventListener('resize', this.UpdateCanvasSize);
   }
 
   // UpdateCanvasSize() とするとEventListenerから呼んだときにrefがundefinedになる
-  UpdateCanvasSize = () => {
+  UpdateCanvasSize = (): void => {
     const canvas = this.canvas_ref.current;
     if (canvas) {
       canvas.width = window.innerWidth;
@@ -217,7 +217,7 @@ export default class Background extends React.Component<any> {
     this.InitToBasePositions();
   };
 
-  render() {
+  render(): React.ReactElement {
     return <canvas ref={this.canvas_ref} className='Background-canvas' />;
   }
 }

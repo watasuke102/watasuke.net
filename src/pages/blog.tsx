@@ -7,13 +7,11 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 import '@/pages/blog.scss';
+import {Seo, Breadcrumb, Layout} from '@/common';
 import {graphql} from 'gatsby';
 import React from 'react';
-import Breadcrumb from '@/common/Breadcrumb';
-import Layout from '@/common/Layout';
-import Seo from '@/common/Seo';
 import '@/common/main.scss';
-import ArticleList from '@/feature/ArticleList/ArticleList';
+import {ArticleList} from '@/feature/ArticleList';
 import {AllTagList} from '@/feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import Article from '@mytypes/Article';
@@ -31,7 +29,7 @@ type Props = {
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Blog'}]);
 
-export default ({data}: Props) => {
+export default function Blog({data}: Props): React.ReactElement {
   return (
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list} />
@@ -47,7 +45,7 @@ export default ({data}: Props) => {
       </div>
     </Layout>
   );
-};
+}
 
 // FIXME: コンポーネントに分ける
 export const query = graphql`
@@ -69,6 +67,6 @@ export const query = graphql`
   }
 `;
 
-export const Head = () => (
+export const Head = (): React.ReactElement => (
   <Seo title={'ブログ'} desc={'投稿した記事・タグの一覧ページです'} url={'/blog'} breadcrumb_list={breadcrumb_list} />
 );

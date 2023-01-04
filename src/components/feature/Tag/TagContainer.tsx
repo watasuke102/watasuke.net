@@ -18,14 +18,18 @@ interface Props {
   }[];
 }
 
-export default (props: Props) => {
+export const TagContainer = (props: Props): React.ReactElement => {
   return (
     <div className='TagContainer-container'>
       {!props.disable_icon && <i className='fas fa-tag' />}
 
       <div>
         {props.tags.map(tag => {
-          return <Link to={'/blog/tag/' + tag.slug}>{tag.name}</Link>;
+          return (
+            <Link key={tag.slug} to={'/blog/tag/' + tag.slug}>
+              {tag.name}
+            </Link>
+          );
         })}
       </div>
     </div>

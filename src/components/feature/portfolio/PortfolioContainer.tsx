@@ -17,14 +17,14 @@ enum Position {
 }
 
 interface Props {
-  children: React.ReactNode[];
+  children: React.ReactElement[];
 }
 
 // onedark like
 // const BackgroundColors = ['#4b4692', '#61afef', '#98c379', '#e06c75', '#2f332f'];
 const BackgroundColors = ['#4b4692', '#468492', '#5a9246', '#925d46', '#2f332f'];
 
-export default function PortfolioContainer(props: Props) {
+export const PortfolioContainer = (props: Props): React.ReactElement => {
   const [scroll_height, SetScrollHeight] = React.useState(0);
   const bg_control = useAnimation();
 
@@ -127,12 +127,14 @@ export default function PortfolioContainer(props: Props) {
     );
   }
 
-  if (typeof navigator !== `undefined`) {
+  if (typeof navigator !== 'undefined') {
     if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
       return (
         <div id='PortfolioContainer-container_mobile' style={{backgroundColor: BackgroundColors[0]}}>
           {props.children.map((page, i) => (
-            <div style={{backgroundColor: BackgroundColors[i]}}>{page}</div>
+            <div key={page.key} style={{backgroundColor: BackgroundColors[i]}}>
+              {page}
+            </div>
           ))}
         </div>
       );
@@ -179,4 +181,4 @@ export default function PortfolioContainer(props: Props) {
     }
   }
   return <></>;
-}
+};

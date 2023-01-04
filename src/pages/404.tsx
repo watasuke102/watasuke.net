@@ -7,11 +7,10 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 import '@/pages/404.scss';
+import {Background, Layout} from '@/common';
 import React from 'react';
-import Background from '@/common/Background';
-import Layout from '@/common/Layout';
 
-export default () => {
+export default function Error404(): React.ReactElement {
   return (
     <Layout>
       <Background />
@@ -20,4 +19,4 @@ export default () => {
       </div>
     </Layout>
   );
-};
+}

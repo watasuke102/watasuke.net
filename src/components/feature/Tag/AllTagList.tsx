@@ -8,9 +8,9 @@
  */
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
-import TagContainer from './TagContainer';
+import {TagContainer} from './TagContainer';
 
-export default () => {
+export const AllTagList = (): React.ReactElement => {
   const tags = useStaticQuery(graphql`
     query {
       allTags {

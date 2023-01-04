@@ -18,7 +18,7 @@ interface Props {
   desc: string;
 }
 
-export default (props: Props) => {
+export const WorkCard = (props: Props): React.ReactElement => {
   return (
     <motion.div className='WorkCard-container' {...FadeWithScroll}>
       {props.image}

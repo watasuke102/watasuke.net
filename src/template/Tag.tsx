@@ -7,13 +7,11 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 import '@/pages/blog.scss';
+import {Seo, Layout, Breadcrumb} from '@/common';
 import {graphql} from 'gatsby';
 import React from 'react';
-import Breadcrumb from '@/common/Breadcrumb';
-import Layout from '@/common/Layout';
-import Seo from '@/common/Seo';
 import '@/common/main.scss';
-import ArticleList from '@/feature/ArticleList/ArticleList';
+import {ArticleList} from '@/feature/ArticleList/ArticleList';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import Article from '@mytypes/Article';
 
@@ -32,7 +30,7 @@ interface Props {
 const breadcrumb_list = (name: string) =>
   GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Article', item: '/blog/article'}, {name: name}]);
 
-export default ({pageContext, data}: Props) => {
+export default function Tag({pageContext, data}: Props): React.ReactElement {
   return (
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list(pageContext.name)} />
@@ -42,7 +40,7 @@ export default ({pageContext, data}: Props) => {
       </div>
     </Layout>
   );
-};
+}
 
 export const query = graphql`
   query ($slug: String) {
@@ -63,7 +61,7 @@ export const query = graphql`
   }
 `;
 
-export const Head = ({pageContext}: Props) => (
+export const Head = ({pageContext}: Props): React.ReactElement => (
   <Seo
     title={pageContext.name}
     desc={'タグ' + pageContext.name + 'が付けられた記事'}

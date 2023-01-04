@@ -17,10 +17,9 @@ import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import Slug from 'remark-slug';
 import Toc from 'remark-toc';
-import EmbedCard from '@/feature/Article/EmbedCard';
+import {EmbedCard, ImageViewer} from '@/feature/Article';
 import ExtractHeading from '@utils/ExtractHeading';
 import './BlogContent.scss';
-import ImageViewer from './ImageViewer';
 import './TableOfContents.scss';
 
 interface Props {
@@ -63,7 +62,7 @@ const Link: React.ComponentType<Node> = (props: Node) => {
   return <EmbedCard url={props.href} />;
 };
 
-export default (props: Props) => {
+export const BlogContent = (props: Props): React.ReactElement => {
   React.useEffect(() => {
     setTimeout(() => {
       // Twitter embed
@@ -106,7 +105,7 @@ export default (props: Props) => {
                 >
                   <ol>
                     {table_of_contents.map(item => (
-                      <li className={`toc-${item.size}`}>
+                      <li key={item.body} className={`toc-${item.size}`}>
                         <a href={`#${item.body.toLowerCase()}`}>{item.body}</a>
                       </li>
                     ))}
@@ -121,10 +120,12 @@ export default (props: Props) => {
       <ReactMarkdown
         components={{
           a: Link,
+          // eslint-disable-next-line react/prop-types
           img: props => <ImageViewer src={props.src || ''} alt={props.alt} />,
         }}
         remarkPlugins={[Gfm, Toc, Slug]}
         rehypePlugins={[Raw]}
+        // eslint-disable-next-line react/no-children-prop
         children={props.body.replace(/\/uploads/g, `${imageUrl}/uploads`)}
       />
       {/* <Remark remarkPlugins={[Gfm, Toc, Slug]} rehypeReactOptions={rehype_react_options}>

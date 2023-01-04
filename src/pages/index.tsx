@@ -7,17 +7,15 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 import '@/pages/top.scss';
+import {Seo, Background, MenuCard} from '@/common';
 import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
-import Background from '@/common/Background';
-import MenuCard from '@/common/MenuCard';
-import Seo from '@/common/Seo';
 import '@/common/main.scss';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 const breadcrumb_list = GenBreadcrumb([]);
 
-export default () => {
+export default function Index(): React.ReactElement {
   return (
     <>
       <Background />
@@ -35,9 +33,9 @@ export default () => {
       </div>
     </>
   );
-};
+}
 
-export const Head = () => (
+export const Head = (): React.ReactElement => (
   <Seo
     title={''}
     desc={'プログラミングやゲームについてのブログ、プロフィール、ポートフォリオなど'}

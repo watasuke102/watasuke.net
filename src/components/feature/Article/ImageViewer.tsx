@@ -15,7 +15,7 @@ interface Props {
   alt: string | undefined;
 }
 
-export default ({src, alt}: Props) => {
+export const ImageViewer = ({src, alt}: Props): React.ReactElement => {
   const [is_open, SetIsOpen] = React.useState(false);
 
   return (

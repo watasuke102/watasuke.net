@@ -6,17 +6,14 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
+import {Seo, Background, Breadcrumb, Layout} from '@/common';
 import {Link} from 'gatsby';
 import React from 'react';
-import Background from '@/common/Background';
-import Breadcrumb from '@/common/Breadcrumb';
-import Layout from '@/common/Layout';
-import Seo from '@/common/Seo';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'About'}]);
 
-export default () => {
+export default function About(): React.ReactElement {
   return (
     <Layout>
       <Background />
@@ -64,9 +61,9 @@ export default () => {
       </ul>
     </Layout>
   );
-};
+}
 
-export const Head = () => (
+export const Head = (): React.ReactElement => (
   <Seo
     title={'このサイトについて'}
     desc={'このサイトについての説明'}

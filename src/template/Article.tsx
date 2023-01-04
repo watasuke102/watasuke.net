@@ -6,17 +6,14 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
+import {Seo, Layout, Breadcrumb} from '@/common';
 import React from 'react';
 import RemoveMD from 'remove-markdown';
-import Breadcrumb from '@/common/Breadcrumb';
-import Layout from '@/common/Layout';
-import Seo from '@/common/Seo';
 import '@/common/main.scss';
+import {BlogContent, Thumbnail} from '@/feature/Article';
 import '@/feature/Article/Article.scss';
-import BlogContent from '@/feature/Article/BlogContent';
 import '@/feature/Article/TableOfContents.scss';
-import Thumbnail from '@/feature/Article/Thumbnail';
-import ProfileCard from '@/feature/ArticleLayout/ProfileCard';
+import {ProfileCard} from '@/feature/ArticleLayout/ProfileCard';
 import {AllTagList, TagContainer} from '@/feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import ExtractHeading from '@utils/ExtractHeading';
@@ -29,7 +26,7 @@ interface Props {
 const breadcrumb_list = (title: string) =>
   GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Article', item: '/blog/article'}, {name: title}]);
 
-export default (prop: Props) => {
+export default function Articale(prop: Props): React.ReactElement {
   const data = prop.pageContext;
   // クリックするとそこまで飛べる目次を生成する
   const table_of_contents = ExtractHeading(data.body);
@@ -72,7 +69,7 @@ export default (prop: Props) => {
           {table_of_contents.length > 2 && (
             <section className='Article-side_toc'>
               {table_of_contents.map(item => (
-                <li className={`toc-${item.size}`}>
+                <li key={item.body} className={`toc-${item.size}`}>
                   <a href={`#${item.body.toLowerCase()}`}>{item.body}</a>
                 </li>
               ))}
@@ -82,9 +79,9 @@ export default (prop: Props) => {
       </div>
     </Layout>
   );
-};
+}
 
-export const Head = ({pageContext}: Props) => (
+export const Head = ({pageContext}: Props): React.ReactElement => (
   <Seo
     title={pageContext.title}
     desc={RemoveMD(pageContext.body)}

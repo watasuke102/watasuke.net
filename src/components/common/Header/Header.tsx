@@ -10,7 +10,7 @@ import {Link} from 'gatsby';
 import React from 'react';
 import './Header.scss';
 
-export default () => {
+export const Header = (): React.ReactElement => {
   return (
     <header className='Header-container'>
       <div className='Header-title'>

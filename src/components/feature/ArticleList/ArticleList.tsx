@@ -16,7 +16,7 @@ interface Props {
 }
 const article_count = 10;
 
-export default (props: Props) => {
+export const ArticleList = (props: Props): React.ReactElement => {
   const max_page = Math.ceil(props.list.length / article_count);
   // ページ切り替え用
   const [current_page, SetCurrentPage] = React.useState(1);
@@ -34,7 +34,7 @@ export default (props: Props) => {
   const last = (current_page - 1) * article_count + article_count;
   const article_cards = props.list
     .slice(begin, last) // 記事からarticle_count個取り出す
-    .map(article => <ArticleCard article={article} />);
+    .map(article => <ArticleCard key={article.slug} article={article} />);
 
   // ページ上下に表示する、ページ切り替え用のボタンと現在のページ
   // 最初のページでは戻るボタンを非表示に、最後のページでは進むボタンを非表示に

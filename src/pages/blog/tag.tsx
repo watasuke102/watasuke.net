@@ -7,15 +7,13 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 import '@/pages/blog.scss';
+import {Seo, Breadcrumb, Layout} from '@/common';
 import React from 'react';
-import Breadcrumb from '@/common/Breadcrumb';
-import Layout from '@/common/Layout';
-import Seo from '@/common/Seo';
 import '@/common/main.scss';
 import {AllTagList} from '@/feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
-export default () => {
+export default function TagListPage(): React.ReactElement {
   return (
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list} />
@@ -23,10 +21,10 @@ export default () => {
       <AllTagList />
     </Layout>
   );
-};
+}
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Tag'}]);
 
-export const Head = () => (
+export const Head = (): React.ReactElement => (
   <Seo title={'タグ'} desc={'タグの一覧ページです'} url={'/tag'} breadcrumb_list={breadcrumb_list} />
 );

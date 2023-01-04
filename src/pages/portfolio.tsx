@@ -7,24 +7,20 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 import '@/pages/portfolio.scss';
+import {Seo} from '@/common';
 import {motion} from 'framer-motion';
 import {Link} from 'gatsby';
 import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
-import Seo from '@/common/Seo';
-import LinkCard from '@/feature/portfolio/LinkCard';
-import Container from '@/feature/portfolio/PortfolioContainer';
-import SkillCard from '@/feature/portfolio/SkillCard';
-import TextAnimation from '@/feature/portfolio/TextAnimation';
-import WorkCard from '@/feature/portfolio/WorkCard';
+import {LinkCard, PortfolioContainer, SkillCard, TextAnimation, WorkCard} from '@/feature/portfolio';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Portfolio'}]);
 
-export default () => {
+export default function Portfolio(): React.ReactElement {
   return (
     <div id='portfolio-container'>
-      <Container>
+      <PortfolioContainer>
         <motion.div
           id='portfolio-welcome'
           initial={{opacity: 0}}
@@ -245,11 +241,11 @@ export default () => {
             Powered by Gatsby
           </p>
         </div>
-      </Container>
+      </PortfolioContainer>
     </div>
   );
-};
+}
 
-export const Head = () => (
+export const Head = (): React.ReactElement => (
   <Seo title={'ポートフォリオ'} desc={'ポートフォリオです'} url={'/portfolio'} breadcrumb_list={breadcrumb_list} />
 );
