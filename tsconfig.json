@@ -18,14 +18,16 @@
     "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
     "skipLibCheck": true /* Skip type checking of declaration files. */,
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
+    "resolveJsonModule": true,
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/components/*"],
       "@utils/*": ["src/utils/*"],
-      "@mytypes/*": ["src/types/*"]
+      "@mytypes/*": ["src/types/*"],
+      "@config": ["config.json"]
     },
     "typeRoots": ["src/types"]
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", ".cache", "public", "api", "webpack.config.js", "sample-config.js", "config.js"]
+  "exclude": ["node_modules", ".cache", "public", "api", "webpack.config.js"]
 }

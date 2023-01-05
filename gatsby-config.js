@@ -1,4 +1,4 @@
-const config = require('./config.js');
+const config = require('./config.json');
 const path = require('path');
 
 module.exports = {
@@ -19,6 +19,7 @@ module.exports = {
           '@': path.resolve(__dirname, 'src/components'),
           '@utils': path.resolve(__dirname, 'src/utils'),
           '@mytypes': path.resolve(__dirname, 'src/types'),
+          '@config': path.resolve(__dirname, 'config.json'),
         },
         extensions: [],
       },

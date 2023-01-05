@@ -10,7 +10,7 @@ bracketSpacing: false
 importOrderSeparation: false
 importOrderCaseInsensitive: false
 importOrder:
-  - 'config'
+  - '@config'
   - '^@/pages/(.*)'
   - '<THIRD_PARTY_MODULES>'
   - '^@/common/(.*)'

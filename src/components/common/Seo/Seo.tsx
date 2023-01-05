@@ -6,7 +6,7 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-import config from '../../../../config';
+import config from '@config';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import BreadcrumbItem from '@mytypes/Breadcrumb';

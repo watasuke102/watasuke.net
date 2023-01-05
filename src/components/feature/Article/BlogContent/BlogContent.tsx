@@ -6,7 +6,7 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-import {imageUrl} from '../../../../../config';
+import {imageUrl} from '@config';
 import {AnimatePresence, motion} from 'framer-motion';
 // コードのシンタックスハイライト
 import Prism from 'prismjs';
