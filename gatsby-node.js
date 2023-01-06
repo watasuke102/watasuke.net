@@ -28,7 +28,7 @@ exports.createSchemaCustomization = ({actions}) => {
       slug: String,
       name: String
     }
-    
+
     type Tags implements Node @dontInfer {
       slug: String,
       name: String
@@ -121,11 +121,17 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
         },
       });
     } catch (e) {
-      console.error(`[ERROR] cannot fetch OGP data from ${url}\n(${e.message})`);
+      console.error(`
+cannot fetch OGP data
+  >> URL: ${url}
+  >> message: ${e.message}
+-------------------------------
+`);
     }
   });
 
   // タグ一覧を登録
+  console.log('* Registering Tag...');
   response = await fetch('http://localhost:1337/tags');
   const tags = await response.json();
   tags.forEach(item => {
