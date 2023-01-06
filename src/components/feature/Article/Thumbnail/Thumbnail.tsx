@@ -15,6 +15,7 @@ interface Props {
 }
 
 export const Thumbnail = ({url}: Props): React.ReactElement => {
+  console.log('URL: ', url);
   return (
     <div className='Thumbnail'>
       {url ? (
@@ -25,7 +26,7 @@ export const Thumbnail = ({url}: Props): React.ReactElement => {
           style={{width: '100%'}}
         />
       ) : (
-        <StaticImage src='../../../assets/thumbnail.jpg' alt='thumbnail' />
+        <StaticImage src='../../../../assets/thumbnail.jpg' alt='thumbnail' />
       )}
     </div>
   );
