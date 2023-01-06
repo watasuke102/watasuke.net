@@ -44,7 +44,7 @@ export default function Tag({pageContext, data}: Props): React.ReactElement {
 
 export const query = graphql`
   query ($slug: String) {
-    allArticles(sort: {fields: published_at, order: DESC}, filter: {tags: {elemMatch: {slug: {eq: $slug}}}}) {
+    allArticles(sort: {published_at: DESC}, filter: {tags: {elemMatch: {slug: {eq: $slug}}}}) {
       nodes {
         slug
         title

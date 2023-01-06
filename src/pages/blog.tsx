@@ -50,7 +50,7 @@ export default function Blog({data}: Props): React.ReactElement {
 // FIXME: コンポーネントに分ける
 export const query = graphql`
   query {
-    allArticles(sort: {fields: published_at, order: DESC}) {
+    allArticles(sort: {published_at: DESC}) {
       nodes {
         slug
         title
