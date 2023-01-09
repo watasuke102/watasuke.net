@@ -49,8 +49,8 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
   let response;
   // サイトのデータ（プロフィールとかなんとか）を登録
   let failed = false;
-  response = await fetch('http://localhost:1337/sitedata').catch(_ => {
-    console.log('[INFO] Failed to fetch from API. Cancel to create node.');
+  response = await fetch('http://127.0.0.1:1337/sitedata').catch(e => {
+    console.log(`[INFO] Failed to fetch from API (${e.message}) Cancel to create node.`);
     failed = true;
   });
   if (failed) return;
@@ -69,7 +69,7 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
 
   let url_list = [];
   // ブログ記事を登録
-  response = await fetch('http://localhost:1337/articles');
+  response = await fetch('http://127.0.0.1:1337/articles');
   const articles = await response.json();
   console.log('** Creating article nodes...');
   articles.forEach(item => {
@@ -132,7 +132,7 @@ cannot fetch OGP data
 
   // タグ一覧を登録
   console.log('* Registering Tag...');
-  response = await fetch('http://localhost:1337/tags');
+  response = await fetch('http://127.0.0.1:1337/tags');
   const tags = await response.json();
   tags.forEach(item => {
     actions.createNode({
