@@ -21,7 +21,10 @@
   margin-bottom: 16px;
   width: 100vw;
   font-size: 1.1em;
-  background-color: color.$transparent-header;
+
+  background-color: rgba(color.$bg, 0.5);
+  backdrop-filter: blur(3px);
+  border-bottom: dotted 1px color.$fg;
 
   a {
     color: color.$fg;
