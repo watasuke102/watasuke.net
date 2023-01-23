@@ -41,7 +41,7 @@ const Link: React.ComponentType<Node> = (props: Node) => {
     return (
       <div
         dangerouslySetInnerHTML={{
-          __html: `<blockquote class="twitter-tweet"><a href="${props.href}">ツイート</a>を読み込み中...</blockquote>`,
+          __html: `<blockquote class="twitter-tweet" data-theme="dark"><a href="${props.href}">ツイート</a>を読み込み中...</blockquote>`,
         }}
       />
     );
