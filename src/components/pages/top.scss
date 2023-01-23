@@ -56,6 +56,7 @@
     font-size: 1.8em;
     font-weight: bold;
     color: color.$p0;
+    word-break: keep-all;
   }
   i {
     color: color.$fg;
@@ -78,7 +79,7 @@
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 750px) {
   .top-menu {
     display: grid;
     width: 100%;
