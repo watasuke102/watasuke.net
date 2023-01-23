@@ -7,6 +7,8 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 
+@use '../common/color.scss';
+
 .gatsby-image-wrapper [data-main-image] {
   transition: none !important;
 }
@@ -33,6 +35,47 @@
   display: flex;
   justify-content: space-around;
   margin-top: 10%;
+}
+
+.top-menu_card {
+  $translate-time: 0.2s;
+  width: 180px;
+  padding: 16px 24px;
+  border: 2px solid color.$transparent;
+  border-radius: 0px;
+  text-align: center;
+  text-decoration: none;
+
+  &:focus {
+    outline: none;
+    border-color: color.$fg;
+  }
+
+  span {
+    display: block;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: color.$p0;
+  }
+  i {
+    color: color.$fg;
+    font-size: 80px;
+    width: 100%;
+    margin-bottom: 12px;
+    transition: color $translate-time;
+  }
+
+  transition: transform $translate-time;
+  &:hover {
+    color: color.$p0;
+    text-decoration: underline;
+    transform: scale(111%);
+    transition: transform $translate-time;
+    i {
+      color: #ffffff;
+      transition: color $translate-time;
+    }
+  }
 }
 
 @media screen and (max-width: 700px) {
