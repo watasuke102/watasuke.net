@@ -185,28 +185,28 @@ export default function Portfolio(): React.ReactElement {
               desc='メンションもしくはDMに反応します\n （恐らく最速で反応できる連絡手段です）'
             />
             <LinkCard
-              title='GitHub'
-              url='https://github.com/watasuke102'
-              icon='fab fa-github'
-              desc='いろいろつくってます'
-            />
-            <LinkCard
-              title='Scrapbox'
-              url='https://scrapbox.io/watasuke'
-              icon='fas fa-edit'
-              desc='自分語りなどをしています'
-            />
-            <LinkCard
               title='SoundCloud'
               url='https://soundcloud.com/watasuke'
               icon='fab fa-soundcloud'
               desc='今までに作った曲を投稿しています'
             />
             <LinkCard
+              title='GitHub'
+              url='https://github.com/watasuke102'
+              icon='fab fa-github'
+              desc='いろいろつくってます'
+            />
+            <LinkCard
               title='YouTube'
               url='https://www.youtube.com/@watasuke'
               icon='fab fa-youtube'
               desc='稀に何らかの動画を上げます'
+            />
+            <LinkCard
+              title='Scrapbox'
+              url='https://scrapbox.io/watasuke'
+              icon='fas fa-edit'
+              desc='自分語りなどをしています'
             />
             <LinkCard
               title='質問箱'

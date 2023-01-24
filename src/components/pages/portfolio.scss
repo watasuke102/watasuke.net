@@ -167,6 +167,10 @@
 #portfolio-links {
   //background-color: #3c767a;
   .container {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
     padding-bottom: 200px;
   }
 }
