@@ -215,7 +215,7 @@ export default function Portfolio(): React.ReactElement {
               desc='匿名で質問ができます'
             />
             <LinkCard
-              title='Email (watasuke102@google.com)'
+              title='Email (watasuke102@gmail.com)'
               url='mailto:watasuke102@gmail.com'
               icon='fas fa-envelope'
               desc='気づかないかもしれません'
