@@ -1,0 +1,66 @@
+// Welcome.scss
+//
+// CopyRight (c) 2021-2023 Watasuke
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT SUSHI-WARE License.
+#portfolio-welcome {
+  //background-color: #4b4692;
+
+  a {
+    color: #eee;
+  }
+  .greeting {
+    margin-top: 16px;
+    margin-bottom: 64px;
+  }
+  .avatar-and-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 64px;
+    .separator {
+      width: 20px;
+    }
+    .name-main {
+      font-weight: bold;
+      font-size: 2.5em;
+      margin-bottom: 2px;
+      margin-left: -3px;
+    }
+    .name-sub {
+      color: #ccc;
+    }
+
+    @media screen and (max-width: 700px) {
+      position: static;
+      transform: none;
+      flex-direction: column;
+      img {
+        margin: auto;
+      }
+    }
+  }
+
+  .bio {
+    width: 100%;
+    text-align: center;
+    p {
+      margin-bottom: 4px;
+    }
+    // for scroll-indicator
+    padding-bottom: 128px;
+  }
+
+  .icon-and-text {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    p {
+      margin: 0;
+    }
+    i {
+      margin-right: 10px;
+    }
+  }
+}

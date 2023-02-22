@@ -1,0 +1,23 @@
+// End.scss
+//
+// CopyRight (c) 2021-2023 Watasuke
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT SUSHI-WARE License.
+#portfolio-end {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  h2 {
+    font-size: 2em !important;
+  }
+  .links {
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    span {
+      margin: 0 5px;
+    }
+  }
+}

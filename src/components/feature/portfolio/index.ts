@@ -1,7 +1,8 @@
-import {LinkCard} from './LinkCard';
+import {End} from './End/End';
+import {Links} from './Links/Links';
 import {PortfolioContainer} from './PortfolioContainer';
-import {SkillCard} from './SkillCard';
-import {TextAnimation} from './TextAnimation';
-import {WorkCard} from './WorkCard';
+import {Skills} from './Skills/Skills';
+import {Welcome} from './Welcome/Welcome';
+import {Works} from './Works/Works';
 
-export {WorkCard, TextAnimation, SkillCard, PortfolioContainer, LinkCard};
+export {PortfolioContainer, Welcome, Skills, Works, Links, End};
