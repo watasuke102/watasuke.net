@@ -16,6 +16,7 @@ Docker Compose は開発用の Straip（と、それに必要な MySQL）が載�
    - `imageUrl`: 画像を取ってくる URL
    - `trackingId`: Google Analytics 4 プロパティの「測定 ID」（G-12345 みたいなやつ）
    - `adsenseId`: ca-pub-\d+みたいなやつ
+   - `inArticleSlot`: おそらく10桁の数字、記事内広告ユニットを作成して出てくるHTMLの `data-ad-slot`
 3. 開発する場合は `docker compose up -d --build`
 4. `npm i` して `npm run dev` する
 
