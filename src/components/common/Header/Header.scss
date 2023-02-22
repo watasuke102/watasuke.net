@@ -9,7 +9,7 @@
 @use '../color';
 
 .Header-container {
-  z-index: 1;
+  z-index: 512;
   display: flex;
   justify-content: space-around;
   position: fixed;
