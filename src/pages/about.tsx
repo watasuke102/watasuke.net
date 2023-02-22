@@ -9,6 +9,7 @@
 import {Seo, Background, Breadcrumb, Layout} from '@/common';
 import {Link} from 'gatsby';
 import React from 'react';
+import {AdsInArticle} from '@/feature/Ads';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'About'}]);
@@ -24,6 +25,7 @@ export default function About(): React.ReactElement {
         <Link to='/blog'>ブログ</Link>や<Link to='/profile'>プロフィール</Link>
         が置いてあります
       </p>
+      <AdsInArticle />
 
       <h2 id='about_privacy'>プライバシーポリシー</h2>
       <ul>

@@ -6,12 +6,13 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
+import {Seo, Background, Breadcrumb, Layout} from '@/common';
 import {graphql, Link} from 'gatsby';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Gfm from 'remark-gfm';
-import {Seo,Background, Breadcrumb, Layout} from '@/common';
 import '@/common/main.scss';
+import {AdsInArticle} from '@/feature/Ads';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 interface Props {
@@ -31,6 +32,7 @@ export default function Profile({data}: Props): React.ReactElement {
         <Link to='/portfolio'>ポートフォリオ</Link>
         を御覧ください
       </p>
+      <AdsInArticle />
       {/* eslint-disable-next-line react/no-children-prop */}
       <ReactMarkdown remarkPlugins={[Gfm]} children={data.siteData.body} />
     </Layout>

@@ -11,6 +11,7 @@ import {Seo, Breadcrumb, Layout} from '@/common';
 import {graphql} from 'gatsby';
 import React from 'react';
 import '@/common/main.scss';
+import {AdsInArticle} from '@/feature/Ads';
 import {ArticleList} from '@/feature/ArticleList';
 import {AllTagList} from '@/feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
@@ -34,6 +35,7 @@ export default function Blog({data}: Props): React.ReactElement {
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list} />
       <h1>ブログ</h1>
+      <AdsInArticle />
       <h2>タグ一覧</h2>
       <AllTagList />
 

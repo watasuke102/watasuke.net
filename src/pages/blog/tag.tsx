@@ -10,6 +10,7 @@ import '@/pages/blog.scss';
 import {Seo, Breadcrumb, Layout} from '@/common';
 import React from 'react';
 import '@/common/main.scss';
+import {AdsInArticle} from '@/feature/Ads';
 import {AllTagList} from '@/feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
@@ -18,6 +19,7 @@ export default function TagListPage(): React.ReactElement {
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list} />
       <h1>タグ一覧</h1>
+      <AdsInArticle />
       <AllTagList />
     </Layout>
   );

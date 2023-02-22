@@ -17,6 +17,7 @@ import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import Slug from 'remark-slug';
 import Toc from 'remark-toc';
+import {AdsInArticle} from '@/feature/Ads';
 import {EmbedCard, ImageViewer} from '@/feature/Article';
 import ExtractHeading from '@utils/ExtractHeading';
 import '../TableOfContents.scss';
@@ -79,6 +80,7 @@ export const BlogContent = (props: Props): React.ReactElement => {
   const table_of_contents = ExtractHeading(props.body);
   return (
     <section className='BlogContent-container'>
+      <AdsInArticle />
       {
         // 見出しが2個未満だったら目次を出しても違和感がある気がする
         table_of_contents.length > 2 && (
@@ -131,6 +133,7 @@ export const BlogContent = (props: Props): React.ReactElement => {
       {/* <Remark remarkPlugins={[Gfm, Toc, Slug]} rehypeReactOptions={rehype_react_options}>
         {/* 画像のURLを置き換える /}
       </Remark> */}
+      <AdsInArticle />
     </section>
   );
 };

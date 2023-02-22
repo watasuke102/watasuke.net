@@ -11,6 +11,7 @@ import {Seo, Layout, Breadcrumb} from '@/common';
 import {graphql} from 'gatsby';
 import React from 'react';
 import '@/common/main.scss';
+import {AdsInArticle} from '@/feature/Ads';
 import {ArticleList} from '@/feature/ArticleList';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import Article from '@mytypes/Article';
@@ -33,6 +34,7 @@ export default function ArticleListPage({data}: Props): React.ReactElement {
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list} />
       <h1>記事一覧</h1>
+      <AdsInArticle />
       <div className='blog-container'>
         <ArticleList list={data.allArticles.nodes} />
       </div>
