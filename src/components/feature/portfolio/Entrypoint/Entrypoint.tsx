@@ -35,14 +35,14 @@ const blind_width = 30;
 const visible_mask = `repeating-linear-gradient(-60deg, #98c379 0px 0px, transparent 0px ${blind_width}px)`;
 const invisible_mask = `repeating-linear-gradient(-60deg, #98c379 0px ${blind_width}px, transparent 0px ${blind_width}px)`;
 
-export const Entrypoint = (props: {complete: (lang: string, animation: string) => void}): React.ReactElement => {
+export const Entrypoint = (props: {complete: (lang: string, animation: boolean) => void}): React.ReactElement => {
   const [button_clicked, set_button_clicked] = React.useState(false);
   const [lang, set_lang] = React.useState('ja');
   const [animation, set_animation] = React.useState('on');
 
   const complete = React.useCallback(() => {
     navigate(`?lang=${lang}&animation=${animation !== 'off'}`);
-    props.complete(lang, animation);
+    props.complete(lang, animation !== 'off');
   }, [lang, animation]);
 
   return (
