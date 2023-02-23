@@ -9,12 +9,13 @@
 import '@/pages/portfolio.scss';
 import {Seo} from '@/common';
 import React from 'react';
-import {PortfolioContainer, Welcome, Skills, Works, Links, End} from '@/feature/portfolio';
+import {PortfolioContainer, Entrypoint, Welcome, Skills, Works, Links, End} from '@/feature/portfolio';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Portfolio'}]);
 
 export default function Portfolio(): React.ReactElement {
+  return <Entrypoint />;
   return (
     <div id='portfolio-container'>
       <PortfolioContainer>
