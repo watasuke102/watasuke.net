@@ -19,7 +19,7 @@ interface Props {
   body: TextAnimationBody[];
 }
 
-const Transition = {transition: {duration: 0, delayChildren: 0.5, staggerChildren: 0.01}};
+const Transition = {transition: {duration: 0, delayChildren: 1.2, staggerChildren: 0.01}};
 const Container = {
   fade_to: Transition,
   move_to: Transition,
