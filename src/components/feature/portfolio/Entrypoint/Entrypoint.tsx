@@ -34,7 +34,12 @@ export const Entrypoint = (): React.ReactElement => {
   const [animation, set_animation] = React.useState('on');
 
   return (
-    <div id='portfolio-entrypoint'>
+    <motion.div
+      id='portfolio-entrypoint'
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      transition={{delay: 1, duration: 1}}
+    >
       <div className='outer_0' />
       <div className='inner_0' />
       <div className='inner_1' />
@@ -56,6 +61,6 @@ export const Entrypoint = (): React.ReactElement => {
           <span>continue</span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
