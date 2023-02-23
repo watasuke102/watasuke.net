@@ -4,11 +4,14 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT SUSHI-WARE License.
+@use '../../../common/color.scss';
+
 #portfolio-welcome {
   //background-color: #4b4692;
 
   a {
-    color: #eee;
+    color: color.$bg;
+    text-decoration: underline;
   }
   .greeting {
     margin-top: 16px;
@@ -29,7 +32,7 @@
       margin-left: -3px;
     }
     .name-sub {
-      color: #ccc;
+      color: rgba(color.$bg, 0.7);
     }
 
     @media screen and (max-width: 700px) {

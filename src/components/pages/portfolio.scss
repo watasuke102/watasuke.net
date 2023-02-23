@@ -6,9 +6,11 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
+@use '../common/color.scss';
 
 // 全ページ共通
 #portfolio-container {
+  color: color.$bg;
   div[id^='portfolio'] {
     position: absolute;
     left: 0;
