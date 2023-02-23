@@ -8,6 +8,7 @@
  */
 import {motion, Variants} from 'framer-motion';
 import React from 'react';
+import './TextAnimation.scss';
 
 interface TextAnimationBody {
   text: string;
@@ -42,7 +43,7 @@ export const TextAnimation = (props: Props): React.ReactElement => {
         {props.body.map(body => {
           const text = (
             <>
-              <span style={{display: 'inline-block', overflow: 'hidden'}}>{body.text}</span>
+              <span className='TextAnimation-block'>{body.text}</span>
               {body.break === true && <br />}
             </>
           );
@@ -68,8 +69,8 @@ export const TextAnimation = (props: Props): React.ReactElement => {
         const text = (
           <>
             {body.text.split('').map((char, i) => (
-              <span key={`${i}${char}`} style={{display: 'inline-block', overflow: 'hidden'}}>
-                <motion.span style={{display: 'inline-block'}} variants={Letter}>
+              <span key={`${i}${char}`} className='TextAnimation-block'>
+                <motion.span className='TextAnimation-char' variants={Letter}>
                   {char}
                 </motion.span>
               </span>
