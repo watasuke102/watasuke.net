@@ -35,7 +35,11 @@ export const Entrypoint = (): React.ReactElement => {
 
   return (
     <div id='portfolio-entrypoint'>
-      <div className='circle' />
+      <div className='outer_0' />
+      <div className='inner_0' />
+      <div className='inner_1' />
+      <div className='inner_2' />
+
       <div className='container'>
         <span className='welcome'>Welcome!</span>
 

@@ -6,6 +6,31 @@
 // This software is released under the MIT SUSHI-WARE License.
 @use '../../../common/color.scss';
 
+@mixin fan($radius, $length, $offset) {
+  z-index: -10;
+  display: block;
+  border-radius: 50%;
+  width: $radius;
+  height: $radius;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+
+  $degree: calc(#{$length} + #{$offset});
+  // prettier-ignore
+  background: conic-gradient(
+    transparent $offset,
+    color.$fg   $offset,
+    color.$fg   $degree,
+    transparent $degree,
+  );
+  $border_length: 4px;
+  $hole_radius: calc(#{$radius} / 2 - #{$border_length});
+  mask: radial-gradient(circle at center, transparent $hole_radius, black $hole_radius, black);
+}
+
 #portfolio-entrypoint {
   position: absolute;
   top: 50%;
@@ -13,20 +38,36 @@
   transform: translateY(-50%) translateX(-50%);
   text-align: center;
 
-  .circle {
-    position: absolute;
-    z-index: -1;
-    display: block;
+  // prettier-ignore
+  @keyframes rotate_cw {
+      0% { transform: translateY(-50%) translateX(-50%) rotate(0turn); }
+    100% { transform: translateY(-50%) translateX(-50%) rotate(1turn); }
+  }
+  // prettier-ignore
+  @keyframes rotate_ccw {
+      0% { transform: translateY(-50%) translateX(-50%) rotate( 0turn); }
+    100% { transform: translateY(-50%) translateX(-50%) rotate(-1turn); }
+  }
 
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
+  $inner_radius: 360px;
+  .inner_0,
+  .inner_1,
+  .inner_2 {
+    animation: rotate_cw 14s linear infinite;
+  }
+  .inner_0 {
+    @include fan($inner_radius, 45deg, 0deg);
+  }
+  .inner_1 {
+    @include fan($inner_radius, 60deg, 85deg);
+  }
+  .inner_2 {
+    @include fan($inner_radius, 140deg, 180deg);
+  }
 
-    width: 320px;
-    height: 320px;
-    border: 4px solid color.$fg;
-    border-radius: 50%;
-    animation: 1s;
+  .outer_0 {
+    @include fan(calc(#{$inner_radius} + 80px), 260deg, 30deg);
+    animation: rotate_ccw 28s linear infinite;
   }
 
   .container {
