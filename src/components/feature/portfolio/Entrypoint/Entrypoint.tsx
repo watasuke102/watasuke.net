@@ -4,7 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT SUSHI-WARE License.
-import {motion} from 'framer-motion';
+import {AnimatePresence, motion} from 'framer-motion';
+import {navigate} from 'gatsby';
 import React from 'react';
 import './Entrypoint.scss';
 
@@ -30,7 +31,12 @@ const Toggle = (props: {
   </div>
 );
 
+const blind_width = 30;
+const visible_mask = `repeating-linear-gradient(-60deg, #98c379 0px 0px, transparent 0px ${blind_width}px)`;
+const invisible_mask = `repeating-linear-gradient(-60deg, #98c379 0px ${blind_width}px, transparent 0px ${blind_width}px)`;
+
 export const Entrypoint = (props: {complete: (lang: string, animation: string) => void}): React.ReactElement => {
+  const [button_clicked, set_button_clicked] = React.useState(false);
   const [lang, set_lang] = React.useState('ja');
   const [animation, set_animation] = React.useState('on');
 
@@ -40,33 +46,46 @@ export const Entrypoint = (props: {complete: (lang: string, animation: string) =
   }, [lang, animation]);
 
   return (
-    <motion.div
-      id='portfolio-entrypoint'
-      initial={{opacity: 0}}
-      animate={{opacity: 1}}
-      transition={{delay: 1, duration: 1}}
-    >
-      <div className='outer_0' />
-      <div className='inner_0' />
-      <div className='inner_1' />
-      <div className='inner_2' />
+    <AnimatePresence>
+      <motion.div
+        id='portfolio-entrypoint'
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        transition={{delay: 0.5, duration: 1}}
+      >
+        <div className='outer_0' />
+        <div className='inner_0' />
+        <div className='inner_1' />
+        <div className='inner_2' />
 
-      <div className='container'>
-        <span className='welcome'>Welcome!</span>
+        <div className='container'>
+          <span className='welcome'>Welcome!</span>
 
-        <div className='option'>
-          <span>Language</span>
-          <Toggle first='ja' second='en' current={lang} set_state={set_lang} />
-        </div>
-        <div className='option'>
-          <span>Animation</span>
-          <Toggle first='on' second='off' current={animation} set_state={set_animation} />
-        </div>
+          <div className='option'>
+            <span>Language</span>
+            <Toggle first='ja' second='en' current={lang} set_state={set_lang} />
+          </div>
+          <div className='option'>
+            <span>Animation</span>
+            <Toggle first='on' second='off' current={animation} set_state={set_animation} />
+          </div>
 
-        <div className='continue_button'>
-          <span>continue</span>
+          <div className='continue_button' onClick={() => set_button_clicked(true)}>
+            <span>continue</span>
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+
+      {button_clicked && (
+        <motion.div
+          initial={{background: visible_mask}}
+          animate={{background: invisible_mask}}
+          // easeOutExpo
+          transition={{duration: 0.3, ease: [0.16, 1, 0.3, 1]}}
+          onAnimationComplete={complete}
+          className='portfolio-entrypoint_page_transition'
+        />
+      )}
+    </AnimatePresence>
   );
 };

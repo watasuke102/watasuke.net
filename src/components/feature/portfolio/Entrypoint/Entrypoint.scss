@@ -142,3 +142,12 @@
     }
   }
 }
+
+.portfolio-entrypoint_page_transition {
+  z-index: 256;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100dvw;
+  height: 100dvh;
+}
