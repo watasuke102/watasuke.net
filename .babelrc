@@ -8,7 +8,7 @@
       "languages": [
         "c", "cpp", "rust", "go",
         "python", "typescript", "html",
-        "javascript", "css", "markup", "jsx", "tsx"
+        "javascript", "css", "scss", "markup", "jsx", "tsx"
       ]
     }]
   ]
