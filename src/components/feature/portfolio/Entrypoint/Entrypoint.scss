@@ -6,12 +6,12 @@
 // This software is released under the MIT SUSHI-WARE License.
 @use '../../../common/color.scss';
 
-@mixin fan($radius, $length, $offset) {
+@mixin fan($size, $length, $offset) {
   z-index: -10;
   display: block;
   border-radius: 50%;
-  width: $radius;
-  height: $radius;
+  width: $size;
+  height: $size;
 
   position: absolute;
   top: 50%;
@@ -26,8 +26,8 @@
     color.$fg   $degree,
     transparent $degree,
   );
-  $border_length: 4px;
-  $hole_radius: calc(#{$radius} / 2 - #{$border_length});
+  $border_width: 4px;
+  $hole_radius: calc(#{$size} / 2 - #{$border_width});
   mask: radial-gradient(circle at center, transparent $hole_radius, black $hole_radius, black);
 }
 
