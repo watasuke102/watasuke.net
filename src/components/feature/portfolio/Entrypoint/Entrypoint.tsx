@@ -30,9 +30,14 @@ const Toggle = (props: {
   </div>
 );
 
-export const Entrypoint = (): React.ReactElement => {
+export const Entrypoint = (props: {complete: (lang: string, animation: string) => void}): React.ReactElement => {
   const [lang, set_lang] = React.useState('ja');
   const [animation, set_animation] = React.useState('on');
+
+  const complete = React.useCallback(() => {
+    navigate(`?lang=${lang}&animation=${animation !== 'off'}`);
+    props.complete(lang, animation);
+  }, [lang, animation]);
 
   return (
     <motion.div
