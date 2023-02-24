@@ -46,11 +46,12 @@
   }
 
   .bio {
-    width: 100%;
+    width: 90dvw;
     text-align: center;
     p {
       margin-bottom: 4px;
     }
+    margin: auto;
     // for scroll-indicator
     padding-bottom: 128px;
   }
