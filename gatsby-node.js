@@ -7,12 +7,18 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 
+const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 
 // サイトのデータ登録
 exports.createSchemaCustomization = ({actions}) => {
   actions.createTypes(`
+    type PortfolioToml implements Node @dontInfer {
+      name: String,
+      body: String,
+    }
+
     type Ogp implements Node @dontInfer {
       url: String,
       title: String,
@@ -46,6 +52,35 @@ exports.createSchemaCustomization = ({actions}) => {
   `);
 };
 exports.sourceNodes = async ({actions, createContentDigest}) => {
+  // ポートフォリオ用tomlを読み込み
+  fs.readdir(path.resolve('./src/assets/portfolio_toml'), (err, files) => {
+    if (err) {
+      throw err;
+    }
+
+    files.forEach(name => {
+      if (name.slice(-4) !== 'toml') {
+        return;
+      }
+      fs.readFile(path.resolve(`./src/assets/portfolio_toml/${name}`), 'utf-8', (err, body) => {
+        if (err) {
+          throw err;
+        }
+
+        const toml_file = {name: name, body: body};
+        actions.createNode({
+          id: name,
+          name: name,
+          body: body,
+          internal: {
+            type: 'PortfolioToml',
+            contentDigest: createContentDigest(toml_file),
+          },
+        });
+      });
+    });
+  });
+
   let response;
   // サイトのデータ（プロフィールとかなんとか）を登録
   let failed = false;
