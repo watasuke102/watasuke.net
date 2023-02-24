@@ -98,7 +98,16 @@ export const Entrypoint = (props: {complete: (lang: string, animation: boolean) 
                 ))}
             </div>
 
-            <div className='continue_button' onClick={() => set_button_clicked(true)}>
+            <div
+              className='continue_button'
+              onClick={() => {
+                if (animation !== 'off') {
+                  set_button_clicked(true);
+                } else {
+                  complete();
+                }
+              }}
+            >
               <span>continue</span>
             </div>
           </div>
