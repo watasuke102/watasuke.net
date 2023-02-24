@@ -15,13 +15,18 @@ import {GenBreadcrumb} from '@utils/Breadcrumb';
 const breadcrumb_list = GenBreadcrumb([{name: 'Portfolio'}]);
 
 export default function Portfolio(): React.ReactElement {
-  const [lang, set_lang] = React.useState<string | null>();
-  const [animation, set_animation] = React.useState<boolean | null>();
+  const [lang, set_lang] = React.useState<string | undefined>();
+  const [animation, set_animation] = React.useState<boolean | undefined>();
 
   React.useEffect(() => {
     const params = new URLSearchParams(location.search);
-    set_lang(params.get('lang'));
-    set_animation(params.get('animation') !== 'false');
+    set_lang(params.get('lang') ?? undefined);
+    const animation_param = params.get('animation');
+    if (animation_param) {
+      set_animation(animation_param !== 'false');
+    } else {
+      set_animation(undefined);
+    }
   }, []);
 
   const complete = React.useCallback((lang: string, animation: boolean) => {
@@ -29,7 +34,7 @@ export default function Portfolio(): React.ReactElement {
     set_animation(animation);
   }, []);
 
-  if (lang === null || animation === null) {
+  if (lang === undefined || animation === undefined) {
     return <Entrypoint complete={complete} />;
   }
 
