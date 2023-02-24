@@ -74,7 +74,7 @@ export const Entrypoint = (props: {
             <div className='option'>
               <span className='label'>Page Transition</span>
               {IsMobileDevice() ? (
-                <span>Off</span>
+                <span className='toggle_disabled'>Off</span>
               ) : (
                 <Toggle first='on' second='off' current={page_transition} set_state={set_transition} />
               )}
