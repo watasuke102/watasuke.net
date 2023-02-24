@@ -9,9 +9,17 @@ import React from 'react';
 
 export const AdsInArticle = (): React.ReactElement => {
   React.useEffect(() => {
+    if (config.adsenseId.length <= 0 || config.inArticleSlot.length <= 0) {
+      return;
+    }
     window.adsbygoogle = window.adsbygoogle || [];
     window.adsbygoogle.push({});
   }, []);
+
+  if (config.adsenseId.length <= 0 || config.inArticleSlot.length <= 0) {
+    return <></>;
+  }
+
   return (
     <>
       <ins
