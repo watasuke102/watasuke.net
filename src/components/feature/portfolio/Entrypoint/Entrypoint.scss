@@ -32,104 +32,113 @@
 }
 
 #portfolio-entrypoint {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  text-align: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
 
-  // prettier-ignore
-  @keyframes rotate_cw {
+  .center_menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    text-align: center;
+
+    // prettier-ignore
+    @keyframes rotate_cw {
       0% { transform: translateY(-50%) translateX(-50%) rotate(0turn); }
     100% { transform: translateY(-50%) translateX(-50%) rotate(1turn); }
   }
-  // prettier-ignore
-  @keyframes rotate_ccw {
+    // prettier-ignore
+    @keyframes rotate_ccw {
       0% { transform: translateY(-50%) translateX(-50%) rotate( 0turn); }
     100% { transform: translateY(-50%) translateX(-50%) rotate(-1turn); }
   }
 
-  $inner_radius: 410px;
-  .inner_0,
-  .inner_1,
-  .inner_2 {
-    animation: rotate_cw 14s linear infinite;
-  }
-  .inner_0 {
-    @include fan($inner_radius, 45deg, 0deg);
-  }
-  .inner_1 {
-    @include fan($inner_radius, 60deg, 85deg);
-  }
-  .inner_2 {
-    @include fan($inner_radius, 140deg, 180deg);
-  }
-
-  .outer_0 {
-    @include fan(calc(#{$inner_radius} + 80px), 260deg, 30deg);
-    animation: rotate_ccw 28s linear infinite;
-  }
-
-  .container {
-    font-size: 1.4em;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    .welcome {
-      font-size: 1.5em;
-      font-weight: bold;
+    $inner_radius: 410px;
+    .inner_0,
+    .inner_1,
+    .inner_2 {
+      animation: rotate_cw 14s linear infinite;
     }
-    .option {
-      width: 300px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px 16px;
-      .device-notice {
-        color: rgba(color.$fg, 0.7);
-        grid-column: 1 / 3;
-        word-break: keep-all;
-        font-size: 0.6em;
-        span {
-          margin: auto;
-        }
-        .ja {
-          font-size: 0.55em;
+    .inner_0 {
+      @include fan($inner_radius, 45deg, 0deg);
+    }
+    .inner_1 {
+      @include fan($inner_radius, 60deg, 85deg);
+    }
+    .inner_2 {
+      @include fan($inner_radius, 140deg, 180deg);
+    }
+
+    .outer_0 {
+      @include fan(calc(#{$inner_radius} + 80px), 260deg, 30deg);
+      animation: rotate_ccw 28s linear infinite;
+    }
+
+    .container {
+      font-size: 1.4em;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      .welcome {
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+      .option {
+        width: 300px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 16px;
+        .device-notice {
+          color: rgba(color.$fg, 0.7);
+          grid-column: 1 / 3;
+          word-break: keep-all;
+          font-size: 0.6em;
+          span {
+            margin: auto;
+          }
+          .ja {
+            font-size: 0.55em;
+          }
         }
       }
-    }
-    .continue_button {
-      width: 200px;
-      margin: auto;
-      position: relative;
-      transition: background-color 0.3s;
-      &:hover {
-        cursor: pointer;
-        background-color: rgba(color.$fg, 0.2);
+      .continue_button {
+        width: 200px;
+        margin: auto;
+        position: relative;
         transition: background-color 0.3s;
-      }
+        &:hover {
+          cursor: pointer;
+          background-color: rgba(color.$fg, 0.2);
+          transition: background-color 0.3s;
+        }
 
-      &::before,
-      &::after {
-        position: absolute;
-        display: inline-block;
-        content: '';
-        width: 16px;
-        height: 16px;
-        border: 4px solid color.$p0;
-      }
-      // 左上
-      &::before {
-        top: 0;
-        left: 0;
-        border-bottom: none;
-        border-right: none;
-      }
-      // 右下
-      &::after {
-        bottom: 0;
-        right: 0;
-        border-top: none;
-        border-left: none;
+        &::before,
+        &::after {
+          position: absolute;
+          display: inline-block;
+          content: '';
+          width: 16px;
+          height: 16px;
+          border: 4px solid color.$p0;
+        }
+        // 左上
+        &::before {
+          top: 0;
+          left: 0;
+          border-bottom: none;
+          border-right: none;
+        }
+        // 右下
+        &::after {
+          bottom: 0;
+          right: 0;
+          border-top: none;
+          border-left: none;
+        }
       }
     }
   }

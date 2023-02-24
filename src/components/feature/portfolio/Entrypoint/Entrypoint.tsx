@@ -60,59 +60,63 @@ export const Entrypoint = (props: {complete: (lang: string, animation: boolean) 
   }
 
   return (
-    <AnimatePresence>
-      <motion.div
-        id='portfolio-entrypoint'
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        transition={{delay: 0.5, duration: 1}}
-      >
-        <div className='outer_0' />
-        <div className='inner_0' />
-        <div className='inner_1' />
-        <div className='inner_2' />
-
-        <div className='container'>
-          <span className='welcome'>Welcome!</span>
-
-          <div className='option'>
-            <span>Language</span>
-            <Toggle first='ja' second='en' current={lang} set_state={set_lang} />
-          </div>
-          <div className='option'>
-            <span>Animation</span>
-            <Toggle first='on' second='off' current={animation} set_state={set_animation} />
-            {IsMobileDevice() &&
-              (lang === 'ja' ? (
-                <span className='device-notice ja'>
-                  スマホ等においてアニメーションを有効にすると、 <br />
-                  ページ移動など一部が正常に動作しません
-                </span>
-              ) : (
-                <span className='device-notice en'>
-                  On smartphone, the part of animated portfolio
-                  <br />
-                  such as page transitions may not work properly
-                </span>
-              ))}
-          </div>
-
-          <div className='continue_button' onClick={() => set_button_clicked(true)}>
-            <span>continue</span>
-          </div>
-        </div>
-      </motion.div>
-
-      {button_clicked && (
+    <>
+      <div id='portfolio-entrypoint'>
         <motion.div
-          initial={{background: visible_mask}}
-          animate={{background: invisible_mask}}
-          // easeOutExpo
-          transition={{duration: 0.3, ease: [0.16, 1, 0.3, 1]}}
-          onAnimationComplete={complete}
-          className='portfolio-entrypoint_page_transition'
-        />
-      )}
-    </AnimatePresence>
+          className='center_menu'
+          initial={{opacity: 0}}
+          animate={{opacity: 1}}
+          transition={{delay: 0.5, duration: 1}}
+        >
+          <div className='outer_0' />
+          <div className='inner_0' />
+          <div className='inner_1' />
+          <div className='inner_2' />
+
+          <div className='container'>
+            <span className='welcome'>Welcome!</span>
+
+            <div className='option'>
+              <span>Language</span>
+              <Toggle first='ja' second='en' current={lang} set_state={set_lang} />
+            </div>
+            <div className='option'>
+              <span>Animation</span>
+              <Toggle first='on' second='off' current={animation} set_state={set_animation} />
+              {IsMobileDevice() &&
+                (lang === 'ja' ? (
+                  <span className='device-notice ja'>
+                    スマホ等においてアニメーションを有効にすると、 <br />
+                    ページ移動など一部が正常に動作しません
+                  </span>
+                ) : (
+                  <span className='device-notice en'>
+                    On smartphone, the part of animated portfolio
+                    <br />
+                    such as page transitions may not work properly
+                  </span>
+                ))}
+            </div>
+
+            <div className='continue_button' onClick={() => set_button_clicked(true)}>
+              <span>continue</span>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      <AnimatePresence>
+        {button_clicked && (
+          <motion.div
+            initial={{background: visible_mask}}
+            animate={{background: invisible_mask}}
+            // easeOutExpo
+            transition={{duration: 0.3, ease: [0.16, 1, 0.3, 1]}}
+            onAnimationComplete={complete}
+            className='portfolio-entrypoint_page_transition'
+          />
+        )}
+      </AnimatePresence>
+    </>
   );
 };
