@@ -18,6 +18,7 @@ interface TextAnimationBody {
 }
 interface Props {
   body: TextAnimationBody[];
+  animation_enabled: boolean;
 }
 
 const Transition = {transition: {duration: 0, staggerChildren: 0.01}};
@@ -36,7 +37,7 @@ const Letter: Variants = {
 export const TextAnimation = (props: Props): React.ReactElement => {
   const [completed, SetCompleted] = React.useState(false);
 
-  if (completed) {
+  if (completed || !props.animation_enabled) {
     return (
       <>
         {' '}

@@ -7,13 +7,19 @@
 import {AnimatePresence, motion} from 'framer-motion';
 import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
+import {Transition} from '@utils/Transition';
 import {TextAnimation} from './TextAnimation';
 import './Welcome.scss';
 
-export const Welcome = (): React.ReactElement => {
+interface Props {
+  animation_enabled: boolean;
+}
+
+export const Welcome = (props: Props): React.ReactElement => {
   const bio_animation = React.useMemo(
     () => (
       <TextAnimation
+        animation_enabled={props.animation_enabled}
         body={[
           {
             type: 'plain',
@@ -59,7 +65,7 @@ export const Welcome = (): React.ReactElement => {
         id='portfolio-welcome'
         initial={{opacity: 0}}
         animate={{opacity: 1}}
-        transition={{delay: 0.5, duration: 1}}
+        transition={Transition(props.animation_enabled, {delay: 0.5, duration: 1})}
         onAnimationComplete={() => set_avatar_and_name_displayed(true)}
       >
         <h2 className='greeting'>Hi there👋</h2>
