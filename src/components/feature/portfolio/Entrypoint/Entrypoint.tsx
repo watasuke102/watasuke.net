@@ -7,6 +7,7 @@
 import {AnimatePresence, motion} from 'framer-motion';
 import {navigate} from 'gatsby';
 import React from 'react';
+import {IsMobileDevice} from '@utils/IsMobileDevice';
 import './Entrypoint.scss';
 
 const Toggle = (props: {
@@ -45,6 +46,19 @@ export const Entrypoint = (props: {complete: (lang: string, animation: boolean) 
     props.complete(lang, animation !== 'off');
   }, [lang, animation]);
 
+  React.useEffect(() => {
+    if (!navigator) {
+      return;
+    }
+    if (IsMobileDevice()) {
+      set_animation('off');
+    }
+  }, []);
+
+  if (!navigator) {
+    return <></>;
+  }
+
   return (
     <AnimatePresence>
       <motion.div
@@ -68,6 +82,19 @@ export const Entrypoint = (props: {complete: (lang: string, animation: boolean) 
           <div className='option'>
             <span>Animation</span>
             <Toggle first='on' second='off' current={animation} set_state={set_animation} />
+            {IsMobileDevice() &&
+              (lang === 'ja' ? (
+                <span className='device-notice ja'>
+                  スマホ等においてアニメーションを有効にすると、 <br />
+                  ページ移動など一部が正常に動作しません
+                </span>
+              ) : (
+                <span className='device-notice en'>
+                  On smartphone, the part of animated portfolio
+                  <br />
+                  such as page transitions may not work properly
+                </span>
+              ))}
           </div>
 
           <div className='continue_button' onClick={() => set_button_clicked(true)}>

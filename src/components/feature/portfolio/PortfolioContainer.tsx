@@ -18,6 +18,7 @@ enum Position {
 
 interface Props {
   children: React.ReactElement[];
+  animation_enabled: boolean;
 }
 
 // onedark like
@@ -126,67 +127,64 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
     );
   }
 
-  if (typeof navigator !== 'undefined') {
-    if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
-      return (
-        <div id='PortfolioContainer-container_mobile' style={{backgroundColor: BackgroundColors[0]}}>
-          {props.children.map((page, i) => (
-            <div key={page.key} style={{backgroundColor: BackgroundColors[i]}}>
-              {page}
-            </div>
-          ))}
-        </div>
-      );
-    } else {
-      return (
-        <motion.div
-          initial={{backgroundColor: BackgroundColors[current_page_ref.current]}}
-          animate={bg_control}
-          transition={{duration: 1}}
-          id='PortfolioContainer-background'
-        >
-          <AnimatePresence>
-            {!is_moving_page && (
-              <motion.div
-                initial={{opacity: 0, scale: 0.9}}
-                animate={{opacity: 1, scale: 1}}
-                exit={{opacity: 0, scale: 0.9}}
-                transition={{
-                  scale: {
-                    duration: 0.5,
-                    ease: 'circOut',
-                  },
-                  opacity: {
-                    duration: 0.5,
-                    ease: 'linear',
-                  },
-                }}
-                onAnimationComplete={OnAnimationComplete}
-                id='PortfolioContainer-container'
-              >
-                {props.children[current_page]}
-              </motion.div>
-            )}
-          </AnimatePresence>
-          <div style={{height: scroll_height}} id='PortfolioContainer-scroll' />
-
-          <div id='PortfolioContainer-page_indicator'>
-            {['Welcome', 'Skills', 'Works', 'Links'].map((str, index) => (
-              <div
-                key={index}
-                className={'indicator_container' + (index === current_page ? ' current' : '')}
-                onClick={() => {
-                  SetNextPage(index);
-                  SetIsMovingPage(true);
-                }}
-              >
-                <span className='name'>{str}</span>
-              </div>
-            ))}
+  if (!props.animation_enabled) {
+    return (
+      <div id='PortfolioContainer-container_mobile' style={{backgroundColor: BackgroundColors[0]}}>
+        {props.children.map((page, i) => (
+          <div key={page.key} style={{backgroundColor: BackgroundColors[i]}}>
+            {page}
           </div>
-        </motion.div>
-      );
-    }
+        ))}
+      </div>
+    );
   }
-  return <></>;
+
+  return (
+    <motion.div
+      initial={{backgroundColor: BackgroundColors[current_page_ref.current]}}
+      animate={bg_control}
+      transition={{duration: 1}}
+      id='PortfolioContainer-background'
+    >
+      <AnimatePresence>
+        {!is_moving_page && (
+          <motion.div
+            initial={{opacity: 0, scale: 0.9}}
+            animate={{opacity: 1, scale: 1}}
+            exit={{opacity: 0, scale: 0.9}}
+            transition={{
+              scale: {
+                duration: 0.5,
+                ease: 'circOut',
+              },
+              opacity: {
+                duration: 0.5,
+                ease: 'linear',
+              },
+            }}
+            onAnimationComplete={OnAnimationComplete}
+            id='PortfolioContainer-container'
+          >
+            {props.children[current_page]}
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <div style={{height: scroll_height}} id='PortfolioContainer-scroll' />
+
+      <div id='PortfolioContainer-page_indicator'>
+        {['Welcome', 'Skills', 'Works', 'Links'].map((str, index) => (
+          <div
+            key={index}
+            className={'indicator_container' + (index === current_page ? ' current' : '')}
+            onClick={() => {
+              SetNextPage(index);
+              SetIsMovingPage(true);
+            }}
+          >
+            <span className='name'>{str}</span>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  );
 };

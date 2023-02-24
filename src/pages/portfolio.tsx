@@ -29,13 +29,13 @@ export default function Portfolio(): React.ReactElement {
     set_animation(animation);
   }, []);
 
-  if (!lang || !animation) {
+  if (lang === null || animation === null) {
     return <Entrypoint complete={complete} />;
   }
 
   return (
     <div id='portfolio-container'>
-      <PortfolioContainer>
+      <PortfolioContainer animation_enabled={animation}>
         <Welcome />
         <Skills />
         <Works />
