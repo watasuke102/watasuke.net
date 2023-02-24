@@ -36,28 +36,19 @@ const blind_width = 30;
 const visible_mask = `repeating-linear-gradient(-60deg, #98c379 0px 0px, transparent 0px ${blind_width}px)`;
 const invisible_mask = `repeating-linear-gradient(-60deg, #98c379 0px ${blind_width}px, transparent 0px ${blind_width}px)`;
 
-export const Entrypoint = (props: {complete: (lang: string, animation: boolean) => void}): React.ReactElement => {
+export const Entrypoint = (props: {
+  complete: (lang: string, page_transition: boolean, animation: boolean) => void;
+}): React.ReactElement => {
   const [button_clicked, set_button_clicked] = React.useState(false);
   const [lang, set_lang] = React.useState('ja');
   const [animation, set_animation] = React.useState('on');
+  const [page_transition, set_transition] = React.useState('on');
 
   const complete = React.useCallback(() => {
-    navigate(`?lang=${lang}&animation=${animation !== 'off'}`);
-    props.complete(lang, animation !== 'off');
+    const page_transition_bool = IsMobileDevice() ? false : page_transition !== 'off';
+    navigate(`?lang=${lang}&page_transition=${page_transition_bool}&animation=${animation !== 'off'}`);
+    props.complete(lang, page_transition_bool, animation !== 'off');
   }, [lang, animation]);
-
-  React.useEffect(() => {
-    if (!navigator) {
-      return;
-    }
-    if (IsMobileDevice()) {
-      set_animation('off');
-    }
-  }, []);
-
-  if (!navigator) {
-    return <></>;
-  }
 
   return (
     <>
@@ -77,25 +68,20 @@ export const Entrypoint = (props: {complete: (lang: string, animation: boolean) 
             <span className='welcome'>Welcome!</span>
 
             <div className='option'>
-              <span>Language</span>
+              <span className='label'>Language</span>
               <Toggle first='ja' second='en' current={lang} set_state={set_lang} />
             </div>
             <div className='option'>
-              <span>Animation</span>
+              <span className='label'>Page Transition</span>
+              {IsMobileDevice() ? (
+                <span>Off</span>
+              ) : (
+                <Toggle first='on' second='off' current={page_transition} set_state={set_transition} />
+              )}
+            </div>
+            <div className='option'>
+              <span className='label'>Animation</span>
               <Toggle first='on' second='off' current={animation} set_state={set_animation} />
-              {IsMobileDevice() &&
-                (lang === 'ja' ? (
-                  <span className='device-notice ja'>
-                    スマホ等においてアニメーションを有効にすると、 <br />
-                    ページ移動など一部が正常に動作しません
-                  </span>
-                ) : (
-                  <span className='device-notice en'>
-                    On smartphone, the part of animated portfolio
-                    <br />
-                    such as page transitions may not work properly
-                  </span>
-                ))}
             </div>
 
             <div

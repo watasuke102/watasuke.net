@@ -8,6 +8,7 @@
  */
 import {AnimatePresence, motion, useAnimation} from 'framer-motion';
 import React from 'react';
+import {Transition} from '@utils/Transition';
 import './PortfolioContainer.scss';
 
 enum Position {
@@ -19,6 +20,7 @@ enum Position {
 interface Props {
   children: React.ReactElement[];
   animation_enabled: boolean;
+  page_transition_enabled: boolean;
 }
 
 // onedark like
@@ -127,7 +129,7 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
     );
   }
 
-  if (!props.animation_enabled) {
+  if (!props.page_transition_enabled) {
     return (
       <div id='PortfolioContainer-container_mobile' style={{backgroundColor: BackgroundColors[0]}}>
         {props.children.map((page, i) => (
@@ -143,7 +145,7 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
     <motion.div
       initial={{backgroundColor: BackgroundColors[current_page_ref.current]}}
       animate={bg_control}
-      transition={{duration: 1}}
+      transition={Transition(props.animation_enabled, {duration: 1})}
       id='PortfolioContainer-background'
     >
       <AnimatePresence>
@@ -152,7 +154,7 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
             initial={{opacity: 0, scale: 0.9}}
             animate={{opacity: 1, scale: 1}}
             exit={{opacity: 0, scale: 0.9}}
-            transition={{
+            transition={Transition(props.animation_enabled, {
               scale: {
                 duration: 0.5,
                 ease: 'circOut',
@@ -161,7 +163,7 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
                 duration: 0.5,
                 ease: 'linear',
               },
-            }}
+            })}
             onAnimationComplete={OnAnimationComplete}
             id='PortfolioContainer-container'
           >
