@@ -4,12 +4,10 @@ url     = "https://twitter.com/Watasuke102"
 icon    = "twitter"
 desc_ja = """
 メンションもしくはDMに反応します
-（恐らく最速で反応できる連絡手段です）
-"""
+（恐らく最速で反応できる連絡手段です） """
 desc_en = """
 I'll respond to mention or DM
-(probably the fastest way to get responses)
-"""
+(probably the fastest way to get responses) """
 
 [[link]]
 title   = "SoundCloud"
