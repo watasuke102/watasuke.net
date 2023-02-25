@@ -12,10 +12,10 @@ import IconBoxOpen from '@assets/icons/box-open.svg';
 import IconEnvelope from '@assets/icons/envelope.svg';
 import IconFilePen from '@assets/icons/file-pen.svg';
 import IconGitHub from '@assets/icons/github.svg';
+import IconInstagram from '@assets/icons/instagram.svg';
 import IconSoundcloud from '@assets/icons/soundcloud.svg';
 import IconTwitter from '@assets/icons/twitter.svg';
 import IconYouTube from '@assets/icons/youtube.svg';
-import IconInstagram from '@assets/icons/instagram.svg';
 
 interface Props {
   title: string;
@@ -26,34 +26,25 @@ interface Props {
 
 // // FIXME: どうにかならない？これ
 function Icon(props: {icon: string}): React.ReactElement {
-  let src = '';
   switch (props.icon) {
     case 'twitter':
-      src = IconTwitter;
-      break;
+      return <IconTwitter />;
     case 'soundcloud':
-      src = IconSoundcloud;
-      break;
+      return <IconSoundcloud />;
     case 'github':
-      src = IconGitHub;
-      break;
+      return <IconGitHub />;
     case 'instagram':
-      src = IconInstagram;
-      break;
+      return <IconInstagram />;
     case 'youtube':
-      src = IconYouTube;
-      break;
+      return <IconYouTube />;
     case 'file-pen':
-      src = IconFilePen;
-      break;
+      return <IconFilePen />;
     case 'box-open':
-      src = IconBoxOpen;
-      break;
+      return <IconBoxOpen />;
     case 'envelope':
-      src = IconEnvelope;
-      break;
+      return <IconEnvelope />;
   }
-  return <img alt={props.icon} src={src} />;
+  return <span> [{props.icon}] </span>;
 }
 
 export const LinkCard = (props: Props): React.ReactElement => {
