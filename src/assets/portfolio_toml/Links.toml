@@ -1,13 +1,54 @@
 [[link]]
-title   = "title"
-icon    = ""
-url     = "url"
-desc_ja = "desc_ja"
-desc_en = "desc_en"
+title   = "Twitter (@Watasuke102)"
+url     = "https://twitter.com/Watasuke102"
+icon    = "twitter"
+desc_ja = """
+メンションもしくはDMに反応します
+（恐らく最速で反応できる連絡手段です）
+"""
+desc_en = """
+I'll respond to mention or DM
+(probably the fastest way to get responses)
+"""
 
 [[link]]
-title   = "title"
-icon    = ""
-url     = "url"
-desc_ja = "desc_ja"
-desc_en = "desc_en"
+title   = "SoundCloud"
+url     = "https://soundcloud.com/watasuke"
+icon    = "soundcloud"
+desc_ja = "今までに作った曲を投稿しています"
+desc_en = "my original musics are here"
+
+[[link]]
+title   = "GitHub"
+url     = "https://github.com/watasuke102"
+icon    = "github"
+desc_ja = "いろいろつくってます"
+desc_en = "something I made"
+
+[[link]]
+title   = "YouTube"
+url     = "https://www.youtube.com/@watasuke"
+icon    = "youtube"
+desc_ja = "稀に何らかの動画を上げます"
+desc_en = "upload some video rarely"
+
+[[link]]
+title   = "Scrapbox"
+url     = "https://scrapbox.io/watasuke"
+icon    = "file-pen"
+desc_ja = "自分語りなどをしています"
+desc_en = "recounting my own story or thought"
+
+[[link]]
+title   = "Peing (質問箱)"
+url     = "https://peing.net/ja/watasuke102"
+icon    = "box-open"
+desc_ja = "匿名で質問ができます"
+desc_en = "you can send me some question"
+
+[[link]]
+title   = "Email (watasuke102@gmail.com)"
+url     = "mailto:watasuke102@gmail.com"
+icon    = "envelope"
+desc_ja = "気づかないかもしれません"
+desc_en = "perhaps I can't notice"

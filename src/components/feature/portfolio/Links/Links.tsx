@@ -4,30 +4,26 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT SUSHI-WARE License.
-import {motion} from 'framer-motion';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import toml from 'toml';
-import {FadeWithScroll} from '@utils/FadeWithScroll';
+import { LinkCard } from './LinkCard';
 import './Links.scss';
 
-const LinkCard = (props: {title: string; url: string; icon: string; desc: string}): React.ReactElement => (
-  <motion.a href={props.url} className='card' {...FadeWithScroll}>
-    <i className={props.icon} />
-    <span className='head'>{props.title}</span>
-    <p className='desc'>
-      {props.desc.split('\\n').map(s => (
-        <>
-          {s}
-          <br />
-        </>
-      ))}
-    </p>
-  </motion.a>
-);
+interface Link {
+  title: string;
+  icon: string;
+  url: string;
+  desc_ja: string;
+  desc_en: string;
+}
 
-export const Links = (): React.ReactElement => {
-  const link_list = toml.parse(
+interface Props {
+  lang: string;
+}
+
+export const Links = (props: Props): React.ReactElement => {
+  const link_list: Link[] = toml.parse(
     useStaticQuery(graphql`
       query {
         portfolioToml(name: {eq: "Links.toml"}) {
@@ -42,7 +38,16 @@ export const Links = (): React.ReactElement => {
     <div id='portfolio-links'>
       <h2>Links</h2>
       <div className='container'>
-        <LinkCard
+        {link_list.map((link, i) => (
+          <LinkCard
+            key={i}
+            title={link.title}
+            url={link.url}
+            icon={link.icon}
+            desc={props.lang !== 'en' ? link.desc_ja : link.desc_en}
+          />
+        ))}
+        {/* <LinkCard
           title='Twitter (@Watasuke102)'
           url='https://twitter.com/Watasuke102'
           icon='fab fa-twitter'
@@ -83,7 +88,7 @@ export const Links = (): React.ReactElement => {
           url='mailto:watasuke102@gmail.com'
           icon='fas fa-envelope'
           desc='気づかないかもしれません'
-        />
+        /> */}
       </div>
       <div className='next-page' />
     </div>

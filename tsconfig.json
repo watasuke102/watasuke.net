@@ -22,6 +22,7 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/components/*"],
+      "@assets/*": ["src/assets/*"],
       "@utils/*": ["src/utils/*"],
       "@mytypes/*": ["src/types/*"],
       "@config": ["config.json"]
