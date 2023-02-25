@@ -15,6 +15,7 @@ import IconGitHub from '@assets/icons/github.svg';
 import IconSoundcloud from '@assets/icons/soundcloud.svg';
 import IconTwitter from '@assets/icons/twitter.svg';
 import IconYouTube from '@assets/icons/youtube.svg';
+import IconInstagram from '@assets/icons/instagram.svg';
 
 interface Props {
   title: string;
@@ -35,6 +36,9 @@ function Icon(props: {icon: string}): React.ReactElement {
       break;
     case 'github':
       src = IconGitHub;
+      break;
+    case 'instagram':
+      src = IconInstagram;
       break;
     case 'youtube':
       src = IconYouTube;

@@ -26,6 +26,13 @@ desc_ja = "いろいろつくってます"
 desc_en = "something I made"
 
 [[link]]
+title   = "Instagram"
+url     = "https://www.instagram.com/watasuke102/"
+icon    = "instagram"
+desc_ja = "ときどき写真とか作品とかを上げます"
+desc_en = "sometimes upload picture or my works"
+
+[[link]]
 title   = "YouTube"
 url     = "https://www.youtube.com/@watasuke"
 icon    = "youtube"
