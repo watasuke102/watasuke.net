@@ -4,6 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT SUSHI-WARE License.
+import {BreakWithCR} from '@/common';
 import {motion} from 'framer-motion';
 import React from 'react';
 import {FadeWithScroll} from '@utils/FadeWithScroll';
@@ -55,12 +56,7 @@ export const LinkCard = (props: Props): React.ReactElement => {
       </div>
       <span className='head'>{props.title}</span>
       <span className='desc'>
-        {props.desc.split('\n').map(s => (
-          <>
-            {s}
-            <br />
-          </>
-        ))}
+        <BreakWithCR str={props.desc} />
       </span>
     </motion.a>
   );
