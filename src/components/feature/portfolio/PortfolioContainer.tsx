@@ -24,7 +24,7 @@ interface Props {
 }
 
 // onedark like
-const BackgroundColors = ['#98c379', '#468492', '#5a9246', '#925d46', '#282c34'];
+const BackgroundColors = ['#98c379', '#468492', '#565194', '#925d46', '#282c34'];
 
 export const PortfolioContainer = (props: Props): React.ReactElement => {
   const [scroll_height, SetScrollHeight] = React.useState(0);
