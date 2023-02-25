@@ -54,14 +54,14 @@ export const LinkCard = (props: Props): React.ReactElement => {
         <Icon icon={props.icon} />
       </div>
       <span className='head'>{props.title}</span>
-      <p className='desc'>
+      <span className='desc'>
         {props.desc.split('\n').map(s => (
           <>
             {s}
             <br />
           </>
         ))}
-      </p>
+      </span>
     </motion.a>
   );
 };
