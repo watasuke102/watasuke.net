@@ -15,7 +15,6 @@ interface Props {
 }
 
 export const Thumbnail = ({url}: Props): React.ReactElement => {
-  console.log('URL: ', url);
   return (
     <div className='Thumbnail'>
       {url ? (

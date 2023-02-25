@@ -32,7 +32,6 @@ export const Links = (props: Props): React.ReactElement => {
       }
     `).portfolioToml.body,
   ).link;
-  console.log(link_list);
 
   return (
     <div id='portfolio-links'>
