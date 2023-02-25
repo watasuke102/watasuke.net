@@ -9,14 +9,14 @@ import {motion} from 'framer-motion';
 import React from 'react';
 import {FadeWithScroll} from '@utils/FadeWithScroll';
 import './LinkCard.scss';
-import IconBoxOpen from '@assets/icons/box-open.svg';
-import IconEnvelope from '@assets/icons/envelope.svg';
-import IconFilePen from '@assets/icons/file-pen.svg';
-import IconGitHub from '@assets/icons/github.svg';
-import IconInstagram from '@assets/icons/instagram.svg';
-import IconSoundcloud from '@assets/icons/soundcloud.svg';
-import IconTwitter from '@assets/icons/twitter.svg';
-import IconYouTube from '@assets/icons/youtube.svg';
+import IconBoxOpen from '@assets/icons/Links/box-open.svg';
+import IconEnvelope from '@assets/icons/Links/envelope.svg';
+import IconFilePen from '@assets/icons/Links/file-pen.svg';
+import IconGitHub from '@assets/icons/Links/github.svg';
+import IconInstagram from '@assets/icons/Links/instagram.svg';
+import IconSoundcloud from '@assets/icons/Links/soundcloud.svg';
+import IconTwitter from '@assets/icons/Links/twitter.svg';
+import IconYouTube from '@assets/icons/Links/youtube.svg';
 
 interface Props {
   title: string;

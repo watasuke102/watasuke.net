@@ -8,6 +8,7 @@ CC-BY 4.0
 
 - envelope.svg
 - box-open.svg
+- file-pen.svg
 
 ## Simple Icons 8.5.0
 
