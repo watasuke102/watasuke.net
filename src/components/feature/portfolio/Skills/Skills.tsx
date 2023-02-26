@@ -11,6 +11,11 @@ import React from 'react';
 import toml from 'toml';
 import './Skills.scss';
 
+interface Props {
+  animation_enabled: boolean;
+  lang: string;
+}
+
 interface Skill {
   name: string;
   icon: string;
@@ -20,7 +25,7 @@ interface Skill {
   desc_en: string;
 }
 
-export const Skills = (): React.ReactElement => {
+export const Skills = (props: Props): React.ReactElement => {
   const SkillCard = React.useMemo(() => {
     const skill_group = new Map<string, Skill[]>();
     const skill_list: Skill[] = toml.parse(
@@ -38,9 +43,6 @@ export const Skills = (): React.ReactElement => {
       skill_group.get(e.category)?.push(e);
     }, {});
 
-    console.log(skill_list);
-    console.log(skill_group);
-
     const cards: {group: string; list: React.ReactElement[]}[] = [];
     skill_group.forEach(e => {
       cards.push({
@@ -53,7 +55,7 @@ export const Skills = (): React.ReactElement => {
               <span className='tier'>{e.tier}</span>
             </div>
             <span className='desc'>
-              <BreakWithCR str={e.desc_ja} />
+              <BreakWithCR str={props.lang !== 'en' ? e.desc_ja : e.desc_en} />
             </span>
           </div>
         )),
