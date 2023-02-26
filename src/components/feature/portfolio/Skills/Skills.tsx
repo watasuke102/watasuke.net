@@ -45,13 +45,14 @@ interface Skill {
 }
 
 export const Skills = (props: Props): React.ReactElement => {
-  const float_animation_props = props.animation_enabled
-    ? {
-        initial: {opacity: 0, y: 30},
-        whileInView: {opacity: 1, y: 0},
-        transition: {duration: 0.5},
-        viewport: {once: true, amount: 0.7},
-      }
+  // prettier-ignore
+  const float_animation_props = props.animation_enabled ?
+    {
+      initial: {opacity: 0, y: 30},
+      whileInView: {opacity: 1, y: 0},
+      transition: {duration: 0.5},
+      viewport: {once: true, amount: 0.7},
+    }
     : {};
 
   const SkillCard = React.useMemo(() => {
