@@ -138,30 +138,6 @@
   }
 }
 
-.portfolio-entrypoint_toggle {
-  width: 100%;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  border: 2px solid color.$fg;
-  font-size: 1.3em;
-
-  .selected {
-    font-weight: bold;
-    background-color: color.$p0;
-    color: color.$bg;
-  }
-
-  .first,
-  .second {
-    display: inline-block;
-    width: 100%;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-}
-
 .portfolio-entrypoint_page_transition {
   z-index: 256;
   position: fixed;

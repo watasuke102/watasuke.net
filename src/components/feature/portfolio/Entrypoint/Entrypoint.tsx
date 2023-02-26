@@ -9,28 +9,7 @@ import {navigate} from 'gatsby';
 import React from 'react';
 import {IsMobileDevice} from '@utils/IsMobileDevice';
 import './Entrypoint.scss';
-
-const Toggle = (props: {
-  first: string;
-  second: string;
-  current: string;
-  set_state: (state: string) => void;
-}): React.ReactElement => (
-  <div className='portfolio-entrypoint_toggle'>
-    <span
-      className={'first' + (props.current === props.first ? ' selected' : '')}
-      onClick={() => props.set_state(props.first)}
-    >
-      {props.first}
-    </span>
-    <span
-      className={'second' + (props.current === props.second ? ' selected' : '')}
-      onClick={() => props.set_state(props.second)}
-    >
-      {props.second}
-    </span>
-  </div>
-);
+import { Toggle } from '@/common';
 
 const blind_width = 30;
 const visible_mask = `repeating-linear-gradient(-60deg, #98c379 0px 0px, transparent 0px ${blind_width}px)`;
