@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT SUSHI-WARE License.
 import {BreakWithCR, Toggle} from '@/common';
-import {AnimatePresence, motion} from 'framer-motion';
+import {AnimatePresence, AnimationProps, motion} from 'framer-motion';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import toml from 'toml';
@@ -110,29 +110,35 @@ export const Skills = (props: Props): React.ReactElement => {
     set_next_groupby('');
   }, []);
 
+  const container_variants = {
+    variants: {
+      init: {opacity: 0},
+      main: {opacity: 1},
+    },
+    initial: 'init',
+    animate: 'main',
+    exit: 'init',
+    transition: {duration: 0.1},
+    onAnimationComplete: animation_completed,
+  };
+
   return (
     <div id='portfolio-skills'>
       <h2>Skills</h2>
 
       <div className='toggle'>
         <span className='label'>Group by:</span>
-        <Toggle first='category' second='tier' current={groupby} set_state={toggle_changed} />
+        <Toggle
+          first='category'
+          second='tier'
+          current={groupby}
+          set_state={props.animation_enabled ? toggle_changed : set_groupby}
+        />
       </div>
 
       <AnimatePresence>
         {next_groupby === '' && (
-          <motion.div
-            id='skill-container'
-            variants={{
-              init: {opacity: 0},
-              main: {opacity: 1},
-            }}
-            initial='init'
-            animate='main'
-            exit='init'
-            transition={{duration: 0.1}}
-            onAnimationComplete={animation_completed}
-          >
+          <motion.div id='skill-container' {...(props.animation_enabled ? container_variants : {})}>
             {SkillCard.map((e, i) => (
               <>
                 <motion.span className='group_name' {...(props.animation_enabled ? FadeWithScroll : {})}>
