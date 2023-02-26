@@ -19,6 +19,7 @@ interface Link {
 }
 
 interface Props {
+  animation_enabled: boolean;
   lang: string;
 }
 
@@ -44,6 +45,7 @@ export const Links = (props: Props): React.ReactElement => {
             url={link.url}
             icon={link.icon}
             desc={props.lang !== 'en' ? link.desc_ja : link.desc_en}
+            animation_enabled={props.animation_enabled}
           />
         ))}
       </div>

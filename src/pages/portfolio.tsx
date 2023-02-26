@@ -46,7 +46,7 @@ export default function Portfolio(): React.ReactElement {
         <Welcome animation_enabled={animation} lang={lang} />
         <Skills animation_enabled={animation} lang={lang} />
         <Works />
-        <Links lang={lang} />
+        <Links animation_enabled={animation} lang={lang} />
         <End />
       </PortfolioContainer>
     </div>

@@ -23,6 +23,7 @@ interface Props {
   url: string;
   icon: string;
   desc: string;
+  animation_enabled: boolean;
 }
 
 // // FIXME: どうにかならない？これ
@@ -50,7 +51,7 @@ function Icon(props: {icon: string}): React.ReactElement {
 
 export const LinkCard = (props: Props): React.ReactElement => {
   return (
-    <motion.a href={props.url} className='LinkCard_container' {...FadeWithScroll}>
+    <motion.a href={props.url} className='LinkCard_container' {...(props.animation_enabled ? FadeWithScroll : {})}>
       <div className='icon'>
         <Icon icon={props.icon} />
       </div>

@@ -6,8 +6,9 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
+import {MotionProps} from 'framer-motion';
 
-export const FadeWithScroll = {
+export const FadeWithScroll: MotionProps = {
   initial: {opacity: 0, y: 30},
   whileInView: {opacity: 1, y: 0},
   transition: {duration: 0.5},
