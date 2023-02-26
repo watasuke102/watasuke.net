@@ -73,7 +73,7 @@ export const Welcome = (props: Props): React.ReactElement => {
               </div>
             </div>
           </div>
-          {avatar_and_name_displayed && <div className='bio'>{bio_animation}</div>}
+          {avatar_and_name_displayed ? <div className='bio'>{bio_animation}</div> : <div className='bio_placeholder' />}
         </div>
         <div className='next-page'>
           <span>Scroll</span>
