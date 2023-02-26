@@ -9,6 +9,7 @@ import {motion} from 'framer-motion';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import toml from 'toml';
+import {FadeWithScroll} from '@utils/FadeWithScroll';
 import './Skills.scss';
 import IconArch from '@assets/icons/Skills/arch.svg';
 import IconC from '@assets/icons/Skills/c.svg';
@@ -47,16 +48,6 @@ interface Skill {
 export const Skills = (props: Props): React.ReactElement => {
   const [groupby, set_groupby] = React.useState('category');
 
-  // prettier-ignore
-  const float_animation_props = props.animation_enabled ?
-    {
-      initial: {opacity: 0, y: 30},
-      whileInView: {opacity: 1, y: 0},
-      transition: {duration: 0.5},
-      viewport: {once: true, amount: 0.7},
-    }
-    : {};
-
   const SkillCard = React.useMemo(() => {
     const skill_group = new Map<string, Skill[]>();
     const skill_list: Skill[] = toml.parse(
@@ -86,7 +77,7 @@ export const Skills = (props: Props): React.ReactElement => {
       cards.push({
         group: groupby !== 'tier' ? e[0].category : `tier ${e[0].tier}`,
         list: e.map((e, i) => (
-          <motion.div className='skillcard' key={i} {...float_animation_props}>
+          <motion.div className='skillcard' key={i} {...(props.animation_enabled ? FadeWithScroll : {})}>
             <span className='name'>{e.name}</span>
             <div className='right'>
               <span className='category'>{e.category}</span>
@@ -117,7 +108,7 @@ export const Skills = (props: Props): React.ReactElement => {
       <div id='skill-container'>
         {SkillCard.map((e, i) => (
           <>
-            <motion.span className='group_name' {...float_animation_props}>
+            <motion.span className='group_name' {...(props.animation_enabled ? FadeWithScroll : {})}>
               {e.group}
             </motion.span>
             <div className='group' key={i}>
