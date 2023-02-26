@@ -12,13 +12,19 @@
     width: 90%;
     margin: auto;
     padding-bottom: 120px;
+    .group_name {
+      font-size: 1.8em;
+      font-weight: bold;
+    }
     .group {
       display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+      margin-bottom: 32px;
     }
   }
 
   .skillcard {
-    margin: 12px 8px;
     padding: 8px 16px;
     border-radius: 4px;
     color: color.$fg;

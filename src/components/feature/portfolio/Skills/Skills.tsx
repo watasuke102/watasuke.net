@@ -41,10 +41,11 @@ export const Skills = (): React.ReactElement => {
     console.log(skill_list);
     console.log(skill_group);
 
-    const cards: React.ReactElement[][] = [];
+    const cards: {group: string; list: React.ReactElement[]}[] = [];
     skill_group.forEach(e => {
-      cards.push(
-        e.map((e, i) => (
+      cards.push({
+        group: e[0].category,
+        list: e.map((e, i) => (
           <div className='skillcard' key={i}>
             <span className='name'>{e.name}</span>
             <div className='right'>
@@ -56,7 +57,7 @@ export const Skills = (): React.ReactElement => {
             </span>
           </div>
         )),
-      );
+      });
     });
     return cards;
   }, []);
@@ -66,9 +67,12 @@ export const Skills = (): React.ReactElement => {
       <h2>Skills</h2>
       <div id='skill-container'>
         {SkillCard.map((e, i) => (
-          <div className='group' key={i}>
-            {e}
-          </div>
+          <>
+            <span className='group_name'>{e.group}</span>
+            <div className='group' key={i}>
+              {e.list}
+            </div>
+          </>
         ))}
       </div>
       <div className='next-page' />
