@@ -6,9 +6,8 @@
 // This software is released under the MIT SUSHI-WARE License.
 
 export const IsMobileDevice = (): boolean => {
-  if (!navigator) {
+  if (typeof navigator === 'undefined') {
     return false;
   }
-
   return navigator.userAgent.match(/iPhone|iPad|Android.+Mobile/) !== null;
 };
