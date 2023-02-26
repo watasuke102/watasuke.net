@@ -1,0 +1,32 @@
+[[event]]
+year        = "2020"
+title_ja    = "高専入学"
+title_en    = "高専入学"
+subtitle_ja = ""
+subtitle_en = ""
+day         = "04/01"
+category    = ""
+body_ja     = ""
+body_en     = ""
+
+[[event]]
+year        = "2020"
+title_ja    = "タイトル"
+title_en    = "title"
+subtitle_ja = "サブタイトル"
+subtitle_en = "subtitle"
+day         = "01/01 -"
+category    = "Work"
+body_ja     = "あ"
+body_en     = "hoge"
+
+[[event]]
+year        = "2021"
+title_ja    = "タイトル"
+title_en    = "title"
+subtitle_ja = "サブタイトル"
+subtitle_en = "subtitle"
+day         = "01/01\n|\n02/02"
+category    = "Work"
+body_ja     = "あ"
+body_en     = "hoge"

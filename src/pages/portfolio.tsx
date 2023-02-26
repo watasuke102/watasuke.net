@@ -9,7 +9,7 @@
 import '@/pages/portfolio.scss';
 import {Seo} from '@/common';
 import React from 'react';
-import {PortfolioContainer, Entrypoint, Welcome, Skills, Works, Links, End} from '@/feature/portfolio';
+import {PortfolioContainer, Entrypoint, Welcome, Skills, History, Links, End} from '@/feature/portfolio';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Portfolio'}]);
@@ -45,7 +45,7 @@ export default function Portfolio(): React.ReactElement {
       <PortfolioContainer animation_enabled={animation} page_transition_enabled={page_transition}>
         <Welcome animation_enabled={animation} lang={lang} />
         <Skills animation_enabled={animation} lang={lang} />
-        <Works />
+        <History animation_enabled={animation} lang={lang} />
         <Links animation_enabled={animation} lang={lang} />
         <End />
       </PortfolioContainer>
