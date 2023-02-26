@@ -13,5 +13,10 @@
     gap: 12px;
     grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
     padding-bottom: 200px;
+
+    @media screen and (max-width: 550px) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
