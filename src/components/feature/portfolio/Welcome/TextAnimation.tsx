@@ -44,7 +44,7 @@ export const TextAnimation = (props: Props): React.ReactElement => {
         {props.body.map(body => {
           const text = (
             <>
-              <span className='TextAnimation-block'>{body.text}</span>
+              <span className='TextAnimation-block'>{body.text.replace(/ /g, '\u00a0')}</span>
               {body.break === true && <br />}
             </>
           );
@@ -72,7 +72,7 @@ export const TextAnimation = (props: Props): React.ReactElement => {
             {body.text.split('').map((char, i) => (
               <span key={`${i}${char}`} className='TextAnimation-block'>
                 <motion.span className='TextAnimation-char' variants={Letter}>
-                  {char}
+                  {char === ' ' ? '\u00a0' : char}
                 </motion.span>
               </span>
             ))}
