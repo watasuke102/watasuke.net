@@ -8,6 +8,24 @@
 
 #portfolio-skills {
   //background-color: #926846;
+
+  .toggle {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    font-size: 1.3em;
+    margin: auto;
+
+    .label {
+      font-weight: bold;
+      margin: auto;
+    }
+  }
+
   #skill-container {
     width: 90%;
     margin: auto;

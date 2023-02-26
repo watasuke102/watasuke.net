@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT SUSHI-WARE License.
-import {BreakWithCR} from '@/common';
+import {BreakWithCR, Toggle} from '@/common';
 import {motion} from 'framer-motion';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
@@ -45,6 +45,8 @@ interface Skill {
 }
 
 export const Skills = (props: Props): React.ReactElement => {
+  const [groupby, set_groupby] = React.useState('category');
+
   // prettier-ignore
   const float_animation_props = props.animation_enabled ?
     {
@@ -68,14 +70,21 @@ export const Skills = (props: Props): React.ReactElement => {
     ).skill;
 
     skill_list.forEach(e => {
-      skill_group.set(e.category, skill_group.get(e.category) ?? []);
-      skill_group.get(e.category)?.push(e);
+      if (groupby !== 'tier') {
+        skill_group.set(e.category, skill_group.get(e.category) ?? []);
+        skill_group.get(e.category)?.push(e);
+      } else {
+        const tier = String(e.tier);
+        skill_group.set(tier, skill_group.get(tier) ?? []);
+        skill_group.get(tier)?.push(e);
+      }
     }, {});
 
     const cards: {group: string; list: React.ReactElement[]}[] = [];
     skill_group.forEach(e => {
+      console.log(e[0]);
       cards.push({
-        group: e[0].category,
+        group: groupby !== 'tier' ? e[0].category : `tier ${e[0].tier}`,
         list: e.map((e, i) => (
           <motion.div className='skillcard' key={i} {...float_animation_props}>
             <span className='name'>{e.name}</span>
@@ -94,11 +103,17 @@ export const Skills = (props: Props): React.ReactElement => {
       });
     });
     return cards;
-  }, [props]);
+  }, [props, groupby]);
 
   return (
     <div id='portfolio-skills'>
       <h2>Skills</h2>
+
+      <div className='toggle'>
+        <span className='label'>Group by:</span>
+        <Toggle first='category' second='tier' current={groupby} set_state={set_groupby} />
+      </div>
+
       <div id='skill-container'>
         {SkillCard.map((e, i) => (
           <>
