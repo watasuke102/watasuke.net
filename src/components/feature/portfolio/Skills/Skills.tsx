@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT SUSHI-WARE License.
 import {BreakWithCR, Toggle} from '@/common';
-import {motion} from 'framer-motion';
+import {AnimatePresence, motion} from 'framer-motion';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import toml from 'toml';
@@ -47,6 +47,9 @@ interface Skill {
 
 export const Skills = (props: Props): React.ReactElement => {
   const [groupby, set_groupby] = React.useState('category');
+  const [next_groupby, set_next_groupby] = React.useState('');
+  const next_groupby_ref = React.useRef('');
+  next_groupby_ref.current = next_groupby;
 
   const SkillCard = React.useMemo(() => {
     const skill_group = new Map<string, Skill[]>();
@@ -95,27 +98,55 @@ export const Skills = (props: Props): React.ReactElement => {
     return cards;
   }, [props, groupby]);
 
+  const toggle_changed = React.useCallback((next: string) => {
+    set_groupby('');
+    set_next_groupby(next);
+  }, []);
+
+  const animation_completed = React.useCallback(() => {
+    if (next_groupby_ref.current !== '') {
+      set_groupby(next_groupby_ref.current);
+    }
+    set_next_groupby('');
+  }, []);
+
   return (
     <div id='portfolio-skills'>
       <h2>Skills</h2>
 
       <div className='toggle'>
         <span className='label'>Group by:</span>
-        <Toggle first='category' second='tier' current={groupby} set_state={set_groupby} />
+        <Toggle first='category' second='tier' current={groupby} set_state={toggle_changed} />
       </div>
 
-      <div id='skill-container'>
-        {SkillCard.map((e, i) => (
-          <>
-            <motion.span className='group_name' {...(props.animation_enabled ? FadeWithScroll : {})}>
-              {e.group}
-            </motion.span>
-            <div className='group' key={i}>
-              {e.list}
-            </div>
-          </>
-        ))}
-      </div>
+      <AnimatePresence>
+        {next_groupby === '' && (
+          <motion.div
+            id='skill-container'
+            variants={{
+              init: {opacity: 0},
+              main: {opacity: 1},
+            }}
+            initial='init'
+            animate='main'
+            exit='init'
+            transition={{duration: 0.1}}
+            onAnimationComplete={animation_completed}
+          >
+            {SkillCard.map((e, i) => (
+              <>
+                <motion.span className='group_name' {...(props.animation_enabled ? FadeWithScroll : {})}>
+                  {e.group}
+                </motion.span>
+                <div className='group' key={i}>
+                  {e.list}
+                </div>
+              </>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className='next-page' />
     </div>
   );
