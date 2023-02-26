@@ -4,12 +4,12 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT SUSHI-WARE License.
+import {Toggle} from '@/common';
 import {AnimatePresence, motion} from 'framer-motion';
 import {navigate} from 'gatsby';
 import React from 'react';
 import {IsMobileDevice} from '@utils/IsMobileDevice';
 import './Entrypoint.scss';
-import { Toggle } from '@/common';
 
 const blind_width = 30;
 const visible_mask = `repeating-linear-gradient(-60deg, #98c379 0px 0px, transparent 0px ${blind_width}px)`;
@@ -48,19 +48,25 @@ export const Entrypoint = (props: {
 
             <div className='option'>
               <span className='label'>Language</span>
-              <Toggle first='ja' second='en' current={lang} set_state={set_lang} />
+              <div className='toggle'>
+                <Toggle first='ja' second='en' current={lang} set_state={set_lang} />
+              </div>
             </div>
             <div className='option'>
               <span className='label'>Page Transition</span>
-              {IsMobileDevice() ? (
-                <span className='toggle_disabled'>Off</span>
-              ) : (
-                <Toggle first='on' second='off' current={page_transition} set_state={set_transition} />
-              )}
+              <div className='toggle'>
+                {IsMobileDevice() ? (
+                  <span className='toggle_disabled'>Off</span>
+                ) : (
+                  <Toggle first='on' second='off' current={page_transition} set_state={set_transition} />
+                )}
+              </div>
             </div>
             <div className='option'>
               <span className='label'>Animation</span>
-              <Toggle first='on' second='off' current={animation} set_state={set_animation} />
+              <div className='toggle'>
+                <Toggle first='on' second='off' current={animation} set_state={set_animation} />
+              </div>
             </div>
 
             <div

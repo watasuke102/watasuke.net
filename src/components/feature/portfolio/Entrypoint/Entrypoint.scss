@@ -91,12 +91,13 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 8px 16px;
-        .toggle_disabled {
-          font-size: 1.3em;
-        }
         .label {
           text-align: left;
+          margin: auto 0;
           font-size: 1.2em;
+        }
+        .toggle {
+          font-size: 1.3em;
         }
       }
       .continue_button {
