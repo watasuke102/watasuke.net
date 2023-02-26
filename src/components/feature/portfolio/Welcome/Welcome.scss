@@ -67,14 +67,13 @@
   }
 
   .icon-and-text {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-    p {
-      margin: 0;
-    }
-    i {
-      margin-right: 10px;
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 8px;
+    margin-bottom: 4px;
+    span {
+      font-size: 0.9em;
+      color: rgba(color.$bg, 0.9);
     }
   }
 }

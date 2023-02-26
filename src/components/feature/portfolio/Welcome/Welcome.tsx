@@ -12,6 +12,9 @@ import toml from 'toml';
 import {Transition} from '@utils/Transition';
 import {TextAnimation, TextAnimationBody} from './TextAnimation';
 import './Welcome.scss';
+import IconEnvelope from '@assets/icons/Links/envelope.svg';
+import IconGitHub from '@assets/icons/Links/github.svg';
+import IconTwitter from '@assets/icons/Links/twitter.svg';
 
 interface BioToml {
   body_ja: TextAnimationBody[];
@@ -57,16 +60,16 @@ export const Welcome = (props: Props): React.ReactElement => {
             <p className='name-sub'>Watasuke</p>
             <div>
               <div className='icon-and-text'>
-                <i className='fab fa-twitter' />
-                <p>@Watasuke102</p>
+                <IconTwitter />
+                <span>@Watasuke102</span>
               </div>
               <div className='icon-and-text'>
-                <i className='fab fa-github' />
-                <p>watasuke102</p>
+                <IconGitHub />
+                <span>watasuke102</span>
               </div>
               <div className='icon-and-text'>
-                <i className='fas fa-envelope' />
-                <p>watasuke102@gmail.com</p>
+                <IconEnvelope />
+                <span>watasuke102@gmail.com</span>
               </div>
             </div>
           </div>
