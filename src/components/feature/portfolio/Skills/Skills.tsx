@@ -45,6 +45,15 @@ interface Skill {
 }
 
 export const Skills = (props: Props): React.ReactElement => {
+  const float_animation_props = props.animation_enabled
+    ? {
+        initial: {opacity: 0, y: 30},
+        whileInView: {opacity: 1, y: 0},
+        transition: {duration: 0.5},
+        viewport: {once: true, amount: 0.7},
+      }
+    : {};
+
   const SkillCard = React.useMemo(() => {
     const skill_group = new Map<string, Skill[]>();
     const skill_list: Skill[] = toml.parse(
@@ -67,7 +76,7 @@ export const Skills = (props: Props): React.ReactElement => {
       cards.push({
         group: e[0].category,
         list: e.map((e, i) => (
-          <div className='skillcard' key={i}>
+          <motion.div className='skillcard' key={i} {...float_animation_props}>
             <span className='name'>{e.name}</span>
             <div className='right'>
               <span className='category'>{e.category}</span>
@@ -79,7 +88,7 @@ export const Skills = (props: Props): React.ReactElement => {
             <div className='icon'>
               <Icon icon={e.icon} />
             </div>
-          </div>
+          </motion.div>
         )),
       });
     });
@@ -92,7 +101,9 @@ export const Skills = (props: Props): React.ReactElement => {
       <div id='skill-container'>
         {SkillCard.map((e, i) => (
           <>
-            <span className='group_name'>{e.group}</span>
+            <motion.span className='group_name' {...float_animation_props}>
+              {e.group}
+            </motion.span>
             <div className='group' key={i}>
               {e.list}
             </div>
