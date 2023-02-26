@@ -17,14 +17,14 @@ name     = "Rust"
 tier     = 1
 category = "Language"
 desc_ja  = """
-文法・標準ライブラリなどが好みで、個人的に最も好きな言語です
-自作OS・DiscordのBot作成・TUIツールの作成などに使用しています
-使用例：TimeTree-NoticeBot・discord-voicechat-notice
+個人的に最も好きな言語です
+match・Result・if式など好きなポイントが豊富
+自作OS・DiscordのBot作成・TUIツール開発に使用
 """
 desc_en  = """
-My most favorite language because of its grammar, standard library
-Used for OS development, Discord bot, or TUI tool development
-Usage: TimeTree-NoticeBot, discord-voicechat-notice
+My most favorite language
+I like match, Result, if expression
+For OS, Discord bot, or TUI tool development
 """
 
 [[skill]]
@@ -34,12 +34,12 @@ category = "Language"
 desc_ja  = """
 そこそこ楽に書けるところが良いと思います
 基本的にReact.jsを書く際に使用します
-使用例：TAGetgher・watasuke.net（このサイト）
+TAGetgherではバックエンドでも使用
 """
 desc_en  = """
 I can write this somewhat confortably
 basicaly I use this with React.js
-Usage: TAGether, watasuke.net (this site)
+Use in backend of TAGether
 """
 
 [[skill]]
