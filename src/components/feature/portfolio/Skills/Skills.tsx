@@ -73,7 +73,6 @@ export const Skills = (props: Props): React.ReactElement => {
 
     const cards: {group: string; list: React.ReactElement[]}[] = [];
     skill_group.forEach(e => {
-      console.log(e[0]);
       cards.push({
         group: groupby !== 'tier' ? e[0].category : `tier ${e[0].tier}`,
         list: e.map((e, i) => (
