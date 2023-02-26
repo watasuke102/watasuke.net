@@ -17,3 +17,5 @@ CC-BY 4.0
 CC0-1.0
 
 上記（Font Awesomeからのアイコン）以外全て
+
+`c.svg` は `cpp.svg` から+記号部分を除外したもの
