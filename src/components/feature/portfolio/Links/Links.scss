@@ -9,6 +9,7 @@
   .container {
     margin: 0 auto;
     display: grid;
+    gap: 12px;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     padding-bottom: 200px;
   }
