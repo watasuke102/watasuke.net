@@ -47,8 +47,10 @@ export const Skills = (): React.ReactElement => {
         e.map((e, i) => (
           <div className='skillcard' key={i}>
             <span className='name'>{e.name}</span>
-            <span className='category'>{e.category}</span>
-            <span className='tier'>{e.tier}</span>
+            <div className='right'>
+              <span className='category'>{e.category}</span>
+              <span className='tier'>{e.tier}</span>
+            </div>
             <span className='desc'>
               <BreakWithCR str={e.desc_ja} />
             </span>
