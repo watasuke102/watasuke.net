@@ -1,0 +1,63 @@
+# ja
+[[body_ja]]
+type  = "plain"
+text  = "2004生まれの高専生です"
+break = true
+
+[[body_ja]]
+type  = "plain"
+text  = "Rust / C / TypeScript を Arch Linux でいじったりしています"
+break = true
+
+[[body_ja]]
+type  = "plain"
+text  = "ウェアラブルコンピューティングやAR/MRを始めとするxR、HCI等に興味があります"
+break = true
+
+[[body_ja]]
+type  = "plain"
+text  = "これらの技術などを活用して、"
+break = false
+
+[[body_ja]]
+type  = "link"
+link  = "https://scrapbox.io/watasuke/%E5%A4%A2%E3%83%BB%E5%B0%86%E6%9D%A5%E5%83%8F%EF%BC%9F"
+text  = "人間のやることを減らす"
+break = false
+
+[[body_ja]]
+type  = "plain"
+text  = "のが目標です"
+break = true
+
+# en
+[[body_en]]
+type  = "plain"
+text  = "KOSEN (a.k.a. National College of Technology) student"
+break = true
+
+[[body_en]]
+type  = "plain"
+text  = "Creating something with Rust, C, TypeScript on Arch Linux"
+break = true
+
+[[body_en]]
+type  = "plain"
+text  = "I'm interested in Wearable Computing, xR (especially AR/MR) and HCI"
+break = true
+
+[[body_en]]
+type  = "plain"
+text  = "I eager to"
+break = false
+
+[[body_en]]
+type  = "link"
+link  = "https://scrapbox.io/watasuke/%E5%A4%A2%E3%83%BB%E5%B0%86%E6%9D%A5%E5%83%8F%EF%BC%9F"
+text  = " reduce human tasks "
+break = false
+
+[[body_en]]
+type  = "plain"
+text  = "by using these technology"
+break = true

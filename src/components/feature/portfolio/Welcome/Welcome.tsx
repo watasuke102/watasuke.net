@@ -5,58 +5,38 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT SUSHI-WARE License.
 import {AnimatePresence, motion} from 'framer-motion';
+import {useStaticQuery, graphql} from 'gatsby';
 import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
+import toml from 'toml';
 import {Transition} from '@utils/Transition';
-import {TextAnimation} from './TextAnimation';
+import {TextAnimation, TextAnimationBody} from './TextAnimation';
 import './Welcome.scss';
+
+interface BioToml {
+  body_ja: TextAnimationBody[];
+  body_en: TextAnimationBody[];
+}
 
 interface Props {
   animation_enabled: boolean;
+  lang: string;
 }
 
 export const Welcome = (props: Props): React.ReactElement => {
-  const bio_animation = React.useMemo(
-    () => (
-      <TextAnimation
-        animation_enabled={props.animation_enabled}
-        body={[
-          {
-            type: 'plain',
-            text: '2004年生まれの高専生です',
-            break: true,
-          },
-          {
-            type: 'plain',
-            text: 'プログラミングでツールを作ったり、フロントエンド開発したりしています',
-            break: true,
-          },
-          {
-            type: 'plain',
-            text: 'ウェアラブルコンピューティングやAR/MRを始めとするxR、HCI等に興味があります',
-            break: true,
-          },
-          {
-            type: 'plain',
-            text: 'これらの技術などを活用して、',
-            break: false,
-          },
-          {
-            type: 'link',
-            link: 'https://scrapbox.io/watasuke/%E5%A4%A2%E3%83%BB%E5%B0%86%E6%9D%A5%E5%83%8F%EF%BC%9F',
-            text: '人間のやることを減らす',
-            break: false,
-          },
-          {
-            type: 'plain',
-            text: 'のが目標です',
-            break: true,
-          },
-        ]}
-      />
-    ),
-    [],
-  );
+  const bio_animation = React.useMemo(() => {
+    const bio_toml: BioToml = toml.parse(
+      useStaticQuery(graphql`
+        query {
+          portfolioToml(name: {eq: "bio.toml"}) {
+            body
+          }
+        }
+      `).portfolioToml.body,
+    );
+    const sentences: TextAnimationBody[] = props.lang !== 'en' ? bio_toml.body_ja : bio_toml.body_en;
+    return <TextAnimation animation_enabled={props.animation_enabled} body={sentences} />;
+  }, [props]);
   const [avatar_and_name_displayed, set_avatar_and_name_displayed] = React.useState(false);
 
   return (

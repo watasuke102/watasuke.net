@@ -10,7 +10,7 @@ import {motion, Variants} from 'framer-motion';
 import React from 'react';
 import './TextAnimation.scss';
 
-interface TextAnimationBody {
+export interface TextAnimationBody {
   text: string;
   type: 'link' | 'plain';
   break: boolean;

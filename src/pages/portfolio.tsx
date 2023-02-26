@@ -43,7 +43,7 @@ export default function Portfolio(): React.ReactElement {
   return (
     <div id='portfolio-container'>
       <PortfolioContainer animation_enabled={animation} page_transition_enabled={page_transition}>
-        <Welcome animation_enabled={animation} />
+        <Welcome animation_enabled={animation} lang={lang} />
         <Skills animation_enabled={animation} lang={lang} />
         <Works />
         <Links lang={lang} />
