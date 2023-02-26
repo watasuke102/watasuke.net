@@ -103,6 +103,8 @@
         width: 200px;
         margin: auto;
         position: relative;
+        font-size: 1.4em;
+        text-decoration: underline;
         transition: background-color 0.3s;
         &:hover {
           cursor: pointer;
