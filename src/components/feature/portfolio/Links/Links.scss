@@ -7,10 +7,11 @@
 #portfolio-links {
   //background-color: #3c767a;
   .container {
+    width: 90%;
     margin: 0 auto;
     display: grid;
     gap: 12px;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
     padding-bottom: 200px;
   }
 }
