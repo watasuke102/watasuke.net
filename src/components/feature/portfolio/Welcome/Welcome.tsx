@@ -50,31 +50,28 @@ export const Welcome = (props: Props): React.ReactElement => {
       >
         <h2 className='greeting'>Hi there👋</h2>
 
-        <div className='center'>
-          <div className='avatar-and-name'>
-            <StaticImage height={200} src='../../../../assets/icon.jpg' alt='icon' />
-            <div className='separator' />
+        <div className='avatar-and-name'>
+          <StaticImage className='avatar' height={200} src='../../../../assets/icon.jpg' alt='icon' />
+          <div>
+            <p className='name-main'>わたすけ</p>
+            <p className='name-sub'>Watasuke</p>
             <div>
-              <p className='name-main'>わたすけ</p>
-              <p className='name-sub'>Watasuke</p>
-              <div>
-                <div className='icon-and-text'>
-                  <i className='fab fa-twitter' />
-                  <p>@Watasuke102</p>
-                </div>
-                <div className='icon-and-text'>
-                  <i className='fab fa-github' />
-                  <p>watasuke102</p>
-                </div>
-                <div className='icon-and-text'>
-                  <i className='fas fa-envelope' />
-                  <p>watasuke102@gmail.com</p>
-                </div>
+              <div className='icon-and-text'>
+                <i className='fab fa-twitter' />
+                <p>@Watasuke102</p>
+              </div>
+              <div className='icon-and-text'>
+                <i className='fab fa-github' />
+                <p>watasuke102</p>
+              </div>
+              <div className='icon-and-text'>
+                <i className='fas fa-envelope' />
+                <p>watasuke102@gmail.com</p>
               </div>
             </div>
           </div>
-          {avatar_and_name_displayed ? <div className='bio'>{bio_animation}</div> : <div className='bio_placeholder' />}
         </div>
+        {avatar_and_name_displayed ? <div className='bio'>{bio_animation}</div> : <div className='bio_placeholder' />}
         <div className='next-page'>
           <span>Scroll</span>
         </div>

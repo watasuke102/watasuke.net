@@ -18,12 +18,16 @@
     margin-bottom: 64px;
   }
   .avatar-and-name {
-    display: flex;
+    display: grid;
+    grid-template-columns: 200px auto;
+    gap: 24px;
     align-items: center;
     justify-content: center;
     margin-bottom: 64px;
-    .separator {
-      width: 20px;
+
+    .avatar {
+      width: 200px;
+      height: 200px;
     }
     .name-main {
       font-weight: bold;
@@ -35,11 +39,13 @@
       color: rgba(color.$bg, 0.7);
     }
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 600px) {
       position: static;
       transform: none;
+      display: flex;
+      gap: 0;
       flex-direction: column;
-      img {
+      .avatar {
         margin: auto;
       }
     }
