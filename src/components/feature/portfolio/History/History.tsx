@@ -4,27 +4,16 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT SUSHI-WARE License.
-import {BreakWithCR} from '@/common';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import toml from 'toml';
+import {Event} from './Event';
+import {EventCard} from './EventCard';
 import './History.scss';
 
 interface Props {
   animation_enabled: boolean;
   lang: string;
-}
-
-interface Event {
-  year: string;
-  title_ja: string;
-  title_en: string;
-  subtitle_ja: string;
-  subtitle_en: string;
-  day: string;
-  category: string;
-  body_ja: string;
-  body_en: string;
 }
 
 export const History = (props: Props): React.ReactElement => {
@@ -52,23 +41,9 @@ export const History = (props: Props): React.ReactElement => {
           <div className='year_bg' key={events[0].year}>
             <span className='year'>{events[0].year}</span>
           </div>
-          {events.map((e, i) => {
-            return (
-              <div className='event' key={i}>
-                <div className='day'>
-                  <BreakWithCR str={e.day} />
-                </div>
-                <div className='card'>
-                  <div className='header'>
-                    <span className='title'>{props.lang !== 'en' ? e.title_ja : e.title_en}</span>
-                    <span className='subtitle'>{props.lang !== 'en' ? e.subtitle_ja : e.subtitle_en}</span>
-                  </div>
-                </div>
-                <div className='h_connector' />
-                <div className='v_connector' />
-              </div>
-            );
-          })}
+          {events.map((e, i) => (
+            <EventCard key={i} event={e} {...props} />
+          ))}
         </>,
       );
     });
