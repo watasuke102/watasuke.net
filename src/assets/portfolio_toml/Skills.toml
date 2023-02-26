@@ -1,0 +1,216 @@
+# language
+[[skill]]
+name     = "C"
+tier     = 1
+category = "Language"
+desc_ja  = """
+最も長い期間触れている言語です
+言語仕様はまだあまり深く把握できていません
+"""
+desc_en  = """
+I use this for the longest time
+I still don't have a deep knowledge of language specification
+"""
+
+[[skill]]
+name     = "Rust"
+tier     = 1
+category = "Language"
+desc_ja  = """
+文法・標準ライブラリなどが好みで、個人的に最も好きな言語です
+自作OS・DiscordのBot作成・TUIツールの作成などに使用しています
+使用例：TimeTree-NoticeBot・discord-voicechat-notice
+"""
+desc_en  = """
+My most favorite language because of its grammar, standard library
+Used for OS development, Discord bot, or TUI tool development
+Usage: TimeTree-NoticeBot, discord-voicechat-notice
+"""
+
+[[skill]]
+name     = "TypeScript"
+tier     = 1
+category = "Language"
+desc_ja  = """
+そこそこ楽に書けるところが良いと思います
+基本的にReact.jsを書く際に使用します
+使用例：TAGetgher・watasuke.net（このサイト）
+"""
+desc_en  = """
+I can write this somewhat confortably
+basicaly I use this with React.js
+Usage: TAGether, watasuke.net (this site)
+"""
+
+[[skill]]
+name     = "(S)CSS"
+tier     = 2
+category = "Language"
+desc_ja  = "最近はSCSSじゃないと書けなくなってきました"
+desc_en  = "I can't write CSS without SCSS"
+
+[[skill]]
+name     = "C++"
+tier     = 2
+category = "Language"
+desc_ja  = """
+Cよりリッチな書き方が出来るため、Cである必要性がない場合はこちらを使いたいと思っています
+書けはしますが、言語仕様の1割も理解していません
+"""
+desc_en  = """
+I want to use this if there is no reason to use C
+I can write but my knowledge of this language is less than 10%
+"""
+
+# framework / library
+[[skill]]
+name     = "React.js"
+tier     = 1
+category = "FW/Lib"
+desc_ja  = "基本的にNext.js等と一緒に使っています"
+desc_en  = "Usually I use this with Next.js"
+
+[[skill]]
+name     = "Next.js"
+tier     = 1
+category = "FW/Lib"
+desc_ja  = """
+TAGetherの開発に使用
+ルーティング周りが楽で良いです
+"""
+desc_en  = """
+Used for TAGether
+It makes easy to configure about routing
+"""
+
+[[skill]]
+name     = "Wayland"
+tier     = 2
+category = "FW/Lib"
+desc_ja  = """
+wlrootsを用いてZwinを開発していました
+知識はほぼコンポジッタ側のもの
+"""
+desc_en  = """
+We developed Zwin with wlroots
+My knowledge is almost compositor side
+"""
+
+[[skill]]
+name     = "Qt"
+tier     = 2
+category = "FW/Lib"
+desc_ja  = "しっかりとしたGUIツールを作りたいときに"
+desc_en  = "For GUI tool developing"
+
+[[skill]]
+name     = "OpenSiv3D"
+tier     = 2
+category = "FW/Lib"
+desc_ja  = "中学生時代、ゲームやツール開発に使用していました"
+desc_en  = "I used this for game or tool developing at junior high school"
+
+[[skill]]
+name     = "Gatsby.js"
+tier     = 2
+category = "FW/Lib"
+desc_ja  = """
+このサイトで使用中
+速いので好きです
+"""
+desc_en  = """
+Using on this site
+I like this because it is fast
+"""
+
+[[skill]]
+name     = "Flutter"
+tier     = 3
+category = "FW/Lib"
+desc_ja  = """
+ExpNoteの開発に使用
+かなり好きなライブラリです（最近は使ってませんが）
+"""
+desc_en  = """
+For ExpNote developing
+favorite library (but recently I don't use this)
+"""
+
+# tool
+[[skill]]
+name     = "VSCode"
+tier     = 1
+category = "Tool"
+desc_ja  = """
+最強のエディタ
+GitLensやRemote Developmentなど、多数の拡張機能に助けられています
+"""
+desc_en  = """
+Strongest editor
+I'm helped by many extensions like GitLens, Remote Development, etc
+"""
+
+[[skill]]
+name     = "(Neo)vim"
+tier     = 1
+category = "Tool"
+desc_ja  = """
+CUIでファイルを編集する必要が生じた時に
+Vimキーバインドそれ自体はVSCodeVimで使用しています
+"""
+desc_en  = """
+When edit the file on CUI
+I usually use vim keybind on VSCode with VSCodeVim
+"""
+
+[[skill]]
+name     = "Git"
+tier     = 1
+category = "Tool"
+desc_ja  = """
+commit, push, fetchといった基本的な動作なら問題なくこなすことができます
+"""
+desc_en  = """
+I can use basic command such as commit, push, fetch
+"""
+
+[[skill]]
+name     = "Linux"
+tier     = 1
+category = "Tool"
+desc_ja  = "Arch Linuxを使っています"
+desc_en  = "btw I use arch"
+
+[[skill]]
+name     = "CMake"
+tier     = 2
+category = "Tool"
+desc_ja  = "複数ファイルからビルドする必要がある場合に"
+desc_en  = "For build from multiple files"
+
+[[skill]]
+name     = "Makefile"
+tier     = 2
+category = "Tool"
+desc_ja  = """
+ビルドツールとしてのMakefileは人間が書くものではない
+便利コマンドまとめのような使い方をしています
+"""
+desc_en  = """
+Human should not write Makefile as build tool
+Used for command set
+"""
+
+[[skill]]
+name     = "MySQL"
+tier     = 3
+category = "Tool"
+desc_ja  = "TAGetherのバックエンドとして使用経験あり"
+desc_en  = "Used as TAGether backend"
+
+[[skill]]
+name     = "Docker"
+tier     = 3
+category = "Tool"
+desc_ja  = "Web関連の環境構築に使っています"
+desc_en  = "For web developing environment"

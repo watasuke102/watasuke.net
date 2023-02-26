@@ -4,43 +4,30 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT SUSHI-WARE License.
+@use '../../../common/color.scss';
+
 #portfolio-skills {
   //background-color: #926846;
   #skill-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    width: 90%;
+    margin: auto;
     padding-bottom: 120px;
-
-    .categoly {
-      .heading {
-        // containerの横幅より小さくしたい
-        font-size: 1.85em;
-        margin-left: 15px;
-      }
-    }
-    @media screen and (max-width: 500px) {
-      display: block;
-      margin: 0 10px !important;
-      font-size: 0.7em;
-    }
-    @media screen and (max-width: 920px) {
-      display: block;
-      margin: 0 60px;
+    .group {
+      display: grid;
     }
   }
 
   .skillcard {
+    display: flex;
+    flex-direction: column;
     margin: 20px 15px;
     padding: 6px 10px;
-    background-color: #2b2b2b99;
+    color: color.$fg;
+    background-color: color.$bg;
     .name {
       font-size: 1.5em;
       font-weight: bold;
       //border-bottom: 1px solid #eee;
-    }
-    .body {
-      margin-bottom: 5px;
     }
   }
 }
