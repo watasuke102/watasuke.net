@@ -42,6 +42,15 @@
     background-color: color.$code-bg;
     font-family: 'Consolas';
   }
+  p > img {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+    max-width: 95%;
+    max-height: 30vh;
+  }
 }
 
 // 目次部分

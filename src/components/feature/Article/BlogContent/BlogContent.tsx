@@ -18,10 +18,11 @@ import Gfm from 'remark-gfm';
 import Slug from 'remark-slug';
 import Toc from 'remark-toc';
 import {AdsInArticle} from '@/feature/Ads';
-import {EmbedCard, ImageViewer} from '@/feature/Article';
+import {EmbedCard} from '@/feature/Article';
 import ExtractHeading from '@utils/ExtractHeading';
 import '../TableOfContents.scss';
 import './BlogContent.scss';
+import { ImageViewer } from '@/common';
 
 interface Props {
   body: string;
