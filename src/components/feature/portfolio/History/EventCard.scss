@@ -42,7 +42,7 @@
     background-color: color.$bg;
 
     .header {
-      height: $day_size;
+      height: minmax($day_size, auto);
       text-align: right;
       display: grid;
       grid-template-columns: auto 1fr;
@@ -92,6 +92,7 @@
       }
     }
     .body {
+      height: 0;
       overflow-y: hidden;
       hr {
         opacity: 1;
