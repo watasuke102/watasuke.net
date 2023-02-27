@@ -46,6 +46,7 @@
       text-align: right;
       display: grid;
       grid-template-columns: auto 1fr;
+      gap: 0 8px;
       &:hover {
         cursor: pointer;
       }
@@ -98,7 +99,7 @@
       img {
         display: block;
         width: 90%;
-        margin: auto;
+        margin: 8px auto;
       }
     }
   }
