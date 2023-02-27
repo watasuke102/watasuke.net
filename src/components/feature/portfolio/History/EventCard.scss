@@ -79,8 +79,9 @@
       .expand_icon {
         grid-row: 2 / 3;
         grid-column: 1 / 2;
-        // margin: 0 auto;
         margin-top: auto;
+        margin-left: 0;
+        margin-right: auto;
         width: 32px;
         height: 32px;
         svg {
@@ -120,9 +121,13 @@
         .subtitle {
           grid-column: 1 / 2;
         }
-        .category,
+        .category {
+          grid-column: 2 / 3;
+        }
         .expand_icon {
           grid-column: 2 / 3;
+          margin-left: auto;
+          margin-right: 0;
         }
       }
     }

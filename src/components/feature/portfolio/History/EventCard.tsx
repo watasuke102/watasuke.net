@@ -23,45 +23,59 @@ interface Props {
 
 export function EventCard(props: Props): React.ReactElement {
   const [opening, set_opening] = React.useState(false);
+  const body = props.lang !== 'en' ? props.event.body_ja : props.event.body_en;
+
   return (
     <div className='EventCard_container'>
       <div className='day'>
         <BreakWithCR str={props.event.day} />
       </div>
       <div className='card'>
-        <div className='header' onClick={() => set_opening(s => !s)}>
+        <div
+          className='header'
+          onClick={() => {
+            if (body !== '') {
+              set_opening(s => !s);
+            }
+          }}
+        >
           <span className='title'>{props.lang !== 'en' ? props.event.title_ja : props.event.title_en}</span>
           <span className='subtitle'>{props.lang !== 'en' ? props.event.subtitle_ja : props.event.subtitle_en}</span>
           <span className='category'>{props.event.category}</span>
-          <motion.div
-            className='expand_icon'
-            animate={{
-              transform: opening ? 'rotate(-180deg)' : 'rotate(0deg)',
-            }}
-            transition={{duration: 0.2}}
-          >
-            <IconExpand />
-          </motion.div>
+          {body !== '' && (
+            <motion.div
+              className='expand_icon'
+              animate={{
+                transform: opening ? 'rotate(-180deg)' : 'rotate(0deg)',
+              }}
+              transition={{duration: 0.2}}
+            >
+              <IconExpand />
+            </motion.div>
+          )}
         </div>
-        <motion.div
-          className='body'
-          animate={{
-            opacity: opening ? 1 : 0,
-            height: opening ? 'auto' : 0,
-          }}
-          transition={{
-            opacity: {duration: 0.2 * Number(props.animation_enabled)},
-            // easeOutQuint
-            height: {duration: 0.4 * Number(props.animation_enabled), ease: [0.22, 1, 0.36, 1]},
-          }}
-        >
-          <ReactMarkdown
-            remarkPlugins={[Gfm, Slug]}
-            rehypePlugins={[Raw]}
-            // eslint-disable-next-line react/no-children-prop
-            children={props.lang !== 'en' ? props.event.body_ja : props.event.body_en}
-          />
-        </motion.div>
+
+        {body !== '' && (
+          <motion.div
+            className='body'
+            animate={{
+              opacity: opening ? 1 : 0,
+              height: opening ? 'auto' : 0,
+            }}
+            transition={{
+              opacity: {duration: 0.2 * Number(props.animation_enabled)},
+              // easeOutQuint
+              height: {duration: 0.4 * Number(props.animation_enabled), ease: [0.22, 1, 0.36, 1]},
+            }}
+          >
+            <ReactMarkdown
+              remarkPlugins={[Gfm, Slug]}
+              rehypePlugins={[Raw]}
+              // eslint-disable-next-line react/no-children-prop
+              children={body}
+            />
+          </motion.div>
+        )}
       </div>
       <div className='h_connector' />
     </div>
