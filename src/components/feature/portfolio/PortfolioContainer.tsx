@@ -83,8 +83,12 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
     if (container && container.clientHeight >= container.scrollHeight) changeable = true;
     // 要素がスクロール可能かつ画面端までスクロールしてなければページ移動しない
     if (!changeable && place_ref.current === Position.none) return;
-    // 次のページに移動させる
-    if (
+
+    // コンテナサイズが変更されていないか確認する
+    if (container && container.scrollTop / (container.scrollHeight - container.clientHeight) < 0.999) {
+      return;
+      // 次のページに移動させる
+    } else if (
       (place_ref.current === Position.reached_bottom || changeable) &&
       current_page_ref.current !== props.children.length - 1 &&
       e.deltaY > 0 // 下にスクロールしていた場合
