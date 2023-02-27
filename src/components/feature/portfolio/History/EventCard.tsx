@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT SUSHI-WARE License.
-import {BreakWithCR, ImageViewer} from '@/common';
+import {BreakWithCR} from '@/common';
 import {motion} from 'framer-motion';
 import React from 'react';
 import {ReactMarkdown} from 'react-markdown/lib/react-markdown';
@@ -71,10 +71,6 @@ export function EventCard(props: Props): React.ReactElement {
           >
             <hr />
             <ReactMarkdown
-              components={{
-                // eslint-disable-next-line react/prop-types
-                img: props => <ImageViewer src={props.src || ''} alt={props.alt} />,
-              }}
               remarkPlugins={[Gfm, Slug]}
               rehypePlugins={[Raw]}
               // eslint-disable-next-line react/no-children-prop
