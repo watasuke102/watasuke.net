@@ -11,7 +11,7 @@ import React from 'react';
 import {IsMobileDevice} from '@utils/IsMobileDevice';
 import './Entrypoint.scss';
 
-const blind_width = 30;
+const blind_width = 60;
 const visible_mask = `repeating-linear-gradient(-60deg, #98c379 0px 0px, transparent 0px ${blind_width}px)`;
 const invisible_mask = `repeating-linear-gradient(-60deg, #98c379 0px ${blind_width}px, transparent 0px ${blind_width}px)`;
 
