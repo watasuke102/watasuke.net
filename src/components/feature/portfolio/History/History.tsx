@@ -54,45 +54,9 @@ export const History = (props: Props): React.ReactElement => {
   return (
     <div id='portfolio-history'>
       <h2>History</h2>
-      {EventList}
-      {/* <div className='year_bg'>
-        <span className='year'>2020</span>
+      <div className='container_wrapper'>
+        <div className='container'>{EventList}</div>
       </div>
-      <div className='event'>
-        <div className='day'>04/01</div>
-        <div className='card'>first</div>
-      </div>
-      <div className='event'>
-        <div className='day'>04/02</div>
-        <div className='card'>second</div>
-      </div>{' '}
-      <div className='event'>
-        <div className='day'>04/03</div>
-        <div className='card'>3rd</div>
-      </div>{' '}
-      <div className='event'>
-        <div className='day'>04/03</div>
-        <div className='card'>4th</div>
-      </div>
-      <div className='year_bg'>
-        <span className='year'>2020</span>
-      </div>
-      <div className='event'>
-        <div className='day'>04/01</div>
-        <div className='card'>first</div>
-      </div>
-      <div className='event'>
-        <div className='day'>04/02</div>
-        <div className='card'>second</div>
-      </div>{' '}
-      <div className='event'>
-        <div className='day'>04/03</div>
-        <div className='card'>3rd</div>
-      </div>{' '}
-      <div className='event'>
-        <div className='day'>04/03</div>
-        <div className='card'>4th</div>
-      </div> */}
       <div className='next-page' />
     </div>
   );

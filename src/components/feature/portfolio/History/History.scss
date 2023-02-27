@@ -8,28 +8,56 @@
 
 #portfolio-history {
   //background-color: #4e773a;
+  padding-bottom: 128px;
   h2 {
     margin-bottom: 44px;
   }
 
+  .container_wrapper {
+    position: relative;
+    display: block;
+    .container::before {
+      content: '';
+      z-index: 0;
+      display: block;
+      width: 4px;
+      height: 100%;
+      background-color: color.$bg;
+
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+
   .year_bg {
-    grid-column: 2 / 3;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    margin: 48px auto;
-    width: 96px;
-    height: 96px;
-
-    border: 2px solid color.$fg;
-    background-color: color.$bg;
-    transform: rotate(45deg);
+    position: relative;
+    height: 180px;
     .year {
+      z-index: 1;
+      position: relative;
       font-size: 1.6em;
       font-weight: bold;
       color: color.$fg;
-      transform: rotate(-45deg);
+      &::after {
+        content: '';
+        z-index: -1;
+        display: block;
+        width: 100px;
+        height: 100px;
+        border: 2px solid color.$fg;
+        background-color: color.$bg;
+
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+      }
     }
   }
 }
