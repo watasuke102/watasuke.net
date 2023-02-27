@@ -6,8 +6,29 @@ subtitle_ja = ""
 subtitle_en = ""
 day         = "04/01"
 category    = ""
-body_ja     = ""
-body_en     = ""
+body_ja     = """
+# Markdown
+
+マークダウンで記述できるようにしました
+うれしい
+
+テスト
+
+テスト
+
+テスト
+"""
+body_en     = """
+# Markdown
+
+Let's use markdown :)
+
+test
+
+test
+
+test
+"""
 
 [[event]]
 year        = "2020"
