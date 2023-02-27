@@ -32,6 +32,7 @@ export function EventCard(props: Props): React.ReactElement {
         <div className='header' onClick={() => set_opening(s => !s)}>
           <span className='title'>{props.lang !== 'en' ? props.event.title_ja : props.event.title_en}</span>
           <span className='subtitle'>{props.lang !== 'en' ? props.event.subtitle_ja : props.event.subtitle_en}</span>
+          <span className='category'>{props.event.category}</span>
           <motion.div
             className='expand_icon'
             animate={{
