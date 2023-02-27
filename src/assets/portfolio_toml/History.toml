@@ -66,8 +66,8 @@ day         = "05/11 -" # join to Fascode
 category    = "Work"
 title_ja    = "Alter Linux (i3wm edition)"
 title_en    = "Alter Linux (i3wm edition)"
-subtitle_en = "Arch Linuxベースの国産Linuxディストリビューション"
-subtitle_ja = "Arch Linux derived Linux distribution made in Japan"
+subtitle_ja = "Arch Linuxベースの国産Linuxディストリビューション"
+subtitle_en = "Arch Linux derived Linux distribution made in Japan"
 body_ja     = """
 ![alterlinux-i3-manager](/works/alterlinux-i3-manager.jpg)
 （画像は i3wmエディション用のGUI設定ツール、
