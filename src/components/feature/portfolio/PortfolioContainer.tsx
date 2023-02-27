@@ -84,8 +84,18 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
     // 要素がスクロール可能かつ画面端までスクロールしてなければページ移動しない
     if (!changeable && place_ref.current === Position.none) return;
 
-    // コンテナサイズが変更されていないか確認する
-    if (container && container.scrollTop / (container.scrollHeight - container.clientHeight) < 0.999) {
+    // 前のページに移動させる
+    if (
+      (place_ref.current === Position.reached_top || changeable) &&
+      current_page_ref.current !== 0 &&
+      e.deltaY < 0 // 上にスクロールしていた場合
+    ) {
+      SetIsMovingPage(true);
+      SetNextPage(current => current - 1);
+    } else if (
+      container && // コンテナサイズが変更されていないか確認する
+      container.scrollTop / (container.scrollHeight - container.clientHeight) < 0.999
+    ) {
       return;
       // 次のページに移動させる
     } else if (
@@ -95,14 +105,6 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
     ) {
       SetIsMovingPage(true);
       SetNextPage(current => current + 1);
-      // 前のページに移動させる
-    } else if (
-      (place_ref.current === Position.reached_top || changeable) &&
-      current_page_ref.current !== 0 &&
-      e.deltaY < 0 // 上にスクロールしていた場合
-    ) {
-      SetIsMovingPage(true);
-      SetNextPage(current => current - 1);
     }
   };
 
