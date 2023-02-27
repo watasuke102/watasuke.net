@@ -88,34 +88,6 @@ Join [FascodeNetwork](https://fascode.net/) (student organization), and developi
 [GitHub](https://github.com/FascodeNet/alterlinux)
 """
 
-[[event]]
-year        = "2020"
-day         = "12/19 -" # initial commit
-category    = "Work"
-title_ja    = "TAGether"
-title_en    = "TAGether"
-subtitle_ja = "テスト対策問題の共有サービス"
-subtitle_en = "Service to share self-made exam"
-body_ja     = """
-![TAGetherを実際に使用している様子](/works/tagether.jpg)
-
-テスト対策問題を作ってクラス内に共有することが出来るサービスです。
-
-フロントエンドにNext.js、バックエンドにExpress・MySQLを使用して作成しました。
-
-[GitHub](https://github.com/watasuke102/TAGether) / 
-[Scrapbox](https://scrapbox.io/watasuke/TAGether)
-"""
-body_en     = """
-![screenshot of TAGether usage](/works/tagether.jpg)
-
-The service makes possible to share self-made exam for classmates.
-
-Use Next.js as frontend, Express / MySQL as backend
-
-[GitHub](https://github.com/watasuke102/TAGether) / 
-[Scrapbox](https://scrapbox.io/watasuke/TAGether)
-"""
 
 [[event]]
 year        = "2020"
@@ -144,7 +116,6 @@ Add date, event name, and payment amounts to check the total balance.
 [GitHub](https://github.com/watasuke102/ExpNote)
 """
 
-
 [[event]]
 year        = "2020"
 day         = "10/31"
@@ -164,6 +135,35 @@ Lightning Talk to roughly recommend Flutter.
 
 [Slide](https://docs.google.com/presentation/d/1vUuO9ZfyuO-fTv9cP9IfHdoXK1sQzAmNS05QJO-iRq0/edit?usp=share_link)
  / [発表の様子 (YouTube)](https://www.youtube.com/live/LetsnbqNA-U?feature=share&t=12701)
+"""
+
+[[event]]
+year        = "2020"
+day         = "12/19 -" # initial commit
+category    = "Work"
+title_ja    = "TAGether"
+title_en    = "TAGether"
+subtitle_ja = "テスト対策問題の共有サービス"
+subtitle_en = "Service to share self-made exam"
+body_ja     = """
+![TAGetherを実際に使用している様子](/works/tagether.jpg)
+
+テスト対策問題を作ってクラス内に共有することが出来るサービスです。
+
+フロントエンドにNext.js、バックエンドにExpress・MySQLを使用して作成しました。
+
+[GitHub](https://github.com/watasuke102/TAGether) / 
+[Scrapbox](https://scrapbox.io/watasuke/TAGether)
+"""
+body_en     = """
+![screenshot of TAGether usage](/works/tagether.jpg)
+
+The service makes possible to share self-made exam for classmates.
+
+Use Next.js as frontend, Express / MySQL as backend
+
+[GitHub](https://github.com/watasuke102/TAGether) / 
+[Scrapbox](https://scrapbox.io/watasuke/TAGether)
 """
 
 # 2021
