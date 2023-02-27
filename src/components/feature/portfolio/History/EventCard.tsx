@@ -13,6 +13,7 @@ import Gfm from 'remark-gfm';
 import Slug from 'remark-slug';
 import {Event} from './Event';
 import './EventCard.scss';
+import IconExpand from '@assets/icons/expand.svg';
 
 interface Props {
   event: Event;
@@ -27,10 +28,19 @@ export function EventCard(props: Props): React.ReactElement {
       <div className='day'>
         <BreakWithCR str={props.event.day} />
       </div>
-      <div className='card' onClick={() => set_opening(s => !s)}>
-        <div className='header'>
+      <div className='card'>
+        <div className='header' onClick={() => set_opening(s => !s)}>
           <span className='title'>{props.lang !== 'en' ? props.event.title_ja : props.event.title_en}</span>
           <span className='subtitle'>{props.lang !== 'en' ? props.event.subtitle_ja : props.event.subtitle_en}</span>
+          <motion.div
+            className='expand_icon'
+            animate={{
+              transform: opening ? 'rotate(-180deg)' : 'rotate(0deg)',
+            }}
+            transition={{duration: 0.2}}
+          >
+            <IconExpand />
+          </motion.div>
         </div>
         <motion.div
           className='body'

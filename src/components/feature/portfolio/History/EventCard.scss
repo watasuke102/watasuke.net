@@ -9,11 +9,12 @@
 .EventCard_container {
   $h_connector: 40px;
   $connector_weight: 4px;
+  $day_size: 96px;
   position: relative;
   z-index: 128;
   display: grid;
-  grid-template-columns: 1fr $h_connector 96px $h_connector 1fr;
-  grid-template-rows: 96px auto;
+  grid-template-columns: 1fr $h_connector $day_size $h_connector 1fr;
+  grid-template-rows: $day_size auto;
   width: 95dvw;
   margin: auto;
   margin-bottom: 16px;
@@ -25,7 +26,7 @@
     justify-content: center;
     align-items: center;
 
-    height: 96px;
+    height: $day_size;
     border-radius: 4px;
     font-size: 1.3em;
     color: color.$fg;
@@ -41,21 +42,48 @@
     background-color: color.$bg;
 
     .header {
+      height: $day_size;
       text-align: right;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      &:hover {
+        cursor: pointer;
+      }
 
       .title {
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
         display: block;
+        margin: auto 0;
         font-size: 1.5em;
         font-weight: bold;
       }
       .subtitle {
+        grid-row: 2 / 3;
+        grid-column: 2 / 3;
         display: block;
+        margin-top: auto;
         font-size: 1.2em;
         color: rgba(color.$fg, 0.7);
+      }
+      .expand_icon {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+        margin: 0 auto;
+        margin-top: auto;
+        width: 32px;
+        height: 32px;
+        svg {
+          width: 32px;
+          height: 32px;
+        }
       }
     }
     .body {
       overflow-y: hidden;
+      margin-top: 12px;
+      padding-top: 4px;
+      border-top: 2px solid color.$fg;
     }
   }
 
@@ -67,6 +95,7 @@
     height: $connector_weight;
     background-color: color.$bg;
   }
+
   // right side
   &:nth-child(even) {
     .h_connector {
@@ -76,6 +105,14 @@
       grid-column: 5 / 6;
       .header {
         text-align: left;
+        grid-template-columns: 1fr auto;
+        .title,
+        .subtitle {
+          grid-column: 1 / 2;
+        }
+        .expand_icon {
+          grid-column: 2 / 3;
+        }
       }
     }
   }
