@@ -93,8 +93,13 @@
     .body {
       overflow-y: hidden;
       margin-top: 12px;
-      padding-top: 4px;
+      padding-top: 12px;
       border-top: 2px solid color.$fg;
+      img {
+        display: block;
+        width: 90%;
+        margin: auto;
+      }
     }
   }
 
