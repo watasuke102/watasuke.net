@@ -10,7 +10,6 @@ import React from 'react';
 import {ReactMarkdown} from 'react-markdown/lib/react-markdown';
 import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
-import Slug from 'remark-slug';
 import {Transition} from '@utils/Transition';
 import {Event} from './Event';
 import './EventCard.scss';
@@ -71,7 +70,7 @@ export function EventCard(props: Props): React.ReactElement {
           >
             <hr />
             <ReactMarkdown
-              remarkPlugins={[Gfm, Slug]}
+              remarkPlugins={[Gfm]}
               rehypePlugins={[Raw]}
               // eslint-disable-next-line react/no-children-prop
               children={body}
