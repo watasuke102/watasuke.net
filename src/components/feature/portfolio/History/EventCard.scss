@@ -36,7 +36,7 @@
   .card {
     $v_padding: 8px;
     grid-row: 1 / 3;
-    grid-column: 1 / 2;
+    grid-column: 5 / 6;
     padding: $v_padding 12px;
     border-radius: 4px;
     color: color.$fg;
@@ -44,9 +44,9 @@
 
     .header {
       min-height: calc(#{$day_size} - #{$v_padding} * 2);
-      text-align: right;
+      text-align: left;
       display: grid;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: 1fr auto;
       grid-template-rows: auto 1fr;
       gap: 0 8px;
       &:hover {
@@ -55,7 +55,7 @@
 
       .title {
         grid-row: 1 / 2;
-        grid-column: 2 / 3;
+        grid-column: 1 / 2;
         display: block;
         margin: auto 0;
         font-size: 1.5em;
@@ -63,7 +63,7 @@
       }
       .subtitle {
         grid-row: 2 / 3;
-        grid-column: 2 / 3;
+        grid-column: 1 / 2;
         display: block;
         margin-top: auto;
         font-size: 1em;
@@ -71,7 +71,7 @@
       }
       .category {
         grid-row: 1 / 2;
-        grid-column: 1 / 2;
+        grid-column: 2 / 3;
         display: block;
         margin: 0 auto;
         margin-bottom: auto;
@@ -82,10 +82,10 @@
       }
       .expand_icon {
         grid-row: 2 / 3;
-        grid-column: 1 / 2;
+        grid-column: 2 / 3;
         margin-top: auto;
-        margin-left: 0;
-        margin-right: auto;
+        margin-left: auto;
+        margin-right: 0;
         width: 32px;
         height: 32px;
         svg {
@@ -94,9 +94,7 @@
         }
       }
     }
-      z-index: 1000;
     .body {
-      z-index: 1987;
       height: 0;
       overflow-y: hidden;
       img {
@@ -114,36 +112,57 @@
 
   .h_connector {
     grid-row: 1 / 2;
-    grid-column: 2 / 3;
+    grid-column: 4 / 5;
     margin: auto;
     width: 100%;
     height: $connector_weight;
     background-color: color.$bg;
   }
 
-  // right side
-  &:nth-child(even) {
-    .h_connector {
-      grid-column: 4 / 5;
-    }
-    .card {
-      grid-column: 5 / 6;
-      .header {
-        text-align: left;
-        grid-template-columns: 1fr auto;
-        .title,
-        .subtitle {
-          grid-column: 1 / 2;
-        }
-        .category {
-          grid-column: 2 / 3;
-        }
-        .expand_icon {
-          grid-column: 2 / 3;
-          margin-left: auto;
-          margin-right: 0;
+  // left side
+  @media screen and (min-width: 800px) {
+    &:nth-child(odd) {
+      .h_connector {
+        grid-column: 2 / 3;
+      }
+      .card {
+        grid-column: 1 / 2;
+        .header {
+          text-align: right;
+          grid-template-columns: auto 1fr;
+          .title,
+          .subtitle {
+            grid-column: 2 / 3;
+          }
+          .category {
+            grid-column: 1 / 2;
+          }
+          .expand_icon {
+            grid-column: 1 / 2;
+            margin-left: 0;
+            margin-right: auto;
+          }
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+    width: 85dvw;
+    .day {
+      width: $day_size;
+      margin: auto;
+      min-height: 36px;
+      height: auto;
+      margin-bottom: 8px;
+    }
+    .card {
+      margin-bottom: 40px;
+    }
+    .h_connector {
+      display: none;
     }
   }
 }
