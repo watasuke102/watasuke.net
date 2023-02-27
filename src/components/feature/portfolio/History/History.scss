@@ -16,6 +16,7 @@
   .container_wrapper {
     position: relative;
     display: block;
+    padding-bottom: 64px;
     .container::before {
       content: '';
       z-index: 0;
@@ -25,9 +26,9 @@
       background-color: color.$bg;
 
       position: absolute;
+      top: 0;
       left: 50%;
-      top: 50%;
-      transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%);
     }
   }
 
@@ -37,7 +38,11 @@
     align-items: center;
 
     position: relative;
-    height: 180px;
+    padding: 80px;
+    &:nth-child(1) {
+      padding-top: 0;
+    }
+
     .year {
       z-index: 1;
       position: relative;
