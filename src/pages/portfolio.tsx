@@ -24,10 +24,10 @@ export default function Portfolio(): React.ReactElement {
     set_lang(params.get('lang') ?? undefined);
 
     const animation_param = params.get('animation');
-    set_animation(animation_param === null ? false : animation_param !== 'false');
+    set_animation(animation_param === null ? undefined : animation_param !== 'false');
 
     const page_transition_param = params.get('page_transition');
-    set_page_transition(page_transition_param === null ? false : page_transition_param !== 'false');
+    set_page_transition(page_transition_param === null ? undefined : page_transition_param !== 'false');
   }, []);
 
   const complete = React.useCallback((lang: string, page_transition: boolean, animation: boolean) => {
