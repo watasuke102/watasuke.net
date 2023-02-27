@@ -14,6 +14,7 @@ import Slug from 'remark-slug';
 import {Event} from './Event';
 import './EventCard.scss';
 import IconExpand from '@assets/icons/expand.svg';
+import { Transition } from '@utils/Transition';
 
 interface Props {
   event: Event;
@@ -48,7 +49,7 @@ export function EventCard(props: Props): React.ReactElement {
               animate={{
                 transform: opening ? 'rotate(-180deg)' : 'rotate(0deg)',
               }}
-              transition={{duration: 0.2}}
+              transition={Transition(props.animation_enabled, {duration: 0.2})}
             >
               <IconExpand />
             </motion.div>
