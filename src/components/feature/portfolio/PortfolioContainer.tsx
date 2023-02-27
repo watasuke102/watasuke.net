@@ -174,7 +174,7 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
       <div style={{height: scroll_height}} id='PortfolioContainer-scroll' />
 
       <div id='PortfolioContainer-page_indicator'>
-        {['Welcome', 'Skills', 'Works', 'Links'].map((str, index) => (
+        {['Welcome', 'Skills', 'History', 'Links'].map((str, index) => (
           <div
             key={index}
             className={'indicator_container' + (index === current_page ? ' current' : '')}
