@@ -69,6 +69,7 @@ export function EventCard(props: Props): React.ReactElement {
               height: {duration: 0.4 * Number(props.animation_enabled), ease: [0.22, 1, 0.36, 1]},
             }}
           >
+            <hr />
             <ReactMarkdown
               remarkPlugins={[Gfm, Slug]}
               rehypePlugins={[Raw]}

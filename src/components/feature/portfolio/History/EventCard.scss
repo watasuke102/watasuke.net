@@ -93,9 +93,10 @@
     }
     .body {
       overflow-y: hidden;
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 2px solid color.$fg;
+      hr {
+        opacity: 1;
+        border: 1px solid color.$fg;
+      }
       img {
         display: block;
         width: 90%;
