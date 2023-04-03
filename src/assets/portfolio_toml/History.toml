@@ -337,3 +337,24 @@ Join as staff, and assist student / moderate groupwork.
 
 [my thoughts (blog)](https://watasuke.net/blog/article/gcc2023-attend/)
 """
+
+[[event]]
+year        = "2023"
+day         = "03/04\n|\n04/01"
+category    = "Event"
+title_ja    = "台湾留学"
+title_en    = "Internship in Taiwan"
+subtitle_ja = "国立聯合大学"
+subtitle_en = "National United University"
+body_ja     = """
+台湾の国立聯合大学に留学し、画像処理に関する研究を行いました。
+
+[開発したもの](https://github.com/watasuke102/measure-vehicle-distance)
+[感想](https://watasuke.net/blog/article/internship-in-taiwan-nuu/)
+"""
+body_en     = """
+Go to National United University in Taiwan, do the research about Image Processing.
+
+[works](https://github.com/watasuke102/measure-vehicle-distance)
+[my thoughts (blog)](https://watasuke.net/blog/article/internship-in-taiwan-nuu/)
+"""
