@@ -350,11 +350,11 @@ body_ja     = """
 台湾の国立聯合大学に留学し、画像処理に関する研究を行いました。
 
 [開発したもの](https://github.com/watasuke102/measure-vehicle-distance)
-[感想](https://watasuke.net/blog/article/internship-in-taiwan-nuu/)
+ / [感想](https://watasuke.net/blog/article/internship-in-taiwan-nuu/)
 """
 body_en     = """
 Go to National United University in Taiwan, do the research about Image Processing.
 
 [works](https://github.com/watasuke102/measure-vehicle-distance)
-[my thoughts (blog)](https://watasuke.net/blog/article/internship-in-taiwan-nuu/)
+ / [my thoughts (blog)](https://watasuke.net/blog/article/internship-in-taiwan-nuu/)
 """
