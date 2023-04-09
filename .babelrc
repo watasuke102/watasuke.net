@@ -1,6 +1,7 @@
 {
   "presets": ["babel-preset-gatsby"],
   "plugins": [
+    ["@vanilla-extract/babel-plugin"],
     ["prismjs", {
       "plugins": ["show-language", "line-numbers", "copy-to-clipboard", "inline-color"],
       "theme": "tomorrow",
