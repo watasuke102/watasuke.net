@@ -6,6 +6,7 @@
 // This software is released under the MIT SUSHI-WARE License.
 import config from '@config';
 import React from 'react';
+import './AdsInArticle.scss';
 
 export const AdsInArticle = (): React.ReactElement => {
   React.useEffect(() => {
@@ -17,7 +18,7 @@ export const AdsInArticle = (): React.ReactElement => {
   }, []);
 
   if (config.adsenseId.length <= 0 || config.inArticleSlot.length <= 0) {
-    return <></>;
+    return <div className='AdsInArticle-dummy'>Ads here</div>;
   }
 
   return (
