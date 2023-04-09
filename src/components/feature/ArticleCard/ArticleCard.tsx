@@ -11,7 +11,7 @@ import React from 'react';
 import RemoveMD from 'remove-markdown';
 import {TagContainer} from '@/feature/Tag';
 import Article from '@mytypes/Article';
-import './ArticleCard.scss';
+import * as style from './ArticleCard.css';
 
 interface Props {
   article: Article;
@@ -21,24 +21,22 @@ export const ArticleCard = ({article}: Props): React.ReactElement => {
   return (
     <Link
       to={'/blog/article/' + article.slug}
-      className='ArticleCard-container'
+      className={style.container}
       key={article.slug}
       aria-label={article.title}
     >
-      {/* <div className='ArticleCard-thumbnail'>
+      {/* <div className={style.thumbnail}>
           <Thumbnail url={article.thumbnail} />
         </div> */}
-      <div className='ArticleCard-info'>
-        <div className='ArticleCard-date'>
-          <span>{article.published_at.slice(0, 10)}</span>
-        </div>
+      <div className={style.info}>
+        <span className={style.date}>{article.published_at.slice(0, 10)}</span>
         <div>
           <TagContainer tags={article.tags} />
         </div>
       </div>
-      <div className='ArticleCard-text'>
-        <h2 className='ArticleCard-title'>{article.title}</h2>
-        <p className='ArticleCard-description'>
+      <div className={style.text}>
+        <h2 className={style.title}>{article.title}</h2>
+        <p className={style.description}>
           {
             // 140字に制限して内容を表示、超過分は...で
             RemoveMD(article.body.slice(0, 140) + (article.body.length > 140 ? ' ...' : ''))

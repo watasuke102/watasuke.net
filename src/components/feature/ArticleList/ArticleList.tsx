@@ -9,7 +9,7 @@
 import React from 'react';
 import Article from '@mytypes/Article';
 import {ArticleCard} from '../ArticleCard';
-import './ArticleList.scss';
+import * as style from './ArticleList.css';
 
 interface Props {
   list: Article[];
@@ -40,11 +40,11 @@ export const ArticleList = (props: Props): React.ReactElement => {
   // 最初のページでは戻るボタンを非表示に、最後のページでは進むボタンを非表示に
   // （ページ数を中央に表示するため、非表示にする代わりにdivを返す）
   const page_status = (
-    <section className='ArticleList-button_container'>
+    <section className={style.button_container}>
       {current_page === 1 ? (
-        <div className='ArticleList-empty'></div>
+        <div className={style.empty}></div>
       ) : (
-        <div className='ArticleList-button' onClick={BeforePage}>
+        <div className={style.button} onClick={BeforePage}>
           <i className='fas fa-chevron-left' />
         </div>
       )}
@@ -53,19 +53,19 @@ export const ArticleList = (props: Props): React.ReactElement => {
         {current_page} / {max_page}
       </span>
       {current_page === max_page ? (
-        <div className='ArticleList-empty'></div>
+        <div className={style.empty}></div>
       ) : (
-        <div className='ArticleList-button' onClick={NextPage}>
-          <i className='fas fa-chevron-right' />
+        <div className={style.button} onClick={NextPage}>
+          <i className={`${style.button_icon} fas fa-chevron-right`} />
         </div>
       )}
     </section>
   );
 
   return (
-    <div className='ArticleList-container'>
+    <div className={style.container}>
       {page_status}
-      <div className='ArticleList-list'>{article_cards}</div>
+      <div className={style.list}>{article_cards}</div>
       {page_status}
     </div>
   );

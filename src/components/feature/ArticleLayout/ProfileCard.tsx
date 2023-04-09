@@ -9,7 +9,7 @@
 import {graphql, Link, useStaticQuery} from 'gatsby';
 import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
-import './ProfileCard.scss';
+import * as style from './ProfileCard.css';
 
 export const ProfileCard = (): React.ReactElement => {
   const profile_text = useStaticQuery(graphql`
@@ -20,10 +20,10 @@ export const ProfileCard = (): React.ReactElement => {
     }
   `);
   return (
-    <section className='ProfileCard-container'>
-      <StaticImage width={80} src='../../../assets/icon.jpg' alt='icon' />
+    <section className={style.container}>
+      <StaticImage className={style.avatar} width={80} src='../../../assets/icon.jpg' alt='icon' />
       <p>わたすけ</p>
-      <p className='ProfileCard-body'>
+      <p className={style.body}>
         {profile_text.siteData.body}
         <br />
         プロフィール詳細は<Link to='/profile'>こちら</Link>

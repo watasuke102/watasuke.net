@@ -8,7 +8,7 @@
  */
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
-import './EmbedCard.scss';
+import * as style from './EmbedCard.css';
 
 interface Props {
   url: string;
@@ -62,18 +62,18 @@ export const EmbedCard = ({url}: Props): React.ReactElement => {
   }
 
   return (
-    <a className='EmbedCard-container' href={url}>
+    <a className={style.container} href={url}>
       {image === '' ? (
-        <span className='EmbedCard-img_fallback'>{'[OGP image not found]'}</span>
+        <span className={style.img_fallback}>{'[OGP image not found]'}</span>
       ) : (
-        <div className='EmbedCard-img_wrapper'>
-          <img src={image} alt={title} />
+        <div className={style.img_wrapper}>
+          <img className={style.thumbnail} src={image} alt={title} />
         </div>
       )}
-      <div className='EmbedCard-text'>
-        <span className='title'>{title}</span>
-        <span className='url'>{url}</span>
-        <span className='description'>{desc ?? ''}</span>
+      <div className={style.text_container}>
+        <span className={style.title}>{title}</span>
+        <span className={style.url}>{url}</span>
+        <span className={style.description}>{desc ?? ''}</span>
       </div>
     </a>
   );

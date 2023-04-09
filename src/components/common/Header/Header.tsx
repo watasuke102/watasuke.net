@@ -8,18 +8,26 @@
  */
 import {Link} from 'gatsby';
 import React from 'react';
-import './Header.scss';
+import * as style from './Header.css';
 
 export const Header = (): React.ReactElement => {
   return (
-    <header className='Header-container'>
-      <div className='Header-title'>
-        <Link to='/'>わたすけのへや</Link>
+    <header className={style.container}>
+      <div className={style.title}>
+        <Link className={style.site_name} to='/'>
+          わたすけのへや
+        </Link>
       </div>
-      <div className='Header-links'>
-        <Link to='/blog'>Blog</Link>
-        <Link to='/profile'>Profile</Link>
-        <Link to='/about'>About this site</Link>
+      <div className={style.link_container}>
+        <Link className={style.links} to='/blog'>
+          Blog
+        </Link>
+        <Link className={style.links} to='/profile'>
+          Profile
+        </Link>
+        <Link className={style.links} to='/about'>
+          About this site
+        </Link>
       </div>
     </header>
   );

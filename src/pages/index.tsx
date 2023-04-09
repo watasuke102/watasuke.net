@@ -6,7 +6,7 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-import '@/pages/top.scss';
+import * as style from '@/pages/top.css';
 import {Seo, Background} from '@/common';
 import {Link} from 'gatsby';
 import {StaticImage} from 'gatsby-plugin-image';
@@ -27,16 +27,16 @@ export default function Index(): React.ReactElement {
   return (
     <>
       <Background />
-      <div className='top-container'>
-        <div className='top-icon_and_name'>
+      <div className={style.container}>
+        <div className={style.icon_and_name}>
           <StaticImage loading='eager' placeholder='none' width={150} src='../assets/icon.jpg' alt='icon' />
-          <h2>Welcome</h2>
+          <h2 className={style.welcome}>Welcome</h2>
         </div>
-        <div className='top-menu'>
+        <div className={style.menu}>
           {menu_list.map(e => (
-            <Link key={e.text} to={e.url} className='top-menu_card' aria-label={e.text}>
-              <i className={e.icon} />
-              <span>{e.text}</span>
+            <Link key={e.text} to={e.url} className={style.menu_card} aria-label={e.text}>
+              <i className={`${style.menu_card_icon} ${e.icon}`} />
+              <span className={style.menu_card_text}>{e.text}</span>
             </Link>
           ))}
         </div>
