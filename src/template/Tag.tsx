@@ -28,7 +28,7 @@ interface Props {
 }
 
 const breadcrumb_list = (name: string) =>
-  GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Article', item: '/blog/article'}, {name: name}]);
+  GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Tag', item: '/blog/tag'}, {name: name}]);
 
 export default function Tag({pageContext, data}: Props): React.ReactElement {
   return (
