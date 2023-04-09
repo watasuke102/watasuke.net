@@ -7,7 +7,7 @@
  * This software is released under the MIT SUSHI-WARE License.
  */
 import React from 'react';
-import './Background.scss';
+import * as style from './Background.css';
 
 interface Vec {
   x: number;
@@ -218,6 +218,6 @@ export default class Background extends React.Component<unknown> {
   };
 
   render(): React.ReactElement {
-    return <canvas ref={this.canvas_ref} className='Background-canvas' />;
+    return <canvas ref={this.canvas_ref} className={style.canvas} />;
   }
 }

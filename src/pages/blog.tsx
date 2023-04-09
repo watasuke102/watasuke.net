@@ -6,7 +6,7 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-import '@/pages/blog.scss';
+import * as style from '@/pages/blog.css';
 import {Seo, Breadcrumb, Layout} from '@/common';
 import {graphql} from 'gatsby';
 import React from 'react';
@@ -42,7 +42,7 @@ export default function Blog({data}: Props): React.ReactElement {
       <hr />
 
       <h2>記事一覧</h2>
-      <div className='blog-container'>
+      <div className={style.container}>
         <ArticleList list={data.allArticles.nodes} />
       </div>
     </Layout>

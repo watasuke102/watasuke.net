@@ -6,7 +6,6 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-import '@/pages/blog.scss';
 import {Seo, Breadcrumb, Layout} from '@/common';
 import React from 'react';
 import '@/common/main.scss';

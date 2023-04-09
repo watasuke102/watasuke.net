@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT SUSHI-WARE License.
 import React from 'react';
-import './Toggle.scss';
+import * as style from './Toggle.css';
 
 interface Props {
   first: string;
@@ -15,16 +15,17 @@ interface Props {
 }
 
 export function Toggle(props: Props): React.ReactElement {
+  console.log(style);
   return (
-    <div className='Toggle-container'>
+    <div className={style.container}>
       <span
-        className={'first' + (props.current === props.first ? ' selected' : '')}
+        className={style.item + (props.current === props.first ? ` ${style.selected}` : '')}
         onClick={() => props.set_state(props.first)}
       >
         {props.first}
       </span>
       <span
-        className={'second' + (props.current === props.second ? ' selected' : '')}
+        className={style.item + (props.current === props.second ? ` ${style.selected}` : '')}
         onClick={() => props.set_state(props.second)}
       >
         {props.second}

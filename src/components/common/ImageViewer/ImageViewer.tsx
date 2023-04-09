@@ -8,7 +8,7 @@
  */
 import {AnimatePresence, motion} from 'framer-motion';
 import React from 'react';
-import './ImageViewer.scss';
+import * as style from './ImageViewer.css';
 
 interface Props {
   src: string;
@@ -21,7 +21,7 @@ export const ImageViewer = ({src, alt}: Props): React.ReactElement => {
   return (
     <>
       <img
-        className='ImageViewer-inline_img'
+        className={style.inline_img}
         src={src}
         alt={alt ?? ''}
         onClick={() => {
@@ -41,10 +41,10 @@ export const ImageViewer = ({src, alt}: Props): React.ReactElement => {
             exit='init'
             transition={{duration: 0.2}}
             onClick={() => SetIsOpen(false)}
-            className='ImageViewer-modal'
+            className={style.modal}
           >
-            <div className='ImageViewer-img_wrapper'>
-              <img className='ImageViewer-dialog_img' src={src} alt={alt ?? ''} />
+            <div className={style.img_wrapper}>
+              <img className={style.dialog_img} src={src} alt={alt ?? ''} />
             </div>
           </motion.div>
         )}

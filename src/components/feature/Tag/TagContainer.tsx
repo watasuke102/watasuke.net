@@ -8,7 +8,7 @@
  */
 import {Link} from 'gatsby';
 import React from 'react';
-import './TagContainer.scss';
+import * as style from './TagContainer.css';
 
 interface Props {
   disable_icon?: boolean;
@@ -20,18 +20,16 @@ interface Props {
 
 export const TagContainer = (props: Props): React.ReactElement => {
   return (
-    <div className='TagContainer-container'>
-      {!props.disable_icon && <i className='fas fa-tag' />}
+    <div className={style.container}>
+      {!props.disable_icon && <i className={`${style.icon} fas fa-tag`} />}
 
-      <div>
-        {props.tags.map(tag => {
-          return (
-            <Link key={tag.slug} to={'/blog/tag/' + tag.slug}>
-              {tag.name}
-            </Link>
-          );
-        })}
-      </div>
+      {props.tags.map(tag => {
+        return (
+          <Link key={tag.slug} className={style.link} to={'/blog/tag/' + tag.slug}>
+            {tag.name}
+          </Link>
+        );
+      })}
     </div>
   );
 };

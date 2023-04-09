@@ -6,7 +6,7 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-import '@/pages/blog.scss';
+import * as style from '@/pages/blog.css';
 import {Seo, Layout, Breadcrumb} from '@/common';
 import {graphql} from 'gatsby';
 import React from 'react';
@@ -35,7 +35,7 @@ export default function Tag({pageContext, data}: Props): React.ReactElement {
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list(pageContext.name)} />
       <h1>{pageContext.name}</h1>
-      <div className='blog-container'>
+      <div className={style.container}>
         <ArticleList list={data.allArticles.nodes} />
       </div>
     </Layout>
