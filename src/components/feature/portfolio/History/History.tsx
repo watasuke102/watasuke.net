@@ -7,9 +7,10 @@
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import toml from 'toml';
+import * as portfolio_common from '@/feature/portfolio/PortfolioCommon.css';
 import {Event} from './Event';
 import {EventCard} from './EventCard';
-import './History.scss';
+import * as style from './History.css';
 
 interface Props {
   animation_enabled: boolean;
@@ -38,8 +39,8 @@ export const History = (props: Props): React.ReactElement => {
     event_group.forEach(events => {
       cards.push(
         <>
-          <div className='year_bg' key={events[0].year}>
-            <span className='year'>{events[0].year}</span>
+          <div className={style.year_bg} key={events[0].year}>
+            <span className={style.year}>{events[0].year}</span>
           </div>
           {events.map((e, i) => (
             <EventCard key={i} event={e} {...props} />
@@ -52,12 +53,14 @@ export const History = (props: Props): React.ReactElement => {
   }, []);
 
   return (
-    <div id='portfolio-history'>
+    <div className={portfolio_common.container}>
       <h2>History</h2>
-      <div className='container_wrapper'>
-        <div className='container'>{EventList}</div>
+      <div style={{height: 48}} />
+      <div className={style.container_wrapper}>
+        <div className={style.container}>{EventList}</div>
       </div>
-      <div className='next-page' />
+      <div style={{height: 128}} />
+      <div className={portfolio_common.next_page} />
     </div>
   );
 };
