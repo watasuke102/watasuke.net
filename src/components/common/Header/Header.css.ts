@@ -21,7 +21,7 @@ export const container = style({
   width: '100vw',
   fontSize: '1.1em',
 
-  backgroundColor: `rgba(${color.bg}, 0.5)`,
+  backgroundColor: `${color.bg}80`,
   backdropFilter: 'blur(3px)',
   borderBottom: `dotted 1px ${color.fg}`,
 

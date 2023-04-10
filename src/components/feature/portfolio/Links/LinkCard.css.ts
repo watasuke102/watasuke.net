@@ -12,7 +12,7 @@ export const container = style({
   padding: '12px 4px',
   borderRadius: 4,
   color: color.fg,
-  backgroundColor: `rgba(${color.bg}, 0.9)`,
+  backgroundColor: `${color.bg}e6`,
   textDecoration: 'none',
 
   display: 'grid',

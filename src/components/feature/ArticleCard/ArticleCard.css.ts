@@ -20,7 +20,7 @@ export const container = style({
   ':hover': {
     color: 'inherit',
     textDecoration: 'none',
-    backgroundColor: `rgba(${color.fg}, 0.15)`,
+    backgroundColor: `${color.fg}26`,
     cursor: 'pointer',
     transition: 'background-color 0.3s',
   },
