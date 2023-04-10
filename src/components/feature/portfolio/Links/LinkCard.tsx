@@ -8,7 +8,7 @@ import {BreakWithCR} from '@/common';
 import {motion} from 'framer-motion';
 import React from 'react';
 import {FadeWithScroll} from '@utils/FadeWithScroll';
-import './LinkCard.scss';
+import * as style from './LinkCard.css';
 import IconBoxOpen from '@assets/icons/Links/box-open.svg';
 import IconEnvelope from '@assets/icons/Links/envelope.svg';
 import IconFilePen from '@assets/icons/Links/file-pen.svg';
@@ -51,12 +51,12 @@ function Icon(props: {icon: string}): React.ReactElement {
 
 export const LinkCard = (props: Props): React.ReactElement => {
   return (
-    <motion.a href={props.url} className='LinkCard_container' {...(props.animation_enabled ? FadeWithScroll : {})}>
-      <div className='icon'>
+    <motion.a href={props.url} className={style.container} {...(props.animation_enabled ? FadeWithScroll : {})}>
+      <div className={style.icon}>
         <Icon icon={props.icon} />
       </div>
-      <span className='head'>{props.title}</span>
-      <span className='desc'>
+      <span className={style.head}>{props.title}</span>
+      <span className={style.desc}>
         <BreakWithCR str={props.desc} />
       </span>
     </motion.a>

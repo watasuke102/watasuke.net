@@ -12,8 +12,9 @@ import {ReactMarkdown} from 'react-markdown/lib/react-markdown';
 import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import toml from 'toml';
+import * as portfolio_common from '@/feature/portfolio/PortfolioCommon.css';
 import {Transition} from '@utils/Transition';
-import './Welcome.scss';
+import * as style from './Welcome.css';
 import IconEnvelope from '@assets/icons/Links/envelope.svg';
 import IconGitHub from '@assets/icons/Links/github.svg';
 import IconTwitter from '@assets/icons/Links/twitter.svg';
@@ -66,51 +67,51 @@ export const Welcome = (props: Props): React.ReactElement => {
   return (
     <AnimatePresence>
       <motion.div
-        id='portfolio-welcome'
+        className={portfolio_common.container}
         initial={{opacity: 0}}
         animate={{opacity: 1}}
         transition={Transition(props.animation_enabled, {delay: 0.5, duration: 1})}
       >
-        <h2 className='greeting'>Hi there👋</h2>
+        <h2 className={style.greeting}>Hi there👋</h2>
 
-        <div className='avatar-and-name'>
-          <StaticImage className='avatar' height={200} src='../../../../assets/icon.jpg' alt='icon' />
+        <div className={style.avatar_and_name}>
+          <StaticImage className={style.avatar} height={200} src='../../../../assets/icon.jpg' alt='icon' />
           <div>
-            <p className='name-main'>わたすけ</p>
-            <p className='name-sub'>Watasuke</p>
+            <p className={style.name_main}>わたすけ</p>
+            <p className={style.name_sub}>Watasuke</p>
             <div>
-              <div className='icon-and-text'>
+              <div className={style.icon_and_text}>
                 <IconTwitter />
-                <span>@Watasuke102</span>
+                <span className={style.text}>@Watasuke102</span>
               </div>
-              <div className='icon-and-text'>
+              <div className={style.icon_and_text}>
                 <IconGitHub />
-                <span>watasuke102</span>
+                <span className={style.text}>watasuke102</span>
               </div>
-              <div className='icon-and-text'>
+              <div className={style.icon_and_text}>
                 <IconEnvelope />
-                <span>watasuke102@gmail.com</span>
+                <span className={style.text}>watasuke102@gmail.com</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className='bio'>
-          <ReactMarkdown remarkPlugins={[Gfm]} rehypePlugins={[Raw]} className={bio_box_shown ? '' : 'hidden'}>
+        <div className={style.bio}>
+          <ReactMarkdown remarkPlugins={[Gfm]} rehypePlugins={[Raw]} className={bio_box_shown ? '' : style.bio_hidden}>
             {props.lang !== 'en' ? bio_toml.body_ja : bio_toml.body_en}
           </ReactMarkdown>
           <AnimatePresence>
             {!bio_box_shown && (
               <motion.div
-                className='bio_animation'
+                className={style.bio_animation}
                 {...(props.animation_enabled ? bio_animation : {initial: {width: 0}})}
               />
             )}
           </AnimatePresence>
         </div>
 
-        <div className='indicator-space' />
-        <div className='next-page'>
+        <div className={style.indicator_space} />
+        <div className={portfolio_common.next_page}>
           <span>Scroll</span>
         </div>
       </motion.div>

@@ -6,7 +6,6 @@
  * Twitter: @Watasuke102
  * This software is released under the MIT SUSHI-WARE License.
  */
-import '@/pages/portfolio.scss';
 import {Seo} from '@/common';
 import React from 'react';
 import {PortfolioContainer, Entrypoint, Welcome, Skills, History, Links, End} from '@/feature/portfolio';

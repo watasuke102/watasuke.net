@@ -7,8 +7,9 @@
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import toml from 'toml';
+import * as portfolio_common from '@/feature/portfolio/PortfolioCommon.css';
 import {LinkCard} from './LinkCard';
-import './Links.scss';
+import * as style from './Links.css';
 
 interface Link {
   title: string;
@@ -35,9 +36,9 @@ export const Links = (props: Props): React.ReactElement => {
   ).link;
 
   return (
-    <div id='portfolio-links'>
+    <div className={portfolio_common.container}>
       <h2>Links</h2>
-      <div className='container'>
+      <div className={style.container}>
         {link_list.map((link, i) => (
           <LinkCard
             key={i}
@@ -49,7 +50,7 @@ export const Links = (props: Props): React.ReactElement => {
           />
         ))}
       </div>
-      <div className='next-page' />
+      <div className={portfolio_common.next_page} />
     </div>
   );
 };
