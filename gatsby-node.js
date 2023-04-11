@@ -1,12 +1,9 @@
-/*!
- * gatsby-node.js
- *
- * CopyRight (c) 2021-2023 Watasuke
- * Email  : <watasuke102@gmail.com>
- * Twitter: @Watasuke102
- * This software is released under the MIT SUSHI-WARE License.
- */
-
+// gatsby-node.js
+//
+// CopyRight (c) 2021-2023 Watasuke
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT SUSHI-WARE License.
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');

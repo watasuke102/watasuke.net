@@ -1,4 +1,4 @@
-// AdsInArticle.css.ts
+// PortfolioCommon.css.ts
 //
 // CopyRight (c) 2021-2023 Watasuke
 // Email  : <watasuke102@gmail.com>

@@ -1,11 +1,9 @@
-/*!
- * Layout.tsx
- *
- * CopyRight (c) 2021-2023 Watasuke
- * Email  : <watasuke102@gmail.com>
- * Twitter: @Watasuke102
- * This software is released under the MIT SUSHI-WARE License.
- */
+// Layout.tsx
+//
+// CopyRight (c) 2021-2023 Watasuke
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT SUSHI-WARE License.
 import {Header} from '@/common';
 import React from 'react';
 

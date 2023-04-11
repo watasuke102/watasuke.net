@@ -1,11 +1,9 @@
-/*!
- * Breadcrumb.ts
- *
- * CopyRight (c) 2021-2023 Watasuke
- * Email  : <watasuke102@gmail.com>
- * Twitter: @Watasuke102
- * This software is released under the MIT SUSHI-WARE License.
- */
+// Breadcrumb.ts
+//
+// CopyRight (c) 2021-2023 Watasuke
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT SUSHI-WARE License.
 import BreadcrumbItem from '@mytypes/Breadcrumb';
 
 export const GenBreadcrumb = (list: {name: string; item?: string}[]): BreadcrumbItem[] => {

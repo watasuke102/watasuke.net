@@ -1,11 +1,9 @@
-/*!
- * article.tsx
- *
- * CopyRight (c) 2021-2023 Watasuke
- * Email  : <watasuke102@gmail.com>
- * Twitter: @Watasuke102
- * This software is released under the MIT SUSHI-WARE License.
- */
+// blog.tsx
+//
+// CopyRight (c) 2021-2023 Watasuke
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT SUSHI-WARE License.
 import * as style from '@/pages/blog.css';
 import {Seo, Breadcrumb, Layout} from '@/common';
 import {graphql} from 'gatsby';
