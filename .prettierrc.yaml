@@ -18,5 +18,5 @@ importOrder:
   - '^@utils/(.*)'
   - '^@mytypes/(.*)'
   - '^[./]'
-  - '(.*).scss'
+  - '(.*).css'
   - '^@assets/(.*)'

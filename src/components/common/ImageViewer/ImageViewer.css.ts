@@ -11,16 +11,16 @@ export const img_wrapper = style({
   height: '100%',
 });
 
-export const inline_img= style({
+export const inline_img = style({
   ':hover': {
     cursor: 'zoom-in',
-  }
+  },
 });
 
 export const dialog_img = style({
   objectFit: 'contain',
   width: '95%',
-  height:'95%',
+  height: '95%',
 
   position: 'absolute',
   top: '50%',

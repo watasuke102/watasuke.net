@@ -4,8 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT SUSHI-WARE License.
-import {globalStyle, style} from '@vanilla-extract/css';
 import {color} from '@/common/color';
+import {globalStyle, style} from '@vanilla-extract/css';
 
 export const toggle = style({
   display: 'grid',
@@ -45,8 +45,8 @@ export const group = style({
     'screen and (max-width: 550px)': {
       display: 'flex',
       flexDirection: 'column',
-    }
-  }
+    },
+  },
 });
 
 export const skillcard = style({
@@ -60,10 +60,10 @@ export const skillcard = style({
   gridTemplateRows: 'auto 1fr',
   '@media': {
     'screen and (max-width: 550px)': {
-    gridTemplateColumns: 'auto auto',
-    gridTemplateRows: 'auto auto 1fr',
-    }
-  }
+      gridTemplateColumns: 'auto auto',
+      gridTemplateRows: 'auto auto 1fr',
+    },
+  },
 });
 
 export const name = style({
@@ -74,8 +74,8 @@ export const name = style({
     'screen and (max-width: 550px)': {
       gridRow: '1 / 2',
       marginBottom: 0,
-    }
-  }
+    },
+  },
 });
 
 export const right = style({
@@ -84,8 +84,8 @@ export const right = style({
     'screen and (max-width: 550px)': {
       gridRow: '2 / 3',
       margin: '4px 0',
-    }
-  }
+    },
+  },
 });
 
 export const category = style({
@@ -94,9 +94,9 @@ export const category = style({
   margin: '0 12px',
   '@media': {
     'screen and (max-width: 550px)': {
-        marginLeft: 0,
-    }
-  }
+      marginLeft: 0,
+    },
+  },
 });
 
 export const tier = style({
@@ -115,8 +115,8 @@ export const desc = style({
   '@media': {
     'screen and (max-width: 550px)': {
       gridColumn: '1 / 3',
-    }
-  }
+    },
+  },
 });
 
 export const icon = style({
@@ -130,8 +130,8 @@ export const icon = style({
       height: 64,
       gridRow: '1 / 3',
       gridColumn: '2 / 3',
-    }
-  }
+    },
+  },
 });
 globalStyle(`${icon} svg`, {
   width: '100%',

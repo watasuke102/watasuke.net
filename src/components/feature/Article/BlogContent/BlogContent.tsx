@@ -5,6 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT SUSHI-WARE License.
 import {imageUrl} from '@config';
+import {ImageViewer} from '@/common';
 import {AnimatePresence, motion} from 'framer-motion';
 // コードのシンタックスハイライト
 import Prism from 'prismjs';
@@ -20,7 +21,6 @@ import {EmbedCard} from '@/feature/Article';
 import ExtractHeading from '@utils/ExtractHeading';
 import '../TableOfContents.scss';
 import './BlogContent.scss';
-import { ImageViewer } from '@/common';
 
 interface Props {
   body: string;
