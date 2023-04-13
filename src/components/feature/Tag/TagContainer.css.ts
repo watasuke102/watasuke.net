@@ -7,10 +7,9 @@
 import {style} from '@vanilla-extract/css';
 import {color} from '@/common/color';
 
-const border_radius = 8;
-
 export const container = style({
   display: 'flex',
+  flexWrap: 'wrap',
   alignItems: 'center',
 });
 
@@ -21,6 +20,7 @@ export const icon = style({
   marginBottom: 5,
 });
 
+const border_radius = 8;
 export const link = style({
   display: 'inline-block',
   whiteSpace: 'nowrap',
