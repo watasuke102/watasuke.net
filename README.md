@@ -28,4 +28,6 @@ http://localhost:1337/admin で記事を編集し、http://localhost:8000 で確
 
 ## LICENSE
 
-MIT SUSHI-WARE LICENSE
+Dual-licensed; MIT (`LICENSE-MIT` or [The MIT License – Open Source Initiative](https://opensource.org/license/mit/)) or MIT SUSHI-WARE LICENSE (`LICENSE-MIT_SUSHI.md`)
+
+
