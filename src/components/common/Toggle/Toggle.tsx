@@ -15,7 +15,6 @@ interface Props {
 }
 
 export function Toggle(props: Props): React.ReactElement {
-  console.log(style);
   return (
     <div className={style.container}>
       <span
