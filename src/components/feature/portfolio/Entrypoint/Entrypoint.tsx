@@ -27,7 +27,7 @@ export const Entrypoint = (props: {
     const page_transition_bool = IsMobileDevice() ? false : page_transition !== 'off';
     navigate(`?lang=${lang}&page_transition=${page_transition_bool}&animation=${animation !== 'off'}`);
     props.complete(lang, page_transition_bool, animation !== 'off');
-  }, [lang, animation]);
+  }, [lang, animation, page_transition]);
 
   return (
     <>
