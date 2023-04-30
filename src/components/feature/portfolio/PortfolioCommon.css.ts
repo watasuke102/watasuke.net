@@ -8,9 +8,7 @@ import {color} from '@/common/color';
 import {globalStyle, keyframes, style} from '@vanilla-extract/css';
 
 export const container = style({
-  position: 'absolute',
-  left: 0,
-  top: 0,
+  position: 'relative',
   width: '100vw',
   minHeight: '100vh',
   color: color.bg,
