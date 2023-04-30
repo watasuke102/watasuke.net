@@ -21,6 +21,10 @@ globalStyle(`${bio} a`, {
   color: color.bg,
   textDecoration: 'underline',
 });
+globalStyle(`${bio} a:hover`, {
+  color: color.bg,
+  textDecoration: 'underline',
+});
 
 export const bio_hidden = style({
   opacity: 0,
