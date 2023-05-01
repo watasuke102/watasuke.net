@@ -18,22 +18,6 @@ import IconYouTube from '@assets/icons/Links/youtube.svg';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Card'}]);
 
-interface IconAndLinkProps {
-  Icon: () => React.ReactElement;
-  text: string;
-  primary?: boolean;
-}
-
-function IconAndLink(props: IconAndLinkProps): React.ReactElement {
-  return (
-    <>
-      <props.Icon />
-      <span>{props.text}</span>
-    </>
-    //   <div className={props.primary ? style.icon_and_link_primary : style.icon_and_link_secondary}> </div>
-  );
-}
-
 export default function Card(): React.ReactElement {
   return (
     <div className={style.background}>
