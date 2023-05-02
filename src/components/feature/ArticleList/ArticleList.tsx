@@ -43,7 +43,7 @@ export const ArticleList = (props: Props): React.ReactElement => {
         <div className={style.empty}></div>
       ) : (
         <div className={style.button} onClick={BeforePage}>
-          <i className='fas fa-chevron-left' />
+          <i className='fa-solid fa-chevron-left' />
         </div>
       )}
       {/* 現在ページと合計ページの表示 */}
@@ -54,7 +54,7 @@ export const ArticleList = (props: Props): React.ReactElement => {
         <div className={style.empty}></div>
       ) : (
         <div className={style.button} onClick={NextPage}>
-          <i className={`${style.button_icon} fas fa-chevron-right`} />
+          <i className={`${style.button_icon} fa-solid fa-chevron-right`} />
         </div>
       )}
     </section>

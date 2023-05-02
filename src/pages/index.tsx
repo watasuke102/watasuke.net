@@ -16,10 +16,10 @@ const breadcrumb_list = GenBreadcrumb([]);
 
 export default function Index(): React.ReactElement {
   const menu_list = [
-    {text: 'About', url: '/about', icon: 'fas fa-info-circle'},
-    {text: 'Blog', url: '/blog', icon: 'fas fa-pen'},
-    {text: 'Profile', url: '/profile', icon: 'fas fa-user'},
-    {text: 'Portfolio', url: '/portfolio', icon: 'fas fa-rocket'},
+    {text: 'About', url: '/about', icon: 'fa-solid fa-info-circle'},
+    {text: 'Blog', url: '/blog', icon: 'fa-solid fa-pen'},
+    {text: 'Profile', url: '/profile', icon: 'fa-solid fa-user'},
+    {text: 'Portfolio', url: '/portfolio', icon: 'fa-solid fa-rocket'},
   ];
 
   return (

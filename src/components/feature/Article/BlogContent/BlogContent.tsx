@@ -87,7 +87,7 @@ export const BlogContent = (props: Props): React.ReactElement => {
             <div className='BlogContent-table_of_contents_container'>
               <div className='top_items'>
                 <div className='close_button' onClick={() => SetTocOpening(!tocOpening)}>
-                  {tocOpening ? <i className='fas fa-angle-up' /> : <i className='fas fa-angle-down' />}
+                  {tocOpening ? <i className='fa-solid fa-angle-up' /> : <i className='fa-solid fa-angle-down' />}
                 </div>
                 <span className='heading'>目次</span>
               </div>

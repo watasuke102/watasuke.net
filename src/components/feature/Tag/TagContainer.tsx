@@ -19,7 +19,7 @@ interface Props {
 export const TagContainer = (props: Props): React.ReactElement => {
   return (
     <div className={style.container}>
-      {!props.disable_icon && <i className={`${style.icon} fas fa-tag`} />}
+      {!props.disable_icon && <i className={`${style.icon} fa-solid fa-tag`} />}
 
       {props.tags.map(tag => {
         return (

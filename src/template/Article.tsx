@@ -42,12 +42,12 @@ export default function Articale(prop: Props): React.ReactElement {
           <div className='Article-date'>
             <div className='Article-date_update'>
               <p className='desc'>記事の更新日</p>
-              <i className='fas fa-history' />
+              <i className='fa-solid fa-history' />
               <p>{data.updated_at.slice(0, 10)}</p>
             </div>
             <div className='Article-date_publish'>
               <p className='desc'>記事の投稿日</p>
-              <i className='fas fa-upload' />
+              <i className='fa-solid fa-upload' />
               <p>{data.published_at.slice(0, 10)}</p>
             </div>
           </div>
