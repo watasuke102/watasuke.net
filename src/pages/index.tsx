@@ -18,6 +18,7 @@ export default function Index(): React.ReactElement {
   const menu_list = [
     {text: 'About', url: '/about', icon: 'fa-solid fa-info-circle'},
     {text: 'Blog', url: '/blog', icon: 'fa-solid fa-pen'},
+    {text: 'Card', url: '/card', icon: 'fa-solid fa-address-card'},
     {text: 'Profile', url: '/profile', icon: 'fa-solid fa-user'},
     {text: 'Portfolio', url: '/portfolio', icon: 'fa-solid fa-rocket'},
   ];
