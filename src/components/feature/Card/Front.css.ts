@@ -51,7 +51,7 @@ export const icon_and_link = style({
   fontFamily: MyricaM,
   display: 'grid',
   alignItems: 'center',
-  gridTemplateColumns: '3vw 2px 1fr',
+  gridTemplateColumns: '3vw 4px 1fr',
 });
 globalStyle(`${icon_and_link} svg`, {
   height: '100%',
