@@ -16,17 +16,18 @@ export const container = style({
   transform: 'translateX(-50%) translateY(-50%)',
 
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr 1fr',
-  gridTemplateRows: '8px 1fr 8px',
+  gridTemplateColumns: 'repeat(3, 1fr)',
+  gridTemplateRows: '8px auto 8px',
   gap: '0 48px',
 });
 
-export const image_wrapper = style({
+export const qr_container = style({
   display: 'flex',
   flexDirection: 'column',
   paddingTop: 24,
   paddingBottom: 12,
   gap: 8,
+  margin: 'auto',
 });
 
 export const separator = style({

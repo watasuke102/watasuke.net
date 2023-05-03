@@ -16,7 +16,7 @@ export function Back(props: Props): React.ReactElement {
     <div className={style.container} style={props.hidden ? {display: 'none'} : {}}>
       <div className={style.separator} />
       {['watasuke.net', 'Twitter', 'GitHub'].map(name => (
-        <div className={style.image_wrapper} key={`qr_${name}`}>
+        <div className={style.qr_container} key={name}>
           <img loading='eager' placeholder='none' src={`/qr/${name}.png`} alt={`qrcode (${name})`} />
           <span className={style.url}>{name}</span>
         </div>
