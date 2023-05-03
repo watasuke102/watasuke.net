@@ -16,6 +16,12 @@ const breadcrumb_list = GenBreadcrumb([{name: 'Card'}]);
 export default function Card(): React.ReactElement {
   const [is_fliped, set_is_flipped] = React.useState(false);
   const [is_button_hidden, set_is_button_hidden] = React.useState(false);
+  const [is_button_disabled, set_is_button_disabled] = React.useState(false);
+
+  React.useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    set_is_button_disabled((params.get('disable_button') ?? '') === 'true');
+  }, []);
 
   const buttons = [
     {
@@ -37,12 +43,21 @@ export default function Card(): React.ReactElement {
 
   return (
     <>
-      <div className={style.background} onClick={() => set_is_button_hidden(false)}>
+      <div
+        className={style.background}
+        onClick={() => {
+          if (is_button_disabled) {
+            set_is_flipped(s => !s);
+          } else {
+            set_is_button_hidden(false);
+          }
+        }}
+      >
         {/* unmountすると切り替え時に画像をfetchしに行ってしまう */}
         <Front hidden={is_fliped} />
         <Back hidden={!is_fliped} />
       </div>
-      {!is_button_hidden && (
+      {!is_button_hidden && !is_button_disabled && (
         <div className={style.button_container}>
           {buttons.map(e => (
             <button key={e.icon} aria-label={e.label} className={`fa-solid fa-${e.icon}`} onClick={e.on_click} />
