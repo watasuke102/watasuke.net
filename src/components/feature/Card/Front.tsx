@@ -14,9 +14,13 @@ import IconSoundcloud from '@assets/icons/Links/soundcloud.svg';
 import IconTwitter from '@assets/icons/Links/twitter.svg';
 import IconYouTube from '@assets/icons/Links/youtube.svg';
 
-export function Front(): React.ReactElement {
+interface Props {
+  hidden: boolean;
+}
+
+export function Front(props: Props): React.ReactElement {
   return (
-    <div className={style.container}>
+    <div className={style.container} style={props.hidden ? {display: 'none'} : {}}>
       <div className={style.avatar}>
         <StaticImage loading='eager' placeholder='none' src='../../../assets/icon.jpg' alt='icon' />
       </div>

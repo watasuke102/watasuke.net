@@ -1,3 +1,4 @@
 import {Front} from './Front';
+import { Back } from './Back';
 
-export {Front};
+export {Front, Back};

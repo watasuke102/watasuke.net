@@ -1,25 +1,12 @@
-// card.css.ts
+// Front.css.ts
 //
 // CopyRight (c) 2021-2023 Watasuke
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {color} from '@/common/color';
-import {fontFace, globalStyle, style} from '@vanilla-extract/css';
-
-const MyricaM = fontFace({
-  src: 'url(/MyricaM.woff)',
-});
-
-export const background = style({
-  position: 'fixed',
-  left: 0,
-  top: 0,
-  width: '100dvw',
-  height: '100dvh',
-  overflow: 'hidden',
-  backgroundColor: color.p0,
-});
+import {globalStyle, style} from '@vanilla-extract/css';
+import { MyricaM } from './common.css';
 
 export const container = style({
   position: 'relative',
