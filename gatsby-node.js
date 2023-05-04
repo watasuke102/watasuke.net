@@ -82,7 +82,7 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
   // サイトのデータ（プロフィールとかなんとか）を登録
   let failed = false;
   response = await fetch('http://127.0.0.1:1337/sitedata').catch(e => {
-    console.log(`[INFO] Failed to fetch from API (${e.message}) Cancel to create node.`);
+    console.error(`[INFO] Failed to fetch from API (${e.message}) Cancel to create node.`);
     failed = true;
   });
   if (failed) return;
@@ -99,40 +99,54 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
     });
   });
 
-  let url_list = [];
-  // ブログ記事を登録
-  response = await fetch('http://127.0.0.1:1337/articles');
-  const articles = await response.json();
-  console.log('** Creating article nodes...');
-  articles.forEach(item => {
-    //console.log(`${item.title} (${item.slug}) tag: `, item.tags);
-    actions.createNode({
-      id: `Article_${item.id}`,
-      slug: item.slug,
-      title: item.title,
-      body: item.body,
-      tags: item.tags,
-      thumbnail: item.thumbnail ? item.thumbnail.formats.large.url : null,
-      published_at: item.published_at,
-      updated_at: item.updated_at,
-      internal: {
-        type: 'Articles',
-        contentDigest: createContentDigest(item),
-      },
+  let url_list = await (async () => {
+    let list = [];
+    // ブログ記事を登録
+    response = await fetch('http://127.0.0.1:1337/articles');
+    const articles = await response.json();
+    console.info('   ** Creating article nodes...');
+    articles.forEach(item => {
+      //console.log(`${item.title} (${item.slug}) tag: `, item.tags);
+      actions.createNode({
+        id: `Article_${item.id}`,
+        slug: item.slug,
+        title: item.title,
+        body: item.body,
+        tags: item.tags,
+        thumbnail: item.thumbnail ? item.thumbnail.formats.large.url : null,
+        published_at: item.published_at,
+        updated_at: item.updated_at,
+        internal: {
+          type: 'Articles',
+          contentDigest: createContentDigest(item),
+        },
+      });
+      let urls = item.body.match(/https?:\/\/[\w/:%#\$&\?~\.=\+\-]+/g);
+      if (urls) {
+        list = list.concat(urls);
+      }
     });
-    let urls = item.body.match(/https?:\/\/[\w/:%#\$&\?~\.=\+\-]+/g);
-    if (urls) {
-      url_list = url_list.concat(urls);
-    }
-  });
+    return Array.from(
+      new Set(
+        list.filter(
+          // TwitterとYouTubeは専用の埋め込みがあるのでいらない
+          url => url.slice(0, 19) !== 'https://twitter.com' && url.slice(0, 23) !== 'https://www.youtube.com',
+        ),
+      ),
+    );
+  })();
 
-  // 各URL（重複排除）のOGPタグを登録
-  console.log('* Start collecting OGP...');
-  console.log('* url_list: ', Array.from(new Set(url_list)));
-  Array.from(new Set(url_list)).forEach(async (url, i) => {
-    // TwitterとYouTubeは専用の埋め込みがあるのでいらない
-    if (url.slice(0, 19) === 'https://twitter.com' || url.slice(0, 23) === 'https://www.youtube.com') return;
+  console.info('   * Start collecting OGP...');
+  const max_count = 50;
+  const promise_queue = [];
+  let count = 0;
+  url_list.forEach(async (url, i) => {
+    ++count;
+    if (count > max_count) {
+      await new Promise(r => promise_queue.push(r));
+    }
     try {
+      console.debug(`DEBUG   [ogp] - ${url}`);
       let OgpParser = require('ogp-parser');
       const ogp = await OgpParser(url);
       let desc = '';
@@ -160,10 +174,13 @@ cannot fetch OGP data
 -------------------------------
 `);
     }
+    console.debug(`DEBUG   [ogp] - ${url} > done`);
+    --count;
+    promise_queue.shift()?.();
   });
 
   // タグ一覧を登録
-  console.log('* Registering Tag...');
+  console.info('   * Registering Tag...');
   response = await fetch('http://127.0.0.1:1337/tags');
   const tags = await response.json();
   tags.forEach(item => {
