@@ -22,7 +22,7 @@ export const button_container = style({
   top: 0,
   left: 0,
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr 1fr',
+  gridTemplateColumns: 'repeat(4, 1fr)',
   gap: 16,
   fontSize: '1.5em',
   padding: '8px 12px',

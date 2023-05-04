@@ -39,6 +39,14 @@ export default function Card(): React.ReactElement {
       icon: 'chevron-up',
       on_click: () => set_is_button_hidden(true),
     },
+    {
+      label: 'disable button container',
+      icon: 'ban',
+      on_click: () => {
+        set_is_button_disabled(true);
+        navigate('?disable_button=true');
+      },
+    },
   ];
 
   return (
