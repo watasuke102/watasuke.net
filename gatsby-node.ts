@@ -4,12 +4,44 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-const fs = require('fs');
-const path = require('path');
-const fetch = require('node-fetch');
+import fs from 'fs';
+import {GatsbyNode} from 'gatsby';
+import fetch from 'node-fetch';
+import OgpParser from 'ogp-parser';
+import path from 'path';
+
+interface Tag {
+  id?: number;
+  slug: string;
+  name: string;
+}
+
+interface SiteData {
+  id: number;
+  slug: string;
+  body: string;
+}
+
+interface Article {
+  id: number;
+  slug: string;
+  title: string;
+  body: string;
+  tags: {
+    slug: string;
+    name: string;
+  }[];
+  thumbnail: {
+    formats: {
+      large: {url: string};
+    };
+  };
+  published_at: string;
+  updated_at: string;
+}
 
 // サイトのデータ登録
-exports.createSchemaCustomization = ({actions}) => {
+export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = ({actions}) => {
   actions.createTypes(`
     type PortfolioToml implements Node @dontInfer {
       name: String,
@@ -48,7 +80,7 @@ exports.createSchemaCustomization = ({actions}) => {
     }
   `);
 };
-exports.sourceNodes = async ({actions, createContentDigest}) => {
+export const sourceNodes: GatsbyNode['sourceNodes'] = async ({actions, createContentDigest}) => {
   // ポートフォリオ用tomlを読み込み
   fs.readdir(path.resolve('./src/assets/portfolio_toml'), (err, files) => {
     if (err) {
@@ -85,9 +117,9 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
     console.error(`[INFO] Failed to fetch from API (${e.message}) Cancel to create node.`);
     failed = true;
   });
-  if (failed) return;
+  if (failed || !response) return;
   const data = await response.json();
-  data.forEach(item => {
+  data.forEach((item: SiteData) => {
     actions.createNode({
       id: `SiteData_${item.id}`,
       slug: item.slug,
@@ -99,16 +131,16 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
     });
   });
 
-  let url_list = await (async () => {
-    let list = [];
+  const url_list = await (async () => {
+    let list: string[] = [];
     // ブログ記事を登録
     response = await fetch('http://127.0.0.1:1337/articles');
     const articles = await response.json();
     console.info('   ** Creating article nodes...');
-    articles.forEach(item => {
+    articles.forEach((item: Article) => {
       //console.log(`${item.title} (${item.slug}) tag: `, item.tags);
       actions.createNode({
-        id: `Article_${item.id}`,
+        id: `Article_${item.id ?? 0}`,
         slug: item.slug,
         title: item.title,
         body: item.body,
@@ -121,7 +153,7 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
           contentDigest: createContentDigest(item),
         },
       });
-      let urls = item.body.match(/https?:\/\/[\w/:%#\$&\?~\.=\+\-]+/g);
+      const urls = item.body.match(/https?:\/\/[\w/:%#$&?~.=+-]+/g);
       if (urls) {
         list = list.concat(urls);
       }
@@ -138,16 +170,15 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
 
   console.info('   * Start collecting OGP...');
   const max_count = 50;
-  const promise_queue = [];
+  const promise_queue: Array<() => void> = [];
   let count = 0;
   url_list.forEach(async (url, i) => {
     ++count;
     if (count > max_count) {
-      await new Promise(r => promise_queue.push(r));
+      await new Promise<void>(r => promise_queue.push(r));
     }
     try {
       console.debug(`DEBUG   [ogp] - ${url}`);
-      let OgpParser = require('ogp-parser');
       const ogp = await OgpParser(url);
       let desc = '';
       if (ogp.seo.description) {
@@ -170,7 +201,7 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
       console.error(`
 cannot fetch OGP data
   >> URL: ${url}
-  >> message: ${e.message}
+  >> message: ${(e as Error).message}
 -------------------------------
 `);
     }
@@ -183,9 +214,9 @@ cannot fetch OGP data
   console.info('   * Registering Tag...');
   response = await fetch('http://127.0.0.1:1337/tags');
   const tags = await response.json();
-  tags.forEach(item => {
+  tags.forEach((item: Tag) => {
     actions.createNode({
-      id: `Tags_${item.id}`,
+      id: `Tags_${item.id ?? 0}`,
       slug: item.slug,
       name: item.name,
       internal: {
@@ -197,9 +228,10 @@ cannot fetch OGP data
 };
 
 // ページ作成
-exports.createPages = async ({graphql, actions}) => {
+export const createPages: GatsbyNode['createPages'] = async ({graphql, actions}) => {
+  type Response = {data?: {allArticles: {nodes: Article[]}}};
   // 投稿ページ
-  const response = await graphql(`
+  const response: Response = await graphql(`
     query {
       allArticles(sort: {published_at: DESC}) {
         nodes {
@@ -217,8 +249,8 @@ exports.createPages = async ({graphql, actions}) => {
       }
     }
   `);
-  const articles = response.data.allArticles.nodes;
-  let tag_list = new Set();
+  const articles: Article[] = response.data?.allArticles.nodes ?? [];
+  const tag_list = new Set<Tag>();
   articles.forEach(item => {
     actions.createPage({
       path: `/blog/article/${item['slug']}`,
@@ -229,8 +261,9 @@ exports.createPages = async ({graphql, actions}) => {
   });
 
   // タグを含む記事の一覧ページを作る
-  if (tag_list.length != 0) {
-    for (let tag of tag_list) {
+  const tags = Array.from(tag_list);
+  if (tags.length !== 0) {
+    for (const tag of tags) {
       actions.createPage({
         path: `/blog/tag/${tag['slug']}`,
         component: path.resolve('./src/template/Tag.tsx'),
