@@ -7,7 +7,7 @@
 import {AnimatePresence, motion, useAnimation} from 'framer-motion';
 import React from 'react';
 import {Transition} from '@utils/Transition';
-import './PortfolioContainer.scss';
+import * as style from './PortfolioContainer.css';
 
 enum Position {
   reached_top = -1,
@@ -45,7 +45,7 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
   is_moving_page_ref.current = is_moving_page;
 
   const UpdateScrollBar = () => {
-    const container = document.getElementById('PortfolioContainer-container');
+    const container = document.getElementById('PortfolioContainer');
     if (!container) return;
 
     // 要素がスクロール不可能だった場合は非表示
@@ -77,7 +77,7 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
 
     let changeable: boolean = false;
     // 要素がスクロール不可能だった場合は常にページ移動可能に
-    const container = document.getElementById('PortfolioContainer-container');
+    const container = document.getElementById('PortfolioContainer');
     if (container && container.clientHeight >= container.scrollHeight) changeable = true;
     // 要素がスクロール可能かつ画面端までスクロールしてなければページ移動しない
     if (!changeable && place_ref.current === Position.none) return;
@@ -107,10 +107,10 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
   };
 
   React.useEffect(() => {
-    document.getElementById('PortfolioContainer-container')?.addEventListener('scroll', UpdateScrollBar);
+    document.getElementById('PortfolioContainer')?.addEventListener('scroll', UpdateScrollBar);
     window.addEventListener('wheel', StartPageTransition);
     return () => {
-      document.getElementById('PortfolioContainer-container')?.removeEventListener('scroll', UpdateScrollBar);
+      document.getElementById('PortfolioContainer')?.removeEventListener('scroll', UpdateScrollBar);
       window.removeEventListener('wheel', StartPageTransition);
     };
   }, []);
@@ -119,7 +119,7 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
     if (is_moving_page_ref.current) {
       // フェードアウト後なら、スクロールをリセットしてページ切り替え
       bg_control.start({backgroundColor: BackgroundColors[next_page_ref.current]});
-      document.getElementById('PortfolioContainer-container')?.scrollTo(0, 0);
+      document.getElementById('PortfolioContainer')?.scrollTo(0, 0);
       SetCurrentPage(next_page_ref.current);
       SetPlace(Position.reached_top);
       SetIsMovingPage(false);
@@ -135,7 +135,7 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
 
   if (!props.page_transition_enabled) {
     return (
-      <div id='PortfolioContainer-container_mobile' style={{backgroundColor: BackgroundColors[0]}}>
+      <div className={style.container_mobile} style={{backgroundColor: BackgroundColors[0]}}>
         {props.children.map((page, i) => (
           <div key={page.key} style={{backgroundColor: BackgroundColors[i]}}>
             {page}
@@ -150,7 +150,7 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
       initial={{backgroundColor: BackgroundColors[current_page_ref.current]}}
       animate={bg_control}
       transition={Transition(props.animation_enabled, {duration: 1})}
-      id='PortfolioContainer-background'
+      className={style.view_full}
     >
       <AnimatePresence>
         {!is_moving_page && (
@@ -169,25 +169,26 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
               },
             })}
             onAnimationComplete={OnAnimationComplete}
-            id='PortfolioContainer-container'
+            id='PortfolioContainer'
+            className={`${style.view_full} ${style.container}`}
           >
             {props.children[current_page]}
           </motion.div>
         )}
       </AnimatePresence>
-      <div style={{height: scroll_height}} id='PortfolioContainer-scroll' />
+      <div style={{height: scroll_height}} className={style.scroll_bar} />
 
-      <div id='PortfolioContainer-page_indicator'>
+      <div className={style.page_indicator}>
         {['Welcome', 'Skills', 'History', 'Links'].map((str, index) => (
           <div
             key={index}
-            className={'indicator_container' + (index === current_page ? ' current' : '')}
+            className={`${style.indicator_item} ${index === current_page ? style.current : ''}`}
             onClick={() => {
               SetNextPage(index);
               SetIsMovingPage(true);
             }}
           >
-            <span className='name'>{str}</span>
+            <span className={style.name}>{str}</span>
           </div>
         ))}
       </div>
