@@ -225,31 +225,30 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesAr
   }
 
   log('info', 'Creating Article nodes...');
-  let url_list: string[] = [];
+  const url_list = new Set<string>();
   const articles = await fetchFromStrapi<Article[]>('articles');
   if (articles) {
     articles.forEach((item: Article) => {
       registerArticle(item, args);
-      const urls = item.body.match(/https?:\/\/[\w/:%#$&?~.=+-]+/g);
-      if (urls) {
-        url_list = url_list.concat(urls);
-      }
+      item.body.split('\n').forEach(paragraph => {
+        const url = paragraph.match(/^https?:\/\/[\w/:%#$&?~.=+-]+/g);
+        if (!url) {
+          return;
+        }
+        // TwitterとYouTubeは専用の埋め込みがあるのでいらない
+        if (url[0].slice(0, 19) === 'https://twitter.com' || url[0].slice(0, 23) === 'https://www.youtube.com') {
+          return;
+        }
+        url_list.add(url[0]);
+      });
     });
   }
-  const url_array = Array.from(
-    new Set(
-      url_list.filter(
-        // TwitterとYouTubeは専用の埋め込みがあるのでいらない
-        url => url.slice(0, 19) !== 'https://twitter.com' && url.slice(0, 23) !== 'https://www.youtube.com',
-      ),
-    ),
-  );
 
   log('info', 'Collecting OGP info...');
   const max_count = 50;
   const promise_queue: Array<() => void> = [];
   let count = 0;
-  url_array.forEach(async (url, i) => {
+  Array.from(url_list).forEach(async (url, i) => {
     ++count;
     if (count > max_count) {
       await new Promise<void>(r => promise_queue.push(r));
