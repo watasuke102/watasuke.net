@@ -40,6 +40,20 @@ interface Article {
   updated_at: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function log(type: 'info' | 'error' | 'debug' | 'ogp', ...args: any[]) {
+  const prefix = (() => {
+    // prettier-ignore
+    switch (type) {
+      case 'info':  return '\x1b[1;7;32m[INFO ]\x1b[0m';
+      case 'error': return '\x1b[1;7;31m[ERROR]\x1b[0m';
+      case 'debug': return '\x1b[1;7;36m[DEBUG]\x1b[0m';
+      case 'ogp':   return '\x1b[1;7;35m[OGP  ]\x1b[0m';
+    }
+  })();
+  console.log(prefix, ...args);
+}
+
 // サイトのデータ登録
 export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = ({actions}) => {
   actions.createTypes(`
@@ -144,7 +158,6 @@ async function registerArticle(article: Article, {actions, createContentDigest}:
 
 async function registerOgp(url: string, i: number, {actions, createContentDigest}: SourceNodesArgs) {
   try {
-    console.debug(`DEBUG   [ogp] - ${url}`);
     const ogp = await OgpParser(url);
     let desc = '';
     if (ogp.seo.description) {
@@ -164,14 +177,15 @@ async function registerOgp(url: string, i: number, {actions, createContentDigest
       },
     });
   } catch (e) {
-    console.error(`
-cannot fetch OGP data
+    log(
+      'error',
+      `cannot fetch OGP data
   >> URL: ${url}
   >> message: ${(e as Error).message}
 -------------------------------
-`);
+`,
+    );
   }
-  console.debug(`DEBUG   [ogp] - ${url} > done`);
 }
 
 async function registerTags(tags: Tag[], {actions, createContentDigest}: SourceNodesArgs) {
@@ -190,23 +204,27 @@ async function registerTags(tags: Tag[], {actions, createContentDigest}: SourceN
 
 export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesArgs) => {
   async function fetchFromStrapi<T>(endpoint: string): Promise<T | undefined> {
-    // 最初に1337ポートに問い合わせてエラーになったらその後はなにもしない
-    // Strapiを立ち上げずに開発する時のため
     const response = await fetch(`http://127.0.0.1:1337/${endpoint}`).catch(e => {
-      console.error(`[INFO] Failed to fetch from API (${e.message}) Cancel to create node.`);
+      log('error', `Failed to fetch from API (${endpoint}) : '${e.message}:`);
     });
     if (!response) return undefined;
     return await response.json();
   }
 
+  log('info', 'Loading toml files...');
   registerToml(args);
 
+  // 最初にエラーになったらその後はなにもしない
+  // Strapiを立ち上げずに開発する時のため
+  log('info', 'Creating SiteData nodes...');
   const sitedata = await fetchFromStrapi<SiteData[]>('sitedata');
   if (sitedata) {
     registerSiteDatas(sitedata, args);
+  } else {
+    return;
   }
 
-  console.info('   ** Creating article nodes...');
+  log('info', 'Creating Article nodes...');
   let url_list: string[] = [];
   const articles = await fetchFromStrapi<Article[]>('articles');
   if (articles) {
@@ -227,7 +245,7 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesAr
     ),
   );
 
-  console.info('   * Start collecting OGP...');
+  log('info', 'Collecting OGP info...');
   const max_count = 50;
   const promise_queue: Array<() => void> = [];
   let count = 0;
@@ -236,12 +254,14 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesAr
     if (count > max_count) {
       await new Promise<void>(r => promise_queue.push(r));
     }
+    log('ogp', url);
     registerOgp(url, i, args);
+    log('ogp', url, '> done');
     --count;
     promise_queue.shift()?.();
   });
 
-  console.info('   * Registering Tag...');
+  log('info', 'Creating Tag nodes...');
   const tags = await fetchFromStrapi<Tag[]>('tags');
   if (tags) {
     registerTags(tags, args);
@@ -272,6 +292,7 @@ export const createPages: GatsbyNode['createPages'] = async ({graphql, actions})
   `);
   const articles: Article[] = response.data?.allArticles.nodes ?? [];
   const tag_list = new Set<Tag>();
+  log('info', 'Creating Article pages...');
   articles.forEach(item => {
     actions.createPage({
       path: `/blog/article/${item['slug']}`,
@@ -284,6 +305,7 @@ export const createPages: GatsbyNode['createPages'] = async ({graphql, actions})
   // タグを含む記事の一覧ページを作る
   const tags = Array.from(tag_list);
   if (tags.length !== 0) {
+    log('info', 'Creating Tag pages...');
     for (const tag of tags) {
       actions.createPage({
         path: `/blog/tag/${tag['slug']}`,
