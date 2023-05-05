@@ -26,14 +26,27 @@ interface Props {
   body: string;
 }
 
+interface Position {
+  line: number;
+  column: number;
+  offset: number;
+}
+
 interface Node {
   children: Array<string>;
   href: string;
+  node: {
+    position: {
+      start: Position;
+      end: Position;
+    };
+  };
 }
 
 const Link: React.ComponentType<Node> = (props: Node) => {
-  // [Display](url)の形式であった場合は
-  if (props.children[0] !== props.href) {
+  console.log('EMBED', props);
+  // [Display](url)の形式であった場合、文頭ではなかった場合（箇条書き内など）はEmbedにしない
+  if (props.children[0] !== props.href || props.node.position.start.column !== 1) {
     return <a href={props.href}>{props.children[0]}</a>;
   }
   // Twitter
@@ -129,9 +142,6 @@ export const BlogContent = (props: Props): React.ReactElement => {
         // eslint-disable-next-line react/no-children-prop
         children={props.body.replace(/\/uploads/g, `${imageUrl}/uploads`)}
       />
-      {/* <Remark remarkPlugins={[Gfm, Toc, Slug]} rehypeReactOptions={rehype_react_options}>
-        {/* 画像のURLを置き換える /}
-      </Remark> */}
       <AdsInArticle />
     </section>
   );
