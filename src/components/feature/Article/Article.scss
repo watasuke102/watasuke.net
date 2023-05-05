@@ -83,23 +83,22 @@
   padding: 10px;
   max-height: 80vh;
   overflow-y: scroll;
-  background-color: color.$fg;
-  // border: solid 2px color.$fg;
+  border: solid 2px color.$fg;
 
-  li {
-    padding: 5px 10px;
-    margin: 10px 0;
-    &::marker {
-      content: '';
-    }
-    a {
-      display: block;
-      width: auto;
-    }
+  display: flex;
+  flex-direction: column;
 
-    background-color: rgba(color.$bg, 0.85);
+  a {
+    padding: 4px 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    display: block;
+    width: auto;
+    border-radius: 3px;
+
+    background-color: rgba(color.$fg, 0.25);
     &:hover {
-      background-color: rgba(color.$bg, 1);
+      background-color: rgba(color.$fg, 0.4);
     }
   }
 }

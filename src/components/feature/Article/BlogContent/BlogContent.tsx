@@ -19,7 +19,7 @@ import Toc from 'remark-toc';
 import {AdsInArticle} from '@/feature/Ads';
 import {EmbedCard} from '@/feature/Article';
 import ExtractHeading from '@utils/ExtractHeading';
-import '../TableOfContents.scss';
+import {toc_list} from '../TableOfContents.css';
 import './BlogContent.scss';
 
 interface Props {
@@ -118,7 +118,7 @@ export const BlogContent = (props: Props): React.ReactElement => {
                 >
                   <ol>
                     {table_of_contents.map(item => (
-                      <li key={item.body} className={`toc-${item.size}`}>
+                      <li key={item.body} className={toc_list[item.size]}>
                         <a href={`#${item.body.toLowerCase()}`}>{item.body}</a>
                       </li>
                     ))}

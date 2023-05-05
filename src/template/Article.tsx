@@ -10,7 +10,7 @@ import RemoveMD from 'remove-markdown';
 import '@/common/main.scss';
 import {BlogContent, Thumbnail} from '@/feature/Article';
 import '@/feature/Article/Article.scss';
-import '@/feature/Article/TableOfContents.scss';
+import {toc_list} from '@/feature/Article/TableOfContents.css';
 import {ProfileCard} from '@/feature/ArticleLayout/ProfileCard';
 import {AllTagList, TagContainer} from '@/feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
@@ -67,9 +67,9 @@ export default function Articale(prop: Props): React.ReactElement {
           {table_of_contents.length > 2 && (
             <section className='Article-side_toc'>
               {table_of_contents.map(item => (
-                <li key={item.body} className={`toc-${item.size}`}>
-                  <a href={`#${item.body.toLowerCase()}`}>{item.body}</a>
-                </li>
+                <a key={item.body} className={toc_list[item.size]} href={`#${item.body.toLowerCase()}`}>
+                  {item.body}
+                </a>
               ))}
             </section>
           )}
