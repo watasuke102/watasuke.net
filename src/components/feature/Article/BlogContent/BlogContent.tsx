@@ -44,7 +44,6 @@ interface Node {
 }
 
 const Link: React.ComponentType<Node> = (props: Node) => {
-  console.log('EMBED', props);
   // [Display](url)の形式であった場合、文頭ではなかった場合（箇条書き内など）はEmbedにしない
   if (props.children[0] !== props.href || props.node.position.start.column !== 1) {
     return <a href={props.href}>{props.children[0]}</a>;
