@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import fs from 'fs';
-import {GatsbyNode} from 'gatsby';
+import {GatsbyNode, SourceNodesArgs} from 'gatsby';
 import fetch from 'node-fetch';
 import OgpParser from 'ogp-parser';
 import path from 'path';
@@ -80,8 +80,8 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
     }
   `);
 };
-export const sourceNodes: GatsbyNode['sourceNodes'] = async ({actions, createContentDigest}) => {
-  // ポートフォリオ用tomlを読み込み
+
+function registerToml({actions, createContentDigest}: SourceNodesArgs) {
   fs.readdir(path.resolve('./src/assets/portfolio_toml'), (err, files) => {
     if (err) {
       throw err;
@@ -109,17 +109,10 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async ({actions, createCon
       });
     });
   });
+}
 
-  let response;
-  // サイトのデータ（プロフィールとかなんとか）を登録
-  let failed = false;
-  response = await fetch('http://127.0.0.1:1337/sitedata').catch(e => {
-    console.error(`[INFO] Failed to fetch from API (${e.message}) Cancel to create node.`);
-    failed = true;
-  });
-  if (failed || !response) return;
-  const data = await response.json();
-  data.forEach((item: SiteData) => {
+async function registerSiteDatas(sitedata_list: SiteData[], {actions, createContentDigest}: SourceNodesArgs) {
+  sitedata_list.forEach((item: SiteData) => {
     actions.createNode({
       id: `SiteData_${item.id}`,
       slug: item.slug,
@@ -130,90 +123,58 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async ({actions, createCon
       },
     });
   });
+}
 
-  const url_list = await (async () => {
-    let list: string[] = [];
-    // ブログ記事を登録
-    response = await fetch('http://127.0.0.1:1337/articles');
-    const articles = await response.json();
-    console.info('   ** Creating article nodes...');
-    articles.forEach((item: Article) => {
-      //console.log(`${item.title} (${item.slug}) tag: `, item.tags);
-      actions.createNode({
-        id: `Article_${item.id ?? 0}`,
-        slug: item.slug,
-        title: item.title,
-        body: item.body,
-        tags: item.tags,
-        thumbnail: item.thumbnail ? item.thumbnail.formats.large.url : null,
-        published_at: item.published_at,
-        updated_at: item.updated_at,
-        internal: {
-          type: 'Articles',
-          contentDigest: createContentDigest(item),
-        },
-      });
-      const urls = item.body.match(/https?:\/\/[\w/:%#$&?~.=+-]+/g);
-      if (urls) {
-        list = list.concat(urls);
-      }
-    });
-    return Array.from(
-      new Set(
-        list.filter(
-          // TwitterとYouTubeは専用の埋め込みがあるのでいらない
-          url => url.slice(0, 19) !== 'https://twitter.com' && url.slice(0, 23) !== 'https://www.youtube.com',
-        ),
-      ),
-    );
-  })();
+async function registerArticle(article: Article, {actions, createContentDigest}: SourceNodesArgs) {
+  actions.createNode({
+    id: `Article_${article.id ?? 0}`,
+    slug: article.slug,
+    title: article.title,
+    body: article.body,
+    tags: article.tags,
+    thumbnail: article.thumbnail ? article.thumbnail.formats.large.url : null,
+    published_at: article.published_at,
+    updated_at: article.updated_at,
+    internal: {
+      type: 'Articles',
+      contentDigest: createContentDigest(article),
+    },
+  });
+}
 
-  console.info('   * Start collecting OGP...');
-  const max_count = 50;
-  const promise_queue: Array<() => void> = [];
-  let count = 0;
-  url_list.forEach(async (url, i) => {
-    ++count;
-    if (count > max_count) {
-      await new Promise<void>(r => promise_queue.push(r));
+async function registerOgp(url: string, i: number, {actions, createContentDigest}: SourceNodesArgs) {
+  try {
+    console.debug(`DEBUG   [ogp] - ${url}`);
+    const ogp = await OgpParser(url);
+    let desc = '';
+    if (ogp.seo.description) {
+      desc = ogp.seo.description.reduce((prev, cur) => prev + cur);
+    } else if (ogp.ogp['og:description']) {
+      desc = ogp.ogp['og:description'].reduce((prev, cur) => prev + cur);
     }
-    try {
-      console.debug(`DEBUG   [ogp] - ${url}`);
-      const ogp = await OgpParser(url);
-      let desc = '';
-      if (ogp.seo.description) {
-        desc = ogp.seo.description.reduce((prev, cur) => prev + cur);
-      } else if (ogp.ogp['og:description']) {
-        desc = ogp.ogp['og:description'].reduce((prev, cur) => prev + cur);
-      }
-      actions.createNode({
-        id: `Ogp_${i}`,
-        url: url,
-        title: ogp.title ?? url,
-        description: desc ?? '',
-        image: ogp.ogp['og:image'] ? ogp.ogp['og:image'][0] : '',
-        internal: {
-          type: 'Ogp',
-          contentDigest: createContentDigest(url),
-        },
-      });
-    } catch (e) {
-      console.error(`
+    actions.createNode({
+      id: `Ogp_${i}`,
+      url: url,
+      title: ogp.title ?? url,
+      description: desc ?? '',
+      image: ogp.ogp['og:image'] ? ogp.ogp['og:image'][0] : '',
+      internal: {
+        type: 'Ogp',
+        contentDigest: createContentDigest(url),
+      },
+    });
+  } catch (e) {
+    console.error(`
 cannot fetch OGP data
   >> URL: ${url}
   >> message: ${(e as Error).message}
 -------------------------------
 `);
-    }
-    console.debug(`DEBUG   [ogp] - ${url} > done`);
-    --count;
-    promise_queue.shift()?.();
-  });
+  }
+  console.debug(`DEBUG   [ogp] - ${url} > done`);
+}
 
-  // タグ一覧を登録
-  console.info('   * Registering Tag...');
-  response = await fetch('http://127.0.0.1:1337/tags');
-  const tags = await response.json();
+async function registerTags(tags: Tag[], {actions, createContentDigest}: SourceNodesArgs) {
   tags.forEach((item: Tag) => {
     actions.createNode({
       id: `Tags_${item.id ?? 0}`,
@@ -225,6 +186,66 @@ cannot fetch OGP data
       },
     });
   });
+}
+
+export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesArgs) => {
+  async function fetchFromStrapi<T>(endpoint: string): Promise<T | undefined> {
+    // 最初に1337ポートに問い合わせてエラーになったらその後はなにもしない
+    // Strapiを立ち上げずに開発する時のため
+    const response = await fetch(`http://127.0.0.1:1337/${endpoint}`).catch(e => {
+      console.error(`[INFO] Failed to fetch from API (${e.message}) Cancel to create node.`);
+    });
+    if (!response) return undefined;
+    return await response.json();
+  }
+
+  registerToml(args);
+
+  const sitedata = await fetchFromStrapi<SiteData[]>('sitedata');
+  if (sitedata) {
+    registerSiteDatas(sitedata, args);
+  }
+
+  console.info('   ** Creating article nodes...');
+  let url_list: string[] = [];
+  const articles = await fetchFromStrapi<Article[]>('articles');
+  if (articles) {
+    articles.forEach((item: Article) => {
+      registerArticle(item, args);
+      const urls = item.body.match(/https?:\/\/[\w/:%#$&?~.=+-]+/g);
+      if (urls) {
+        url_list = url_list.concat(urls);
+      }
+    });
+  }
+  const url_array = Array.from(
+    new Set(
+      url_list.filter(
+        // TwitterとYouTubeは専用の埋め込みがあるのでいらない
+        url => url.slice(0, 19) !== 'https://twitter.com' && url.slice(0, 23) !== 'https://www.youtube.com',
+      ),
+    ),
+  );
+
+  console.info('   * Start collecting OGP...');
+  const max_count = 50;
+  const promise_queue: Array<() => void> = [];
+  let count = 0;
+  url_array.forEach(async (url, i) => {
+    ++count;
+    if (count > max_count) {
+      await new Promise<void>(r => promise_queue.push(r));
+    }
+    registerOgp(url, i, args);
+    --count;
+    promise_queue.shift()?.();
+  });
+
+  console.info('   * Registering Tag...');
+  const tags = await fetchFromStrapi<Tag[]>('tags');
+  if (tags) {
+    registerTags(tags, args);
+  }
 };
 
 // ページ作成
