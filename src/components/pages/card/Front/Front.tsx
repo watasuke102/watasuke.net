@@ -22,7 +22,7 @@ export function Front(props: Props): React.ReactElement {
   return (
     <div className={style.container} style={props.hidden ? {display: 'none'} : {}}>
       <div className={style.avatar}>
-        <StaticImage loading='eager' placeholder='none' src='../../../assets/icon.jpg' alt='icon' />
+        <StaticImage loading='eager' placeholder='none' src='../../../../assets/icon.jpg' alt='icon' />
       </div>
       <div className={style.info}>
         <span className={style.name}>わたすけ</span>
