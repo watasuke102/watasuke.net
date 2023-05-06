@@ -4,9 +4,9 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import {PortfolioContainer, Entrypoint, Welcome, Skills, History, Links, End} from '@/pages/portfolio';
 import {Seo} from '@/common';
 import React from 'react';
-import {PortfolioContainer, Entrypoint, Welcome, Skills, History, Links, End} from '@/feature/portfolio';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Portfolio'}]);

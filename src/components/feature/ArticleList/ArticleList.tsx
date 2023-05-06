@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import React from 'react';
 import Article from '@mytypes/Article';
-import {ArticleCard} from '../ArticleCard';
+import {ArticleCard} from './ArticleCard/ArticleCard';
 import * as style from './ArticleList.css';
 
 interface Props {

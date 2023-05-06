@@ -4,6 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as portfolio_common from '@/pages/portfolio/common.css';
 import {AnimatePresence, motion} from 'framer-motion';
 import {useStaticQuery, graphql} from 'gatsby';
 import {StaticImage} from 'gatsby-plugin-image';
@@ -12,7 +13,6 @@ import {ReactMarkdown} from 'react-markdown/lib/react-markdown';
 import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import toml from 'toml';
-import * as portfolio_common from '@/feature/portfolio/PortfolioCommon.css';
 import {Transition} from '@utils/Transition';
 import * as style from './Welcome.css';
 import IconEnvelope from '@assets/icons/Links/envelope.svg';

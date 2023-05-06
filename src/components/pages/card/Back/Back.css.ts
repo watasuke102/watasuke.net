@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {color} from '@/common/color';
-import {MyricaM} from './common.css';
+import {MyricaM} from '../common.css';
 import {style} from '@vanilla-extract/css';
 
 export const container = style({

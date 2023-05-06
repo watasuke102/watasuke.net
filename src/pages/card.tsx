@@ -4,11 +4,11 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from '@/pages/card.css';
+import * as style from '@/pages/card/card.css';
 import {Seo} from '@/common';
 import {navigate} from 'gatsby';
 import React from 'react';
-import {Back, Front} from '@/feature/Card';
+import {Back, Front} from '@/pages/card';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Card'}]);
