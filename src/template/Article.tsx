@@ -9,7 +9,7 @@ import React from 'react';
 import RemoveMD from 'remove-markdown';
 import '@/common/main.scss';
 import {BlogContent} from '@/feature/Article';
-import '@/feature/Article/Article.scss';
+import * as style from '@/feature/Article/Article.css';
 import {ProfileCard} from '@/feature/Article/ProfileCard/ProfileCard';
 import {TocRight} from '@/feature/Article/TocRight/TocRight';
 import {AllTagList} from '@/feature/Tag';
@@ -32,15 +32,15 @@ export default function Articale(prop: Props): React.ReactElement {
   return (
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list(data.title)} />
-      <div className='Article-container'>
+      <div className={style.container}>
         {/* 記事メイン部分 */}
         <BlogContent data={data} />
 
         {/* サイドバー */}
-        <div className='Article-side'>
+        <div className={style.side}>
           <ProfileCard />
-          <section className='Article-side_tag'>
-            <span className='head'>タグ</span>
+          <section className={style.side_tag}>
+            <span className={style.head}>タグ</span>
             <AllTagList />
           </section>
           {table_of_contents.length > 2 && <TocRight table_of_contents={table_of_contents} />}
