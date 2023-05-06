@@ -19,8 +19,7 @@ import {AdsInArticle} from '@/feature/Ads';
 import {TagContainer} from '@/feature/Tag';
 import ExtractHeading from '@utils/ExtractHeading';
 import Article from '@mytypes/Article';
-import {Link} from '../Link/Link';
-import {TocInArticle} from '../TocInArticle/TocInArticle';
+import {Link, TocInArticle} from '@/feature/Article';
 import * as style from './BlogContent.css';
 import './BlogContent_override.scss';
 

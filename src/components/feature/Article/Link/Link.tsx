@@ -5,8 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import React from 'react';
-import {EmbedCard} from '@/feature/Article';
-import {InnerEmbedCard} from '../InnerEmbedCard/InnerEmbedCard';
+import {EmbedCard, InnerEmbedCard} from '@/feature/Article';
 
 interface Position {
   line: number;
