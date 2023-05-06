@@ -16,13 +16,17 @@ import Gfm from 'remark-gfm';
 import Slug from 'remark-slug';
 import Toc from 'remark-toc';
 import {AdsInArticle} from '@/feature/Ads';
+import {TagContainer} from '@/feature/Tag';
 import ExtractHeading from '@utils/ExtractHeading';
+import Article from '@mytypes/Article';
 import {Link} from '../Link/Link';
+import {Thumbnail} from '../Thumbnail/Thumbnail';
 import {TocInArticle} from '../TocInArticle/TocInArticle';
-import './BlogContent.scss';
+import * as style from './BlogContent.css';
+import './BlogContent_override.scss';
 
 interface Props {
-  body: string;
+  data: Article;
 }
 
 let h2_count = 0;
@@ -48,12 +52,31 @@ export const BlogContent = (props: Props): React.ReactElement => {
     }, 0);
   }, []);
 
-  const table_of_contents = ExtractHeading(props.body);
+  const table_of_contents = ExtractHeading(props.data.body);
   return (
     <section className='BlogContent-container'>
+      <h1 className={style.title}>{props.data.title}</h1>
+      {/* サムネ */}
+      <Thumbnail url={props.data.thumbnail} />
+
+      {/* 公開日と更新日 */}
+      <div className={style.date_container}>
+        <div className={style.date} aria-label='記事の更新日'>
+          <i className='fa-solid fa-history' />
+          <span>{props.data.updated_at.slice(0, 10)}</span>
+        </div>
+        <div className={style.date} aria-label='記事の投稿日'>
+          <i className='fa-solid fa-upload' />
+          <span>{props.data.published_at.slice(0, 10)}</span>
+        </div>
+      </div>
+      {/* タグ */}
+      <TagContainer tags={props.data.tags} />
+
       <AdsInArticle />
       {/* 見出しが2個未満だったら目次を出しても違和感がある気がする */}
       {table_of_contents.length > 2 && <TocInArticle table_of_contents={table_of_contents} />}
+
       <ReactMarkdown
         components={{
           a: Link,
@@ -64,7 +87,7 @@ export const BlogContent = (props: Props): React.ReactElement => {
         remarkPlugins={[Gfm, Toc, Slug]}
         rehypePlugins={[Raw]}
         // eslint-disable-next-line react/no-children-prop
-        children={props.body.replace(/\/uploads/g, `${imageUrl}/uploads`)}
+        children={props.data.body.replace(/\/uploads/g, `${imageUrl}/uploads`)}
       />
       <AdsInArticle />
     </section>

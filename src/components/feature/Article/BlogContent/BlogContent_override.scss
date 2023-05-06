@@ -7,9 +7,23 @@
 @use '../../../common/color.scss';
 
 .BlogContent-container {
+  width: 70%;
+  border-right: 1px solid color.$fg;
+  padding: 15px;
   // Twitter embed
   .twitter-tweet {
     margin: 0 auto;
+  }
+  .youtube-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; // 9/16
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
   .Thumbnail img {
     width: 100%;
@@ -50,10 +64,25 @@
   }
 }
 
+// コードの言語表示の見た目変更
+.toolbar {
+  opacity: 1 !important;
+  div > span {
+    font-size: 1.1em !important;
+    position: absolute !important;
+    top: -31.5px !important;
+    right: -3.2px !important;
+    border-radius: 5px 5px 0 0 !important;
+    box-shadow: none !important;
+  }
+}
+
 @media screen and (max-width: 500px) {
-  .BlogContent-body {
-    width: 110%;
+  .BlogContent-container {
+    width: 100%;
     margin: auto;
+    padding: 0;
+    border: none;
   }
   .BlogContent-body_img {
     max-height: 250px;

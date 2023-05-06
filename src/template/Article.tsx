@@ -8,11 +8,11 @@ import {Seo, Layout, Breadcrumb} from '@/common';
 import React from 'react';
 import RemoveMD from 'remove-markdown';
 import '@/common/main.scss';
-import {BlogContent, Thumbnail} from '@/feature/Article';
+import {BlogContent} from '@/feature/Article';
 import '@/feature/Article/Article.scss';
 import {ProfileCard} from '@/feature/Article/ProfileCard/ProfileCard';
 import {TocRight} from '@/feature/Article/TocRight/TocRight';
-import {AllTagList, TagContainer} from '@/feature/Tag';
+import {AllTagList} from '@/feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import ExtractHeading from '@utils/ExtractHeading';
 import Article from '@mytypes/Article';
@@ -34,28 +34,7 @@ export default function Articale(prop: Props): React.ReactElement {
       <Breadcrumb breadcrumb_list={breadcrumb_list(data.title)} />
       <div className='Article-container'>
         {/* 記事メイン部分 */}
-        <section className='Article-body'>
-          <h1 className='Article-title'>{data.title}</h1>
-          {/* サムネ */}
-          <Thumbnail url={data.thumbnail} />
-          {/* 公開日と更新日 */}
-          <div className='Article-date'>
-            <div className='Article-date_update'>
-              <p className='desc'>記事の更新日</p>
-              <i className='fa-solid fa-history' />
-              <p>{data.updated_at.slice(0, 10)}</p>
-            </div>
-            <div className='Article-date_publish'>
-              <p className='desc'>記事の投稿日</p>
-              <i className='fa-solid fa-upload' />
-              <p>{data.published_at.slice(0, 10)}</p>
-            </div>
-          </div>
-          {/* タグ */}
-          <TagContainer tags={data.tags} />
-
-          <BlogContent body={data.body} />
-        </section>
+        <BlogContent data={data} />
 
         {/* サイドバー */}
         <div className='Article-side'>

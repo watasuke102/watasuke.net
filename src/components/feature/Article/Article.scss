@@ -10,56 +10,6 @@
   display: flex;
   margin-top: 20px;
 }
-
-.Article-title {
-  margin-left: 5px;
-  border-bottom: solid 5px color.$p0;
-}
-
-.Article-date {
-  margin-top: 10px;
-  display: flex;
-  justify-content: flex-end;
-}
-.Article-date_publish,
-.Article-date_update {
-  position: relative;
-  display: flex;
-  margin: 0 5px;
-  align-items: center;
-  margin-bottom: 10px;
-  p {
-    margin: 0;
-  }
-  i {
-    margin-left: 10px;
-    margin-right: 4px;
-  }
-
-  // マウスホバー時に説明を表示
-  .desc {
-    position: absolute;
-    top: -2em;
-    width: 100%;
-    text-align: center;
-    background-color: #151615;
-    opacity: 0;
-  }
-  &:hover {
-    cursor: pointer;
-    .desc {
-      opacity: 1;
-    }
-  }
-}
-
-.Article-body {
-  width: 70%;
-  border-right: 1px solid color.$fg;
-  padding: 15px;
-}
-
-// サイドバー
 .Article-side {
   width: 25%;
   margin-left: 20px;
@@ -79,25 +29,7 @@
 }
 
 
-// コードの言語表示の見た目変更
-.toolbar {
-  opacity: 1 !important;
-  div > span {
-    font-size: 1.1em !important;
-    position: absolute !important;
-    top: -31.5px !important;
-    right: -3.2px !important;
-    border-radius: 5px 5px 0 0 !important;
-    box-shadow: none !important;
-  }
-}
-
 @media screen and (max-width: 500px) {
-  .Article-body {
-    width: 110%;
-    margin: auto;
-    border: none;
-  }
   .Article-body_img {
     max-height: 250px;
   }
@@ -105,16 +37,5 @@
   .Article-side,
   .Article-date_publish {
     display: none;
-  }
-}
-.youtube-wrapper {
-  position: relative;
-  padding-bottom: 56.25%; // 9/16
-  iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
   }
 }
