@@ -12,6 +12,20 @@ export const container = style({
   marginTop: 20,
 });
 
+export const blogcontent_wrapper = style({
+  width: '70%',
+  borderRight: `1px solid ${color.fg}`,
+  padding: 15,
+  '@media': {
+    'screen and (max-width: 700px)': {
+      width: '100%',
+      margin: 'auto',
+      padding: 0,
+      border: 'none',
+    },
+  },
+});
+
 export const side = style({
   width: '25%',
   marginLeft: 20,

@@ -7,9 +7,6 @@
 @use '../../../common/color.scss';
 
 .BlogContent-container {
-  width: 70%;
-  border-right: 1px solid color.$fg;
-  padding: 15px;
   // Twitter embed
   .twitter-tweet {
     margin: 0 auto;
@@ -74,17 +71,5 @@
     right: -3.2px !important;
     border-radius: 5px 5px 0 0 !important;
     box-shadow: none !important;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .BlogContent-container {
-    width: 100%;
-    margin: auto;
-    padding: 0;
-    border: none;
-  }
-  .BlogContent-body_img {
-    max-height: 250px;
   }
 }
