@@ -239,6 +239,10 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesAr
         if (url[0].slice(0, 19) === 'https://twitter.com' || url[0].slice(0, 23) === 'https://www.youtube.com') {
           return;
         }
+        // 自分のブログ記事も専用の埋め込みを使う
+        if (url[0].match(/https:\/\/watasuke.net\/blog\/article\/.+/)) {
+          return;
+        }
         url_list.add(url[0]);
       });
     });
