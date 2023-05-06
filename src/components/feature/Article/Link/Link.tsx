@@ -4,8 +4,9 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {EmbedCard} from '@/feature/Article';
 import React from 'react';
+import {EmbedCard} from '@/feature/Article';
+import {InnerEmbedCard} from '../InnerEmbedCard/InnerEmbedCard';
 
 interface Position {
   line: number;
@@ -52,5 +53,11 @@ export const Link: React.ComponentType<Node> = (props: Node) => {
       />
     );
   }
+
+  const inner_url = props.href.match(/https:\/\/watasuke.net\/blog\/article\/(.+)/);
+  if (inner_url) {
+    return <InnerEmbedCard slug={inner_url[1].replace('/', '')} />;
+  }
+
   return <EmbedCard url={props.href} />;
 };
