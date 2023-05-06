@@ -11,6 +11,7 @@ import {AnimatePresence, motion} from 'framer-motion';
 import Prism from 'prismjs';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import {HeadingComponent} from 'react-markdown/lib/ast-to-react';
 import Raw from 'rehype-raw';
 // Remark関連
 import Gfm from 'remark-gfm';
@@ -74,6 +75,16 @@ const Link: React.ComponentType<Node> = (props: Node) => {
   return <EmbedCard url={props.href} />;
 };
 
+let h2_count = 0;
+const Heading = (props: HTMLHeadingElement) => (
+  <>
+    {++h2_count % 3 === 0 && <AdsInArticle />}
+    <h2 id={props.id}>
+      <>{props.children}</>
+    </h2>
+  </>
+);
+
 export const BlogContent = (props: Props): React.ReactElement => {
   React.useEffect(() => {
     setTimeout(() => {
@@ -133,6 +144,7 @@ export const BlogContent = (props: Props): React.ReactElement => {
       <ReactMarkdown
         components={{
           a: Link,
+          h2: Heading,
           // eslint-disable-next-line react/prop-types
           img: props => <ImageViewer src={props.src || ''} alt={props.alt} />,
         }}
