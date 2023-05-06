@@ -6,12 +6,10 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {imageUrl} from '@config';
 import {ImageViewer} from '@/common';
-import {AnimatePresence, motion} from 'framer-motion';
 // コードのシンタックスハイライト
 import Prism from 'prismjs';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import {HeadingComponent} from 'react-markdown/lib/ast-to-react';
 import Raw from 'rehype-raw';
 // Remark関連
 import Gfm from 'remark-gfm';
@@ -20,7 +18,7 @@ import Toc from 'remark-toc';
 import {AdsInArticle} from '@/feature/Ads';
 import {EmbedCard} from '@/feature/Article';
 import ExtractHeading from '@utils/ExtractHeading';
-import {toc_list} from '../TableOfContents.css';
+import {TocInArticle} from '../TocInArticle/TocInArticle';
 import './BlogContent.scss';
 
 interface Props {
@@ -98,49 +96,12 @@ export const BlogContent = (props: Props): React.ReactElement => {
     }, 0);
   }, []);
 
-  const [tocOpening, SetTocOpening] = React.useState(true);
   const table_of_contents = ExtractHeading(props.body);
   return (
     <section className='BlogContent-container'>
       <AdsInArticle />
-      {
-        // 見出しが2個未満だったら目次を出しても違和感がある気がする
-        table_of_contents.length > 2 && (
-          <>
-            <div className='BlogContent-table_of_contents_container'>
-              <div className='top_items'>
-                <div className='close_button' onClick={() => SetTocOpening(!tocOpening)}>
-                  {tocOpening ? <i className='fa-solid fa-angle-up' /> : <i className='fa-solid fa-angle-down' />}
-                </div>
-                <span className='heading'>目次</span>
-              </div>
-              <AnimatePresence>
-                <motion.div
-                  className='toc'
-                  animate={{
-                    opacity: tocOpening ? 1 : 0,
-                    maxHeight: tocOpening ? 300 : 0,
-                    overflowY: tocOpening ? 'scroll' : 'hidden',
-                  }}
-                  transition={{
-                    ease: 'easeOut',
-                    duration: 0.3,
-                  }}
-                >
-                  <ol>
-                    {table_of_contents.map(item => (
-                      <li key={item.body} className={toc_list[item.size]}>
-                        <a href={`#${item.body.toLowerCase()}`}>{item.body}</a>
-                      </li>
-                    ))}
-                  </ol>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-            <hr />
-          </>
-        )
-      }
+      {/* 見出しが2個未満だったら目次を出しても違和感がある気がする */}
+      {table_of_contents.length > 2 && <TocInArticle table_of_contents={table_of_contents} />}
       <ReactMarkdown
         components={{
           a: Link,

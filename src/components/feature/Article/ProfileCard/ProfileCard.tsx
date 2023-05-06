@@ -19,7 +19,7 @@ export const ProfileCard = (): React.ReactElement => {
   `);
   return (
     <section className={style.container}>
-      <StaticImage className={style.avatar} width={80} src='../../../assets/icon.jpg' alt='icon' />
+      <StaticImage className={style.avatar} width={80} src='../../../../assets/icon.jpg' alt='icon' />
       <p>わたすけ</p>
       <p className={style.body}>
         {profile_text.siteData.body}

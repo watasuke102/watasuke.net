@@ -50,55 +50,6 @@
   }
 }
 
-// 目次部分
-.BlogContent-table_of_contents_container {
-  margin-top: 50px;
-  padding: 12px 20px;
-  background-color: color.$bg;
-  font-size: 1.2em;
-
-  .toc {
-    padding-left: 12px;
-    border: 1px solid;
-    ol {
-      $padding: 8px;
-      padding-top: $padding;
-      padding-bottom: $padding;
-      margin: 0;
-    }
-  }
-
-  .top_items {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    &::after {
-      content: '';
-    }
-    .close_button {
-      $button-size: 40px;
-      width: $button-size;
-      height: $button-size;
-      color: color.$bg;
-      background-color: color.$fg;
-      text-align: center;
-      // アイコン
-      i {
-        font-size: $button-size;
-      }
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
-    .heading {
-      font-size: 1.9em;
-      margin: 8px 0;
-      text-align: center;
-    }
-  }
-}
-
 @media screen and (max-width: 500px) {
   .BlogContent-body {
     width: 110%;
