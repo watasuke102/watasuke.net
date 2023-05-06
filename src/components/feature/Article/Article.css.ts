@@ -16,7 +16,7 @@ export const side = style({
   width: '25%',
   marginLeft: 20,
   '@media': {
-    'screen and (max-width: 500px)': {
+    'screen and (max-width: 700px)': {
       display: 'none',
     },
   },
