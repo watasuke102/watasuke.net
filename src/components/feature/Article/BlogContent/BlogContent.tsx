@@ -20,7 +20,6 @@ import {TagContainer} from '@/feature/Tag';
 import ExtractHeading from '@utils/ExtractHeading';
 import Article from '@mytypes/Article';
 import {Link} from '../Link/Link';
-import {Thumbnail} from '../Thumbnail/Thumbnail';
 import {TocInArticle} from '../TocInArticle/TocInArticle';
 import * as style from './BlogContent.css';
 import './BlogContent_override.scss';
@@ -57,21 +56,22 @@ export const BlogContent = (props: Props): React.ReactElement => {
     <section className='BlogContent-container'>
       <h1 className={style.title}>{props.data.title}</h1>
       {/* サムネ */}
-      <Thumbnail url={props.data.thumbnail} />
+      {/* <Thumbnail url={props.data.thumbnail} /> */}
 
-      {/* 公開日と更新日 */}
-      <div className={style.date_container}>
-        <div className={style.date} aria-label='記事の更新日'>
-          <i className='fa-solid fa-history' />
-          <span>{props.data.updated_at.slice(0, 10)}</span>
-        </div>
-        <div className={style.date} aria-label='記事の投稿日'>
-          <i className='fa-solid fa-upload' />
-          <span>{props.data.published_at.slice(0, 10)}</span>
+      <div className={style.article_info}>
+        <TagContainer tags={props.data.tags} />
+        {/* 公開日と更新日 */}
+        <div className={style.date_container}>
+          <div className={style.date} aria-label='記事の更新日'>
+            <i className='fa-solid fa-history' />
+            <span>{props.data.updated_at.slice(0, 10)}</span>
+          </div>
+          <div className={style.date} aria-label='記事の投稿日'>
+            <i className='fa-solid fa-upload' />
+            <span>{props.data.published_at.slice(0, 10)}</span>
+          </div>
         </div>
       </div>
-      {/* タグ */}
-      <TagContainer tags={props.data.tags} />
 
       <AdsInArticle />
       {/* 見出しが2個未満だったら目次を出しても違和感がある気がする */}

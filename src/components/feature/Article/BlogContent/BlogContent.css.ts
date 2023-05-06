@@ -12,10 +12,26 @@ export const title = style({
   borderBottom: `solid 5px ${color.p0}`,
 });
 
-export const date_container = style({
-  display: 'flex',
-  gap: 24,
+export const article_info = style({
+  display: 'grid',
+  gridTemplateColumns: '1fr auto',
   margin: '12px 0',
+  '@media': {
+    'screen and (max-width: 700px)': {
+      display: 'flex',
+      flexDirection: 'column-reverse',
+    },
+  },
+});
+
+export const date_container = style({
+  '@media': {
+    'screen and (max-width: 700px)': {
+      display: 'flex',
+      gap: 24,
+      marginBottom: 12,
+    },
+  },
 });
 
 export const date = style({
