@@ -21,7 +21,7 @@ import ExtractHeading from '@utils/ExtractHeading';
 import Article from '@mytypes/Article';
 import {Link, TocInArticle} from '@/feature/Article';
 import * as style from './BlogContent.css';
-import './BlogContent_override.scss';
+import '@/feature/Article/BlogContent/BlogContent_override.scss';
 
 interface Props {
   data: Article;
