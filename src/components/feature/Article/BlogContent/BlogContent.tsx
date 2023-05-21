@@ -16,12 +16,12 @@ import Gfm from 'remark-gfm';
 import Slug from 'remark-slug';
 import Toc from 'remark-toc';
 import {AdsInArticle} from '@/feature/Ads';
+import {Link, TocInArticle} from '@/feature/Article';
+import '@/feature/Article/BlogContent/BlogContent_override.scss';
 import {TagContainer} from '@/feature/Tag';
 import ExtractHeading from '@utils/ExtractHeading';
 import Article from '@mytypes/Article';
-import {Link, TocInArticle} from '@/feature/Article';
 import * as style from './BlogContent.css';
-import '@/feature/Article/BlogContent/BlogContent_override.scss';
 
 interface Props {
   data: Article;

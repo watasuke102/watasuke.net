@@ -8,14 +8,13 @@ import {color} from '@/common/color';
 import {globalStyle, style} from '@vanilla-extract/css';
 
 export const title = style({
-  marginLeft: 4,
+  marginBottom: 8,
   borderBottom: `solid 5px ${color.p0}`,
 });
 
 export const article_info = style({
   display: 'grid',
   gridTemplateColumns: '1fr auto',
-  margin: '12px 0',
   '@media': {
     'screen and (max-width: 700px)': {
       display: 'flex',
