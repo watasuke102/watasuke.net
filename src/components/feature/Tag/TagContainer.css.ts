@@ -8,16 +8,16 @@ import {color} from '@/common/color';
 import {style} from '@vanilla-extract/css';
 
 export const container = style({
-  display: 'flex',
-  flexWrap: 'wrap',
+  display: 'grid',
+  gridTemplateColumns: 'auto 1fr',
+  gap: 8,
+  width: '100%',
   alignItems: 'center',
 });
 
 export const icon = style({
   whiteSpace: 'nowrap',
-  fontSize: '1.1em',
-  marginRight: 5,
-  marginBottom: 5,
+  fontSize: '1.3em',
 });
 
 const border_radius = 8;

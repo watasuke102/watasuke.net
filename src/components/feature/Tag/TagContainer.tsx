@@ -21,13 +21,15 @@ export const TagContainer = (props: Props): React.ReactElement => {
     <div className={style.container}>
       {!props.disable_icon && <i className={`${style.icon} fa-solid fa-tag`} />}
 
-      {props.tags.map(tag => {
-        return (
-          <Link key={tag.slug} className={style.link} to={'/blog/tag/' + tag.slug}>
-            {tag.name}
-          </Link>
-        );
-      })}
+      <div>
+        {props.tags.map(tag => {
+          return (
+            <Link key={tag.slug} className={style.link} to={'/blog/tag/' + tag.slug}>
+              {tag.name}
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 };
