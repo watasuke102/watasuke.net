@@ -7,6 +7,11 @@
 import {color} from '@/common/color';
 import {style} from '@vanilla-extract/css';
 
+export const wrapper = style({
+  maxWidth: '100%',
+  margin: '12px 0',
+});
+
 export const dummy = style({
   width: '100%',
   height: 128,

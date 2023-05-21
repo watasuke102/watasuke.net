@@ -17,20 +17,20 @@ export const AdsInArticle = (): React.ReactElement => {
     window.adsbygoogle.push({});
   }, []);
 
-  if (config.adsenseId.length <= 0 || config.inArticleSlot.length <= 0) {
-    return <div className={style.dummy}>Ads here</div>;
-  }
-
   return (
-    <>
-      <ins
-        className='adsbygoogle'
-        style={{display: 'block', textAlign: 'center'}}
-        data-ad-layout='in-article'
-        data-ad-format='fluid'
-        data-ad-client={config.adsenseId}
-        data-ad-slot={config.inArticleSlot}
-      ></ins>
-    </>
+    <div className={style.wrapper}>
+      {config.adsenseId.length <= 0 || config.inArticleSlot.length <= 0 ? (
+        <div className={style.dummy}>Ads here</div>
+      ) : (
+        <ins
+          className='adsbygoogle'
+          style={{display: 'block', textAlign: 'center'}}
+          data-ad-layout='in-article'
+          data-ad-format='fluid'
+          data-ad-client={config.adsenseId}
+          data-ad-slot={config.inArticleSlot}
+        ></ins>
+      )}
+    </div>
   );
 };
