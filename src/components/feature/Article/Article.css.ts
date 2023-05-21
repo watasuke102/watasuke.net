@@ -38,6 +38,7 @@ export const side = style({
 
 export const side_tag = style({
   border: `solid 2px ${color.fg}`,
+  borderRadius: 2,
   padding: '5px 10px',
   paddingBottom: 20,
   marginBottom: 30,

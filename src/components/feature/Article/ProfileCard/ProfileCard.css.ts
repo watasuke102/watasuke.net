@@ -10,6 +10,7 @@ import {style} from '@vanilla-extract/css';
 export const container = style({
   textAlign: 'center',
   border: `solid 2px ${color.fg}`,
+  borderRadius: 2,
   padding: '10px 10px',
   marginBottom: 30,
 });

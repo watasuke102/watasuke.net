@@ -8,7 +8,7 @@ import {Seo, Layout, Breadcrumb} from '@/common';
 import React from 'react';
 import RemoveMD from 'remove-markdown';
 import '@/common/main.scss';
-import {BlogContent,ProfileCard,TocRight} from '@/feature/Article';
+import {BlogContent, ProfileCard, TocRight} from '@/feature/Article';
 import * as style from '@/feature/Article/Article.css';
 import {AllTagList} from '@/feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
