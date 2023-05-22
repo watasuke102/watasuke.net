@@ -21,8 +21,9 @@ interface Props {
 export function Front(props: Props): React.ReactElement {
   return (
     <div className={style.container} style={props.hidden ? {display: 'none'} : {}}>
-      <div className={style.avatar}>
-        <StaticImage loading='eager' placeholder='none' src='../../../../assets/icon.jpg' alt='icon' />
+      <div className={style.avatar_wrapper}>
+        {/* <StaticImage className={style.avatar} loading='eager' placeholder='none' src='../../../../assets/icon.jpg' alt='icon' /> */}
+        <img className={style.avatar} src='/icon.jpg' />
       </div>
       <div className={style.info}>
         <span className={style.name}>わたすけ</span>

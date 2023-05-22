@@ -14,24 +14,31 @@ export const container = style({
   top: '50%',
   left: '50%',
   transform: 'translateX(-50%) translateY(-50%)',
+  maxHeight: '85dvh',
 
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
+  display: 'flex',
+  // display: 'grid',
+  // gridTemplateColumns: '1fr 1fr',
   gap: 32,
 });
 
+export const avatar_wrapper = style({
+  width: '100%',
+});
+
 export const avatar = style({
+  display: 'block',
+  marginLeft: 'auto',
+  height: '100%',
   aspectRatio: '1 / 1',
-  margin: 'auto',
 });
 
 export const info = style({
   display: 'flex',
+  width: '100%',
   flexDirection: 'column',
-  // padding: '4px 16px',
-  // border: `1px solid ${color.bg}`,
   color: color.bg,
-  fontSize: '1vw',
+  fontSize: 'min(1dvw, 2.5dvh)',
 });
 
 export const name = style({
