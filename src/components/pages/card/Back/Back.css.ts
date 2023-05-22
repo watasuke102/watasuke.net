@@ -10,18 +10,24 @@ import {style} from '@vanilla-extract/css';
 
 export const container = style({
   position: 'relative',
-  width: '80dvw',
   top: '50%',
   left: '50%',
   transform: 'translateX(-50%) translateY(-50%)',
+  maxWidth: 'calc(100% - 64px)',
 
   display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
   gridTemplateRows: '8px auto 8px',
-  gap: '0 48px',
 });
 
 export const qr_container = style({
+  width: '95%',
+  margin: 'auto',
+  display: 'flex',
+  justifyContent: 'space-between',
+  gap: '0 48px',
+});
+
+export const item = style({
   display: 'flex',
   flexDirection: 'column',
   paddingTop: 24,
@@ -30,9 +36,13 @@ export const qr_container = style({
   margin: 'auto',
 });
 
+export const qrcode_wrapper = style({
+  maxHeight: '60dvh',
+  maxWidth: '25dvw',
+  aspectRatio: '1 / 1',
+});
+
 export const separator = style({
-  gridColumn: '1 / 4',
-  width: '100%',
   backgroundColor: color.bg,
 });
 
@@ -41,7 +51,6 @@ export const url = style({
   width: '100%',
   textAlign: 'center',
   fontFamily: MyricaM,
-  // fontSize: '1.5em',
-  fontSize: '3dvw',
+  fontSize: 'min(3dvw, 6.5dvh)',
   color: `${color.bg}aa`,
 });
