@@ -1,0 +1,25 @@
+name: build
+
+on:
+  push:
+    branches: ["main", "dev"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [19.0]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - name: Setup
+        run: |
+          npm install
+          sed -e 's|.*contentUrl.*|  "contentUrl": "https://data.watasuke.net",|' sample-config.json > config.json
+      - name: Build
+        run: npm run build

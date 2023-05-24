@@ -13,6 +13,7 @@ Docker Compose は開発用の Straip（と、それに必要な MySQL）が載�
 
 1. `cp sample-config.json config.json`
 2. できあがった `config.json` を編集
+   - `contentUrl`: 記事の中を取ってくる URL
    - `imageUrl`: 画像を取ってくる URL
    - `trackingId`: Google Analytics 4 プロパティの「測定 ID」（G-12345 みたいなやつ）
    - `adsenseId`: ca-pub-\d+みたいなやつ

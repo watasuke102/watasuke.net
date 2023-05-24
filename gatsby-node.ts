@@ -9,6 +9,7 @@ import {GatsbyNode, SourceNodesArgs} from 'gatsby';
 import fetch from 'node-fetch';
 import OgpParser from 'ogp-parser';
 import path from 'path';
+import config from './config.json';
 
 interface Tag {
   id?: number;
@@ -204,7 +205,7 @@ async function registerTags(tags: Tag[], {actions, createContentDigest}: SourceN
 
 export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesArgs) => {
   async function fetchFromStrapi<T>(endpoint: string): Promise<T | undefined> {
-    const response = await fetch(`http://127.0.0.1:1337/${endpoint}`).catch(e => {
+    const response = await fetch(`${config.contentUrl}/${endpoint}`).catch(e => {
       log('error', `Failed to fetch from API (${endpoint}) : '${e.message}:`);
     });
     if (!response) return undefined;
