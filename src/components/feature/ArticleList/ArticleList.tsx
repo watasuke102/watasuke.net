@@ -12,7 +12,7 @@ import * as style from './ArticleList.css';
 interface Props {
   list: Article[];
 }
-const article_count = 10;
+const article_count = 1;
 
 export const ArticleList = (props: Props): React.ReactElement => {
   const max_page = Math.ceil(props.list.length / article_count);
@@ -43,7 +43,7 @@ export const ArticleList = (props: Props): React.ReactElement => {
         <div className={style.empty}></div>
       ) : (
         <div className={style.button} onClick={BeforePage}>
-          <i className='fa-solid fa-chevron-left' />
+          <i className={`${style.button_icon} fa-solid fa-chevron-left`} />
         </div>
       )}
       {/* 現在ページと合計ページの表示 */}
