@@ -22,23 +22,24 @@ export const container = style({
 export const qr_container = style({
   width: '95%',
   margin: 'auto',
-  display: 'flex',
+  display: 'grid',
+  gridTemplateColumns: 'repeat(3, 1fr)',
   justifyContent: 'space-between',
-  gap: '0 48px',
+  gap: '0 8dvw',
 });
 
 export const item = style({
   display: 'flex',
   flexDirection: 'column',
-  paddingTop: 24,
-  paddingBottom: 12,
-  gap: 8,
+  paddingTop: '3dvh',
+  paddingBottom: '1.5dvh',
   margin: 'auto',
 });
 
 export const qrcode_wrapper = style({
   maxHeight: '60dvh',
-  maxWidth: '25dvw',
+  width: '100%',
+  objectFit: 'contain',
   aspectRatio: '1 / 1',
 });
 
