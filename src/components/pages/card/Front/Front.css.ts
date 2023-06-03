@@ -30,6 +30,7 @@ export const avatar = style({
   display: 'block',
   marginLeft: 'auto',
   height: '100%',
+  objectFit: 'contain',
   aspectRatio: '1 / 1',
 });
 
@@ -58,7 +59,7 @@ export const icon_and_link = style({
   fontFamily: MyricaM,
   display: 'grid',
   alignItems: 'center',
-  gridTemplateColumns: '3vw 4px 1fr',
+  gridTemplateColumns: 'min(3dvw, 8dvh) 4px 1fr',
 });
 globalStyle(`${icon_and_link} svg`, {
   height: '100%',
@@ -73,7 +74,7 @@ export const separator = style({
 export const primary = style({
   fontSize: '2.3em',
   fontWeight: 'bold',
-  gap: '8px 12px',
+  gap: 'min(6px, 2dvh) 1.2dvw',
   margin: 'auto 0',
   '@media': {
     'screen and (min-width: 1501px)': {
@@ -84,7 +85,7 @@ export const primary = style({
 
 export const secondary = style({
   fontSize: '1.9em',
-  gap: '4px 12px',
+  gap: '4px 1.2dvw',
 });
 globalStyle(`${secondary} div:first-child`, {
   transform: 'scale(80%)',

@@ -4,7 +4,6 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
 import * as style from './Front.css';
 import IconEnvelope from '@assets/icons/Links/envelope.svg';
