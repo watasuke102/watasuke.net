@@ -27,6 +27,31 @@ Edit with markup language like WYSIWYG, set importance and hide / emphasize the 
 
 [[event]]
 year        = "2019"
+day         = "08/26" # "完成" ツイートをした日
+category    = "Work"
+title_ja    = "Arduinoで時計を作成する"
+title_en    = "Create the clock by Arduino"
+subtitle_ja = "夏休みの自由研究"
+subtitle_en = "Research of summer vacation"
+body_ja     = """
+![完成品](/works/arduino-clock.jpg)
+
+ArduinoでRTCおよびOLEDを制御し、ストップウォッチ機能つきの時計を作成しました。
+夏休みの自由研究として学校に提出を行いました。
+
+[開発の様子（Togetter）](https://togetter.com/li/2161192)
+"""
+body_en     = """
+![final product](/works/arduino-clock.jpg)
+
+I created the clock with stopwatch function by controlling RTC and OLED by Arduino.
+I also created the report and submitted as research of summer vacation.
+
+[Developing log (JA, Togetter)](https://togetter.com/li/2161192)
+"""
+
+[[event]]
+year        = "2019"
 day         = "10/25"
 category    = "Work"
 title_ja    = "STG"
