@@ -12,7 +12,7 @@ import * as style from './ArticleList.css';
 interface Props {
   list: Article[];
 }
-const article_count = 1;
+const article_count = 10;
 
 export const ArticleList = (props: Props): React.ReactElement => {
   const max_page = Math.ceil(props.list.length / article_count);
