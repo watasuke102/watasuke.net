@@ -8,6 +8,7 @@ import {color} from '@/common/color';
 import {style} from '@vanilla-extract/css';
 
 export const wrapper = style({
+  zIndex: -1,
   maxWidth: '100%',
   margin: '12px 0',
 });
