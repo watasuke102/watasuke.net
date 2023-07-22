@@ -13,7 +13,7 @@ import Gfm from 'remark-gfm';
 import {Transition} from '@utils/Transition';
 import {Event} from './Event';
 import './EventCard.scss';
-import IconExpand from '@assets/icons/expand.svg';
+import IconCollapse from '@assets/icons/general/up.svg';
 
 interface Props {
   event: Event;
@@ -45,12 +45,13 @@ export function EventCard(props: Props): React.ReactElement {
           {body !== '' && (
             <motion.div
               className='expand_icon'
+              initial={{transform: 'translateY(8px) rotate(-180deg)'}}
               animate={{
-                transform: opening ? 'rotate(-180deg)' : 'rotate(0deg)',
+                transform: `translateY(8px) ${opening ? 'rotate(0deg)' : 'rotate(-180deg)'}`,
               }}
               transition={Transition(props.animation_enabled, {duration: 0.2})}
             >
-              <IconExpand />
+              <IconCollapse />
             </motion.div>
           )}
         </div>

@@ -10,8 +10,8 @@ import {Seo} from '@/common';
 import {navigate} from 'gatsby';
 import React from 'react';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
-import IconFlip from '@assets/icons/general/flip.svg';
-import IconInvisible from '@assets/icons/general/invisible.svg';
+import IconFlip from '@assets/icons/card/flip.svg';
+import IconInvisible from '@assets/icons/card/invisible.svg';
 import IconBack from '@assets/icons/general/left.svg';
 import IconHide from '@assets/icons/general/up.svg';
 

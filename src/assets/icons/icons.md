@@ -9,7 +9,6 @@ CC-BY 4.0
 - Links/envelope.svg
 - Links/box-open.svg
 - Links/file-pen.svg
-- expand.svg
 
 ## Google Material Design Icons
 

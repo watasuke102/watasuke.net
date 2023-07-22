@@ -22,8 +22,8 @@ import {TagContainer} from '@/feature/Tag';
 import ExtractHeading from '@utils/ExtractHeading';
 import Article from '@mytypes/Article';
 import * as style from './BlogContent.css';
-import IconHistory from '@assets/icons/general/history.svg';
-import IconUpload from '@assets/icons/general/upload.svg';
+import IconHistory from '@assets/icons/article/history.svg';
+import IconUpload from '@assets/icons/article/upload.svg';
 
 interface Props {
   data: Article;

@@ -9,7 +9,6 @@ import React from 'react';
 import Heading from '@mytypes/Heading';
 import {toc_list} from '../TableOfContents.css';
 import * as style from './TocInArticle.css';
-import IconExpand from '@assets/icons/general/down.svg';
 import IconCollapse from '@assets/icons/general/up.svg';
 
 interface Props {
@@ -22,7 +21,14 @@ export function TocInArticle(props: Props): React.ReactElement {
     <div className={style.container}>
       <div className={style.top_items}>
         <div className={style.close_button} onClick={() => SetTocOpening(!tocOpening)}>
-          {tocOpening ? <IconCollapse /> : <IconExpand />}
+          <motion.div
+            animate={{
+              transform: tocOpening ? 'rotate(0deg)' : 'rotate(-180deg)',
+            }}
+            transition={{duration: 0.2}}
+          >
+            <IconCollapse />
+          </motion.div>
         </div>
         <span className={style.heading}>目次</span>
       </div>

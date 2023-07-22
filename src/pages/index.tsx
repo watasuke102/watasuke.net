@@ -11,11 +11,11 @@ import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
 import '@/common/main.scss';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
-import IconCard from '@assets/icons/general/card.svg';
-import IconEdit from '@assets/icons/general/edit.svg';
-import IconInfo from '@assets/icons/general/info.svg';
-import IconProfile from '@assets/icons/general/profile.svg';
-import IconRocket from '@assets/icons/general/rocket.svg';
+import IconCard from '@assets/icons/top/card.svg';
+import IconEdit from '@assets/icons/top/edit.svg';
+import IconInfo from '@assets/icons/top/info.svg';
+import IconProfile from '@assets/icons/top/profile.svg';
+import IconRocket from '@assets/icons/top/rocket.svg';
 
 const breadcrumb_list = GenBreadcrumb([]);
 
