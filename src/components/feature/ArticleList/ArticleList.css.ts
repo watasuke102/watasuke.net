@@ -34,10 +34,14 @@ export const button = style({
   display: 'flex',
   border: `solid 3px ${color.fg}`,
   backgroundColor: 'none',
-  transition: 'background-color 0.5s',
+  color: color.fg,
+  transitionProperty: 'background-color, color',
+  transitionDuration: '0.2s',
   ':hover': {
     backgroundColor: color.fg,
-    transition: 'background-color 0.5s',
+    color: color.bg,
+    transitionProperty: 'background-color, color',
+    transitionDuration: '0.2s',
     cursor: 'pointer',
   },
 });

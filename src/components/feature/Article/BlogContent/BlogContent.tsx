@@ -22,6 +22,8 @@ import {TagContainer} from '@/feature/Tag';
 import ExtractHeading from '@utils/ExtractHeading';
 import Article from '@mytypes/Article';
 import * as style from './BlogContent.css';
+import IconHistory from '@assets/icons/general/history.svg';
+import IconUpload from '@assets/icons/general/upload.svg';
 
 interface Props {
   data: Article;
@@ -62,11 +64,13 @@ export const BlogContent = (props: Props): React.ReactElement => {
         {/* 公開日と更新日 */}
         <div className={style.date_container}>
           <div className={style.date} aria-label='記事の更新日'>
-            <i className='fa-solid fa-history' />
+            <IconHistory />
             <span>{props.data.updated_at.slice(0, 10)}</span>
           </div>
           <div className={style.date} aria-label='記事の投稿日'>
-            <i className='fa-solid fa-upload' />
+            <div>
+              <IconUpload />
+            </div>
             <span>{props.data.published_at.slice(0, 10)}</span>
           </div>
         </div>

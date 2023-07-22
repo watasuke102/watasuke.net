@@ -11,6 +11,14 @@ CC-BY 4.0
 - Links/file-pen.svg
 - expand.svg
 
+## Google Material Design Icons
+
+[google/material-design-icons](https://github.com/google/material-design-icons/)
+
+[Apache License Version 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE)
+
+- general/*
+
 ## Simple Icons 8.5.0
 
 [Simple Icons](https://simpleicons.org/)

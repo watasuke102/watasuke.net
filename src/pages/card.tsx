@@ -10,6 +10,10 @@ import {Seo} from '@/common';
 import {navigate} from 'gatsby';
 import React from 'react';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
+import IconFlip from '@assets/icons/general/flip.svg';
+import IconInvisible from '@assets/icons/general/invisible.svg';
+import IconBack from '@assets/icons/general/left.svg';
+import IconHide from '@assets/icons/general/up.svg';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Card'}]);
 
@@ -26,22 +30,22 @@ export default function Card(): React.ReactElement {
   const buttons = [
     {
       label: 'back to the top page',
-      icon: 'chevron-left',
+      icon: <IconBack />,
       on_click: () => navigate('/'),
     },
     {
       label: 'flip over the card',
-      icon: 'repeat',
+      icon: <IconFlip />,
       on_click: () => set_is_flipped(s => !s),
     },
     {
       label: 'hide button container',
-      icon: 'chevron-up',
+      icon: <IconHide />,
       on_click: () => set_is_button_hidden(true),
     },
     {
       label: 'disable button container',
-      icon: 'ban',
+      icon: <IconInvisible />,
       on_click: () => {
         set_is_button_disabled(true);
         navigate('?disable_button=true');
@@ -67,8 +71,10 @@ export default function Card(): React.ReactElement {
       </div>
       {!is_button_hidden && !is_button_disabled && (
         <div className={style.button_container}>
-          {buttons.map(e => (
-            <button key={e.icon} aria-label={e.label} className={`fa-solid fa-${e.icon}`} onClick={e.on_click} />
+          {buttons.map((e, i) => (
+            <button key={i} className={style.button} aria-label={e.label} onClick={e.on_click}>
+              {e.icon}
+            </button>
           ))}
         </div>
       )}

@@ -35,10 +35,6 @@ export const close_button = style({
   },
 });
 
-export const button_icon = style({
-  fontSize: button_size,
-});
-
 export const heading = style({
   fontSize: '1.9em',
   margin: '8px 0',

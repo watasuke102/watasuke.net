@@ -7,6 +7,7 @@
 import {Link} from 'gatsby';
 import React from 'react';
 import * as style from './TagContainer.css';
+import IconTag from '@assets/icons/general/tag.svg';
 
 interface Props {
   disable_icon?: boolean;
@@ -19,7 +20,11 @@ interface Props {
 export const TagContainer = (props: Props): React.ReactElement => {
   return (
     <div className={style.container}>
-      {!props.disable_icon && <i className={`${style.icon} fa-solid fa-tag`} />}
+      {!props.disable_icon && (
+        <div className={style.icon}>
+          <IconTag />
+        </div>
+      )}
 
       <div>
         {props.tags.map(tag => {

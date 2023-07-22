@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {color} from '@/common/color';
-import {style} from '@vanilla-extract/css';
+import {globalStyle, style} from '@vanilla-extract/css';
 
 export const container = style({
   display: 'grid',
@@ -17,7 +17,11 @@ export const container = style({
 
 export const icon = style({
   whiteSpace: 'nowrap',
-  fontSize: '1.3em',
+  width: 20,
+});
+globalStyle(`${icon} svg`, {
+  width: '100%',
+  height: '100%',
 });
 
 const border_radius = 8;

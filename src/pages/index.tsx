@@ -11,16 +11,21 @@ import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
 import '@/common/main.scss';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
+import IconCard from '@assets/icons/general/card.svg';
+import IconEdit from '@assets/icons/general/edit.svg';
+import IconInfo from '@assets/icons/general/info.svg';
+import IconProfile from '@assets/icons/general/profile.svg';
+import IconRocket from '@assets/icons/general/rocket.svg';
 
 const breadcrumb_list = GenBreadcrumb([]);
 
 export default function Index(): React.ReactElement {
   const menu_list = [
-    {text: 'About', url: '/about', icon: 'fa-solid fa-info-circle'},
-    {text: 'Blog', url: '/blog', icon: 'fa-solid fa-pen'},
-    {text: 'Card', url: '/card', icon: 'fa-solid fa-address-card'},
-    {text: 'Profile', url: '/profile', icon: 'fa-solid fa-user'},
-    {text: 'Portfolio', url: '/portfolio', icon: 'fa-solid fa-rocket'},
+    {text: 'About', url: '/about', icon: <IconInfo />},
+    {text: 'Blog', url: '/blog', icon: <IconEdit />},
+    {text: 'Card', url: '/card', icon: <IconCard />},
+    {text: 'Profile', url: '/profile', icon: <IconProfile />},
+    {text: 'Portfolio', url: '/portfolio', icon: <IconRocket />},
   ];
 
   return (
@@ -34,7 +39,7 @@ export default function Index(): React.ReactElement {
         <div className={style.menu}>
           {menu_list.map(e => (
             <Link key={e.text} to={e.url} className={style.menu_card} aria-label={e.text}>
-              <i className={`${style.menu_card_icon} ${e.icon}`} />
+              <div className={style.menu_card_icon}> {e.icon} </div>
               <span className={style.menu_card_text}>{e.text}</span>
             </Link>
           ))}

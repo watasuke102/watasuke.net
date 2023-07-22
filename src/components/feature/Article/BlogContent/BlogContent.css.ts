@@ -35,13 +35,18 @@ export const date_container = style({
 
 export const date = style({
   position: 'relative',
-  display: 'flex',
+  display: 'grid',
+  gridTemplateColumns: '24px auto',
   margin: 0,
-  gap: 6,
+  gap: 4,
   alignItems: 'center',
   ':hover': {
     cursor: 'pointer',
   },
+});
+globalStyle(`${date} svg`, {
+  width: '100%',
+  height: '100%',
 });
 globalStyle(`${date}:hover:after`, {
   content: 'attr(aria-label)',
@@ -51,5 +56,6 @@ globalStyle(`${date}:hover:after`, {
   minWidth: '100%',
   textAlign: 'center',
   padding: 4,
-  backgroundColor: `${color.bg}aa`,
+  backgroundColor: `${color.bg}ee`,
+  border: `1px solid ${color.fg}`,
 });

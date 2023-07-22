@@ -78,9 +78,9 @@ export const menu_card_text = style({
 
 export const menu_card_icon = style({
   color: color.fg,
-  fontSize: 80,
-  width: '100%',
-  marginBottom: 12,
+  width: 80,
+  margin: 'auto',
+  paddingBottom: 12,
   transition: `color ${translate_time}s`,
 
   selectors: {
@@ -89,4 +89,8 @@ export const menu_card_icon = style({
       transition: `color ${translate_time}`,
     },
   },
+});
+globalStyle(`${menu_card_icon} svg`, {
+  width: '100%',
+  height: '100%',
 });

@@ -24,23 +24,27 @@ export const button_container = style({
   display: 'grid',
   gridTemplateColumns: 'repeat(4, 1fr)',
   gap: 16,
-  fontSize: '1.5em',
   padding: '8px 12px',
   backgroundColor: `${color.bg}cc`,
 });
 
-globalStyle(`${button_container} button`, {
+export const button = style({
   borderColor: `${color.fg}99`,
+  width: 44,
+  height: 44,
 });
-
-globalStyle(`${button_container} button:hover:after`, {
+globalStyle(`${button} svg`, {
+  width: '100%',
+  height: '100%',
+});
+globalStyle(`${button}:hover:after`, {
   content: 'attr(aria-label)',
   fontFamily: '"M PLUS Rounded 1c", sans-serif',
+  fontWeight: 'bold',
   position: 'absolute',
   left: 0,
   top: '100%',
   width: '100%',
-  padding: '4px 0',
-  fontSize: '0.6em',
+  padding: '0',
   backgroundColor: `${color.bg}99`,
 });

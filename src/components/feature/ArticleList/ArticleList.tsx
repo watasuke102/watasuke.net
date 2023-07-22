@@ -8,11 +8,13 @@ import React from 'react';
 import Article from '@mytypes/Article';
 import {ArticleCard} from './ArticleCard/ArticleCard';
 import * as style from './ArticleList.css';
+import IconLeft from '@assets/icons/general/left.svg';
+import IconRight from '@assets/icons/general/right.svg';
 
 interface Props {
   list: Article[];
 }
-const article_count = 10;
+const article_count = 1;
 
 export const ArticleList = (props: Props): React.ReactElement => {
   const max_page = Math.ceil(props.list.length / article_count);
@@ -43,7 +45,7 @@ export const ArticleList = (props: Props): React.ReactElement => {
         <div className={style.empty}></div>
       ) : (
         <div className={style.button} onClick={BeforePage}>
-          <i className={`${style.button_icon} fa-solid fa-chevron-left`} />
+          <IconLeft />
         </div>
       )}
       {/* 現在ページと合計ページの表示 */}
@@ -54,7 +56,7 @@ export const ArticleList = (props: Props): React.ReactElement => {
         <div className={style.empty}></div>
       ) : (
         <div className={style.button} onClick={NextPage}>
-          <i className={`${style.button_icon} fa-solid fa-chevron-right`} />
+          <IconRight />
         </div>
       )}
     </section>

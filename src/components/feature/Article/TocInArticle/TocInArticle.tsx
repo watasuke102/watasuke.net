@@ -9,6 +9,8 @@ import React from 'react';
 import Heading from '@mytypes/Heading';
 import {toc_list} from '../TableOfContents.css';
 import * as style from './TocInArticle.css';
+import IconExpand from '@assets/icons/general/down.svg';
+import IconCollapse from '@assets/icons/general/up.svg';
 
 interface Props {
   table_of_contents: Heading[];
@@ -20,7 +22,7 @@ export function TocInArticle(props: Props): React.ReactElement {
     <div className={style.container}>
       <div className={style.top_items}>
         <div className={style.close_button} onClick={() => SetTocOpening(!tocOpening)}>
-          <i className={`${style.button_icon} fa-solid fa-angle-${tocOpening ? 'up' : 'down'}`} />
+          {tocOpening ? <IconCollapse /> : <IconExpand />}
         </div>
         <span className={style.heading}>目次</span>
       </div>
