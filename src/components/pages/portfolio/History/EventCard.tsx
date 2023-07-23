@@ -12,7 +12,7 @@ import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import {Transition} from '@utils/Transition';
 import {Event} from './Event';
-import './EventCard.scss';
+import * as style from './EventCard.css';
 import IconCollapse from '@assets/icons/general/up.svg';
 
 interface Props {
@@ -26,26 +26,27 @@ export function EventCard(props: Props): React.ReactElement {
   const body = props.lang !== 'en' ? props.event.body_ja : props.event.body_en;
 
   return (
-    <div className='EventCard_container'>
-      <div className='day'>
+    <div className={style.container}>
+      <div className={style.day}>
         <BreakWithCR str={props.event.day} />
       </div>
-      <div className='card'>
+      <div className={style.card}>
         <div
-          className='header'
+          className={style.header}
           onClick={() => {
             if (body !== '') {
               set_opening(s => !s);
             }
           }}
         >
-          <span className='title'>{props.lang !== 'en' ? props.event.title_ja : props.event.title_en}</span>
-          <span className='subtitle'>{props.lang !== 'en' ? props.event.subtitle_ja : props.event.subtitle_en}</span>
-          <span className='category'>{props.event.category}</span>
+          <span className={style.title}>{props.lang !== 'en' ? props.event.title_ja : props.event.title_en}</span>
+          <span className={style.subtitle}>
+            {props.lang !== 'en' ? props.event.subtitle_ja : props.event.subtitle_en}
+          </span>
+          <span className={style.category}>{props.event.category}</span>
           {body !== '' && (
             <motion.div
               className='expand_icon'
-              initial={{transform: 'translateY(8px) rotate(-180deg)'}}
               animate={{
                 transform: `translateY(8px) ${opening ? 'rotate(0deg)' : 'rotate(-180deg)'}`,
               }}
@@ -58,7 +59,7 @@ export function EventCard(props: Props): React.ReactElement {
 
         {body !== '' && (
           <motion.div
-            className='body'
+            className={style.body}
             animate={{
               opacity: opening ? 1 : 0,
               height: opening ? 'auto' : 0,
@@ -79,7 +80,7 @@ export function EventCard(props: Props): React.ReactElement {
           </motion.div>
         )}
       </div>
-      <div className='h_connector' />
+      <div className={style.h_connector} />
     </div>
   );
 }
