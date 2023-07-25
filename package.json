@@ -23,7 +23,7 @@
   "homepage": "https://github.com/watasuke102/watasuke.net#readme",
   "dependencies": {
     "@types/prismjs": "^1.26.0",
-    "@types/react": "^18.2.15",
+    "@types/react": "^18.2.16",
     "@types/react-transition-group": "^4.4.6",
     "@types/remove-markdown": "^0.3.1",
     "@vanilla-extract/babel-plugin": "^1.2.0",
@@ -32,7 +32,7 @@
     "assert": "^2.0.0",
     "babel-plugin-prismjs": "^2.1.0",
     "babel-preset-gatsby": "^3.11.0",
-    "framer-motion": "^10.13.0",
+    "framer-motion": "^10.13.1",
     "gatsby": "^5.11.0",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-google-gtag": "^5.11.0",
@@ -64,8 +64,8 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
-    "@typescript-eslint/eslint-plugin": "^6.1.0",
-    "@typescript-eslint/parser": "^6.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
     "eslint": "^8.45.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.33.0",
