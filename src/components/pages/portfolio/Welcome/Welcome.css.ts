@@ -61,7 +61,7 @@ export const text = style({
 });
 
 export const greeting = style({
-  marginTop: 16,
+  paddingTop: 16,
   marginBottom: 64,
 });
 

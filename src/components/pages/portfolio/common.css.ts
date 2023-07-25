@@ -9,12 +9,13 @@ import {globalStyle, keyframes, style} from '@vanilla-extract/css';
 
 export const container = style({
   position: 'relative',
-  width: '100vw',
-  minHeight: '100vh',
+  width: '100dvw',
+  minHeight: '100dvh',
   color: color.bg,
 });
 
 globalStyle(`${container} > h2`, {
+  marginTop: 0,
   fontSize: '4em',
   textAlign: 'center',
 });
@@ -22,7 +23,7 @@ globalStyle(`${container} > h2`, {
 export const next_page = style({
   position: 'absolute',
   left: '50%',
-  bottom: 30,
+  bottom: 32,
   marginTop: 'auto',
   textAlign: 'center',
   transform: 'translateX(-50%)',
@@ -42,7 +43,7 @@ export const next_page = style({
       bottom: 20,
     },
     '50%': {
-      bottom: 30,
+      bottom: 32,
       opacity: 0.5,
     },
     '100%': {
