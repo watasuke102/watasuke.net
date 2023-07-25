@@ -98,7 +98,7 @@ globalStyle(`${container}:nth-child(odd) ${card}`, {
 });
 
 export const header = style({
-  minHeight: `calc(#{${day_size}} - #{${v_padding}} * 2)`,
+  minHeight: day_size - v_padding * 2,
   textAlign: 'left',
   display: 'grid',
   gridTemplateColumns: '1fr auto',
