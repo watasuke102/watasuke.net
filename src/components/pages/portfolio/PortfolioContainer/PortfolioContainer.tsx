@@ -182,7 +182,7 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
         {['Welcome', 'Skills', 'History', 'Links'].map((str, index) => (
           <div
             key={index}
-            className={`${style.indicator_item} ${index === current_page ? style.current : ''}`}
+            className={`${style.indicator_item_wrapper} ${index === current_page ? style.current : ''}`}
             onClick={() => {
               SetNextPage(index);
               SetIsMovingPage(true);

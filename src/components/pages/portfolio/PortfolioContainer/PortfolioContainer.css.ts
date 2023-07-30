@@ -42,41 +42,47 @@ export const container_mobile = style({
   overflowX: 'hidden',
 });
 
-const font_size = 13;
 export const page_indicator = style({
   textAlign: 'right',
   position: 'fixed',
-  right: 16,
+  right: 12,
   top: '50%',
   transform: 'translateY(-50%)',
 
   color: color.bg,
-  fontSize: font_size,
+  fontSize: '0.7em',
 });
 
-export const indicator_item = style({
+export const indicator_item_wrapper = style({
   overflow: 'hidden',
-  width: font_size,
-  padding: `0 ${font_size - 4}px`,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '20px',
+  width: '20px',
   margin: '16px 0',
   marginLeft: 'auto',
   border: `1px solid ${color.fg}`,
-  borderRadius: font_size,
-  backgroundColor: `${color.bg}77`,
-  color: color.fg,
+  borderRadius: 40,
+  color: 'transparent',
+  backgroundColor: color.bg,
+  opacity: 0.4,
+  transitionDuration: '0.4s',
+  transitionProperty: 'width, color, opacity',
+  transitionTimingFunction: 'cubic-bezier(0.075, 0.82, 0.165, 1)',
   ':hover': {
     cursor: 'pointer',
-    width: 'auto',
-    backgroundColor: `${color.bg}ee`,
+    width: '100px',
+    color: color.fg,
+    opacity: 0.9,
   },
 });
 
 export const current = style({
-  backgroundColor: `${color.bg}ee`,
+  opacity: 0.9,
 });
 
 export const name = style({
   userSelect: 'none',
-  padding: `0 ${font_size}px`,
   fontWeight: 'bold',
 });
