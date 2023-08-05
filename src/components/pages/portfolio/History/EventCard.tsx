@@ -46,7 +46,8 @@ export function EventCard(props: Props): React.ReactElement {
           <span className={style.category}>{props.event.category}</span>
           {body !== '' && (
             <motion.div
-              className='expand_icon'
+              className={style.expand_icon}
+              initial={{transform: 'translateY(8px) rotate(-180deg)'}}
               animate={{
                 transform: `translateY(8px) ${opening ? 'rotate(0deg)' : 'rotate(-180deg)'}`,
               }}
