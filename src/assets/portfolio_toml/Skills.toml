@@ -121,7 +121,6 @@ desc_en  = "I used this for game or tool developing at junior high school"
 
 [[skill]]
 name     = "Gatsby"
-icon     = "gatsby"
 tier     = 2
 category = "FW/Lib"
 desc_ja  = """

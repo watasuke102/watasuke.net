@@ -180,8 +180,6 @@ function Icon(props: {icon: string}): React.ReactElement {
       return <IconWayland />;
     case 'qt':
       return <IconQt />;
-    case 'gatsby':
-      return <IconGatsby />;
     case 'flutter':
       return <IconFlutter />;
 
