@@ -29,15 +29,57 @@ interface Props {
   data: Article;
 }
 
-let h2_count = 0;
-const Heading = (props: HTMLHeadingElement) => (
-  <>
-    {++h2_count % 3 === 0 && <AdsInArticle />}
-    <h2 id={props.id}>
-      <>{props.children}</>
-    </h2>
-  </>
-);
+let heading_count = 0;
+const Heading = (props: HTMLHeadingElement) => {
+  console.log(props);
+  return (
+    <>
+      {++heading_count % 4 === 0 && <AdsInArticle />}
+      {(() => {
+        switch (props.level) {
+          case 1:
+            return (
+              <h1 id={props.id}>
+                <>{props.children}</>
+              </h1>
+            );
+          case 2:
+            return (
+              <h2 id={props.id}>
+                <>{props.children}</>
+              </h2>
+            );
+          case 3:
+            return (
+              <h3 id={props.id}>
+                <>{props.children}</>
+              </h3>
+            );
+          case 4:
+            return (
+              <h4 id={props.id}>
+                <>{props.children}</>
+              </h4>
+            );
+          case 5:
+            return (
+              <h5 id={props.id}>
+                <>{props.children}</>
+              </h5>
+            );
+          case 6:
+            return (
+              <h6 id={props.id}>
+                <>{props.children}</>
+              </h6>
+            );
+          default:
+            return <>{props.children}</>;
+        }
+      })()}
+    </>
+  );
+};
 
 export const BlogContent = (props: Props): React.ReactElement => {
   React.useEffect(() => {
@@ -83,7 +125,12 @@ export const BlogContent = (props: Props): React.ReactElement => {
       <ReactMarkdown
         components={{
           a: Link,
+          h1: Heading,
           h2: Heading,
+          h3: Heading,
+          h4: Heading,
+          h5: Heading,
+          h6: Heading,
           // eslint-disable-next-line react/prop-types
           img: props => <ImageViewer src={props.src || ''} alt={props.alt} />,
         }}
