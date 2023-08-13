@@ -10,6 +10,7 @@ import {ImageViewer} from '@/common';
 import Prism from 'prismjs';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import {HeadingProps} from 'react-markdown/lib/ast-to-react';
 import Raw from 'rehype-raw';
 // Remark関連
 import Gfm from 'remark-gfm';
@@ -30,8 +31,7 @@ interface Props {
 }
 
 let heading_count = 0;
-const Heading = (props: HTMLHeadingElement) => {
-  console.log(props);
+const Heading = (props: HeadingProps) => {
   return (
     <>
       {++heading_count % 4 === 0 && <AdsInArticle />}

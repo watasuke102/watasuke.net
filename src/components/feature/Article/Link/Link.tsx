@@ -4,33 +4,21 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import React from 'react';
+import React, {AnchorHTMLAttributes, DetailedHTMLProps, ReactNode} from 'react';
+import {ReactMarkdownProps} from 'react-markdown/lib/complex-types';
 import {EmbedCard, InnerEmbedCard} from '@/feature/Article';
 
-interface Position {
-  line: number;
-  column: number;
-  offset: number;
-}
+type Props = Omit<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>, 'ref'> &
+  ReactMarkdownProps;
 
-interface Node {
-  children: Array<string>;
-  href: string;
-  node: {
-    position: {
-      start: Position;
-      end: Position;
-    };
-  };
-}
-
-export const Link: React.ComponentType<Node> = (props: Node) => {
+export function Link(props: Props) {
+  console.log(props);
   // [Display](url)の形式であった場合、文頭ではなかった場合（箇条書き内など）はEmbedにしない
-  if (props.children[0] !== props.href || props.node.position.start.column !== 1) {
+  if (props.children[0] !== props.href || props.node.position?.start.column !== 1) {
     return <a href={props.href}>{props.children[0]}</a>;
   }
   // Twitter
-  if (props.href.slice(0, 19) === 'https://twitter.com') {
+  if (props.href?.slice(0, 19) === 'https://twitter.com' ?? '') {
     return (
       <div
         dangerouslySetInnerHTML={{
@@ -40,12 +28,12 @@ export const Link: React.ComponentType<Node> = (props: Node) => {
     );
   }
   // YouTube
-  if (props.href.slice(0, 23) === 'https://www.youtube.com') {
+  if (props.href?.slice(0, 23) === 'https://www.youtube.com' ?? '') {
     return (
       <div
         className='youtube-wrapper'
         dangerouslySetInnerHTML={{
-          __html: `<iframe src="https://www.youtube.com/embed/${props.href.slice(32)}"
+          __html: `<iframe src="https://www.youtube.com/embed/${props.href?.slice(32)}"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         title="YouTube video player" allowfullscreen></iframe>`,
         }}
@@ -53,10 +41,10 @@ export const Link: React.ComponentType<Node> = (props: Node) => {
     );
   }
 
-  const inner_url = props.href.match(/https:\/\/watasuke.net\/blog\/article\/(.+)/);
+  const inner_url = props.href?.match(/https:\/\/watasuke.net\/blog\/article\/(.+)/) ?? '';
   if (inner_url) {
     return <InnerEmbedCard slug={inner_url[1].replace('/', '')} />;
   }
 
-  return <EmbedCard url={props.href} />;
-};
+  return <EmbedCard url={props.href ?? ''} />;
+}
