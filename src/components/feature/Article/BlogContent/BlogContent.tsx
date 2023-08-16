@@ -16,9 +16,9 @@ import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import Slug from 'remark-slug';
 import Toc from 'remark-toc';
+//
 import {AdsInArticle} from '@/feature/Ads';
 import {Link, TocInArticle} from '@/feature/Article';
-import '@/feature/Article/BlogContent/BlogContent_override.scss';
 import {TagContainer} from '@/feature/Tag';
 import ExtractHeading from '@utils/ExtractHeading';
 import Article from '@mytypes/Article';
@@ -96,7 +96,7 @@ export const BlogContent = (props: Props): React.ReactElement => {
 
   const table_of_contents = ExtractHeading(props.data.body);
   return (
-    <section className='BlogContent-container'>
+    <section className={style.container}>
       <h1 className={style.title}>{props.data.title}</h1>
       {/* サムネ */}
       {/* <Thumbnail url={props.data.thumbnail} /> */}
