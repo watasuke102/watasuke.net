@@ -9,7 +9,7 @@ import {AnimatePresence, motion} from 'framer-motion';
 import {navigate} from 'gatsby';
 import React from 'react';
 import {IsMobileDevice} from '@utils/IsMobileDevice';
-import './Entrypoint.scss';
+import * as style from './Entrypoint.css';
 
 const blind_width = 60;
 const visible_mask = `repeating-linear-gradient(-60deg, #98c379 0px 0px, transparent 0px ${blind_width}px)`;
@@ -31,59 +31,57 @@ export const Entrypoint = (props: {
 
   return (
     <>
-      <div id='portfolio-entrypoint'>
-        <motion.div
-          className='center_menu'
-          initial={{opacity: 0}}
-          animate={{opacity: 1}}
-          transition={{delay: 0.5, duration: 1}}
-        >
-          <div className='outer_0' />
-          <div className='inner_0' />
-          <div className='inner_1' />
-          <div className='inner_2' />
+      <motion.div
+        className={style.center_menu}
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        transition={{delay: 0.5, duration: 1}}
+      >
+        <div className={style.outer_0} />
+        <div className={style.inner_0} />
+        <div className={style.inner_1} />
+        <div className={style.inner_2} />
 
-          <div className='container'>
-            <span className='welcome'>Welcome!</span>
+        <div className={style.container}>
+          <span className={style.welcome}>Welcome!</span>
 
-            <div className='option'>
-              <span className='label'>Language</span>
-              <div className='toggle'>
-                <Toggle first='ja' second='en' current={lang} set_state={set_lang} />
-              </div>
-            </div>
-            <div className='option'>
-              <span className='label'>Page Transition</span>
-              <div className='toggle'>
-                {IsMobileDevice() ? (
-                  <span className='toggle_disabled'>Off</span>
-                ) : (
-                  <Toggle first='on' second='off' current={page_transition} set_state={set_transition} />
-                )}
-              </div>
-            </div>
-            <div className='option'>
-              <span className='label'>Animation</span>
-              <div className='toggle'>
-                <Toggle first='on' second='off' current={animation} set_state={set_animation} />
-              </div>
-            </div>
-
-            <div
-              className='continue_button'
-              onClick={() => {
-                if (animation !== 'off') {
-                  set_button_clicked(true);
-                } else {
-                  complete();
-                }
-              }}
-            >
-              <span>continue</span>
+          <div className={style.option}>
+            <span className={style.label}>Language</span>
+            <div className={style.toggle}>
+              <Toggle first='ja' second='en' current={lang} set_state={set_lang} />
             </div>
           </div>
-        </motion.div>
-      </div>
+          <div className={style.option}>
+            <span className={style.label}>Page Transition</span>
+            <div className={style.toggle}>
+              {IsMobileDevice() ? (
+                <span>Off</span>
+              ) : (
+                <Toggle first='on' second='off' current={page_transition} set_state={set_transition} />
+              )}
+            </div>
+          </div>
+          <div className={style.option}>
+            <span className={style.label}>Animation</span>
+            <div className={style.toggle}>
+              <Toggle first='on' second='off' current={animation} set_state={set_animation} />
+            </div>
+          </div>
+
+          <div
+            className={style.continue_button}
+            onClick={() => {
+              if (animation !== 'off') {
+                set_button_clicked(true);
+              } else {
+                complete();
+              }
+            }}
+          >
+            <span>continue</span>
+          </div>
+        </div>
+      </motion.div>
 
       <AnimatePresence>
         {button_clicked && (
@@ -93,7 +91,7 @@ export const Entrypoint = (props: {
             // easeOutExpo
             transition={{duration: 0.3, ease: [0.16, 1, 0.3, 1]}}
             onAnimationComplete={complete}
-            className='portfolio-entrypoint_page_transition'
+            className={style.page_transition}
           />
         )}
       </AnimatePresence>
