@@ -15,10 +15,13 @@
   scroll-behavior: auto;
 }
 
-body {
+:root {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   background-color: color.$bg;
   color: color.$fg;
+}
+
+body {
   padding: 25px 20px;
   padding-top: 56px;
 
@@ -31,16 +34,15 @@ body {
     }
   }
 
-  i {
-    user-select: none;
-  }
-
   table {
     margin: 16px 0;
     th {
       text-align: center;
-      padding: 5px 15px;
       border-bottom: 2px solid color.$fg;
+    }
+    th,
+    td {
+      padding: 4px 8px;
     }
   }
 }

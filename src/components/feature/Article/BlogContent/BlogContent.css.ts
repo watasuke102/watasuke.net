@@ -94,9 +94,8 @@ globalStyle(`${container} hr`, {
 });
 
 globalStyle(`${container} blockquote`, {
-  borderLeft: 'solid 4px white',
-  paddingLeft: 10,
-  color: '#bbb',
+  borderLeft: `solid 4px ${color.fg}`,
+  paddingLeft: 8,
 });
 
 globalStyle(`${container} pre:not([class])`, {
