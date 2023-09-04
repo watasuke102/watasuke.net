@@ -307,18 +307,18 @@ I implemented UART, character LCD operation, HDMI output.
 year        = "2022"
 day         = "08/08"
 category    = "Event"
-title_ja    = "セキュリティ・キャンプ LT大会"
-title_en    = "Security Camp LT"
+title_ja    = "セキュリティ・キャンプ 2022 LT大会"
+title_en    = "Security Camp 2022 LT"
 subtitle_ja = "LT 「身内限定で自作サービスを公開するのかなり良いよ」"
 subtitle_en = "LT '身内限定で自作サービスを公開するのかなり良いよ'"
 body_ja     = """
-セキュリティ・キャンプのプログラムとしてLT大会が開催され、
+セキュリティ・キャンプ 2022のプログラムとしてLT大会が開催され、
 そこでTAGetherについて紹介しました。
 
 [スライド](https://docs.google.com/presentation/d/1KDI_VyW8FBDn1HOIMIsVJAuwtDEI6TzFuUhQJHcE-8k/edit?usp=share_link)
 """
 body_en     = """
-Lightning Talk event is held by Security Camp, and I introduced about TAGether.
+Lightning Talk event is held by Security Camp 2022, and I introduced about TAGether.
 
 [Slide](https://docs.google.com/presentation/d/1KDI_VyW8FBDn1HOIMIsVJAuwtDEI6TzFuUhQJHcE-8k/edit?usp=share_link)
 """
@@ -382,4 +382,44 @@ Go to National United University in Taiwan, do the research about Image Processi
 
 [works](https://github.com/watasuke102/measure-vehicle-distance)
  / [my thoughts (blog)](https://watasuke.net/blog/article/internship-in-taiwan-nuu/)
+"""
+
+[[event]]
+year        = "2023"
+day         = "08/07\n|\n08/11"
+category    = "Event"
+title_ja    = "セキュリティ・ネクストキャンプ 2023"
+title_en    = "Security Nextcamp"
+subtitle_ja = "受講生"
+subtitle_en = "Student"
+body_ja     = """
+受講生として参加しました。
+
+[応募課題晒し](https://watasuke.net/blog/article/nextcamp-23-app-revealing/)
+ / [感想](https://watasuke.net/blog/article/the-end-of-nextcamp-23/)
+"""
+body_en     = """
+I participated as a student.
+
+[my application](https://watasuke.net/blog/article/nextcamp-23-app-revealing/)
+ / [my thoughts (blog](https://watasuke.net/blog/article/the-end-of-nextcamp-23/)
+"""
+
+[[event]]
+year        = "2023"
+day         = "08/10"
+category    = "Event"
+title_ja    = "セキュリティ・キャンプ 2023 LT大会"
+title_en    = "Security Camp 2023 LT"
+subtitle_ja = "LT 「watasuke.netを支える技術」"
+subtitle_en = "LT 「watasuke.netを支える技術」"
+body_ja     = """
+セキュリティ・キャンプ 2023のLT大会で、watasuke.netについて紹介しました。
+
+[スライド](https://docs.google.com/presentation/d/11Z0c9Mo95BC2r71_lEYe37K3P4eBYsQdOkmdEWlOfd0/edit?usp=sharing)
+"""
+body_en     = """
+Introduced about watasuke.net in the Lightning Talk event held by Security Camp 2023.
+
+[Slide](https://docs.google.com/presentation/d/11Z0c9Mo95BC2r71_lEYe37K3P4eBYsQdOkmdEWlOfd0/edit?usp=sharing)
 """
