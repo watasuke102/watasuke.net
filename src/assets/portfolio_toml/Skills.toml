@@ -37,7 +37,6 @@ category = "Language"
 desc_ja  = """
 そこそこ楽に書けるところが良いと思います
 基本的にReact.jsを書く際に使用します
-TAGetgherではバックエンドでも使用
 """
 desc_en  = """
 I can write this somewhat confortably
@@ -222,7 +221,10 @@ name     = "MySQL"
 icon     = "mysql"
 tier     = 3
 category = "Tool"
-desc_ja  = "TAGetherのバックエンドとして使用経験あり"
+desc_ja  = """
+TAGetherのバックエンドとして使用経験あり
+初歩的なSQL文を書くことができます
+"""
 desc_en  = "Used as TAGether backend"
 
 [[skill]]
