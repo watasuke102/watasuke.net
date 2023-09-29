@@ -9,7 +9,7 @@ import {graphql, Link} from 'gatsby';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Gfm from 'remark-gfm';
-import '@/common/main.scss';
+import '@/common/main.css';
 import {AdsInArticle} from '@/feature/Ads';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 

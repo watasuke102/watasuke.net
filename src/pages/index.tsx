@@ -9,7 +9,7 @@ import {Seo, Background} from '@/common';
 import {Link} from 'gatsby';
 import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
-import '@/common/main.scss';
+import '@/common/main.css';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import IconCard from '@assets/icons/top/card.svg';
 import IconEdit from '@assets/icons/top/edit.svg';

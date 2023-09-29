@@ -5,9 +5,19 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {GatsbySSR} from 'gatsby';
+import React from 'react';
 
-export const onRenderBody: GatsbySSR['onRenderBody'] = ({setHtmlAttributes}) => {
+export const onRenderBody: GatsbySSR['onRenderBody'] = ({setHtmlAttributes, setHeadComponents}) => {
   setHtmlAttributes({lang: 'ja'});
+  setHeadComponents([
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/krishdevdb/reseter.css@1.20/css/reseter.min.css' />,
+    <link rel='preconnect' href='https://fonts.googleapis.com' />,
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />,
+    <link
+      href='https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=M+PLUS+Rounded+1c&display=swap'
+      rel='stylesheet'
+    ></link>,
+  ]);
 };
 
 // Twitterカード表示のため、metaタグを上に持っていく

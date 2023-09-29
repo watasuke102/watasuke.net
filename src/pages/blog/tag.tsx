@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {Seo, Breadcrumb, Layout} from '@/common';
 import React from 'react';
-import '@/common/main.scss';
+import '@/common/main.css';
 import {AdsInArticle} from '@/feature/Ads';
 import {AllTagList} from '@/feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
