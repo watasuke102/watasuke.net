@@ -19,7 +19,7 @@ interface Props {
 
 export const TagContainer = (props: Props): React.ReactElement => {
   return (
-    <div className={style.container}>
+    <section className={style.container} aria-label='すべてのタグ'>
       {!props.disable_icon && (
         <div className={style.icon}>
           <IconTag />
@@ -35,6 +35,6 @@ export const TagContainer = (props: Props): React.ReactElement => {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };

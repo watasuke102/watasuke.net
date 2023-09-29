@@ -29,18 +29,11 @@ export const ArticleList = (props: Props): React.ReactElement => {
     SetCurrentPage(current_page - 1);
   };
 
-  // 記事一覧の作成
-  const begin = (current_page - 1) * article_count;
-  const last = (current_page - 1) * article_count + article_count;
-  const article_cards = props.list
-    .slice(begin, last) // 記事からarticle_count個取り出す
-    .map(article => <ArticleCard key={article.slug} article={article} />);
-
   // ページ上下に表示する、ページ切り替え用のボタンと現在のページ
   // 最初のページでは戻るボタンを非表示に、最後のページでは進むボタンを非表示に
   // （ページ数を中央に表示するため、非表示にする代わりにdivを返す）
   const page_status = (
-    <section className={style.button_container}>
+    <section className={style.button_container} aria-label='記事一覧ページ移動'>
       {current_page === 1 ? (
         <div className={style.empty}></div>
       ) : (
@@ -62,10 +55,18 @@ export const ArticleList = (props: Props): React.ReactElement => {
     </section>
   );
 
+  const begin = (current_page - 1) * article_count;
+  const last = (current_page - 1) * article_count + article_count;
   return (
     <div className={style.container}>
       {page_status}
-      <div className={style.list}>{article_cards}</div>
+      <section className={style.list} aria-label='記事一覧'>
+        {props.list
+          .slice(begin, last) // 記事からarticle_count個取り出す
+          .map(article => (
+            <ArticleCard key={article.slug} article={article} />
+          ))}
+      </section>
       {page_status}
     </div>
   );

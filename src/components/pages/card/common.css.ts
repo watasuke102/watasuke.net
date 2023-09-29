@@ -8,4 +8,5 @@ import {fontFace} from '@vanilla-extract/css';
 
 export const MyricaM = fontFace({
   src: 'url(/MyricaM.woff)',
+  fontDisplay: 'swap',
 });
