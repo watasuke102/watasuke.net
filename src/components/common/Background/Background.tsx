@@ -3,16 +3,13 @@
 // CopyRight (c) 2021-2023 Watasuke
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
-// This software is released under the MIT or MIT SUSHI-WARE License.
+// software is released under the MIT or MIT SUSHI-WARE License.
 import React from 'react';
 import * as style from './Background.css';
 
-interface Vec {
+interface FigureInfo {
   x: number;
   y: number;
-}
-
-interface FigureInfo extends Vec {
   size: number;
   color: string;
   animation_x: number;
@@ -22,85 +19,73 @@ interface FigureInfo extends Vec {
 enum Figure {
   triangle,
   circle,
-  cube,
+  hexagon, // 六角形
 }
 
 function rand(x: number) {
   return Math.floor(Math.random() * x);
 }
 
-export default class Background extends React.Component<unknown> {
-  private canvas_ref = React.createRef<HTMLCanvasElement>();
-  private pos: FigureInfo[] = [];
+export default function Background() {
+  const canvas_ref = React.useRef<HTMLCanvasElement>();
+  const align = 10;
 
-  constructor(p: unknown) {
-    super(p);
-    // sizeのランダム範囲
-    const align = 10;
-    // 三角形
-    this.pos[Figure.triangle] = {
-      x: 0,
-      y: 0,
-      size: 170 + rand(align),
-      color: '#3dd651',
-      animation_x: rand(360),
-      animation_y: rand(360),
-    };
-    // 円
-    // これだけ色指定を0～255のrgbで指定
-    this.pos[Figure.circle] = {
-      x: 0,
-      y: 0,
-      size: 0,
-      color: '228,127,69',
-      animation_x: 0,
-      animation_y: 1,
-    };
-    // 正方形
-    this.pos[Figure.cube] = {
-      x: 0,
-      y: 0,
-      size: 334 + rand(align),
-      color: '#3d5ada',
-      animation_x: 0,
-      animation_y: 0,
-    };
-    this.InitToBasePositions();
-  }
+  const pos: FigureInfo[] = [];
+  pos[Figure.triangle] = {
+    x: 0,
+    y: 0,
+    size: 170 + rand(align),
+    color: '#61afef',
+    animation_x: rand(360),
+    animation_y: rand(360),
+  };
+  pos[Figure.circle] = {
+    x: 0,
+    y: 0,
+    size: 0,
+    // 透明度を変更するために、色指定を0～255のrgbで指定する必要があるらしい
+    color: '224, 108, 117',
+    animation_x: 0,
+    animation_y: 1,
+  };
+  pos[Figure.hexagon] = {
+    x: 0,
+    y: 0,
+    size: 400 + rand(align),
+    color: '#98c379',
+    animation_x: 0,
+    animation_y: 0,
+  };
 
-  InitToBasePositions(): void {
+  const InitToBasePositions = () => {
     if (typeof window !== 'undefined') {
       const width = window.innerWidth;
       const height = window.innerHeight;
-      // 三角形
-      this.pos[Figure.triangle].x = width - 150;
-      this.pos[Figure.triangle].y = 450;
-      // 円
-      this.pos[Figure.circle].x = 160;
-      this.pos[Figure.circle].y = 140;
-      // 正方形
-      this.pos[Figure.cube].x = width / 2;
-      this.pos[Figure.cube].y = height;
+      pos[Figure.triangle].x = width * 0.85;
+      pos[Figure.triangle].y = height / 2;
+      pos[Figure.circle].x = width * 0.2;
+      pos[Figure.circle].y = height * 0.2;
+      pos[Figure.hexagon].x = width / 2;
+      pos[Figure.hexagon].y = height;
     }
-  }
+  };
 
   // Animation() だとrequestAnimationFrameが機能しない
-  Animation = (): void => {
-    requestAnimationFrame(this.Animation);
-    if (!this.canvas_ref) return;
-    const canvas = this.canvas_ref.current;
+  const Animation = (): void => {
+    requestAnimationFrame(Animation);
+    if (!canvas_ref) return;
+    const canvas = canvas_ref.current;
     if (!canvas) return;
     const context = canvas.getContext('2d');
     if (!context) return;
 
-    this.InitToBasePositions();
+    InitToBasePositions();
     context.clearRect(0, 0, canvas.width, canvas.height);
     let base_pos: FigureInfo;
 
-    // 三角形
     // animation_x -> x座標アニメーションの進行度, animation_y -> y座標アニメーションの進行度
     {
-      base_pos = this.pos[Figure.triangle];
+      base_pos = pos[Figure.triangle];
       // 周期関数（三角関数）でアニメーション
       // ちょっと変えたかったので、x, yでそれぞれsin, cosを使ってる
       base_pos.x += Math.cos((base_pos.animation_x / 180) * Math.PI) * 6;
@@ -120,14 +105,13 @@ export default class Background extends React.Component<unknown> {
       context.stroke();
 
       // アニメーション
-      this.pos[Figure.triangle].animation_x += 0.8;
-      this.pos[Figure.triangle].animation_y += 0.8;
+      pos[Figure.triangle].animation_x += 0.8;
+      pos[Figure.triangle].animation_y += 0.8;
     }
 
-    // 円
-    // animation_x -> 半径 (増加量), animation_y ->
+    // animation_x -> 半径 (増加量), animation_y -> unused
     {
-      base_pos = this.pos[Figure.circle];
+      base_pos = pos[Figure.circle];
       context.lineWidth = 8;
       context.strokeStyle = `rgba(${base_pos.color}, ${base_pos.animation_y})`;
       context.beginPath();
@@ -136,86 +120,59 @@ export default class Background extends React.Component<unknown> {
       context.stroke();
 
       // アニメーション
-      this.pos[Figure.circle].animation_x += 0.2;
-      this.pos[Figure.circle].animation_y -= 0.001;
+      pos[Figure.circle].animation_x += 0.2;
+      pos[Figure.circle].animation_y -= 0.001;
       // 完全に消えてしばらく経ったら
-      if (this.pos[Figure.circle].animation_y <= -0.25) {
-        this.pos[Figure.circle].animation_x = 0;
-        this.pos[Figure.circle].animation_y = 1;
+      if (pos[Figure.circle].animation_y <= -0.25) {
+        pos[Figure.circle].animation_x = 0;
+        pos[Figure.circle].animation_y = 1;
       }
     }
 
-    // 正方形
-    // 正方形の回転は独自実装（context.rotateだとcanvas自体が回転するため）
-    // animation_x -> 角度
+    // animation_x -> 角度, animation_y -> unused
     {
-      base_pos = this.pos[Figure.cube];
-      const rad = (base_pos.animation_x / 180) * Math.PI;
+      base_pos = pos[Figure.hexagon];
+      context.save();
+      {
+        context.translate(base_pos.x, base_pos.y);
+        context.rotate((base_pos.animation_x / 180) * Math.PI);
 
-      // 中央座標から4隅の座標を求める
-      let left_top: Vec = {x: base_pos.x - base_pos.size / 2, y: base_pos.y - base_pos.size / 2};
-      let right_bottom: Vec = {x: left_top.x + base_pos.size, y: left_top.y + base_pos.size};
-      let right_top: Vec = {x: right_bottom.x, y: left_top.y};
-      let left_bottom: Vec = {x: left_top.x, y: right_bottom.y};
-      // 原点中心に回転する方法しか見当たらなかったので
-      // 図形の中央を原点まで移動させ、回転させたあとに戻す
-      const rotate = (prop: Vec) => {
-        prop.x -= base_pos.x;
-        prop.y -= base_pos.y;
-        const result: Vec = {
-          x: prop.x * Math.cos(rad) - prop.y * Math.sin(rad),
-          y: prop.x * Math.sin(rad) + prop.y * Math.cos(rad),
-        };
-        result.x += base_pos.x;
-        result.y += base_pos.y;
-        return result;
-      };
-      left_top = rotate(left_top);
-      right_top = rotate(right_top);
-      right_bottom = rotate(right_bottom);
-      left_bottom = rotate(left_bottom);
-      // 座標計算おわり
+        context.strokeStyle = base_pos.color;
+        context.lineWidth = 24;
+        context.lineCap = 'round';
+        context.beginPath();
 
-      context.strokeStyle = base_pos.color;
-      context.lineWidth = 34;
-      context.lineCap = 'round';
-      context.beginPath();
-      // 左上
-      context.moveTo(left_top.x, left_top.y);
-      // 右上
-      context.lineTo(right_top.x, right_top.y);
-      // 右下
-      context.lineTo(right_bottom.x, right_bottom.y);
-      // 左下
-      context.lineTo(left_bottom.x, left_bottom.y);
-      context.closePath();
-      context.stroke();
+        context.moveTo(0, -base_pos.size / 2);
+        for (let i = 0; i < 5; ++i) {
+          context.rotate((2 * Math.PI) / 6);
+          context.lineTo(0, -base_pos.size / 2);
+        }
 
+        context.closePath();
+        context.stroke();
+      }
+      context.restore();
       // アニメーション
-      this.pos[Figure.cube].animation_x += 0.07;
+      pos[Figure.hexagon].animation_x += 0.03;
     }
   };
 
-  componentDidMount(): void {
-    this.UpdateCanvasSize();
-    requestAnimationFrame(this.Animation);
-    window.addEventListener('resize', this.UpdateCanvasSize);
-  }
-  componentWillUnmount(): void {
-    window.removeEventListener('resize', this.UpdateCanvasSize);
-  }
-
-  // UpdateCanvasSize() とするとEventListenerから呼んだときにrefがundefinedになる
-  UpdateCanvasSize = (): void => {
-    const canvas = this.canvas_ref.current;
+  const UpdateCanvasSize = () => {
+    const canvas = canvas_ref.current;
     if (canvas) {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
-    this.InitToBasePositions();
+    InitToBasePositions();
   };
 
-  render(): React.ReactElement {
-    return <canvas ref={this.canvas_ref} className={style.canvas} />;
-  }
+  React.useEffect(() => {
+    InitToBasePositions();
+    UpdateCanvasSize();
+    requestAnimationFrame(Animation);
+    window.addEventListener('resize', UpdateCanvasSize);
+    return () => window.removeEventListener('resize', UpdateCanvasSize);
+  }, []);
+
+  return <canvas ref={canvas_ref} className={style.canvas} />;
 }
