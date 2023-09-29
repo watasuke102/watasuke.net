@@ -26,7 +26,7 @@ export const item = style({
   width: 'auto',
   borderRadius: 3,
 
-  backgroundColor: `${color.fg}40`,
+  backgroundColor: `${color.fg}36`,
   ':hover': {
     backgroundColor: `${color.fg}66`,
   },
