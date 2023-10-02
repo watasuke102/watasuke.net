@@ -9,7 +9,7 @@ import {GatsbyNode, SourceNodesArgs} from 'gatsby';
 import fetch from 'node-fetch';
 import OgpParser from 'ogp-parser';
 import path from 'path';
-import config from './config.json';
+import * as config from './config';
 
 interface Tag {
   id?: number;

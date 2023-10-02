@@ -11,8 +11,8 @@ Docker Compose は開発用の Straip（と、それに必要な MySQL）が載�
 
 ## how to use
 
-1. `cp sample-config.json config.json`
-2. できあがった `config.json` を編集
+1. `cp sample-config.ts config.ts`
+2. できあがった `config.ts` を編集
    - `contentUrl`: 記事の中を取ってくる URL
    - `imageUrl`: 画像を取ってくる URL
    - `trackingId`: Google Analytics 4 プロパティの「測定 ID」（G-12345 みたいなやつ）
@@ -30,5 +30,3 @@ http://localhost:1337/admin で記事を編集し、http://localhost:8000 で確
 ## LICENSE
 
 Dual-licensed; MIT (`LICENSE-MIT` or [The MIT License – Open Source Initiative](https://opensource.org/license/mit/)) or MIT SUSHI-WARE LICENSE (`LICENSE-MIT_SUSHI.md`)
-
-

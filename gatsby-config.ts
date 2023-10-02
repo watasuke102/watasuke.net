@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {GatsbyConfig} from 'gatsby';
 import path from 'path';
-import config from './config.json';
+import * as config from './config';
 
 const gatsby_config: GatsbyConfig = {
   siteMetadata: {
