@@ -7,7 +7,7 @@
     "lint": "eslint src",
     "fmt": "prettier --write src/",
     "build": "gatsby build",
-    "dev": "gatsby develop -H 0.0.0.0",
+    "dev": "gatsby develop -p 10210 -H 0.0.0.0",
     "serve": "gatsby serve -p 2999 -H 0.0.0.0"
   },
   "repository": {
