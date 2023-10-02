@@ -28,11 +28,11 @@ globalStyle('body', {
 });
 
 globalStyle('a', {
-  color: color.p0,
+  color: `${color.p0} !important`,
   textDecoration: 'underline',
 });
 globalStyle('a:hover', {
-  color: color.p0,
+  color: `${color.p0} !important`,
   transition: 'color 0.3s',
 });
 
