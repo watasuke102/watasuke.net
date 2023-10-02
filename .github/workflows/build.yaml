@@ -2,7 +2,7 @@ name: build
 
 on:
   push:
-    branches: ["main", "dev"]
+    branches: ['main', 'dev']
 
 jobs:
   build:
@@ -16,10 +16,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: 'npm'
       - name: Setup
         run: |
           npm install
-          sed -e 's|contentUrl.*|contentUrl = "https://data.watasuke.net";|' sample-config.ts > config.ts
+          sed -e 's|contentUrl =.*|contentUrl = "https://data.watasuke.net";|' sample-config.ts > config.ts
       - name: Build
         run: npm run build
