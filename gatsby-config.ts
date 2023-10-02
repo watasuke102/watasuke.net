@@ -26,7 +26,7 @@ const gatsby_config: GatsbyConfig = {
           '@utils': path.resolve(__dirname, 'src/utils'),
           '@assets': path.resolve(__dirname, 'src/assets'),
           '@mytypes': path.resolve(__dirname, 'src/types'),
-          '@config': path.resolve(__dirname, 'config.json'),
+          '@config': path.resolve(__dirname, 'config.ts'),
         },
         extensions: [],
       },
