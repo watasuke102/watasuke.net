@@ -36,38 +36,38 @@ const Heading = (props: HeadingProps) => {
     <>
       {++heading_count % 4 === 0 && <AdsInArticle />}
       {(() => {
-        switch (props.level) {
-          case 1:
+        switch (props.node.tagName) {
+          case 'h1':
             return (
               <h1 id={props.id}>
                 <>{props.children}</>
               </h1>
             );
-          case 2:
+          case 'h2':
             return (
               <h2 id={props.id}>
                 <>{props.children}</>
               </h2>
             );
-          case 3:
+          case 'h3':
             return (
               <h3 id={props.id}>
                 <>{props.children}</>
               </h3>
             );
-          case 4:
+          case 'h4':
             return (
               <h4 id={props.id}>
                 <>{props.children}</>
               </h4>
             );
-          case 5:
+          case 'h5':
             return (
               <h5 id={props.id}>
                 <>{props.children}</>
               </h5>
             );
-          case 6:
+          case 'h6':
             return (
               <h6 id={props.id}>
                 <>{props.children}</>
