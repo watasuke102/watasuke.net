@@ -4,10 +4,10 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // software is released under the MIT SUSHI-WARE License.
+import * as style from './PortfolioContainer.css';
 import {AnimatePresence, motion, useAnimation} from 'framer-motion';
 import React from 'react';
 import {Transition} from '@utils/Transition';
-import * as style from './PortfolioContainer.css';
 
 enum Position {
   reached_top = -1,

@@ -4,9 +4,9 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as style from './TagContainer.css';
 import {Link} from 'gatsby';
 import React from 'react';
-import * as style from './TagContainer.css';
 import IconTag from '@assets/icons/general/tag.svg';
 
 interface Props {

@@ -4,14 +4,14 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import React, {AnchorHTMLAttributes, DetailedHTMLProps, ReactNode} from 'react';
+import React, {AnchorHTMLAttributes, DetailedHTMLProps} from 'react';
 import {ReactMarkdownProps} from 'react-markdown/lib/complex-types';
 import {EmbedCard, InnerEmbedCard} from '@/feature/Article';
 
 type Props = Omit<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>, 'ref'> &
   ReactMarkdownProps;
 
-export function Link(props: Props) {
+export function Link(props: Props): React.ReactElement {
   // [Display](url)の形式であった場合、文頭ではなかった場合（箇条書き内など）はEmbedにしない
   if (props.children[0] !== props.href || props.node.position?.start.column !== 1) {
     return <a href={props.href}>{props.children[0]}</a>;

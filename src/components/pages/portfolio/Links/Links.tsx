@@ -4,12 +4,12 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as style from './Links.css';
 import * as portfolio_common from '@/pages/portfolio/common.css';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import toml from 'toml';
 import {LinkCard} from './LinkCard';
-import * as style from './Links.css';
 
 interface Link {
   title: string;

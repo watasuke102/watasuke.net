@@ -4,12 +4,12 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import '@/common/main.css';
+import * as style from '@/feature/Article/Article.css';
 import {Seo, Layout, Breadcrumb} from '@/common';
 import React from 'react';
 import RemoveMD from 'remove-markdown';
-import '@/common/main.css';
 import {BlogContent, ProfileCard, TocRight} from '@/feature/Article';
-import * as style from '@/feature/Article/Article.css';
 import {AllTagList} from '@/feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import ExtractHeading from '@utils/ExtractHeading';

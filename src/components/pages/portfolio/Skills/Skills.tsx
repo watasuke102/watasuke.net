@@ -4,6 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as style from './Skills.css';
 import * as portfolio_common from '@/pages/portfolio/common.css';
 import {BreakWithCR, Toggle} from '@/common';
 import {AnimatePresence, motion} from 'framer-motion';
@@ -11,7 +12,6 @@ import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import toml from 'toml';
 import {FadeWithScroll} from '@utils/FadeWithScroll';
-import * as style from './Skills.css';
 import IconArch from '@assets/icons/Skills/arch.svg';
 import IconC from '@assets/icons/Skills/c.svg';
 import IconCmake from '@assets/icons/Skills/cmake.svg';
@@ -19,7 +19,6 @@ import IconCpp from '@assets/icons/Skills/cpp.svg';
 import IconDocker from '@assets/icons/Skills/docker.svg';
 import IconFile from '@assets/icons/Skills/file.svg';
 import IconFlutter from '@assets/icons/Skills/flutter.svg';
-import IconGatsby from '@assets/icons/Skills/gatsby.svg';
 import IconGit from '@assets/icons/Skills/git.svg';
 import IconMysql from '@assets/icons/Skills/mysql.svg';
 import IconNeovim from '@assets/icons/Skills/neovim.svg';

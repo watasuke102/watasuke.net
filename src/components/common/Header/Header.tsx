@@ -4,9 +4,9 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as style from './Header.css';
 import {Link} from 'gatsby';
 import React from 'react';
-import * as style from './Header.css';
 
 export const Header = (): React.ReactElement => {
   return (

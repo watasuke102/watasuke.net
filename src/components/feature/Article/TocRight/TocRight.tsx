@@ -4,10 +4,10 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import React from 'react';
-import {toc_list} from '@/feature/Article/TableOfContents.css';
-import Heading from '@mytypes/Heading';
 import * as style from './TocRight.css';
+import {toc_list} from '@/feature/Article/TableOfContents.css';
+import React from 'react';
+import Heading from '@mytypes/Heading';
 
 interface Props {
   table_of_contents: Heading[];

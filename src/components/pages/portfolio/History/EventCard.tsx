@@ -4,6 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as style from './EventCard.css';
 import {BreakWithCR} from '@/common';
 import {motion} from 'framer-motion';
 import React from 'react';
@@ -12,7 +13,6 @@ import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import {Transition} from '@utils/Transition';
 import {Event} from './Event';
-import * as style from './EventCard.css';
 import IconCollapse from '@assets/icons/general/up.svg';
 
 interface Props {

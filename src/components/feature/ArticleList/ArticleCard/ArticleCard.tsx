@@ -4,12 +4,12 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as style from './ArticleCard.css';
 import {Link} from 'gatsby';
 import React from 'react';
 import RemoveMD from 'remove-markdown';
 import {TagContainer} from '@/feature/Tag';
 import Article from '@mytypes/Article';
-import * as style from './ArticleCard.css';
 
 interface Props {
   article: Article;

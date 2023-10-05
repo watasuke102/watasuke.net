@@ -4,10 +4,10 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as style from './ProfileCard.css';
 import {graphql, Link, useStaticQuery} from 'gatsby';
 import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
-import * as style from './ProfileCard.css';
 
 export const ProfileCard = (): React.ReactElement => {
   const profile_text = useStaticQuery(graphql`

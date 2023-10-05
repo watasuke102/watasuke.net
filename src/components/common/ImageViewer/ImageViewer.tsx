@@ -4,9 +4,9 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as style from './ImageViewer.css';
 import {AnimatePresence, motion} from 'framer-motion';
 import React from 'react';
-import * as style from './ImageViewer.css';
 
 interface Props {
   src: string;

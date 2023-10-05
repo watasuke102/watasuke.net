@@ -16,7 +16,7 @@ CC-BY 4.0
 
 [Apache License Version 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE)
 
-- general/*
+- general/\*
 
 ## Simple Icons 8.5.0
 

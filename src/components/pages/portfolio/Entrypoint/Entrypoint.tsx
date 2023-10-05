@@ -4,12 +4,12 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as style from './Entrypoint.css';
 import {Toggle} from '@/common';
 import {AnimatePresence, motion} from 'framer-motion';
 import {navigate} from 'gatsby';
 import React from 'react';
 import {IsMobileDevice} from '@utils/IsMobileDevice';
-import * as style from './Entrypoint.css';
 
 const blind_width = 60;
 const visible_mask = `repeating-linear-gradient(-60deg, #98c379 0px 0px, transparent 0px ${blind_width}px)`;

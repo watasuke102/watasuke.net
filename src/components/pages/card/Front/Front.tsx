@@ -4,8 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import React from 'react';
 import * as style from './Front.css';
+import React from 'react';
 import IconEnvelope from '@assets/icons/Links/envelope.svg';
 import IconGitHub from '@assets/icons/Links/github.svg';
 import IconInstagram from '@assets/icons/Links/instagram.svg';

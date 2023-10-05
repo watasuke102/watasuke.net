@@ -4,8 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // software is released under the MIT or MIT SUSHI-WARE License.
-import React from 'react';
 import * as style from './Background.css';
+import React from 'react';
 
 interface FigureInfo {
   x: number;
@@ -26,7 +26,7 @@ function rand(x: number) {
   return Math.floor(Math.random() * x);
 }
 
-export default function Background() {
+export default function Background(): React.ReactElement {
   const canvas_ref = React.useRef<HTMLCanvasElement>();
   const align = 10;
 

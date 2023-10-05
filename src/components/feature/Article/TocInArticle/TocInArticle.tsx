@@ -4,11 +4,11 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import {toc_list} from '../TableOfContents.css';
+import * as style from './TocInArticle.css';
 import {AnimatePresence, motion} from 'framer-motion';
 import React from 'react';
 import Heading from '@mytypes/Heading';
-import {toc_list} from '../TableOfContents.css';
-import * as style from './TocInArticle.css';
 import IconCollapse from '@assets/icons/general/up.svg';
 
 interface Props {

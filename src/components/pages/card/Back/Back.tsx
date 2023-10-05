@@ -4,8 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import React from 'react';
 import * as style from './Back.css';
+import React from 'react';
 
 interface Props {
   hidden: boolean;

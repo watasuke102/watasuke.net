@@ -4,9 +4,9 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {color} from '@/common/color';
 import {MyricaM} from '../common.css';
 import {globalStyle, style} from '@vanilla-extract/css';
+import {color} from '@/common/color';
 
 export const container = style({
   position: 'relative',

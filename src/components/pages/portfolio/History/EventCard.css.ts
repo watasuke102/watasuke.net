@@ -4,8 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {color} from '@/common/color';
 import {globalStyle, style} from '@vanilla-extract/css';
+import {color} from '@/common/color';
 
 const h_connector_len = 40;
 const connector_weight = 4;

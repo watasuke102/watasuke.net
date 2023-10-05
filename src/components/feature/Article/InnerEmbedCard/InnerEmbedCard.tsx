@@ -4,11 +4,11 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as style from './InnerEmbedCard.css';
 import {Link, graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import RemoveMD from 'remove-markdown';
 import Article from '@mytypes/Article';
-import * as style from './InnerEmbedCard.css';
 
 interface Props {
   slug: string;

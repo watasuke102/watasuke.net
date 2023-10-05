@@ -4,10 +4,10 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as style from './ArticleList.css';
 import React from 'react';
 import Article from '@mytypes/Article';
 import {ArticleCard} from './ArticleCard/ArticleCard';
-import * as style from './ArticleList.css';
 import IconLeft from '@assets/icons/general/left.svg';
 import IconRight from '@assets/icons/general/right.svg';
 
