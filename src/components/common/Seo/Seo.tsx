@@ -45,7 +45,7 @@ export const Seo = (props: Props): React.ReactElement => {
       <meta property='og:description' content={desc} />
       <meta property='og:image' content={image} />
       <meta name='description' content={desc} />
-      <meta name='twitter:card' content='summary_large_image' />
+      <meta name='twitter:card' content='summary' />
       <meta name='twitter:site' content='@Watasuke102' />
       <meta name='twitter:creator' content='@Watasuke102' />
       <meta name='twitter:title' content={title} />
