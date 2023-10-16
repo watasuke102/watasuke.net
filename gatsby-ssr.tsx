@@ -11,16 +11,18 @@ export const onRenderBody: GatsbySSR['onRenderBody'] = ({setHtmlAttributes, setH
   setHtmlAttributes({lang: 'ja'});
   setHeadComponents([
     <link
+      key='reseter.css'
       rel='stylesheet'
       href='https://cdn.jsdelivr.net/gh/krishdevdb/reseter.css@1.20/css/reseter.min.css'
       id='reseter.css'
     />,
-    <link rel='preconnect' href='https://fonts.googleapis.com' />,
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />,
+    <link key='pre-googleapis' rel='preconnect' href='https://fonts.googleapis.com' />,
+    <link key='pre-gstatic' rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />,
     <link
-      href='https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=M+PLUS+Rounded+1c&display=swap'
+      key='font-rounded_Mplus'
+      href='https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap'
       rel='stylesheet'
-    ></link>,
+    />,
   ]);
 };
 
