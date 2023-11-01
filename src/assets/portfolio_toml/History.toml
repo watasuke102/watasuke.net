@@ -423,3 +423,33 @@ Introduced about watasuke.net in the Lightning Talk event held by Security Camp 
 
 [Slide](https://docs.google.com/presentation/d/11Z0c9Mo95BC2r71_lEYe37K3P4eBYsQdOkmdEWlOfd0/edit?usp=sharing)
 """
+
+[[event]]
+year        = "2023"
+day         = "08/21\n|\n09/26"
+category    = "Event"
+title_ja    = "マレーシア留学"
+title_en    = "Internship in Malaysia"
+subtitle_ja = "マラ工科大学"
+subtitle_en = "Universiti Teknologi MARA"
+body_ja     = "マラ工科大学でIoTに関する研究を行いました。"
+body_en     = "I did the research about Iot in UiTM."
+
+[[event]]
+year        = "2023"
+day         = "10/21\n|10/22"
+category    = "Event"
+title_ja    = "CAPCOM Hackathon"
+title_en    = "CAPCOM Hackathon"
+subtitle_ja = "インターンシップ"
+subtitle_en = "internship"
+body_ja     = """
+大阪で開催されたCAPCOM Hackathonに参加し、Unityを用いたゲーム開発を行いました。
+
+[感想](https://watasuke.net/blog/article/participated-in-capcom-hackathon/)
+"""
+body_en     = """
+I participated in CAPCOM Hackathon at Osaka, and developed a game using Unity.
+
+[my thoughts (blog)](https://watasuke.net/blog/article/participated-in-capcom-hackathon/)
+"""
