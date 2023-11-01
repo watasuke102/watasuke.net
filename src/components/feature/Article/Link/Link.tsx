@@ -4,17 +4,17 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import React, {AnchorHTMLAttributes, DetailedHTMLProps} from 'react';
+import React from 'react';
 import {ReactMarkdownProps} from 'react-markdown/lib/complex-types';
 import {EmbedCard, InnerEmbedCard} from '@/feature/Article';
 
-type Props = Omit<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>, 'ref'> &
+type Props = Omit<React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>, 'ref'> &
   ReactMarkdownProps;
 
 export function Link(props: Props): React.ReactElement {
   // [Display](url)の形式であった場合、文頭ではなかった場合（箇条書き内など）はEmbedにしない
-  if (props.children[0] !== props.href || props.node.position?.start.column !== 1) {
-    return <a href={props.href}>{props.children[0]}</a>;
+  if (props.node.children[0].value !== props.href || props.node.position?.start.column !== 1) {
+    return <a href={props.href}>{props.node.children[0].value}</a>;
   }
   // Twitter
   if (props.href?.slice(0, 19) === 'https://twitter.com' ?? '') {
