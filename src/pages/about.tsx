@@ -30,14 +30,14 @@ export default function About(): React.ReactElement {
         <li>当サイトではアクセス解析に Google Analytics を、広告掲載に Google Adsenseを使用しています</li>
         <li>Google Analytics はデータ収集のために Cookie を使用しています</li>
         <li>
-          Google Adsense はパーソナライズ広告（ユーザーの興味に適した広告）を表示するために Cookie を使用しています
+          Google Adsense はパーソナライズド広告（ユーザーの興味に適した広告）を表示するために Cookie を使用しています
         </li>
         <li>
           Cookie は個人を特定できない形で収集されており、また Cookie を無効化することにより、
           データ収集を拒否することが可能です
         </li>
         <li>
-          パーソナライズ広告は、<a href='https://adssettings.google.com/notarget'>「Google 広告設定」（外部リンク）</a>
+          パーソナライズド広告は、<a href='https://adssettings.google.com/notarget'>「Google 広告設定」（外部リンク）</a>
           で無効化することが可能です
         </li>
         <li>
