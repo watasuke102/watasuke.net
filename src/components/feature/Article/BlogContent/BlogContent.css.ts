@@ -99,12 +99,10 @@ globalStyle(`${container} blockquote`, {
 });
 
 globalStyle(`${container} pre:not([class])`, {
-  backgroundColor: color.code_bg,
-  padding: '1em',
-  fontSize: '1em',
-});
-globalStyle(`${container} code`, {
-  padding: 2,
+  border: `1px solid ${color.fg}`,
+  padding: '12px 16px',
   borderRadius: 4,
-  backgroundColor: color.code_bg,
+});
+globalStyle(`${container} pre:has(>code.hljs)`, {
+  padding: '0 !important',
 });

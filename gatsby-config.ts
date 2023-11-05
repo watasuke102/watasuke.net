@@ -15,7 +15,6 @@ const gatsby_config: GatsbyConfig = {
   plugins: [
     'gatsby-plugin-typescript',
     'gatsby-plugin-vanilla-extract',
-    'gatsby-plugin-sass',
     'gatsby-plugin-sitemap',
 
     {

@@ -6,18 +6,16 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {imageUrl} from '@config';
 import * as style from './BlogContent.css';
+import 'highlight.js/styles/atom-one-dark.min.css';
 import {ImageViewer} from '@/common';
-// コードのシンタックスハイライト
-import Prism from 'prismjs';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import {HeadingProps} from 'react-markdown/lib/ast-to-react';
+import Highlight from 'rehype-highlight';
 import Raw from 'rehype-raw';
-// Remark関連
 import Gfm from 'remark-gfm';
 import Slug from 'remark-slug';
 import Toc from 'remark-toc';
-//
 import {AdsInArticle} from '@/feature/Ads';
 import {Link, TocInArticle} from '@/feature/Article';
 import {TagContainer} from '@/feature/Tag';
@@ -89,8 +87,6 @@ export const BlogContent = (props: Props): React.ReactElement => {
       script.src = 'https://platform.twitter.com/widgets.js';
       script.async = true;
       document.body.appendChild(script);
-      //Prismjs
-      Prism.highlightAll();
     }, 0);
   }, []);
 
@@ -135,7 +131,7 @@ export const BlogContent = (props: Props): React.ReactElement => {
           img: props => <ImageViewer src={props.src || ''} alt={props.alt} />,
         }}
         remarkPlugins={[Gfm, Toc, Slug]}
-        rehypePlugins={[Raw]}
+        rehypePlugins={[Raw, Highlight]}
         // eslint-disable-next-line react/no-children-prop
         children={props.data.body.replace(/\/uploads/g, `${imageUrl}/uploads`)}
       />
