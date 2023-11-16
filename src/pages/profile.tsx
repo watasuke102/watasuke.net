@@ -9,6 +9,7 @@ import {Seo, Background, Breadcrumb, Layout} from '@/common';
 import {graphql, Link} from 'gatsby';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import {AdsInArticle} from '@/feature/Ads';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
@@ -32,7 +33,7 @@ export default function Profile({data}: Props): React.ReactElement {
       </p>
       <AdsInArticle />
       {/* eslint-disable-next-line react/no-children-prop */}
-      <ReactMarkdown remarkPlugins={[Gfm]} children={data.siteData.body} />
+      <ReactMarkdown remarkPlugins={[Gfm]} rehypePlugins={[Raw]} children={data.siteData.body} />
     </Layout>
   );
 }
