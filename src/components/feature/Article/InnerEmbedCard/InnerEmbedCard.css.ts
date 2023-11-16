@@ -30,13 +30,6 @@ export const container = style({
     color: color.fg,
     textDecoration: 'none',
   },
-
-  // 横幅が十分にあるときは画像とテキストを横並べ
-  '@media': {
-    'screen and (max-width: 800px)': {
-      display: 'block',
-    },
-  },
 });
 
 export const title = style({
