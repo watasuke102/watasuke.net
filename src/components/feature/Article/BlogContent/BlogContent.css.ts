@@ -60,6 +60,15 @@ globalStyle(`${date}:hover:after`, {
   border: `1px solid ${color.fg}`,
 });
 
+export const h2 = style({
+  borderBottom: `4px solid ${color.p0}`,
+});
+
+export const h3 = style({
+  paddingLeft: 8,
+  borderLeft: `4px solid ${color.p0}`,
+});
+
 // override
 export const container = style({});
 globalStyle(`${container} .twitter-tweet`, {

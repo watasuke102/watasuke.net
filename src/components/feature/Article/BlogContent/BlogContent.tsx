@@ -43,13 +43,13 @@ const Heading = (props: HeadingProps) => {
             );
           case 'h2':
             return (
-              <h2 id={props.id}>
+              <h2 id={props.id} className={style.h2}>
                 <>{props.children}</>
               </h2>
             );
           case 'h3':
             return (
-              <h3 id={props.id}>
+              <h3 id={props.id} className={style.h3}>
                 <>{props.children}</>
               </h3>
             );
