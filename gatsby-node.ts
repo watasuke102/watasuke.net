@@ -250,18 +250,21 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesAr
   }
 
   log('info', 'Collecting OGP info...');
-  const max_count = 50;
+  const max_count = 60;
   const promise_queue: Array<() => void> = [];
   let count = 0;
   Array.from(url_list).forEach(async (url, i) => {
-    ++count;
-    if (count > max_count) {
-      await new Promise<void>(r => promise_queue.push(r));
+    // 同時実行可能数を超えていたら実行キューに追加
+    // Promiseが解決されるまでawait
+    if (count >= max_count) {
+      await new Promise<void>(resolver => promise_queue.push(resolver));
     }
+    ++count;
     log('ogp', url);
     registerOgp(url, i, args);
     log('ogp', url, '> done');
     --count;
+    // キューからPromiseのresolverを取り出して実行（解決させる）
     promise_queue.shift()?.();
   });
 
