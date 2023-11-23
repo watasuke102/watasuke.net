@@ -37,7 +37,8 @@ export default function About(): React.ReactElement {
           データ収集を拒否することが可能です
         </li>
         <li>
-          パーソナライズド広告は、<a href='https://adssettings.google.com/notarget'>「Google 広告設定」（外部リンク）</a>
+          パーソナライズド広告は、
+          <a href='https://adssettings.google.com/notarget'>「Google 広告設定」（外部リンク）</a>
           で無効化することが可能です
         </li>
         <li>

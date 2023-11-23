@@ -87,10 +87,15 @@ export const BlogContent = (props: Props): React.ReactElement => {
       const script = document.createElement('script');
       script.src = 'https://platform.twitter.com/widgets.js';
       script.async = true;
+      script.className = 'twitter-widgets-script';
       document.body.appendChild(script);
     }, 0);
+    return () =>
+      Array.from(document.body.getElementsByClassName('twitter-widgets-script') ?? []).forEach(e => e.remove());
   }, []);
 
+  // 再レンダリング時の広告位置変更を抑制
+  heading_count = 0;
   const table_of_contents = ExtractHeading(props.data.body);
   return (
     <section className={style.container}>
