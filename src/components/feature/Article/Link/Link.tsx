@@ -6,37 +6,48 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import React from 'react';
 import {ReactMarkdownProps} from 'react-markdown/lib/complex-types';
-import {EmbedCard, InnerEmbedCard} from '@/feature/Article';
+import {EmbedCard, FootnoteDef, InnerEmbedCard} from '@/feature/Article';
 
 type Props = Omit<React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>, 'ref'> &
   ReactMarkdownProps;
 
 export function Link(props: Props): React.ReactElement {
-  // [Display](url)の形式であった場合、文頭ではなかった場合（箇条書き内など）はEmbedにしない
-  if (props.node.children[0].value !== props.href || props.node.position?.start.column !== 1) {
-    return <a href={props.href}>{props.node.children[0].value}</a>;
-  }
-  // Twitter
-  if (props.href?.slice(0, 19) === 'https://twitter.com' ?? '') {
+  const link_text = props.node.children[0].value;
+  // footnotes
+  if (props.node.properties && typeof props.node.properties['aria-label'] === 'string') {
     return (
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `<blockquote class="twitter-tweet" data-theme="dark"><a href="${props.href}">ツイート</a>を読み込み中...</blockquote>`,
-        }}
+      <FootnoteDef
+        footnote={props.node.properties['aria-label']}
+        properties={props.node.properties}
+        link_text={link_text}
       />
     );
   }
-  // YouTube
-  if (props.href?.slice(0, 23) === 'https://www.youtube.com' ?? '') {
+  // [Display](url)の形式であった場合、文頭ではなかった場合（箇条書き内など）はEmbedにしない
+  if (link_text !== props.href || props.node.position?.start.column !== 1) {
+    return <a {...props.node.properties}>{link_text}</a>;
+  }
+  // Twitter
+  if ((props.href?.slice(0, 20) ?? '') === 'https://twitter.com/') {
     return (
-      <div
-        className='youtube-wrapper'
-        dangerouslySetInnerHTML={{
-          __html: `<iframe src="https://www.youtube.com/embed/${props.href?.slice(32)}"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        title="YouTube video player" allowfullscreen></iframe>`,
-        }}
-      />
+      <blockquote className='twitter-tweet' data-theme='dark'>
+        <span>
+          <a href={props.href}>ツイート</a>を読み込み中...
+        </span>
+      </blockquote>
+    );
+  }
+  // YouTube
+  if ((props.href?.slice(0, 32) ?? '') === 'https://www.youtube.com/watch?v=') {
+    return (
+      <div className='youtube-wrapper'>
+        <iframe
+          src={`https://www.youtube.com/embed/${props.href?.slice(32)}`}
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+          title='YouTube video player'
+          allowFullScreen
+        ></iframe>
+      </div>
     );
   }
 
