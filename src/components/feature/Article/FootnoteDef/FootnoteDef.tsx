@@ -24,13 +24,11 @@ export function FootnoteDef(props: Props): React.ReactElement {
   const [pos, set_pos] = React.useState<Pos | null>(null);
   const ref = React.useRef<HTMLSpanElement | null>();
 
-  console.log(props.properties);
   return (
     <>
       <a
         {...props.properties}
         onMouseOver={e => {
-          console.log(e.clientX, e.clientY, ref.current?.clientWidth, document.body.clientWidth);
           const cursor_x = e.clientX;
           const cursor_y = e.clientY;
           const element_w = ref.current?.clientWidth ?? 0;
