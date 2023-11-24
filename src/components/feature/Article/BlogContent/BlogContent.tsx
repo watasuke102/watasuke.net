@@ -16,10 +16,10 @@ import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import Slug from 'remark-slug';
 import Toc from 'remark-toc';
-import {visit} from 'unist-util-visit';
 import {AdsInArticle} from '@/feature/Ads';
 import {Link, TocInArticle} from '@/feature/Article';
 import {TagContainer} from '@/feature/Tag';
+import {rehypeAddFootnoteLabel, remarkAddFootnoteLabel} from '@utils/AddFootnoteLabel';
 import ExtractHeading from '@utils/ExtractHeading';
 import Article from '@mytypes/Article';
 import IconHistory from '@assets/icons/article/history.svg';
@@ -136,44 +136,12 @@ export const BlogContent = (props: Props): React.ReactElement => {
           // eslint-disable-next-line react/prop-types
           img: props => <ImageViewer src={props.src || ''} alt={props.alt} />,
         }}
-        remarkPlugins={[Gfm, Toc, Slug, remark]}
-        rehypePlugins={[Raw, Highlight, rehype]}
+        remarkPlugins={[Gfm, Toc, Slug, remarkAddFootnoteLabel]}
+        rehypePlugins={[Raw, Highlight, rehypeAddFootnoteLabel]}
         // eslint-disable-next-line react/no-children-prop
         children={props.data.body.replace(/\/uploads/g, `${imageUrl}/uploads`)}
       />
       <AdsInArticle />
     </section>
   );
-};
-
-const map = new Map<number, string>();
-const remark = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (tree: any) => {
-    map.clear();
-    let counter = -1;
-    visit(tree, 'footnoteDefinition', node => {
-      ++counter;
-      visit(node, child => {
-        if (child.value) {
-          map.set(counter, (map.get(counter) ?? '') + child.value);
-        }
-      });
-    });
-  };
-};
-
-const rehype = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (tree: any) => {
-    let counter = 0;
-    visit(tree, 'element', node => {
-      const aria_described_by = node.properties.ariaDescribedBy ?? [''];
-      if (aria_described_by[0] !== 'footnote-label') {
-        return;
-      }
-      node.properties['aria-label'] = map.get(counter);
-      ++counter;
-    });
-  };
 };
