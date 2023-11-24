@@ -4,13 +4,12 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {Element} from 'hast';
 import React from 'react';
+import {ReactMarkdownProps} from 'react-markdown/lib/complex-types';
 import {EmbedCard, FootnoteDef, InnerEmbedCard} from '@/feature/Article';
 
-type Props = Omit<React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>, 'ref'> & {
-  node: Element;
-};
+type Props = Omit<React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>, 'ref'> &
+  ReactMarkdownProps;
 
 export function Link(props: Props): React.ReactElement {
   const link_text = props.node.children[0].value;

@@ -8,9 +8,9 @@ import {imageUrl} from '@config';
 import * as style from './BlogContent.css';
 import 'highlight.js/styles/atom-one-dark.min.css';
 import {ImageViewer} from '@/common';
-import {Element} from 'hast';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import {HeadingProps} from 'react-markdown/lib/ast-to-react';
 import Highlight from 'rehype-highlight';
 import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
@@ -28,12 +28,6 @@ import IconUpload from '@assets/icons/article/upload.svg';
 interface Props {
   data: Article;
 }
-type HeadingProps = Omit<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
-  'ref'
-> & {
-  node: Element;
-};
 
 let heading_count = 0;
 const Heading = (props: HeadingProps) => {

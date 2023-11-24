@@ -10,7 +10,7 @@ import {AnimatePresence, motion} from 'framer-motion';
 import {useStaticQuery, graphql} from 'gatsby';
 import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import {ReactMarkdown} from 'react-markdown/lib/react-markdown';
 import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import toml from 'toml';
