@@ -232,7 +232,7 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesAr
     articles.forEach((item: Article) => {
       registerArticle(item, args);
       item.body.split('\n').forEach(paragraph => {
-        const url = paragraph.match(/^https?:\/\/[\w/:%#$&?~.=+-]+/g);
+        const url = paragraph.match(/^https:\/\/[\w/:%#$&?~.=+-]+/g);
         if (!url) {
           return;
         }
