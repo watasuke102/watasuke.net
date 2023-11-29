@@ -51,7 +51,6 @@ export const query = graphql`
           name
           slug
         }
-        thumbnail
         published_at
         updated_at
       }

@@ -29,10 +29,9 @@ export const InnerEmbedCard = (props: Props): React.ReactElement => {
           title
           body
           tags {
-            name
             slug
+            name
           }
-          thumbnail
           published_at
           updated_at
         }

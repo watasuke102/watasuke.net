@@ -13,23 +13,19 @@ interface Props {
   title: string;
   desc: string;
   url: string; // '/'から始まる
-  thumbnail?: string;
   breadcrumb_list: BreadcrumbItem[];
 }
 
 export const Seo = (props: Props): React.ReactElement => {
-  let image: string = 'https://watasuke.net';
-  if (props.thumbnail) {
-    image += props.thumbnail;
-  } else {
-    image += useStaticQuery(graphql`
+  const image =
+    'https://watasuke.net' +
+    useStaticQuery(graphql`
       query {
         file(name: {eq: "thumbnail"}) {
           publicURL
         }
       }
     `).file.publicURL;
-  }
   const title = props.title.length === 0 ? 'わたすけのへや' : `${props.title} - わたすけのへや`;
   const url = `https://watasuke.net${props.url}`;
   // 140字に制限して内容を表示、超過分は...で

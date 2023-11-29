@@ -15,12 +15,16 @@ import {AdsInArticle} from '@/feature/Ads';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 interface Props {
-  data: {siteData: {body: string}};
+  data: {
+    siteData: {
+      body: string;
+    };
+  };
 }
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Profile'}]);
 
-export default function Profile({data}: Props): React.ReactElement {
+export default function Profile(props: Props): React.ReactElement {
   return (
     <Layout>
       <Background />
@@ -33,7 +37,7 @@ export default function Profile({data}: Props): React.ReactElement {
       </p>
       <AdsInArticle />
       {/* eslint-disable-next-line react/no-children-prop */}
-      <ReactMarkdown remarkPlugins={[Gfm]} rehypePlugins={[Raw]} children={data.siteData.body} />
+      <ReactMarkdown remarkPlugins={[Gfm]} rehypePlugins={[Raw]} children={props.data.siteData.body ?? ''} />
     </Layout>
   );
 }

@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {imageUrl} from '@config';
+import {apiUrl} from '@config';
 import * as style from './BlogContent.css';
 import 'highlight.js/styles/atom-one-dark.min.css';
 import {ImageViewer} from '@/common';
@@ -100,9 +100,6 @@ export const BlogContent = (props: Props): React.ReactElement => {
   return (
     <section className={style.container}>
       <h1 className={style.title}>{props.data.title}</h1>
-      {/* サムネ */}
-      {/* <Thumbnail url={props.data.thumbnail} /> */}
-
       <div className={style.article_info}>
         <TagContainer tags={props.data.tags} />
         {/* 公開日と更新日 */}
@@ -139,7 +136,7 @@ export const BlogContent = (props: Props): React.ReactElement => {
         remarkPlugins={[Gfm, Toc, Slug, remarkAddFootnoteLabel]}
         rehypePlugins={[Raw, Highlight, rehypeAddFootnoteLabel]}
         // eslint-disable-next-line react/no-children-prop
-        children={props.data.body.replace(/\/uploads/g, `${imageUrl}/uploads`)}
+        children={props.data.body.replaceAll('/img', `${apiUrl}/img/${props.data.slug}`)}
       />
       <AdsInArticle />
     </section>

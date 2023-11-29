@@ -23,9 +23,6 @@ export const ArticleCard = ({article}: Props): React.ReactElement => {
       key={article.slug}
       aria-label={article.title}
     >
-      {/* <div className={style.thumbnail}>
-          <Thumbnail url={article.thumbnail} />
-        </div> */}
       <div className={style.info}>
         <span className={style.date}>{article.published_at.slice(0, 10)}</span>
         <div>

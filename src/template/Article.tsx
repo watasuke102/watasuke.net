@@ -55,7 +55,6 @@ export const Head = ({pageContext}: Props): React.ReactElement => (
     title={pageContext.title}
     desc={RemoveMD(pageContext.body)}
     url={'/blog/article/' + pageContext.slug}
-    thumbnail={pageContext.thumbnail}
     breadcrumb_list={breadcrumb_list(pageContext.title)}
   />
 );

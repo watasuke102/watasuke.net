@@ -48,10 +48,9 @@ export const query = graphql`
         title
         body
         tags {
-          name
           slug
+          name
         }
-        thumbnail
         published_at
         updated_at
       }

@@ -6,40 +6,12 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import fs from 'fs';
 import {GatsbyNode, SourceNodesArgs} from 'gatsby';
-import fetch from 'node-fetch';
+import {GraphQLClient} from 'graphql-request';
 import OgpParser from 'ogp-parser';
 import path from 'path';
+import Article from '@mytypes/Article';
 import * as config from './config';
-
-interface Tag {
-  id?: number;
-  slug: string;
-  name: string;
-}
-
-interface SiteData {
-  id: number;
-  slug: string;
-  body: string;
-}
-
-interface Article {
-  id: number;
-  slug: string;
-  title: string;
-  body: string;
-  tags: {
-    slug: string;
-    name: string;
-  }[];
-  thumbnail: {
-    formats: {
-      large: {url: string};
-    };
-  };
-  published_at: string;
-  updated_at: string;
-}
+import {AllQuery, getSdk} from './src/utils/graphql';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function log(type: 'info' | 'error' | 'debug' | 'ogp', ...args: any[]) {
@@ -62,6 +34,10 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       name: String,
       body: String,
     }
+    type SiteData implements Node @dontInfer {
+      slug: String,
+      body: String
+    }
 
     type Ogp implements Node @dontInfer {
       url: String,
@@ -69,29 +45,18 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       description: String,
       image: String
     }
-    type SiteData implements Node @dontInfer {
+    type Articles implements Node @dontInfer {
       slug: String,
-      body: String
-    }
-
-    type Tag @dontInfer {
-      slug: String,
-      name: String
+      title: String,
+      body: String,
+      published_at: String,
+      updated_at: String,
+      tags: [Tags]
     }
 
     type Tags implements Node @dontInfer {
       slug: String,
       name: String
-    }
-
-    type Articles implements Node @dontInfer {
-      slug: String,
-      title: String,
-      body: String,
-      thumbnail: String,
-      published_at: String,
-      updated_at: String,
-      tags: [Tag]
     }
   `);
 };
@@ -126,30 +91,36 @@ function registerToml({actions, createContentDigest}: SourceNodesArgs) {
   });
 }
 
-async function registerSiteDatas(sitedata_list: SiteData[], {actions, createContentDigest}: SourceNodesArgs) {
-  sitedata_list.forEach((item: SiteData) => {
-    actions.createNode({
-      id: `SiteData_${item.id}`,
-      slug: item.slug,
-      body: item.body,
-      internal: {
-        type: 'SiteData',
-        contentDigest: createContentDigest(item),
-      },
-    });
+async function registerSiteDatas(sitedata: AllQuery['sitedata'], {actions, createContentDigest}: SourceNodesArgs) {
+  actions.createNode({
+    id: 'sitedata_profile',
+    slug: 'profile',
+    body: sitedata.profile,
+    internal: {
+      type: 'SiteData',
+      contentDigest: createContentDigest(sitedata),
+    },
+  });
+  actions.createNode({
+    id: 'sitedata_short_profile',
+    slug: 'short_profile',
+    body: sitedata.shortProfile,
+    internal: {
+      type: 'SiteData',
+      contentDigest: createContentDigest(sitedata),
+    },
   });
 }
 
-async function registerArticle(article: Article, {actions, createContentDigest}: SourceNodesArgs) {
+async function registerArticle(article: AllQuery['articles'][0], {actions, createContentDigest}: SourceNodesArgs) {
   actions.createNode({
-    id: `Article_${article.id ?? 0}`,
+    id: article.slug,
     slug: article.slug,
     title: article.title,
     body: article.body,
     tags: article.tags,
-    thumbnail: article.thumbnail ? article.thumbnail.formats.large.url : null,
-    published_at: article.published_at,
-    updated_at: article.updated_at,
+    published_at: article.publishedAt,
+    updated_at: article.updatedAt,
     internal: {
       type: 'Articles',
       contentDigest: createContentDigest(article),
@@ -189,10 +160,10 @@ async function registerOgp(url: string, i: number, {actions, createContentDigest
   }
 }
 
-async function registerTags(tags: Tag[], {actions, createContentDigest}: SourceNodesArgs) {
-  tags.forEach((item: Tag) => {
+async function registerTags(tags: AllQuery['tags'], {actions, createContentDigest}: SourceNodesArgs) {
+  tags.forEach(item => {
     actions.createNode({
-      id: `Tags_${item.id ?? 0}`,
+      id: item.slug,
       slug: item.slug,
       name: item.name,
       internal: {
@@ -204,32 +175,27 @@ async function registerTags(tags: Tag[], {actions, createContentDigest}: SourceN
 }
 
 export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesArgs) => {
-  async function fetchFromStrapi<T>(endpoint: string): Promise<T | undefined> {
-    const response = await fetch(`${config.contentUrl}/${endpoint}`).catch(e => {
-      log('error', `Failed to fetch from API (${endpoint}) : '${e.message}:`);
-    });
-    if (!response) return undefined;
-    return await response.json();
-  }
-
   log('info', 'Loading toml files...');
   registerToml(args);
 
-  // 最初にエラーになったらその後はなにもしない
-  // Strapiを立ち上げずに開発する時のため
+  const sdk = getSdk(new GraphQLClient(config.apiUrl + '/graphql'));
+  const data = await sdk.all();
+  if (!data) {
+    log('error', 'Failed to fetch data from API');
+    return;
+  }
+
   log('info', 'Creating SiteData nodes...');
-  const sitedata = await fetchFromStrapi<SiteData[]>('sitedata');
-  if (sitedata) {
-    registerSiteDatas(sitedata, args);
+  if (data.sitedata) {
+    registerSiteDatas(data.sitedata, args);
   } else {
     return;
   }
 
   log('info', 'Creating Article nodes...');
   const url_list = new Set<string>();
-  const articles = await fetchFromStrapi<Article[]>('articles');
-  if (articles) {
-    articles.forEach((item: Article) => {
+  if (data.articles) {
+    data.articles.forEach(item => {
       registerArticle(item, args);
       item.body.split('\n').forEach(paragraph => {
         const url = paragraph.match(/^https:\/\/[\w/:%#$&?~.=+-]+/g);
@@ -269,56 +235,65 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesAr
   });
 
   log('info', 'Creating Tag nodes...');
-  const tags = await fetchFromStrapi<Tag[]>('tags');
-  if (tags) {
-    registerTags(tags, args);
+  if (data.tags) {
+    registerTags(data.tags, args);
   }
 };
 
 // ページ作成
 export const createPages: GatsbyNode['createPages'] = async ({graphql, actions}) => {
-  type Response = {data?: {allArticles: {nodes: Article[]}}};
-  // 投稿ページ
-  const response: Response = await graphql(`
-    query {
-      allArticles(sort: {published_at: DESC}) {
-        nodes {
-          slug
-          title
-          body
-          tags {
-            name
+  {
+    type ArticlesResponse = {data?: {allArticles: {nodes: Article[]}}};
+    // 投稿ページ
+    const articles_response: ArticlesResponse = await graphql(`
+      query {
+        allArticles(sort: {published_at: DESC}) {
+          nodes {
             slug
+            title
+            tags {
+              slug
+              name
+            }
+            published_at
+            updated_at
+            body
           }
-          thumbnail
-          published_at
-          updated_at
         }
       }
-    }
-  `);
-  const articles: Article[] = response.data?.allArticles.nodes ?? [];
-  const tag_list = new Set<Tag>();
-  log('info', 'Creating Article pages...');
-  articles.forEach(item => {
-    actions.createPage({
-      path: `/blog/article/${item['slug']}`,
-      component: path.resolve('./src/template/Article.tsx'),
-      context: item,
-    });
-    if (Array.isArray(item.tags)) item.tags.forEach(tag => tag_list.add(tag));
-  });
-
-  // タグを含む記事の一覧ページを作る
-  const tags = Array.from(tag_list);
-  if (tags.length !== 0) {
-    log('info', 'Creating Tag pages...');
-    for (const tag of tags) {
+    `);
+    const articles: Article[] = articles_response.data?.allArticles.nodes ?? [];
+    log('info', 'Creating Article pages...');
+    articles.forEach(item => {
       actions.createPage({
-        path: `/blog/tag/${tag['slug']}`,
+        path: `/blog/article/${item.slug}`,
+        component: path.resolve('./src/template/Article.tsx'),
+        context: item,
+      });
+    });
+  }
+
+  {
+    type TagsResponse = {data?: {allTags: {nodes: {slug: string; name: string}[]}}};
+    const tags_response: TagsResponse = await graphql(`
+      query {
+        allTags {
+          nodes {
+            slug
+            name
+          }
+        }
+      }
+    `);
+    // タグを含む記事の一覧ページを作る
+    log('info', 'Creating Tag pages...');
+    const tags = tags_response.data?.allTags.nodes ?? [];
+    tags.forEach(tag =>
+      actions.createPage({
+        path: `/blog/tag/${tag.slug}`,
         component: path.resolve('./src/template/Tag.tsx'),
         context: tag,
-      });
-    }
+      }),
+    );
   }
 };

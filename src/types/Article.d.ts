@@ -12,7 +12,6 @@ export default interface Article {
     slug: string;
     name: string;
   }[];
-  thumbnail: string;
   published_at: string;
   updated_at: string;
 }

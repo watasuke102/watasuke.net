@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint src",
     "fmt": "prettier --write src/",
+    "gen": "gql-gen --config graphql/codegen.ts",
     "build": "gatsby build",
     "dev": "gatsby develop -p 10210 -H 0.0.0.0",
     "serve": "gatsby serve -p 2999 -H 0.0.0.0"
@@ -22,6 +23,11 @@
   },
   "homepage": "https://github.com/watasuke102/watasuke.net#readme",
   "dependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-graphql-request": "^6.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
     "@types/hast": "^3.0.3",
     "@types/react": "^18.2.38",
     "@types/react-transition-group": "^4.4.9",
@@ -41,6 +47,8 @@
     "gatsby-plugin-vanilla-extract": "^4.0.1",
     "gatsby-source-filesystem": "^5.12.1",
     "gatsby-transformer-sharp": "^5.12.3",
+    "graphql": "^16.8.1",
+    "graphql-request": "^6.1.0",
     "highlight.js": "^11.9.0",
     "ogp-parser": "^0.8.1",
     "react": "^18.2.0",
