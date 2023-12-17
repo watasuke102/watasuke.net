@@ -4,10 +4,9 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-const contentUrl = 'http://192.168.0.9:1337';
-const imageUrl = 'http://192.168.0.9:1337';
+const apiUrl = 'http://localhost:10212';
 const trackingId = '_';
 const adsenseId = '';
 const inArticleSlot = '';
 
-export {contentUrl, imageUrl, trackingId, adsenseId, inArticleSlot};
+export {trackingId, adsenseId, inArticleSlot};
