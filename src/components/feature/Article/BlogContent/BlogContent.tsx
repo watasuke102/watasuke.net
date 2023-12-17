@@ -33,7 +33,7 @@ let heading_count = 0;
 const Heading = (props: HeadingProps) => {
   return (
     <>
-      {++heading_count % 4 === 0 && <AdsInArticle />}
+      {++heading_count % 5 === 0 && <AdsInArticle />}
       {(() => {
         switch (props.node.tagName) {
           case 'h1':
