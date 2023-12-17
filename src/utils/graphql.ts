@@ -92,12 +92,12 @@ export type Tag = {
 export type AllQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllQuery = { __typename?: 'Query', allArticles: Array<{ __typename?: 'Article', slug: string, title: string, publishedAt: string, updatedAt: string, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> }>, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }>, sitedata: { __typename?: 'Sitedata', profile: string, shortProfile: string } };
+export type AllQuery = { __typename?: 'Query', allPublicArticles: Array<{ __typename?: 'Article', slug: string, title: string, publishedAt: string, updatedAt: string, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> }>, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }>, sitedata: { __typename?: 'Sitedata', profile: string, shortProfile: string } };
 
 
 export const AllDocument = gql`
     query all {
-  allArticles {
+  allPublicArticles {
     slug
     title
     publishedAt
