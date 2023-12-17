@@ -8,23 +8,33 @@ type Tag {
   name: String!
 }
 
+type Mutation {
+  newTag(slug: String!, title: String!): String!
+  newArticle(slug: String!, title: String!): String!
+  updateArticle(slug: String!, title: String!, tags: [String!]!, isFavorite: Boolean!, body: String!): String!
+  publishArticle(slug: String!): String!
+}
+
 type Article {
   slug: String!
   body: String!
-  year: Int!
   title: String!
   tags: [Tag!]!
   isFavorite: Boolean!
   publishedAt: String!
   updatedAt: String!
+  isPublished: Boolean!
 }
 
 type Query {
-  articles: [Article!]!
-  tags: [Tag!]!
+  allPublicArticles: [Article!]!
+  allArticles: [Article!]!
+  article(slug: String!): Article
+  allTags: [Tag!]!
   sitedata: Sitedata!
 }
 
 schema {
   query: Query
+  mutation: Mutation
 }

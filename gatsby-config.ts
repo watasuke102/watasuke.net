@@ -12,6 +12,9 @@ const gatsby_config: GatsbyConfig = {
   siteMetadata: {
     siteUrl: 'https://watasuke.net',
   },
+  graphqlTypegen: {
+    typesOutputPath: 'src/types/gatsby-types.d.ts',
+  },
   plugins: [
     'gatsby-plugin-typescript',
     'gatsby-plugin-vanilla-extract',

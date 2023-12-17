@@ -21,19 +21,60 @@ export type Article = {
   __typename?: 'Article';
   body: Scalars['String']['output'];
   isFavorite: Scalars['Boolean']['output'];
+  isPublished: Scalars['Boolean']['output'];
   publishedAt: Scalars['String']['output'];
   slug: Scalars['String']['output'];
   tags: Array<Tag>;
   title: Scalars['String']['output'];
   updatedAt: Scalars['String']['output'];
-  year: Scalars['Int']['output'];
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  newArticle: Scalars['String']['output'];
+  newTag: Scalars['String']['output'];
+  publishArticle: Scalars['String']['output'];
+  updateArticle: Scalars['String']['output'];
+};
+
+
+export type MutationNewArticleArgs = {
+  slug: Scalars['String']['input'];
+  title: Scalars['String']['input'];
+};
+
+
+export type MutationNewTagArgs = {
+  slug: Scalars['String']['input'];
+  title: Scalars['String']['input'];
+};
+
+
+export type MutationPublishArticleArgs = {
+  slug: Scalars['String']['input'];
+};
+
+
+export type MutationUpdateArticleArgs = {
+  body: Scalars['String']['input'];
+  isFavorite: Scalars['Boolean']['input'];
+  slug: Scalars['String']['input'];
+  tags: Array<Scalars['String']['input']>;
+  title: Scalars['String']['input'];
 };
 
 export type Query = {
   __typename?: 'Query';
-  articles: Array<Article>;
+  allArticles: Array<Article>;
+  allPublicArticles: Array<Article>;
+  allTags: Array<Tag>;
+  article?: Maybe<Article>;
   sitedata: Sitedata;
-  tags: Array<Tag>;
+};
+
+
+export type QueryArticleArgs = {
+  slug: Scalars['String']['input'];
 };
 
 export type Sitedata = {
@@ -51,12 +92,12 @@ export type Tag = {
 export type AllQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllQuery = { __typename?: 'Query', articles: Array<{ __typename?: 'Article', slug: string, title: string, publishedAt: string, updatedAt: string, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> }>, tags: Array<{ __typename?: 'Tag', slug: string, name: string }>, sitedata: { __typename?: 'Sitedata', profile: string, shortProfile: string } };
+export type AllQuery = { __typename?: 'Query', allArticles: Array<{ __typename?: 'Article', slug: string, title: string, publishedAt: string, updatedAt: string, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> }>, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }>, sitedata: { __typename?: 'Sitedata', profile: string, shortProfile: string } };
 
 
 export const AllDocument = gql`
     query all {
-  articles {
+  allArticles {
     slug
     title
     publishedAt
@@ -67,7 +108,7 @@ export const AllDocument = gql`
     }
     body
   }
-  tags {
+  allTags {
     slug
     name
   }

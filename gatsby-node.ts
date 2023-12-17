@@ -194,8 +194,8 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesAr
 
   log('info', 'Creating Article nodes...');
   const url_list = new Set<string>();
-  if (data.articles) {
-    data.articles.forEach(item => {
+  if (data.allArticles) {
+    data.allArticles.forEach(item => {
       registerArticle(item, args);
       item.body.split('\n').forEach(paragraph => {
         const url = paragraph.match(/^https:\/\/[\w/:%#$&?~.=+-]+/g);
@@ -235,8 +235,8 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesAr
   });
 
   log('info', 'Creating Tag nodes...');
-  if (data.tags) {
-    registerTags(data.tags, args);
+  if (data.allTags) {
+    registerTags(data.allTags, args);
   }
 };
 

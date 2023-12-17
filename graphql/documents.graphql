@@ -5,7 +5,7 @@
 # Twitter: @Watasuke102
 # This software is released under the MIT or MIT SUSHI-WARE License.
 query all {
-  articles {
+  allArticles {
     slug
     title
     publishedAt
@@ -16,7 +16,7 @@ query all {
     }
     body
   }
-  tags {
+  allTags {
     slug
     name
   }
