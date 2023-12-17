@@ -1,31 +1,30 @@
 # watasuke.net
 
 [https://watasuke.net](https://watasuke.net)で公開されているページのソース  
-React+Gatsby です
+TypeScript, React, Gatsby, vanilla-extract, etc
 
-## structure
+## 記事について
 
-Docker Compose は開発用の Straip（と、それに必要な MySQL）が載っている
+誤字・脱字・間違い・権利侵害など、記事の中身に関する報告は [contents.watasuke.net](https://github.com/watasuke102/contents.watasuke.net) に対するIssue or PRあるいはTwitter (@Watasuke102)でお願いします
 
-`docker compose up` しただけでは Gatsby は立ち上がりません
+## watasuke.net ecosystems
+
+- watasuke.net
+  - [watasuke.net](https://watasuke.net/)において公開されるWebサイト
+- [cms.watasuke.net](https://github.com/watasuke102/cms.watasuke.net)
+  - コンテンツの管理・編集サービス
+- [contents.watasuke.net](https://github.com/watasuke102/contents.watasuke.net)
+  - cms.watasuke.netに管理されるコンテンツ
 
 ## how to use
 
 1. `cp sample-config.ts config.ts`
 2. できあがった `config.ts` を編集
-   - `contentUrl`: 記事の中を取ってくる URL
-   - `imageUrl`: 画像を取ってくる URL
+   - `apiUrl`: cms.watasuke.netが動作しているURL
    - `trackingId`: Google Analytics 4 プロパティの「測定 ID」（G-12345 みたいなやつ）
    - `adsenseId`: ca-pub-\d+みたいなやつ
    - `inArticleSlot`: おそらく10桁の数字、記事内広告ユニットを作成して出てくるHTMLの `data-ad-slot`
-3. 開発する場合は `docker compose up -d --build`
-4. `npm i` して `npm run dev` する
-
-docker compose up 後に strapi フォルダができるので、/strapi/api に/api フォルダをコピー (`cp -r api strapi/`) する
-
-Strapi にアクセスし、sitedata に `profile` と `short-profile` を追加
-
-http://localhost:1337/admin で記事を編集し、http://localhost:8000 で確認
+3. `npm i` して `npm run dev` する
 
 ## LICENSE
 
