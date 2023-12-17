@@ -9,4 +9,4 @@ const trackingId = '_';
 const adsenseId = '';
 const inArticleSlot = '';
 
-export {trackingId, adsenseId, inArticleSlot};
+export {apiUrl, trackingId, adsenseId, inArticleSlot};
