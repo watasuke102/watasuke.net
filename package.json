@@ -4,7 +4,7 @@
   "description": "[https://watasuke.net](https://watasuke.net)で公開されているページ",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint src",
+    "lint": "eslint --fix src",
     "fmt": "prettier --write src/",
     "gen": "gql-gen --config graphql/codegen.ts",
     "build": "gatsby build",
@@ -70,6 +70,7 @@
     "@typescript-eslint/parser": "^6.12.0",
     "eslint": "^8.54.0",
     "eslint-config-google": "^0.14.0",
+    "eslint-plugin-header": "^3.1.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-unused-imports": "^3.0.0",
     "prettier": "^3.1.0"

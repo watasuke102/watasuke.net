@@ -1,6 +1,6 @@
-// Entrypoint.css.ts
+// watasuke.net
+// CopyRight (c) 2021-2024 watasuke
 //
-// CopyRight (c) 2021-2023 Watasuke
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
@@ -45,12 +45,12 @@ export const center_menu = style({
 
 // prettier-ignore
 globalKeyframes('rotate_cw', {
-    '0%': { transform: 'translateY(-50%) translateX(-50%) rotate(0turn)' },
+  '0%': { transform: 'translateY(-50%) translateX(-50%) rotate(0turn)' },
   '100%': { transform: 'translateY(-50%) translateX(-50%) rotate(1turn)' }
 });
 // prettier-ignore
 globalKeyframes('rotate_ccw', {
-    '0%': { transform: 'translateY(-50%) translateX(-50%) rotate( 0turn)' },
+  '0%': { transform: 'translateY(-50%) translateX(-50%) rotate( 0turn)' },
   '100%': { transform: 'translateY(-50%) translateX(-50%) rotate(-1turn)' }
 });
 

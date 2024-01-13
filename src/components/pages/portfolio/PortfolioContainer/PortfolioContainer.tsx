@@ -1,9 +1,9 @@
-// PortfolioContainer.tsx
+// watasuke.net
+// CopyRight (c) 2021-2024 watasuke
 //
-// CopyRight (c) 2021-2023 Watasuke
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
-// software is released under the MIT SUSHI-WARE License.
+// This software is released under the MIT or MIT SUSHI-WARE License.
 import * as style from './PortfolioContainer.css';
 import {AnimatePresence, motion, useAnimation} from 'framer-motion';
 import React from 'react';

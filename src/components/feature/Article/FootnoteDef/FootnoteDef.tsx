@@ -1,11 +1,10 @@
-// FootnoteDef.tsx
+// watasuke.net
+// CopyRight (c) 2021-2024 watasuke
 //
-// CopyRight (c) 2021-2023 Watasuke
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as style from './FootnoteDef.css';
-import {current} from '@/pages/portfolio/PortfolioContainer/PortfolioContainer.css';
 import {Properties} from 'hast';
 import React from 'react';
 
