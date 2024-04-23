@@ -1,3 +1,6 @@
-gatsby-*.js
+.cache
+graphql
+node_modules
+public
 config.ts
 .eslintrc.js

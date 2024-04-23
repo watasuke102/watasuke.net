@@ -28,7 +28,7 @@ export const End = (): React.ReactElement => (
       </div>
     </div>
     <p>
-      Copyright (C) 2021-2023 Watasuke
+      Copyright (C) 2021-2024 Watasuke
       <br />
       Powered by Gatsby
     </p>
