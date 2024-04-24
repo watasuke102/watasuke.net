@@ -437,7 +437,7 @@ body_en     = "I did the research about Iot in UiTM."
 
 [[event]]
 year        = "2023"
-day         = "10/21\n|10/22"
+day         = "10/21\n|\n10/22"
 category    = "Event"
 title_ja    = "CAPCOM Hackathon"
 title_en    = "CAPCOM Hackathon"
