@@ -8,7 +8,7 @@ import * as style from './EventCard.css';
 import {BreakWithCR} from '@/common';
 import {motion} from 'framer-motion';
 import React from 'react';
-import {ReactMarkdown} from 'react-markdown/lib/react-markdown';
+import ReactMarkdown from 'react-markdown';
 import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import {Transition} from '@utils/Transition';

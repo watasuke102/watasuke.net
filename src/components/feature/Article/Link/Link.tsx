@@ -4,14 +4,13 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import {Components} from 'hast-util-to-jsx-runtime';
 import React from 'react';
-import {ReactMarkdownProps} from 'react-markdown/lib/complex-types';
 import {EmbedCard, FootnoteDef, InnerEmbedCard} from '@/feature/Article';
 
-type Props = Omit<React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>, 'ref'> &
-  ReactMarkdownProps;
-
-export function Link(props: Props): React.ReactElement {
+export const Link: Components['a'] = props => {
+  /* eslint-disable react/prop-types */
+  if (!props.node) return <></>;
   const link_text = props.node.children[0].value;
   // footnotes
   if (props.node.properties && typeof props.node.properties['aria-label'] === 'string') {
@@ -57,4 +56,4 @@ export function Link(props: Props): React.ReactElement {
   }
 
   return <EmbedCard url={props.href ?? ''} />;
-}
+};

@@ -8,9 +8,9 @@ import {apiUrl} from '@config';
 import * as style from './BlogContent.css';
 import 'highlight.js/styles/atom-one-dark.min.css';
 import {ImageViewer} from '@/common';
+import {Components} from 'hast-util-to-jsx-runtime';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import {HeadingProps} from 'react-markdown/lib/ast-to-react';
 import Highlight from 'rehype-highlight';
 import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
@@ -30,7 +30,11 @@ interface Props {
 }
 
 let heading_count = 0;
-const Heading = (props: HeadingProps) => {
+const Heading: Components['head'] = props => {
+  /* eslint-disable react/prop-types */
+  if (!props.node) {
+    return <></>;
+  }
   return (
     <>
       {++heading_count % 5 === 0 && <AdsInArticle />}

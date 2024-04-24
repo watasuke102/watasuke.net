@@ -112,7 +112,10 @@ async function registerSiteDatas(sitedata: AllQuery['sitedata'], {actions, creat
   });
 }
 
-async function registerArticle(article: AllQuery['articles'][0], {actions, createContentDigest}: SourceNodesArgs) {
+async function registerArticle(
+  article: AllQuery['allPublicArticles'][0],
+  {actions, createContentDigest}: SourceNodesArgs,
+) {
   actions.createNode({
     id: article.slug,
     slug: article.slug,
@@ -160,7 +163,7 @@ async function registerOgp(url: string, i: number, {actions, createContentDigest
   }
 }
 
-async function registerTags(tags: AllQuery['tags'], {actions, createContentDigest}: SourceNodesArgs) {
+async function registerTags(tags: AllQuery['allTags'], {actions, createContentDigest}: SourceNodesArgs) {
   tags.forEach(item => {
     actions.createNode({
       id: item.slug,

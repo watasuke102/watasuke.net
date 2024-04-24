@@ -5,7 +5,7 @@ TypeScript, React, Gatsby, vanilla-extract, etc
 
 ## 記事について
 
-誤字・脱字・間違い・権利侵害など、記事の中身に関する報告は [contents.watasuke.net](https://github.com/watasuke102/contents.watasuke.net) に対するIssue or PRあるいはTwitter (@Watasuke102)でお願いします
+誤字・脱字・間違い・権利侵害など、記事の中身に関する報告は Issue or PRあるいはTwitter (@Watasuke102)でお願いします
 
 ## watasuke.net ecosystems
 
@@ -13,7 +13,7 @@ TypeScript, React, Gatsby, vanilla-extract, etc
   - [watasuke.net](https://watasuke.net/)において公開されるWebサイト
 - [cms.watasuke.net](https://github.com/watasuke102/cms.watasuke.net)
   - コンテンツの管理・編集サービス
-- [contents.watasuke.net](https://github.com/watasuke102/contents.watasuke.net)
+- contents.watasuke.net (private repo)
   - cms.watasuke.netに管理されるコンテンツ
 
 ## how to use
