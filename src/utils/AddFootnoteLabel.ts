@@ -8,7 +8,7 @@ import {visit} from 'unist-util-visit';
 
 const map = new Map<number, string>();
 export const remarkAddFootnoteLabel = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
   return (tree: any) => {
     map.clear();
     let counter = -1;
@@ -32,7 +32,7 @@ export const rehypeAddFootnoteLabel = () => {
       if (aria_described_by[0] !== 'footnote-label') {
         return;
       }
-      node.properties['aria-label'] = map.get(counter);
+      node.properties['title'] = map.get(counter);
       ++counter;
     });
   };

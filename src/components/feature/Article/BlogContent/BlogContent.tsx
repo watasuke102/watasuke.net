@@ -138,7 +138,7 @@ export const BlogContent = (props: Props): React.ReactElement => {
           img: props => <ImageViewer src={props.src || ''} alt={props.alt} />,
         }}
         remarkPlugins={[Gfm, Toc, Slug, remarkAddFootnoteLabel]}
-        rehypePlugins={[Raw, Highlight, rehypeAddFootnoteLabel]}
+        rehypePlugins={[rehypeAddFootnoteLabel, Raw, Highlight]}
         // eslint-disable-next-line react/no-children-prop
         children={props.data.body.replaceAll('/img', `${apiUrl}/img/${props.data.slug}`)}
       />

@@ -6,22 +6,12 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {Components} from 'hast-util-to-jsx-runtime';
 import React from 'react';
-import {EmbedCard, FootnoteDef, InnerEmbedCard} from '@/feature/Article';
+import {EmbedCard, InnerEmbedCard} from '@/feature/Article';
 
 export const Link: Components['a'] = props => {
   /* eslint-disable react/prop-types */
   if (!props.node) return <></>;
   const link_text = props.node.children[0].value;
-  // footnotes
-  if (props.node.properties && typeof props.node.properties['aria-label'] === 'string') {
-    return (
-      <FootnoteDef
-        footnote={props.node.properties['aria-label']}
-        properties={props.node.properties}
-        link_text={link_text}
-      />
-    );
-  }
   // [Display](url)の形式であった場合、文頭ではなかった場合（箇条書き内など）はEmbedにしない
   if (link_text !== props.href || props.node.position?.start.column !== 1) {
     return <a {...props.node.properties}>{link_text}</a>;
