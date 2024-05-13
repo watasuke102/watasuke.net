@@ -29,6 +29,7 @@ export const AdsInArticle = (): React.ReactElement => {
           data-ad-format='fluid'
           data-ad-client={config.adsenseId}
           data-ad-slot={config.inArticleSlot}
+          data-full-width-responsive='false'
         ></ins>
       )}
     </div>
