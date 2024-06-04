@@ -13,7 +13,7 @@ export const container = style({
 });
 
 export const blogcontent_wrapper = style({
-  width: '70%',
+  width: '75%',
   borderRight: `1px solid ${color.fg}`,
   padding: 15,
   '@media': {
