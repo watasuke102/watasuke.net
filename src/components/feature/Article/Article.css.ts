@@ -14,6 +14,7 @@ export const container = style({
 
 export const blogcontent_wrapper = style({
   width: '75%',
+  overflowX: 'hidden',
   borderRight: `1px solid ${color.fg}`,
   padding: 15,
   '@media': {
