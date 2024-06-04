@@ -8,21 +8,17 @@ import {style} from '@vanilla-extract/css';
 import {color} from '@/common/color';
 
 export const container = style({
-  display: 'grid',
-  gridTemplateColumns: '1fr auto',
-  gap: 16,
-  '@media': {
-    'screen and (max-width: 700px)': {
-      display: 'flex',
-    },
-  },
+  display: 'flex',
+  marginTop: 20,
 });
 
 export const blogcontent_wrapper = style({
+  width: '70%',
   borderRight: `1px solid ${color.fg}`,
-  paddingRight: 16,
+  padding: 15,
   '@media': {
     'screen and (max-width: 700px)': {
+      width: '100%',
       margin: 'auto',
       padding: 0,
       border: 'none',
@@ -31,7 +27,8 @@ export const blogcontent_wrapper = style({
 });
 
 export const side = style({
-  width: '25dvw',
+  width: '25%',
+  marginLeft: 20,
   '@media': {
     'screen and (max-width: 700px)': {
       display: 'none',
