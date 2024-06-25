@@ -1,5 +1,7 @@
 # watasuke.net
 
+![](/src/assets/thumbnail.jpg)
+
 [https://watasuke.net](https://watasuke.net)で公開されているページのソース  
 TypeScript, React, Gatsby, vanilla-extract, etc
 
