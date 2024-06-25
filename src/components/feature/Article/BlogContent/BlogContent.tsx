@@ -8,6 +8,7 @@ import {apiUrl} from '@config';
 import * as style from './BlogContent.css';
 import 'highlight.js/styles/atom-one-dark.min.css';
 import {ImageViewer} from '@/common';
+import Giscus from '@giscus/react';
 import {Components} from 'hast-util-to-jsx-runtime';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -143,6 +144,25 @@ export const BlogContent = (props: Props): React.ReactElement => {
         children={props.data.body.replaceAll('/img', `${apiUrl}/img/${props.data.slug}`)}
       />
       <AdsInArticle />
+
+      <h2>Comments</h2>
+      <p>
+        Powered by <a href='https://github.com/giscus/giscus'>Giscus</a>
+      </p>
+      <Giscus
+        repo='watasuke102/watasuke.net'
+        repoId='MDEwOlJlcG9zaXRvcnkzNTc4OTQwNzk='
+        category='Article'
+        categoryId='DIC_kwDOFVUHv84CgSPQ'
+        mapping='og:title'
+        strict='0'
+        reactionsEnabled='1'
+        emitMetadata='0'
+        inputPosition='top'
+        theme='dark_dimmed'
+        lang='ja'
+        loading='lazy'
+      />
     </section>
   );
 };

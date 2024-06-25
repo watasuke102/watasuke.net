@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/watasuke102/watasuke.net#readme",
   "dependencies": {
+    "@giscus/react": "^3.0.0",
     "@graphql-codegen/cli": "^5.0.2",
     "@graphql-codegen/client-preset": "^4.2.5",
     "@graphql-codegen/typescript": "^4.0.6",
