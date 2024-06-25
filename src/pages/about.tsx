@@ -28,26 +28,40 @@ export default function About(): React.ReactElement {
       <h2 id='about_privacy'>プライバシーポリシー</h2>
       <ul>
         <li>当サイトではアクセス解析に Google Analytics を、広告掲載に Google Adsenseを使用しています</li>
-        <li>Google Analytics はデータ収集のために Cookie を使用しています</li>
+        <ul>
+          <li>Google Analytics はデータ収集のために Cookie を使用しています</li>
+          <li>
+            Google Adsense はパーソナライズド広告（ユーザーの興味に適した広告）を表示するために Cookie を使用しています
+          </li>
+          <li>
+            Cookie は個人を特定できない形で収集されており、また Cookie を無効化することにより、
+            データ収集を拒否することが可能です
+          </li>
+          <li>
+            パーソナライズド広告は、
+            <a href='https://adssettings.google.com/notarget'>「Google 広告設定」（外部リンク）</a>
+            で無効化することが可能です
+          </li>
+          <li>
+            Google Analytics でデータが収集・処理される仕組みについて、 詳細は
+            <a href='https://www.google.com/intl/ja/policies/privacy/partners/'>
+              「ユーザーが Google パートナーのサイトやアプリを使用する際の Google によるデータ使用」（外部リンク）
+            </a>
+            をご覧ください
+          </li>
+        </ul>
         <li>
-          Google Adsense はパーソナライズド広告（ユーザーの興味に適した広告）を表示するために Cookie を使用しています
+          各記事に対するコメント機能は <a href='https://github.com/giscus/giscus'>giscus/giscus</a>{' '}
+          によって実現しています
         </li>
-        <li>
-          Cookie は個人を特定できない形で収集されており、また Cookie を無効化することにより、
-          データ収集を拒否することが可能です
-        </li>
-        <li>
-          パーソナライズド広告は、
-          <a href='https://adssettings.google.com/notarget'>「Google 広告設定」（外部リンク）</a>
-          で無効化することが可能です
-        </li>
-        <li>
-          Google Analytics でデータが収集・処理される仕組みについて、 詳細は
-          <a href='https://www.google.com/intl/ja/policies/privacy/partners/'>
-            「ユーザーが Google パートナーのサイトやアプリを使用する際の Google によるデータ使用」（外部リンク）
-          </a>
-          をご覧ください
-        </li>
+        <ul>
+          <li>このライブラリは GitHub のセッション情報を Local storage に保存しており、Cookie は使用していません</li>
+          <li>
+            詳しくは{' '}
+            <a href='https://github.com/giscus/giscus/blob/main/PRIVACY-POLICY.md'>Giscus の PRIVACY-POLICY.md</a>{' '}
+            をご覧ください
+          </li>
+        </ul>
       </ul>
 
       <h2 id='about_data'>当サイトで扱う情報に関して</h2>
