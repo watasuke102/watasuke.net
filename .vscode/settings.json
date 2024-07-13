@@ -1,4 +1,8 @@
 {
+  "eslint.workingDirectories": [
+    "main",
+    "config"
+  ],
   "[toml]": {
     "editor.formatOnSave": false,
   },

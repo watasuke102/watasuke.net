@@ -1,7 +1,6 @@
 {
-  "name": "watasuke.net",
-  "version": "1.0.0",
-  "description": "[https://watasuke.net](https://watasuke.net)で公開されているページ",
+  "name": "@watasuke.net/main",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "lint": "eslint --fix .",
@@ -12,6 +11,7 @@
     "serve": "gatsby serve -p 2999 -H 0.0.0.0"
   },
   "dependencies": {
+    "@watasuke.net/config": "^0.0.0",
     "@giscus/react": "^3.0.0",
     "@graphql-codegen/cli": "^5.0.2",
     "@graphql-codegen/client-preset": "^4.2.5",
