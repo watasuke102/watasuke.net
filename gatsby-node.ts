@@ -48,6 +48,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
     type Articles implements Node @dontInfer {
       slug: String,
       title: String,
+      tldr: String,
       body: String,
       published_at: String,
       updated_at: String,
@@ -120,6 +121,7 @@ async function registerArticle(
     id: article.slug,
     slug: article.slug,
     title: article.title,
+    tldr: article.tldr,
     body: article.body,
     tags: article.tags,
     published_at: article.publishedAt,
@@ -254,6 +256,7 @@ export const createPages: GatsbyNode['createPages'] = async ({graphql, actions})
           nodes {
             slug
             title
+            tldr
             tags {
               slug
               name

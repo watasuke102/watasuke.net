@@ -8,7 +8,6 @@ import '@/common/main.css';
 import * as style from '@/feature/Article/Article.css';
 import {Seo, Layout, Breadcrumb} from '@/common';
 import React from 'react';
-import RemoveMD from 'remove-markdown';
 import {BlogContent, ProfileCard, TocRight} from '@/feature/Article';
 import {AllTagList} from '@/feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
@@ -53,7 +52,7 @@ export default function Articale(prop: Props): React.ReactElement {
 export const Head = ({pageContext}: Props): React.ReactElement => (
   <Seo
     title={pageContext.title}
-    desc={RemoveMD(pageContext.body)}
+    desc={pageContext.tldr}
     url={'/blog/article/' + pageContext.slug}
     breadcrumb_list={breadcrumb_list(pageContext.title)}
   />

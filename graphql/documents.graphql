@@ -8,6 +8,7 @@ query all {
   allPublicArticles {
     slug
     title
+    tldr
     publishedAt
     updatedAt
     tags {

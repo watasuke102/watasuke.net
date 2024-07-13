@@ -7,7 +7,6 @@
 import * as style from './InnerEmbedCard.css';
 import {Link, graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
-import RemoveMD from 'remove-markdown';
 import Article from '@mytypes/Article';
 
 interface Props {
@@ -27,6 +26,7 @@ export const InnerEmbedCard = (props: Props): React.ReactElement => {
         nodes {
           slug
           title
+          tldr
           body
           tags {
             slug
@@ -49,9 +49,7 @@ export const InnerEmbedCard = (props: Props): React.ReactElement => {
     <Link className={style.container} to={`/blog/article/${props.slug}`}>
       <span className={style.title}>{data.title}</span>
       <span className={style.url}>{`watasuke.net - ${props.slug}`}</span>
-      <span className={style.description}>
-        {RemoveMD(data.body.slice(0, 120) + (data.body.length > 140 ? ' ...' : ''))}
-      </span>
+      <span className={style.description}>{data.tldr}</span>
     </Link>
   );
 };

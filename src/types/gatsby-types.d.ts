@@ -46,6 +46,7 @@ type Articles = Node & {
   readonly slug: Maybe<Scalars['String']>;
   readonly tags: Maybe<ReadonlyArray<Maybe<Tags>>>;
   readonly title: Maybe<Scalars['String']>;
+  readonly tldr: Maybe<Scalars['String']>;
   readonly updated_at: Maybe<Scalars['String']>;
 };
 
@@ -104,6 +105,7 @@ type ArticlesFieldSelector = {
   readonly slug: InputMaybe<FieldSelectorEnum>;
   readonly tags: InputMaybe<TagsFieldSelector>;
   readonly title: InputMaybe<FieldSelectorEnum>;
+  readonly tldr: InputMaybe<FieldSelectorEnum>;
   readonly updated_at: InputMaybe<FieldSelectorEnum>;
 };
 
@@ -117,6 +119,7 @@ type ArticlesFilterInput = {
   readonly slug: InputMaybe<StringQueryOperatorInput>;
   readonly tags: InputMaybe<TagsFilterListInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
+  readonly tldr: InputMaybe<StringQueryOperatorInput>;
   readonly updated_at: InputMaybe<StringQueryOperatorInput>;
 };
 
@@ -171,6 +174,7 @@ type ArticlesSortInput = {
   readonly slug: InputMaybe<SortOrderEnum>;
   readonly tags: InputMaybe<TagsSortInput>;
   readonly title: InputMaybe<SortOrderEnum>;
+  readonly tldr: InputMaybe<SortOrderEnum>;
   readonly updated_at: InputMaybe<SortOrderEnum>;
 };
 
@@ -1849,6 +1853,7 @@ type Query_articlesArgs = {
   slug: InputMaybe<StringQueryOperatorInput>;
   tags: InputMaybe<TagsFilterListInput>;
   title: InputMaybe<StringQueryOperatorInput>;
+  tldr: InputMaybe<StringQueryOperatorInput>;
   updated_at: InputMaybe<StringQueryOperatorInput>;
 };
 
@@ -3478,7 +3483,7 @@ type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: 
 type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_1_Query = { readonly allArticles: { readonly nodes: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly published_at: string | null, readonly updated_at: string | null, readonly body: string | null, readonly tags: ReadonlyArray<{ readonly slug: string | null, readonly name: string | null } | null> | null }> } };
+type Unnamed_1_Query = { readonly allArticles: { readonly nodes: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly tldr: string | null, readonly published_at: string | null, readonly updated_at: string | null, readonly body: string | null, readonly tags: ReadonlyArray<{ readonly slug: string | null, readonly name: string | null } | null> | null }> } };
 
 type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
 

@@ -7,6 +7,7 @@
 export default interface Article {
   slug: string;
   title: string;
+  tldr: string;
   body: string;
   tags: {
     slug: string;

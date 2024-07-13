@@ -7,7 +7,6 @@
 import * as style from './ArticleCard.css';
 import {Link} from 'gatsby';
 import React from 'react';
-import RemoveMD from 'remove-markdown';
 import {TagContainer} from '@/feature/Tag';
 import Article from '@mytypes/Article';
 
@@ -31,12 +30,7 @@ export const ArticleCard = ({article}: Props): React.ReactElement => {
       </div>
       <div className={style.text}>
         <h2 className={style.title}>{article.title}</h2>
-        <p className={style.description}>
-          {
-            // 140字に制限して内容を表示、超過分は...で
-            RemoveMD(article.body.slice(0, 140) + (article.body.length > 140 ? ' ...' : ''))
-          }
-        </p>
+        <p className={style.description}>{article.tldr}</p>
       </div>
     </Link>
   );

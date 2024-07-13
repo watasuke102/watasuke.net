@@ -46,6 +46,7 @@ export const query = graphql`
       nodes {
         slug
         title
+        tldr
         body
         tags {
           name

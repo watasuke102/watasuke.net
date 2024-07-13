@@ -26,6 +26,7 @@ export type Article = {
   slug: Scalars['String']['output'];
   tags: Array<Tag>;
   title: Scalars['String']['output'];
+  tldr: Scalars['String']['output'];
   updatedAt: Scalars['String']['output'];
 };
 
@@ -61,6 +62,7 @@ export type MutationUpdateArticleArgs = {
   slug: Scalars['String']['input'];
   tags: Array<Scalars['String']['input']>;
   title: Scalars['String']['input'];
+  tldr: Scalars['String']['input'];
 };
 
 export type Query = {
@@ -92,7 +94,7 @@ export type Tag = {
 export type AllQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllQuery = { __typename?: 'Query', allPublicArticles: Array<{ __typename?: 'Article', slug: string, title: string, publishedAt: string, updatedAt: string, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> }>, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }>, sitedata: { __typename?: 'Sitedata', profile: string, shortProfile: string } };
+export type AllQuery = { __typename?: 'Query', allPublicArticles: Array<{ __typename?: 'Article', slug: string, title: string, tldr: string, publishedAt: string, updatedAt: string, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> }>, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }>, sitedata: { __typename?: 'Sitedata', profile: string, shortProfile: string } };
 
 
 export const AllDocument = gql`
@@ -100,6 +102,7 @@ export const AllDocument = gql`
   allPublicArticles {
     slug
     title
+    tldr
     publishedAt
     updatedAt
     tags {
