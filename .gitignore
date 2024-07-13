@@ -1,11 +1,2 @@
 node_modules/
-/mysql
-/strapi
-
-/.cache
-/public
-
-/config.ts
-
-# deprecated
-/config.json
+config.ts
