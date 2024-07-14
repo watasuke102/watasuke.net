@@ -99,22 +99,24 @@ export function Body(props: Props): JSX.Element {
   heading_count = 0;
 
   return (
-    <ReactMarkdown
-      components={{
-        a: Link(props.embed_card, props.inner_embed_card),
-        h1: Heading,
-        h2: Heading,
-        h3: Heading,
-        h4: Heading,
-        h5: Heading,
-        h6: Heading,
-        // eslint-disable-next-line react/prop-types
-        img: props => <ImageViewer src={props.src || ''} alt={props.alt} />,
-      }}
-      remarkPlugins={[Gfm, Toc, Slug, remarkAddFootnoteLabel]}
-      rehypePlugins={[rehypeAddFootnoteLabel, Raw, Highlight]}
-      // eslint-disable-next-line react/no-children-prop
-      children={props.md}
-    />
+    <section className={style.container}>
+      <ReactMarkdown
+        components={{
+          a: Link(props.embed_card, props.inner_embed_card),
+          h1: Heading,
+          h2: Heading,
+          h3: Heading,
+          h4: Heading,
+          h5: Heading,
+          h6: Heading,
+          // eslint-disable-next-line react/prop-types
+          img: props => <ImageViewer src={props.src || ''} alt={props.alt} />,
+        }}
+        remarkPlugins={[Gfm, Toc, Slug, remarkAddFootnoteLabel]}
+        rehypePlugins={[rehypeAddFootnoteLabel, Raw, Highlight]}
+        // eslint-disable-next-line react/no-children-prop
+        children={props.md}
+      />
+    </section>
   );
 }

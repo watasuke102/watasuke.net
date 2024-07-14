@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as style from './Entrypoint.css';
-import {Toggle} from '@/common';
+import {Toggle} from '@common';
 import {AnimatePresence, motion} from 'framer-motion';
 import {navigate} from 'gatsby';
 import React from 'react';

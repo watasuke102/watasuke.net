@@ -6,7 +6,8 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {GatsbyConfig} from 'gatsby';
 import path from 'path';
-import * as config from './config';
+// FIXME: cannot import from '@watasuke.net/config/config'
+import * as config from '../config/config';
 
 const gatsby_config: GatsbyConfig = {
   siteMetadata: {
@@ -19,16 +20,16 @@ const gatsby_config: GatsbyConfig = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-vanilla-extract',
     'gatsby-plugin-sitemap',
-
     {
       resolve: 'gatsby-plugin-alias-imports',
       options: {
         alias: {
-          '@': path.resolve(__dirname, 'src/components'),
           '@utils': path.resolve(__dirname, 'src/utils'),
           '@assets': path.resolve(__dirname, 'src/assets'),
           '@mytypes': path.resolve(__dirname, 'src/types'),
-          '@config': path.resolve(__dirname, 'config.ts'),
+          '@pages': path.resolve(__dirname, 'src/components/pages'),
+          '@common': path.resolve(__dirname, 'src/components/common'),
+          '@feature': path.resolve(__dirname, 'src/components/feature'),
         },
         extensions: [],
       },
@@ -46,7 +47,6 @@ const gatsby_config: GatsbyConfig = {
         icon: 'src/assets/icon.jpg',
       },
     },
-
     // 画像読み込み
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
@@ -66,7 +66,6 @@ const gatsby_config: GatsbyConfig = {
         },
       },
     },
-
     // Google Analytics
     {
       resolve: 'gatsby-plugin-google-gtag',

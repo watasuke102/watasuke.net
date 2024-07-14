@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as style from './AdsInArticle.css';
 import React from 'react';
-import * as config from '../../../config';
+import * as config from '@watasuke.net/config/config';
 
 export const AdsInArticle = (): React.ReactElement => {
   React.useEffect(() => {

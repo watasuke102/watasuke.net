@@ -3,21 +3,12 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "src/components/*"
-      ],
-      "@assets/*": [
-        "src/assets/*"
-      ],
-      "@utils/*": [
-        "src/utils/*"
-      ],
-      "@mytypes/*": [
-        "src/types/*"
-      ],
-      "@config": [
-        "config.ts"
-      ]
+      "@utils/*": [ "src/utils/*" ],
+      "@assets/*": [ "src/assets/*" ],
+      "@mytypes/*": [ "src/types/*" ],
+      "@pages/*": [ "src/components/pages/*" ],
+      "@common/*": [ "src/components/common/*" ],
+      "@feature/*": [ "src/components/feature/*" ],
     },
     "typeRoots": [
       "src/types"

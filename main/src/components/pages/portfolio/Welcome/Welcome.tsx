@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as style from './Welcome.css';
-import * as portfolio_common from '@/pages/portfolio/common.css';
+import * as portfolio_common from '@pages/portfolio/common.css';
 import {AnimatePresence, motion} from 'framer-motion';
 import {useStaticQuery, graphql} from 'gatsby';
 import {StaticImage} from 'gatsby-plugin-image';

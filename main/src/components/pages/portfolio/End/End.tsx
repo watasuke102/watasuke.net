@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as style from './End.css';
-import * as portfolio_common from '@/pages/portfolio/common.css';
+import * as portfolio_common from '@pages/portfolio/common.css';
 import {Link} from 'gatsby';
 import React from 'react';
 

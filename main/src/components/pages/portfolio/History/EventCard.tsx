@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as style from './EventCard.css';
-import {BreakWithCR} from '@/common';
+import {BreakWithCR} from '@common';
 import {motion} from 'framer-motion';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';

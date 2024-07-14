@@ -14,10 +14,10 @@ importOrderCaseInsensitive: false
 importOrder:
   - '^@config'
   - '(.*)\.css$'
-  - '^@/pages/(.*)'
+  - '^@pages/(.*)'
   - '<THIRD_PARTY_MODULES>'
-  - '^@/common/(.*)'
-  - '^@/feature/(.*)'
+  - '^@common/(.*)'
+  - '^@feature/(.*)'
   - '^@utils/(.*)'
   - '^@mytypes/(.*)'
   - '^[./]'
