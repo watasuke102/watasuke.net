@@ -8,6 +8,7 @@ import * as style from './Body.css';
 import 'highlight.js/styles/atom-one-dark.min.css';
 import {ImageViewer} from '../ImageViewer/ImageViewer';
 import {Components} from 'hast-util-to-jsx-runtime';
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Highlight from 'rehype-highlight';
 import Raw from 'rehype-raw';
@@ -80,8 +81,23 @@ interface Props {
   inner_embed_card: InnerEmbedCardType;
 }
 
-import {Link2} from '../Link/Link';
 export function Body(props: Props): JSX.Element {
+  React.useEffect(() => {
+    setTimeout(() => {
+      // Twitter embed
+      const script = document.createElement('script');
+      script.src = 'https://platform.twitter.com/widgets.js';
+      script.async = true;
+      script.className = 'twitter-widgets-script';
+      document.body.appendChild(script);
+    }, 0);
+    return () =>
+      Array.from(document.body.getElementsByClassName('twitter-widgets-script') ?? []).forEach(e => e.remove());
+  }, []);
+
+  // 再レンダリング時の広告位置変更を抑制
+  heading_count = 0;
+
   return (
     <ReactMarkdown
       components={{
