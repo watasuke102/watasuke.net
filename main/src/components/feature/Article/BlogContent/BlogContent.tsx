@@ -5,7 +5,6 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as style from './BlogContent.css';
-import 'highlight.js/styles/atom-one-dark.min.css';
 import Giscus from '@giscus/react';
 import React from 'react';
 import {Markdown} from '@watasuke.net/common';
