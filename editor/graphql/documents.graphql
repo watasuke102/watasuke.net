@@ -1,0 +1,54 @@
+# documents.graphql
+#
+# CopyRight (c) 2023 Watasuke
+# Email  : <watasuke102@gmail.com>
+# Twitter: @Watasuke102
+# This software is released under the MIT or MIT SUSHI-WARE License.
+query allArticles {
+  allArticles {
+    slug
+    title
+    publishedAt
+    updatedAt
+    isPublished
+  }
+}
+
+query article($slug: String!) {
+  article(slug: $slug) {
+    slug
+    title
+    publishedAt
+    updatedAt
+    isFavorite
+    isPublished
+    tags {
+      slug
+      name
+    }
+    body
+  }
+}
+
+query allTags {
+  allTags {
+    slug
+    name
+  }
+}
+
+mutation newTag($slug: String!, $title: String!) {
+  newTag(slug: $slug, title: $title)
+}
+
+mutation newArticle($slug: String!, $title: String!) {
+  newArticle(slug: $slug, title: $title)
+}
+
+mutation updateArticle($slug: String!, $title: String!, $tags: [String!]!, $isFavorite: Boolean!, $body: String!) {
+  updateArticle(slug: $slug, title: $title, tags: $tags, isFavorite: $isFavorite, body: $body)
+}
+
+mutation publishArticle($slug: String!) {
+  publishArticle(slug: $slug)
+}

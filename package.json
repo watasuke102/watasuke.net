@@ -27,6 +27,7 @@
   },
   "workspaces": [
     "main",
+    "editor",
     "config",
     "common"
   ]
