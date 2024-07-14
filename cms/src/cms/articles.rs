@@ -1,159 +1,15 @@
 use anyhow::{bail, ensure, Context};
-use juniper::graphql_object;
 use regex::Regex;
-use serde::Deserialize;
 use std::path::Path;
 use std::{collections::HashMap, io::ErrorKind};
 use yaml_front_matter::{Document, YamlFrontMatter};
 
-use crate::util;
+use crate::{cms::tags, util};
+use article::Article;
+use frontmatter::Frontmatter;
 
-use super::tags;
-
-#[derive(Clone, Debug, Deserialize)]
-struct Frontmatter {
-  title:        String,
-  tldr:         Option<String>,
-  tags:         Vec<String>,
-  is_favorite:  bool,
-  published_at: String,
-  updated_at:   String,
-}
-impl std::fmt::Display for Frontmatter {
-  fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-    let tags = self
-      .tags
-      .iter()
-      .map(|tag| format!("'{}'", tag))
-      .collect::<Vec<String>>()
-      .join(", ");
-    write!(
-      f,
-      r"---
-title:        '{}'{}
-tags:         [{}]
-is_favorite:  {}
-published_at: '{}'
-updated_at:   '{}'
----",
-      self.title,
-      if let Some(tldr) = &self.tldr {
-        format!("\ntldr:         '{}'", tldr)
-      } else {
-        String::from("")
-      },
-      tags,
-      self.is_favorite,
-      self.published_at,
-      self.updated_at
-    )
-  }
-}
-
-#[derive(Clone, Debug)]
-pub struct Article {
-  article_path: String,
-  slug:         String,
-  body:         String,
-  year:         i32,
-  index:        Option<i32>,
-  tags:         Vec<tags::Tag>,
-  frontmatter:  Frontmatter,
-}
-impl Article {
-  pub fn article_path(&self) -> &str {
-    &self.article_path
-  }
-
-  pub fn update(
-    &self,
-    title: String,
-    tldr: Option<String>,
-    tags: Vec<String>,
-    is_favorite: bool,
-    body: String,
-  ) -> anyhow::Result<()> {
-    let frontmatter = Frontmatter {
-      title,
-      tldr,
-      tags,
-      is_favorite,
-      published_at: self.frontmatter.published_at.clone(),
-      updated_at: util::now().format("%Y-%m-%dT%H:%M:%S").to_string(),
-    };
-
-    std::fs::write(
-      Path::new(&self.article_path).join("article.md"),
-      format!("{}\n\n{}", frontmatter, body),
-    )?;
-
-    Ok(())
-  }
-  fn set_published_at(&self) -> anyhow::Result<()> {
-    let datetime = util::now().format("%Y-%m-%dT%H:%M:%S").to_string();
-    let frontmatter = Frontmatter {
-      published_at: datetime.clone(),
-      updated_at: datetime,
-      ..self.frontmatter.clone()
-    };
-
-    std::fs::write(
-      Path::new(&self.article_path).join("article.md"),
-      format!("{}\n\n{}", frontmatter, self.body),
-    )?;
-
-    Ok(())
-  }
-  pub fn get_public_or_none(self) -> Option<Self> {
-    if self.is_published() {
-      Some(self)
-    } else {
-      None
-    }
-  }
-}
-#[graphql_object(context = crate::Context)]
-impl Article {
-  pub fn slug(&self) -> &str {
-    &self.slug
-  }
-  fn body(&self) -> &str {
-    &self.body
-  }
-  fn title(&self) -> &str {
-    &self.frontmatter.title
-  }
-  fn tldr(&self) -> String {
-    if let Some(tldr) = &self.frontmatter.tldr {
-      tldr.clone()
-    } else {
-      self
-        .body
-        .chars()
-        .filter(|x| *x != '\n')
-        .take(80)
-        .collect::<String>()
-    }
-  }
-  fn tldr_real(&self) -> Option<String> {
-    self.frontmatter.tldr.clone()
-  }
-  fn tags(&self) -> &[tags::Tag] {
-    &self.tags
-  }
-  fn is_favorite(&self) -> bool {
-    self.frontmatter.is_favorite
-  }
-  fn published_at(&self) -> &str {
-    &self.frontmatter.published_at
-  }
-  fn updated_at(&self) -> &str {
-    &self.frontmatter.updated_at
-  }
-  fn is_published(&self) -> bool {
-    self.index.is_some()
-  }
-}
+pub mod article;
+pub mod frontmatter;
 pub type Articles = HashMap<String, Article>;
 
 pub fn read_articles(contents_path: &String, tags: &tags::Tags) -> anyhow::Result<Articles> {
@@ -219,15 +75,15 @@ pub fn read_articles(contents_path: &String, tags: &tags::Tags) -> anyhow::Resul
       }
       articles.insert(
         slug.clone(),
-        Article {
-          article_path: String::from(article_dir.path().to_str().unwrap()),
+        Article::new(
+          String::from(article_dir.path().to_str().unwrap()),
           slug,
-          year: year_num,
+          md.content,
+          year_num,
           index,
-          body: md.content,
-          tags: tags::convert_slug_vec(tags, &md.metadata.tags),
-          frontmatter: md.metadata,
-        },
+          tags::convert_slug_vec(tags, &md.metadata.tags),
+          md.metadata,
+        ),
       );
     }
   }
@@ -290,8 +146,8 @@ pub fn publish_article(contents_path: &String, slug: &String) -> anyhow::Result<
   let max_index = articles
     .iter()
     .filter_map(|e| {
-      if e.1.year == article.year {
-        e.1.index
+      if e.1.year() == article.year() {
+        *e.1.index()
       } else {
         None
       }
@@ -299,7 +155,7 @@ pub fn publish_article(contents_path: &String, slug: &String) -> anyhow::Result<
     .max()
     .unwrap_or(-1);
 
-  let path = Path::new(&article.article_path);
+  let path = Path::new(article.article_path());
   std::fs::rename(
     &path,
     path

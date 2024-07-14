@@ -1,7 +1,10 @@
 use juniper::{graphql_object, graphql_value};
 
 use crate::{
-  cms::{articles, sitedata, tags},
+  cms::{
+    articles::{self, article},
+    sitedata, tags,
+  },
   Context,
 };
 
@@ -9,7 +12,7 @@ use crate::{
 pub struct Query;
 #[graphql_object(context = crate::Context)]
 impl Query {
-  fn all_public_articles(context: &Context) -> juniper::FieldResult<Vec<articles::Article>> {
+  fn all_public_articles(context: &Context) -> juniper::FieldResult<Vec<article::Article>> {
     let tags = tags::read_tags(&context.config.contents_path);
     match articles::read_articles(&context.config.contents_path, &tags) {
       Ok(articles) => Ok(
@@ -24,7 +27,7 @@ impl Query {
       )),
     }
   }
-  fn all_articles(context: &Context) -> juniper::FieldResult<Vec<articles::Article>> {
+  fn all_articles(context: &Context) -> juniper::FieldResult<Vec<article::Article>> {
     if !context.config.allow_private_access {
       return Err(juniper::FieldError::new(
         "You cannot access private articles",
@@ -40,7 +43,7 @@ impl Query {
       )),
     }
   }
-  fn article(slug: String, context: &Context) -> juniper::FieldResult<Option<articles::Article>> {
+  fn article(slug: String, context: &Context) -> juniper::FieldResult<Option<article::Article>> {
     let tags = tags::read_tags(&context.config.contents_path);
     let articles = match articles::read_articles(&context.config.contents_path, &tags) {
       Ok(articles) => articles,
