@@ -9,7 +9,7 @@ import {ImmerReducer} from 'use-immer';
 
 export type Action =
   | {
-      type: 'body/update' | 'title/update' | 'tag/remove';
+      type: 'body/update' | 'title/update' | 'tldr/update' | 'tag/remove';
       data: string;
     }
   | {
@@ -24,6 +24,7 @@ export type Action =
 export type StateType = {
   title: string;
   body: string;
+  tldr: string;
   tags: string[];
   all_tags: AllTagsQuery['allTags'];
 };
@@ -38,6 +39,10 @@ export const article_reducer: ReducerType = (current: StateType, action: Action)
     }
     case 'title/update': {
       current.title = action.data;
+      break;
+    }
+    case 'tldr/update': {
+      current.tldr = action.data;
       break;
     }
     case 'tag/add': {

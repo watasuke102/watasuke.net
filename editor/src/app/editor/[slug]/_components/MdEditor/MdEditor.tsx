@@ -6,17 +6,17 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 'use client';
 
-import React from 'react';
 import {css} from './MdEditor.css';
-import {Button} from '@cms-common/Button';
-import SaveIcon from '@cms-assets/save.svg';
 import AddPhotoIcon from '@cms-assets/add_photo.svg';
 import ExpandIcon from '@cms-assets/expand.svg';
-import * as ArticleReducer from '../ArticleReducer';
-import * as Accordion from '@radix-ui/react-accordion';
-import {useShortcut} from '@cms-common/useShortcut/useShortcut';
+import SaveIcon from '@cms-assets/save.svg';
+import {Button} from '@cms-common/Button';
 import {Dialog} from '@cms-common/Dialog';
 import {ImageUploader} from '@cms-common/ImageUploader';
+import {useShortcut} from '@cms-common/useShortcut/useShortcut';
+import * as Accordion from '@radix-ui/react-accordion';
+import React from 'react';
+import * as ArticleReducer from '../ArticleReducer';
 import {TagEditor} from '../TagEditor';
 
 type Props = {
