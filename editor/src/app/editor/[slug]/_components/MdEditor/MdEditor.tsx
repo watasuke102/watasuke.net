@@ -17,7 +17,7 @@ import {useShortcut} from '@cms-common/useShortcut/useShortcut';
 import * as Accordion from '@radix-ui/react-accordion';
 import React from 'react';
 import * as ArticleReducer from '../ArticleReducer';
-import {TagEditor} from '../TagEditor';
+import { FrontmatterEditor } from '../FrontmatterEditor/FrontmatterEditor';
 
 type Props = {
   slug: string;
@@ -108,20 +108,7 @@ export default function MdEditor(props: Props): JSX.Element {
               </div>
             </Accordion.Header>
             <Accordion.Content className={css.accordion_content}>
-              <div className={css.title_editor}>
-                <label>Title</label>
-                <input
-                  type='text'
-                  value={props.state.title}
-                  onChange={e => props.dispatcher({type: 'title/update', data: e.target.value})}
-                  className={css.input_text}
-                />
-              </div>
-              <TagEditor
-                current_tags={props.state.tags}
-                all_tags={props.state.all_tags}
-                dispatcher={props.dispatcher}
-              />
+              <FrontmatterEditor state={props.state} dispatcher={props.dispatcher} />
             </Accordion.Content>
           </Accordion.Item>
         </Accordion.Root>

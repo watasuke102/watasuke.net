@@ -13,8 +13,8 @@ questions:
 # `{{ pascal(inputs.name) }}/{{ pascal(inputs.name) }}.tsx`
 
 ```tsx
-// cms.watasuke.net
-// CopyRight (c) 2023 watasuke
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
 //
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
@@ -33,8 +33,8 @@ export function {{ pascal(inputs.name) }}(): JSX.Element {
 # `{{ pascal(inputs.name) }}/{{ pascal(inputs.name) }}.css.ts`
 
 ```ts
-// cms.watasuke.net
-// CopyRight (c) 2023 watasuke
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
 //
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
@@ -49,8 +49,8 @@ export const css = {
 # `{{ pascal(inputs.name) }}/index.ts`
 
 ```ts
-// cms.watasuke.net
-// CopyRight (c) 2023 watasuke
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
 //
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
@@ -64,8 +64,8 @@ export { {{ pascal(inputs.name) }} };
 # `{{ inputs.is_storybook_required || "!" }}{{ pascal(inputs.name) }}/{{ pascal(inputs.name) }}.stories.tsx`
 
 ```tsx
-// cms.watasuke.net
-// CopyRight (c) 2023 watasuke
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
 //
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102

@@ -36,17 +36,6 @@ export const css = {
     animationDuration: '0.3s',
     animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
   }),
-  title_editor: style({
-    display: 'grid',
-    gridTemplateColumns: 'auto 1fr',
-    alignItems: 'center',
-    gap: 8,
-    paddingTop: 12,
-    paddingBottom: 4,
-  }),
-  input_text: style({
-    border: `1px solid ${color.fg}`,
-  }),
   textarea: style({
     resize: 'none',
     height: '100%',
