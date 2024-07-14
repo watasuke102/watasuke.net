@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {globalStyle, style} from '@vanilla-extract/css';
-import {color} from '@/common/color';
+import {color} from '@watasuke.net/common';
 
 export const background = style({
   position: 'fixed',

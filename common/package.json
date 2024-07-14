@@ -1,0 +1,9 @@
+{
+  "name": "@watasuke.net/common",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@vanilla-extract/css": "^1.15.3",
+    "react": "^18.3.1"
+  }
+}

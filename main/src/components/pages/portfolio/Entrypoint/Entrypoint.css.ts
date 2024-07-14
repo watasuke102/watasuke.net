@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {style, ComplexStyleRule, globalKeyframes, globalStyle} from '@vanilla-extract/css';
-import {color} from '@/common/color';
+import {color} from '@watasuke.net/common';
 
 function fan(size: number, length: number, offset: number): ComplexStyleRule {
   const border_width = 4;

@@ -16,6 +16,7 @@
   "homepage": "https://github.com/watasuke102/watasuke.net#readme",
   "workspaces": [
     "main",
-    "config"
+    "config",
+    "common"
   ]
 }
