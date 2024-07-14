@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import '@common/main.css';
+import '@watasuke.net/common/src/css/base.css';
 import {Seo, Breadcrumb, Layout} from '@common';
 import React from 'react';
 import {AdsInArticle} from '@watasuke.net/common';
