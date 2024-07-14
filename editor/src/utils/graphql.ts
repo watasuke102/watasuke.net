@@ -27,6 +27,7 @@ export type Article = {
   tags: Array<Tag>;
   title: Scalars['String']['output'];
   tldr: Scalars['String']['output'];
+  tldrReal?: Maybe<Scalars['String']['output']>;
   updatedAt: Scalars['String']['output'];
 };
 
@@ -101,7 +102,7 @@ export type ArticleQueryVariables = Exact<{
 }>;
 
 
-export type ArticleQuery = { __typename?: 'Query', article?: { __typename?: 'Article', slug: string, title: string, publishedAt: string, updatedAt: string, isFavorite: boolean, isPublished: boolean, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> } | null };
+export type ArticleQuery = { __typename?: 'Query', article?: { __typename?: 'Article', slug: string, title: string, tldrReal?: string | null, publishedAt: string, updatedAt: string, isFavorite: boolean, isPublished: boolean, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> } | null };
 
 export type AllTagsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -165,6 +166,7 @@ export const ArticleDocument = gql`
   article(slug: $slug) {
     slug
     title
+    tldrReal
     publishedAt
     updatedAt
     isFavorite

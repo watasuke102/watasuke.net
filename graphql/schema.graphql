@@ -8,6 +8,7 @@ type Article {
   body: String!
   title: String!
   tldr: String!
+  tldrReal: String
   tags: [Tag!]!
   isFavorite: Boolean!
   publishedAt: String!

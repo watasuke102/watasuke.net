@@ -26,6 +26,14 @@ export function FrontmatterEditor(props: Props): JSX.Element {
           className={css.input_text}
         />
       </div>
+      <div className={css.input}>
+        <label>TL;DR</label>
+        <textarea
+          value={props.state.tldr}
+          onChange={e => props.dispatcher({type: 'tldr/update', data: e.target.value})}
+          className={css.input_text}
+        />
+      </div>
       <TagEditor current_tags={props.state.tags} all_tags={props.state.all_tags} dispatcher={props.dispatcher} />
     </section>
   );

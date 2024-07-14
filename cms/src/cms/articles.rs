@@ -31,7 +31,6 @@ impl std::fmt::Display for Frontmatter {
       f,
       r"---
 title:        '{}'{}
-
 tags:         [{}]
 is_favorite:  {}
 published_at: '{}'
@@ -135,6 +134,9 @@ impl Article {
         .take(80)
         .collect::<String>()
     }
+  }
+  fn tldr_real(&self) -> Option<String> {
+    self.frontmatter.tldr.clone()
   }
   fn tags(&self) -> &[tags::Tag] {
     &self.tags

@@ -33,6 +33,27 @@ import MdEditor from '../MdEditor/MdEditor';
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+
 // cms.watasuke.net
 // CopyRight (c) 2023-2024 watasuke
 //
@@ -48,6 +69,7 @@ export default function EditorPage({article}: Props): JSX.Element {
   const [state, dispatch] = useImmerReducer(article_reducer, {
     body: article.body,
     title: article.title,
+    tldr: article.tldrReal ?? '',
     tags: article.tags.map(e => e.slug),
     all_tags: [] as StateType['all_tags'],
   });
@@ -67,6 +89,7 @@ export default function EditorPage({article}: Props): JSX.Element {
       await sdk.updateArticle({
         slug: article.slug,
         title: state.title,
+        tldr: state.tldr,
         tags: state.tags,
         isFavorite: false,
         body: state.body ?? '',

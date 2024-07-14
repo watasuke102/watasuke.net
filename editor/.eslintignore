@@ -2,3 +2,4 @@ next.config.js
 .eslintrc.js
 next-env.d.ts
 config.ts
+graphql.ts
