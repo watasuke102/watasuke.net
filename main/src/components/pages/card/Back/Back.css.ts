@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {MyricaM} from '../common.css';
 import {style} from '@vanilla-extract/css';
-import {color} from '@watasuke.net/common';
+import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
   position: 'relative',

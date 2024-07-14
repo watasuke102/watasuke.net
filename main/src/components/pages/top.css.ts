@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {style, globalStyle} from '@vanilla-extract/css';
-import {color} from '@watasuke.net/common';
+import {color} from '@watasuke.net/common/src/css/color';
 
 globalStyle('.gatsby-image-wrapper [data-main-image]', {
   transition: 'none !important',
