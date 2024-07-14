@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "lint": "eslint --fix .",
-    "fmt": "prettier --write src/",
     "build": "gatsby build",
     "dev": "gatsby develop -p 10210 -H 0.0.0.0",
     "serve": "gatsby serve -p 2999 -H 0.0.0.0"
@@ -64,14 +63,12 @@
     }
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
     "@typescript-eslint/parser": "^7.7.1",
     "eslint": "8.57.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-header": "^3.1.1",
     "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-unused-imports": "^3.1.0",
-    "prettier": "^3.2.5"
+    "eslint-plugin-unused-imports": "^3.1.0"
   }
 }

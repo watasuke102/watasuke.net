@@ -4,6 +4,7 @@
   "description": "[https://watasuke.net](https://watasuke.net)で公開されているページ",
   "main": "index.js",
   "scripts": {
+    "fmt": "prettier --write main/src main/gatsby-config.ts main/gatsby-node.ts main/gatsby-ssr.tsx",
     "dev": "npm -w main run dev",
     "gen": "gql-gen --config graphql/codegen.ts"
   },
@@ -16,11 +17,13 @@
   },
   "homepage": "https://github.com/watasuke102/watasuke.net#readme",
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@graphql-codegen/cli": "^5.0.2",
     "@graphql-codegen/client-preset": "^4.2.5",
     "@graphql-codegen/typescript": "^4.0.6",
     "@graphql-codegen/typescript-graphql-request": "^6.2.0",
-    "@graphql-codegen/typescript-operations": "^4.2.0"
+    "@graphql-codegen/typescript-operations": "^4.2.0",
+    "prettier": "^3.2.5"
   },
   "workspaces": [
     "main",

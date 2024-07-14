@@ -7,9 +7,9 @@
 import '@common/main.css';
 import * as style from '@pages/blog.css';
 import {Seo, Layout, Breadcrumb} from '@common';
-import {ArticleList} from '@feature/ArticleList/ArticleList';
 import {graphql} from 'gatsby';
 import React from 'react';
+import {ArticleList} from '@feature/ArticleList/ArticleList';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import Article from '@mytypes/Article';
 

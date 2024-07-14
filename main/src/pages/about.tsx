@@ -5,9 +5,9 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {Seo, Background, Breadcrumb, Layout} from '@common';
-import {AdsInArticle} from '@watasuke.net/common';
 import {Link} from 'gatsby';
 import React from 'react';
+import {AdsInArticle} from '@watasuke.net/common';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'About'}]);

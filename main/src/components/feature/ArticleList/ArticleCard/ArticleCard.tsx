@@ -5,9 +5,9 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as style from './ArticleCard.css';
-import {TagContainer} from '@feature/Tag';
 import {Link} from 'gatsby';
 import React from 'react';
+import {TagContainer} from '@feature/Tag';
 import Article from '@mytypes/Article';
 
 interface Props {
