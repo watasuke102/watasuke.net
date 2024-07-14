@@ -23,6 +23,90 @@ import {apiUrl} from '@watasuke.net/config/config';
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+
 // FIXME: DRY
 const slug_validator = /^[0-9a-z-]+$/;
 
@@ -48,6 +132,15 @@ export function NewArticle(): JSX.Element {
       .then(() => router.push(`/editor/${slug}`));
   }, [slug, title]);
 
+  const proceed_by_ctrl_enter = React.useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (!e.repeat && e.ctrlKey && e.key === 'Enter') {
+        new_article();
+      }
+    },
+    [new_article],
+  );
+
   return (
     <>
       <div className={css.header}>
@@ -67,13 +160,20 @@ export function NewArticle(): JSX.Element {
         title='Add new article'
         desc='Determine slug and title (you can change them later)'
       >
-        <Form.Root onSubmit={e => e.preventDefault()}>
+        <Form.Root onSubmit={e => e.preventDefault()} className={css.dialog_container}>
           <Form.Field name='slug' className={css.form_field}>
             <Form.Label className={css.label}>Slug</Form.Label>
             <Form.Message match='valueMissing'>Cannot be empty</Form.Message>
             <Form.Message match={val => !slug_validator.test(val)}>Invaid slug; use {`${slug_validator}`}</Form.Message>
             <Form.Control asChild>
-              <input className={css.input} type='text' value={slug} onChange={e => set_slug(e.target.value)} required />
+              <input
+                className={css.input}
+                type='text'
+                value={slug}
+                onChange={e => set_slug(e.target.value)}
+                onKeyDown={proceed_by_ctrl_enter}
+                required
+              />
             </Form.Control>
           </Form.Field>
           <Form.Field name='title' className={css.form_field}>
@@ -85,6 +185,7 @@ export function NewArticle(): JSX.Element {
                 type='text'
                 value={title}
                 onChange={e => set_title(e.target.value)}
+                onKeyDown={proceed_by_ctrl_enter}
                 required
               />
             </Form.Control>

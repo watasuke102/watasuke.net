@@ -14,6 +14,9 @@ export const css = {
     justifyContent: 'space-between',
     alignItems: 'center',
   }),
+  dialog_container: style({
+    width: '50dvw',
+  }),
   form_field: style({
     display: 'grid',
     gridTemplateColumns: '1fr auto',
