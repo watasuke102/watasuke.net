@@ -14,7 +14,8 @@ type Schema = RootNode<'static, query::Query, mutation::Mutation, EmptySubscript
 pub struct Context {
   config: config::Config,
 }
-impl juniper::Context for Context {}
+impl juniper::Context for Context {
+}
 impl Context {
   fn new() -> anyhow::Result<Self> {
     Ok(Context {
@@ -115,8 +116,8 @@ async fn main() -> anyhow::Result<()> {
     EmptySubscription::<Context>::new(),
   );
 
-  for path in ["../watasuke.net/graphql", "../graphql"] {
-    let graphql_dir = std::env::current_dir()?.join(path);
+  {
+    let graphql_dir = std::env::current_dir()?.join("../graphql");
     std::fs::create_dir_all(&graphql_dir)?;
     let mut schema_file = std::fs::File::create(graphql_dir.join("schema.graphql"))?;
     schema_file.write_all(schema.as_sdl().as_bytes())?;

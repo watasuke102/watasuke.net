@@ -4,7 +4,8 @@
   "description": "[https://watasuke.net](https://watasuke.net)で公開されているページ",
   "main": "index.js",
   "scripts": {
-    "dev": "npm -w main run dev"
+    "dev": "npm -w main run dev",
+    "gen": "gql-gen --config graphql/codegen.ts"
   },
   "keywords": [],
   "author": "watasuke",
@@ -14,6 +15,13 @@
     "url": "git+https://github.com/watasuke102/watasuke.net.git"
   },
   "homepage": "https://github.com/watasuke102/watasuke.net#readme",
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/client-preset": "^4.2.5",
+    "@graphql-codegen/typescript": "^4.0.6",
+    "@graphql-codegen/typescript-graphql-request": "^6.2.0",
+    "@graphql-codegen/typescript-operations": "^4.2.0"
+  },
   "workspaces": [
     "main",
     "config",

@@ -5,18 +5,12 @@
   "scripts": {
     "lint": "eslint --fix .",
     "fmt": "prettier --write src/",
-    "gen": "gql-gen --config graphql/codegen.ts",
     "build": "gatsby build",
     "dev": "gatsby develop -p 10210 -H 0.0.0.0",
     "serve": "gatsby serve -p 2999 -H 0.0.0.0"
   },
   "dependencies": {
     "@giscus/react": "^3.0.0",
-    "@graphql-codegen/cli": "^5.0.2",
-    "@graphql-codegen/client-preset": "^4.2.5",
-    "@graphql-codegen/typescript": "^4.0.6",
-    "@graphql-codegen/typescript-graphql-request": "^6.2.0",
-    "@graphql-codegen/typescript-operations": "^4.2.0",
     "@types/hast": "^3.0.4",
     "@types/react": "^18.2.79",
     "@types/react-transition-group": "^4.4.10",
