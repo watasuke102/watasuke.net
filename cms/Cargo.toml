@@ -1,18 +1,18 @@
 [package]
-name = "back"
-version = "0.1.0"
+name = "cms"
+version = "0.0.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-anyhow = "1.0.75"
-chrono = "0.4.31"
-juniper = { version = "0.16.1", features = ["schema-language"] }
-juniper_rocket = "0.9.0"
-regex = "1.10.2"
-rocket = "0.5.0"
-rocket_cors = "0.6.0"
-serde = "1.0.193"
-toml = "0.8.8"
+anyhow = "1.0"
+chrono = "0.4"
+juniper = { version = "0.16", features = ["schema-language"] }
+juniper_rocket = "0.9"
+regex = "1.10"
+rocket = "0.5"
+rocket_cors = "0.6"
+serde = "1.0"
+toml = "0.8"
 yaml-front-matter = "0.1.0"
