@@ -15,6 +15,8 @@ globalStyle(':root', {
   fontFamily: '"M PLUS Rounded 1c", sans-serif',
   backgroundColor: color.bg,
   color: color.fg,
+  scrollbarWidth: 'thin',
+  scrollbarColor: `${color.fg} transparent`,
 });
 
 globalStyle('body', {
