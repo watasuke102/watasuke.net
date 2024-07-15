@@ -155,14 +155,17 @@ pub fn publish_article(contents_path: &String, slug: &String) -> anyhow::Result<
     .max()
     .unwrap_or(-1);
 
-  let path = Path::new(article.article_path());
-  std::fs::rename(
-    &path,
-    path
-      .parent()
-      .context("parent does not exist")?
-      .join(format!("{:02}_{}", max_index + 1, slug)),
-  )?;
+  let old_path = Path::new(article.article_path());
+  let new_path = old_path
+    .parent()
+    .context("parent does not exist")?
+    .join(format!("{:02}_{}", max_index + 1, slug));
+  let new_path = new_path.as_path();
+  std::fs::rename(&old_path, &new_path)?;
+
+  crate::git::Repo::open(contents_path)?
+    .commit_published_article(slug, [&old_path, &new_path])?
+    .push()?;
 
   Ok(())
 }
