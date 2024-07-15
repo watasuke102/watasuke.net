@@ -119,7 +119,7 @@ export default function EditorPage({article}: Props): JSX.Element {
           save_button_handler={save}
         />
         <div className={css.preview}>
-          <Markdown md={state.body} embed_card={EmbedCard} inner_embed_card={InnerEmbedCard} />
+          <Markdown md={state.body.replaceAll('/img', `${apiUrl}/img/${article.slug}`)} embed_card={EmbedCard} inner_embed_card={InnerEmbedCard} />
         </div>
       </section>
 
