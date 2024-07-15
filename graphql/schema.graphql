@@ -29,6 +29,7 @@ type Query {
   article(slug: String!): Article
   allTags: [Tag!]!
   sitedata: Sitedata!
+  contentsGitHeadHash: String!
 }
 
 type Sitedata {

@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0"
 chrono = "0.4"
+git2 = "0.19"
 juniper = { version = "0.16", features = ["schema-language"] }
 juniper_rocket = "0.9"
 regex = "1.10"

@@ -5,7 +5,7 @@ use crate::{
     articles::{self, article},
     sitedata, tags,
   },
-  Context,
+  git, Context,
 };
 
 #[derive(Clone, Copy, Debug)]
@@ -78,6 +78,27 @@ impl Query {
         "read_sitedata() failed",
         graphql_value!(err.to_string()),
       )),
+    }
+  }
+  fn contents_git_head_hash(context: &Context) -> juniper::FieldResult<String> {
+    let repo = match git::Repo::open(&context.config.contents_path) {
+      Ok(repo) => repo,
+      Err(err) => {
+        return Err(juniper::FieldError::new(
+          "Cannot open a git repo",
+          graphql_value!(err.to_string()),
+        ))
+      }
+    };
+
+    match repo.head_hash() {
+      Ok(hash) => Ok(hash),
+      Err(err) => {
+        return Err(juniper::FieldError::new(
+          "repo.head_hash() failed",
+          graphql_value!(err.to_string()),
+        ))
+      }
     }
   }
 }

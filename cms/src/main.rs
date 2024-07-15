@@ -1,5 +1,6 @@
 mod cms;
 mod config;
+mod git;
 mod mutation;
 mod query;
 mod util;
