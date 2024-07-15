@@ -14,7 +14,7 @@ query allArticles {
   }
 }
 
-query article($slug: String!) {
+query articleEditPage($slug: String!) {
   article(slug: $slug) {
     slug
     title
@@ -28,6 +28,10 @@ query article($slug: String!) {
       name
     }
     body
+  }
+  allTags {
+    slug
+    name
   }
 }
 

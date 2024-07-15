@@ -16,9 +16,9 @@ type Props = {
 
 export default async function page(props: Props): Promise<JSX.Element> {
   const sdk = getSdk(new GraphQLClient('http://127.0.0.1:10212/graphql'));
-  const query = await sdk.article({slug: props.params.slug});
+  const query = await sdk.articleEditPage({slug: props.params.slug});
   if (!query.article) {
     throw Error('article is empty');
   }
-  return <EditorPage article={query.article} />;
+  return <EditorPage article={query.article} tags={query.allTags} />;
 }

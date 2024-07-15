@@ -13,8 +13,7 @@ import {Button} from '@cms-common/Button';
 import {Dialog} from '@cms-common/Dialog';
 import {EmbedCard, InnerEmbedCard} from '@cms-common/EmbedCard';
 import {QlError} from '@cms-types/QlError';
-import {getSdk} from '@cms-utils/graphql';
-import {ArticleQuery} from '@cms-utils/graphql';
+import {ArticleEditPageQuery, getSdk} from '@cms-utils/graphql';
 import * as Toast from '@radix-ui/react-toast';
 import {GraphQLClient} from 'graphql-request';
 import Link from 'next/link';
@@ -23,30 +22,26 @@ import {useImmerReducer} from 'use-immer';
 import {Markdown} from '@watasuke.net/common';
 import {apiUrl} from '@watasuke.net/config/config';
 import Loading from '../../loading';
-import {StateType, article_reducer} from '../ArticleReducer';
+import {article_reducer} from '../ArticleReducer';
 import MdEditor from '../MdEditor/MdEditor';
 
 type Props = {
-  article: NonNullable<ArticleQuery['article']>;
+  article: NonNullable<ArticleEditPageQuery['article']>;
+  tags: ArticleEditPageQuery['allTags'];
 };
 
-export default function EditorPage({article}: Props): JSX.Element {
+export default function EditorPage({article, tags}: Props): JSX.Element {
   const [state, dispatch] = useImmerReducer(article_reducer, {
     body: article.body,
     title: article.title,
     tldr: article.tldrReal ?? '',
     tags: article.tags.map(e => e.slug),
-    all_tags: [] as StateType['all_tags'],
+    all_tags: tags,
   });
   const [is_published, set_is_published] = React.useState(article.isPublished);
   const [toast_status, set_toast_status] = React.useState({title: 'success', desc: ''});
   const [is_toast_open, set_is_toast_open] = React.useState(false);
   const [is_dialog_open, set_is_dialog_open] = React.useState(false);
-
-  React.useEffect(() => {
-    const sdk = getSdk(new GraphQLClient(`${apiUrl}/graphql`));
-    sdk.allTags().then(res => dispatch({type: 'alltag/update', all_tags: res.allTags}));
-  }, []);
 
   const save = React.useCallback(async () => {
     try {
@@ -119,7 +114,11 @@ export default function EditorPage({article}: Props): JSX.Element {
           save_button_handler={save}
         />
         <div className={css.preview}>
-          <Markdown md={state.body.replaceAll('/img', `${apiUrl}/img/${article.slug}`)} embed_card={EmbedCard} inner_embed_card={InnerEmbedCard} />
+          <Markdown
+            md={state.body.replaceAll('/img', `${apiUrl}/img/${article.slug}`)}
+            embed_card={EmbedCard}
+            inner_embed_card={InnerEmbedCard}
+          />
         </div>
       </section>
 
