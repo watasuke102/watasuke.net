@@ -12,6 +12,7 @@ import LeftIcon from '@cms-assets/left.svg';
 import {Button} from '@cms-common/Button';
 import {Dialog} from '@cms-common/Dialog';
 import {EmbedCard, InnerEmbedCard} from '@cms-common/EmbedCard';
+import {ErrorBoundary} from '@cms-common/ErrorBoundary';
 import {QlError} from '@cms-types/QlError';
 import {ArticleEditPageQuery, getSdk} from '@cms-utils/graphql';
 import * as Toast from '@radix-ui/react-toast';
@@ -24,6 +25,13 @@ import {apiUrl} from '@watasuke.net/config/config';
 import Loading from '../../loading';
 import {article_reducer} from '../ArticleReducer';
 import MdEditor from '../MdEditor/MdEditor';
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
 
 type Props = {
   article: NonNullable<ArticleEditPageQuery['article']>;
@@ -114,11 +122,13 @@ export default function EditorPage({article, tags}: Props): JSX.Element {
           save_button_handler={save}
         />
         <div className={css.preview}>
-          <Markdown
-            md={state.body.replaceAll('/img', `${apiUrl}/img/${article.slug}`)}
-            embed_card={EmbedCard}
-            inner_embed_card={InnerEmbedCard}
-          />
+          <ErrorBoundary>
+            <Markdown
+              md={state.body.replaceAll('/img', `${apiUrl}/img/${article.slug}`)}
+              embed_card={EmbedCard}
+              inner_embed_card={InnerEmbedCard}
+            />
+          </ErrorBoundary>
         </div>
       </section>
 
