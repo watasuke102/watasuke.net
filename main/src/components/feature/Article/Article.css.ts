@@ -12,11 +12,14 @@ export const container = style({
   marginTop: 20,
 });
 
+const middle_margin = 16;
+
 export const blogcontent_wrapper = style({
   width: '75%',
   overflowX: 'hidden',
   borderRight: `1px solid ${color.fg}`,
-  padding: 15,
+  marginLeft: 4,
+  paddingRight: middle_margin,
   '@media': {
     'screen and (max-width: 700px)': {
       width: '100%',
@@ -29,7 +32,7 @@ export const blogcontent_wrapper = style({
 
 export const side = style({
   width: '25%',
-  marginLeft: 20,
+  marginLeft: middle_margin,
   '@media': {
     'screen and (max-width: 700px)': {
       display: 'none',

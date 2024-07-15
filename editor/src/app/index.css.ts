@@ -8,11 +8,6 @@ import {style} from '@vanilla-extract/css';
 
 export const css = {
   container: style({
-    position: 'absolute',
-    top: 56,
-    left: 0,
-    width: 'calc(100dvw - 24px)',
-    height: 'calc(100dvh - 56px)',
-    padding: '0 12px',
+    width: '100%',
   }),
 };

@@ -17,7 +17,7 @@ export const css = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingRight: 12,
+    paddingRight: 24,
     borderBottom: `1px dotted ${color.fg}`,
   }),
   back_button: style({

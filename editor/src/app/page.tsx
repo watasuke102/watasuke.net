@@ -4,10 +4,10 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import React from 'react';
+import {QlError} from '@cms-types/QlError';
 import {getSdk} from '@cms-utils/graphql';
 import {GraphQLClient} from 'graphql-request';
-import {QlError} from '@cms-types/QlError';
+import React from 'react';
 import {ArticlesTable} from './_components/ArticlesTable';
 import {NewArticle} from './_components/NewArticle';
 
@@ -30,13 +30,17 @@ export default async function Top(): Promise<JSX.Element> {
     );
   }
   return (
-    <>
+    <div
+    //
+    // style={{width: 'calc(100dvw - 24px)'}}
+    //
+    >
       <NewArticle />
       <ArticlesTable articles={data.allArticles.filter(e => !e.isPublished)} />
       <h2>Published</h2>
       <ArticlesTable
         articles={data.allArticles.filter(e => e.isPublished).sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))}
       />
-    </>
+    </div>
   );
 }

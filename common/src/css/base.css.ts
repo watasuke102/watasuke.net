@@ -20,7 +20,7 @@ globalStyle(':root', {
 });
 
 globalStyle('body', {
-  padding: '24px 20px',
+  padding: '24px 12px',
   paddingTop: 56,
   '@media': {
     'screen and (max-width: 550px)': {
