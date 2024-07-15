@@ -4,6 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as style from './Layout.css';
 import {Header} from '@common';
 import React from 'react';
 
@@ -15,7 +16,7 @@ export const Layout = ({children}: Props): React.ReactElement => {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main className={style.container}>{children}</main>
     </>
   );
 };

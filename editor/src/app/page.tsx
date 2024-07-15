@@ -4,6 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import {css} from './index.css';
 import {QlError} from '@cms-types/QlError';
 import {getSdk} from '@cms-utils/graphql';
 import {GraphQLClient} from 'graphql-request';
@@ -30,11 +31,7 @@ export default async function Top(): Promise<JSX.Element> {
     );
   }
   return (
-    <div
-    //
-    // style={{width: 'calc(100dvw - 24px)'}}
-    //
-    >
+    <div className={css.container}>
       <NewArticle />
       <ArticlesTable articles={data.allArticles.filter(e => !e.isPublished)} />
       <h2>Published</h2>

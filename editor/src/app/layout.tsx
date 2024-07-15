@@ -4,7 +4,6 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {css} from './index.css';
 import '@cms-common/global.css';
 import '@watasuke.net/common/src/css/base.css';
 import React from 'react';
@@ -21,9 +20,7 @@ export default function RootLayout({children}: {children: React.ReactNode}): JSX
         ></link>
       </head>
       <body>
-        <div className={css.container}>
-          <main>{children}</main>
-        </div>
+        <main>{children}</main>
       </body>
     </html>
   );

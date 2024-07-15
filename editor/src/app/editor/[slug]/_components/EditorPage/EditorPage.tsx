@@ -26,13 +26,6 @@ import Loading from '../../loading';
 import {article_reducer} from '../ArticleReducer';
 import MdEditor from '../MdEditor/MdEditor';
 
-// watasuke.net > editor
-// CopyRight (c) 2021-2024 watasuke
-//
-// Email  : <watasuke102@gmail.com>
-// Twitter: @Watasuke102
-// This software is released under the MIT or MIT SUSHI-WARE License.
-
 type Props = {
   article: NonNullable<ArticleEditPageQuery['article']>;
   tags: ArticleEditPageQuery['allTags'];

@@ -19,16 +19,6 @@ globalStyle(':root', {
   scrollbarColor: `${color.fg} transparent`,
 });
 
-globalStyle('body', {
-  padding: '24px 12px',
-  paddingTop: 56,
-  '@media': {
-    'screen and (max-width: 550px)': {
-      marginTop: 48,
-    },
-  },
-});
-
 globalStyle('a', {
   color: color.p0,
   textDecoration: 'underline',

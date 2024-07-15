@@ -7,13 +7,16 @@
 import {globalStyle, keyframes, style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
+const header_height = 48;
+const editor_area_margin = 12;
+
 export const css = {
   header: style({
     position: 'fixed',
     top: 0,
     left: 0,
     width: '100dvw',
-    height: 48,
+    height: header_height,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -33,7 +36,9 @@ export const css = {
   container: style({
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    height: 'calc(100dvh - 56px - 24px)',
+    margin: editor_area_margin,
+    marginTop: header_height + 12,
+    height: `calc(100dvh - ${header_height + editor_area_margin * 2}px)`,
     borderRadius: 4,
     borderTopLeftRadius: 0,
   }),
