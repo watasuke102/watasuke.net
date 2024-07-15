@@ -4,7 +4,9 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import rehypeStringify from 'rehype-stringify';
 import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
 import {unified} from 'unified';
 import {visit} from 'unist-util-visit';
 import Heading from '@mytypes/Heading';
@@ -22,7 +24,9 @@ export default function ExtractHeading(md: string): Heading[] {
         });
       };
     })
-    .process(md);
+    .use(remarkRehype)
+    .use(rehypeStringify)
+    .processSync(md);
 
   return heads;
 }
