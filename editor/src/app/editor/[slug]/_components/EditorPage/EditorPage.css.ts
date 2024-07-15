@@ -38,10 +38,12 @@ export const css = {
     borderTopLeftRadius: 0,
   }),
   preview: style({
-    padding: '8px 16px',
+    padding: '8px 4px 8px 12px',
     overflowY: 'scroll',
     border: `2px solid ${color.fg}`,
     borderLeft: 'none',
+    scrollbarGutter: 'stable',
+    scrollbarWidth: 'thin',
   }),
 };
 

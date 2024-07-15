@@ -40,6 +40,8 @@ export const css = {
     resize: 'none',
     height: '100%',
     border: `2px solid ${color.p0}`,
+    scrollbarGutter: 'stable',
+    scrollbarWidth: 'thin',
     ':focus-visible': {
       outline: 'none',
     },
