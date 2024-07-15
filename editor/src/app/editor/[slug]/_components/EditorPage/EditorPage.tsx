@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 'use client';
 
-import {css, toast} from './EditorPage.css';
+import {css, dialog_width, toast} from './EditorPage.css';
 import CloseIcon from '@cms-assets/close.svg';
 import LeftIcon from '@cms-assets/left.svg';
 import {Button} from '@cms-common/Button';
@@ -19,8 +19,9 @@ import * as Toast from '@radix-ui/react-toast';
 import {GraphQLClient} from 'graphql-request';
 import Link from 'next/link';
 import React from 'react';
+import {BarLoader} from 'react-spinners';
 import {useImmerReducer} from 'use-immer';
-import {Markdown} from '@watasuke.net/common';
+import {color, Markdown} from '@watasuke.net/common';
 import {apiUrl} from '@watasuke.net/config/config';
 import Loading from '../../loading';
 import {article_reducer} from '../ArticleReducer';
@@ -42,7 +43,7 @@ export default function EditorPage({article, tags}: Props): JSX.Element {
   const [is_published, set_is_published] = React.useState(article.isPublished);
   const [toast_status, set_toast_status] = React.useState({title: 'success', desc: ''});
   const [is_toast_open, set_is_toast_open] = React.useState(false);
-  const [is_dialog_open, set_is_dialog_open] = React.useState(false);
+  const [publish_stat, set_publish_stat] = React.useState<'none' | 'confirmation' | 'waiting' | 'succeeded'>('none');
 
   const save = React.useCallback(async () => {
     try {
@@ -71,12 +72,13 @@ export default function EditorPage({article, tags}: Props): JSX.Element {
       const sdk = getSdk(new GraphQLClient(`${apiUrl}/graphql`));
       await sdk.publishArticle({slug: article.slug});
       set_is_published(true);
-      set_toast_status({title: 'success', desc: ''});
+      set_publish_stat('succeeded');
     } catch (err) {
       const error = (err as QlError).response.errors[0];
       set_toast_status({title: error.message, desc: error.extensions});
+      set_publish_stat('none');
+      set_is_toast_open(true);
     }
-    set_is_toast_open(true);
   }, [is_published]);
 
   // hydration errorが出るのを回避する
@@ -111,7 +113,7 @@ export default function EditorPage({article, tags}: Props): JSX.Element {
           is_published={is_published}
           state={state}
           dispatcher={dispatch}
-          publish_button_handler={() => set_is_dialog_open(true)}
+          publish_button_handler={() => set_publish_stat('confirmation')}
           save_button_handler={save}
         />
         <div className={css.preview}>
@@ -137,20 +139,50 @@ export default function EditorPage({article, tags}: Props): JSX.Element {
       </Toast.Provider>
 
       <Dialog
-        is_open={is_dialog_open}
-        set_is_open={set_is_dialog_open}
+        is_open={publish_stat !== 'none'}
+        set_is_open={f => {
+          if (!f) {
+            set_publish_stat('none');
+          }
+        }}
         title='Are you sure to publish?'
         desc='You cannot undo this change from the CMS (yet)'
       >
-        <Button
-          type='contained'
-          text='Publish'
-          aria_label='publish'
-          on_click={() => {
-            set_is_dialog_open(false);
-            publish();
-          }}
-        />
+        <div className={css.dialog}>
+          <></>
+          {(() => {
+            switch (publish_stat) {
+              case 'confirmation':
+                return (
+                  <Button
+                    type='contained'
+                    text='Publish'
+                    aria_label='publish'
+                    on_click={() => {
+                      set_publish_stat('waiting');
+                      publish();
+                    }}
+                  />
+                );
+              // case 'confirmation':
+              case 'waiting':
+                return (
+                  <div className={css.publish_waiting_status}>
+                    <BarLoader color={color.p0} width={dialog_width} />
+                    <span className={css.publish_waiting_label}>Waiting for response from CMS...</span>
+                  </div>
+                );
+              case 'succeeded':
+                return (
+                  <div className={css.publish_waiting_status}>
+                    <span className={css.publish_waiting_label}>succeeded!</span>
+                  </div>
+                );
+              default:
+                return <></>;
+            }
+          })()}
+        </div>
       </Dialog>
     </>
   );

@@ -16,6 +16,8 @@ const padding = 16;
 export const css = {
   overlay: style({
     position: 'fixed',
+    left: 0,
+    top: 0,
     width: '100dvw',
     height: '100dvh',
     zIndex: 10240,

@@ -10,6 +10,8 @@ import {color} from '@watasuke.net/common/src/css/color';
 const header_height = 48;
 const editor_area_margin = 12;
 
+export const dialog_width = 440;
+
 export const css = {
   header: style({
     position: 'fixed',
@@ -49,6 +51,20 @@ export const css = {
     borderLeft: 'none',
     scrollbarGutter: 'stable',
     scrollbarWidth: 'thin',
+  }),
+  dialog: style({
+    display: 'block',
+    width: dialog_width,
+    height: 52,
+  }),
+  publish_waiting_status: style({
+    display: 'grid',
+    gridTemplateRows: '4px 1fr',
+    gap: 8,
+  }),
+  publish_waiting_label: style({
+    textAlign: 'center',
+    gridRow: '2 / 3',
   }),
 };
 
