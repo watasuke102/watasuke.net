@@ -10,6 +10,7 @@ import {GatsbyNode, SourceNodesArgs} from 'gatsby';
 import {GraphQLClient} from 'graphql-request';
 import OgpParser from 'ogp-parser';
 import path from 'path';
+import {classify_url_embed_type} from '@watasuke.net/common';
 import Article from '@mytypes/Article';
 import * as config from './config';
 import {AllQuery, getSdk} from './src/utils/graphql';
@@ -208,16 +209,9 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesAr
     data.allPublicArticles.forEach(item => {
       registerArticle(item, args);
       item.body.split('\n').forEach(paragraph => {
-        const url = paragraph.match(/^https:\/\/[\w/:%#$&?~.=+-]+/g);
-        if (!url) {
-          return;
-        }
-        // TwitterとYouTubeは専用の埋め込みがあるのでいらない
-        if (url[0].slice(0, 19) === 'https://twitter.com' || url[0].slice(0, 23) === 'https://www.youtube.com') {
-          return;
-        }
-        // 自分のブログ記事も専用の埋め込みを使う
-        if (url[0].match(/https:\/\/watasuke.net\/blog\/article\/.+/)) {
+        const url = paragraph.match(/^https:\/\/.+/);
+        // ignore URL of Twitter, YouTube, etc...
+        if (!url || classify_url_embed_type(url[0]).embed_type === 'none') {
           return;
         }
         url_list.add(url[0]);

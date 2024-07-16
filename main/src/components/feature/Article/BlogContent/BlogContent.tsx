@@ -11,6 +11,7 @@ import {Markdown} from '@watasuke.net/common';
 import {AdsInArticle} from '@watasuke.net/common/src/Ads';
 import {EmbedCard, InnerEmbedCard, TocInArticle} from '@feature/Article';
 import {TagContainer} from '@feature/Tag';
+import extract_link from '@utils/ExtractLink';
 import Article from '@mytypes/Article';
 import Heading from '@mytypes/Heading';
 import {apiUrl} from '../../../../../config';
@@ -23,6 +24,7 @@ interface Props {
 }
 
 export function BlogContent(props: Props): React.ReactElement {
+  console.log(extract_link(props.data.body));
   return (
     <>
       <h1 className={css.title}>{props.data.title}</h1>
