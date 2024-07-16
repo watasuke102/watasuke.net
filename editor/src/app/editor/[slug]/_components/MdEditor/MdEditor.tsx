@@ -19,13 +19,6 @@ import AddPhotoIcon from '@assets/add_photo.svg';
 import ExpandIcon from '@assets/expand.svg';
 import SaveIcon from '@assets/save.svg';
 
-// watasuke.net > editor
-// CopyRight (c) 2021-2024 watasuke
-//
-// Email  : <watasuke102@gmail.com>
-// Twitter: @Watasuke102
-// This software is released under the MIT or MIT SUSHI-WARE License.
-
 type Props = {
   slug: string;
   tldr_placeholder: string;
@@ -36,7 +29,7 @@ type Props = {
   publish_button_handler: () => void;
 };
 
-export default function MdEditor(props: Props): JSX.Element {
+export function MdEditor(props: Props): JSX.Element {
   useShortcut([{keycode: 'KeyS', handler: props.save_button_handler}], {ctrl: true});
   const textarea_ref = React.useRef<HTMLTextAreaElement | null>();
   const insert_image_name = React.useCallback(

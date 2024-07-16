@@ -8,7 +8,7 @@ import '@watasuke.net/common/src/css/base.css';
 import {GraphQLClient} from 'graphql-request';
 import React from 'react';
 import {getSdk} from '@utils/graphql';
-import EditorPage from './_components/EditorPage/EditorPage';
+import {EditorPage} from './_components/EditorPage/EditorPage';
 
 type Props = {
   params: {slug: string};

@@ -19,34 +19,20 @@ import {Button} from '@common/Button';
 import {Dialog} from '@common/Dialog';
 import {EmbedCard, InnerEmbedCard} from '@common/EmbedCard';
 import {ErrorBoundary} from '@common/ErrorBoundary';
+import {Spinner} from '@common/Spinner';
 import {ArticleEditPageQuery, getSdk} from '@utils/graphql';
 import {QlError} from '@mytypes/QlError';
-import Loading from '../../loading';
 import {article_reducer} from '../ArticleReducer';
 import MdEditor from '../MdEditor/MdEditor';
 import CloseIcon from '@assets/close.svg';
 import LeftIcon from '@assets/left.svg';
-
-// watasuke.net > editor
-// CopyRight (c) 2021-2024 watasuke
-//
-// Email  : <watasuke102@gmail.com>
-// Twitter: @Watasuke102
-// This software is released under the MIT or MIT SUSHI-WARE License.
-
-// watasuke.net > editor
-// CopyRight (c) 2021-2024 watasuke
-//
-// Email  : <watasuke102@gmail.com>
-// Twitter: @Watasuke102
-// This software is released under the MIT or MIT SUSHI-WARE License.
 
 type Props = {
   article: NonNullable<ArticleEditPageQuery['article']>;
   tags: ArticleEditPageQuery['allTags'];
 };
 
-export default function EditorPage({article, tags}: Props): JSX.Element {
+export function EditorPage({article, tags}: Props): JSX.Element {
   const [state, dispatch] = useImmerReducer(article_reducer, {
     body: article.body,
     title: article.title,
@@ -99,7 +85,7 @@ export default function EditorPage({article, tags}: Props): JSX.Element {
   const [is_first_render, set_is_first_render] = React.useState(true);
   React.useEffect(() => set_is_first_render(false), []);
   if (is_first_render) {
-    return <Loading />;
+    return <Spinner />;
   }
 
   return (
