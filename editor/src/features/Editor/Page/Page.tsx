@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 'use client';
 
-import {css, dialog_width, toast} from './EditorPage.css';
+import {css, dialog_width, toast} from './Page.css';
 import * as Toast from '@radix-ui/react-toast';
 import {GraphQLClient} from 'graphql-request';
 import Link from 'next/link';
@@ -23,7 +23,7 @@ import {Spinner} from '@common/Spinner';
 import {ArticleEditPageQuery, getSdk} from '@utils/graphql';
 import {QlError} from '@mytypes/QlError';
 import {article_reducer} from '../ArticleReducer';
-import MdEditor from '../MdEditor/MdEditor';
+import { MdEditor } from '../MdEditor/MdEditor';
 import CloseIcon from '@assets/close.svg';
 import LeftIcon from '@assets/left.svg';
 
@@ -32,7 +32,7 @@ type Props = {
   tags: ArticleEditPageQuery['allTags'];
 };
 
-export function EditorPage({article, tags}: Props): JSX.Element {
+export function Page({article, tags}: Props): JSX.Element {
   const [state, dispatch] = useImmerReducer(article_reducer, {
     body: article.body,
     title: article.title,
