@@ -73,7 +73,7 @@ export default function About(): React.ReactElement {
           <li>当サイトで用いたあらゆる情報に関して、信憑性・正確性を保証しません。自己責任で閲覧してください</li>
           <li>
             当サイトで発生したあらゆる権利侵害・違法行為等は意図したものではありません。
-            それらが発見した場合、お手数ですが Twitter (@Watasuke102) への DM 等でお知らせください
+            それらを発見した場合、お手数ですが Twitter (@Watasuke102) への DM 等でお知らせください
           </li>
         </ul>
       </main>
