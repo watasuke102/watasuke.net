@@ -110,6 +110,7 @@ export default function EditorPage({article, tags}: Props): JSX.Element {
       <section className={css.container}>
         <MdEditor
           slug={article.slug}
+          tldr_placeholder={article.tldr}
           is_published={is_published}
           state={state}
           dispatcher={dispatch}

@@ -103,7 +103,7 @@ export type ArticleEditPageQueryVariables = Exact<{
 }>;
 
 
-export type ArticleEditPageQuery = { __typename?: 'Query', article?: { __typename?: 'Article', slug: string, title: string, tldrReal?: string | null, publishedAt: string, updatedAt: string, isFavorite: boolean, isPublished: boolean, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> } | null, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }> };
+export type ArticleEditPageQuery = { __typename?: 'Query', article?: { __typename?: 'Article', slug: string, title: string, tldr: string, tldrReal?: string | null, publishedAt: string, updatedAt: string, isFavorite: boolean, isPublished: boolean, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> } | null, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }> };
 
 export type AllTagsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -167,6 +167,7 @@ export const ArticleEditPageDocument = gql`
   article(slug: $slug) {
     slug
     title
+    tldr
     tldrReal
     publishedAt
     updatedAt

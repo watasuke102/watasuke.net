@@ -21,6 +21,7 @@ import { FrontmatterEditor } from '../FrontmatterEditor/FrontmatterEditor';
 
 type Props = {
   slug: string;
+  tldr_placeholder: string;
   is_published: boolean;
   state: ArticleReducer.StateType;
   dispatcher: React.Dispatch<ArticleReducer.Action>;
@@ -108,7 +109,7 @@ export default function MdEditor(props: Props): JSX.Element {
               </div>
             </Accordion.Header>
             <Accordion.Content className={css.accordion_content}>
-              <FrontmatterEditor state={props.state} dispatcher={props.dispatcher} />
+              <FrontmatterEditor state={props.state} dispatcher={props.dispatcher} tldr_placeholder={props.tldr_placeholder} />
             </Accordion.Content>
           </Accordion.Item>
         </Accordion.Root>

@@ -18,6 +18,7 @@ query articleEditPage($slug: String!) {
   article(slug: $slug) {
     slug
     title
+    tldr
     tldrReal
     publishedAt
     updatedAt

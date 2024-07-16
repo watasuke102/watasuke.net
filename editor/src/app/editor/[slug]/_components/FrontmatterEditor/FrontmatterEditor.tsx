@@ -12,6 +12,7 @@ import {TagEditor} from '../TagEditor';
 interface Props {
   state: ArticleReducer.StateType;
   dispatcher: React.Dispatch<ArticleReducer.Action>;
+  tldr_placeholder: string;
 }
 
 export function FrontmatterEditor(props: Props): JSX.Element {
@@ -29,6 +30,7 @@ export function FrontmatterEditor(props: Props): JSX.Element {
       <div className={css.input}>
         <label>TL;DR</label>
         <textarea
+          placeholder={props.tldr_placeholder}
           value={props.state.tldr}
           onChange={e => props.dispatcher({type: 'tldr/update', data: e.target.value})}
           className={css.input_text}
