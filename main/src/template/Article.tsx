@@ -23,8 +23,11 @@ const breadcrumb_list = (title: string) =>
 
 export default function Articale(prop: Props): React.ReactElement {
   const data = prop.pageContext;
-  // クリックするとそこまで飛べる目次を生成する
-  const table_of_contents = ExtractHeading(data.body);
+  const headings = (() => {
+    const headings = ExtractHeading(data.body);
+    // 見出しが2個未満だったら目次を出しても違和感がある気がする
+    return headings.length < 2 ? undefined : headings;
+  })();
 
   return (
     <Layout>
@@ -32,7 +35,7 @@ export default function Articale(prop: Props): React.ReactElement {
       <main className={css.container}>
         {/* 記事メイン部分 */}
         <article className={css.blogcontent_wrapper}>
-          <BlogContent data={data} />
+          <BlogContent data={data} headings={headings} />
         </article>
 
         {/* サイドバー */}
@@ -42,7 +45,7 @@ export default function Articale(prop: Props): React.ReactElement {
             <span className={css.head}>タグ</span>
             <AllTagList />
           </section>
-          {table_of_contents.length > 2 && <TocRight table_of_contents={table_of_contents} />}
+          {headings && <TocRight table_of_contents={headings} />}
         </aside>
       </main>
     </Layout>

@@ -11,18 +11,18 @@ import {Markdown} from '@watasuke.net/common';
 import {AdsInArticle} from '@watasuke.net/common/src/Ads';
 import {EmbedCard, InnerEmbedCard, TocInArticle} from '@feature/Article';
 import {TagContainer} from '@feature/Tag';
-import ExtractHeading from '@utils/ExtractHeading';
 import Article from '@mytypes/Article';
+import Heading from '@mytypes/Heading';
 import {apiUrl} from '../../../../../config';
 import IconHistory from '@assets/icons/article/history.svg';
 import IconUpload from '@assets/icons/article/upload.svg';
 
 interface Props {
   data: Article;
+  headings: Heading[] | undefined;
 }
 
 export function BlogContent(props: Props): React.ReactElement {
-  const table_of_contents = ExtractHeading(props.data.body);
   return (
     <>
       <h1 className={css.title}>{props.data.title}</h1>
@@ -44,8 +44,7 @@ export function BlogContent(props: Props): React.ReactElement {
       </section>
 
       <AdsInArticle />
-      {/* 見出しが2個未満だったら目次を出しても違和感がある気がする */}
-      {table_of_contents.length > 2 && <TocInArticle table_of_contents={table_of_contents} />}
+      {props.headings && <TocInArticle table_of_contents={props.headings} />}
 
       <Markdown
         md={props.data.body.replaceAll('/img', `${apiUrl}/img/${props.data.slug}`)}
