@@ -5,10 +5,18 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 'use client';
-import React from 'react';
+
 import {css} from './ArticlesTable.css';
-import {AllArticlesQuery} from '@cms-utils/graphql';
 import {useRouter} from 'next/navigation';
+import React from 'react';
+import {AllArticlesQuery} from '@utils/graphql';
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
 
 type Props = {
   articles: AllArticlesQuery['allArticles'];

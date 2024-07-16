@@ -7,17 +7,24 @@
 'use client';
 
 import {css} from './MdEditor.css';
-import AddPhotoIcon from '@cms-assets/add_photo.svg';
-import ExpandIcon from '@cms-assets/expand.svg';
-import SaveIcon from '@cms-assets/save.svg';
-import {Button} from '@cms-common/Button';
-import {Dialog} from '@cms-common/Dialog';
-import {ImageUploader} from '@cms-common/ImageUploader';
-import {useShortcut} from '@cms-common/useShortcut/useShortcut';
 import * as Accordion from '@radix-ui/react-accordion';
 import React from 'react';
+import {Button} from '@common/Button';
+import {Dialog} from '@common/Dialog';
+import {ImageUploader} from '@common/ImageUploader';
+import {useShortcut} from '@common/useShortcut/useShortcut';
 import * as ArticleReducer from '../ArticleReducer';
-import { FrontmatterEditor } from '../FrontmatterEditor/FrontmatterEditor';
+import {FrontmatterEditor} from '../FrontmatterEditor/FrontmatterEditor';
+import AddPhotoIcon from '@assets/add_photo.svg';
+import ExpandIcon from '@assets/expand.svg';
+import SaveIcon from '@assets/save.svg';
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
 
 type Props = {
   slug: string;
@@ -109,7 +116,11 @@ export default function MdEditor(props: Props): JSX.Element {
               </div>
             </Accordion.Header>
             <Accordion.Content className={css.accordion_content}>
-              <FrontmatterEditor state={props.state} dispatcher={props.dispatcher} tldr_placeholder={props.tldr_placeholder} />
+              <FrontmatterEditor
+                state={props.state}
+                dispatcher={props.dispatcher}
+                tldr_placeholder={props.tldr_placeholder}
+              />
             </Accordion.Content>
           </Accordion.Item>
         </Accordion.Root>

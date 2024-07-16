@@ -4,8 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {AllTagsQuery} from '@cms-utils/graphql';
 import {ImmerReducer} from 'use-immer';
+import {AllTagsQuery} from '@utils/graphql';
 
 export type Action =
   | {

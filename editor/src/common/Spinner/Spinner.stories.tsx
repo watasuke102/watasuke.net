@@ -4,11 +4,11 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import React from 'react';
-import type {Meta, StoryObj} from '@storybook/react';
+import '@common/global.css';
 import '@watasuke.net/common/src/css/base.css';
-import '@cms-common/global.css';
-import { Spinner } from './Spinner';
+import type {Meta, StoryObj} from '@storybook/react';
+import React from 'react';
+import {Spinner} from './Spinner';
 
 const meta: Meta<typeof Spinner> = {
   component: Spinner,

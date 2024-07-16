@@ -7,18 +7,25 @@
 'use client';
 
 import {css} from './TagEditor.css';
-import AddIcon from '@cms-assets/add.svg';
-import CheckIcon from '@cms-assets/check.svg';
-import CloseIcon from '@cms-assets/close.svg';
-import {Button} from '@cms-common/Button';
-import {Dialog} from '@cms-common/Dialog';
-import {getSdk} from '@cms-utils/graphql';
 import * as Checkbox from '@radix-ui/react-checkbox';
 import * as Form from '@radix-ui/react-form';
 import {GraphQLClient} from 'graphql-request';
 import React from 'react';
 import {apiUrl} from '@watasuke.net/config/config';
+import {Button} from '@common/Button';
+import {Dialog} from '@common/Dialog';
+import {getSdk} from '@utils/graphql';
 import * as ArticleReducer from '../ArticleReducer';
+import AddIcon from '@assets/add.svg';
+import CheckIcon from '@assets/check.svg';
+import CloseIcon from '@assets/close.svg';
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
 
 // watasuke.net > editor
 // CopyRight (c) 2021-2024 watasuke

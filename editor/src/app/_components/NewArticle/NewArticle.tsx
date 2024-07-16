@@ -7,14 +7,21 @@
 'use client';
 
 import {css} from './NewArticle.css';
-import {Button} from '@cms-common/Button';
-import {Dialog} from '@cms-common/Dialog';
-import {getSdk} from '@cms-utils/graphql';
 import * as Form from '@radix-ui/react-form';
 import {GraphQLClient} from 'graphql-request';
 import {useRouter} from 'next/navigation';
 import React from 'react';
 import {apiUrl} from '@watasuke.net/config/config';
+import {Button} from '@common/Button';
+import {Dialog} from '@common/Dialog';
+import {getSdk} from '@utils/graphql';
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
 
 // FIXME: DRY
 const slug_validator = /^[0-9a-z-]+$/;

@@ -5,10 +5,10 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {css} from './index.css';
-import {QlError} from '@cms-types/QlError';
-import {getSdk} from '@cms-utils/graphql';
 import {GraphQLClient} from 'graphql-request';
 import React from 'react';
+import {getSdk} from '@utils/graphql';
+import {QlError} from '@mytypes/QlError';
 import {ArticlesTable} from './_components/ArticlesTable';
 import {NewArticle} from './_components/NewArticle';
 

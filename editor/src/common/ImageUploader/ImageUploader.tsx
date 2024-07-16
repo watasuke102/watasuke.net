@@ -4,12 +4,12 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import React from 'react';
 import {css} from './ImageUploader.css';
 import * as Form from '@radix-ui/react-form';
+import React from 'react';
 import {useDropzone, FileWithPath} from 'react-dropzone';
-import {Button} from '@cms-common/Button';
-import {upload_new_image} from '@cms-utils/api';
+import {Button} from '@common/Button';
+import {upload_new_image} from '@utils/api';
 
 type Props = {
   slug: string;

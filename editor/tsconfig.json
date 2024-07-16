@@ -8,21 +8,10 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@cms-utils/*": [
-        "./src/utils/*"
-      ],
-      "@cms-common/*": [
-        "./src/common/*"
-      ],
-      "@cms-assets/*": [
-        "./src/assets/*"
-      ],
-      "@cms-types/*": [
-        "./src/types/*"
-      ],
-      "@watasuke.net/*": [
-        "./watasuke.net/src/*"
-      ]
+      "@common/*": [ "./src/common/*" ],
+      "@utils/*": [ "./src/utils/*" ],
+      "@assets/*": [ "./src/assets/*" ],
+      "@mytypes/*": [ "./src/types/*" ],
     },
     "lib": [
       "dom",

@@ -7,14 +7,6 @@
 'use client';
 
 import {css, dialog_width, toast} from './EditorPage.css';
-import CloseIcon from '@cms-assets/close.svg';
-import LeftIcon from '@cms-assets/left.svg';
-import {Button} from '@cms-common/Button';
-import {Dialog} from '@cms-common/Dialog';
-import {EmbedCard, InnerEmbedCard} from '@cms-common/EmbedCard';
-import {ErrorBoundary} from '@cms-common/ErrorBoundary';
-import {QlError} from '@cms-types/QlError';
-import {ArticleEditPageQuery, getSdk} from '@cms-utils/graphql';
 import * as Toast from '@radix-ui/react-toast';
 import {GraphQLClient} from 'graphql-request';
 import Link from 'next/link';
@@ -23,9 +15,31 @@ import {BarLoader} from 'react-spinners';
 import {useImmerReducer} from 'use-immer';
 import {color, Markdown} from '@watasuke.net/common';
 import {apiUrl} from '@watasuke.net/config/config';
+import {Button} from '@common/Button';
+import {Dialog} from '@common/Dialog';
+import {EmbedCard, InnerEmbedCard} from '@common/EmbedCard';
+import {ErrorBoundary} from '@common/ErrorBoundary';
+import {ArticleEditPageQuery, getSdk} from '@utils/graphql';
+import {QlError} from '@mytypes/QlError';
 import Loading from '../../loading';
 import {article_reducer} from '../ArticleReducer';
 import MdEditor from '../MdEditor/MdEditor';
+import CloseIcon from '@assets/close.svg';
+import LeftIcon from '@assets/left.svg';
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
 
 type Props = {
   article: NonNullable<ArticleEditPageQuery['article']>;
