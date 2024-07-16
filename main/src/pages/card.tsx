@@ -54,7 +54,7 @@ export default function Card(): React.ReactElement {
   ];
 
   return (
-    <>
+    <main>
       <div
         className={style.background}
         onClick={() => {
@@ -78,7 +78,7 @@ export default function Card(): React.ReactElement {
           ))}
         </div>
       )}
-    </>
+    </main>
   );
 }
 

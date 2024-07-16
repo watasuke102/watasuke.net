@@ -31,20 +31,20 @@ export default function Index(): React.ReactElement {
   return (
     <>
       <Background />
-      <div className={style.container}>
-        <div className={style.icon_and_name}>
+      <main className={style.container}>
+        <section className={style.icon_and_name}>
           <StaticImage loading='eager' placeholder='none' width={150} src='../assets/icon.jpg' alt='icon' />
           <h2 className={style.welcome}>Welcome</h2>
-        </div>
-        <div className={style.menu}>
+        </section>
+        <nav className={style.menu}>
           {menu_list.map(e => (
             <Link key={e.text} to={e.url} className={style.menu_card} aria-label={e.text}>
               <div className={style.menu_card_icon}> {e.icon} </div>
               <span className={style.menu_card_text}>{e.text}</span>
             </Link>
           ))}
-        </div>
-      </div>
+        </nav>
+      </main>
     </>
   );
 }

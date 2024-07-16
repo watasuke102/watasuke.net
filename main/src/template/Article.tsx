@@ -29,22 +29,22 @@ export default function Articale(prop: Props): React.ReactElement {
   return (
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list(data.title)} />
-      <div className={style.container}>
+      <main className={style.container}>
         {/* 記事メイン部分 */}
         <section className={style.blogcontent_wrapper}>
           <BlogContent data={data} />
         </section>
 
         {/* サイドバー */}
-        <div className={style.side}>
+        <aside className={style.side}>
           <ProfileCard />
           <section className={style.side_tag}>
             <span className={style.head}>タグ</span>
             <AllTagList />
           </section>
           {table_of_contents.length > 2 && <TocRight table_of_contents={table_of_contents} />}
-        </div>
-      </div>
+        </aside>
+      </main>
     </Layout>
   );
 }

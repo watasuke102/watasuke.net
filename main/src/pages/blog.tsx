@@ -32,17 +32,19 @@ export default function Blog({data}: Props): React.ReactElement {
   return (
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list} />
-      <h1>ブログ</h1>
-      <AdsInArticle />
-      <h2>タグ一覧</h2>
-      <AllTagList />
+      <main>
+        <h1>ブログ</h1>
+        <AdsInArticle />
+        <h2>タグ一覧</h2>
+        <AllTagList />
 
-      <hr />
+        <hr />
 
-      <h2>記事一覧</h2>
-      <div className={style.container}>
-        <ArticleList list={data.allArticles.nodes} />
-      </div>
+        <h2>記事一覧</h2>
+        <div className={style.container}>
+          <ArticleList list={data.allArticles.nodes} />
+        </div>
+      </main>
     </Layout>
   );
 }

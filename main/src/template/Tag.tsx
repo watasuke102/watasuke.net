@@ -32,10 +32,12 @@ export default function Tag({pageContext, data}: Props): React.ReactElement {
   return (
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list(pageContext.name)} />
-      <h1>{pageContext.name}</h1>
-      <div className={style.container}>
-        <ArticleList list={data.allArticles.nodes} />
-      </div>
+      <main>
+        <h1>{pageContext.name}</h1>
+        <div className={style.container}>
+          <ArticleList list={data.allArticles.nodes} />
+        </div>
+      </main>
     </Layout>
   );
 }

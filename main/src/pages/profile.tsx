@@ -29,15 +29,17 @@ export default function Profile(props: Props): React.ReactElement {
     <Layout>
       <Background />
       <Breadcrumb breadcrumb_list={breadcrumb_list} />
-      <h1>プロフィール</h1>
-      <p>
-        技術的な項目については
-        <Link to='/portfolio'>ポートフォリオ</Link>
-        を御覧ください
-      </p>
-      <AdsInArticle />
-      {/* eslint-disable-next-line react/no-children-prop */}
-      <ReactMarkdown remarkPlugins={[Gfm]} rehypePlugins={[Raw]} children={props.data.siteData.body ?? ''} />
+      <main>
+        <h1>プロフィール</h1>
+        <p>
+          技術的な項目については
+          <Link to='/portfolio'>ポートフォリオ</Link>
+          を御覧ください
+        </p>
+        <AdsInArticle />
+        {/* eslint-disable-next-line react/no-children-prop */}
+        <ReactMarkdown remarkPlugins={[Gfm]} rehypePlugins={[Raw]} children={props.data.siteData.body ?? ''} />
+      </main>
     </Layout>
   );
 }

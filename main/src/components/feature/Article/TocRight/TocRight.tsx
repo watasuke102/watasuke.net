@@ -15,12 +15,12 @@ interface Props {
 
 export function TocRight(props: Props): React.ReactElement {
   return (
-    <section className={style.side_toc}>
+    <nav className={style.side_toc}>
       {props.table_of_contents.map(item => (
         <a key={item.body} className={`${style.item} ${toc_list[item.size]}`} href={`#${item.body.toLowerCase()}`}>
           {item.body}
         </a>
       ))}
-    </section>
+    </nav>
   );
 }

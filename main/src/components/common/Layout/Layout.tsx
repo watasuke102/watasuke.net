@@ -16,7 +16,7 @@ export const Layout = ({children}: Props): React.ReactElement => {
   return (
     <>
       <Header />
-      <main className={style.container}>{children}</main>
+      <div className={style.container}>{children}</div>
     </>
   );
 };

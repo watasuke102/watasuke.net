@@ -14,7 +14,7 @@ interface Props {
 
 export const Breadcrumb = (props: Props): React.ReactElement => {
   return (
-    <section>
+    <nav aria-label='Breadcrumb'>
       {props.breadcrumb_list.map((e, i) => (
         <>
           {e.item ? (
@@ -24,9 +24,13 @@ export const Breadcrumb = (props: Props): React.ReactElement => {
           ) : (
             <span key={`s_${i}`}>{e.name}</span>
           )}
-          {i !== props.breadcrumb_list.length - 1 && <span key={`sep_${i}`}>{' > '}</span>}
+          {i !== props.breadcrumb_list.length - 1 && (
+            <span key={`sep_${i}`} aria-hidden>
+              {' > '}
+            </span>
+          )}
         </>
       ))}
-    </section>
+    </nav>
   );
 };

@@ -15,9 +15,11 @@ export default function TagListPage(): React.ReactElement {
   return (
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list} />
-      <h1>タグ一覧</h1>
-      <AdsInArticle />
-      <AllTagList />
+      <main>
+        <h1>タグ一覧</h1>
+        <AdsInArticle />
+        <AllTagList />
+      </main>
     </Layout>
   );
 }

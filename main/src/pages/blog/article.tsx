@@ -31,11 +31,13 @@ export default function ArticleListPage({data}: Props): React.ReactElement {
   return (
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list} />
-      <h1>記事一覧</h1>
-      <AdsInArticle />
-      <div className={style.container}>
-        <ArticleList list={data.allArticles.nodes} />
-      </div>
+      <main>
+        <h1>記事一覧</h1>
+        <AdsInArticle />
+        <div className={style.container}>
+          <ArticleList list={data.allArticles.nodes} />
+        </div>
+      </main>
     </Layout>
   );
 }

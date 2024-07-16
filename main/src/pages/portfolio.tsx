@@ -33,20 +33,20 @@ export default function Portfolio(): React.ReactElement {
     set_page_transition(page_transition);
   }, []);
 
-  if (lang === undefined || animation === undefined || page_transition === undefined) {
-    return <Entrypoint complete={complete} />;
-  }
-
   return (
-    <div id='portfolio-container'>
-      <PortfolioContainer animation_enabled={animation} page_transition_enabled={page_transition}>
-        <Welcome animation_enabled={animation} lang={lang} />
-        <Skills animation_enabled={animation} lang={lang} />
-        <History animation_enabled={animation} lang={lang} />
-        <Links animation_enabled={animation} lang={lang} />
-        <End />
-      </PortfolioContainer>
-    </div>
+    <main id='portfolio-container'>
+      {lang === undefined || animation === undefined || page_transition === undefined ? (
+        <Entrypoint complete={complete} />
+      ) : (
+        <PortfolioContainer animation_enabled={animation} page_transition_enabled={page_transition}>
+          <Welcome animation_enabled={animation} lang={lang} />
+          <Skills animation_enabled={animation} lang={lang} />
+          <History animation_enabled={animation} lang={lang} />
+          <Links animation_enabled={animation} lang={lang} />
+          <End />
+        </PortfolioContainer>
+      )}
+    </main>
   );
 }
 
