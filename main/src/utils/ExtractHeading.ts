@@ -4,6 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import GithubSlugger from 'github-slugger';
 import rehypeStringify from 'rehype-stringify';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
@@ -13,6 +14,8 @@ import Heading from '@mytypes/Heading';
 
 export default function ExtractHeading(md: string): Heading[] {
   const heads: Heading[] = [];
+  // use same slug generator with `remark-slug`
+  const slugger = new GithubSlugger();
 
   unified()
     .use(remarkParse)
@@ -20,7 +23,12 @@ export default function ExtractHeading(md: string): Heading[] {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
       return (tree: any) => {
         visit(tree, 'heading', node => {
-          heads.push({size: node.depth, body: node.children[0].value});
+          const body = node.children[0].value;
+          heads.push({
+            size: node.depth,
+            body,
+            slug: slugger.slug(body),
+          });
         });
       };
     })

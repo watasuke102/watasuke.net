@@ -32,6 +32,7 @@
     "gatsby-plugin-vanilla-extract": "^4.0.2",
     "gatsby-source-filesystem": "^5.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
+    "github-slugger": "^2.0.0",
     "graphql": "^16.8.1",
     "graphql-request": "^6.1.0",
     "hast": "^1.0.0",

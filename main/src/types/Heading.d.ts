@@ -7,4 +7,5 @@
 export default interface Heading {
   size: number;
   body: string;
+  slug: string;
 }

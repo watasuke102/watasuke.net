@@ -47,8 +47,8 @@ export function TocInArticle(props: Props): React.ReactElement {
         >
           <ol className={css.list_wrapper}>
             {props.table_of_contents.map(item => (
-              <li key={item.body} className={toc_list[item.size]}>
-                <a href={`#${item.body.toLowerCase()}`}>{item.body}</a>
+              <li key={item.slug} className={toc_list[item.size]}>
+                <a href={`#${item.slug}`}>{item.body}</a>
               </li>
             ))}
           </ol>

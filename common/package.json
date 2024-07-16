@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@vanilla-extract/css": "^1.15.3",
+    "github-slugger": "^2.0.0",
     "hast-util-to-jsx-runtime": "^2.3.0",
     "highlight.js": "^11.10.0",
     "react": "^18.3.1",
