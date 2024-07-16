@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from './PortfolioContainer.css';
+import * as css from './PortfolioContainer.css';
 import {AnimatePresence, motion, useAnimation} from 'framer-motion';
 import React from 'react';
 import {Transition} from '@utils/Transition';
@@ -135,9 +135,9 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
 
   if (!props.page_transition_enabled) {
     return (
-      <div className={style.container_mobile} style={{backgroundColor: BackgroundColors[0]}}>
+      <div className={css.container_mobile} css={{backgroundColor: BackgroundColors[0]}}>
         {props.children.map((page, i) => (
-          <div key={page.key} style={{backgroundColor: BackgroundColors[i]}}>
+          <div key={page.key} css={{backgroundColor: BackgroundColors[i]}}>
             {page}
           </div>
         ))}
@@ -150,7 +150,7 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
       initial={{backgroundColor: BackgroundColors[current_page_ref.current]}}
       animate={bg_control}
       transition={Transition(props.animation_enabled, {duration: 1})}
-      className={style.view_full}
+      className={css.view_full}
     >
       <AnimatePresence>
         {!is_moving_page && (
@@ -170,25 +170,25 @@ export const PortfolioContainer = (props: Props): React.ReactElement => {
             })}
             onAnimationComplete={OnAnimationComplete}
             id='PortfolioContainer'
-            className={`${style.view_full} ${style.container}`}
+            className={`${css.view_full} ${css.container}`}
           >
             {props.children[current_page]}
           </motion.div>
         )}
       </AnimatePresence>
-      <div style={{height: scroll_height}} className={style.scroll_bar} />
+      <div css={{height: scroll_height}} className={css.scroll_bar} />
 
-      <div className={style.page_indicator}>
+      <div className={css.page_indicator}>
         {['Welcome', 'Skills', 'History', 'Links'].map((str, index) => (
           <div
             key={index}
-            className={`${style.indicator_item_wrapper} ${index === current_page ? style.current : ''}`}
+            className={`${css.indicator_item_wrapper} ${index === current_page ? css.current : ''}`}
             onClick={() => {
               SetNextPage(index);
               SetIsMovingPage(true);
             }}
           >
-            <span className={style.name}>{str}</span>
+            <span className={css.name}>{str}</span>
           </div>
         ))}
       </div>

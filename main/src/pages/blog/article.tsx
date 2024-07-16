@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from '@pages/blog.css';
+import * as css from '@pages/blog.css';
 import '@watasuke.net/common/src/css/base.css';
 import {Seo, Layout, Breadcrumb} from '@common';
 import {graphql} from 'gatsby';
@@ -34,7 +34,7 @@ export default function ArticleListPage({data}: Props): React.ReactElement {
       <main>
         <h1>記事一覧</h1>
         <AdsInArticle />
-        <div className={style.container}>
+        <div className={css.container}>
           <ArticleList list={data.allArticles.nodes} />
         </div>
       </main>

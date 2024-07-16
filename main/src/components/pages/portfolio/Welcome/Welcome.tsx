@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from './Welcome.css';
+import * as css from './Welcome.css';
 import * as portfolio_common from '@pages/portfolio/common.css';
 import {AnimatePresence, motion} from 'framer-motion';
 import {useStaticQuery, graphql} from 'gatsby';
@@ -72,45 +72,45 @@ export const Welcome = (props: Props): React.ReactElement => {
         animate={{opacity: 1}}
         transition={Transition(props.animation_enabled, {delay: 0.5, duration: 1})}
       >
-        <h2 className={style.greeting}>Hi there👋</h2>
+        <h2 className={css.greeting}>Hi there👋</h2>
 
-        <div className={style.avatar_and_name}>
-          <StaticImage className={style.avatar} height={200} src='../../../../assets/icon.jpg' alt='icon' />
+        <div className={css.avatar_and_name}>
+          <StaticImage className={css.avatar} height={200} src='../../../../assets/icon.jpg' alt='icon' />
           <div>
-            <p className={style.name_main}>わたすけ</p>
-            <p className={style.name_sub}>Watasuke</p>
+            <p className={css.name_main}>わたすけ</p>
+            <p className={css.name_sub}>Watasuke</p>
             <div>
-              <div className={style.icon_and_text}>
+              <div className={css.icon_and_text}>
                 <IconTwitter />
-                <span className={style.text}>@Watasuke102</span>
+                <span className={css.text}>@Watasuke102</span>
               </div>
-              <div className={style.icon_and_text}>
+              <div className={css.icon_and_text}>
                 <IconGitHub />
-                <span className={style.text}>watasuke102</span>
+                <span className={css.text}>watasuke102</span>
               </div>
-              <div className={style.icon_and_text}>
+              <div className={css.icon_and_text}>
                 <IconEnvelope />
-                <span className={style.text}>watasuke102@gmail.com</span>
+                <span className={css.text}>watasuke102@gmail.com</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className={style.bio}>
-          <ReactMarkdown remarkPlugins={[Gfm]} rehypePlugins={[Raw]} className={bio_box_shown ? '' : style.bio_hidden}>
+        <div className={css.bio}>
+          <ReactMarkdown remarkPlugins={[Gfm]} rehypePlugins={[Raw]} className={bio_box_shown ? '' : css.bio_hidden}>
             {props.lang !== 'en' ? bio_toml.body_ja : bio_toml.body_en}
           </ReactMarkdown>
           <AnimatePresence>
             {!bio_box_shown && (
               <motion.div
-                className={style.bio_animation}
+                className={css.bio_animation}
                 {...(props.animation_enabled ? bio_animation : {initial: {width: 0}})}
               />
             )}
           </AnimatePresence>
         </div>
 
-        <div className={style.indicator_space} />
+        <div className={css.indicator_space} />
         <div className={portfolio_common.next_page}>
           <span>Scroll</span>
         </div>

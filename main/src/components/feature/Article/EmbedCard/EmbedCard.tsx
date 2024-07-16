@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from './EmbedCard.css';
+import * as css from './EmbedCard.css';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 
@@ -60,18 +60,18 @@ export const EmbedCard = ({url}: Props): React.ReactElement => {
   }
 
   return (
-    <a className={style.container} href={url}>
+    <a className={css.container} href={url}>
       {image === '' ? (
-        <span className={style.img_fallback}>{'[OGP image not found]'}</span>
+        <span className={css.img_fallback}>{'[OGP image not found]'}</span>
       ) : (
-        <div className={style.img_wrapper}>
-          <img className={style.thumbnail} src={image} alt={title} />
+        <div className={css.img_wrapper}>
+          <img className={css.thumbnail} src={image} alt={title} />
         </div>
       )}
-      <div className={style.text_container}>
-        <span className={style.title}>{title}</span>
-        <span className={style.url}>{url}</span>
-        <span className={style.description}>{desc ?? ''}</span>
+      <div className={css.text_container}>
+        <span className={css.title}>{title}</span>
+        <span className={css.url}>{url}</span>
+        <span className={css.description}>{desc ?? ''}</span>
       </div>
     </a>
   );

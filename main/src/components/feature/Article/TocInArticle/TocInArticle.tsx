@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {toc_list} from '../TableOfContents.css';
-import * as style from './TocInArticle.css';
+import * as css from './TocInArticle.css';
 import {AnimatePresence, motion} from 'framer-motion';
 import React from 'react';
 import Heading from '@mytypes/Heading';
@@ -18,9 +18,9 @@ interface Props {
 export function TocInArticle(props: Props): React.ReactElement {
   const [tocOpening, SetTocOpening] = React.useState(true);
   return (
-    <div className={style.container}>
-      <div className={style.top_items}>
-        <div className={style.close_button} onClick={() => SetTocOpening(!tocOpening)}>
+    <div className={css.container}>
+      <div className={css.top_items}>
+        <div className={css.close_button} onClick={() => SetTocOpening(!tocOpening)}>
           <motion.div
             animate={{
               transform: tocOpening ? 'rotate(0deg)' : 'rotate(-180deg)',
@@ -30,11 +30,11 @@ export function TocInArticle(props: Props): React.ReactElement {
             <IconCollapse />
           </motion.div>
         </div>
-        <span className={style.heading}>目次</span>
+        <span className={css.heading}>目次</span>
       </div>
       <AnimatePresence>
         <motion.div
-          className={style.toc}
+          className={css.toc}
           animate={{
             opacity: tocOpening ? 1 : 0,
             maxHeight: tocOpening ? 300 : 0,
@@ -45,7 +45,7 @@ export function TocInArticle(props: Props): React.ReactElement {
             duration: 0.2,
           }}
         >
-          <ol className={style.list_wrapper}>
+          <ol className={css.list_wrapper}>
             {props.table_of_contents.map(item => (
               <li key={item.body} className={toc_list[item.size]}>
                 <a href={`#${item.body.toLowerCase()}`}>{item.body}</a>

@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from '@feature/Article/Article.css';
+import * as css from '@feature/Article/Article.css';
 import '@watasuke.net/common/src/css/base.css';
 import {Seo, Layout, Breadcrumb} from '@common';
 import React from 'react';
@@ -29,17 +29,17 @@ export default function Articale(prop: Props): React.ReactElement {
   return (
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list(data.title)} />
-      <main className={style.container}>
+      <main className={css.container}>
         {/* 記事メイン部分 */}
-        <section className={style.blogcontent_wrapper}>
+        <section className={css.blogcontent_wrapper}>
           <BlogContent data={data} />
         </section>
 
         {/* サイドバー */}
-        <aside className={style.side}>
+        <aside className={css.side}>
           <ProfileCard />
-          <section className={style.side_tag}>
-            <span className={style.head}>タグ</span>
+          <section className={css.side_tag}>
+            <span className={css.head}>タグ</span>
             <AllTagList />
           </section>
           {table_of_contents.length > 2 && <TocRight table_of_contents={table_of_contents} />}

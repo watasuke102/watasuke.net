@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from './Entrypoint.css';
+import * as css from './Entrypoint.css';
 import {Toggle} from '@common';
 import {AnimatePresence, motion} from 'framer-motion';
 import {navigate} from 'gatsby';
@@ -32,28 +32,28 @@ export const Entrypoint = (props: {
   return (
     <>
       <motion.div
-        className={style.center_menu}
+        className={css.center_menu}
         initial={{opacity: 0}}
         animate={{opacity: 1}}
         transition={{delay: 0.5, duration: 1}}
       >
-        <div className={style.outer_0} />
-        <div className={style.inner_0} />
-        <div className={style.inner_1} />
-        <div className={style.inner_2} />
+        <div className={css.outer_0} />
+        <div className={css.inner_0} />
+        <div className={css.inner_1} />
+        <div className={css.inner_2} />
 
-        <div className={style.container}>
-          <span className={style.welcome}>Welcome!</span>
+        <div className={css.container}>
+          <span className={css.welcome}>Welcome!</span>
 
-          <div className={style.option}>
-            <span className={style.label}>Language</span>
-            <div className={style.toggle}>
+          <div className={css.option}>
+            <span className={css.label}>Language</span>
+            <div className={css.toggle}>
               <Toggle first='ja' second='en' current={lang} set_state={set_lang} />
             </div>
           </div>
-          <div className={style.option}>
-            <span className={style.label}>Page Transition</span>
-            <div className={style.toggle}>
+          <div className={css.option}>
+            <span className={css.label}>Page Transition</span>
+            <div className={css.toggle}>
               {IsMobileDevice() ? (
                 <span>Off</span>
               ) : (
@@ -61,15 +61,15 @@ export const Entrypoint = (props: {
               )}
             </div>
           </div>
-          <div className={style.option}>
-            <span className={style.label}>Animation</span>
-            <div className={style.toggle}>
+          <div className={css.option}>
+            <span className={css.label}>Animation</span>
+            <div className={css.toggle}>
               <Toggle first='on' second='off' current={animation} set_state={set_animation} />
             </div>
           </div>
 
           <div
-            className={style.continue_button}
+            className={css.continue_button}
             onClick={() => {
               if (animation !== 'off') {
                 set_button_clicked(true);
@@ -91,7 +91,7 @@ export const Entrypoint = (props: {
             // easeOutExpo
             transition={{duration: 0.3, ease: [0.16, 1, 0.3, 1]}}
             onAnimationComplete={complete}
-            className={style.page_transition}
+            className={css.page_transition}
           />
         )}
       </AnimatePresence>

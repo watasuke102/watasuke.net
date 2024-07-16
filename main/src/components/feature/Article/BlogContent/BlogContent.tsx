@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from './BlogContent.css';
+import * as css from './BlogContent.css';
 import Giscus from '@giscus/react';
 import React from 'react';
 import {Markdown} from '@watasuke.net/common';
@@ -25,16 +25,16 @@ export const BlogContent = (props: Props): React.ReactElement => {
   const table_of_contents = ExtractHeading(props.data.body);
   return (
     <article>
-      <h1 className={style.title}>{props.data.title}</h1>
-      <div className={style.article_info}>
+      <h1 className={css.title}>{props.data.title}</h1>
+      <div className={css.article_info}>
         <TagContainer tags={props.data.tags} />
         {/* 公開日と更新日 */}
-        <div className={style.date_container}>
-          <div className={style.date} aria-label='記事の更新日'>
+        <div className={css.date_container}>
+          <div className={css.date} aria-label='記事の更新日'>
             <IconHistory />
             <span>{props.data.updated_at.slice(0, 10)}</span>
           </div>
-          <div className={style.date} aria-label='記事の投稿日'>
+          <div className={css.date} aria-label='記事の投稿日'>
             <div>
               <IconUpload />
             </div>

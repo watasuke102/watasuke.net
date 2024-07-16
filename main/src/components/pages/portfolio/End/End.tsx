@@ -4,25 +4,25 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from './End.css';
+import * as css from './End.css';
 import * as portfolio_common from '@pages/portfolio/common.css';
 import {Link} from 'gatsby';
 import React from 'react';
 
 export const End = (): React.ReactElement => (
-  <div className={`${portfolio_common.container} ${style.container}`}>
-    <div className={style.container}>
-      <h2 className={style.greet}>Thank you for visiting my site!</h2>
-      <div className={style.link_container}>
-        <Link to='/' className={style.link}>
+  <div className={`${portfolio_common.container} ${css.container}`}>
+    <div className={css.container}>
+      <h2 className={css.greet}>Thank you for visiting my site!</h2>
+      <div className={css.link_container}>
+        <Link to='/' className={css.link}>
           トップ
         </Link>
         <span>・</span>
-        <Link to='/blog' className={style.link}>
+        <Link to='/blog' className={css.link}>
           ブログ
         </Link>
         <span>・</span>
-        <Link to='/profile' className={style.link}>
+        <Link to='/profile' className={css.link}>
           プロフィール
         </Link>
       </div>

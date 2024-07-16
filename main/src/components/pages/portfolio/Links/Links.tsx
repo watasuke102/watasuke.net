@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from './Links.css';
+import * as css from './Links.css';
 import * as portfolio_common from '@pages/portfolio/common.css';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
@@ -38,7 +38,7 @@ export const Links = (props: Props): React.ReactElement => {
   return (
     <div className={portfolio_common.container}>
       <h2>Links</h2>
-      <div className={style.container}>
+      <div className={css.container}>
         {link_list.map((link, i) => (
           <LinkCard
             key={i}

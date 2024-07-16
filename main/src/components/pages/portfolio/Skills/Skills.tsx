@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from './Skills.css';
+import * as css from './Skills.css';
 import * as portfolio_common from '@pages/portfolio/common.css';
 import {BreakWithCR, Toggle} from '@common';
 import {AnimatePresence, motion} from 'framer-motion';
@@ -79,16 +79,16 @@ export const Skills = (props: Props): React.ReactElement => {
       cards.push({
         group: groupby !== 'tier' ? e[0].category : `tier ${e[0].tier}`,
         list: e.map((e, i) => (
-          <motion.div className={style.skillcard} key={i} {...(props.animation_enabled ? FadeWithScroll : {})}>
-            <span className={style.name}>{e.name}</span>
-            <div className={style.right}>
-              <span className={style.category}>{e.category}</span>
-              <span className={style.tier}>{e.tier}</span>
+          <motion.div className={css.skillcard} key={i} {...(props.animation_enabled ? FadeWithScroll : {})}>
+            <span className={css.name}>{e.name}</span>
+            <div className={css.right}>
+              <span className={css.category}>{e.category}</span>
+              <span className={css.tier}>{e.tier}</span>
             </div>
-            <span className={style.desc}>
+            <span className={css.desc}>
               <BreakWithCR str={props.lang !== 'en' ? e.desc_ja : e.desc_en} />
             </span>
-            <div className={style.icon}>
+            <div className={css.icon}>
               <Icon icon={e.icon} />
             </div>
           </motion.div>
@@ -126,8 +126,8 @@ export const Skills = (props: Props): React.ReactElement => {
     <div className={portfolio_common.container}>
       <h2>Skills</h2>
 
-      <div className={style.toggle}>
-        <span className={style.label}>Group by:</span>
+      <div className={css.toggle}>
+        <span className={css.label}>Group by:</span>
         <Toggle
           first='category'
           second='tier'
@@ -138,13 +138,13 @@ export const Skills = (props: Props): React.ReactElement => {
 
       <AnimatePresence>
         {next_groupby === '' && (
-          <motion.div className={style.skill_container} {...(props.animation_enabled ? container_variants : {})}>
+          <motion.div className={css.skill_container} {...(props.animation_enabled ? container_variants : {})}>
             {SkillCard.map((e, i) => (
               <>
-                <motion.span className={style.group_name} {...(props.animation_enabled ? FadeWithScroll : {})}>
+                <motion.span className={css.group_name} {...(props.animation_enabled ? FadeWithScroll : {})}>
                   {e.group}
                 </motion.span>
-                <div className={style.group} key={i}>
+                <div className={css.group} key={i}>
                   {e.list}
                 </div>
               </>

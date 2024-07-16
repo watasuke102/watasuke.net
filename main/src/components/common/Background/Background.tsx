@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from './Background.css';
+import * as css from './Background.css';
 import React from 'react';
 
 interface FigureInfo {
@@ -174,5 +174,5 @@ export default function Background(): React.ReactElement {
     return () => window.removeEventListener('resize', UpdateCanvasSize);
   }, []);
 
-  return <canvas ref={canvas_ref} className={style.canvas} />;
+  return <canvas ref={canvas_ref} className={css.canvas} />;
 }

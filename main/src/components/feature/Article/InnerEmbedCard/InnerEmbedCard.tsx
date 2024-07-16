@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from './InnerEmbedCard.css';
+import * as css from './InnerEmbedCard.css';
 import {Link, graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import Article from '@mytypes/Article';
@@ -46,10 +46,10 @@ export const InnerEmbedCard = (props: Props): React.ReactElement => {
   }
 
   return (
-    <Link className={style.container} to={`/blog/article/${props.slug}`}>
-      <span className={style.title}>{data.title}</span>
-      <span className={style.url}>{`watasuke.net - ${props.slug}`}</span>
-      <span className={style.description}>{data.tldr}</span>
+    <Link className={css.container} to={`/blog/article/${props.slug}`}>
+      <span className={css.title}>{data.title}</span>
+      <span className={css.url}>{`watasuke.net - ${props.slug}`}</span>
+      <span className={css.description}>{data.tldr}</span>
     </Link>
   );
 };

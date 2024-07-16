@@ -4,26 +4,26 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from './Header.css';
+import * as css from './Header.css';
 import {Link} from 'gatsby';
 import React from 'react';
 
 export const Header = (): React.ReactElement => {
   return (
-    <header className={style.container}>
-      <div className={style.title}>
-        <Link className={style.site_name} to='/'>
+    <header className={css.container}>
+      <div className={css.title}>
+        <Link className={css.site_name} to='/'>
           わたすけのへや
         </Link>
       </div>
-      <div className={style.link_container}>
-        <Link className={style.links} to='/blog'>
+      <div className={css.link_container}>
+        <Link className={css.links} to='/blog'>
           Blog
         </Link>
-        <Link className={style.links} to='/profile'>
+        <Link className={css.links} to='/profile'>
           Profile
         </Link>
-        <Link className={style.links} to='/about'>
+        <Link className={css.links} to='/about'>
           About this site
         </Link>
       </div>

@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from '@pages/blog.css';
+import * as css from '@pages/blog.css';
 import '@watasuke.net/common/src/css/base.css';
 import {Seo, Layout, Breadcrumb} from '@common';
 import {graphql} from 'gatsby';
@@ -34,7 +34,7 @@ export default function Tag({pageContext, data}: Props): React.ReactElement {
       <Breadcrumb breadcrumb_list={breadcrumb_list(pageContext.name)} />
       <main>
         <h1>{pageContext.name}</h1>
-        <div className={style.container}>
+        <div className={css.container}>
           <ArticleList list={data.allArticles.nodes} />
         </div>
       </main>

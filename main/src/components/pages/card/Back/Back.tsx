@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from './Back.css';
+import * as css from './Back.css';
 import React from 'react';
 
 interface Props {
@@ -13,19 +13,19 @@ interface Props {
 
 export function Back(props: Props): React.ReactElement {
   return (
-    <div className={style.container} style={props.hidden ? {display: 'none'} : {}}>
-      <div className={style.separator} />
-      <div className={style.qr_container}>
+    <div className={css.container} style={props.hidden ? {display: 'none'} : {}}>
+      <div className={css.separator} />
+      <div className={css.qr_container}>
         {['watasuke.net', 'Twitter', 'GitHub'].map(name => (
-          <div className={style.item} key={name}>
-            <div className={style.qrcode_wrapper}>
+          <div className={css.item} key={name}>
+            <div className={css.qrcode_wrapper}>
               <img loading='eager' placeholder='none' src={`/qr/${name}.png`} alt={`qrcode (${name})`} />
             </div>
-            <span className={style.url}>{name}</span>
+            <span className={css.url}>{name}</span>
           </div>
         ))}
       </div>
-      <div className={style.separator} />
+      <div className={css.separator} />
     </div>
   );
 }

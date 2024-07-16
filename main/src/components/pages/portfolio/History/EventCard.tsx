@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from './EventCard.css';
+import * as css from './EventCard.css';
 import {BreakWithCR} from '@common';
 import {motion} from 'framer-motion';
 import React from 'react';
@@ -26,27 +26,27 @@ export function EventCard(props: Props): React.ReactElement {
   const body = props.lang !== 'en' ? props.event.body_ja : props.event.body_en;
 
   return (
-    <div className={style.container}>
-      <div className={style.day}>
+    <div className={css.container}>
+      <div className={css.day}>
         <BreakWithCR str={props.event.day} />
       </div>
-      <div className={style.card}>
+      <div className={css.card}>
         <div
-          className={style.header}
+          className={css.header}
           onClick={() => {
             if (body !== '') {
               set_opening(s => !s);
             }
           }}
         >
-          <span className={style.title}>{props.lang !== 'en' ? props.event.title_ja : props.event.title_en}</span>
-          <span className={style.subtitle}>
+          <span className={css.title}>{props.lang !== 'en' ? props.event.title_ja : props.event.title_en}</span>
+          <span className={css.subtitle}>
             {props.lang !== 'en' ? props.event.subtitle_ja : props.event.subtitle_en}
           </span>
-          <span className={style.category}>{props.event.category}</span>
+          <span className={css.category}>{props.event.category}</span>
           {body !== '' && (
             <motion.div
-              className={style.expand_icon}
+              className={css.expand_icon}
               initial={{transform: 'translateY(8px) rotate(-180deg)'}}
               animate={{
                 transform: `translateY(8px) ${opening ? 'rotate(0deg)' : 'rotate(-180deg)'}`,
@@ -60,7 +60,7 @@ export function EventCard(props: Props): React.ReactElement {
 
         {body !== '' && (
           <motion.div
-            className={style.body}
+            className={css.body}
             animate={{
               opacity: opening ? 1 : 0,
               height: opening ? 'auto' : 0,
@@ -81,7 +81,7 @@ export function EventCard(props: Props): React.ReactElement {
           </motion.div>
         )}
       </div>
-      <div className={style.h_connector} />
+      <div className={css.h_connector} />
     </div>
   );
 }

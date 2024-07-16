@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from '@pages/card/card.css';
+import * as css from '@pages/card/card.css';
 import {Seo} from '@common';
 import {Back, Front} from '@pages/card';
 import {navigate} from 'gatsby';
@@ -56,7 +56,7 @@ export default function Card(): React.ReactElement {
   return (
     <main>
       <div
-        className={style.background}
+        className={css.background}
         onClick={() => {
           if (is_button_disabled) {
             set_is_flipped(s => !s);
@@ -70,9 +70,9 @@ export default function Card(): React.ReactElement {
         <Back hidden={!is_fliped} />
       </div>
       {!is_button_hidden && !is_button_disabled && (
-        <div className={style.button_container}>
+        <div className={css.button_container}>
           {buttons.map((e, i) => (
-            <button key={i} className={style.button} aria-label={e.label} onClick={e.on_click}>
+            <button key={i} className={css.button} aria-label={e.label} onClick={e.on_click}>
               {e.icon}
             </button>
           ))}

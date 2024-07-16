@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from '@pages/top.css';
+import * as css from '@pages/top.css';
 import '@watasuke.net/common/src/css/base.css';
 import {Seo, Background} from '@common';
 import {Link} from 'gatsby';
@@ -31,16 +31,16 @@ export default function Index(): React.ReactElement {
   return (
     <>
       <Background />
-      <main className={style.container}>
-        <section className={style.icon_and_name}>
+      <main className={css.container}>
+        <section className={css.icon_and_name}>
           <StaticImage loading='eager' placeholder='none' width={150} src='../assets/icon.jpg' alt='icon' />
-          <h2 className={style.welcome}>Welcome</h2>
+          <h2 className={css.welcome}>Welcome</h2>
         </section>
-        <nav className={style.menu}>
+        <nav className={css.menu}>
           {menu_list.map(e => (
-            <Link key={e.text} to={e.url} className={style.menu_card} aria-label={e.text}>
-              <div className={style.menu_card_icon}> {e.icon} </div>
-              <span className={style.menu_card_text}>{e.text}</span>
+            <Link key={e.text} to={e.url} className={css.menu_card} aria-label={e.text}>
+              <div className={css.menu_card_icon}> {e.icon} </div>
+              <span className={css.menu_card_text}>{e.text}</span>
             </Link>
           ))}
         </nav>

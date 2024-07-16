@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as style from './LinkCard.css';
+import * as css from './LinkCard.css';
 import {BreakWithCR} from '@common';
 import {motion} from 'framer-motion';
 import React from 'react';
@@ -51,12 +51,12 @@ function Icon(props: {icon: string}): React.ReactElement {
 
 export const LinkCard = (props: Props): React.ReactElement => {
   return (
-    <motion.a href={props.url} className={style.container} {...(props.animation_enabled ? FadeWithScroll : {})}>
-      <div className={style.icon}>
+    <motion.a href={props.url} className={css.container} {...(props.animation_enabled ? FadeWithScroll : {})}>
+      <div className={css.icon}>
         <Icon icon={props.icon} />
       </div>
-      <span className={style.head}>{props.title}</span>
-      <span className={style.desc}>
+      <span className={css.head}>{props.title}</span>
+      <span className={css.desc}>
         <BreakWithCR str={props.desc} />
       </span>
     </motion.a>
