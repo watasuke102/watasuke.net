@@ -13,7 +13,6 @@
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.0",
     "remark-slug": "^7.0.1",
-    "remark-toc": "^9.0.0",
     "unist-util-visit": "^5.0.0"
   }
 }

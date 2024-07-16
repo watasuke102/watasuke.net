@@ -6,7 +6,6 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as style from './Body.css';
 import 'highlight.js/styles/atom-one-dark.min.css';
-import {ImageViewer} from '../ImageViewer/ImageViewer';
 import {Components} from 'hast-util-to-jsx-runtime';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -14,11 +13,11 @@ import Highlight from 'rehype-highlight';
 import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import Slug from 'remark-slug';
-import Toc from 'remark-toc';
 import {AdsInArticle} from '../../Ads';
+import {ImageViewer} from '../ImageViewer/ImageViewer';
 import {Link} from '../Link/Link';
-import {rehypeAddFootnoteLabel, remarkAddFootnoteLabel} from '../plugins/AddFootnoteLabel';
 import {EmbedCardType, InnerEmbedCardType} from '../PropsComponent';
+import {rehypeAddFootnoteLabel, remarkAddFootnoteLabel} from '../plugins/AddFootnoteLabel';
 
 let heading_count = 0;
 const Heading: Components['head'] = props => {
@@ -112,7 +111,7 @@ export function Body(props: Props): JSX.Element {
           // eslint-disable-next-line react/prop-types
           img: props => <ImageViewer src={props.src || ''} alt={props.alt} />,
         }}
-        remarkPlugins={[Gfm, Toc, Slug, remarkAddFootnoteLabel]}
+        remarkPlugins={[Gfm, Slug, remarkAddFootnoteLabel]}
         rehypePlugins={[rehypeAddFootnoteLabel, Raw, Highlight]}
         // eslint-disable-next-line react/no-children-prop
         children={props.md}

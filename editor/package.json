@@ -43,7 +43,6 @@
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.0",
     "remark-slug": "^7.0.1",
-    "remark-toc": "^9.0.0",
     "typescript": "5.5.2",
     "use-immer": "^0.10.0"
   },
