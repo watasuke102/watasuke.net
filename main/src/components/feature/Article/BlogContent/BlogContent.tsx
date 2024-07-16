@@ -7,14 +7,13 @@
 import * as css from './BlogContent.css';
 import Giscus from '@giscus/react';
 import React from 'react';
-import {Markdown} from '@watasuke.net/common';
-import {AdsInArticle} from '@watasuke.net/common/src/Ads';
+import {Markdown, AdsInArticle} from '@watasuke.net/common';
+import {apiUrl} from '@watasuke.net/config/config';
 import {EmbedCard, InnerEmbedCard, TocInArticle} from '@feature/Article';
 import {TagContainer} from '@feature/Tag';
 import extract_link from '@utils/ExtractLink';
 import Article from '@mytypes/Article';
 import Heading from '@mytypes/Heading';
-import {apiUrl} from '../../../../../config';
 import IconHistory from '@assets/icons/article/history.svg';
 import IconUpload from '@assets/icons/article/upload.svg';
 

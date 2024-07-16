@@ -7,7 +7,7 @@
       "@assets/*": [ "src/assets/*" ],
       "@mytypes/*": [ "src/types/*" ],
       "@pages/*": [ "src/components/pages/*" ],
-      "@common/*": [ "src/components/common/*" ],
+      "@common": [ "src/components/common" ],
       "@feature/*": [ "src/components/feature/*" ],
     },
     "typeRoots": [
