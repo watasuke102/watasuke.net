@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {style} from '@vanilla-extract/css';
+import {globalStyle, style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
@@ -51,4 +51,7 @@ export const list_wrapper = style({
   paddingTop: padding,
   paddingBottom: padding,
   margin: 0,
+});
+globalStyle(`${list_wrapper} li`, {
+  listStyleType: 'decimal',
 });
