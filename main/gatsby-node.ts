@@ -4,6 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import child_process from 'child_process';
 import fs from 'fs';
 import {GatsbyNode, SourceNodesArgs} from 'gatsby';
 import {GraphQLClient} from 'graphql-request';
@@ -30,6 +31,10 @@ function log(type: 'info' | 'error' | 'debug' | 'ogp', ...args: any[]) {
 // サイトのデータ登録
 export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = ({actions}) => {
   actions.createTypes(`
+    type BuildInfo implements Node @dontInfer {
+      contents_githash: String!,
+      githash: String!,
+    }
     type PortfolioToml implements Node @dontInfer {
       name: String,
       body: String,
@@ -243,6 +248,17 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesAr
   if (data.allTags) {
     registerTags(data.allTags, args);
   }
+
+  log('info', 'Creating BuildInfo...');
+  args.actions.createNode({
+    id: 'BuildInfo',
+    contents_githash: data.contentsGitHeadHash,
+    githash: child_process.execSync('git rev-parse HEAD').toString().slice(0, 7),
+    internal: {
+      type: 'BuildInfo',
+      contentDigest: args.createContentDigest('BuildInfo'),
+    },
+  });
 };
 
 // ページ作成

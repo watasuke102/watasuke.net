@@ -25,4 +25,5 @@ query all {
     profile
     shortProfile
   }
+  contentsGitHeadHash
 }

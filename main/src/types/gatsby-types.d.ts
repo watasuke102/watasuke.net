@@ -192,6 +192,128 @@ type BooleanQueryOperatorInput = {
   readonly nin: InputMaybe<ReadonlyArray<InputMaybe<Scalars['Boolean']>>>;
 };
 
+type BuildInfo = Node & {
+  readonly children: ReadonlyArray<Node>;
+  readonly contents_githash: Scalars['String'];
+  readonly githash: Scalars['String'];
+  readonly id: Scalars['ID'];
+  readonly internal: Internal;
+  readonly parent: Maybe<Node>;
+};
+
+type BuildInfoConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<BuildInfoEdge>;
+  readonly group: ReadonlyArray<BuildInfoGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<BuildInfo>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type BuildInfoConnection_distinctArgs = {
+  field: BuildInfoFieldSelector;
+};
+
+
+type BuildInfoConnection_groupArgs = {
+  field: BuildInfoFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type BuildInfoConnection_maxArgs = {
+  field: BuildInfoFieldSelector;
+};
+
+
+type BuildInfoConnection_minArgs = {
+  field: BuildInfoFieldSelector;
+};
+
+
+type BuildInfoConnection_sumArgs = {
+  field: BuildInfoFieldSelector;
+};
+
+type BuildInfoEdge = {
+  readonly next: Maybe<BuildInfo>;
+  readonly node: BuildInfo;
+  readonly previous: Maybe<BuildInfo>;
+};
+
+type BuildInfoFieldSelector = {
+  readonly children: InputMaybe<NodeFieldSelector>;
+  readonly contents_githash: InputMaybe<FieldSelectorEnum>;
+  readonly githash: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly parent: InputMaybe<NodeFieldSelector>;
+};
+
+type BuildInfoFilterInput = {
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly contents_githash: InputMaybe<StringQueryOperatorInput>;
+  readonly githash: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+};
+
+type BuildInfoGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<BuildInfoEdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<BuildInfoGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<BuildInfo>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type BuildInfoGroupConnection_distinctArgs = {
+  field: BuildInfoFieldSelector;
+};
+
+
+type BuildInfoGroupConnection_groupArgs = {
+  field: BuildInfoFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type BuildInfoGroupConnection_maxArgs = {
+  field: BuildInfoFieldSelector;
+};
+
+
+type BuildInfoGroupConnection_minArgs = {
+  field: BuildInfoFieldSelector;
+};
+
+
+type BuildInfoGroupConnection_sumArgs = {
+  field: BuildInfoFieldSelector;
+};
+
+type BuildInfoSortInput = {
+  readonly children: InputMaybe<NodeSortInput>;
+  readonly contents_githash: InputMaybe<SortOrderEnum>;
+  readonly githash: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly internal: InputMaybe<InternalSortInput>;
+  readonly parent: InputMaybe<NodeSortInput>;
+};
+
 type DateQueryOperatorInput = {
   readonly eq: InputMaybe<Scalars['Date']>;
   readonly gt: InputMaybe<Scalars['Date']>;
@@ -1701,6 +1823,7 @@ type PotraceTurnPolicy =
 
 type Query = {
   readonly allArticles: ArticlesConnection;
+  readonly allBuildInfo: BuildInfoConnection;
   readonly allDirectory: DirectoryConnection;
   readonly allFile: FileConnection;
   readonly allImageSharp: ImageSharpConnection;
@@ -1715,6 +1838,7 @@ type Query = {
   readonly allStaticImage: StaticImageConnection;
   readonly allTags: TagsConnection;
   readonly articles: Maybe<Articles>;
+  readonly buildInfo: Maybe<BuildInfo>;
   readonly directory: Maybe<Directory>;
   readonly file: Maybe<File>;
   readonly imageSharp: Maybe<ImageSharp>;
@@ -1736,6 +1860,14 @@ type Query_allArticlesArgs = {
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
   sort: InputMaybe<ReadonlyArray<InputMaybe<ArticlesSortInput>>>;
+};
+
+
+type Query_allBuildInfoArgs = {
+  filter: InputMaybe<BuildInfoFilterInput>;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<BuildInfoSortInput>>>;
 };
 
 
@@ -1855,6 +1987,16 @@ type Query_articlesArgs = {
   title: InputMaybe<StringQueryOperatorInput>;
   tldr: InputMaybe<StringQueryOperatorInput>;
   updated_at: InputMaybe<StringQueryOperatorInput>;
+};
+
+
+type Query_buildInfoArgs = {
+  children: InputMaybe<NodeFilterListInput>;
+  contents_githash: InputMaybe<StringQueryOperatorInput>;
+  githash: InputMaybe<StringQueryOperatorInput>;
+  id: InputMaybe<StringQueryOperatorInput>;
+  internal: InputMaybe<InternalFilterInput>;
+  parent: InputMaybe<NodeFilterInput>;
 };
 
 
@@ -2958,24 +3100,28 @@ type SitePluginSortInput = {
 
 type SiteSiteMetadata = {
   readonly description: Maybe<Scalars['String']>;
+  readonly repo: Maybe<Scalars['String']>;
   readonly siteUrl: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
 };
 
 type SiteSiteMetadataFieldSelector = {
   readonly description: InputMaybe<FieldSelectorEnum>;
+  readonly repo: InputMaybe<FieldSelectorEnum>;
   readonly siteUrl: InputMaybe<FieldSelectorEnum>;
   readonly title: InputMaybe<FieldSelectorEnum>;
 };
 
 type SiteSiteMetadataFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
+  readonly repo: InputMaybe<StringQueryOperatorInput>;
   readonly siteUrl: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
 };
 
 type SiteSiteMetadataSortInput = {
   readonly description: InputMaybe<SortOrderEnum>;
+  readonly repo: InputMaybe<SortOrderEnum>;
   readonly siteUrl: InputMaybe<SortOrderEnum>;
   readonly title: InputMaybe<SortOrderEnum>;
 };

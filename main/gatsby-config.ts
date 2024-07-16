@@ -11,7 +11,9 @@ import * as config from '../config/config';
 
 const gatsby_config: GatsbyConfig = {
   siteMetadata: {
+    title: 'わたすけのへや',
     siteUrl: 'https://watasuke.net',
+    repo: 'https://github.com/watasuke102/watasuke.net',
   },
   graphqlTypegen: {
     typesOutputPath: 'src/types/gatsby-types.d.ts',
