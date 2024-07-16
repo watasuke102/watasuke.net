@@ -6,7 +6,8 @@
     "lint": "eslint --fix .",
     "build": "gatsby build",
     "dev": "gatsby develop -p 10210 -H 0.0.0.0",
-    "serve": "gatsby serve -p 2999 -H 0.0.0.0"
+    "serve": "gatsby serve -p 2999 -H 0.0.0.0",
+    "new": "scaffdog generate"
   },
   "dependencies": {
     "@giscus/react": "^3.0.0",
@@ -70,6 +71,7 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-header": "^3.1.1",
     "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-unused-imports": "^3.1.0"
+    "eslint-plugin-unused-imports": "^3.1.0",
+    "scaffdog": "^4.0.0"
   }
 }
