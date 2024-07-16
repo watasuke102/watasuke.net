@@ -1,7 +1,0 @@
-.cache
-graphql
-node_modules
-public
-config.ts
-.eslintrc.js
-src/utils/graphql.ts
