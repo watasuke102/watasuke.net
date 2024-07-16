@@ -16,7 +16,12 @@ CC-BY 4.0
 
 [Apache License Version 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE)
 
-- general/\*
+- general/tag.svg
+- general/github.svg
+- general/left.svg
+- general/up.svg
+- general/right.svg
+- top/\*
 
 ## Simple Icons 8.5.0
 

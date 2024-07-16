@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Layout.css';
-import {Header} from '@common';
+import {Header, Footer} from '@common';
 import React from 'react';
 
 interface Props {
@@ -17,6 +17,7 @@ export const Layout = ({children}: Props): React.ReactElement => {
     <>
       <Header />
       <div className={css.container}>{children}</div>
+      <Footer />
     </>
   );
 };
