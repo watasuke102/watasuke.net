@@ -18,7 +18,7 @@ interface Props {
 export function TocInArticle(props: Props): React.ReactElement {
   const [tocOpening, SetTocOpening] = React.useState(true);
   return (
-    <div className={css.container}>
+    <nav className={css.container}>
       <div className={css.top_items}>
         <div className={css.close_button} onClick={() => SetTocOpening(!tocOpening)}>
           <motion.div
@@ -54,6 +54,6 @@ export function TocInArticle(props: Props): React.ReactElement {
           </ol>
         </motion.div>
       </AnimatePresence>
-    </div>
+    </nav>
   );
 }

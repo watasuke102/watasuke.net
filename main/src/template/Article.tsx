@@ -31,9 +31,9 @@ export default function Articale(prop: Props): React.ReactElement {
       <Breadcrumb breadcrumb_list={breadcrumb_list(data.title)} />
       <main className={css.container}>
         {/* 記事メイン部分 */}
-        <section className={css.blogcontent_wrapper}>
+        <article className={css.blogcontent_wrapper}>
           <BlogContent data={data} />
-        </section>
+        </article>
 
         {/* サイドバー */}
         <aside className={css.side}>

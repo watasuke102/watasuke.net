@@ -24,9 +24,9 @@ interface Props {
 export const BlogContent = (props: Props): React.ReactElement => {
   const table_of_contents = ExtractHeading(props.data.body);
   return (
-    <article>
+    <>
       <h1 className={css.title}>{props.data.title}</h1>
-      <div className={css.article_info}>
+      <section className={css.article_info}>
         <TagContainer tags={props.data.tags} />
         {/* 公開日と更新日 */}
         <div className={css.date_container}>
@@ -41,7 +41,7 @@ export const BlogContent = (props: Props): React.ReactElement => {
             <span>{props.data.published_at.slice(0, 10)}</span>
           </div>
         </div>
-      </div>
+      </section>
 
       <AdsInArticle />
       {/* 見出しが2個未満だったら目次を出しても違和感がある気がする */}
@@ -54,24 +54,26 @@ export const BlogContent = (props: Props): React.ReactElement => {
       />
       <AdsInArticle />
 
-      <h2>Comments</h2>
-      <p>
-        Powered by <a href='https://github.com/giscus/giscus'>Giscus</a>
-      </p>
-      <Giscus
-        repo='watasuke102/watasuke.net'
-        repoId='MDEwOlJlcG9zaXRvcnkzNTc4OTQwNzk='
-        category='Article'
-        categoryId='DIC_kwDOFVUHv84CgSPQ'
-        mapping='og:title'
-        strict='0'
-        reactionsEnabled='1'
-        emitMetadata='0'
-        inputPosition='top'
-        theme='dark_dimmed'
-        lang='ja'
-        loading='lazy'
-      />
-    </article>
+      <section>
+        <h2>Comments</h2>
+        <p>
+          Powered by <a href='https://github.com/giscus/giscus'>Giscus</a>
+        </p>
+        <Giscus
+          repo='watasuke102/watasuke.net'
+          repoId='MDEwOlJlcG9zaXRvcnkzNTc4OTQwNzk='
+          category='Article'
+          categoryId='DIC_kwDOFVUHv84CgSPQ'
+          mapping='og:title'
+          strict='0'
+          reactionsEnabled='1'
+          emitMetadata='0'
+          inputPosition='top'
+          theme='dark_dimmed'
+          lang='ja'
+          loading='lazy'
+        />
+      </section>
+    </>
   );
 };
