@@ -12,7 +12,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const Layout = ({children}: Props): React.ReactElement => {
+export function Layout({children}: Props): React.ReactElement {
   return (
     <>
       <Header />
@@ -20,4 +20,4 @@ export const Layout = ({children}: Props): React.ReactElement => {
       <Footer />
     </>
   );
-};
+}

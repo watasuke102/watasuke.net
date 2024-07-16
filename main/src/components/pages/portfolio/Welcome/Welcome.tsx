@@ -29,7 +29,7 @@ interface Props {
   lang: string;
 }
 
-export const Welcome = (props: Props): React.ReactElement => {
+export function Welcome(props: Props): React.ReactElement {
   const [bio_box_shown, set_bio_box_shown] = React.useState(!props.animation_enabled);
 
   const bio_toml: BioToml = toml.parse(
@@ -117,4 +117,4 @@ export const Welcome = (props: Props): React.ReactElement => {
       </motion.div>
     </AnimatePresence>
   );
-};
+}

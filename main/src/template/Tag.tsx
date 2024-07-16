@@ -61,11 +61,13 @@ export const query = graphql`
   }
 `;
 
-export const Head = ({pageContext}: Props): React.ReactElement => (
-  <Seo
-    title={pageContext.name}
-    desc={'タグ' + pageContext.name + 'が付けられた記事'}
-    url={'/blog/tag/' + pageContext.slug}
-    breadcrumb_list={breadcrumb_list(pageContext.name)}
-  />
-);
+export function Head({pageContext}: Props): React.ReactElement {
+  return (
+    <Seo
+      title={pageContext.name}
+      desc={'タグ' + pageContext.name + 'が付けられた記事'}
+      url={'/blog/tag/' + pageContext.slug}
+      breadcrumb_list={breadcrumb_list(pageContext.name)}
+    />
+  );
+}

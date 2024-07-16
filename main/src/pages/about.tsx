@@ -81,11 +81,13 @@ export default function About(): React.ReactElement {
   );
 }
 
-export const Head = (): React.ReactElement => (
-  <Seo
-    title={'このサイトについて'}
-    desc={'このサイトについての説明'}
-    url={'/about'}
-    breadcrumb_list={breadcrumb_list}
-  />
-);
+export function Head(): React.ReactElement {
+  return (
+    <Seo
+      title={'このサイトについて'}
+      desc={'このサイトについての説明'}
+      url={'/about'}
+      breadcrumb_list={breadcrumb_list}
+    />
+  );
+}

@@ -21,7 +21,7 @@ interface Props {
   data: Article;
 }
 
-export const BlogContent = (props: Props): React.ReactElement => {
+export function BlogContent(props: Props): React.ReactElement {
   const table_of_contents = ExtractHeading(props.data.body);
   return (
     <>
@@ -76,4 +76,4 @@ export const BlogContent = (props: Props): React.ReactElement => {
       </section>
     </>
   );
-};
+}

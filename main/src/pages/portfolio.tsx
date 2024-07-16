@@ -50,6 +50,8 @@ export default function Portfolio(): React.ReactElement {
   );
 }
 
-export const Head = (): React.ReactElement => (
-  <Seo title={'ポートフォリオ'} desc={'ポートフォリオです'} url={'/portfolio'} breadcrumb_list={breadcrumb_list} />
-);
+export function Head(): React.ReactElement {
+  return (
+    <Seo title={'ポートフォリオ'} desc={'ポートフォリオです'} url={'/portfolio'} breadcrumb_list={breadcrumb_list} />
+  );
+}

@@ -8,7 +8,7 @@ import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import {TagContainer} from './TagContainer';
 
-export const AllTagList = (): React.ReactElement => {
+export function AllTagList(): React.ReactElement {
   const tags = useStaticQuery(graphql`
     query {
       allTags {
@@ -20,4 +20,4 @@ export const AllTagList = (): React.ReactElement => {
     }
   `);
   return <TagContainer tags={tags.allTags.nodes} disable_icon={true} />;
-};
+}

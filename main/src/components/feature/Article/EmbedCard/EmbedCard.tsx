@@ -31,7 +31,7 @@ function GetOgpFromUrl(ogp_list: Ogp[], url: string) {
     };
 }
 
-export const EmbedCard = ({url}: Props): React.ReactElement => {
+export function EmbedCard({url}: Props): React.ReactElement {
   const ogp_list = useStaticQuery(graphql`
     query {
       allOgp {
@@ -75,4 +75,4 @@ export const EmbedCard = ({url}: Props): React.ReactElement => {
       </div>
     </a>
   );
-};
+}

@@ -24,7 +24,7 @@ interface Props {
   lang: string;
 }
 
-export const Links = (props: Props): React.ReactElement => {
+export function Links(props: Props): React.ReactElement {
   const link_list: Link[] = toml.parse(
     useStaticQuery(graphql`
       query {
@@ -53,4 +53,4 @@ export const Links = (props: Props): React.ReactElement => {
       <div className={portfolio_common.next_page} />
     </div>
   );
-};
+}

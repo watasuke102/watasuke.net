@@ -17,7 +17,7 @@ interface Props {
   lang: string;
 }
 
-export const History = (props: Props): React.ReactElement => {
+export function History(props: Props): React.ReactElement {
   const EventList = React.useMemo(() => {
     const event_group = new Map<string, Event[]>();
     const skill_list: Event[] = toml.parse(
@@ -63,4 +63,4 @@ export const History = (props: Props): React.ReactElement => {
       <div className={portfolio_common.next_page} />
     </div>
   );
-};
+}

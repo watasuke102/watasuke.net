@@ -69,6 +69,8 @@ export const query = graphql`
   }
 `;
 
-export const Head = (): React.ReactElement => (
-  <Seo title={'ブログ'} desc={'投稿した記事・タグの一覧ページです'} url={'/blog'} breadcrumb_list={breadcrumb_list} />
-);
+export function Head(): React.ReactElement {
+  return (
+    <Seo title={'ブログ'} desc={'投稿した記事・タグの一覧ページです'} url={'/blog'} breadcrumb_list={breadcrumb_list} />
+  );
+}

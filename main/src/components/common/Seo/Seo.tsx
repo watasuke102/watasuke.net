@@ -16,7 +16,7 @@ interface Props {
   breadcrumb_list: BreadcrumbItem[];
 }
 
-export const Seo = (props: Props): React.ReactElement => {
+export function Seo(props: Props): React.ReactElement {
   const image =
     'https://watasuke.net' +
     useStaticQuery(graphql`
@@ -63,4 +63,4 @@ export const Seo = (props: Props): React.ReactElement => {
       </script>
     </>
   );
-};
+}

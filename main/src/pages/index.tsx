@@ -49,11 +49,13 @@ export default function Index(): React.ReactElement {
   );
 }
 
-export const Head = (): React.ReactElement => (
-  <Seo
-    title={''}
-    desc={'プログラミングやゲームについてのブログ、プロフィール、ポートフォリオなど'}
-    url={''}
-    breadcrumb_list={breadcrumb_list}
-  />
-);
+export function Head(): React.ReactElement {
+  return (
+    <Seo
+      title={''}
+      desc={'プログラミングやゲームについてのブログ、プロフィール、ポートフォリオなど'}
+      url={''}
+      breadcrumb_list={breadcrumb_list}
+    />
+  );
+}

@@ -49,7 +49,7 @@ function Icon(props: {icon: string}): React.ReactElement {
   return <span> [{props.icon}] </span>;
 }
 
-export const LinkCard = (props: Props): React.ReactElement => {
+export function LinkCard(props: Props): React.ReactElement {
   return (
     <motion.a href={props.url} className={css.container} {...(props.animation_enabled ? FadeWithScroll : {})}>
       <div className={css.icon}>
@@ -61,4 +61,4 @@ export const LinkCard = (props: Props): React.ReactElement => {
       </span>
     </motion.a>
   );
-};
+}

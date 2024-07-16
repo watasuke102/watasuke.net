@@ -8,7 +8,7 @@ import * as css from './Header.css';
 import {Link} from 'gatsby';
 import React from 'react';
 
-export const Header = (): React.ReactElement => {
+export function Header(): React.ReactElement {
   return (
     <header className={css.container}>
       <div className={css.title}>
@@ -29,4 +29,4 @@ export const Header = (): React.ReactElement => {
       </div>
     </header>
   );
-};
+}

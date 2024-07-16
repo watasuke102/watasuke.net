@@ -17,7 +17,7 @@ interface Props {
   }[];
 }
 
-export const TagContainer = (props: Props): React.ReactElement => {
+export function TagContainer(props: Props): React.ReactElement {
   return (
     <section className={css.container} aria-label='すべてのタグ'>
       {!props.disable_icon && (
@@ -37,4 +37,4 @@ export const TagContainer = (props: Props): React.ReactElement => {
       </div>
     </section>
   );
-};
+}

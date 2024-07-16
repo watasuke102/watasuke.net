@@ -45,7 +45,7 @@ interface Skill {
   desc_en: string;
 }
 
-export const Skills = (props: Props): React.ReactElement => {
+export function Skills(props: Props): React.ReactElement {
   const [groupby, set_groupby] = React.useState('category');
   const [next_groupby, set_next_groupby] = React.useState('');
   const next_groupby_ref = React.useRef('');
@@ -156,7 +156,7 @@ export const Skills = (props: Props): React.ReactElement => {
       <div className={portfolio_common.next_page} />
     </div>
   );
-};
+}
 
 function Icon(props: {icon: string}): React.ReactElement {
   switch (props.icon) {

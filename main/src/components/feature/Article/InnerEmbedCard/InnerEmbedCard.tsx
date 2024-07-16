@@ -19,7 +19,7 @@ interface Response {
   };
 }
 
-export const InnerEmbedCard = (props: Props): React.ReactElement => {
+export function InnerEmbedCard(props: Props): React.ReactElement {
   const articles: Response = useStaticQuery(graphql`
     query {
       allArticles(sort: {published_at: DESC}) {
@@ -52,4 +52,4 @@ export const InnerEmbedCard = (props: Props): React.ReactElement => {
       <span className={css.description}>{data.tldr}</span>
     </Link>
   );
-};
+}

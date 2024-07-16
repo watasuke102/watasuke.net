@@ -26,6 +26,6 @@ export default function TagListPage(): React.ReactElement {
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Tag'}]);
 
-export const Head = (): React.ReactElement => (
-  <Seo title={'タグ'} desc={'タグの一覧ページです'} url={'/tag'} breadcrumb_list={breadcrumb_list} />
-);
+export function Head(): React.ReactElement {
+  return <Seo title={'タグ'} desc={'タグの一覧ページです'} url={'/tag'} breadcrumb_list={breadcrumb_list} />;
+}

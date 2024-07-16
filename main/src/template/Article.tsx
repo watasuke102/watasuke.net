@@ -49,11 +49,13 @@ export default function Articale(prop: Props): React.ReactElement {
   );
 }
 
-export const Head = ({pageContext}: Props): React.ReactElement => (
-  <Seo
-    title={pageContext.title}
-    desc={pageContext.tldr}
-    url={'/blog/article/' + pageContext.slug}
-    breadcrumb_list={breadcrumb_list(pageContext.title)}
-  />
-);
+export function Head({pageContext}: Props): React.ReactElement {
+  return (
+    <Seo
+      title={pageContext.title}
+      desc={pageContext.tldr}
+      url={'/blog/article/' + pageContext.slug}
+      breadcrumb_list={breadcrumb_list(pageContext.title)}
+    />
+  );
+}

@@ -9,7 +9,7 @@ import {graphql, Link, useStaticQuery} from 'gatsby';
 import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
 
-export const ProfileCard = (): React.ReactElement => {
+export function ProfileCard(): React.ReactElement {
   const query = useStaticQuery(graphql`
     query {
       siteData(slug: {eq: "short_profile"}) {
@@ -28,4 +28,4 @@ export const ProfileCard = (): React.ReactElement => {
       </p>
     </section>
   );
-};
+}

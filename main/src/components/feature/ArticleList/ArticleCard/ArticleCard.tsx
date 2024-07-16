@@ -14,7 +14,7 @@ interface Props {
   article: Article;
 }
 
-export const ArticleCard = ({article}: Props): React.ReactElement => {
+export function ArticleCard({article}: Props): React.ReactElement {
   return (
     <Link to={'/blog/article/' + article.slug} className={css.container} key={article.slug} aria-label={article.title}>
       <div className={css.info}>
@@ -29,4 +29,4 @@ export const ArticleCard = ({article}: Props): React.ReactElement => {
       </div>
     </Link>
   );
-};
+}

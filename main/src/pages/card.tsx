@@ -82,6 +82,6 @@ export default function Card(): React.ReactElement {
   );
 }
 
-export const Head = (): React.ReactElement => (
-  <Seo title={'card'} desc={'名刺'} url={'/card'} breadcrumb_list={breadcrumb_list} />
-);
+export function Head(): React.ReactElement {
+  return <Seo title={'card'} desc={'名刺'} url={'/card'} breadcrumb_list={breadcrumb_list} />;
+}
