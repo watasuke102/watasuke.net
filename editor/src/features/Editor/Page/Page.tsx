@@ -25,7 +25,7 @@ import {MdEditor} from '../MdEditor/MdEditor';
 import {article_reducer} from '../ArticleReducer';
 import CloseIcon from '@assets/close.svg';
 import LeftIcon from '@assets/left.svg';
-import {QlError} from '@mytypes/QlError';
+import {ErrorQL} from '@mytypes/ErrorQL';
 
 type Props = {
   article: NonNullable<ArticleEditPageQuery['article']>;
@@ -58,7 +58,7 @@ export function Page({article, tags}: Props): JSX.Element {
       });
       set_toast_status({title: 'success', desc: ''});
     } catch (err) {
-      const error = (err as QlError).response.errors[0];
+      const error = (err as ErrorQL).response.errors[0];
       set_toast_status({title: error.message, desc: error.extensions});
     }
     set_is_toast_open(true);
@@ -74,7 +74,7 @@ export function Page({article, tags}: Props): JSX.Element {
       set_is_published(true);
       set_publish_stat('succeeded');
     } catch (err) {
-      const error = (err as QlError).response.errors[0];
+      const error = (err as ErrorQL).response.errors[0];
       set_toast_status({title: error.message, desc: error.extensions});
       set_publish_stat('none');
       set_is_toast_open(true);

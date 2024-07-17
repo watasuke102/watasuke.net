@@ -10,7 +10,7 @@ import React from 'react';
 import {getSdk} from '@utils/graphql';
 import {NewArticle} from './_components/NewArticle';
 import {ArticlesTable} from './_components/ArticlesTable';
-import {QlError} from '@mytypes/QlError';
+import {ErrorQL} from '@mytypes/ErrorQL';
 
 export default async function Top(): Promise<JSX.Element> {
   const sdk = getSdk(new GraphQLClient('http://127.0.0.1:10212/graphql'));
@@ -18,7 +18,7 @@ export default async function Top(): Promise<JSX.Element> {
   try {
     data = await sdk.allArticles();
   } catch (err) {
-    const error = err as QlError;
+    const error = err as ErrorQL;
     return (
       <>
         {error.response.errors.map((e, i) => (
