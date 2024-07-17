@@ -9,6 +9,8 @@ import {fixupConfigRules} from '@eslint/compat';
 import {FlatCompat} from '@eslint/eslintrc';
 import js from '@eslint/js';
 import react from 'eslint-plugin-react';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+import reactHooks from 'eslint-plugin-react-hooks';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import tseslint from 'typescript-eslint';
@@ -46,6 +48,10 @@ export default tseslint.config(
   ...fixupConfigRules(compat.extends('plugin:react/recommended')),
   {
     files: ['**/*.{j,t}sx'],
+    plugins: {
+      'jsx-a11y': jsxA11y,
+      'react-hooks': reactHooks,
+    },
     settings: {
       react: {
         version: 'detect',
@@ -53,6 +59,10 @@ export default tseslint.config(
     },
     rules: {
       ...react.configs.recommended.rules,
+      'react/jsx-uses-react': 'off',
+      'react/react-in-jsx-scope': 'off',
+      ...reactHooks.configs.recommended.rules,
+      ...jsxA11y.flatConfigs.strict.rules,
     },
   },
 );
