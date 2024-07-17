@@ -10,8 +10,8 @@ import {GatsbyNode, SourceNodesArgs} from 'gatsby';
 import {GraphQLClient} from 'graphql-request';
 import OgpParser from 'ogp-parser';
 import path from 'path';
-import {classify_url_embed_type} from '@watasuke.net/common';
 import Article from '@mytypes/Article';
+import {classify_url_embed_type} from '../common/src/ClassifyUrlEmbedType';
 import * as config from './config';
 import {AllQuery, getSdk} from './src/utils/graphql';
 
@@ -160,11 +160,12 @@ async function registerOgp(url: string, i: number, {actions, createContentDigest
       },
     });
   } catch (e) {
+    const err = e as Error;
     log(
       'error',
       `cannot fetch OGP data
   >> URL: ${url}
-  >> message: ${(e as Error).message}
+  >> message: [${err.name}] ${err.message}
 -------------------------------
 `,
     );
@@ -211,7 +212,7 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesAr
       item.body.split('\n').forEach(paragraph => {
         const url = paragraph.match(/^https:\/\/.+/);
         // ignore URL of Twitter, YouTube, etc...
-        if (!url || classify_url_embed_type(url[0]).embed_type === 'none') {
+        if (!url || classify_url_embed_type(url[0]).embed_type !== 'none') {
           return;
         }
         url_list.add(url[0]);
