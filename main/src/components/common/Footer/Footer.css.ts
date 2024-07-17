@@ -140,11 +140,11 @@ export const links = style({
   listStyleType: 'none',
   marginBlock: 'auto',
   '@media': {
-    'screen and (max-width: 800px)': {
+    'screen and (max-width: 500px)': {
       gap: 12,
       justifyContent: 'center',
     },
-    'screen and (min-width: 801px)': {
+    'screen and (min-width: 501px)': {
       justifyContent: 'right',
     },
   },
