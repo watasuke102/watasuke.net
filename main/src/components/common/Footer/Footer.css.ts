@@ -9,8 +9,7 @@ import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
   width: '100%',
-  position: 'absolute',
-  marginTop: 60,
+  marginTop: 40,
   padding: 12,
   backgroundColor: `${color.bg}dd`,
   borderTop: `dotted 1px ${color.fg}`,
