@@ -18,6 +18,8 @@ export const ImageViewer = ({src, alt}: Props): React.ReactElement => {
 
   return (
     <>
+      {/* FIXME? idk how to handle this rule for ImageViewer */}
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
       <img
         className={style.inline_img}
         src={src}

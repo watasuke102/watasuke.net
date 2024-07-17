@@ -14,6 +14,9 @@ interface Props {
   set_state: (state: string) => void;
 }
 
+// TODO: re-create this component
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 export function Toggle(props: Props): React.ReactElement {
   return (
     <div className={css.container}>

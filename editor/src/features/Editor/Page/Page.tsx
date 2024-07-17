@@ -21,7 +21,7 @@ import {EmbedCard, InnerEmbedCard} from '@common/EmbedCard';
 import {ErrorBoundary} from '@common/ErrorBoundary';
 import {Spinner} from '@common/Spinner';
 import {ArticleEditPageQuery, getSdk} from '@utils/graphql';
-import { MdEditor } from '../MdEditor/MdEditor';
+import {MdEditor} from '../MdEditor/MdEditor';
 import {article_reducer} from '../ArticleReducer';
 import CloseIcon from '@assets/close.svg';
 import LeftIcon from '@assets/left.svg';
@@ -79,7 +79,7 @@ export function Page({article, tags}: Props): JSX.Element {
       set_publish_stat('none');
       set_is_toast_open(true);
     }
-  }, [is_published]);
+  }, [article.slug, is_published]);
 
   // hydration errorが出るのを回避する
   const [is_first_render, set_is_first_render] = React.useState(true);

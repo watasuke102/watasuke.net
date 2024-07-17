@@ -55,6 +55,8 @@ export default function Card(): React.ReactElement {
 
   return (
     <main>
+      {/* FIXME: add `onKeyDown` listener to background does not make sense */}
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
       <div
         className={css.background}
         onClick={() => {

@@ -16,11 +16,16 @@ interface Props {
 }
 
 export function FrontmatterEditor(props: Props): JSX.Element {
+  const id = {
+    title: 'frontmatter_editor_title',
+    tldr: 'frontmatter_editor_tldr',
+  };
   return (
     <section>
       <div className={css.input}>
-        <label>Title</label>
+        <label htmlFor={id.title}>Title</label>
         <input
+          id={id.title}
           type='text'
           value={props.state.title}
           onChange={e => props.dispatcher({type: 'title/update', data: e.target.value})}
@@ -28,8 +33,9 @@ export function FrontmatterEditor(props: Props): JSX.Element {
         />
       </div>
       <div className={css.input}>
-        <label>TL;DR</label>
+        <label htmlFor={id.tldr}>TL;DR</label>
         <textarea
+          id={id.tldr}
           placeholder={props.tldr_placeholder}
           value={props.state.tldr}
           onChange={e => props.dispatcher({type: 'tldr/update', data: e.target.value})}

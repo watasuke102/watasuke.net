@@ -25,6 +25,7 @@ export const Main: StoryObj<typeof Dialog> = {
     desc: 'Description',
   },
   render: props => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [is_open, set_is_open] = React.useState(false);
     return (
       <>

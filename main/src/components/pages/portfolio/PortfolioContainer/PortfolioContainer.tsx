@@ -67,53 +67,53 @@ export function PortfolioContainer(props: Props): React.ReactElement {
     SetScrollHeight(container.clientHeight * percent);
   };
 
-  // ページ切り替えアニメーションの開始
-  // 実際にstate.current_pageを切り替えるのはアニメーション内
-  const StartPageTransition = (e: WheelEvent) => {
-    if (is_moving_page_ref.current) {
-      e.preventDefault();
-      return;
-    }
-
-    let changeable: boolean = false;
-    // 要素がスクロール不可能だった場合は常にページ移動可能に
-    const container = document.getElementById('PortfolioContainer');
-    if (container && container.clientHeight >= container.scrollHeight) changeable = true;
-    // 要素がスクロール可能かつ画面端までスクロールしてなければページ移動しない
-    if (!changeable && place_ref.current === Position.none) return;
-
-    // 前のページに移動させる
-    if (
-      (place_ref.current === Position.reached_top || changeable) &&
-      current_page_ref.current !== 0 &&
-      e.deltaY < 0 // 上にスクロールしていた場合
-    ) {
-      SetIsMovingPage(true);
-      SetNextPage(current => current - 1);
-    } else if (
-      container && // コンテナサイズが変更されていないか確認する
-      container.scrollTop / (container.scrollHeight - container.clientHeight) < 0.999
-    ) {
-      return;
-      // 次のページに移動させる
-    } else if (
-      (place_ref.current === Position.reached_bottom || changeable) &&
-      current_page_ref.current !== props.children.length - 1 &&
-      e.deltaY > 0 // 下にスクロールしていた場合
-    ) {
-      SetIsMovingPage(true);
-      SetNextPage(current => current + 1);
-    }
-  };
-
   React.useEffect(() => {
+    // ページ切り替えアニメーションの開始
+    // 実際にstate.current_pageを切り替えるのはアニメーション内
+    const StartPageTransition = (e: WheelEvent) => {
+      if (is_moving_page_ref.current) {
+        e.preventDefault();
+        return;
+      }
+
+      let changeable: boolean = false;
+      // 要素がスクロール不可能だった場合は常にページ移動可能に
+      const container = document.getElementById('PortfolioContainer');
+      if (container && container.clientHeight >= container.scrollHeight) changeable = true;
+      // 要素がスクロール可能かつ画面端までスクロールしてなければページ移動しない
+      if (!changeable && place_ref.current === Position.none) return;
+
+      // 前のページに移動させる
+      if (
+        (place_ref.current === Position.reached_top || changeable) &&
+        current_page_ref.current !== 0 &&
+        e.deltaY < 0 // 上にスクロールしていた場合
+      ) {
+        SetIsMovingPage(true);
+        SetNextPage(current => current - 1);
+      } else if (
+        container && // コンテナサイズが変更されていないか確認する
+        container.scrollTop / (container.scrollHeight - container.clientHeight) < 0.999
+      ) {
+        return;
+        // 次のページに移動させる
+      } else if (
+        (place_ref.current === Position.reached_bottom || changeable) &&
+        current_page_ref.current !== props.children.length - 1 &&
+        e.deltaY > 0 // 下にスクロールしていた場合
+      ) {
+        SetIsMovingPage(true);
+        SetNextPage(current => current + 1);
+      }
+    };
+
     document.getElementById('PortfolioContainer')?.addEventListener('scroll', UpdateScrollBar);
     window.addEventListener('wheel', StartPageTransition);
     return () => {
       document.getElementById('PortfolioContainer')?.removeEventListener('scroll', UpdateScrollBar);
       window.removeEventListener('wheel', StartPageTransition);
     };
-  }, []);
+  }, [props.children.length]);
 
   const OnAnimationComplete = React.useCallback(() => {
     if (is_moving_page_ref.current) {
@@ -124,7 +124,7 @@ export function PortfolioContainer(props: Props): React.ReactElement {
       SetPlace(Position.reached_top);
       SetIsMovingPage(false);
     }
-  }, [is_moving_page]);
+  }, [bg_control]);
 
   // 背景色要素とページ数は一致していなければならない
   if (BackgroundColors.length !== props.children.length) {
@@ -180,7 +180,7 @@ export function PortfolioContainer(props: Props): React.ReactElement {
 
       <div className={css.page_indicator}>
         {['Welcome', 'Skills', 'History', 'Links'].map((str, index) => (
-          <div
+          <button
             key={index}
             className={`${css.indicator_item_wrapper} ${index === current_page ? css.current : ''}`}
             onClick={() => {
@@ -189,7 +189,7 @@ export function PortfolioContainer(props: Props): React.ReactElement {
             }}
           >
             <span className={css.name}>{str}</span>
-          </div>
+          </button>
         ))}
       </div>
     </motion.div>

@@ -37,9 +37,9 @@ export function ArticleList(props: Props): React.ReactElement {
       {current_page === 1 ? (
         <div className={css.empty}></div>
       ) : (
-        <div className={css.button} onClick={BeforePage}>
+        <button className={css.button} onClick={BeforePage}>
           <IconLeft />
-        </div>
+        </button>
       )}
       {/* 現在ページと合計ページの表示 */}
       <span>
@@ -48,9 +48,9 @@ export function ArticleList(props: Props): React.ReactElement {
       {current_page === max_page ? (
         <div className={css.empty}></div>
       ) : (
-        <div className={css.button} onClick={NextPage}>
+        <button className={css.button} onClick={NextPage}>
           <IconRight />
-        </div>
+        </button>
       )}
     </section>
   );

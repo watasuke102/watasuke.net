@@ -24,6 +24,11 @@ interface Props {
 export function EventCard(props: Props): React.ReactElement {
   const [opening, set_opening] = React.useState(false);
   const body = props.lang !== 'en' ? props.event.body_ja : props.event.body_en;
+  const on_click = () => {
+    if (body !== '') {
+      set_opening(s => !s);
+    }
+  };
 
   return (
     <div className={css.container}>
@@ -31,14 +36,7 @@ export function EventCard(props: Props): React.ReactElement {
         <BreakWithCR str={props.event.day} />
       </div>
       <div className={css.card}>
-        <div
-          className={css.header}
-          onClick={() => {
-            if (body !== '') {
-              set_opening(s => !s);
-            }
-          }}
-        >
+        <button className={css.header} onClick={on_click}>
           <span className={css.title}>{props.lang !== 'en' ? props.event.title_ja : props.event.title_en}</span>
           <span className={css.subtitle}>
             {props.lang !== 'en' ? props.event.subtitle_ja : props.event.subtitle_en}
@@ -56,7 +54,7 @@ export function EventCard(props: Props): React.ReactElement {
               <IconCollapse />
             </motion.div>
           )}
-        </div>
+        </button>
 
         {body !== '' && (
           <motion.div

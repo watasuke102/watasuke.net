@@ -48,7 +48,7 @@ export function ImageUploader(props: Props): JSX.Element {
     }
     await upload_new_image(props.slug, image_name, image_info.type, image_info.buffer);
     props.on_complete(image_name);
-  }, [image_name, image_info]);
+  }, [image_info, props, image_name]);
 
   const {getRootProps, getInputProps, isDragActive} = useDropzone({
     onDrop: handle_drop,
@@ -63,7 +63,7 @@ export function ImageUploader(props: Props): JSX.Element {
     return (
       <Form.Root onSubmit={e => e.preventDefault()}>
         <Form.Field name='slug' className={css.image_info_editor}>
-          <img className={css.img} src={image_info.url} />
+          <img className={css.img} src={image_info.url} alt='' />
           <Form.Label className={css.label}>Slug</Form.Label>
           <Form.Message match='valueMissing'>Cannot be empty</Form.Message>
           <Form.Control asChild>
@@ -73,6 +73,7 @@ export function ImageUploader(props: Props): JSX.Element {
               value={image_name}
               onChange={e => set_image_name(e.target.value)}
               required
+              // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
             />
           </Form.Control>

@@ -14,6 +14,7 @@ export const container = style({
 
 export const list = style({
   display: 'grid',
+  gap: 12,
   gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
   '@media': {
     'screen and (max-width: 700px)': {
@@ -32,6 +33,7 @@ export const button_container = style({
 
 export const button = style({
   display: 'flex',
+  padding: 0,
   border: `solid 3px ${color.fg}`,
   backgroundColor: 'none',
   color: color.fg,

@@ -102,10 +102,12 @@ export const toggle = style({
 export const continue_button = style({
   width: 200,
   margin: 'auto',
+  padding: 0,
   position: 'relative',
   fontSize: '1.4em',
   textDecoration: 'underline',
   transition: 'background-color 0.3s',
+  border: 'none',
   ':hover': {
     cursor: 'pointer',
     backgroundColor: `${color.fg}33`,

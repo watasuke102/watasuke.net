@@ -51,17 +51,17 @@ export function Skills(props: Props): React.ReactElement {
   const next_groupby_ref = React.useRef('');
   next_groupby_ref.current = next_groupby;
 
+  const query = useStaticQuery(graphql`
+    query {
+      portfolioToml(name: {eq: "Skills.toml"}) {
+        body
+      }
+    }
+  `);
+
   const SkillCard = React.useMemo(() => {
     const skill_group = new Map<string, Skill[]>();
-    const skill_list: Skill[] = toml.parse(
-      useStaticQuery(graphql`
-        query {
-          portfolioToml(name: {eq: "Skills.toml"}) {
-            body
-          }
-        }
-      `).portfolioToml.body,
-    ).skill;
+    const skill_list: Skill[] = toml.parse(query.portfolioToml.body).skill;
 
     skill_list.forEach(e => {
       if (groupby !== 'tier') {
@@ -96,7 +96,7 @@ export function Skills(props: Props): React.ReactElement {
       });
     });
     return cards;
-  }, [props, groupby]);
+  }, [props, groupby, query]);
 
   const toggle_changed = React.useCallback((next: string) => {
     set_groupby('');

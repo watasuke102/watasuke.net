@@ -10,7 +10,6 @@ import {color} from '@watasuke.net/common/src/css/color';
 export const container = style({
   display: 'flex',
   flexDirection: 'column',
-  margin: 8,
   padding: '8px 12px',
 
   color: 'inherit',

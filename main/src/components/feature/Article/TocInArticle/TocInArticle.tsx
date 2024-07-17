@@ -20,8 +20,9 @@ export function TocInArticle(props: Props): React.ReactElement {
   return (
     <nav className={css.container}>
       <div className={css.top_items}>
-        <div className={css.close_button} onClick={() => SetTocOpening(!tocOpening)}>
+        <button className={css.close_button} onClick={() => SetTocOpening(!tocOpening)}>
           <motion.div
+            className={css.button_icon}
             animate={{
               transform: tocOpening ? 'rotate(0deg)' : 'rotate(-180deg)',
             }}
@@ -29,7 +30,7 @@ export function TocInArticle(props: Props): React.ReactElement {
           >
             <IconCollapse />
           </motion.div>
-        </div>
+        </button>
         <span className={css.heading}>目次</span>
       </div>
       <AnimatePresence>

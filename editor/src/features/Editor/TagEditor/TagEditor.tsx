@@ -71,14 +71,14 @@ export function TagEditor(props: Props): JSX.Element {
         />
         <div className={css.tags}>
           {props.current_tags.map((e, i) => (
-            <div
+            <button
               key={`tag_${i}_${e}`}
               className={css.tag_item}
               onClick={() => props.dispatcher({type: 'tag/remove', data: e})}
             >
               {tags.get(e)}
               <CloseIcon />
-            </div>
+            </button>
           ))}
         </div>
       </section>

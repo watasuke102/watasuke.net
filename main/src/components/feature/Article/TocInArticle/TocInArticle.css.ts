@@ -9,7 +9,6 @@ import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
   margin: '28px 0',
-  // padding: '12px 20px',
   backgroundColor: color.bg,
   fontSize: '1.2em',
 });
@@ -25,14 +24,22 @@ export const top_items = style({
 
 const button_size = 40;
 export const close_button = style({
+  position: 'relative',
   width: button_size,
   height: button_size,
+  border: 'none',
   color: color.bg,
   backgroundColor: color.fg,
   textAlign: 'center',
   ':hover': {
     cursor: 'pointer',
   },
+});
+export const button_icon = style({
+  // prevent outline size change
+  position: 'absolute',
+  left: 0,
+  top: 0,
 });
 
 export const heading = style({

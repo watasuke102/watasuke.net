@@ -98,12 +98,18 @@ globalStyle(`${container}:nth-child(odd) ${card}`, {
 });
 
 export const header = style({
+  padding: 0,
+  width: '100%',
   minHeight: day_size - v_padding * 2,
   textAlign: 'left',
   display: 'grid',
   gridTemplateColumns: '1fr auto',
   gridTemplateRows: 'auto 1fr',
   gap: '0 8px',
+  border: 'none',
+  ':focus': {
+    outline: 'none',
+  },
   ':hover': {
     cursor: 'pointer',
   },

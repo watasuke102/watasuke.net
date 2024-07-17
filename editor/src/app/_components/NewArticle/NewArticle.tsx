@@ -39,7 +39,7 @@ export function NewArticle(): JSX.Element {
         title,
       })
       .then(() => router.push(`/editor/${slug}`));
-  }, [slug, title]);
+  }, [router, slug, title]);
 
   const proceed_by_ctrl_enter = React.useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {

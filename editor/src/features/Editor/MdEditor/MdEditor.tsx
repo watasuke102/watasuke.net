@@ -60,7 +60,7 @@ export function MdEditor(props: Props): JSX.Element {
       // copy is to may fail due to the browser permission, so ignore any exceptions
       navigator.clipboard?.writeText(new_body).catch(() => undefined);
     },
-    [textarea_ref],
+    [props.state.body],
   );
 
   // FIXME: collapsible is enough
