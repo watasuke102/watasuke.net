@@ -6,10 +6,10 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './ArticleList.css';
 import React from 'react';
-import Article from '@mytypes/Article';
 import {ArticleCard} from './ArticleCard/ArticleCard';
 import IconLeft from '@assets/icons/general/left.svg';
 import IconRight from '@assets/icons/general/right.svg';
+import Article from '@mytypes/Article';
 
 interface Props {
   list: Article[];

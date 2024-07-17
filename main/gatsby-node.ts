@@ -4,16 +4,16 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as config from './config';
 import child_process from 'child_process';
 import fs from 'fs';
+import path from 'path';
 import {GatsbyNode, SourceNodesArgs} from 'gatsby';
 import {GraphQLClient} from 'graphql-request';
 import OgpParser from 'ogp-parser';
-import path from 'path';
-import Article from '@mytypes/Article';
-import {classify_url_embed_type} from '../common/src/ClassifyUrlEmbedType';
-import * as config from './config';
 import {AllQuery, getSdk} from './src/utils/graphql';
+import {classify_url_embed_type} from '../common/src/ClassifyUrlEmbedType';
+import Article from '@mytypes/Article';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function log(type: 'info' | 'error' | 'debug' | 'ogp', ...args: any[]) {

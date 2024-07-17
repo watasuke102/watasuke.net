@@ -8,8 +8,8 @@ import {toc_list} from '../TableOfContents.css';
 import * as css from './TocInArticle.css';
 import {AnimatePresence, motion} from 'framer-motion';
 import React from 'react';
-import Heading from '@mytypes/Heading';
 import IconCollapse from '@assets/icons/general/up.svg';
+import Heading from '@mytypes/Heading';
 
 interface Props {
   table_of_contents: Heading[];

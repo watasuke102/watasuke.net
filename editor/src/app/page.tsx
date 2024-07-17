@@ -8,9 +8,9 @@ import {css} from './index.css';
 import {GraphQLClient} from 'graphql-request';
 import React from 'react';
 import {getSdk} from '@utils/graphql';
-import {QlError} from '@mytypes/QlError';
-import {ArticlesTable} from './_components/ArticlesTable';
 import {NewArticle} from './_components/NewArticle';
+import {ArticlesTable} from './_components/ArticlesTable';
+import {QlError} from '@mytypes/QlError';
 
 export default async function Top(): Promise<JSX.Element> {
   const sdk = getSdk(new GraphQLClient('http://127.0.0.1:10212/graphql'));

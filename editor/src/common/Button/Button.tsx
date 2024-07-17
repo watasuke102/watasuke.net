@@ -4,8 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import React from 'react';
 import {css} from './Button.css';
+import React from 'react';
 
 type Props = {
   type: 'text' | 'outlined' | 'contained';

@@ -6,9 +6,9 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import '@common/global.css';
 import '@watasuke.net/common/src/css/base.css';
-import type {Meta, StoryObj} from '@storybook/react';
 import React from 'react';
 import {TagEditor} from './TagEditor';
+import type {Meta, StoryObj} from '@storybook/react';
 
 const meta: Meta<typeof TagEditor> = {
   component: TagEditor,

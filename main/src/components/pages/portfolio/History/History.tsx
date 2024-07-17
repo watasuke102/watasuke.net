@@ -9,8 +9,8 @@ import * as portfolio_common from '@pages/portfolio/common.css';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import toml from 'toml';
-import {Event} from './Event';
 import {EventCard} from './EventCard';
+import {Event} from './Event';
 
 interface Props {
   animation_enabled: boolean;

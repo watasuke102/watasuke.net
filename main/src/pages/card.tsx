@@ -6,9 +6,9 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from '@pages/card/card.css';
 import {Seo} from '@common';
-import {Back, Front} from '@pages/card';
 import {navigate} from 'gatsby';
 import React from 'react';
+import {Back, Front} from '@pages/card';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import IconFlip from '@assets/icons/card/flip.svg';
 import IconInvisible from '@assets/icons/card/invisible.svg';

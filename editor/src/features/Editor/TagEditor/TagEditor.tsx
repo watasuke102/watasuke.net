@@ -6,12 +6,12 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 'use client';
 
+import {apiUrl} from '@watasuke.net/config/config';
 import {css} from './TagEditor.css';
 import * as Checkbox from '@radix-ui/react-checkbox';
 import * as Form from '@radix-ui/react-form';
 import {GraphQLClient} from 'graphql-request';
 import React from 'react';
-import {apiUrl} from '@watasuke.net/config/config';
 import {Button} from '@common/Button';
 import {Dialog} from '@common/Dialog';
 import {getSdk} from '@utils/graphql';
@@ -19,6 +19,7 @@ import * as ArticleReducer from '../ArticleReducer';
 import AddIcon from '@assets/add.svg';
 import CheckIcon from '@assets/check.svg';
 import CloseIcon from '@assets/close.svg';
+
 type Props = {
   current_tags: string[];
   all_tags: ArticleReducer.StateType['all_tags'];

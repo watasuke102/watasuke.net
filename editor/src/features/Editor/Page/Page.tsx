@@ -6,6 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 'use client';
 
+import {apiUrl} from '@watasuke.net/config/config';
 import {css, dialog_width, toast} from './Page.css';
 import * as Toast from '@radix-ui/react-toast';
 import {GraphQLClient} from 'graphql-request';
@@ -14,18 +15,17 @@ import React from 'react';
 import {BarLoader} from 'react-spinners';
 import {useImmerReducer} from 'use-immer';
 import {color, Markdown} from '@watasuke.net/common';
-import {apiUrl} from '@watasuke.net/config/config';
 import {Button} from '@common/Button';
 import {Dialog} from '@common/Dialog';
 import {EmbedCard, InnerEmbedCard} from '@common/EmbedCard';
 import {ErrorBoundary} from '@common/ErrorBoundary';
 import {Spinner} from '@common/Spinner';
 import {ArticleEditPageQuery, getSdk} from '@utils/graphql';
-import {QlError} from '@mytypes/QlError';
-import {article_reducer} from '../ArticleReducer';
 import { MdEditor } from '../MdEditor/MdEditor';
+import {article_reducer} from '../ArticleReducer';
 import CloseIcon from '@assets/close.svg';
 import LeftIcon from '@assets/left.svg';
+import {QlError} from '@mytypes/QlError';
 
 type Props = {
   article: NonNullable<ArticleEditPageQuery['article']>;

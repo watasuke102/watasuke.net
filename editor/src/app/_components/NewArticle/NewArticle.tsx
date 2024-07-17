@@ -6,12 +6,12 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 'use client';
 
+import {apiUrl} from '@watasuke.net/config/config';
 import {css} from './NewArticle.css';
 import * as Form from '@radix-ui/react-form';
 import {GraphQLClient} from 'graphql-request';
 import {useRouter} from 'next/navigation';
 import React from 'react';
-import {apiUrl} from '@watasuke.net/config/config';
 import {Button} from '@common/Button';
 import {Dialog} from '@common/Dialog';
 import {getSdk} from '@utils/graphql';

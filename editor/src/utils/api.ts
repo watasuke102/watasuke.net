@@ -4,8 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import axios from 'axios';
 import {apiUrl} from '@watasuke.net/config/config';
+import axios from 'axios';
 
 export async function upload_new_image(
   slug: string,

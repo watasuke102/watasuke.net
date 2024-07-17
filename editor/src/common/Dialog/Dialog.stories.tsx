@@ -6,10 +6,10 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import '@common/global.css';
 import '@watasuke.net/common/src/css/base.css';
-import type {Meta, StoryObj} from '@storybook/react';
 import React from 'react';
 import {Button} from '@common/Button';
 import {Dialog} from './Dialog';
+import type {Meta, StoryObj} from '@storybook/react';
 
 const meta: Meta<typeof Dialog> = {
   component: Dialog,

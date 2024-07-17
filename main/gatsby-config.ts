@@ -4,10 +4,10 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {GatsbyConfig} from 'gatsby';
-import path from 'path';
-// FIXME: cannot import from '@watasuke.net/config/config'
 import * as config from '../config/config';
+import path from 'path';
+import {GatsbyConfig} from 'gatsby';
+// FIXME: cannot import from '@watasuke.net/config/config'
 
 const gatsby_config: GatsbyConfig = {
   siteMetadata: {

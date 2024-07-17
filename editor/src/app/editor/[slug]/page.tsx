@@ -5,9 +5,9 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import '@watasuke.net/common/src/css/base.css';
-import {EditorPage} from '@features/Editor';
 import {GraphQLClient} from 'graphql-request';
 import React from 'react';
+import {EditorPage} from '@features/Editor';
 import {getSdk} from '@utils/graphql';
 
 type Props = {

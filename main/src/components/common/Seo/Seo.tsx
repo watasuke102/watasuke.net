@@ -4,9 +4,9 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as config from '@watasuke.net/config/config';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
-import * as config from '@watasuke.net/config/config';
 import BreadcrumbItem from '@mytypes/Breadcrumb';
 
 interface Props {

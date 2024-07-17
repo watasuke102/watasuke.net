@@ -8,8 +8,9 @@
 import {fixupConfigRules} from '@eslint/compat';
 import {FlatCompat} from '@eslint/eslintrc';
 import js from '@eslint/js';
-import react from 'eslint-plugin-react';
+import * as importPlugin from 'eslint-plugin-import';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
+import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -63,6 +64,53 @@ export default tseslint.config(
       'react/react-in-jsx-scope': 'off',
       ...reactHooks.configs.recommended.rules,
       ...jsxA11y.flatConfigs.strict.rules,
+    },
+  },
+  {
+    plugins: {
+      import: importPlugin,
+    },
+    rules: {
+      'import/order': [
+        'warn',
+        {
+          // prettier-ignore
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'index',
+            'sibling',
+            'parent',
+            'object',
+            'type',
+          ],
+          // prettier-ignore
+          pathGroups: [
+            { position: 'before', group: 'builtin',  pattern: '*config', patternOptions: {matchBase: true} },
+            { position: 'before', group: 'builtin',  pattern: '*.css', patternOptions: {matchBase: true} },
+            { position: 'after',  group: 'external', pattern: '@watasuke.net/**' },
+            // aliases
+            { position: 'before', group: 'internal', pattern: '@pages/**' },
+            { position: 'before', group: 'internal', pattern: '@common/**' },
+            { position: 'before', group: 'internal', pattern: '@feature/**' },
+            { position: 'before', group: 'internal', pattern: '@features/**' },
+            { position: 'before', group: 'internal', pattern: '@utils/**' },
+            { position: 'before', group: 'type',     pattern: '@assets/**' },
+            { position: 'after',  group: 'type',     pattern: '@mytypes/**' },
+          ],
+          pathGroupsExcludedImportTypes: [
+            '@pages/**',
+            '@common/**',
+            '@feature/**',
+            '@features/**',
+            '@utils/**',
+            '@assets/**',
+            '@mytypes/**',
+          ],
+          'newlines-between': 'ignore',
+        },
+      ],
     },
   },
 );
