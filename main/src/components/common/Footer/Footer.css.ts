@@ -23,7 +23,7 @@ export const container = style({
     'buildinfo links'
   `,
   '@media': {
-    'screen and (max-width: 800px)': {
+    'screen and (500px < width < 800px)': {
       gridTemplateColumns: 'auto auto',
       gridTemplateRows: 'repeat(3, auto)',
       gridTemplateAreas: `
@@ -34,7 +34,7 @@ export const container = style({
       rowGap: 4,
       textAlign: 'center',
     },
-    'screen and (max-width: 500px)': {
+    'screen and (width <= 500px)': {
       gridTemplateColumns: 'auto',
       gridTemplateRows: 'repeat(4, auto)',
       gridTemplateAreas: `
@@ -67,10 +67,10 @@ export const buildinfo = style({
   alignSelf: 'end',
   color: color.g3,
   '@media': {
-    'screen and (max-width: 800px)': {
+    'screen and (width <= 800px)': {
       fontSize: '0.85em',
     },
-    'screen and (min-width: 801px)': {
+    'screen and (width > 800px)': {
       fontSize: '1.0em',
       justifySelf: 'end',
     },
@@ -88,7 +88,7 @@ export const icon_container = style({
   justifySelf: 'right',
   height: 28,
   '@media': {
-    'screen and (max-width: 500px)': {
+    'screen and (width <= 500px)': {
       justifySelf: 'center',
       marginBlock: 4,
     },
@@ -114,16 +114,19 @@ export const link_container = style({
   gridArea: 'links',
   width: '100%',
   placeSelf: 'center',
+  display: 'grid',
   '@media': {
-    'screen and (max-width: 800px)': {
-      display: 'flex',
-      justifyContent: 'space-between',
-    },
-    'screen and (min-width: 801px)': {
+    'screen and (width >= 800px)': {
+      gridTemplateRows: 'auto auto',
+      alignItems: 'end',
       textAlign: 'right',
     },
-    'screen and (max-width: 500px)': {
-      flexDirection: 'column',
+    'screen and (500px < width < 800px)': {
+      gridTemplateColumns: 'auto 1fr auto',
+    },
+    'screen and (width <= 500px)': {
+      gridTemplateRows: 'auto auto',
+      justifyContent: 'center',
     },
   },
 });
@@ -131,21 +134,4 @@ export const link_head = style({
   display: 'inline-block',
   margin: 0,
   fontSize: '1.5rem',
-});
-export const links = style({
-  display: 'flex',
-  gap: 16,
-  padding: 0,
-  fontSize: '1.1em',
-  listStyleType: 'none',
-  marginBlock: 'auto',
-  '@media': {
-    'screen and (max-width: 500px)': {
-      gap: 12,
-      justifyContent: 'center',
-    },
-    'screen and (min-width: 501px)': {
-      justifyContent: 'right',
-    },
-  },
 });

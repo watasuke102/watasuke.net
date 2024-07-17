@@ -7,7 +7,8 @@
 import * as css from './Footer.css';
 // @ts-expect-error ??? (FIXME)
 import React from 'react';
-import {graphql, Link, useStaticQuery} from 'gatsby';
+import {graphql, useStaticQuery} from 'gatsby';
+import {SimpleLinks} from '../SimpleLinks';
 import IconInstagram from '@assets/icons/Links/instagram.svg';
 import IconSoundcloud from '@assets/icons/Links/soundcloud.svg';
 import IconTwitter from '@assets/icons/Links/twitter.svg';
@@ -73,15 +74,11 @@ export function Footer(): JSX.Element {
 
       <div className={css.link_container}>
         <h2 className={css.link_head}>Links</h2>
-        {/* prettier-ignore */}
-        <ol className={css.links}>
-          <li> <Link to='/'>Top</Link>                </li>
-          <li> <Link to='/blog'>Blog</Link>           </li>
-          <li> <Link to='/portfolio'>Portfolio</Link> </li>
-          <li> <Link to='/profile'>Profile</Link>     </li>
-          <li> <Link to='/card'>Card</Link>           </li>
-          <li> <Link to='/about'>About</Link>         </li>
-        </ol>
+        <div /> {/* <- for 500 < width < 800 (space-between) */}
+        <div>
+          {/* ^ for width > 800 (align: right) */}
+          <SimpleLinks />
+        </div>
       </div>
     </footer>
   );
