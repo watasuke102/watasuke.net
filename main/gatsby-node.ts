@@ -4,7 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as config from './config';
+// FIXME: cannot import from '@watasuke.net/{config,common}'
+import * as config from '../config/config';
 import child_process from 'child_process';
 import fs from 'fs';
 import path from 'path';
