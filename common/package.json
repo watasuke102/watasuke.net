@@ -2,6 +2,9 @@
   "name": "@watasuke.net/common",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "lint": "eslint --fix ."
+  },
   "dependencies": {
     "@vanilla-extract/css": "^1.15.3",
     "github-slugger": "^2.0.0",
