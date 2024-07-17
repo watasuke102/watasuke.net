@@ -55,11 +55,11 @@ export function History(props: Props): React.ReactElement {
   return (
     <div className={portfolio_common.container}>
       <h2>History</h2>
-      <div css={{height: 48}} />
+      <div style={{height: 48}} />
       <div className={css.container_wrapper}>
         <div className={css.container}>{EventList}</div>
       </div>
-      <div css={{height: 128}} />
+      <div style={{height: 128}} />
       <div className={portfolio_common.next_page} />
     </div>
   );

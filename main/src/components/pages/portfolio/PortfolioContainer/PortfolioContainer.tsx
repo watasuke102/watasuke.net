@@ -135,9 +135,9 @@ export function PortfolioContainer(props: Props): React.ReactElement {
 
   if (!props.page_transition_enabled) {
     return (
-      <div className={css.container_mobile} css={{backgroundColor: BackgroundColors[0]}}>
+      <div className={css.container_mobile} style={{backgroundColor: BackgroundColors[0]}}>
         {props.children.map((page, i) => (
-          <div key={page.key} css={{backgroundColor: BackgroundColors[i]}}>
+          <div key={page.key} style={{backgroundColor: BackgroundColors[i]}}>
             {page}
           </div>
         ))}
@@ -176,7 +176,7 @@ export function PortfolioContainer(props: Props): React.ReactElement {
           </motion.div>
         )}
       </AnimatePresence>
-      <div css={{height: scroll_height}} className={css.scroll_bar} />
+      <div style={{height: scroll_height}} className={css.scroll_bar} />
 
       <div className={css.page_indicator}>
         {['Welcome', 'Skills', 'History', 'Links'].map((str, index) => (
