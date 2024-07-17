@@ -10,7 +10,7 @@ import {color} from '@watasuke.net/common/src/css/color';
 export const css = {
   input: style({
     display: 'grid',
-    gridTemplateColumns: 'auto 1fr',
+    gridTemplateColumns: '60px 1fr',
     alignItems: 'center',
     gap: 8,
     paddingTop: 12,
@@ -18,5 +18,9 @@ export const css = {
   }),
   input_text: style({
     border: `1px solid ${color.fg}`,
+  }),
+  counter: style({
+    fontSize: '0.9em',
+    color: color.g3,
   }),
 };

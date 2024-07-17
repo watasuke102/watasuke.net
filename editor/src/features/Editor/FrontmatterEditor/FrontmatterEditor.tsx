@@ -33,7 +33,11 @@ export function FrontmatterEditor(props: Props): JSX.Element {
         />
       </div>
       <div className={css.input}>
-        <label htmlFor={id.tldr}>TL;DR</label>
+        <label htmlFor={id.tldr}>
+          TL;DR
+          <br />
+          <span className={css.counter}>len: {props.state.tldr.length}</span>
+        </label>
         <textarea
           id={id.tldr}
           placeholder={props.tldr_placeholder}

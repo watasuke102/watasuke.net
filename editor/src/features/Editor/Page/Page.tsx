@@ -155,30 +155,39 @@ export function Page({article, tags}: Props): JSX.Element {
             switch (publish_stat) {
               case 'confirmation':
                 return (
-                  <Button
-                    type='contained'
-                    text='Publish'
-                    aria_label='publish'
-                    on_click={() => {
-                      set_publish_stat('waiting');
-                      publish();
-                    }}
-                  />
+                  <div className={css.confirmation}>
+                    <div>
+                      {state.tags.length === 0 && <strong className={css.warning_text}>warn: Tag is empty!</strong>}
+                      {/* Google generates summary approximately 80 chars in Japanese */}
+                      {state.tldr.length > 80 && (
+                        <p className={css.warning_text}>
+                          <strong>warn: TL;DR is too long</strong> (len: <strong>{state.tldr.length}</strong>),
+                          recommend: less than 80
+                        </p>
+                      )}
+                    </div>
+                    <div className={css.publish_button}>
+                      <Button
+                        type='contained'
+                        text='Publish'
+                        aria_label='publish'
+                        on_click={() => {
+                          set_publish_stat('waiting');
+                          publish();
+                        }}
+                      />
+                    </div>
+                  </div>
                 );
-              // case 'confirmation':
               case 'waiting':
                 return (
-                  <div className={css.publish_waiting_status}>
+                  <>
                     <BarLoader color={color.p0} width={dialog_width} />
                     <span className={css.publish_waiting_label}>Waiting for response from CMS...</span>
-                  </div>
+                  </>
                 );
               case 'succeeded':
-                return (
-                  <div className={css.publish_waiting_status}>
-                    <span className={css.publish_waiting_label}>succeeded!</span>
-                  </div>
-                );
+                return <span className={css.publish_waiting_label}>succeeded!</span>;
               default:
                 return <></>;
             }

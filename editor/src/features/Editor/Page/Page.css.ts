@@ -10,7 +10,7 @@ import {color} from '@watasuke.net/common/src/css/color';
 const header_height = 48;
 const editor_area_margin = 12;
 
-export const dialog_width = 440;
+export const dialog_width = 460;
 
 export const css = {
   header: style({
@@ -53,18 +53,29 @@ export const css = {
     scrollbarWidth: 'thin',
   }),
   dialog: style({
-    display: 'block',
-    width: dialog_width,
-    height: 52,
-  }),
-  publish_waiting_status: style({
-    display: 'grid',
-    gridTemplateRows: '4px 1fr',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
     gap: 8,
+    width: dialog_width,
+    height: 100,
+  }),
+  confirmation: style({
+    height: '100%',
+    display: 'grid',
+    gap: 8,
+    gridTemplateRows: '1fr 36px',
+  }),
+  publish_button: style({
+    gridRow: '2 / 3',
+  }),
+  warning_text: style({
+    margin: 0,
   }),
   publish_waiting_label: style({
+    display: 'block',
     textAlign: 'center',
-    gridRow: '2 / 3',
+    fontSize: '1.2em',
   }),
 };
 
