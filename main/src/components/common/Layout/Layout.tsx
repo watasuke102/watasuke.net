@@ -7,6 +7,7 @@
 import * as css from './Layout.css';
 import {Header, Footer} from '@common';
 import React from 'react';
+import {Menu} from '../Menu';
 
 interface Props {
   children: React.ReactNode;
@@ -17,6 +18,7 @@ export function Layout({children}: Props): React.ReactElement {
     <>
       <Header />
       <div className={css.container}>{children}</div>
+      <Menu />
       <Footer />
     </>
   );
