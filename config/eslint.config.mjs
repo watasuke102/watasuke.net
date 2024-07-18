@@ -5,6 +5,8 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 // @ts-check
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {fixupConfigRules} from '@eslint/compat';
 import {FlatCompat} from '@eslint/eslintrc';
 import js from '@eslint/js';
@@ -12,8 +14,6 @@ import * as importPlugin from 'eslint-plugin-import';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
-import path from 'node:path';
-import {fileURLToPath} from 'node:url';
 import tseslint from 'typescript-eslint';
 
 const compat = new FlatCompat({

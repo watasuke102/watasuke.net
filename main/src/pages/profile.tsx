@@ -8,11 +8,11 @@ import '@watasuke.net/common/src/css/base.css';
 import {Seo, Background, Breadcrumb, Layout} from '@common';
 import {graphql, Link} from 'gatsby';
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import Raw from 'rehype-raw';
-import Gfm from 'remark-gfm';
-import {AdsInArticle} from '@watasuke.net/common';
+import {AdsInArticle, Markdown} from '@watasuke.net/common';
+import {EmbedCard, InnerEmbedCard} from '@feature/Article';
+import {HeadingContext, TocInArticle} from '@feature/TableOfContents';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
+import ExtractHeading from '@utils/ExtractHeading';
 
 interface Props {
   data: {
@@ -25,22 +25,26 @@ interface Props {
 const breadcrumb_list = GenBreadcrumb([{name: 'Profile'}]);
 
 export default function Profile(props: Props): React.ReactElement {
+  const headings = ExtractHeading(props.data.siteData.body);
+
   return (
-    <Layout>
-      <Background />
-      <Breadcrumb breadcrumb_list={breadcrumb_list} />
-      <main>
-        <h1>プロフィール</h1>
-        <p>
-          技術的な項目については
-          <Link to='/portfolio'>ポートフォリオ</Link>
-          を御覧ください
-        </p>
-        <AdsInArticle />
-        {/* eslint-disable-next-line react/no-children-prop */}
-        <ReactMarkdown remarkPlugins={[Gfm]} rehypePlugins={[Raw]} children={props.data.siteData.body ?? ''} />
-      </main>
-    </Layout>
+    <HeadingContext.Provider value={headings}>
+      <Layout>
+        <Background />
+        <Breadcrumb breadcrumb_list={breadcrumb_list} />
+        <main>
+          <h1>プロフィール</h1>
+          <p>
+            技術的な項目については
+            <Link to='/portfolio'>ポートフォリオ</Link>
+            を御覧ください
+          </p>
+          <AdsInArticle />
+          <TocInArticle />
+          <Markdown md={props.data.siteData.body ?? ''} embed_card={EmbedCard} inner_embed_card={InnerEmbedCard} />
+        </main>
+      </Layout>
+    </HeadingContext.Provider>
   );
 }
 

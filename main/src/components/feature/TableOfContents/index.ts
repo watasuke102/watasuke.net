@@ -4,7 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import {TocInArticle} from './TocInArticle/TocInArticle';
 import {TocMapper} from './TocMapper/TocMapper';
 import {HeadingContext} from './HeadingContext';
 
-export {TocMapper, HeadingContext};
+export {TocInArticle, TocMapper, HeadingContext};

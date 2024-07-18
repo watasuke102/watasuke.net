@@ -9,7 +9,6 @@ import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
   margin: '28px 0',
-  backgroundColor: color.bg,
   fontSize: '1.2em',
 });
 

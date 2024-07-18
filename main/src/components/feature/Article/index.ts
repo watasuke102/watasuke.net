@@ -8,6 +8,5 @@ import {BlogContent} from './BlogContent/BlogContent';
 import {EmbedCard} from './EmbedCard/EmbedCard';
 import {InnerEmbedCard} from './InnerEmbedCard/InnerEmbedCard';
 import {ProfileCard} from './ProfileCard/ProfileCard';
-import {TocInArticle} from './TocInArticle/TocInArticle';
 
-export {BlogContent, EmbedCard, InnerEmbedCard, ProfileCard, TocInArticle};
+export {BlogContent, EmbedCard, InnerEmbedCard, ProfileCard};
