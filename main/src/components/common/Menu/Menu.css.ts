@@ -33,6 +33,10 @@ export const menu_opener = style({
   ':focus': {
     outline: 'none',
   },
+  ':active': {
+    transitionDuration: '0.2s',
+    filter: 'brightness(75%)',
+  },
 });
 
 export const menu = style({
@@ -88,6 +92,11 @@ export const share_icon = style({
   height: '100%',
   color: color.fg,
 });
+export const twitter_icon = style({
+  ':hover': {
+    color: color.brand.twitter,
+  },
+});
 export const hatena_icon = style({
   aspectRatio: '1 / 1',
   height: '100%',
@@ -100,12 +109,15 @@ export const menu_button = style({
   borderRadius: 4,
   boxShadow: '4px 4px 6px 2px #1a1a1a',
   borderColor: color.fg,
-  transitionProperty: 'background-color',
+  transitionProperty: 'background-color, transform',
   transitionDuration: '0.2s',
   ':hover': {
-    transitionProperty: 'background-color',
     transitionDuration: '0.2s',
     backgroundColor: `${color.p0}33`,
+  },
+  ':active': {
+    transitionDuration: '0.2s',
+    transform: 'translate(1px, 1px)',
   },
 });
 

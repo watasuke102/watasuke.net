@@ -24,4 +24,8 @@ export const color = {
 
   transparent: '#00000000',
   transparent_half: '#00000088',
+
+  brand: {
+    twitter: '#1da1f2',
+  },
 };

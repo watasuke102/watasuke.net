@@ -47,7 +47,7 @@ export function Menu(): JSX.Element {
               <h2 className={css.heading}>Share this page</h2>
               <span className={css.share_container}>
                 <a
-                  className={css.share_icon}
+                  className={`${css.share_icon} ${css.twitter_icon}`}
                   target='_blank'
                   rel='nofollow noopener noreferrer'
                   href={`https://twitter.com/intent/tweet?text=${document.title}%0d%0a${document.URL}`}
