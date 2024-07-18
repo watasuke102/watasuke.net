@@ -13,7 +13,7 @@ export const menu_inner = style({
   paddingBottom: 40,
 
   display: 'grid',
-  gridTemplateRows: '1fr repeat(6, auto)',
+  gridTemplateRows: 'auto 1fr repeat(6, auto)',
 
   '@media': {
     'screen and (width < 550px)': {
@@ -25,4 +25,14 @@ export const menu_inner = style({
 export const heading = style({
   fontSize: '1.5em',
   marginBottom: 0,
+});
+
+export const toc_wrapper = style({
+  textAlign: 'left',
+  overflowY: 'scroll',
+  paddingBlock: 4,
+  paddingLeft: 8,
+  marginBottom: 8,
+  scrollbarWidth: 'thin',
+  border: `1px solid ${color.fg}`,
 });

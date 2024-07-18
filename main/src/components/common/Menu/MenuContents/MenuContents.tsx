@@ -6,15 +6,26 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './MenuContents.css';
 import * as common from '../common.css';
-// @ts-expect-error ??? (FIXME)
 import React from 'react';
 import {SimpleLinks} from '@common';
+import {HeadingContext, TocMapper} from '@feature/TableOfContents';
 import {ShareList} from '../ShareList';
 import IconUp from '@assets/icons/general/up.svg';
 
 export function MenuContents(): JSX.Element {
+  const headings = React.useContext(HeadingContext);
+
   return (
-    <div className={css.menu_inner}>
+    <>
+      {headings && (
+        <>
+          <h2 className={css.heading}>Table of Contents</h2>
+          <nav className={css.toc_wrapper}>
+            <TocMapper headings={headings} />
+          </nav>
+        </>
+      )}
+
       <h2 className={css.heading}>Share this page</h2>
       <ShareList />
 
@@ -26,6 +37,6 @@ export function MenuContents(): JSX.Element {
         <IconUp />
         <span>Go to page top</span>
       </button>
-    </div>
+    </>
   );
 }

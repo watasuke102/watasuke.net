@@ -50,14 +50,33 @@ export const menu = style({
   borderStyle: 'solid',
   borderWidth: 2,
 
+  display: 'grid',
+  // use grid as padding
+  // because using padding normally cause weird animation
+  gridTemplateColumns: '16px 1fr 16px',
+  gridTemplateRows: '8px auto 1fr repeat(6, auto) 40px',
+
   '@media': {
     'screen and (width < 550px)': {
+      gridTemplateRows: '16px auto 1fr repeat(6, auto) 120px',
       right: -24,
       bottom: -44,
       width: '100dvw',
       borderWidth: '2px 0 0 0',
     },
   },
+});
+export const padding_top = style({
+  gridColumn: '1 / 4',
+  gridRow: '1 / 2',
+});
+export const padding_left = style({
+  gridColumn: '1 / 2',
+  gridRow: '1 / 10',
+});
+export const padding_right = style({
+  gridColumn: '3 / 4',
+  gridRow: '1 / 10',
 });
 
 const animation: ComplexStyleRule = {

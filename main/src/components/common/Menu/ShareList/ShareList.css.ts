@@ -14,7 +14,7 @@ export const share_container = style({
   flexWrap: 'wrap',
   height: 40,
   marginTop: 4,
-  marginBottom: 12,
+  marginBottom: 16,
 });
 export const share_icon = style({
   aspectRatio: '1 / 1',

@@ -23,13 +23,13 @@ export function Menu(): JSX.Element {
                 maxHeight: 0,
                 borderColor: `${color.fg}00`,
                 boxShadow: '0 0 12px 2px #1110',
-                transition: {duration: 0.5, ease: [0.22, 1, 0.36, 1]},
+                transition: {duration: 0.4, ease: [0.22, 1, 0.36, 1]},
               },
               open: {
-                maxHeight: 450,
+                maxHeight: '80dvh',
                 borderColor: `${color.fg}ff`,
                 boxShadow: '0 0 12px 2px #111d',
-                transition: {duration: 0.9, ease: [0.16, 1, 0.3, 1]},
+                transition: {duration: 0.4, ease: [0.16, 1, 0.3, 1]},
               },
             }}
             initial='init'
@@ -37,6 +37,9 @@ export function Menu(): JSX.Element {
             exit='init'
             className={css.menu}
           >
+            <div className={css.padding_top} />
+            <div className={css.padding_left} />
+            <div className={css.padding_right} />
             <MenuContents />
           </motion.nav>
         )}

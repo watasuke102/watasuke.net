@@ -33,9 +33,9 @@ export default function Articale(prop: Props): React.ReactElement {
   })();
 
   return (
-    <Layout>
-      <Breadcrumb breadcrumb_list={breadcrumb_list(data.title)} />
-      <HeadingContext.Provider value={headings}>
+    <HeadingContext.Provider value={headings}>
+      <Layout>
+        <Breadcrumb breadcrumb_list={breadcrumb_list(data.title)} />
         <main className={css.container}>
           {/* 記事メイン部分 */}
           <article className={css.blogcontent_wrapper}>
@@ -56,8 +56,8 @@ export default function Articale(prop: Props): React.ReactElement {
             )}
           </aside>
         </main>
-      </HeadingContext.Provider>
-    </Layout>
+      </Layout>
+    </HeadingContext.Provider>
   );
 }
 
