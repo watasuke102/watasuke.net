@@ -4,19 +4,21 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {toc_list} from '../TableOfContents.css';
 import * as css from './TocInArticle.css';
+import {toc_list} from '../TableOfContents.css';
 import {AnimatePresence, motion} from 'framer-motion';
 import React from 'react';
+import {HeadingContext} from '@feature/TableOfContents';
 import IconCollapse from '@assets/icons/general/up.svg';
-import Heading from '@mytypes/Heading';
 
-interface Props {
-  table_of_contents: Heading[];
-}
-
-export function TocInArticle(props: Props): React.ReactElement {
+export function TocInArticle(): React.ReactElement {
   const [tocOpening, SetTocOpening] = React.useState(true);
+  const headings = React.useContext(HeadingContext);
+
+  if (!headings) {
+    return <></>;
+  }
+
   return (
     <nav className={css.container}>
       <div className={css.top_items}>
@@ -47,7 +49,7 @@ export function TocInArticle(props: Props): React.ReactElement {
           }}
         >
           <ol className={css.list_wrapper}>
-            {props.table_of_contents.map(item => (
+            {headings.map(item => (
               <li key={item.slug} className={toc_list[item.size]}>
                 <a href={`#${item.slug}`}>{item.body}</a>
               </li>

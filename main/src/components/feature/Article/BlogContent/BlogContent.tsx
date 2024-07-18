@@ -14,11 +14,9 @@ import {TagContainer} from '@feature/Tag';
 import IconHistory from '@assets/icons/article/history.svg';
 import IconUpload from '@assets/icons/article/upload.svg';
 import Article from '@mytypes/Article';
-import Heading from '@mytypes/Heading';
 
 interface Props {
   data: Article;
-  headings: Heading[] | undefined;
 }
 
 export function BlogContent(props: Props): React.ReactElement {
@@ -43,7 +41,7 @@ export function BlogContent(props: Props): React.ReactElement {
       </section>
 
       <AdsInArticle />
-      {props.headings && <TocInArticle table_of_contents={props.headings} />}
+      <TocInArticle />
 
       <Markdown
         md={props.data.body.replaceAll('/img', `${apiUrl}/img/${props.data.slug}`)}

@@ -9,6 +9,5 @@ import {EmbedCard} from './EmbedCard/EmbedCard';
 import {InnerEmbedCard} from './InnerEmbedCard/InnerEmbedCard';
 import {ProfileCard} from './ProfileCard/ProfileCard';
 import {TocInArticle} from './TocInArticle/TocInArticle';
-import {TocRight} from './TocRight/TocRight';
 
-export {BlogContent, EmbedCard, InnerEmbedCard, ProfileCard, TocInArticle, TocRight};
+export {BlogContent, EmbedCard, InnerEmbedCard, ProfileCard, TocInArticle};

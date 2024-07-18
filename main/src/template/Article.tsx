@@ -8,8 +8,10 @@ import * as css from '@feature/Article/Article.css';
 import '@watasuke.net/common/src/css/base.css';
 import {Seo, Layout, Breadcrumb} from '@common';
 import React from 'react';
-import {BlogContent, ProfileCard, TocRight} from '@feature/Article';
+import {BlogContent, ProfileCard} from '@feature/Article';
 import {AllTagList} from '@feature/Tag';
+import {HeadingContext} from '@feature/TableOfContents/HeadingContext';
+import {TocMapper} from '@feature/TableOfContents';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import ExtractHeading from '@utils/ExtractHeading';
 import Article from '@mytypes/Article';
@@ -23,6 +25,7 @@ const breadcrumb_list = (title: string) =>
 
 export default function Articale(prop: Props): React.ReactElement {
   const data = prop.pageContext;
+
   const headings = (() => {
     const headings = ExtractHeading(data.body);
     // 見出しが2個未満だったら目次を出しても違和感がある気がする
@@ -32,22 +35,24 @@ export default function Articale(prop: Props): React.ReactElement {
   return (
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list(data.title)} />
-      <main className={css.container}>
-        {/* 記事メイン部分 */}
-        <article className={css.blogcontent_wrapper}>
-          <BlogContent data={data} headings={headings} />
-        </article>
+      <HeadingContext.Provider value={headings}>
+        <main className={css.container}>
+          {/* 記事メイン部分 */}
+          <article className={css.blogcontent_wrapper}>
+            <BlogContent data={data} />
+          </article>
 
-        {/* サイドバー */}
-        <aside className={css.side}>
-          <ProfileCard />
-          <section className={css.side_tag}>
-            <span className={css.head}>タグ</span>
-            <AllTagList />
-          </section>
-          {headings && <TocRight table_of_contents={headings} />}
-        </aside>
-      </main>
+          {/* サイドバー */}
+          <aside className={css.side}>
+            <ProfileCard />
+            <section className={css.side_tag}>
+              <span className={css.head}>タグ</span>
+              <AllTagList />
+            </section>
+            {headings && <TocMapper table_of_contents={headings} />}
+          </aside>
+        </main>
+      </HeadingContext.Provider>
     </Layout>
   );
 }
