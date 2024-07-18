@@ -49,7 +49,7 @@ export const heading = style({
 });
 
 export const toc = style({
-  paddingLeft: '12px',
+  padding: '8px 20px',
   border: '1px solid',
 });
 

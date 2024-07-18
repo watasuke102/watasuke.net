@@ -5,29 +5,32 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {style} from '@vanilla-extract/css';
-import {color} from '@watasuke.net/common/src/css/color';
 
-export const side_toc = style({
-  position: 'sticky',
-  top: 60,
-  padding: 10,
-  maxHeight: '80vh',
-  overflowY: 'scroll',
-  border: `solid 2px ${color.fg}`,
-  display: 'flex',
-  flexDirection: 'column',
+export const list_wrapper = style({
+  margin: 0,
 });
 
 export const item = style({
-  padding: '4px 8px',
-  marginTop: 4,
-  marginBottom: 4,
-  display: 'block',
-  width: 'auto',
-  borderRadius: 3,
-
-  backgroundColor: `${color.fg}36`,
-  ':hover': {
-    backgroundColor: `${color.fg}66`,
-  },
+  listStyleType: 'decimal-leading-zero',
+  marginBlock: 4,
 });
+
+export const toc_list = [
+  style({}),
+  style({
+    fontWeight: 'bold',
+  }),
+  style({}),
+  style({
+    marginLeft: 20,
+  }),
+  style({
+    marginLeft: 40,
+  }),
+  style({
+    marginLeft: 60,
+  }),
+  style({
+    marginLeft: 80,
+  }),
+];

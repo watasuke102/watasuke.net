@@ -5,10 +5,9 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './TocInArticle.css';
-import {toc_list} from '../TableOfContents.css';
 import {AnimatePresence, motion} from 'framer-motion';
 import React from 'react';
-import {HeadingContext} from '@feature/TableOfContents';
+import {HeadingContext, TocMapper} from '@feature/TableOfContents';
 import IconCollapse from '@assets/icons/general/up.svg';
 
 export function TocInArticle(): React.ReactElement {
@@ -48,13 +47,7 @@ export function TocInArticle(): React.ReactElement {
             duration: 0.2,
           }}
         >
-          <ol className={css.list_wrapper}>
-            {headings.map(item => (
-              <li key={item.slug} className={toc_list[item.size]}>
-                <a href={`#${item.slug}`}>{item.body}</a>
-              </li>
-            ))}
-          </ol>
+          <TocMapper headings={headings} />
         </motion.div>
       </AnimatePresence>
     </nav>

@@ -49,7 +49,11 @@ export default function Articale(prop: Props): React.ReactElement {
               <span className={css.head}>タグ</span>
               <AllTagList />
             </section>
-            {headings && <TocMapper table_of_contents={headings} />}
+            {headings && (
+              <nav className={css.side_toc}>
+                <TocMapper headings={headings} />
+              </nav>
+            )}
           </aside>
         </main>
       </HeadingContext.Provider>

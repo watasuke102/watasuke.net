@@ -48,6 +48,17 @@ export const side_tag = style({
   marginBottom: 30,
 });
 
+export const side_toc = style({
+  position: 'sticky',
+  top: 60,
+  padding: '4px 12px',
+  maxHeight: '80vh',
+  overflowY: 'scroll',
+  border: `solid 2px ${color.fg}`,
+  display: 'flex',
+  flexDirection: 'column',
+});
+
 export const head = style({
   display: 'block',
   fontSize: '1.5em',

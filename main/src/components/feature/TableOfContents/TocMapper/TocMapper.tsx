@@ -5,22 +5,21 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './TocMapper.css';
-import {toc_list} from '@feature/Article/TableOfContents.css';
 import React from 'react';
 import Heading from '@mytypes/Heading';
 
 interface Props {
-  table_of_contents: Heading[];
+  headings: Heading[];
 }
 
 export function TocMapper(props: Props): React.ReactElement {
   return (
-    <nav className={css.side_toc}>
-      {props.table_of_contents.map(item => (
-        <a key={item.body} className={`${css.item} ${toc_list[item.size]}`} href={`#${item.slug}`}>
-          {item.body}
-        </a>
+    <ol className={css.list_wrapper}>
+      {props.headings.map(item => (
+        <li key={item.slug} className={`${css.item} ${css.toc_list[item.size]}`}>
+          <a href={`#${item.slug}`}>{item.body}</a>
+        </li>
       ))}
-    </nav>
+    </ol>
   );
 }
