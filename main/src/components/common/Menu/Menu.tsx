@@ -6,10 +6,14 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Menu.css';
 import React from 'react';
-import 'framer-motion';
 import {AnimatePresence, motion} from 'framer-motion';
 import {color} from '@watasuke.net/common';
 import {SimpleLinks} from '../SimpleLinks';
+import IconTwitter from '@assets/icons/Links/twitter.svg';
+import IconMisskey from '@assets/icons/general/misskey.svg';
+import IconMastodon from '@assets/icons/general/mastodon.svg';
+import IconHatena from '@assets/icons/general/hatena.svg';
+import IconShare from '@assets/icons/general/share.svg';
 import IconUp from '@assets/icons/general/up.svg';
 
 export function Menu(): JSX.Element {
@@ -37,10 +41,56 @@ export function Menu(): JSX.Element {
             initial='init'
             animate='open'
             exit='init'
-            // transition={{}}
             className={css.menu}
           >
             <div className={css.menu_inner}>
+              <h2 className={css.heading}>Share this page</h2>
+              <span className={css.share_container}>
+                <a
+                  className={css.share_icon}
+                  target='_blank'
+                  rel='nofollow noopener noreferrer'
+                  href={`https://twitter.com/intent/tweet?text=${document.title}%0d%0a${document.URL}`}
+                >
+                  <IconTwitter />
+                </a>
+                <a
+                  className={css.share_icon}
+                  target='_blank'
+                  rel='nofollow noopener noreferrer'
+                  href={`https://misskey-hub.net/share/?text=${document.title}&url=${document.URL}`}
+                >
+                  <IconMisskey />
+                </a>
+                <a
+                  className={css.share_icon}
+                  target='_blank'
+                  rel='nofollow noopener noreferrer'
+                  href={`https://mastodonshare.com/?text=${document.title}&url=${document.URL}`}
+                >
+                  <IconMastodon />
+                </a>
+                <a
+                  className={css.share_icon}
+                  target='_blank'
+                  rel='nofollow noopener noreferrer'
+                  href={`https://b.hatena.ne.jp/entry/${document.URL.replace(/https?:\/\//, '')}"`}
+                >
+                  <span className={css.hatena_icon}>
+                    <IconHatena />
+                  </span>
+                </a>
+                {navigator.share && (
+                  <button
+                    onClick={() => navigator.share({title: document.title, url: document.URL})}
+                    title='Share via...'
+                    className={css.menu_button}
+                  >
+                    <IconShare />
+                  </button>
+                )}
+              </span>
+
               <h2 className={css.heading}>Links</h2>
               <SimpleLinks />
               <hr style={{opacity: 1}} />
