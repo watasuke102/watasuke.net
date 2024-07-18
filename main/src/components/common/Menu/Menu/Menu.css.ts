@@ -59,67 +59,6 @@ export const menu = style({
     },
   },
 });
-export const menu_inner = style({
-  paddingInline: 16,
-  paddingTop: 8,
-  paddingBottom: 40,
-
-  display: 'grid',
-  gridTemplateRows: '1fr repeat(6, auto)',
-
-  '@media': {
-    'screen and (width < 550px)': {
-      paddingBottom: 120,
-    },
-  },
-});
-
-export const heading = style({
-  fontSize: '1.5em',
-  marginBottom: 0,
-});
-export const share_container = style({
-  display: 'flex',
-  justifyContent: 'center',
-  gap: 20,
-  flexWrap: 'wrap',
-  height: 40,
-  marginTop: 4,
-  marginBottom: 12,
-});
-export const share_icon = style({
-  aspectRatio: '1 / 1',
-  height: '100%',
-  color: color.fg,
-});
-export const twitter_icon = style({
-  ':hover': {
-    color: color.brand.twitter,
-  },
-});
-export const hatena_icon = style({
-  aspectRatio: '1 / 1',
-  height: '100%',
-  // https://brand.hatena.co.jp/hatenabookmark#guide-symbolmark
-  color: '#00a4de',
-  backgroundColor: '#fff',
-});
-export const menu_button = style({
-  paddingBlock: 0,
-  borderRadius: 4,
-  boxShadow: '4px 4px 6px 2px #1a1a1a',
-  borderColor: color.fg,
-  transitionProperty: 'background-color, transform',
-  transitionDuration: '0.2s',
-  ':hover': {
-    transitionDuration: '0.2s',
-    backgroundColor: `${color.p0}33`,
-  },
-  ':active': {
-    transitionDuration: '0.2s',
-    transform: 'translate(1px, 1px)',
-  },
-});
 
 const animation: ComplexStyleRule = {
   transitionDuration: '0.4s',
