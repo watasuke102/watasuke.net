@@ -11,8 +11,9 @@ import {Footer} from './Footer';
 import {Header} from './Header/Header';
 import {Layout} from './Layout/Layout';
 import {Seo} from './Seo/Seo';
+import {ShareList} from './ShareList';
 import {SimpleLinks} from './SimpleLinks';
 import {Toggle} from './Toggle/Toggle';
 import {Menu} from './Menu';
 
-export {Background, Breadcrumb, BreakWithCR, Footer, Header, Layout, Seo, SimpleLinks, Toggle, Menu};
+export {Background, Breadcrumb, BreakWithCR, Footer, Header, Layout, Seo, ShareList, SimpleLinks, Toggle, Menu};

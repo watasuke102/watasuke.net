@@ -9,7 +9,7 @@ import * as common from '../common.css';
 import React from 'react';
 import {SimpleLinks} from '@common';
 import {HeadingContext, TocMapper} from '@feature/TableOfContents';
-import {ShareList} from '../ShareList';
+import {ShareList} from '../../ShareList';
 import IconUp from '@assets/icons/general/up.svg';
 
 export function MenuContents(): JSX.Element {

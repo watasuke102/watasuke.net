@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './ShareList.css';
-import * as common from '../common.css';
+import * as common from '../Menu/common.css';
 // @ts-expect-error ??? (FIXME)
 import React from 'react';
 import IconTwitter from '@assets/icons/Links/twitter.svg';
