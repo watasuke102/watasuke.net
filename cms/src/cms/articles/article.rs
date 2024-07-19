@@ -109,12 +109,14 @@ impl Article {
     if let Some(tldr) = &self.frontmatter.tldr {
       tldr.clone()
     } else {
-      self
+      let mut head = self
         .body
         .chars()
         .filter(|x| *x != '\n')
         .take(80)
-        .collect::<String>()
+        .collect::<String>();
+      head.push_str("……");
+      head
     }
   }
   fn tldr_real(&self) -> Option<String> {
