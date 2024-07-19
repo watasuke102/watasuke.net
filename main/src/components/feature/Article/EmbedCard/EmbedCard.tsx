@@ -4,6 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import {initialized_a} from '@utils/initialized_a.css';
 import * as css from './EmbedCard.css';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
@@ -60,18 +61,20 @@ export function EmbedCard({url}: Props): React.ReactElement {
   }
 
   return (
-    <a className={css.container} href={url}>
-      {image === '' ? (
-        <span className={css.img_fallback}>{'[OGP image not found]'}</span>
-      ) : (
-        <div className={css.img_wrapper}>
-          <img className={css.thumbnail} src={image} alt={title} />
+    <a href={url} className={initialized_a}>
+      <div className={css.container}>
+        {image === '' ? (
+          <span className={css.img_fallback}>{'[OGP image not found]'}</span>
+        ) : (
+          <div className={css.img_wrapper}>
+            <img className={css.thumbnail} src={image} alt={title} />
+          </div>
+        )}
+        <div className={css.text_container}>
+          <span className={css.title}>{title}</span>
+          <span className={css.url}>{url}</span>
+          <span className={css.description}>{desc ?? ''}</span>
         </div>
-      )}
-      <div className={css.text_container}>
-        <span className={css.title}>{title}</span>
-        <span className={css.url}>{url}</span>
-        <span className={css.description}>{desc ?? ''}</span>
       </div>
     </a>
   );

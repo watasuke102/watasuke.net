@@ -8,19 +8,14 @@ import {style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
+  height: '100%',
   display: 'flex',
   flexDirection: 'column',
   padding: '8px 12px',
-
-  color: 'inherit',
-  textDecoration: 'none',
   border: `1px solid ${color.fg}`,
   transition: 'background-color 0.3s',
   ':hover': {
-    color: 'inherit',
-    textDecoration: 'none',
     backgroundColor: `${color.fg}26`,
-    cursor: 'pointer',
     transition: 'background-color 0.3s',
   },
 });

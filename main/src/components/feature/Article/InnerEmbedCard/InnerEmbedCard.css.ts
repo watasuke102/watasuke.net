@@ -16,9 +16,6 @@ export const container = style({
   margin: '20px auto',
   padding: 10,
 
-  textDecoration: 'none',
-  color: color.fg,
-
   wordBreak: 'break-all',
   borderRadius: 4,
   border: `2px solid ${color.p0}`,
@@ -27,8 +24,6 @@ export const container = style({
     cursor: 'pointer',
     transform: 'translateY(-4px)',
     transition: 'transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
-    color: color.fg,
-    textDecoration: 'none',
   },
 });
 
