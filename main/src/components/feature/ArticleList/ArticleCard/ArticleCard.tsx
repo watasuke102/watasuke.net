@@ -16,6 +16,8 @@ interface Props {
 }
 
 export function ArticleCard({article}: Props): React.ReactElement {
+  // wrap by <div> twice in order to prevent layout collapse
+  // on the first visit or hard reloading
   return (
     <div className={css.container}>
       <Link
@@ -23,15 +25,15 @@ export function ArticleCard({article}: Props): React.ReactElement {
         className={initialized_a}
         key={article.slug}
         aria-label={article.title}
-        style={{height: '100%'}}
       >
-        <div className={css.info}>
-          <span className={css.date}>{article.published_at.slice(0, 10)}</span>
+        <div className={css.inside_link}>
           <div>
+            <span className={css.date}>{article.published_at.slice(0, 10)}</span>
+          </div>
+
+          <div className={css.tagcontainer_wrapper}>
             <TagContainer tags={article.tags} />
           </div>
-        </div>
-        <div className={css.text}>
           <h2 className={css.title}>{article.title}</h2>
           <p className={css.description}>{article.tldr}</p>
         </div>

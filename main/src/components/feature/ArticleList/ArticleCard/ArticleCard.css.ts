@@ -9,8 +9,7 @@ import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
   height: '100%',
-  display: 'flex',
-  flexDirection: 'column',
+
   padding: '8px 12px',
   border: `1px solid ${color.fg}`,
   transition: 'background-color 0.3s',
@@ -20,30 +19,15 @@ export const container = style({
   },
 });
 
-export const title = style({
-  fontSize: '1.2em',
-  paddingBottom: 16,
-  selectors: {
-    [`${container}:hover > &`]: {
-      textDecoration: 'underline',
-    },
-  },
+export const inside_link = style({
+  height: '100%',
+  display: 'grid',
+  gridTemplateColumns: 'auto 1fr',
+  gridTemplateRows: 'auto 1fr auto',
 });
 
-// export const thumbnail = style({
-//   height: 150,
-//   img {
-//     height: 150px !important,
-//     width: 100%,
-//     margin: auto,
-//     object-fit: cover,
-//   }
-// });
-
-export const info = style({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
+export const tagcontainer_wrapper = style({
+  justifySelf: 'right',
   marginBottom: 8,
 });
 
@@ -56,16 +40,19 @@ export const date = style({
   backgroundColor: color.fg,
 });
 
-export const text = style({
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  width: '100%',
-  height: '100%',
+export const title = style({
+  gridColumn: '1 / 3',
+  fontSize: '1.2em',
+  paddingBottom: 16,
+  selectors: {
+    [`${container}:hover > &`]: {
+      textDecoration: 'underline',
+    },
+  },
 });
 
 export const description = style({
-  position: 'relative',
+  gridColumn: '1 / 3',
   wordWrap: 'break-word',
   margin: 0,
 });

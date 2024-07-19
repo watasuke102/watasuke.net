@@ -24,14 +24,18 @@ globalStyle(`${icon} svg`, {
   height: '100%',
 });
 
+export const tag_list = style({
+  display: 'flex',
+  gap: '8px 12px',
+  flexWrap: 'wrap',
+});
+
 const border_radius = 8;
 export const link = style({
   display: 'inline-block',
   whiteSpace: 'nowrap',
   fontSize: '0.8em',
   fontWeight: 'bold',
-  marginRight: 10,
-  marginBottom: 5,
   padding: '2px 10px 2px 5px',
 
   borderTopRightRadius: border_radius,

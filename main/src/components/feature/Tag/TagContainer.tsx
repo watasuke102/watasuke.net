@@ -19,14 +19,14 @@ interface Props {
 
 export function TagContainer(props: Props): React.ReactElement {
   return (
-    <section className={css.container} aria-label='すべてのタグ'>
+    <section className={css.container}>
       {!props.disable_icon && (
         <div className={css.icon}>
           <IconTag />
         </div>
       )}
 
-      <div>
+      <div className={css.tag_list}>
         {props.tags.map(tag => {
           return (
             <Link key={tag.slug} className={css.link} to={'/blog/tag/' + tag.slug}>
