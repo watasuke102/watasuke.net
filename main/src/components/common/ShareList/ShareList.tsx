@@ -15,6 +15,10 @@ import IconHatena from '@assets/icons/general/hatena.svg';
 import IconShare from '@assets/icons/general/share.svg';
 
 export function ShareList(): JSX.Element {
+  if (typeof document === 'undefined') {
+    return <></>;
+  }
+
   return (
     <div className={css.share_container}>
       <a
