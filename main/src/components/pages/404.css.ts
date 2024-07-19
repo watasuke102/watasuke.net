@@ -13,10 +13,20 @@ export const container = style({
   width: '100vw',
   height: '100vh',
   display: 'flex',
+  flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
 });
 
+export const links = style({
+  textAlign: 'center',
+});
+
 export const text = style({
   fontSize: '10em',
+});
+
+export const spacer_for_footer = style({
+  // TODO: adjust properly
+  height: 'calc(100vh - 280px)',
 });
