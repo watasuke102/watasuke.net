@@ -8,16 +8,22 @@ import {apiUrl} from '@watasuke.net/config/config';
 import * as css from './BlogContent.css';
 import Giscus from '@giscus/react';
 import React from 'react';
+import {Link} from 'gatsby';
+import {ShareList} from '@common';
 import {Markdown, AdsInArticle} from '@watasuke.net/common';
 import {EmbedCard, InnerEmbedCard} from '@feature/Article';
 import {TagContainer} from '@feature/Tag';
 import {TocInArticle} from '@feature/TableOfContents';
 import IconHistory from '@assets/icons/article/history.svg';
 import IconUpload from '@assets/icons/article/upload.svg';
+import IconLeft from '@assets/icons/general/left.svg';
+import IconRight from '@assets/icons/general/right.svg';
 import Article from '@mytypes/Article';
 
 interface Props {
   data: Article;
+  newer: Article | undefined;
+  older: Article | undefined;
 }
 
 export function BlogContent(props: Props): React.ReactElement {
@@ -50,6 +56,29 @@ export function BlogContent(props: Props): React.ReactElement {
         inner_embed_card={InnerEmbedCard}
       />
       <AdsInArticle />
+
+      <nav>
+        {props.newer ? (
+          <Link to={'/blog/article/' + props.newer.slug} className={css.newer_link}>
+            <IconLeft />
+            {props.newer.title}
+          </Link>
+        ) : (
+          <span>これより新しい記事はありません</span>
+        )}
+        <div>
+          <span className={css.current_title}>{props.data.title}</span>
+          <ShareList />
+        </div>
+        {props.older ? (
+          <Link to={'/blog/article/' + props.older.slug} className={css.older_link}>
+            {props.older.title}
+            <IconRight />
+          </Link>
+        ) : (
+          <span className={css.missing_older}>これより古い記事はありません</span>
+        )}
+      </nav>
 
       <section>
         <h2>Comments</h2>

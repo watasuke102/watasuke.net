@@ -282,11 +282,16 @@ export const createPages: GatsbyNode['createPages'] = async ({graphql, actions})
     `);
     const articles: Article[] = articles_response.data?.allArticles.nodes ?? [];
     log('info', 'Creating Article pages...');
-    articles.forEach(item => {
+    articles.forEach((item, index) => {
       actions.createPage({
         path: `/blog/article/${item.slug}`,
         component: path.resolve('./src/template/Article.tsx'),
-        context: item,
+        context: {
+          article: item,
+          // [...][-1] === [][1] === undefined
+          newer: articles[index - 1],
+          older: articles[index + 1],
+        },
       });
     });
   }

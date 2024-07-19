@@ -59,3 +59,28 @@ globalStyle(`${date}:hover:after`, {
   backgroundColor: `${color.bg}ee`,
   border: `1px solid ${color.fg}`,
 });
+
+export const newer_link = style({
+  width: '100%',
+  marginLeft: -12,
+  display: 'grid',
+  alignItems: 'center',
+  gridTemplateColumns: 'auto 1fr',
+});
+export const current_title = style({
+  display: 'block',
+  textAlign: 'center',
+  fontWeight: 'bold',
+});
+export const older_link = style({
+  width: '100%',
+  marginLeft: 12,
+  display: 'grid',
+  alignItems: 'center',
+  textAlign: 'right',
+  gridTemplateColumns: '1fr auto',
+});
+export const missing_older = style({
+  display: 'block',
+  textAlign: 'right',
+});
