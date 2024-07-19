@@ -17,17 +17,23 @@ interface Props {
 }
 
 export function Seo(props: Props): React.ReactElement {
-  const image =
-    'https://watasuke.net' +
-    useStaticQuery(graphql`
-      query {
-        file(name: {eq: "thumbnail"}) {
-          publicURL
+  const query = useStaticQuery(graphql`
+    query seoInfo {
+      file(name: {eq: "thumbnail"}) {
+        publicURL
+      }
+      site {
+        trailingSlash
+        siteMetadata {
+          siteUrl
         }
       }
-    `).file.publicURL;
+    }
+  `);
+  const image = query.site.siteMetadata.siteUrl + query.file.publicURL;
+
   const title = props.title.length === 0 ? 'わたすけのへや' : `${props.title} - わたすけのへや`;
-  const url = `https://watasuke.net${props.url}`;
+  const url = query.site.siteMetadata.siteUrl + props.url;
   // 140字に制限して内容を表示、超過分は...で
   const desc = props.desc.slice(0, 140) + (props.desc.length > 140 ? ' ...' : '');
 
@@ -55,7 +61,7 @@ export function Seo(props: Props): React.ReactElement {
           '@type': 'BreadcrumbList',
           itemListElement: props.breadcrumb_list.map(e => {
             if (e.item) {
-              e.item = `https://watasuke.net${e.item}`;
+              e.item = query.site.siteMetadata.siteUrl + e.item;
             }
             return e;
           }),

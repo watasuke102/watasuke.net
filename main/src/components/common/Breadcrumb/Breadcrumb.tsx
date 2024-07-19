@@ -18,7 +18,7 @@ export function Breadcrumb(props: Props): React.ReactElement {
       {props.breadcrumb_list.map((e, i) => (
         <>
           {e.item ? (
-            <Link key={`a_${i}`} to={e.item || ''}>
+            <Link key={`a_${i}`} to={e.item}>
               {e.name}
             </Link>
           ) : (

@@ -23,7 +23,7 @@ export const GenBreadcrumb = (list: {name: string; item?: string}[]): Breadcrumb
         // 実際は1-indexed + pos1 は 'Top'
         position: i + 2,
         name: e.name,
-        item: e.item && `https://watasuke.net${e.item}/`,
+        item: e.item,
       };
     }),
   );
