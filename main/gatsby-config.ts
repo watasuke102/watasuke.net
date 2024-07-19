@@ -9,10 +9,12 @@ import * as config from '../config/config';
 import path from 'path';
 import {GatsbyConfig} from 'gatsby';
 
+const site_url = 'https://watasuke.net';
+
 const gatsby_config: GatsbyConfig = {
   siteMetadata: {
     title: 'わたすけのへや',
-    siteUrl: 'https://watasuke.net',
+    siteUrl: site_url,
     repo: 'https://github.com/watasuke102/watasuke.net',
   },
   graphqlTypegen: {
@@ -74,6 +76,13 @@ const gatsby_config: GatsbyConfig = {
       options: {
         pluginConfig: {head: true},
         trackingIds: [config.trackingId],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-canonical-urls',
+      options: {
+        siteUrl: site_url,
+        stripQueryString: true,
       },
     },
   ],
