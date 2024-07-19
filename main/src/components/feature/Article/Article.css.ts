@@ -7,9 +7,13 @@
 import {style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
+export const back_link = style({
+  display: 'block',
+  marginTop: 8,
+});
+
 export const container = style({
   display: 'flex',
-  marginTop: 20,
 });
 
 const middle_margin = 16;

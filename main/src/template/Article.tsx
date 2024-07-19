@@ -42,7 +42,7 @@ export default function Articale(props: Props): React.ReactElement {
     <HeadingContext.Provider value={headings}>
       <Layout>
         <Breadcrumb breadcrumb_list={breadcrumb_list(article.title)} />
-        <Link to='/blog'>
+        <Link to='/blog' className={css.back_link}>
           <IconLeft />
           記事一覧ページへ移動
         </Link>
