@@ -21,7 +21,11 @@ export function TocInArticle(): React.ReactElement {
   return (
     <nav className={css.container}>
       <div className={css.top_items}>
-        <button className={css.close_button} onClick={() => SetTocOpening(!tocOpening)}>
+        <button
+          className={css.close_button}
+          onClick={() => SetTocOpening(!tocOpening)}
+          aria-label='toggle table of contents'
+        >
           <motion.div
             className={css.button_icon}
             animate={{

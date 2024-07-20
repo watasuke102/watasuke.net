@@ -44,7 +44,12 @@ export function Menu(): JSX.Element {
           </motion.nav>
         )}
       </AnimatePresence>
-      <button className={css.menu_opener} aria-expanded={is_open} onClick={() => set_is_open(f => !f)}>
+      <button
+        className={css.menu_opener}
+        aria-label='toggle menu'
+        aria-expanded={is_open}
+        onClick={() => set_is_open(f => !f)}
+      >
         <span className={`${css.icon} ${is_open ? css.icon_opening : ''}`} aria-hidden />
       </button>
     </div>
