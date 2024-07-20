@@ -8,26 +8,16 @@ import {style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
-  zIndex: 512,
   display: 'flex',
   justifyContent: 'space-around',
-  position: 'fixed',
   alignItems: 'center',
-  top: 0,
-  left: 0,
   height: 50,
   padding: 10,
-  marginBottom: 16,
-  width: '100vw',
+  width: '100%',
+  overflow: 'hidden',
   fontSize: '1.1em',
-
-  backgroundColor: `${color.bg}80`,
-  backdropFilter: 'blur(3px)',
   borderBottom: `dotted 1px ${color.fg}`,
 
-  // a {
-  //   color: color.$fg,
-  // }
   '@media': {
     'screen and (max-width: 550px)': {
       display: 'block',

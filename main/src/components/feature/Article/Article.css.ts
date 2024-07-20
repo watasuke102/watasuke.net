@@ -54,7 +54,7 @@ export const side_tag = style({
 
 export const side_toc = style({
   position: 'sticky',
-  top: 60,
+  top: 12,
   padding: '4px 12px',
   maxHeight: '80vh',
   overflowY: 'scroll',

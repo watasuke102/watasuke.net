@@ -7,11 +7,6 @@
 import {style} from '@vanilla-extract/css';
 
 export const container = style({
-  padding: '24px 12px',
-  paddingTop: 56,
-  '@media': {
-    'screen and (max-width: 550px)': {
-      marginTop: 48,
-    },
-  },
+  padding: 12,
+  paddingBottom: 24,
 });
