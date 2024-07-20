@@ -13,13 +13,13 @@ export const back_link = style({
 });
 
 export const container = style({
-  display: 'flex',
+  display: 'grid',
+  gridTemplateColumns: '1fr auto',
 });
 
 const middle_margin = 16;
 
 export const blogcontent_wrapper = style({
-  width: '75%',
   overflowX: 'hidden',
   borderRight: `1px solid ${color.fg}`,
   marginLeft: 4,
@@ -35,7 +35,7 @@ export const blogcontent_wrapper = style({
 });
 
 export const side = style({
-  width: '25%',
+  width: '25dvw',
   marginLeft: middle_margin,
   '@media': {
     'screen and (max-width: 700px)': {
