@@ -25,8 +25,3 @@ export const links = style({
 export const text = style({
   fontSize: '10em',
 });
-
-export const spacer_for_footer = style({
-  // TODO: adjust properly
-  height: 'calc(100vh - 280px)',
-});

@@ -19,7 +19,6 @@ export default function Error404(): React.ReactElement {
           <SimpleLinks />
         </div>
       </div>
-      <div className={css.spacer_for_footer} />
     </Layout>
   );
 }

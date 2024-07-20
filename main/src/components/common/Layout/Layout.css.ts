@@ -6,7 +6,12 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {style} from '@vanilla-extract/css';
 
-export const container = style({
+export const layout = style({
+  minHeight: '100vh',
+  display: 'grid',
+  gridTemplateRows: 'auto 1fr 40px auto',
+});
+
+export const main_area = style({
   padding: 12,
-  paddingBottom: 24,
 });

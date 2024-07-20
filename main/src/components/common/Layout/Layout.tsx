@@ -15,11 +15,11 @@ interface Props {
 
 export function Layout({children}: Props): React.ReactElement {
   return (
-    <>
+    <div className={css.layout}>
       <Header />
-      <div className={css.container}>{children}</div>
+      <div className={css.main_area}>{children}</div>
       <Menu />
       <Footer />
-    </>
+    </div>
   );
 }

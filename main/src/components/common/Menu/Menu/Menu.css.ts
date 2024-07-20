@@ -60,7 +60,7 @@ export const menu = style({
     'screen and (width < 550px)': {
       gridTemplateRows: '16px auto 1fr repeat(6, auto) 120px',
       right: -24,
-      bottom: -44,
+      bottom: -64,
       width: '100dvw',
       borderWidth: '2px 0 0 0',
     },
