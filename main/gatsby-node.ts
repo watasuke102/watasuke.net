@@ -38,33 +38,33 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       githash: String!,
     }
     type PortfolioToml implements Node @dontInfer {
-      name: String,
-      body: String,
+      name: String!,
+      body: String!,
     }
     type SiteData implements Node @dontInfer {
-      slug: String,
-      body: String
+      slug: String!,
+      body: String!,
     }
 
     type Ogp implements Node @dontInfer {
-      url: String,
-      title: String,
-      description: String,
-      image: String
+      url: String!,
+      title: String!,
+      description: String!,
+      image: String!,
     }
     type Articles implements Node @dontInfer {
-      slug: String,
-      title: String,
-      tldr: String,
-      body: String,
-      published_at: String,
-      updated_at: String,
-      tags: [Tags]
+      slug: String!,
+      title: String!,
+      tldr: String!,
+      body: String!,
+      published_at: String!,
+      updated_at: String!,
+      tags: [Tags!]!,
     }
 
     type Tags implements Node @dontInfer {
-      slug: String,
-      name: String
+      slug: String!,
+      name: String!,
     }
   `);
 };
@@ -263,19 +263,19 @@ export const createPages: GatsbyNode['createPages'] = async ({graphql, actions})
     type ArticlesResponse = {data?: {allArticles: {nodes: Article[]}}};
     // 投稿ページ
     const articles_response: ArticlesResponse = await graphql(`
-      query {
+      query sortedAllArticles {
         allArticles(sort: {published_at: DESC}) {
           nodes {
             slug
             title
             tldr
+            body
             tags {
               slug
               name
             }
             published_at
             updated_at
-            body
           }
         }
       }
@@ -299,7 +299,7 @@ export const createPages: GatsbyNode['createPages'] = async ({graphql, actions})
   {
     type TagsResponse = {data?: {allTags: {nodes: {slug: string; name: string}[]}}};
     const tags_response: TagsResponse = await graphql(`
-      query {
+      query allTags {
         allTags {
           nodes {
             slug

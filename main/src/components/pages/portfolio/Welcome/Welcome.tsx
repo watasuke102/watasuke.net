@@ -34,7 +34,7 @@ export function Welcome(props: Props): React.ReactElement {
 
   const bio_toml: BioToml = toml.parse(
     useStaticQuery(graphql`
-      query {
+      query portfolioBio {
         portfolioToml(name: {eq: "bio.toml"}) {
           body
         }

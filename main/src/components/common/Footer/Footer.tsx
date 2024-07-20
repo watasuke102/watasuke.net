@@ -15,8 +15,8 @@ import IconTwitter from '@assets/icons/Links/twitter.svg';
 import IconGithub from '@assets/icons/general/github.svg';
 
 export function Footer(): JSX.Element {
-  const info = useStaticQuery(graphql`
-    query {
+  const info: Queries.footerInfoQuery = useStaticQuery(graphql`
+    query footerInfo {
       site {
         siteMetadata {
           repo
@@ -32,25 +32,25 @@ export function Footer(): JSX.Element {
   `);
   // siteBuildMetadata.buildTime: ISO 8601 formatted (`YYYY-MM-DDTHH:mm:ss.sssZ`)
   const jst = 9 /*hours*/ * 60 /*minutes*/ * 60 /*sec*/ * 1000; /*ms*/
-  const build_date = new Date(Date.parse(info.site.buildTime) + jst);
+  const build_date = new Date(Date.parse(info.site?.buildTime ?? '') + jst);
   const build_date_str = build_date.toISOString().replace('T', ' ').slice(0, 19);
 
   return (
     <footer className={css.container}>
-      <h2 className={css.sitename}>{info.site.siteMetadata.title}</h2>
+      <h2 className={css.sitename}>{info.site?.siteMetadata?.title ?? ''}</h2>
 
       <span className={css.buildinfo}>
         Powered by Gatsby, built at {build_date_str} <br />
         Git hash:{' '}
-        <a href={`${info.site.siteMetadata.repo}/commit/${info.buildInfo.githash}`} className={css.githash}>
-          {info.buildInfo.githash}
+        <a href={`${info.site?.siteMetadata?.repo}/commit/${info.buildInfo?.githash ?? ''}`} className={css.githash}>
+          {info.buildInfo?.githash ?? ''}
         </a>{' '}
-        || contents Git hash: {info.buildInfo.contents_githash /* private repo; hyperlink is not available */}
+        || contents Git hash: {info.buildInfo?.contents_githash /* private repo; hyperlink is not available */ ?? ''}
       </span>
 
       {/* FIXME: `title` is not working because SVG has <title> */}
       <div className={css.icon_container}>
-        <a className={css.icon} title='GitHub repository' href={info.site.siteMetadata.repo}>
+        <a className={css.icon} title='GitHub repository' href={info.site?.siteMetadata?.repo ?? ''}>
           <IconGithub />
         </a>
         <a

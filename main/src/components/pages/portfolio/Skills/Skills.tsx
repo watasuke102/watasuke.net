@@ -51,8 +51,8 @@ export function Skills(props: Props): React.ReactElement {
   const next_groupby_ref = React.useRef('');
   next_groupby_ref.current = next_groupby;
 
-  const query = useStaticQuery(graphql`
-    query {
+  const query: Queries.portfolioSkillsQuery = useStaticQuery(graphql`
+    query portfolioSkills {
       portfolioToml(name: {eq: "Skills.toml"}) {
         body
       }
@@ -61,7 +61,7 @@ export function Skills(props: Props): React.ReactElement {
 
   const SkillCard = React.useMemo(() => {
     const skill_group = new Map<string, Skill[]>();
-    const skill_list: Skill[] = toml.parse(query.portfolioToml.body).skill;
+    const skill_list: Skill[] = toml.parse(query.portfolioToml?.body ?? '').skill;
 
     skill_list.forEach(e => {
       if (groupby !== 'tier') {

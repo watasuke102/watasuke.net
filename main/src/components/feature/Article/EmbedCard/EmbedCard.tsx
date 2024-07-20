@@ -13,14 +13,7 @@ interface Props {
   url: string;
 }
 
-interface Ogp {
-  title: string;
-  url: string;
-  description: string;
-  image: string;
-}
-
-function GetOgpFromUrl(ogp_list: Ogp[], url: string) {
+function GetOgpFromUrl(ogp_list: Queries.ogpListQuery['allOgp']['nodes'], url: string) {
   const ogp = ogp_list.filter(e => e.url === url);
   if (ogp) return ogp[0];
   else
@@ -33,8 +26,8 @@ function GetOgpFromUrl(ogp_list: Ogp[], url: string) {
 }
 
 export function EmbedCard({url}: Props): React.ReactElement {
-  const ogp_list = useStaticQuery(graphql`
-    query {
+  const ogp_list: Queries.ogpListQuery = useStaticQuery(graphql`
+    query ogpList {
       allOgp {
         nodes {
           title

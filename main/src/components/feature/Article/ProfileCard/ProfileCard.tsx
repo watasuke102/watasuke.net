@@ -10,8 +10,8 @@ import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
 
 export function ProfileCard(): React.ReactElement {
-  const query = useStaticQuery(graphql`
-    query {
+  const query: Queries.shortProfileQuery = useStaticQuery(graphql`
+    query shortProfile {
       siteData(slug: {eq: "short_profile"}) {
         body
       }
@@ -22,7 +22,7 @@ export function ProfileCard(): React.ReactElement {
       <StaticImage className={css.avatar} width={80} src='../../../../assets/icon.jpg' alt='icon' />
       <p>わたすけ</p>
       <p className={css.body}>
-        {query.siteData.body ?? ''}
+        {query.siteData?.body ?? ''}
         <br />
         プロフィール詳細は<Link to='/profile'>こちら</Link>
       </p>

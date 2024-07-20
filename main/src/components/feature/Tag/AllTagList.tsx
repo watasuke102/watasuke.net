@@ -9,8 +9,8 @@ import React from 'react';
 import {TagContainer} from './TagContainer';
 
 export function AllTagList(): React.ReactElement {
-  const tags = useStaticQuery(graphql`
-    query {
+  const tags: Queries.allTagsQuery = useStaticQuery(graphql`
+    query allTags {
       allTags {
         nodes {
           slug

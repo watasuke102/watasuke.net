@@ -18,8 +18,8 @@ interface Props {
 }
 
 export function History(props: Props): React.ReactElement {
-  const query = useStaticQuery(graphql`
-    query {
+  const query: Queries.portfolioHistoryQuery = useStaticQuery(graphql`
+    query portfolioHistory {
       portfolioToml(name: {eq: "History.toml"}) {
         body
       }
@@ -27,7 +27,7 @@ export function History(props: Props): React.ReactElement {
   `);
   const EventList = React.useMemo(() => {
     const event_group = new Map<string, Event[]>();
-    const skill_list: Event[] = toml.parse(query.portfolioToml.body).event;
+    const skill_list: Event[] = toml.parse(query.portfolioToml?.body ?? '').event;
 
     skill_list.forEach(e => {
       event_group.set(e.year, event_group.get(e.year) ?? []);
@@ -49,7 +49,7 @@ export function History(props: Props): React.ReactElement {
     });
 
     return cards;
-  }, [props, query.portfolioToml.body]);
+  }, [props, query.portfolioToml?.body]);
 
   return (
     <div className={portfolio_common.container}>

@@ -8,21 +8,14 @@ import * as css from './InnerEmbedCard.css';
 import {initialized_a} from '@utils/initialized_a.css';
 import {Link, graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
-import Article from '@mytypes/Article';
 
 interface Props {
   slug: string;
 }
 
-interface Response {
-  allArticles: {
-    nodes: Article[];
-  };
-}
-
 export function InnerEmbedCard(props: Props): React.ReactElement {
-  const articles: Response = useStaticQuery(graphql`
-    query {
+  const articles: Queries.sortedAllArticlesQuery = useStaticQuery(graphql`
+    query sortedAllArticles {
       allArticles(sort: {published_at: DESC}) {
         nodes {
           slug

@@ -27,7 +27,7 @@ interface Props {
 export function Links(props: Props): React.ReactElement {
   const link_list: Link[] = toml.parse(
     useStaticQuery(graphql`
-      query {
+      query portfolioLinks {
         portfolioToml(name: {eq: "Links.toml"}) {
           body
         }

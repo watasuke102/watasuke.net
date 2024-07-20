@@ -11,9 +11,9 @@ import IconTag from '@assets/icons/general/tag.svg';
 
 interface Props {
   disable_icon?: boolean;
-  tags: {
-    slug: string;
-    name: string;
+  tags: readonly {
+    readonly slug: string;
+    readonly name: string;
   }[];
 }
 

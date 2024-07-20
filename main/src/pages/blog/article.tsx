@@ -43,7 +43,7 @@ export default function ArticleListPage({data}: Props): React.ReactElement {
 }
 
 export const query = graphql`
-  query {
+  query sortedAllArticles {
     allArticles(sort: {published_at: DESC}) {
       nodes {
         slug

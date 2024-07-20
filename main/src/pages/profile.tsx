@@ -49,7 +49,7 @@ export default function Profile(props: Props): React.ReactElement {
 }
 
 export const query = graphql`
-  query {
+  query profile {
     siteData(slug: {eq: "profile"}) {
       body
     }

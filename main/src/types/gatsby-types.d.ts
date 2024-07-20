@@ -37,17 +37,17 @@ type AVIFOptions = {
 };
 
 type Articles = Node & {
-  readonly body: Maybe<Scalars['String']>;
+  readonly body: Scalars['String'];
   readonly children: ReadonlyArray<Node>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
   readonly parent: Maybe<Node>;
-  readonly published_at: Maybe<Scalars['String']>;
-  readonly slug: Maybe<Scalars['String']>;
-  readonly tags: Maybe<ReadonlyArray<Maybe<Tags>>>;
-  readonly title: Maybe<Scalars['String']>;
-  readonly tldr: Maybe<Scalars['String']>;
-  readonly updated_at: Maybe<Scalars['String']>;
+  readonly published_at: Scalars['String'];
+  readonly slug: Scalars['String'];
+  readonly tags: ReadonlyArray<Tags>;
+  readonly title: Scalars['String'];
+  readonly tldr: Scalars['String'];
+  readonly updated_at: Scalars['String'];
 };
 
 type ArticlesConnection = {
@@ -1536,13 +1536,13 @@ type NodeSortInput = {
 
 type Ogp = Node & {
   readonly children: ReadonlyArray<Node>;
-  readonly description: Maybe<Scalars['String']>;
+  readonly description: Scalars['String'];
   readonly id: Scalars['ID'];
-  readonly image: Maybe<Scalars['String']>;
+  readonly image: Scalars['String'];
   readonly internal: Internal;
   readonly parent: Maybe<Node>;
-  readonly title: Maybe<Scalars['String']>;
-  readonly url: Maybe<Scalars['String']>;
+  readonly title: Scalars['String'];
+  readonly url: Scalars['String'];
 };
 
 type OgpConnection = {
@@ -1680,11 +1680,11 @@ type PageInfo = {
 };
 
 type PortfolioToml = Node & {
-  readonly body: Maybe<Scalars['String']>;
+  readonly body: Scalars['String'];
   readonly children: ReadonlyArray<Node>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
-  readonly name: Maybe<Scalars['String']>;
+  readonly name: Scalars['String'];
   readonly parent: Maybe<Node>;
 };
 
@@ -2440,12 +2440,12 @@ type SiteConnection_sumArgs = {
 };
 
 type SiteData = Node & {
-  readonly body: Maybe<Scalars['String']>;
+  readonly body: Scalars['String'];
   readonly children: ReadonlyArray<Node>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
   readonly parent: Maybe<Node>;
-  readonly slug: Maybe<Scalars['String']>;
+  readonly slug: Scalars['String'];
 };
 
 type SiteDataConnection = {
@@ -3465,9 +3465,9 @@ type Tags = Node & {
   readonly children: ReadonlyArray<Node>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
-  readonly name: Maybe<Scalars['String']>;
+  readonly name: Scalars['String'];
   readonly parent: Maybe<Node>;
-  readonly slug: Maybe<Scalars['String']>;
+  readonly slug: Scalars['String'];
 };
 
 type TagsConnection = {
@@ -3600,6 +3600,16 @@ type WebPOptions = {
   readonly quality: InputMaybe<Scalars['Int']>;
 };
 
+type allTagsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type allTagsQuery = { readonly allTags: { readonly nodes: ReadonlyArray<{ readonly slug: string, readonly name: string }> } };
+
+type footerInfoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type footerInfoQuery = { readonly site: { readonly buildTime: string | null, readonly siteMetadata: { readonly repo: string | null, readonly title: string | null } | null } | null, readonly buildInfo: { readonly githash: string, readonly contents_githash: string } | null };
+
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 
 type GatsbyImageSharpFixed_noBase64Fragment = { readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
@@ -3626,15 +3636,50 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = { readonly tracedSVG: st
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: number, readonly maxWidth: number };
 
-type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+type ogpListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_1_Query = { readonly allArticles: { readonly nodes: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly tldr: string | null, readonly published_at: string | null, readonly updated_at: string | null, readonly body: string | null, readonly tags: ReadonlyArray<{ readonly slug: string | null, readonly name: string | null } | null> | null }> } };
+type ogpListQuery = { readonly allOgp: { readonly nodes: ReadonlyArray<{ readonly title: string, readonly url: string, readonly description: string, readonly image: string }> } };
 
-type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
+type portfolioBioQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_2_Query = { readonly allTags: { readonly nodes: ReadonlyArray<{ readonly slug: string | null, readonly name: string | null }> } };
+type portfolioBioQuery = { readonly portfolioToml: { readonly body: string } | null };
+
+type portfolioHistoryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type portfolioHistoryQuery = { readonly portfolioToml: { readonly body: string } | null };
+
+type portfolioLinksQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type portfolioLinksQuery = { readonly portfolioToml: { readonly body: string } | null };
+
+type portfolioSkillsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type portfolioSkillsQuery = { readonly portfolioToml: { readonly body: string } | null };
+
+type profileQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type profileQuery = { readonly siteData: { readonly body: string } | null };
+
+type seoInfoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type seoInfoQuery = { readonly file: { readonly publicURL: string | null } | null, readonly site: { readonly trailingSlash: string | null, readonly siteMetadata: { readonly siteUrl: string | null } | null } | null };
+
+type shortProfileQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type shortProfileQuery = { readonly siteData: { readonly body: string } | null };
+
+type sortedAllArticlesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type sortedAllArticlesQuery = { readonly allArticles: { readonly nodes: ReadonlyArray<{ readonly slug: string, readonly title: string, readonly tldr: string, readonly body: string, readonly published_at: string, readonly updated_at: string, readonly tags: ReadonlyArray<{ readonly slug: string, readonly name: string }> }> } };
 
 
 }
