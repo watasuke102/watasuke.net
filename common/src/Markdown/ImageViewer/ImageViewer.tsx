@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as style from './ImageViewer.css';
-import {AnimatePresence, motion} from 'framer-motion';
+import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
 import React from 'react';
 
 interface Props {
@@ -15,6 +15,7 @@ interface Props {
 
 export const ImageViewer = ({src, alt}: Props): React.ReactElement => {
   const [is_open, SetIsOpen] = React.useState(false);
+  const should_reduce_motion = useReducedMotion();
 
   return (
     <>
@@ -39,7 +40,7 @@ export const ImageViewer = ({src, alt}: Props): React.ReactElement => {
             initial='init'
             animate='main'
             exit='init'
-            transition={{duration: 0.2}}
+            transition={{duration: 0.2 * Number(!should_reduce_motion)}}
             onClick={() => SetIsOpen(false)}
             className={style.modal}
           >

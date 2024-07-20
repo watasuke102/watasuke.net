@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './TocInArticle.css';
-import {AnimatePresence, motion} from 'framer-motion';
+import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
 import React from 'react';
 import {HeadingContext, TocMapper} from '@feature/TableOfContents';
 import IconCollapse from '@assets/icons/general/up.svg';
@@ -13,6 +13,7 @@ import IconCollapse from '@assets/icons/general/up.svg';
 export function TocInArticle(): React.ReactElement {
   const [tocOpening, SetTocOpening] = React.useState(true);
   const headings = React.useContext(HeadingContext);
+  const should_reduce_motion = useReducedMotion();
 
   if (!headings) {
     return <></>;
@@ -31,7 +32,7 @@ export function TocInArticle(): React.ReactElement {
             animate={{
               transform: tocOpening ? 'rotate(0deg)' : 'rotate(-180deg)',
             }}
-            transition={{duration: 0.2}}
+            transition={{duration: 0.2 * Number(!should_reduce_motion)}}
           >
             <IconCollapse />
           </motion.div>
@@ -48,7 +49,7 @@ export function TocInArticle(): React.ReactElement {
           }}
           transition={{
             ease: 'easeOut',
-            duration: 0.2,
+            duration: 0.2 * Number(!should_reduce_motion),
           }}
         >
           <TocMapper headings={headings} />

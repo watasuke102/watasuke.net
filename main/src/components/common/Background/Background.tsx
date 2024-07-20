@@ -4,6 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import {useReducedMotion} from 'framer-motion';
 import * as css from './Background.css';
 import React from 'react';
 
@@ -27,6 +28,7 @@ function rand(x: number) {
 }
 
 export default function Background(): React.ReactElement {
+  const should_reduce_motion = useReducedMotion();
   const canvas_ref = React.useRef<HTMLCanvasElement>();
   const align = 10;
 
@@ -174,5 +176,5 @@ export default function Background(): React.ReactElement {
     return () => window.removeEventListener('resize', UpdateCanvasSize);
   }, []);
 
-  return <canvas ref={canvas_ref} className={css.canvas} />;
+  return should_reduce_motion ? <></> : <canvas ref={canvas_ref} className={css.canvas} />;
 }

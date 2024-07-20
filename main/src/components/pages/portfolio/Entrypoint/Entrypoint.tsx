@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Entrypoint.css';
 import {Toggle} from '@common';
-import {AnimatePresence, motion} from 'framer-motion';
+import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
 import {navigate} from 'gatsby';
 import React from 'react';
 import {IsMobileDevice} from '@utils/IsMobileDevice';
@@ -18,9 +18,10 @@ const invisible_mask = `repeating-linear-gradient(-60deg, #98c379 0px ${blind_wi
 export const Entrypoint = (props: {
   complete: (lang: string, page_transition: boolean, animation: boolean) => void;
 }): React.ReactElement => {
+  const should_reduce_motion = useReducedMotion();
   const [button_clicked, set_button_clicked] = React.useState(false);
   const [lang, set_lang] = React.useState('ja');
-  const [animation, set_animation] = React.useState('on');
+  const [animation, set_animation] = React.useState(should_reduce_motion ? 'off' : 'on');
   const [page_transition, set_transition] = React.useState('on');
 
   const complete = React.useCallback(() => {
@@ -35,12 +36,16 @@ export const Entrypoint = (props: {
         className={css.center_menu}
         initial={{opacity: 0}}
         animate={{opacity: 1}}
-        transition={{delay: 0.5, duration: 1}}
+        transition={{delay: 0.5 * Number(!should_reduce_motion), duration: 1 * Number(!should_reduce_motion)}}
       >
-        <div className={css.outer_0} />
-        <div className={css.inner_0} />
-        <div className={css.inner_1} />
-        <div className={css.inner_2} />
+        {!should_reduce_motion && (
+          <>
+            <div className={css.outer_0} />
+            <div className={css.inner_0} />
+            <div className={css.inner_1} />
+            <div className={css.inner_2} />
+          </>
+        )}
 
         <div className={css.container}>
           <span className={css.welcome}>Welcome!</span>
