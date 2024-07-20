@@ -54,17 +54,23 @@ export const menu_card = style({
   textAlign: 'center',
   textDecoration: 'none',
 
+  ':hover': {
+    color: color.p0,
+  },
   ':focus': {
     outline: 'none',
     borderColor: color.fg,
   },
 
-  transition: `transform ${translate_time}s`,
-  ':hover': {
-    color: color.p0,
-    textDecoration: 'underline',
-    transform: 'scale(111%)',
-    transition: `transform ${translate_time}s`,
+  '@media': {
+    '(prefers-reduced-motion: no-preference)': {
+      transition: `transform ${translate_time}s`,
+      ':hover': {
+        textDecoration: 'underline',
+        transform: 'scale(111%)',
+        transition: `transform ${translate_time}s`,
+      },
+    },
   },
 });
 

@@ -10,6 +10,16 @@ import {color} from '@watasuke.net/common/src/css/color';
 globalStyle('*', {
   scrollBehavior: 'auto',
 });
+globalStyle('::before, *, ::after', {
+  '@media': {
+    '(prefers-reduced-motion: reduce)': {
+      transitionDelay: '0s !important',
+      transitionDuration: '0s !important',
+      animationDelay: '0s !important',
+      animationDuration: '0s !important',
+    },
+  },
+});
 
 globalStyle(':root', {
   fontFamily: '"M PLUS Rounded 1c", sans-serif',

@@ -15,23 +15,26 @@ export const container = style({
   margin: '30px auto',
   padding: 10,
 
-  textDecoration: 'none',
   color: color.fg,
+  textDecoration: 'none',
+  ':hover': {
+    textDecoration: 'underline',
+  },
 
   wordBreak: 'break-all',
   borderRadius: 4,
   border: `2px solid ${color.fg}`,
-  transition: 'transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
-  ':hover': {
-    cursor: 'pointer',
-    transform: 'translateY(-4px)',
-    transition: 'transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
-    color: color.fg,
-    textDecoration: 'none',
-  },
-
-  // 横幅が十分にあるときは画像とテキストを横並べ
   '@media': {
+    '(prefers-reduced-motion: no-preference)': {
+      transition: 'transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
+      ':hover': {
+        cursor: 'pointer',
+        transform: 'translateY(-4px)',
+        transition: 'transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
+        color: color.fg,
+      },
+    },
+    // 横幅が十分にあるときは画像とテキストを横並べ
     'screen and (max-width: 800px)': {
       display: 'block',
     },

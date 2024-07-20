@@ -19,11 +19,15 @@ export const container = style({
   wordBreak: 'break-all',
   borderRadius: 4,
   border: `2px solid ${color.p0}`,
-  transition: 'transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
-  ':hover': {
-    cursor: 'pointer',
-    transform: 'translateY(-4px)',
-    transition: 'transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
+  '@media': {
+    '(prefers-reduced-motion: no-preference)': {
+      transition: 'transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
+      ':hover': {
+        cursor: 'pointer',
+        transform: 'translateY(-4px)',
+        transition: 'transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
+      },
+    },
   },
 });
 

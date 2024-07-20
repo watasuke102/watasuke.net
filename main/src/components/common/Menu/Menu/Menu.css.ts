@@ -112,13 +112,11 @@ export const icon_opening = style({
   '::before': {
     top: 0,
     transform: 'rotate(-45deg)',
-    transitionProperty: 'transform, top',
     ...animation,
   },
   '::after': {
     top: 0,
     transform: 'rotate(45deg)',
-    transitionProperty: 'transform, top',
     ...animation,
   },
 });
