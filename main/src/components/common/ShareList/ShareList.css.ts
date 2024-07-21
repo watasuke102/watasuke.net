@@ -33,3 +33,20 @@ export const hatena_icon = style({
   color: '#00a4de',
   backgroundColor: '#fff',
 });
+
+export const menu_button = style({
+  paddingBlock: 0,
+  borderRadius: 4,
+  boxShadow: '4px 4px 6px 2px #1a1a1a',
+  borderColor: color.fg,
+  transitionProperty: 'background-color, transform',
+  transitionDuration: '0.2s',
+  ':hover': {
+    transitionDuration: '0.2s',
+    backgroundColor: `${color.p0}33`,
+  },
+  ':active': {
+    transitionDuration: '0.2s',
+    transform: 'translate(1px, 1px)',
+  },
+});

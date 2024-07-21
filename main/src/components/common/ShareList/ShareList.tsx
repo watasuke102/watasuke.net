@@ -5,7 +5,6 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './ShareList.css';
-import * as common from '../Menu/common.css';
 // @ts-expect-error ??? (FIXME)
 import React from 'react';
 import IconTwitter from '@assets/icons/Links/twitter.svg';
@@ -59,7 +58,7 @@ export function ShareList(): JSX.Element {
         <button
           onClick={() => navigator.share({title: document.title, url: document.URL})}
           title='Share via...'
-          className={common.menu_button}
+          className={css.menu_button}
         >
           <IconShare />
         </button>

@@ -5,9 +5,10 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import '@watasuke.net/common/src/css/base.css';
-import {Seo, Breadcrumb, Layout} from '@common';
+import {Seo, Breadcrumb} from '@common';
 import React from 'react';
 import {AdsInArticle} from '@watasuke.net/common';
+import {Layout} from '@feature/Layout';
 import {AllTagList} from '@feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 

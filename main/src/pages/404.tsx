@@ -5,8 +5,9 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from '@pages/404.css';
-import {Background, Layout, SimpleInnerLinks} from '@common';
+import {Background, SimpleInnerLinks} from '@common';
 import React from 'react';
+import {Layout} from '@feature/Layout';
 
 export default function Error404(): React.ReactElement {
   return (

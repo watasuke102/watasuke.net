@@ -6,9 +6,10 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from '@feature/Article/Article.css';
 import '@watasuke.net/common/src/css/base.css';
-import {Seo, Layout, Breadcrumb} from '@common';
+import {Seo, Breadcrumb} from '@common';
 import React from 'react';
 import {Link} from 'gatsby';
+import {Layout} from '@feature/Layout';
 import {BlogContent, ProfileCard} from '@feature/Article';
 import {AllTagList} from '@feature/Tag';
 import {HeadingContext} from '@feature/TableOfContents/HeadingContext';

@@ -4,8 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {useReducedMotion} from 'framer-motion';
 import * as css from './Background.css';
+import {useReducedMotion} from 'framer-motion';
 import React from 'react';
 
 interface FigureInfo {

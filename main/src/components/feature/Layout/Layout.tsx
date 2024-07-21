@@ -5,9 +5,10 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Layout.css';
-import {Header, Footer} from '@common';
 import React from 'react';
-import {Menu} from '../Menu';
+import {Header} from './Header/Header';
+import {Menu} from './Menu';
+import {Footer} from './Footer';
 
 interface Props {
   children: React.ReactNode;
