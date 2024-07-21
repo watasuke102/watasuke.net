@@ -12,91 +12,159 @@ globalStyle('.gatsby-image-wrapper [data-main-image]', {
 });
 
 export const container = style({
-  width: '95%',
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translateX(-50%) translateY(-50%)',
-});
-
-export const icon_and_name = style({
-  width: 350,
-  margin: 'auto',
-  textAlign: 'center',
-});
-
-export const welcome = style({
-  margin: 0,
-});
-
-export const menu = style({
-  display: 'flex',
-  justifyContent: 'space-around',
-  marginTop: '10%',
-
+  width: '100%',
+  height: '100dvh',
+  display: 'grid',
+  gridTemplate: `
+    'left links_head'    auto
+    'left links'         auto
+    'left articles_head' auto
+    'left articles'      1fr  / auto 1fr
+  `,
+  columnGap: 40,
+  padding: 40,
   '@media': {
-    'screen and (max-width: 750px)': {
-      display: 'grid',
-      width: '100%',
-      // MenuCardのwidthが180px
-      gridTemplateColumns: '180px 180px',
-      justifyContent: 'space-around',
+    'screen and (width < 750px)': {
+      height: 'auto',
+      padding: 0,
+      paddingBottom: 60,
+      gridTemplate: `
+        'left'          max(720px, calc(100vh - 240px))
+        'links_head'    auto
+        'links'         auto
+        'articles_head' auto
+        'articles'      auto / 1fr
+      `,
     },
   },
 });
 
-const translate_time = 0.2;
-export const menu_card = style({
-  width: 180,
-  padding: '16px 24px',
-  border: `2px solid ${color.transparent}`,
-  borderRadius: 0,
+export const left = style({
+  gridArea: 'left',
+  justifySelf: 'center',
+  alignSelf: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 32,
+});
+export const icon_and_welcome = style({
+  marginInline: 'auto',
   textAlign: 'center',
-  textDecoration: 'none',
+});
+export const welcome_head = style({
+  textAlign: 'center',
+  fontSize: '2.2em',
+  margin: 0,
+});
+export const ls = style({
+  fontSize: '1.6em',
+  fontWeight: 'normal',
+  marginBottom: 12,
+});
+export const command_name = style({
+  color: color.p0,
+  fontWeight: 'bold',
+});
+export const directory = style({
+  textDecoration: 'underline',
+});
 
+export const menu = style({
+  display: 'flex',
+  flexDirection: 'column',
+});
+export const menu_entry = style({
+  display: 'grid',
+  gridTemplateColumns: '40px auto',
+  alignItems: 'center',
+  gap: 16,
+  paddingBlock: 8,
+  color: color.fg,
+  textDecorationColor: color.p0,
+});
+export const menu_entry_path = style({
+  fontSize: '1.9em',
+  fontWeight: 'bold',
+  color: color.p0,
+});
+
+export const links_head = style({
+  gridArea: 'links_head',
+  textAlign: 'center',
+  backgroundColor: `${color.bg}cc`,
+});
+export const link_container = style({
+  gridArea: 'links',
+  display: 'flex',
+  justifyContent: 'center',
+  flexWrap: 'wrap',
+  marginBottom: 20,
+  rowGap: 8,
+  columnGap: 28,
+  marginInline: 'auto',
+});
+export const link_entry = style({
+  width: 52,
+  aspectRatio: '1 / 1',
+  padding: 8,
+  border: `2px solid ${color.fg}`,
+  borderRadius: 8,
+  color: color.fg,
+  backgroundColor: color.bg,
+  transition: 'background-color 0.3s',
   ':hover': {
-    color: color.p0,
+    color: color.fg,
   },
-  ':focus': {
-    outline: 'none',
-    borderColor: color.fg,
-  },
-
   '@media': {
-    '(prefers-reduced-motion: no-preference)': {
-      transition: `transform ${translate_time}s`,
+    '(hover: hover)': {
       ':hover': {
-        textDecoration: 'underline',
-        transform: 'scale(111%)',
-        transition: `transform ${translate_time}s`,
+        color: color.bg,
+        backgroundColor: color.p0,
+        transition: 'background-color 0.3s',
+      },
+    },
+  },
+});
+export const link_twitter = style({
+  '@media': {
+    '(hover: hover)': {
+      ':hover': {
+        color: color.brand.twitter,
+      },
+    },
+  },
+});
+export const link_soundcloud = style({
+  '@media': {
+    '(hover: hover)': {
+      ':hover': {
+        color: '#ff5500',
       },
     },
   },
 });
 
-export const menu_card_text = style({
-  display: 'block',
-  fontSize: '1.8em',
-  fontWeight: 'bold',
-  color: color.p0,
-  wordBreak: 'keep-all',
+export const articles_head = style({
+  gridArea: 'articles_head',
+  textAlign: 'center',
+  backgroundColor: `${color.bg}cc`,
 });
-
-export const menu_card_icon = style({
-  color: color.fg,
-  width: 80,
-  margin: 'auto',
-  paddingBottom: 12,
-  transition: `color ${translate_time}s`,
-
-  selectors: {
-    [`${menu_card}:hover > &`]: {
-      color: '#ffffff',
-      transition: `color ${translate_time}`,
+export const favorite_articles = style({
+  height: '100%',
+  overflowY: 'scroll',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 16,
+  border: `2px solid ${color.p0}`,
+  backgroundColor: `${color.bg}aa`,
+  padding: 12,
+  fontSize: '0.9em',
+  scrollbarWidth: 'thin',
+  scrollbarGutter: 'stable',
+  scrollbarColor: `${color.bg} ${color.p0}`,
+  '@media': {
+    'screen and (width < 750px)': {
+      marginInline: 16,
     },
   },
-});
-globalStyle(`${menu_card_icon} svg`, {
-  width: '100%',
-  height: '100%',
 });

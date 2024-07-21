@@ -3610,6 +3610,11 @@ type allTagsQueryVariables = Exact<{ [key: string]: never; }>;
 
 type allTagsQuery = { readonly allTags: { readonly nodes: ReadonlyArray<{ readonly slug: string, readonly name: string }> } };
 
+type favoriteArticlesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type favoriteArticlesQuery = { readonly allArticles: { readonly nodes: ReadonlyArray<{ readonly slug: string, readonly title: string, readonly tldr: string, readonly published_at: string, readonly tags: ReadonlyArray<{ readonly slug: string, readonly name: string }> }> } };
+
 type footerInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
