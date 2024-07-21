@@ -22,6 +22,7 @@ CC-BY 4.0
 - general/up.svg
 - general/right.svg
 - general/share.svg
+- general/translate.svg
 - top/\*
 
 ## Simple Icons 8.5.0
