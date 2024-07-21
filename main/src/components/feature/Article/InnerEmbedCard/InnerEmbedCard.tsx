@@ -15,19 +15,11 @@ interface Props {
 
 export function InnerEmbedCard(props: Props): React.ReactElement {
   const articles: Queries.sortedAllArticlesQuery = useStaticQuery(graphql`
-    query sortedAllArticles {
+    query innerEmbedCardInfo {
       allArticles(sort: {published_at: DESC}) {
         nodes {
-          slug
           title
           tldr
-          body
-          tags {
-            slug
-            name
-          }
-          published_at
-          updated_at
         }
       }
     }

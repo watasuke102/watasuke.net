@@ -3636,6 +3636,11 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = { readonly tracedSVG: st
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: number, readonly maxWidth: number };
 
+type innerEmbedCardInfoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type innerEmbedCardInfoQuery = { readonly allArticles: { readonly nodes: ReadonlyArray<{ readonly title: string, readonly tldr: string }> } };
+
 type ogpListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3680,6 +3685,11 @@ type sortedAllArticlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type sortedAllArticlesQuery = { readonly allArticles: { readonly nodes: ReadonlyArray<{ readonly slug: string, readonly title: string, readonly tldr: string, readonly body: string, readonly published_at: string, readonly updated_at: string, readonly tags: ReadonlyArray<{ readonly slug: string, readonly name: string }> }> } };
+
+type allArticlesInCreatePagesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type allArticlesInCreatePagesQuery = { readonly allArticles: { readonly nodes: ReadonlyArray<{ readonly slug: string, readonly title: string, readonly tldr: string, readonly body: string, readonly published_at: string, readonly updated_at: string, readonly tags: ReadonlyArray<{ readonly slug: string, readonly name: string }> }> } };
 
 
 }

@@ -263,7 +263,7 @@ export const createPages: GatsbyNode['createPages'] = async ({graphql, actions})
     type ArticlesResponse = {data?: {allArticles: {nodes: Article[]}}};
     // 投稿ページ
     const articles_response: ArticlesResponse = await graphql(`
-      query sortedAllArticles {
+      query allArticlesInCreatePages {
         allArticles(sort: {published_at: DESC}) {
           nodes {
             slug
