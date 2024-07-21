@@ -7,7 +7,7 @@
 import * as css from './MenuContents.css';
 import * as common from '../common.css';
 import React from 'react';
-import {SimpleLinks} from '@common';
+import {SimpleInnerLinks} from '@common';
 import {HeadingContext, TocMapper} from '@feature/TableOfContents';
 import {ShareList} from '../../ShareList';
 import IconUp from '@assets/icons/general/up.svg';
@@ -30,7 +30,7 @@ export function MenuContents(): JSX.Element {
       <ShareList />
 
       <h2 className={css.heading}>Links</h2>
-      <SimpleLinks />
+      <SimpleInnerLinks />
       <hr style={{opacity: 1}} />
 
       <button onClick={() => window.scroll({top: 0, behavior: 'smooth'})} className={common.menu_button}>

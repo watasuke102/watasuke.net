@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from '@pages/404.css';
-import {Background, Layout, SimpleLinks} from '@common';
+import {Background, Layout, SimpleInnerLinks} from '@common';
 import React from 'react';
 
 export default function Error404(): React.ReactElement {
@@ -16,7 +16,7 @@ export default function Error404(): React.ReactElement {
         <h1 className={css.text}>404</h1>
         <div className={css.links}>
           <h2>Links</h2>
-          <SimpleLinks />
+          <SimpleInnerLinks />
         </div>
       </div>
     </Layout>

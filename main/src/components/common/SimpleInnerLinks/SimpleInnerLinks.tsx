@@ -4,12 +4,12 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as css from './SimpleLinks.css';
+import * as css from './SimpleInnerLinks.css';
 // @ts-expect-error ??? (FIXME)
 import React from 'react';
 import {Link} from 'gatsby';
 
-export function SimpleLinks(): JSX.Element {
+export function SimpleInnerLinks(): JSX.Element {
   return (
     // fragment is needed because of prettier-ignore
     <>
