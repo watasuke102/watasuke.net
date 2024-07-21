@@ -6,46 +6,28 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {Seo} from '@common';
 import React from 'react';
-import {PortfolioContainer, Entrypoint, Welcome, Skills, History, Links, End} from '@pages/portfolio';
+import {Welcome, Skills, History, Links} from '@pages/portfolio';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Portfolio'}]);
 
-export default function Portfolio(): React.ReactElement {
-  const [lang, set_lang] = React.useState<string | undefined>();
-  const [animation, set_animation] = React.useState<boolean | undefined>();
-  const [page_transition, set_page_transition] = React.useState<boolean | undefined>();
+interface Props {
+  location: {
+    href: string;
+  };
+}
 
-  React.useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    set_lang(params.get('lang') ?? undefined);
-
-    const animation_param = params.get('animation');
-    set_animation(animation_param === null ? undefined : animation_param !== 'false');
-
-    const page_transition_param = params.get('page_transition');
-    set_page_transition(page_transition_param === null ? undefined : page_transition_param !== 'false');
-  }, []);
-
-  const complete = React.useCallback((lang: string, page_transition: boolean, animation: boolean) => {
-    set_lang(lang);
-    set_animation(animation);
-    set_page_transition(page_transition);
-  }, []);
+export default function Portfolio(props: Props): React.ReactElement {
+  const params = new URLSearchParams(props.location.href);
+  const animation = (params.get('animation') ?? '') !== 'false';
+  const lang = params.get('lang') ?? 'ja';
 
   return (
-    <main id='portfolio-container'>
-      {lang === undefined || animation === undefined || page_transition === undefined ? (
-        <Entrypoint complete={complete} />
-      ) : (
-        <PortfolioContainer animation_enabled={animation} page_transition_enabled={page_transition}>
-          <Welcome animation_enabled={animation} lang={lang} />
-          <Skills animation_enabled={animation} lang={lang} />
-          <History animation_enabled={animation} lang={lang} />
-          <Links animation_enabled={animation} lang={lang} />
-          <End />
-        </PortfolioContainer>
-      )}
+    <main id='portfolio-container' style={{backgroundColor: '#98c379'}}>
+      <Welcome animation_enabled={animation} lang={lang} />
+      <Skills animation_enabled={animation} lang={lang} />
+      <History animation_enabled={animation} lang={lang} />
+      <Links animation_enabled={animation} lang={lang} />
     </main>
   );
 }

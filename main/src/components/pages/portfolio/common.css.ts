@@ -9,7 +9,7 @@ import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
   position: 'relative',
-  width: '100dvw',
+  width: '100%',
   minHeight: '100dvh',
   color: color.bg,
 });
