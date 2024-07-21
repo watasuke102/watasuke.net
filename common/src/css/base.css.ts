@@ -38,6 +38,11 @@ globalStyle('a:hover', {
   transition: 'color 0.3s',
 });
 
+globalStyle('code', {
+  fontFamily:
+    '"Moralerspace Krypton NF", "Monaspace Krypton", MyricaM, "MyricaM M", "Source Code Pro", "Ubuntu Mono", "Ubuntu Monospace", Consolas, monospace',
+});
+
 globalStyle('table', {
   margin: '16px 0',
 });
