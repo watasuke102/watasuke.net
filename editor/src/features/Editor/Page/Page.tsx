@@ -36,6 +36,7 @@ export function Page({article, tags}: Props): JSX.Element {
   const [state, dispatch] = useImmerReducer(article_reducer, {
     body: article.body,
     title: article.title,
+    is_favorite: article.isFavorite,
     tldr: article.tldrReal ?? '',
     tags: article.tags.map(e => e.slug),
     all_tags: tags,
@@ -53,7 +54,7 @@ export function Page({article, tags}: Props): JSX.Element {
         title: state.title,
         tldr: state.tldr,
         tags: state.tags,
-        isFavorite: false,
+        isFavorite: state.is_favorite,
         body: state.body ?? '',
       });
       set_toast_status({title: 'success', desc: ''});

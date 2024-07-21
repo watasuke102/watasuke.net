@@ -96,7 +96,7 @@ export type Tag = {
 export type AllArticlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllArticlesQuery = { __typename?: 'Query', allArticles: Array<{ __typename?: 'Article', slug: string, title: string, publishedAt: string, updatedAt: string, isPublished: boolean }> };
+export type AllArticlesQuery = { __typename?: 'Query', allArticles: Array<{ __typename?: 'Article', slug: string, title: string, isFavorite: boolean, publishedAt: string, updatedAt: string, isPublished: boolean }> };
 
 export type ArticleEditPageQueryVariables = Exact<{
   slug: Scalars['String']['input'];
@@ -156,6 +156,7 @@ export const AllArticlesDocument = gql`
   allArticles {
     slug
     title
+    isFavorite
     publishedAt
     updatedAt
     isPublished

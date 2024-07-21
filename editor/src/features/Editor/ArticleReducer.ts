@@ -13,6 +13,9 @@ export type Action =
       data: string;
     }
   | {
+      type: 'is_favorite/toggle';
+    }
+  | {
       type: 'tag/add';
       add_tags: string[];
     }
@@ -24,6 +27,7 @@ export type Action =
 export type StateType = {
   title: string;
   body: string;
+  is_favorite: boolean;
   tldr: string;
   tags: string[];
   all_tags: AllTagsQuery['allTags'];
@@ -43,6 +47,10 @@ export const article_reducer: ReducerType = (current: StateType, action: Action)
     }
     case 'tldr/update': {
       current.tldr = action.data;
+      break;
+    }
+    case 'is_favorite/toggle': {
+      current.is_favorite = !current.is_favorite;
       break;
     }
     case 'tag/add': {

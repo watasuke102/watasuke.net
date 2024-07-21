@@ -23,4 +23,16 @@ export const css = {
     fontSize: '0.9em',
     color: color.g3,
   }),
+  checkbox_wrapper: style({
+    display: 'flex',
+    alignItems: 'center',
+    gap: 8,
+  }),
+  check_icon: style({
+    width: 32,
+    height: 32,
+    padding: 0,
+    border: `1px solid ${color.fg}`,
+    borderRadius: 4,
+  }),
 };

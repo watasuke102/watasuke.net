@@ -6,8 +6,10 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {css} from './FrontmatterEditor.css';
 import React from 'react';
+import * as Checkbox from '@radix-ui/react-checkbox';
 import * as ArticleReducer from '../ArticleReducer';
 import {TagEditor} from '../TagEditor';
+import CheckIcon from '@assets/check.svg';
 
 interface Props {
   state: ArticleReducer.StateType;
@@ -45,6 +47,19 @@ export function FrontmatterEditor(props: Props): JSX.Element {
           onChange={e => props.dispatcher({type: 'tldr/update', data: e.target.value})}
           className={css.input_text}
         />
+      </div>
+      <div className={css.checkbox_wrapper}>
+        <Checkbox.Root
+          checked={props.state.is_favorite}
+          onClick={() => props.dispatcher({type: 'is_favorite/toggle'})}
+          id='favorite_checkbox'
+          className={css.check_icon}
+        >
+          <Checkbox.Indicator>
+            <CheckIcon />
+          </Checkbox.Indicator>
+        </Checkbox.Root>
+        <label htmlFor='favorite_checkbox'>is favorite?</label>
       </div>
       <TagEditor current_tags={props.state.tags} all_tags={props.state.all_tags} dispatcher={props.dispatcher} />
     </section>

@@ -8,6 +8,7 @@ query allArticles {
   allArticles {
     slug
     title
+    isFavorite
     publishedAt
     updatedAt
     isPublished
