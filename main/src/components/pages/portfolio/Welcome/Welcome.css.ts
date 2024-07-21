@@ -4,70 +4,28 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {globalStyle, style} from '@vanilla-extract/css';
+import {header_height} from '../portfolio.css';
+import {globalStyle, keyframes, style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
-export const bio = style({
-  position: 'relative',
-  display: 'block',
-  width: '90dvw',
-  textAlign: 'center',
-  margin: 'auto',
-});
-globalStyle(`${bio} p`, {
-  marginBottom: 4,
-});
-globalStyle(`${bio} a`, {
-  color: color.bg,
-  textDecoration: 'underline',
-});
-globalStyle(`${bio} a:hover`, {
-  color: color.bg,
-  textDecoration: 'underline',
-});
-
-export const bio_hidden = style({
-  opacity: 0,
-});
-
-export const bio_animation = style({
-  position: 'absolute',
-  left: 0,
-  top: 0,
+export const container = style({
   width: '100%',
-  height: '100%',
-  backgroundColor: color.bg,
-});
-
-export const indicator_space = style({
-  height: 128,
-});
-
-export const icon_and_text = style({
-  display: 'grid',
-  gridTemplateColumns: '20px 1fr',
-  gap: 8,
-  marginBottom: 4,
-});
-
-globalStyle(`${icon_and_text} svg`, {
-  width: '100%',
-  height: '100%',
-});
-
-export const text = style({
-  fontSize: '0.9em',
-  color: `rgba(${color.bg}, 0.9)`,
+  minHeight: `calc(100dvh - ${header_height}px)`,
+  color: color.bg,
+  backgroundColor: color.p0,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 });
 
 export const greeting = style({
-  paddingTop: 16,
-  marginBottom: 64,
+  textAlign: 'center',
+  marginBottom: 16,
 });
 
 export const avatar_and_name = style({
   display: 'grid',
-  gridTemplateColumns: '200px auto',
+  gridTemplateColumns: 'auto auto',
   gap: 24,
   alignItems: 'center',
   justifyContent: 'center',
@@ -83,10 +41,7 @@ export const avatar_and_name = style({
     },
   },
 });
-
 export const avatar = style({
-  width: 200,
-  height: 200,
   '@media': {
     'screen and (max-width: 600px)': {
       margin: 'auto',
@@ -96,11 +51,52 @@ export const avatar = style({
 
 export const name_main = style({
   fontWeight: 'bold',
-  fontSize: '2.5em',
-  marginBottom: 2,
-  marginLeft: -3,
+  fontSize: '3.5em',
+  marginBottom: -12,
+  marginLeft: -4,
+});
+export const name_sub = style({
+  fontSize: '1.5em',
+});
+export const icon_and_text = style({
+  display: 'grid',
+  gridTemplateColumns: '24px 1fr',
+  gap: 12,
+  marginBottom: 4,
+  fontSize: '1.1em',
 });
 
-export const name_sub = style({
-  color: `rgba(${color.bg}, 0.7)`,
+export const next_page = style({
+  position: 'absolute',
+  left: '50%',
+  bottom: 48,
+  textAlign: 'center',
+  transform: 'translateX(-50%)',
+
+  '::after': {
+    content: '',
+    display: 'block',
+    width: 50,
+    height: 50,
+    borderRight: `2px solid ${color.bg}`,
+    borderBottom: ` 2px solid ${color.bg}`,
+    transform: 'rotate(45deg)',
+  },
+  animation: '5s infinite ease-in-out',
+  // transform is already used; use `bottom` instead
+  animationName: keyframes({
+    '0%': {
+      bottom: 32,
+    },
+    '50%': {
+      bottom: 44,
+      opacity: 0.5,
+    },
+    '100%': {
+      bottom: 32,
+    },
+  }),
+});
+globalStyle(`${next_page} > span`, {
+  marginTop: 30,
 });
