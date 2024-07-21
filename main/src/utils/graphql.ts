@@ -148,7 +148,7 @@ export type PublishArticleMutation = { __typename?: 'Mutation', publishArticle: 
 export type AllQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllQuery = { __typename?: 'Query', contentsGitHeadHash: string, allPublicArticles: Array<{ __typename?: 'Article', slug: string, title: string, tldr: string, publishedAt: string, updatedAt: string, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> }>, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }>, sitedata: { __typename?: 'Sitedata', profile: string, shortProfile: string } };
+export type AllQuery = { __typename?: 'Query', contentsGitHeadHash: string, allPublicArticles: Array<{ __typename?: 'Article', slug: string, title: string, tldr: string, isFavorite: boolean, publishedAt: string, updatedAt: string, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> }>, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }>, sitedata: { __typename?: 'Sitedata', profile: string, shortProfile: string } };
 
 
 export const AllArticlesDocument = gql`
@@ -226,6 +226,7 @@ export const AllDocument = gql`
     slug
     title
     tldr
+    isFavorite
     publishedAt
     updatedAt
     tags {

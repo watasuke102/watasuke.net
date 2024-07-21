@@ -9,6 +9,7 @@ query all {
     slug
     title
     tldr
+    isFavorite
     publishedAt
     updatedAt
     tags {
