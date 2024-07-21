@@ -8,11 +8,8 @@ import * as css from './Footer.css';
 // @ts-expect-error ??? (FIXME)
 import React from 'react';
 import {graphql, useStaticQuery} from 'gatsby';
-import {SimpleInnerLinks} from '../../../common/SimpleInnerLinks';
-import IconInstagram from '@assets/icons/Links/instagram.svg';
-import IconSoundcloud from '@assets/icons/Links/soundcloud.svg';
-import IconTwitter from '@assets/icons/Links/twitter.svg';
-import IconGithub from '@assets/icons/general/github.svg';
+import {SimpleInnerLinks} from '@common';
+import {social_links} from '../../../../data/social_links';
 
 export function Footer(): JSX.Element {
   const info: Queries.footerInfoQuery = useStaticQuery(graphql`
@@ -35,6 +32,13 @@ export function Footer(): JSX.Element {
   const build_date = new Date(Date.parse(info.site?.buildTime ?? '') + jst);
   const build_date_str = build_date.toISOString().replace('T', ' ').slice(0, 19);
 
+  const links = [
+    {data: social_links.github_repo, class_name: css.icon},
+    {data: social_links.twitter, class_name: `${css.icon} ${css.twitter_icon}`},
+    {data: social_links.instagram, class_name: css.icon},
+    {data: social_links.soundcloud, class_name: `${css.icon} ${css.soundcloud_icon}`},
+  ];
+
   return (
     <footer className={css.container}>
       <h2 className={css.sitename}>{info.site?.siteMetadata?.title ?? ''}</h2>
@@ -50,26 +54,10 @@ export function Footer(): JSX.Element {
 
       {/* FIXME: `title` is not working because SVG has <title> */}
       <div className={css.icon_container}>
-        <a className={css.icon} title='GitHub repository' href={info.site?.siteMetadata?.repo ?? ''}>
-          <IconGithub />
-        </a>
-        <a
-          className={`${css.icon} ${css.twitter_icon}`}
-          title='Twitter (@Watasuke102)'
-          href='https://x.com/Watasuke102'
-        >
-          <IconTwitter />
-        </a>
-        <a className={css.icon} title='Instagram (@watasuke102)' href='https://instagram.com/watasuke102'>
-          <IconInstagram />
-        </a>
-        <a
-          className={`${css.icon} ${css.soundcloud_icon}`}
-          title='SoundCloud (watasuke)'
-          href='https://soundcloud.com/watasuke'
-        >
-          <IconSoundcloud />
-        </a>
+        {links.map(e => {
+          // eslint-disable-next-line jsx-a11y/anchor-has-content
+          return <a key={e.data.title} className={e.class_name} {...e.data} />;
+        })}
       </div>
 
       <div className={css.link_container}>
