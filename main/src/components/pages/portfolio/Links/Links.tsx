@@ -5,7 +5,6 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Links.css';
-import * as portfolio_common from '@pages/portfolio/common.css';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import toml from 'toml';
@@ -36,7 +35,7 @@ export function Links(props: Props): React.ReactElement {
   ).link;
 
   return (
-    <div className={portfolio_common.container}>
+    <section>
       <h2>Links</h2>
       <div className={css.container}>
         {link_list.map((link, i) => (
@@ -50,7 +49,6 @@ export function Links(props: Props): React.ReactElement {
           />
         ))}
       </div>
-      <div className={portfolio_common.next_page} />
-    </div>
+    </section>
   );
 }

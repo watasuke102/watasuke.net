@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Whoami.css';
-import {AnimatePresence, motion} from 'framer-motion';
+import {AnimatePresence, HTMLMotionProps, motion} from 'framer-motion';
 import {useStaticQuery, graphql} from 'gatsby';
 import toml from 'toml';
 import ReactMarkdown from 'react-markdown';
@@ -26,7 +26,7 @@ interface Props {
 export function Whoami(props: Props): JSX.Element {
   const [bio_box_shown, set_bio_box_shown] = React.useState(!props.animation_enabled);
 
-  const bio_animation = {
+  const bio_animation: HTMLMotionProps<'div'> = {
     initial: {width: '0%'},
     animate: {
       width: '100%',
@@ -58,7 +58,10 @@ export function Whoami(props: Props): JSX.Element {
   );
 
   return (
-    <div className={css.bio}>
+    <section className={css.bio}>
+      <h2>
+        <code>$ whoami</code>
+      </h2>
       <ReactMarkdown remarkPlugins={[Gfm]} rehypePlugins={[Raw]} className={bio_box_shown ? '' : css.bio_hidden}>
         {props.lang !== 'en' ? bio_toml.body_ja : bio_toml.body_en}
       </ReactMarkdown>
@@ -70,6 +73,6 @@ export function Whoami(props: Props): JSX.Element {
           />
         )}
       </AnimatePresence>
-    </div>
+    </section>
   );
 }

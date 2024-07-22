@@ -20,7 +20,7 @@ interface Props {
 
 export function Welcome(props: Props): React.ReactElement {
   return (
-    <div className={css.container}>
+    <section className={css.container}>
       <AnimatePresence>
         <motion.div
           initial={{opacity: 0}}
@@ -37,15 +37,15 @@ export function Welcome(props: Props): React.ReactElement {
               <div>
                 <div className={css.icon_and_text}>
                   <IconTwitter />
-                  <span className={css.text}>@Watasuke102</span>
+                  <span>@Watasuke102</span>
                 </div>
                 <div className={css.icon_and_text}>
                   <IconGitHub />
-                  <span className={css.text}>watasuke102</span>
+                  <span>watasuke102</span>
                 </div>
                 <div className={css.icon_and_text}>
                   <IconEnvelope />
-                  <span className={css.text}>watasuke102@gmail.com</span>
+                  <span>watasuke102@gmail.com</span>
                 </div>
               </div>
             </div>
@@ -56,6 +56,6 @@ export function Welcome(props: Props): React.ReactElement {
           </div>
         </motion.div>
       </AnimatePresence>
-    </div>
+    </section>
   );
 }

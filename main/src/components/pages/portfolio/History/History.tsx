@@ -5,7 +5,6 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './History.css';
-import * as portfolio_common from '@pages/portfolio/common.css';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import toml from 'toml';
@@ -52,14 +51,13 @@ export function History(props: Props): React.ReactElement {
   }, [props, query.portfolioToml?.body]);
 
   return (
-    <div className={portfolio_common.container}>
+    <section>
       <h2>History</h2>
       <div style={{height: 48}} />
       <div className={css.container_wrapper}>
         <div className={css.container}>{EventList}</div>
       </div>
       <div style={{height: 128}} />
-      <div className={portfolio_common.next_page} />
-    </div>
+    </section>
   );
 }

@@ -31,7 +31,7 @@ export default function Portfolio(props: Props): React.ReactElement {
   const [lang, set_lang] = React.useState<string>(params.get('lang') ?? 'ja');
 
   return (
-    <main className={css.main_container}>
+    <div className={css.main_container}>
       <header className={css.header}>
         <Link to='/'>
           <IconLeft />
@@ -47,12 +47,14 @@ export default function Portfolio(props: Props): React.ReactElement {
           <IconTranslate />
         </button>
       </header>
-      <Welcome animation_enabled={animation_enabled} lang={lang} />
-      <Whoami animation_enabled={animation_enabled} lang={lang} />
-      <Skills animation_enabled={animation_enabled} lang={lang} />
-      <History animation_enabled={animation_enabled} lang={lang} />
-      <Links animation_enabled={animation_enabled} lang={lang} />
-    </main>
+      <main>
+        <Welcome animation_enabled={animation_enabled} lang={lang} />
+        <Whoami animation_enabled={animation_enabled} lang={lang} />
+        <Skills animation_enabled={animation_enabled} lang={lang} />
+        <History animation_enabled={animation_enabled} lang={lang} />
+        <Links animation_enabled={animation_enabled} lang={lang} />
+      </main>
+    </div>
   );
 }
 

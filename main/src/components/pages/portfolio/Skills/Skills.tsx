@@ -5,7 +5,6 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Skills.css';
-import * as portfolio_common from '@pages/portfolio/common.css';
 import {BreakWithCR, Toggle} from '@common';
 import {AnimatePresence, motion} from 'framer-motion';
 import {graphql, useStaticQuery} from 'gatsby';
@@ -123,7 +122,7 @@ export function Skills(props: Props): React.ReactElement {
   };
 
   return (
-    <div className={portfolio_common.container}>
+    <section>
       <h2>Skills</h2>
 
       <div className={css.toggle}>
@@ -152,9 +151,7 @@ export function Skills(props: Props): React.ReactElement {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <div className={portfolio_common.next_page} />
-    </div>
+    </section>
   );
 }
 
