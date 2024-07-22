@@ -10,10 +10,10 @@ import React from 'react';
 import {Link} from 'gatsby';
 import {Switch} from '@watasuke.net/common';
 import {Welcome, Skills, History, Links} from '@pages/portfolio';
+import {Whoami} from '@pages/portfolio/Whoami';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import IconLeft from '@assets/icons/general/left.svg';
 import IconTranslate from '@assets/icons/general/translate.svg';
-import {Whoami} from '@pages/portfolio/Whoami';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Portfolio'}]);
 
@@ -47,7 +47,7 @@ export default function Portfolio(props: Props): React.ReactElement {
           <IconTranslate />
         </button>
       </header>
-      <main>
+      <main className={css.portfolio_container}>
         <Welcome animation_enabled={animation_enabled} lang={lang} />
         <Whoami animation_enabled={animation_enabled} lang={lang} />
         <Skills animation_enabled={animation_enabled} lang={lang} />

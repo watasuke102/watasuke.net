@@ -3656,11 +3656,6 @@ type ogpListQueryVariables = Exact<{ [key: string]: never; }>;
 
 type ogpListQuery = { readonly allOgp: { readonly nodes: ReadonlyArray<{ readonly title: string, readonly url: string, readonly description: string, readonly image: string }> } };
 
-type portfolioBioQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type portfolioBioQuery = { readonly portfolioToml: { readonly body: string } | null };
-
 type portfolioHistoryQueryVariables = Exact<{ [key: string]: never; }>;
 
 

@@ -65,3 +65,9 @@ export const button_text = style({
     },
   },
 });
+
+export const portfolio_container = style({
+  display: 'flex',
+  flexDirection: 'column',
+  rowGap: 20,
+});
