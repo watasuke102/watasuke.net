@@ -39,6 +39,8 @@ export const button_icon = style({
   position: 'absolute',
   left: 0,
   top: 0,
+  width: button_size,
+  height: button_size,
 });
 
 export const heading = style({

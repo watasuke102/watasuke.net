@@ -32,7 +32,9 @@ export function MenuContents(): JSX.Element {
       <hr style={{opacity: 1}} />
 
       <button onClick={() => window.scroll({top: 0, behavior: 'smooth'})} className={css.menu_button}>
-        <IconUp />
+        <span className={css.menu_button_icon}>
+          <IconUp />
+        </span>
         <span>Go to page top</span>
       </button>
     </>

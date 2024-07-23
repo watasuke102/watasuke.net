@@ -58,7 +58,7 @@ export const menu = style({
 
   '@media': {
     'screen and (width < 550px)': {
-      gridTemplateRows: '16px auto 1fr repeat(6, auto) 120px',
+      gridTemplateRows: '16px auto 1fr repeat(6, auto) 140px',
       right: -24,
       bottom: -64,
       width: '100dvw',

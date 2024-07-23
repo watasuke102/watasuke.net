@@ -7,21 +7,6 @@
 import {style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
-export const menu_inner = style({
-  paddingInline: 16,
-  paddingTop: 8,
-  paddingBottom: 40,
-
-  display: 'grid',
-  gridTemplateRows: 'auto 1fr repeat(6, auto)',
-
-  '@media': {
-    'screen and (width < 550px)': {
-      paddingBottom: 120,
-    },
-  },
-});
-
 export const heading = style({
   fontSize: '1.5em',
   marginBottom: 0,
@@ -44,12 +29,21 @@ export const menu_button = style({
   borderColor: color.fg,
   transitionProperty: 'background-color, transform',
   transitionDuration: '0.2s',
-  ':hover': {
-    transitionDuration: '0.2s',
-    backgroundColor: `${color.p0}33`,
-  },
   ':active': {
     transitionDuration: '0.2s',
     transform: 'translate(1px, 1px)',
   },
+  '@media': {
+    '(hover: hover)': {
+      ':hover': {
+        transitionDuration: '0.2s',
+        backgroundColor: `${color.p0}33`,
+      },
+    },
+  },
+});
+export const menu_button_icon = style({
+  display: 'inline-block',
+  width: 40,
+  height: 40,
 });
