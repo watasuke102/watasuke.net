@@ -3666,11 +3666,6 @@ type portfolioLinksQueryVariables = Exact<{ [key: string]: never; }>;
 
 type portfolioLinksQuery = { readonly portfolioToml: { readonly body: string } | null };
 
-type portfolioSkillsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type portfolioSkillsQuery = { readonly portfolioToml: { readonly body: string } | null };
-
 type profileQueryVariables = Exact<{ [key: string]: never; }>;
 
 

@@ -5,43 +5,17 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Skills.css';
-import {BreakWithCR, Toggle} from '@common';
+import {Toggle} from '@common';
 import {AnimatePresence, motion} from 'framer-motion';
-import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
-import toml from 'toml';
 import {FadeWithScroll} from '@utils/FadeWithScroll';
-import IconArch from '@assets/icons/Skills/arch.svg';
-import IconC from '@assets/icons/Skills/c.svg';
-import IconCmake from '@assets/icons/Skills/cmake.svg';
-import IconCpp from '@assets/icons/Skills/cpp.svg';
-import IconDocker from '@assets/icons/Skills/docker.svg';
-import IconFile from '@assets/icons/Skills/file.svg';
-import IconFlutter from '@assets/icons/Skills/flutter.svg';
-import IconGit from '@assets/icons/Skills/git.svg';
-import IconMysql from '@assets/icons/Skills/mysql.svg';
-import IconNeovim from '@assets/icons/Skills/neovim.svg';
-import IconNextjs from '@assets/icons/Skills/nextjs.svg';
-import IconQt from '@assets/icons/Skills/qt.svg';
-import IconReact from '@assets/icons/Skills/react-logo.svg';
-import IconRust from '@assets/icons/Skills/rust.svg';
-import IconSass from '@assets/icons/Skills/sass.svg';
-import IconTypescript from '@assets/icons/Skills/typescript.svg';
-import IconVSCode from '@assets/icons/Skills/vscode.svg';
-import IconWayland from '@assets/icons/Skills/wayland.svg';
+import {Skill, skills} from './skill_list';
+import {SkillCard as SkillCard2} from './SkillCard';
+import {Heading} from '../Heading';
 
 interface Props {
   animation_enabled: boolean;
   lang: string;
-}
-
-interface Skill {
-  name: string;
-  icon: string;
-  tier: number;
-  category: string;
-  desc_ja: string;
-  desc_en: string;
 }
 
 export function Skills(props: Props): React.ReactElement {
@@ -50,19 +24,9 @@ export function Skills(props: Props): React.ReactElement {
   const next_groupby_ref = React.useRef('');
   next_groupby_ref.current = next_groupby;
 
-  const query: Queries.portfolioSkillsQuery = useStaticQuery(graphql`
-    query portfolioSkills {
-      portfolioToml(name: {eq: "Skills.toml"}) {
-        body
-      }
-    }
-  `);
-
   const SkillCard = React.useMemo(() => {
     const skill_group = new Map<string, Skill[]>();
-    const skill_list: Skill[] = toml.parse(query.portfolioToml?.body ?? '').skill;
-
-    skill_list.forEach(e => {
+    skills.forEach(e => {
       if (groupby !== 'tier') {
         skill_group.set(e.category, skill_group.get(e.category) ?? []);
         skill_group.get(e.category)?.push(e);
@@ -78,24 +42,12 @@ export function Skills(props: Props): React.ReactElement {
       cards.push({
         group: groupby !== 'tier' ? e[0].category : `tier ${e[0].tier}`,
         list: e.map((e, i) => (
-          <motion.div className={css.skillcard} key={i} {...(props.animation_enabled ? FadeWithScroll : {})}>
-            <span className={css.name}>{e.name}</span>
-            <div className={css.right}>
-              <span className={css.category}>{e.category}</span>
-              <span className={css.tier}>{e.tier}</span>
-            </div>
-            <span className={css.desc}>
-              <BreakWithCR str={props.lang !== 'en' ? e.desc_ja : e.desc_en} />
-            </span>
-            <div className={css.icon}>
-              <Icon icon={e.icon} />
-            </div>
-          </motion.div>
+          <SkillCard2 key={`skill_${i}`} animation_enabled={props.animation_enabled} skill={e} lang={props.lang} />
         )),
       });
     });
     return cards;
-  }, [props, groupby, query]);
+  }, [props, groupby]);
 
   const toggle_changed = React.useCallback((next: string) => {
     set_groupby('');
@@ -123,8 +75,7 @@ export function Skills(props: Props): React.ReactElement {
 
   return (
     <section>
-      <h2>Skills</h2>
-
+      <Heading color='#61afef' text='Skills' />
       <div className={css.toggle}>
         <span className={css.label}>Group by:</span>
         <Toggle
@@ -153,48 +104,4 @@ export function Skills(props: Props): React.ReactElement {
       </AnimatePresence>
     </section>
   );
-}
-
-function Icon(props: {icon: string}): React.ReactElement {
-  switch (props.icon) {
-    case 'c':
-      return <IconC />;
-    case 'rust':
-      return <IconRust />;
-    case 'typescript':
-      return <IconTypescript />;
-    case 'sass':
-      return <IconSass />;
-    case 'cpp':
-      return <IconCpp />;
-
-    case 'react':
-      return <IconReact />;
-    case 'nextjs':
-      return <IconNextjs />;
-    case 'wayland':
-      return <IconWayland />;
-    case 'qt':
-      return <IconQt />;
-    case 'flutter':
-      return <IconFlutter />;
-
-    case 'vscode':
-      return <IconVSCode />;
-    case 'neovim':
-      return <IconNeovim />;
-    case 'git':
-      return <IconGit />;
-    case 'arch':
-      return <IconArch />;
-    case 'cmake':
-      return <IconCmake />;
-    case 'file':
-      return <IconFile />;
-    case 'mysql':
-      return <IconMysql />;
-    case 'docker':
-      return <IconDocker />;
-  }
-  return <></>;
 }
