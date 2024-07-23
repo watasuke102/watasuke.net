@@ -7,13 +7,8 @@
 import {globalStyle, style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
-export const container_wrapper = style({
+export const timeline_middle_line = style({
   position: 'relative',
-  display: 'block',
-  paddingBottom: 64,
-});
-
-export const container = style({
   '::before': {
     content: '',
     zIndex: 0,

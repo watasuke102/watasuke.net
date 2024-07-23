@@ -34,10 +34,8 @@ export function History(props: Props): React.ReactElement {
   return (
     <section>
       <Heading color='#c678dd' text='History' />
-      <div style={{height: 48}} />
-      <div className={css.container_wrapper}>
-        <div className={css.container}>{EventList}</div>
-      </div>
+      <div style={{height: 60}} />
+      <div className={css.timeline_middle_line}>{EventList}</div>
     </section>
   );
 }

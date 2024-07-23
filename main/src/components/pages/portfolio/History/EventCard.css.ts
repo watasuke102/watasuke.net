@@ -7,91 +7,108 @@
 import {globalStyle, style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
-const h_connector_len = 40;
+const h_connector_len = 60;
 const connector_weight = 4;
-const day_size = 96;
 
 export const container = style({
   position: 'relative',
   zIndex: 128,
   display: 'grid',
-  gridTemplateColumns: `1fr ${h_connector_len}px ${day_size}px ${h_connector_len}px 1fr`,
-  gridTemplateRows: `${day_size}px auto`,
+  gridTemplate: `
+    'left blank_0  blank_0   right' 1fr
+    'left left_con right_con right' ${connector_weight}px
+    'left blank_1  blank_1   right' 1fr
+  / 1fr ${h_connector_len}px ${h_connector_len}px 1fr
+  `,
   width: '95dvw',
-  margin: 'auto',
-  marginBottom: 16,
+  marginInline: 'auto',
 
   '@media': {
-    'screen and (max-width: 800px)': {
+    'screen and (width < 800px)': {
       display: 'flex',
       flexDirection: 'column',
       width: '85dvw',
     },
   },
 });
-
 export const h_connector = style({
-  gridRow: '1 / 2',
-  gridColumn: '4 / 5',
+  gridArea: 'right_con',
   margin: 'auto',
   width: '100%',
-  height: connector_weight,
+  height: '100%',
   backgroundColor: color.fg,
   '@media': {
-    'screen and (max-width: 800px)': {
+    'screen and (width < 800px)': {
       display: 'none',
     },
   },
 });
 globalStyle(`${container}:nth-child(odd) ${h_connector}`, {
   '@media': {
-    'screen and (min-width: 800px)': {
-      gridColumn: '2 / 3',
+    'screen and (width >= 800px)': {
+      gridArea: 'left_con',
     },
   },
 });
 
 export const day = style({
-  gridColumn: '3 / 4',
   display: 'flex',
+  gap: 8,
+  marginInline: 'auto',
+  marginBottom: 8,
+  paddingInline: 8,
+  paddingBlock: 4,
   textAlign: 'center',
-  justifyContent: 'center',
-  alignItems: 'center',
-
-  height: day_size,
-  borderRadius: 4,
-  fontSize: '1.3em',
+  fontSize: '1.1em',
   border: `1px solid ${color.fg}`,
+  borderRadius: 4,
   backgroundColor: color.bg,
-
   '@media': {
-    'screen and (max-width: 800px)': {
-      width: day_size,
-      margin: 'auto',
-      minHeight: 36,
-      height: 'auto',
-      marginBottom: 8,
+    'screen and (width >= 800px)': {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translateY(-50%) translateX(-50%)',
+      gap: 0,
+      flexDirection: 'column',
+      margin: 0,
+      maxWidth: 88,
     },
   },
 });
 
-const v_padding = 8;
-export const card = style({
-  gridRow: '1 / 3',
-  gridColumn: '5 / 6',
-  padding: `${v_padding}px 12px`,
-  borderRadius: 4,
-  border: `3px solid ${color.p0}`,
+const weight = 2;
+const length = 12;
+export const range_separator = style({
+  width: length,
+  height: weight,
+  margin: 'auto',
+  backgroundColor: color.fg,
   '@media': {
-    'screen and (max-width: 800px)': {
+    'screen and (width >= 800px)': {
+      width: weight,
+      height: length,
+    },
+  },
+});
+
+export const card = style({
+  gridArea: 'right',
+  paddingBlock: 8,
+  paddingInline: 12,
+  border: `3px solid ${color.p0}`,
+  borderRadius: 4,
+  backgroundColor: color.bg,
+  '@media': {
+    'screen and (width < 800px)': {
       marginBottom: 40,
     },
   },
 });
 globalStyle(`${container}:nth-child(odd) ${card}`, {
   '@media': {
-    'screen and (min-width: 800px)': {
-      gridColumn: '1 / 2',
+    'screen and (width >= 800px)': {
+      gridArea: 'left',
     },
   },
 });
@@ -99,11 +116,14 @@ globalStyle(`${container}:nth-child(odd) ${card}`, {
 export const header = style({
   padding: 0,
   width: '100%',
-  minHeight: day_size - v_padding * 2,
   textAlign: 'left',
   display: 'grid',
-  gridTemplateColumns: '1fr auto',
-  gridTemplateRows: 'auto 1fr',
+  gridTemplate: `
+    'title    category' auto
+    'subtitle blank'    1fr
+    'subtitle button'   auto
+  /  1fr      auto
+  `,
   gap: '0 8px',
   border: 'none',
   ':focus': {
@@ -115,16 +135,20 @@ export const header = style({
 });
 globalStyle(`${container}:nth-child(odd) ${header}`, {
   '@media': {
-    'screen and (min-width: 800px)': {
+    'screen and (width >= 800px)': {
       textAlign: 'right',
-      gridTemplateColumns: 'auto 1fr',
+      gridTemplate: `
+        'category title'    auto
+        'blank    subtitle' 1fr
+        'button   subtitle' auto
+      /  auto     1fr
+      `,
     },
   },
 });
 
 export const title = style({
-  gridRow: '1 / 2',
-  gridColumn: '1 / 2',
+  gridArea: 'title',
   display: 'block',
   margin: 'auto 0',
   fontSize: '1.5em',
@@ -132,15 +156,14 @@ export const title = style({
 });
 globalStyle(`${container}:nth-child(odd) ${title}`, {
   '@media': {
-    'screen and (min-width: 800px)': {
+    'screen and (width >= 800px)': {
       gridColumn: '2 / 3',
     },
   },
 });
 
 export const subtitle = style({
-  gridRow: '2 / 3',
-  gridColumn: '1 / 2',
+  gridArea: 'subtitle',
   display: 'block',
   marginTop: 'auto',
   fontSize: '1em',
@@ -148,15 +171,14 @@ export const subtitle = style({
 });
 globalStyle(`${container}:nth-child(odd) ${subtitle}`, {
   '@media': {
-    'screen and (min-width: 800px)': {
+    'screen and (width >= 800px)': {
       gridColumn: '2 / 3',
     },
   },
 });
 
 export const category = style({
-  gridRow: '1 / 2',
-  gridColumn: '2 / 3',
+  gridArea: 'category',
   display: 'block',
   margin: '0 auto',
   marginBottom: 'auto',
@@ -167,28 +189,27 @@ export const category = style({
 });
 globalStyle(`${container}:nth-child(odd) ${category}`, {
   '@media': {
-    'screen and (min-width: 800px)': {
+    'screen and (width >= 800px)': {
       gridColumn: '1 / 2',
     },
   },
 });
 
-export const expand_icon = style({
-  gridRow: '2 / 3',
-  gridColumn: '2 / 3',
+export const expand_button = style({
+  gridArea: 'button',
   marginLeft: 'auto',
   marginRight: 0,
   transitionProperty: 'transform',
-  width: 44,
-  height: 44,
+  height: 32,
+  aspectRatio: '1 / 1',
 });
-globalStyle(`${expand_icon} svg`, {
+globalStyle(`${expand_button} svg`, {
   width: '100%',
   height: '100%',
 });
-globalStyle(`${container}:nth-child(odd) ${expand_icon}`, {
+globalStyle(`${container}:nth-child(odd) ${expand_button}`, {
   '@media': {
-    'screen and (min-width: 800px)': {
+    'screen and (width >= 800px)': {
       gridColumn: '1 / 2',
       marginLeft: 0,
       marginRight: 'auto',
@@ -206,7 +227,7 @@ globalStyle(`${body} img`, {
   height: '90%',
   margin: '8px auto',
 });
-globalStyle(`${body} hr`, {
+export const body_hr = style({
   opacity: 1,
   border: `1px solid ${color.fg}`,
 });

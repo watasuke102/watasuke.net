@@ -5,7 +5,6 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './EventCard.css';
-import {BreakWithCR} from '@common';
 import {motion} from 'framer-motion';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -30,11 +29,48 @@ export function EventCard(props: Props): React.ReactElement {
     }
   };
 
+  function Period(): JSX.Element {
+    const period = props.event.period;
+    if (!period) {
+      return <></>;
+    }
+    switch (period.kind) {
+      case 'day':
+        return (
+          <div className={css.day}>
+            <span>
+              {period.date.month}/{period.date.day}
+            </span>
+          </div>
+        );
+      case 'period':
+        return (
+          <div className={css.day}>
+            <span>
+              {period.begin.month}/{period.begin.day}
+            </span>
+            <span className={css.range_separator} />
+            <span>
+              {period.end.month}/{period.end.day}
+            </span>
+          </div>
+        );
+      case 'doing':
+        return (
+          <div className={css.day}>
+            <span>
+              {period.begin.month}/{period.begin.day}
+            </span>
+            <span className={css.range_separator} />
+            <span style={{height: 4}} />
+          </div>
+        );
+    }
+  }
+
   return (
     <div className={css.container}>
-      <div className={css.day}>
-        <BreakWithCR str={props.event.period} />
-      </div>
+      <Period />
       <div className={css.card}>
         <button className={css.header} onClick={on_click}>
           <span className={css.title}>{props.lang !== 'en' ? props.event.title_ja : props.event.title_en}</span>
@@ -44,10 +80,10 @@ export function EventCard(props: Props): React.ReactElement {
           <span className={css.category}>{props.event.category}</span>
           {body !== '' && (
             <motion.div
-              className={css.expand_icon}
-              initial={{transform: 'translateY(8px) rotate(-180deg)'}}
+              className={css.expand_button}
+              initial={{transform: 'translateY(6px) rotate(-180deg)'}}
               animate={{
-                transform: `translateY(8px) ${opening ? 'rotate(0deg)' : 'rotate(-180deg)'}`,
+                transform: `translateY(6px) ${opening ? 'rotate(0deg)' : 'rotate(-180deg)'}`,
               }}
               transition={Transition(props.animation_enabled, {duration: 0.2})}
             >
@@ -69,7 +105,7 @@ export function EventCard(props: Props): React.ReactElement {
               height: {duration: 0.4 * Number(props.animation_enabled), ease: [0.22, 1, 0.36, 1]},
             }}
           >
-            <hr />
+            <hr className={css.body_hr} />
             <ReactMarkdown
               remarkPlugins={[Gfm]}
               rehypePlugins={[Raw]}

@@ -6,13 +6,34 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import React from 'react';
 
+export interface Date {
+  month: number;
+  day: number;
+}
+
+export type Period =
+  | undefined
+  | {
+      kind: 'day';
+      date: Date;
+    }
+  | {
+      kind: 'doing';
+      begin: Date;
+    }
+  | {
+      kind: 'period';
+      begin: Date;
+      end: Date;
+    };
+
 export interface Event {
   title_ja: string;
   title_en: string;
   subtitle_ja: string;
   subtitle_en: string;
-  period: string;
-  category: string;
+  period: Period;
+  category: 'General' | 'Work' | 'Event' | 'Presentation';
   body_ja: React.ReactNode;
   body_en: React.ReactNode;
 }
@@ -21,7 +42,7 @@ export const event_list: Record<string, Event[]> = {
   '2019': [
     {
       // U-22への提出日
-      period: '08/15',
+      period: {kind: 'day', date: {month: 8, day: 15}},
       category: 'Work',
       title_ja: 'MarkStudy',
       title_en: 'MarkStudy',
@@ -46,7 +67,8 @@ Edit with markup language like WYSIWYG, set importance and hide / emphasize the 
 `,
     },
     {
-      period: '08/26', // "完成" ツイートをした日
+      // "完成" ツイートをした日
+      period: {kind: 'day', date: {month: 8, day: 26}},
       category: 'Work',
       title_ja: 'Arduinoで時計を作成する',
       title_en: 'Create the clock by Arduino',
@@ -70,7 +92,7 @@ I also created the report and submitted as research of summer vacation.
 `,
     },
     {
-      period: '10/25',
+      period: {kind: 'day', date: {month: 10, day: 25}},
       category: 'Work',
       title_ja: 'STG',
       title_en: 'STG',
@@ -94,7 +116,7 @@ Trying to make Bullet Hell STG with Graze as a concept
   ],
   '2020': [
     {
-      period: '04/01',
+      period: {kind: 'day', date: {month: 4, day: 1}},
       category: 'General',
       title_ja: '高専入学',
       title_en: 'Enter KOSEN',
@@ -104,7 +126,8 @@ Trying to make Bullet Hell STG with Graze as a concept
       body_en: '',
     },
     {
-      period: '05/11 -', // join to Fascode
+      // join to Fascode
+      period: {kind: 'doing', begin: {month: 5, day: 11}},
       category: 'Work',
       title_ja: 'Alter Linux (i3wm edition)',
       title_en: 'Alter Linux (i3wm edition)',
@@ -131,7 +154,7 @@ Join [FascodeNetwork](https://fascode.net/) (student organization), and developi
 `,
     },
     {
-      period: '10/19',
+      period: undefined,
       category: 'Work',
       title_ja: 'ExpNote',
       title_en: 'ExpNote',
@@ -157,8 +180,8 @@ Add date, event name, and payment amounts to check the total balance.
 `,
     },
     {
-      period: '10/31',
-      category: 'Event',
+      period: {kind: 'day', date: {month: 10, day: 31}},
+      category: 'Presentation',
       title_ja: '第1回 限界LT feat.Fascode',
       title_en: '1st 限界LT feat.Fascode',
       subtitle_ja: 'LT「Flutterはいいぞ」',
@@ -177,7 +200,8 @@ Lightning Talk to roughly recommend Flutter.
 `,
     },
     {
-      period: '12/19 -', // initial commit
+      // initial commit
+      period: {kind: 'doing', begin: {month: 12, day: 19}},
       category: 'Work',
       title_ja: 'TAGether',
       title_en: 'TAGether',
@@ -207,7 +231,7 @@ Use Next.js as frontend, Express / MySQL as backend
   ],
   '2021': [
     {
-      period: '09/05',
+      period: {kind: 'day', date: {month: 9, day: 5}},
       category: 'Work',
       title_ja: 'TimeTree-NoticeBot',
       title_en: 'TimeTree-NoticeBot',
@@ -233,7 +257,7 @@ Check toperiod's schedule in TimeTree and notify by sending a message before the
 `,
     },
     {
-      period: '12/05',
+      period: {kind: 'day', date: {month: 12, day: 5}},
       category: 'Work',
       title_ja: 'discord-voicechat-notice',
       title_en: 'discord-voicechat-notice',
@@ -261,7 +285,12 @@ Notify by sending a message when someone joins or leaves the Discord Voice Chat 
   ],
   '2022': [
     {
-      period: '07/04 -', // 未踏Ad 契約開始
+      // 未踏Ad 契約期間
+      period: {
+        kind: 'period',
+        begin: {month: 7, day: 4},
+        end: {month: 2, day: 28},
+      },
       category: 'Work',
       title_ja: 'Zwin : XR windowing system',
       title_en: 'Zwin : XR windowing system',
@@ -289,7 +318,11 @@ Adoped by 2022 Mitou Advanced. I implemented the feature for 2D desktop environm
 `,
     },
     {
-      period: '08/08\n|\n08/12',
+      period: {
+        kind: 'period',
+        begin: {month: 8, day: 8},
+        end: {month: 8, day: 12},
+      },
       category: 'Event',
       title_ja: 'セキュリティ・キャンプ 全国大会 2022',
       title_en: 'Security Camp 2022',
@@ -315,8 +348,8 @@ I implemented UART, character LCD operation, HDMI output.
 `,
     },
     {
-      period: '08/08',
-      category: 'Event',
+      period: {kind: 'day', date: {month: 8, day: 8}},
+      category: 'Presentation',
       title_ja: 'セキュリティ・キャンプ 2022 LT大会',
       title_en: 'Security Camp 2022 LT',
       subtitle_ja: 'LT 「身内限定で自作サービスを公開するのかなり良いよ」',
@@ -334,7 +367,8 @@ Lightning Talk event is held by Security Camp 2022, and I introduced about TAGet
 `,
     },
     {
-      period: '09/18', // プレゼン実施日
+      // プレゼン実施日
+      period: {kind: 'day', date: {month: 9, day: 18}},
       category: 'Event',
       title_ja: '技育展 2022',
       title_en: 'Geekten 2022',
@@ -355,7 +389,12 @@ Zwin won at that theme.
   ],
   '2023': [
     {
-      period: '02/13\n|\n02/17',
+      period: {
+        kind: 'period',
+        begin: {month: 2, day: 13},
+        end: {month: 2, day: 17},
+      },
+
       category: 'Event',
       title_ja: 'Global Cybersecurity Camp 2023 Singapore',
       title_en: 'Global Cybersecurity Camp 2023 Singapore',
@@ -373,7 +412,11 @@ Join as staff, and assist student / moderate groupwork.
 `,
     },
     {
-      period: '03/04\n|\n04/01',
+      period: {
+        kind: 'period',
+        begin: {month: 3, day: 4},
+        end: {month: 4, day: 1},
+      },
       category: 'Event',
       title_ja: '台湾留学',
       title_en: 'Internship in Taiwan',
@@ -393,7 +436,11 @@ Go to National United University in Taiwan, do the research about Image Processi
 `,
     },
     {
-      period: '08/07\n|\n08/11',
+      period: {
+        kind: 'period',
+        begin: {month: 8, day: 7},
+        end: {month: 8, day: 11},
+      },
       category: 'Event',
       title_ja: 'セキュリティ・ネクストキャンプ 2023',
       title_en: 'Security Nextcamp',
@@ -413,8 +460,8 @@ I participated as a student.
 `,
     },
     {
-      period: '08/10',
-      category: 'Event',
+      period: {kind: 'day', date: {month: 8, day: 10}},
+      category: 'Presentation',
       title_ja: 'セキュリティ・キャンプ 2023 LT大会',
       title_en: 'Security Camp 2023 LT',
       subtitle_ja: 'LT 「watasuke.netを支える技術」',
@@ -431,7 +478,11 @@ Introduced about watasuke.net in the Lightning Talk event held by Security Camp 
 `,
     },
     {
-      period: '08/21\n|\n09/26',
+      period: {
+        kind: 'period',
+        begin: {month: 8, day: 21},
+        end: {month: 9, day: 26},
+      },
       category: 'Event',
       title_ja: 'マレーシア留学',
       title_en: 'Internship in Malaysia',
@@ -441,7 +492,11 @@ Introduced about watasuke.net in the Lightning Talk event held by Security Camp 
       body_en: 'I did the research about Iot in UiTM.',
     },
     {
-      period: '10/21\n|\n10/22',
+      period: {
+        kind: 'period',
+        end: {month: 10, day: 21},
+        begin: {month: 10, day: 22},
+      },
       category: 'Event',
       title_ja: 'CAPCOM Hackathon',
       title_en: 'CAPCOM Hackathon',
