@@ -5,8 +5,6 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './SimpleInnerLinks.css';
-// @ts-expect-error ??? (FIXME)
-import React from 'react';
 import {Link} from 'gatsby';
 
 export function SimpleInnerLinks(): JSX.Element {

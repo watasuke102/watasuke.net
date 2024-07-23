@@ -5,9 +5,6 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 
-// @ts-expect-error ??? (FIXME)
-import React from 'react';
-
 export function BioJa() {
   // prettier-ignore
   return (

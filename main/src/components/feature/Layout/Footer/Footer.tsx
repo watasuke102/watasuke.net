@@ -5,8 +5,6 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Footer.css';
-// @ts-expect-error ??? (FIXME)
-import React from 'react';
 import {graphql, useStaticQuery} from 'gatsby';
 import {SimpleInnerLinks} from '@common';
 import {social_links} from '../../../../data/social_links';

@@ -20,6 +20,7 @@ const gatsby_config: GatsbyConfig = {
   graphqlTypegen: {
     typesOutputPath: 'src/types/gatsby-types.d.ts',
   },
+  jsxRuntime: 'automatic',
   plugins: [
     'gatsby-plugin-typescript',
     'gatsby-plugin-vanilla-extract',

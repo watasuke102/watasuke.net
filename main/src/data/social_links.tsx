@@ -4,8 +4,6 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-// @ts-expect-error ??? (FIXME)
-import React from 'react';
 import IconInstagram from '@assets/icons/Links/instagram.svg';
 import IconSoundcloud from '@assets/icons/Links/soundcloud.svg';
 import IconTwitter from '@assets/icons/Links/twitter.svg';

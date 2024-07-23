@@ -5,8 +5,6 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './SkillCard.css';
-// @ts-expect-error ??? (FIXME)
-import React from 'react';
 import {motion} from 'framer-motion';
 import {FadeWithScroll} from '@utils/FadeWithScroll';
 import {Skill} from '../skill_list';

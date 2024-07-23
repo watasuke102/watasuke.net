@@ -5,8 +5,6 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Heading.css';
-// @ts-expect-error ??? (FIXME)
-import React from 'react';
 
 interface Props {
   text: string;
