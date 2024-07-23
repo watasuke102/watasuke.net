@@ -20,7 +20,7 @@ export const container = style({
     display: 'block',
     width: 4,
     height: '100%',
-    backgroundColor: color.bg,
+    backgroundColor: color.fg,
 
     position: 'absolute',
     top: 0,

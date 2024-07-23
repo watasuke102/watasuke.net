@@ -36,7 +36,7 @@ export const h_connector = style({
   margin: 'auto',
   width: '100%',
   height: connector_weight,
-  backgroundColor: color.bg,
+  backgroundColor: color.fg,
   '@media': {
     'screen and (max-width: 800px)': {
       display: 'none',
@@ -61,7 +61,7 @@ export const day = style({
   height: day_size,
   borderRadius: 4,
   fontSize: '1.3em',
-  color: color.fg,
+  border: `1px solid ${color.fg}`,
   backgroundColor: color.bg,
 
   '@media': {
@@ -81,8 +81,7 @@ export const card = style({
   gridColumn: '5 / 6',
   padding: `${v_padding}px 12px`,
   borderRadius: 4,
-  color: color.fg,
-  backgroundColor: color.bg,
+  border: `3px solid ${color.p0}`,
   '@media': {
     'screen and (max-width: 800px)': {
       marginBottom: 40,

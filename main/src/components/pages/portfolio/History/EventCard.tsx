@@ -12,7 +12,7 @@ import ReactMarkdown from 'react-markdown';
 import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import {Transition} from '@utils/Transition';
-import {Event} from './Event';
+import {Event} from './event_list';
 import IconCollapse from '@assets/icons/general/up.svg';
 
 interface Props {
@@ -33,7 +33,7 @@ export function EventCard(props: Props): React.ReactElement {
   return (
     <div className={css.container}>
       <div className={css.day}>
-        <BreakWithCR str={props.event.day} />
+        <BreakWithCR str={props.event.period} />
       </div>
       <div className={css.card}>
         <button className={css.header} onClick={on_click}>
