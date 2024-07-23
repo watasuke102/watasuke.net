@@ -11,7 +11,7 @@ export const skillcard = style({
   padding: '8px 16px',
   color: color.fg,
   backgroundColor: color.bg,
-  border: `3px solid ${color.p0}`,
+  border: `3px solid ${color.blue}`,
   borderRadius: 2,
 
   display: 'grid',

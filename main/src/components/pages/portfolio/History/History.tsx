@@ -6,6 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './History.css';
 import React from 'react';
+import {color} from '@watasuke.net/common/src/css/color';
 import {EventCard} from './EventCard';
 import {event_list} from './event_list';
 import {Heading} from '../Heading';
@@ -33,7 +34,7 @@ export function History(props: Props): React.ReactElement {
 
   return (
     <section>
-      <Heading color='#c678dd' text='History' />
+      <Heading color={color.purple} text='History' />
       <div style={{height: 60}} />
       <div className={css.timeline_middle_line}>{EventList}</div>
     </section>

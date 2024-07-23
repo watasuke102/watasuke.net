@@ -96,7 +96,7 @@ export const card = style({
   gridArea: 'right',
   paddingBlock: 8,
   paddingInline: 12,
-  border: `3px solid ${color.p0}`,
+  border: `3px solid ${color.purple}`,
   borderRadius: 4,
   backgroundColor: color.bg,
   '@media': {

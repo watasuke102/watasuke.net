@@ -17,5 +17,5 @@ export const bio = style({
 
 export const heading = style({
   paddingLeft: 8,
-  borderLeft: `6px solid ${color.p0}`,
+  borderLeft: `6px solid ${color.red}`,
 });
