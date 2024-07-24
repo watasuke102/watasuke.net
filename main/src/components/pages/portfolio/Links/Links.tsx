@@ -5,18 +5,11 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Links.css';
-import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
-import toml from 'toml';
+import {color} from '@watasuke.net/common/src/css/color';
 import {LinkCard} from './LinkCard';
-
-interface Link {
-  title: string;
-  icon: string;
-  url: string;
-  desc_ja: string;
-  desc_en: string;
-}
+import {LinkType, social_links, social_links_desc} from '../../../../data/social_links';
+import {Heading} from '../Heading';
 
 interface Props {
   animation_enabled: boolean;
@@ -24,30 +17,24 @@ interface Props {
 }
 
 export function Links(props: Props): React.ReactElement {
-  const link_list: Link[] = toml.parse(
-    useStaticQuery(graphql`
-      query portfolioLinks {
-        portfolioToml(name: {eq: "Links.toml"}) {
-          body
-        }
-      }
-    `).portfolioToml.body,
-  ).link;
-
   return (
     <section>
-      <h2>Links</h2>
+      <Heading color={color.yellow} text='Links' />
       <div className={css.container}>
-        {link_list.map((link, i) => (
-          <LinkCard
-            key={i}
-            title={link.title}
-            url={link.url}
-            icon={link.icon}
-            desc={props.lang !== 'en' ? link.desc_ja : link.desc_en}
-            animation_enabled={props.animation_enabled}
-          />
-        ))}
+        {(Object.keys(social_links) as LinkType[]).map((key, i) => {
+          const link = social_links[key];
+          const desc = social_links_desc[key];
+          return (
+            <LinkCard
+              key={i}
+              title={link.title ?? ''}
+              url={link.href ?? ''}
+              icon={link.children ?? <></>}
+              desc={props.lang !== 'en' ? desc.ja : desc.en}
+              animation_enabled={props.animation_enabled}
+            />
+          );
+        })}
       </div>
     </section>
   );

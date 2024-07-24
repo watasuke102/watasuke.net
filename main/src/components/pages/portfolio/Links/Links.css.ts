@@ -7,11 +7,11 @@
 import {style} from '@vanilla-extract/css';
 
 export const container = style({
-  width: '90%',
-  margin: '0 auto',
+  width: '95%',
+  margin: '16px auto',
   display: 'grid',
   gap: 12,
-  gridTemplateColumns: 'repeat(auto-fit, minmax(480px, 1fr))',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(460px, 1fr))',
   paddingBottom: 200,
 
   '@media': {

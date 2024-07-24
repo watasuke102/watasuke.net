@@ -7,28 +7,23 @@
 import {globalStyle, style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
-export const container = style({
-  margin: '0 auto',
-  padding: '12px 4px',
+export const outer = style({
   borderRadius: 4,
   color: color.fg,
   backgroundColor: `${color.bg}e6`,
   textDecoration: 'none',
-
-  display: 'grid',
-  width: '100%',
-  gridTemplateRows: 'auto 1fr',
-  gridTemplateColumns: '120px 1fr',
-
+  border: `3px solid ${color.yellow}`,
   ':hover': {
     textDecoration: 'none',
   },
+});
 
-  '@media': {
-    'screen and (max-width: 550px)': {
-      gridTemplateColumns: '80px 1fr',
-    },
-  },
+export const inner = style({
+  height: '100%',
+  paddingBlock: 8,
+  display: 'grid',
+  gridTemplateRows: 'auto 1fr',
+  gridTemplateColumns: '92px auto',
 });
 
 export const icon = style({
@@ -37,12 +32,6 @@ export const icon = style({
   textAlign: 'center',
   width: '100%',
   height: '100%',
-
-  '@media': {
-    'screen and (max-width: 550px)': {
-      gridRow: '1 / 2',
-    },
-  },
 });
 globalStyle(`${icon} svg`, {
   position: 'absolute',
@@ -52,12 +41,6 @@ globalStyle(`${icon} svg`, {
   display: 'block',
   height: 48,
   margin: 'auto',
-  '@media': {
-    'screen and (max-width: 550px)': {
-      width: 32,
-      height: 32,
-    },
-  },
 });
 
 export const head = style({
@@ -70,11 +53,6 @@ export const head = style({
 export const desc = style({
   gridRow: 2,
   gridColumn: 2,
+  whiteSpace: 'pre-wrap',
   color: `rgba(${color.fg}, 0.8)`,
-  '@media': {
-    'screen and (max-width: 550px)': {
-      gridColumn: '1 / 3',
-      padding: '8px 12px',
-    },
-  },
 });

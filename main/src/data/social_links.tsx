@@ -72,3 +72,38 @@ export const social_links: LinkRecord = {
     children: <IconBoxOpen />,
   },
 };
+
+export interface LinkDesc {
+  ja: string;
+  en: string;
+}
+export const social_links_desc: Record<LinkType, LinkDesc> = {
+  twitter: {
+    ja: 'メンションもしくはDMに反応します\n（恐らく最速で反応できる連絡手段です）',
+    en: "I'll respond to mention or DM (probably the fastest way to get responses)",
+  },
+  instagram: {
+    ja: 'ときどき写真とか作品とかを上げます',
+    en: 'sometimes upload picture or my works',
+  },
+  soundcloud: {
+    ja: '今までに作った曲を投稿しています',
+    en: 'my original musics are here',
+  },
+  github_account: {
+    ja: 'いろいろつくってます',
+    en: 'something I made',
+  },
+  github_repo: {
+    ja: 'このサイトのリポジトリです',
+    en: 'repository of this site',
+  },
+  cosense: {
+    ja: '自分語りなどをしています',
+    en: 'recounting my own story or thought',
+  },
+  retrospring: {
+    ja: '匿名で質問ができます',
+    en: 'you can send me some question',
+  },
+};
