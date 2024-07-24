@@ -9,12 +9,14 @@ import IconSoundcloud from '@assets/icons/Links/soundcloud.svg';
 import IconTwitter from '@assets/icons/Links/twitter.svg';
 import IconGithub from '@assets/icons/Links/github.svg';
 import IconScrapbox from '@assets/icons/Links/scrapbox.svg';
+import IconPresentation from '@assets/icons/Links/presentation.svg';
 import IconBoxOpen from '@assets/icons/Links/box-open.svg';
 
 export type LinkType =
   | 'twitter'
   | 'instagram'
   | 'soundcloud'
+  | 'google_slide'
   | 'github_account'
   | 'github_repo'
   | 'cosense'
@@ -45,6 +47,12 @@ export const social_links: LinkRecord = {
     title: 'SoundCloud (watasuke)',
     href: 'https://soundcloud.com/watasuke',
     children: <IconSoundcloud />,
+  },
+  google_slide: {
+    ...common,
+    title: 'Google Slide',
+    href: 'https://drive.google.com/drive/folders/1Ipm-dngXqPCaEeRm7ES5UM9RnwSm7Hfu?usp=drive_link',
+    children: <IconPresentation />,
   },
   github_account: {
     ...common,
@@ -90,6 +98,10 @@ export const social_links_desc: Record<LinkType, LinkDesc> = {
   soundcloud: {
     ja: '今までに作った曲を投稿しています',
     en: 'my original musics are here',
+  },
+  google_slide: {
+    ja: 'これまでの発表に用いた資料です',
+    en: 'Presentation slides which I have used before',
   },
   github_account: {
     ja: 'いろいろつくってます',
