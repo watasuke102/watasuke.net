@@ -33,6 +33,27 @@ export interface Skill {
   desc_en: string;
 }
 
+interface TierDesc {
+  ja: string;
+  en: string;
+}
+export const tier_description: Record<number, TierDesc> = {
+  1: {
+    ja: '使用期間が長い / 頻繁に使う / 好んで使う',
+    en: 'Long usage period / Use frequently / Prefer to use',
+  },
+  2: {
+    ja: '数回使ったことがある / まだわからないことがある',
+    // eslint-disable-next-line quotes
+    en: "Use several times / remains something that I've not understand",
+  },
+  3: {
+    ja: '経験はあるが自信がない / なにもわからない',
+    // eslint-disable-next-line quotes
+    en: "just experienced but not confident / I've not understand anything",
+  },
+};
+
 export const skills: Skill[] = [
   // language
   {

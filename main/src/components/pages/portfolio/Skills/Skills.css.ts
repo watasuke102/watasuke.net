@@ -24,6 +24,18 @@ export const label = style({
   margin: 'auto',
 });
 
+export const tier_desc_heading = style({
+  textAlign: 'center',
+});
+export const tier_desc_wrapper = style({
+  display: 'flex',
+  justifyContent: 'center',
+});
+export const tier_desc_item = style({
+  display: 'grid',
+  gridTemplateColumns: '56px auto',
+});
+
 export const skill_container = style({
   width: '90%',
   margin: 'auto',

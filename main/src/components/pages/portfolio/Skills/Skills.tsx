@@ -5,13 +5,13 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Skills.css';
-import {Toggle} from '../Toggle/Toggle';
 import {AnimatePresence, motion} from 'framer-motion';
 import React from 'react';
 import {FadeWithScroll} from '@utils/FadeWithScroll';
-import {Skill, skills} from '@data/skill_list';
 import {SkillCard as SkillCard2} from './SkillCard';
+import {Toggle} from '../Toggle/Toggle';
 import {Heading} from '../Heading';
+import {skills, tier_description} from '@data/skill_list';
 
 interface Props {
   animation_enabled: boolean;
@@ -26,7 +26,6 @@ export function Skills(props: Props): React.ReactElement {
 
   const SkillCard = React.useMemo(() => {
     const skill_group = Map.groupBy(skills, e => (groupby !== 'tier' ? e.category : e.tier));
-
     if (groupby !== 'tier') {
       skill_group.forEach(e => e.sort((a, b) => a.tier - b.tier));
     }
@@ -78,6 +77,23 @@ export function Skills(props: Props): React.ReactElement {
           current={groupby}
           set_state={props.animation_enabled ? toggle_changed : set_groupby}
         />
+      </div>
+
+      <h3 className={css.tier_desc_heading}>{props.lang !== 'en' ? 'tierについて' : 'about tier'}</h3>
+      <div className={css.tier_desc_wrapper}>
+        <div>
+          {Object.keys(tier_description).map(key => {
+            const desc = tier_description[Number(key)];
+            return (
+              <>
+                <div key={key} className={css.tier_desc_item}>
+                  <span>tier {key}</span>
+                  <span>{props.lang !== 'en' ? desc.ja : desc.en}</span>
+                </div>
+              </>
+            );
+          })}
+        </div>
       </div>
 
       <AnimatePresence>
