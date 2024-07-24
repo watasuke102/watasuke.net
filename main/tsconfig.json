@@ -11,7 +11,7 @@
       "@feature/*": [ "./src/components/feature/*" ],
     },
     "typeRoots": [
-      "src/types"
+      "./src/types"
     ]
   },
   "include": [

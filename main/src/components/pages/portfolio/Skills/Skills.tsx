@@ -25,17 +25,11 @@ export function Skills(props: Props): React.ReactElement {
   next_groupby_ref.current = next_groupby;
 
   const SkillCard = React.useMemo(() => {
-    const skill_group = new Map<string, Skill[]>();
-    skills.forEach(e => {
-      if (groupby !== 'tier') {
-        skill_group.set(e.category, skill_group.get(e.category) ?? []);
-        skill_group.get(e.category)?.push(e);
-      } else {
-        const tier = String(e.tier);
-        skill_group.set(tier, skill_group.get(tier) ?? []);
-        skill_group.get(tier)?.push(e);
-      }
-    }, {});
+    const skill_group = Map.groupBy(skills, e => (groupby !== 'tier' ? e.category : e.tier));
+
+    if (groupby !== 'tier') {
+      skill_group.forEach(e => e.sort((a, b) => a.tier - b.tier));
+    }
 
     const cards: {group: string; list: React.ReactElement[]}[] = [];
     skill_group.forEach(e => {
