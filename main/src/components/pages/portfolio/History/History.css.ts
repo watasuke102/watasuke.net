@@ -9,6 +9,8 @@ import {color} from '@watasuke.net/common/src/css/color';
 
 export const timeline_middle_line = style({
   position: 'relative',
+  paddingBottom: 60,
+  marginBottom: 20,
   '::before': {
     content: '',
     zIndex: 0,

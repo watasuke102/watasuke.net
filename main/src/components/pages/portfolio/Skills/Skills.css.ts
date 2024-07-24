@@ -27,7 +27,7 @@ export const label = style({
 export const skill_container = style({
   width: '90%',
   margin: 'auto',
-  paddingBottom: 120,
+  paddingBottom: 40,
 });
 
 export const group_name = style({
