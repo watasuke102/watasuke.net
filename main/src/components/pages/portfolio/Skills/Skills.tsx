@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Skills.css';
-import {Toggle} from '@common';
+import {Toggle} from '../Toggle/Toggle';
 import {AnimatePresence, motion} from 'framer-motion';
 import React from 'react';
 import {FadeWithScroll} from '@utils/FadeWithScroll';

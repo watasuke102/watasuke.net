@@ -10,6 +10,5 @@ import {BreakWithCR} from './BreakWithCR/BreakWithCR';
 import {Seo} from './Seo/Seo';
 import {ShareList} from './ShareList';
 import {SimpleInnerLinks} from './SimpleInnerLinks';
-import {Toggle} from './Toggle/Toggle';
 
-export {Background, Breadcrumb, BreakWithCR, Seo, ShareList, SimpleInnerLinks, Toggle};
+export {Background, Breadcrumb, BreakWithCR, Seo, ShareList, SimpleInnerLinks};

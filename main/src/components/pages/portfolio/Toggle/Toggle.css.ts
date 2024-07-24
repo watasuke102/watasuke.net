@@ -17,7 +17,7 @@ export const container = style({
 
 export const selected = style({
   fontWeight: 'bold',
-  backgroundColor: color.p0,
+  backgroundColor: color.blue,
   color: color.bg,
 });
 
