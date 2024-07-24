@@ -1683,128 +1683,6 @@ type PageInfo = {
   readonly totalCount: Scalars['Int'];
 };
 
-type PortfolioToml = Node & {
-  readonly body: Scalars['String'];
-  readonly children: ReadonlyArray<Node>;
-  readonly id: Scalars['ID'];
-  readonly internal: Internal;
-  readonly name: Scalars['String'];
-  readonly parent: Maybe<Node>;
-};
-
-type PortfolioTomlConnection = {
-  readonly distinct: ReadonlyArray<Scalars['String']>;
-  readonly edges: ReadonlyArray<PortfolioTomlEdge>;
-  readonly group: ReadonlyArray<PortfolioTomlGroupConnection>;
-  readonly max: Maybe<Scalars['Float']>;
-  readonly min: Maybe<Scalars['Float']>;
-  readonly nodes: ReadonlyArray<PortfolioToml>;
-  readonly pageInfo: PageInfo;
-  readonly sum: Maybe<Scalars['Float']>;
-  readonly totalCount: Scalars['Int'];
-};
-
-
-type PortfolioTomlConnection_distinctArgs = {
-  field: PortfolioTomlFieldSelector;
-};
-
-
-type PortfolioTomlConnection_groupArgs = {
-  field: PortfolioTomlFieldSelector;
-  limit: InputMaybe<Scalars['Int']>;
-  skip: InputMaybe<Scalars['Int']>;
-};
-
-
-type PortfolioTomlConnection_maxArgs = {
-  field: PortfolioTomlFieldSelector;
-};
-
-
-type PortfolioTomlConnection_minArgs = {
-  field: PortfolioTomlFieldSelector;
-};
-
-
-type PortfolioTomlConnection_sumArgs = {
-  field: PortfolioTomlFieldSelector;
-};
-
-type PortfolioTomlEdge = {
-  readonly next: Maybe<PortfolioToml>;
-  readonly node: PortfolioToml;
-  readonly previous: Maybe<PortfolioToml>;
-};
-
-type PortfolioTomlFieldSelector = {
-  readonly body: InputMaybe<FieldSelectorEnum>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-};
-
-type PortfolioTomlFilterInput = {
-  readonly body: InputMaybe<StringQueryOperatorInput>;
-  readonly children: InputMaybe<NodeFilterListInput>;
-  readonly id: InputMaybe<StringQueryOperatorInput>;
-  readonly internal: InputMaybe<InternalFilterInput>;
-  readonly name: InputMaybe<StringQueryOperatorInput>;
-  readonly parent: InputMaybe<NodeFilterInput>;
-};
-
-type PortfolioTomlGroupConnection = {
-  readonly distinct: ReadonlyArray<Scalars['String']>;
-  readonly edges: ReadonlyArray<PortfolioTomlEdge>;
-  readonly field: Scalars['String'];
-  readonly fieldValue: Maybe<Scalars['String']>;
-  readonly group: ReadonlyArray<PortfolioTomlGroupConnection>;
-  readonly max: Maybe<Scalars['Float']>;
-  readonly min: Maybe<Scalars['Float']>;
-  readonly nodes: ReadonlyArray<PortfolioToml>;
-  readonly pageInfo: PageInfo;
-  readonly sum: Maybe<Scalars['Float']>;
-  readonly totalCount: Scalars['Int'];
-};
-
-
-type PortfolioTomlGroupConnection_distinctArgs = {
-  field: PortfolioTomlFieldSelector;
-};
-
-
-type PortfolioTomlGroupConnection_groupArgs = {
-  field: PortfolioTomlFieldSelector;
-  limit: InputMaybe<Scalars['Int']>;
-  skip: InputMaybe<Scalars['Int']>;
-};
-
-
-type PortfolioTomlGroupConnection_maxArgs = {
-  field: PortfolioTomlFieldSelector;
-};
-
-
-type PortfolioTomlGroupConnection_minArgs = {
-  field: PortfolioTomlFieldSelector;
-};
-
-
-type PortfolioTomlGroupConnection_sumArgs = {
-  field: PortfolioTomlFieldSelector;
-};
-
-type PortfolioTomlSortInput = {
-  readonly body: InputMaybe<SortOrderEnum>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-};
-
 type Potrace = {
   readonly alphaMax: InputMaybe<Scalars['Float']>;
   readonly background: InputMaybe<Scalars['String']>;
@@ -1832,7 +1710,6 @@ type Query = {
   readonly allFile: FileConnection;
   readonly allImageSharp: ImageSharpConnection;
   readonly allOgp: OgpConnection;
-  readonly allPortfolioToml: PortfolioTomlConnection;
   readonly allSite: SiteConnection;
   readonly allSiteBuildMetadata: SiteBuildMetadataConnection;
   readonly allSiteData: SiteDataConnection;
@@ -1847,7 +1724,6 @@ type Query = {
   readonly file: Maybe<File>;
   readonly imageSharp: Maybe<ImageSharp>;
   readonly ogp: Maybe<Ogp>;
-  readonly portfolioToml: Maybe<PortfolioToml>;
   readonly site: Maybe<Site>;
   readonly siteBuildMetadata: Maybe<SiteBuildMetadata>;
   readonly siteData: Maybe<SiteData>;
@@ -1904,14 +1780,6 @@ type Query_allOgpArgs = {
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
   sort: InputMaybe<ReadonlyArray<InputMaybe<OgpSortInput>>>;
-};
-
-
-type Query_allPortfolioTomlArgs = {
-  filter: InputMaybe<PortfolioTomlFilterInput>;
-  limit: InputMaybe<Scalars['Int']>;
-  skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<PortfolioTomlSortInput>>>;
 };
 
 
@@ -2110,16 +1978,6 @@ type Query_ogpArgs = {
   parent: InputMaybe<NodeFilterInput>;
   title: InputMaybe<StringQueryOperatorInput>;
   url: InputMaybe<StringQueryOperatorInput>;
-};
-
-
-type Query_portfolioTomlArgs = {
-  body: InputMaybe<StringQueryOperatorInput>;
-  children: InputMaybe<NodeFilterListInput>;
-  id: InputMaybe<StringQueryOperatorInput>;
-  internal: InputMaybe<InternalFilterInput>;
-  name: InputMaybe<StringQueryOperatorInput>;
-  parent: InputMaybe<NodeFilterInput>;
 };
 
 

@@ -37,10 +37,6 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       contents_githash: String!,
       githash: String!,
     }
-    type PortfolioToml implements Node @dontInfer {
-      name: String!,
-      body: String!,
-    }
     type SiteData implements Node @dontInfer {
       slug: String!,
       body: String!,
@@ -69,36 +65,6 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
     }
   `);
 };
-
-function registerToml({actions, createContentDigest}: SourceNodesArgs) {
-  fs.readdir(path.resolve('./src/assets/portfolio_toml'), (err, files) => {
-    if (err) {
-      throw err;
-    }
-
-    files.forEach(name => {
-      if (name.slice(-4) !== 'toml') {
-        return;
-      }
-      fs.readFile(path.resolve(`./src/assets/portfolio_toml/${name}`), 'utf-8', (err, body) => {
-        if (err) {
-          throw err;
-        }
-
-        const toml_file = {name: name, body: body};
-        actions.createNode({
-          id: name,
-          name: name,
-          body: body,
-          internal: {
-            type: 'PortfolioToml',
-            contentDigest: createContentDigest(toml_file),
-          },
-        });
-      });
-    });
-  });
-}
 
 async function registerSiteDatas(sitedata: AllQuery['sitedata'], {actions, createContentDigest}: SourceNodesArgs) {
   actions.createNode({
@@ -190,9 +156,6 @@ async function registerTags(tags: AllQuery['allTags'], {actions, createContentDi
 }
 
 export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesArgs) => {
-  log('info', 'Loading toml files...');
-  registerToml(args);
-
   const sdk = getSdk(new GraphQLClient(config.apiUrl + '/graphql'));
   const data = await sdk.all();
   if (!data) {
