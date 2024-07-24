@@ -8,7 +8,7 @@ import * as css from './History.css';
 import React from 'react';
 import {color} from '@watasuke.net/common/src/css/color';
 import {EventCard} from './EventCard';
-import {event_list} from './event_list';
+import {event_list} from '@data/event_list';
 import {Heading} from '../Heading';
 
 interface Props {

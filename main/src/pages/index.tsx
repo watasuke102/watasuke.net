@@ -12,7 +12,7 @@ import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
 import {ArticleCard} from '@feature/ArticleList/ArticleCard/ArticleCard';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
-import {social_links} from '../data/social_links';
+import {social_links} from '@data/social_links';
 import IconCard from '@assets/icons/top/card.svg';
 import IconEdit from '@assets/icons/top/edit.svg';
 import IconInfo from '@assets/icons/top/info.svg';

@@ -11,7 +11,7 @@ import ReactMarkdown from 'react-markdown';
 import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import {Transition} from '@utils/Transition';
-import {Event} from './event_list';
+import {Event} from '@data/event_list';
 import IconCollapse from '@assets/icons/general/up.svg';
 
 interface Props {

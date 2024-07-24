@@ -96,6 +96,7 @@ export default tseslint.config(
             { position: 'before', group: 'internal', pattern: '@feature/**' },
             { position: 'before', group: 'internal', pattern: '@features/**' },
             { position: 'before', group: 'internal', pattern: '@utils/**' },
+            { position: 'before', group: 'type',     pattern: '@data/**' },
             { position: 'before', group: 'type',     pattern: '@assets/**' },
             { position: 'after',  group: 'type',     pattern: '@mytypes/**' },
           ],

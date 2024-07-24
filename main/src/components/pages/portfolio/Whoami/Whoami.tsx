@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Whoami.css';
-import {BioEn, BioJa} from './bio';
+import {BioEn, BioJa} from '@data/bio';
 
 interface Props {
   animation_enabled: boolean;

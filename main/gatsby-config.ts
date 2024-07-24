@@ -28,9 +28,11 @@ const gatsby_config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-alias-imports',
       options: {
+        // prettier-ignore
         alias: {
           '@utils': path.resolve(__dirname, 'src/utils'),
           '@assets': path.resolve(__dirname, 'src/assets'),
+          '@data': path.resolve(__dirname, 'src/data'),
           '@mytypes': path.resolve(__dirname, 'src/types'),
           '@pages': path.resolve(__dirname, 'src/components/pages'),
           '@common': path.resolve(__dirname, 'src/components/common'),

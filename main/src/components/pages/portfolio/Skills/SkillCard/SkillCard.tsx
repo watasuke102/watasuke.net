@@ -7,7 +7,7 @@
 import * as css from './SkillCard.css';
 import {motion} from 'framer-motion';
 import {FadeWithScroll} from '@utils/FadeWithScroll';
-import {Skill} from '../skill_list';
+import {Skill} from '@data/skill_list';
 
 interface Props {
   animation_enabled: boolean;

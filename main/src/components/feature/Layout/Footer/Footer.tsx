@@ -7,7 +7,7 @@
 import * as css from './Footer.css';
 import {graphql, useStaticQuery} from 'gatsby';
 import {SimpleInnerLinks} from '@common';
-import {social_links} from '../../../../data/social_links';
+import {social_links} from '@data/social_links';
 
 export function Footer(): JSX.Element {
   const info: Queries.footerInfoQuery = useStaticQuery(graphql`

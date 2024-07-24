@@ -9,7 +9,7 @@ import {Toggle} from '../Toggle/Toggle';
 import {AnimatePresence, motion} from 'framer-motion';
 import React from 'react';
 import {FadeWithScroll} from '@utils/FadeWithScroll';
-import {Skill, skills} from './skill_list';
+import {Skill, skills} from '@data/skill_list';
 import {SkillCard as SkillCard2} from './SkillCard';
 import {Heading} from '../Heading';
 
