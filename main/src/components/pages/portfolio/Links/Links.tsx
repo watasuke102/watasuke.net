@@ -8,8 +8,8 @@ import * as css from './Links.css';
 import React from 'react';
 import {color} from '@watasuke.net/common/src/css/color';
 import {LinkCard} from './LinkCard';
-import {LinkType, social_links, social_links_desc} from '@data/social_links';
 import {Heading} from '../Heading';
+import {LinkType, social_links, social_links_desc} from '@data/social_links';
 
 interface Props {
   animation_enabled: boolean;

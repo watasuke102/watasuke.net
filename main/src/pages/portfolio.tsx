@@ -9,7 +9,7 @@ import {Seo} from '@common';
 import React from 'react';
 import {Link} from 'gatsby';
 import {Switch} from '@watasuke.net/common';
-import {Welcome, Skills, History, Links} from '@pages/portfolio';
+import {Welcome, Skills, History, Links, End} from '@pages/portfolio';
 import {Whoami} from '@pages/portfolio/Whoami';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import IconLeft from '@assets/icons/general/left.svg';
@@ -53,6 +53,7 @@ export default function Portfolio(props: Props): React.ReactElement {
         <Skills animation_enabled={animation_enabled} lang={lang} />
         <History animation_enabled={animation_enabled} lang={lang} />
         <Links animation_enabled={animation_enabled} lang={lang} />
+        <End />
       </main>
     </div>
   );
