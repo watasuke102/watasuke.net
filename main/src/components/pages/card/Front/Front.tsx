@@ -11,7 +11,6 @@ import IconGitHub from '@assets/icons/Links/github.svg';
 import IconInstagram from '@assets/icons/Links/instagram.svg';
 import IconSoundcloud from '@assets/icons/Links/soundcloud.svg';
 import IconTwitter from '@assets/icons/Links/twitter.svg';
-import IconYouTube from '@assets/icons/Links/youtube.svg';
 
 interface Props {
   hidden: boolean;
@@ -39,7 +38,6 @@ export function Front(props: Props): React.ReactElement {
         <div className={`${css.icon_and_link} ${css.secondary}`}>
           <div><IconInstagram /></div>  <div className={css.separator} /> <span>watasuke102</span>
           <div><IconSoundcloud /></div> <div className={css.separator} /> <span>watasuke</span>
-          <div><IconYouTube /></div>    <div className={css.separator} /> <span>watasuke</span>
         </div>
       </div>
     </div>
