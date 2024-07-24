@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {style} from '@vanilla-extract/css';
+import {globalStyle, style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const bio = style({
@@ -13,6 +13,9 @@ export const bio = style({
   width: '90dvw',
   textAlign: 'center',
   margin: 'auto',
+});
+globalStyle(`${bio} p`, {
+  marginBottom: 8,
 });
 
 export const heading = style({

@@ -80,6 +80,7 @@ export interface LinkDesc {
 export const social_links_desc: Record<LinkType, LinkDesc> = {
   twitter: {
     ja: 'メンションもしくはDMに反応します\n（恐らく最速で反応できる連絡手段です）',
+    // eslint-disable-next-line quotes
     en: "I'll respond to mention or DM (probably the fastest way to get responses)",
   },
   instagram: {

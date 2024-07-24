@@ -81,26 +81,28 @@ Use in backend of TAGether
 `,
   },
   {
+    name: 'vanilla-extract',
+    icon: <></>,
+    tier: 1,
+    category: 'Language',
+    desc_ja: '最近のスタイリングはすべてこれを使っています',
+    desc_en: 'Recently I use this for all styling',
+  },
+  {
     name: '(S)CSS',
     icon: <Sass />,
     tier: 2,
     category: 'Language',
-    desc_ja: '最近はSCSSじゃないと書けなくなってきました',
-    desc_en: 'I cannot write CSS without SCSS',
+    desc_ja: '以前 CSS Module を愛用していました',
+    desc_en: 'Previously I loved CSS Module',
   },
   {
     name: 'C++',
     icon: <Cpp />,
     tier: 2,
     category: 'Language',
-    desc_ja: `
-Cよりリッチな書き方が出来るため、Cである必要性がない場合はこちらを使いたいと思っています
-書けはしますが、言語仕様の1割も理解していません
-`,
-    desc_en: `
-I want to use this if there is no reason to use C
-I can write but my knowledge of this language is less than 10%
-`,
+    desc_ja: '書けはしますが、言語仕様の1割も理解していません',
+    desc_en: 'I can write but my knowledge of this language is less than 10%',
 
     // framework / library
   },
@@ -115,7 +117,7 @@ I can write but my knowledge of this language is less than 10%
   {
     name: 'Next.js',
     icon: <Nextjs />,
-    tier: 1,
+    tier: 2,
     category: 'FW/Lib',
     desc_ja: `
 TAGetherの開発に使用
@@ -143,7 +145,7 @@ My knowledge is almost compositor side
   {
     name: 'Qt',
     icon: <Qt />,
-    tier: 2,
+    tier: 3,
     category: 'FW/Lib',
     desc_ja: 'しっかりとしたGUIツールを作りたいときに',
     desc_en: 'For GUI tool developing',
@@ -151,7 +153,7 @@ My knowledge is almost compositor side
   {
     name: 'OpenSiv3D',
     icon: <></>,
-    tier: 2,
+    tier: 3,
     category: 'FW/Lib',
     desc_ja: '中学生時代、ゲームやツール開発に使用していました',
     desc_en: 'I used this for game or tool developing at junior high school',
@@ -159,7 +161,7 @@ My knowledge is almost compositor side
   {
     name: 'Gatsby',
     icon: <></>,
-    tier: 2,
+    tier: 1,
     category: 'FW/Lib',
     desc_ja: `
 このサイトで使用中
