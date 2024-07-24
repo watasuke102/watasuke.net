@@ -66,7 +66,7 @@ export default function Portfolio(props: Props): React.ReactElement {
         {/* page cut in animation */}
         <motion.div
           initial={{background: invisible_mask}}
-          animate={{background: visible_mask}}
+          animate={{background: visible_mask, display: 'none'}}
           // easeOutExpo
           transition={{delay: 0.6, duration: 0.3, ease: [0.16, 1, 0.3, 1]}}
           className={css.cutin_animation}
