@@ -19,7 +19,13 @@ interface Props {
 
 export function LinkCard(props: Props): React.ReactElement {
   return (
-    <motion.a href={props.url} className={css.outer} {...(props.animation_enabled ? FadeWithScroll : {})}>
+    <motion.a
+      href={props.url}
+      target='_blank'
+      rel='nofollow noopener noreferrer'
+      className={css.outer}
+      {...(props.animation_enabled ? FadeWithScroll : {})}
+    >
       <div className={css.inner}>
         <div className={css.icon}>{props.icon}</div>
         <span className={css.head}>{props.title}</span>
