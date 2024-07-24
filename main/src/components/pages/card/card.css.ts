@@ -16,6 +16,10 @@ export const background = style({
   overflow: 'hidden',
   backgroundColor: color.p0,
 });
+globalStyle(`${background} *::selection`, {
+  color: color.bg,
+  backgroundColor: color.fg,
+});
 
 export const button_container = style({
   position: 'fixed',

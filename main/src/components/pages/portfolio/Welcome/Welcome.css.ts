@@ -17,6 +17,10 @@ export const container = style({
   justifyContent: 'center',
   alignItems: 'center',
 });
+globalStyle(`${container} *::selection`, {
+  color: color.bg,
+  backgroundColor: color.fg,
+});
 
 export const greeting = style({
   textAlign: 'center',

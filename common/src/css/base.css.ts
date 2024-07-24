@@ -29,6 +29,11 @@ globalStyle(':root', {
   scrollbarColor: `${color.fg} transparent`,
 });
 
+globalStyle('*::selection', {
+  color: color.bg,
+  backgroundColor: color.p0,
+});
+
 globalStyle('a', {
   color: color.p0,
   textDecoration: 'underline',
