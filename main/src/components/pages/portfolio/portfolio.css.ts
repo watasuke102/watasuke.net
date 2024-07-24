@@ -71,3 +71,13 @@ export const portfolio_container = style({
   flexDirection: 'column',
   rowGap: 20,
 });
+
+export const cutin_animation = style({
+  zIndex: 65535,
+  position: 'fixed',
+  width: '100dvw',
+  height: '100dvh',
+  top: 0,
+  left: 0,
+  backgroundColor: color.bg,
+});

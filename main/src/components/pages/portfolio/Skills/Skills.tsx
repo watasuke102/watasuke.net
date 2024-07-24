@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Skills.css';
-import {AnimatePresence, motion} from 'framer-motion';
+import {motion} from 'framer-motion';
 import React from 'react';
 import {FadeWithScroll} from '@utils/FadeWithScroll';
 import {SkillCard as SkillCard2} from './SkillCard';
@@ -96,22 +96,20 @@ export function Skills(props: Props): React.ReactElement {
         </div>
       </div>
 
-      <AnimatePresence>
-        {next_groupby === '' && (
-          <motion.div className={css.skill_container} {...(props.animation_enabled ? container_variants : {})}>
-            {SkillCard.map((e, i) => (
-              <>
-                <motion.span className={css.group_name} {...(props.animation_enabled ? FadeWithScroll : {})}>
-                  {e.group}
-                </motion.span>
-                <div className={css.group} key={i}>
-                  {e.list}
-                </div>
-              </>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {next_groupby === '' && (
+        <motion.div className={css.skill_container} {...(props.animation_enabled ? container_variants : {})}>
+          {SkillCard.map((e, i) => (
+            <>
+              <motion.span className={css.group_name} {...(props.animation_enabled ? FadeWithScroll : {})}>
+                {e.group}
+              </motion.span>
+              <div className={css.group} key={i}>
+                {e.list}
+              </div>
+            </>
+          ))}
+        </motion.div>
+      )}
     </section>
   );
 }
