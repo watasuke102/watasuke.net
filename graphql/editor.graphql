@@ -63,6 +63,6 @@ mutation updateArticle(
   updateArticle(slug: $slug, title: $title, tldr: $tldr, tags: $tags, isFavorite: $isFavorite, body: $body)
 }
 
-mutation publishArticle($slug: String!) {
-  publishArticle(slug: $slug)
+mutation publishArticle($slug: String!, $should_commit_and_push: Boolean!) {
+  publishArticle(slug: $slug, shouldCommitAndPush: $should_commit_and_push)
 }

@@ -83,14 +83,18 @@ impl Mutation {
       )),
     }
   }
-  fn publish_article(slug: String, context: &Context) -> juniper::FieldResult<String> {
+  fn publish_article(
+    slug: String,
+    context: &Context,
+    should_commit_and_push: bool,
+  ) -> juniper::FieldResult<String> {
     if !context.config.allow_private_access {
       return Err(juniper::FieldError::new(
         "Private access is forbidden",
         graphql_value!(""),
       ));
     }
-    match articles::publish_article(&context.config.contents_path, &slug) {
+    match articles::publish_article(&context.config.contents_path, &slug, should_commit_and_push) {
       Ok(_) => Ok(slug),
       Err(err) => Err(juniper::FieldError::new(
         "publish_article() failed",

@@ -26,6 +26,7 @@ import {article_reducer} from '../ArticleReducer';
 import CloseIcon from '@assets/close.svg';
 import LeftIcon from '@assets/left.svg';
 import {ErrorQL} from '@mytypes/ErrorQL';
+import {Checkbox} from '@common/Checkbox';
 
 type Props = {
   article: NonNullable<ArticleEditPageQuery['article']>;
@@ -44,6 +45,7 @@ export function Page({article, tags}: Props): JSX.Element {
   const [is_published, set_is_published] = React.useState(article.isPublished);
   const [toast_status, set_toast_status] = React.useState({title: 'success', desc: ''});
   const [is_toast_open, set_is_toast_open] = React.useState(false);
+  const [should_commit_and_push, set_should_commit_and_push] = React.useState(true);
   const [publish_stat, set_publish_stat] = React.useState<'none' | 'confirmation' | 'waiting' | 'succeeded'>('none');
 
   const save = React.useCallback(async () => {
@@ -71,7 +73,10 @@ export function Page({article, tags}: Props): JSX.Element {
     }
     try {
       const sdk = getSdk(new GraphQLClient(`${apiUrl}/graphql`));
-      await sdk.publishArticle({slug: article.slug});
+      await sdk.publishArticle({
+        slug: article.slug,
+        should_commit_and_push: should_commit_and_push,
+      });
       set_is_published(true);
       set_publish_stat('succeeded');
     } catch (err) {
@@ -80,7 +85,7 @@ export function Page({article, tags}: Props): JSX.Element {
       set_publish_stat('none');
       set_is_toast_open(true);
     }
-  }, [article.slug, is_published]);
+  }, [article.slug, should_commit_and_push, is_published]);
 
   // hydration errorが出るのを回避する
   const [is_first_render, set_is_first_render] = React.useState(true);
@@ -150,8 +155,12 @@ export function Page({article, tags}: Props): JSX.Element {
         title='Are you sure to publish?'
         desc='You cannot undo this change from the CMS (yet)'
       >
+        <Checkbox
+          label='Commit and Push to remote Git repo'
+          checked={should_commit_and_push}
+          on_click={() => set_should_commit_and_push(f => !f)}
+        />
         <div className={css.dialog}>
-          <></>
           {(() => {
             switch (publish_stat) {
               case 'confirmation':

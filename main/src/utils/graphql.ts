@@ -53,6 +53,7 @@ export type MutationNewTagArgs = {
 
 
 export type MutationPublishArticleArgs = {
+  shouldCommitAndPush: Scalars['Boolean']['input'];
   slug: Scalars['String']['input'];
 };
 
@@ -140,6 +141,7 @@ export type UpdateArticleMutation = { __typename?: 'Mutation', updateArticle: st
 
 export type PublishArticleMutationVariables = Exact<{
   slug: Scalars['String']['input'];
+  should_commit_and_push: Scalars['Boolean']['input'];
 }>;
 
 
@@ -217,8 +219,8 @@ export const UpdateArticleDocument = gql`
 }
     `;
 export const PublishArticleDocument = gql`
-    mutation publishArticle($slug: String!) {
-  publishArticle(slug: $slug)
+    mutation publishArticle($slug: String!, $should_commit_and_push: Boolean!) {
+  publishArticle(slug: $slug, shouldCommitAndPush: $should_commit_and_push)
 }
     `;
 export const AllDocument = gql`

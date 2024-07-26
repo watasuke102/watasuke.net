@@ -56,6 +56,7 @@ export const css = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    marginTop: 12,
     gap: 8,
     width: dialog_width,
     height: 100,

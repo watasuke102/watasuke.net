@@ -130,7 +130,11 @@ pub fn create_article(contents_path: &String, slug: &String, title: &String) -> 
   Ok(())
 }
 
-pub fn publish_article(contents_path: &String, slug: &String) -> anyhow::Result<()> {
+pub fn publish_article(
+  contents_path: &String,
+  slug: &String,
+  should_commit_and_push: bool,
+) -> anyhow::Result<()> {
   let tags = tags::read_tags(&contents_path);
   let articles = read_articles(contents_path, &tags)?;
   let Some(article) = articles.get(slug) else {
@@ -163,9 +167,11 @@ pub fn publish_article(contents_path: &String, slug: &String) -> anyhow::Result<
   let new_path = new_path.as_path();
   std::fs::rename(&old_path, &new_path)?;
 
-  crate::git::Repo::open(contents_path)?
-    .commit_published_article(slug, [&old_path, &new_path])?
-    .push()?;
+  if should_commit_and_push {
+    crate::git::Repo::open(contents_path)?
+      .commit_published_article(slug, [&old_path, &new_path])?
+      .push()?;
+  }
 
   Ok(())
 }
