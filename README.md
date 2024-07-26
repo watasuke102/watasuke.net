@@ -23,9 +23,11 @@ monorepo by npm workspace
   - 記事を編集するページ
   - Next.js
 - common
-  - mainおよびeditorの両方から用いられるコンポーネント等
+  - `main` および `editor` の両方から用いられるコンポーネント等
 - config
   - ESLintやTypeScriptの設定とenv file (`config.ts`)
+- graphql
+  - `cms` によって生成されるGraphQLのschema＋ `main` と `editor` で用いるAPIのdocuments
 
 ## how to use
 
@@ -42,7 +44,7 @@ monorepo by npm workspace
 
 ### launch
 
-3. `cd back && cargo run &`
+3. `cd cms && cargo run &`
 4. main: `npm run dev`, editor: `npm -w editor run dev`
 
 ## LICENSE
