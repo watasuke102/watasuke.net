@@ -3507,7 +3507,7 @@ type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: 
 type innerEmbedCardInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type innerEmbedCardInfoQuery = { readonly allArticles: { readonly nodes: ReadonlyArray<{ readonly title: string, readonly tldr: string }> } };
+type innerEmbedCardInfoQuery = { readonly allArticles: { readonly nodes: ReadonlyArray<{ readonly slug: string, readonly title: string }> } };
 
 type ogpListQueryVariables = Exact<{ [key: string]: never; }>;
 

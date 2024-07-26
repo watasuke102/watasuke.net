@@ -18,8 +18,8 @@ export function InnerEmbedCard(props: Props): React.ReactElement {
     query innerEmbedCardInfo {
       allArticles(sort: {published_at: DESC}) {
         nodes {
+          slug
           title
-          tldr
         }
       }
     }
