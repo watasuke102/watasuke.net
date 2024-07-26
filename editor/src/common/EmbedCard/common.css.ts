@@ -8,7 +8,10 @@ import {style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const embed_card = style({
+  display: 'block',
   color: color.bg,
   backgroundColor: color.fg,
   padding: 4,
+  maxWidth: '100%',
+  wordBreak: 'break-all',
 });
