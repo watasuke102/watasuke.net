@@ -8,19 +8,16 @@ import {style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const css = {
-  input: style({
-    display: 'grid',
-    gridTemplateColumns: '60px 1fr',
+  checkbox_wrapper: style({
+    display: 'flex',
     alignItems: 'center',
     gap: 8,
-    paddingTop: 12,
-    paddingBottom: 4,
   }),
-  input_text: style({
+  check_icon: style({
+    width: 32,
+    height: 32,
+    padding: 0,
     border: `1px solid ${color.fg}`,
-  }),
-  counter: style({
-    fontSize: '0.9em',
-    color: color.g3,
+    borderRadius: 4,
   }),
 };
