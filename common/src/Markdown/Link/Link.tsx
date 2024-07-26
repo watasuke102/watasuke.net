@@ -5,7 +5,6 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {Components} from 'hast-util-to-jsx-runtime';
-import React from 'react';
 import {classify_url_embed_type} from '@watasuke.net/common';
 import {EmbedCardType, InnerEmbedCardType} from '../PropsComponent';
 
@@ -13,6 +12,7 @@ export function Link(EmbedCard: EmbedCardType, InnerEmbedCard: InnerEmbedCardTyp
   const link: Components['a'] = props => {
     /* eslint-disable react/prop-types */
     if (!props.node) return <></>;
+
     const link_text = props.node.children[0].value;
     // [Display](url)の形式であった場合、文頭ではなかった場合（箇条書き内など）はEmbedにしない
     if (link_text !== props.href || props.node.position?.start.column !== 1) {

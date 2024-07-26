@@ -25,17 +25,24 @@ export function InnerEmbedCard(props: Props): React.ReactElement {
     }
   `);
 
-  const data = articles.allArticles.nodes.filter(e => e.slug === props.slug)[0];
+  const slug_without_hash = props.slug.replace(/#.+$/, '');
+  const data = articles.allArticles.nodes.filter(e => e.slug === slug_without_hash)[0];
+  const decoded_slug = decodeURI(props.slug);
 
   if (!data) {
-    return <Link to={`/blog/article/${props.slug}`}>{props.slug}</Link>;
+    return (
+      <>
+        {'[Failed to create InnerEmbedCard] '}
+        <Link to={`/blog/article/${props.slug}`}>{decoded_slug}</Link>
+      </>
+    );
   }
 
   return (
     <Link to={`/blog/article/${props.slug}`} className={initialized_a}>
       <div className={css.container}>
         <span className={css.title}>{data.title}</span>
-        <span className={css.url}>{`watasuke.net - ${props.slug}`}</span>
+        <span className={css.url}>{`watasuke.net - ${decoded_slug}`}</span>
         <span className={css.description}>{data.tldr}</span>
       </div>
     </Link>

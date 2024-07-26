@@ -65,7 +65,7 @@ export function EmbedCard({url}: Props): React.ReactElement {
         )}
         <div className={css.text_container}>
           <span className={css.title}>{title}</span>
-          <span className={css.url}>{url}</span>
+          <span className={css.url}>{decodeURI(url)}</span>
           <span className={css.description}>{desc ?? ''}</span>
         </div>
       </div>
