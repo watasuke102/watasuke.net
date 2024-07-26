@@ -14,6 +14,8 @@ type Props = {
   params: {slug: string};
 };
 
+export const revalidate = 0;
+
 export default async function page(props: Props): Promise<JSX.Element> {
   const sdk = getSdk(new GraphQLClient('http://127.0.0.1:10212/graphql'));
   const query = await sdk.articleEditPage({slug: props.params.slug});
