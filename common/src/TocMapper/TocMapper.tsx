@@ -1,4 +1,4 @@
-// watasuke.net
+// watasuke.net > common
 // CopyRight (c) 2021-2024 watasuke
 //
 // Email  : <watasuke102@gmail.com>
@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './TocMapper.css';
 import React from 'react';
-import Heading from '@mytypes/Heading';
+import Heading from '../Heading';
 
 interface Props {
   headings: Heading[];

@@ -5,6 +5,6 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import React from 'react';
-import Heading from '@mytypes/Heading';
+import Heading from '@watasuke.net/common/src/Heading';
 
 export const HeadingContext = React.createContext<Heading[] | undefined>(undefined);

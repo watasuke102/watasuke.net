@@ -7,7 +7,8 @@
 import * as css from './TocInArticle.css';
 import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
 import React from 'react';
-import {HeadingContext, TocMapper} from '@feature/TableOfContents';
+import {TocMapper} from '@watasuke.net/common';
+import {HeadingContext} from '@feature/TableOfContents';
 import IconCollapse from '@assets/icons/general/up.svg';
 
 export function TocInArticle(): React.ReactElement {

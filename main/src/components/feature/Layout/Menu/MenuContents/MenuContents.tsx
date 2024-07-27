@@ -7,7 +7,8 @@
 import * as css from './MenuContents.css';
 import React from 'react';
 import {SimpleInnerLinks, ShareList} from '@common';
-import {HeadingContext, TocMapper} from '@feature/TableOfContents';
+import {TocMapper} from '@watasuke.net/common';
+import {HeadingContext} from '@feature/TableOfContents';
 import IconUp from '@assets/icons/general/up.svg';
 
 export function MenuContents(): JSX.Element {

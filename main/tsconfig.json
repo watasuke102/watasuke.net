@@ -2,13 +2,27 @@
   "extends": "@watasuke.net/config/tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "@utils/*": [ "./src/utils/*" ],
-      "@assets/*": [ "./src/assets/*" ],
-      "@data/*": [ "./src/data/*" ],
-      "@mytypes/*": [ "./src/types/*" ],
-      "@pages/*": [ "./src/components/pages/*" ],
-      "@common": [ "./src/components/common" ],
-      "@feature/*": [ "./src/components/feature/*" ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ],
+      "@data/*": [
+        "./src/data/*"
+      ],
+      "@mytypes/*": [
+        "./src/types/*"
+      ],
+      "@pages/*": [
+        "./src/components/pages/*"
+      ],
+      "@common": [
+        "./src/components/common"
+      ],
+      "@feature/*": [
+        "./src/components/feature/*"
+      ],
     },
     "typeRoots": [
       "./src/types"
@@ -18,7 +32,9 @@
     "./src/**/*",
     "./gatsby-node.ts",
     "./gatsby-config.ts",
-    "./plugins/**/*"
+    "./plugins/**/*",
+    "../common/src/TocMapper",
+    "../common/src/Heading.d.ts"
   ],
   "exclude": [
     "node_modules",
