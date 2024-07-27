@@ -1,4 +1,4 @@
-// watasuke.net
+// watasuke.net > common
 // CopyRight (c) 2021-2024 watasuke
 //
 // Email  : <watasuke102@gmail.com>
@@ -12,7 +12,7 @@ import {unified} from 'unified';
 import {visit} from 'unist-util-visit';
 import Heading from '@watasuke.net/common/src/Heading';
 
-export default function ExtractHeading(md: string): Heading[] {
+export function ExtractHeading(md: string): Heading[] {
   const heads: Heading[] = [];
   // use same slug generator with `remark-slug`
   const slugger = new GithubSlugger();

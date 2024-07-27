@@ -10,5 +10,15 @@ import {Body} from './src/Markdown/Body/Body';
 import {Switch} from './src/Switch/Switch';
 import {TocMapper} from './src/TocMapper';
 import {color} from './src/css/color';
+import {ExtractHeading} from './src/ExtractHeading';
 
-export {color, Body as Markdown, Switch, AdsInArticle, classify_url_embed_type, UrlEmbedType, TocMapper};
+export {
+  color,
+  Body as Markdown,
+  Switch,
+  AdsInArticle,
+  classify_url_embed_type,
+  UrlEmbedType,
+  TocMapper,
+  ExtractHeading,
+};
