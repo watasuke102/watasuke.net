@@ -57,8 +57,11 @@ export function MdEditor(props: Props): JSX.Element {
       if (props.state.body[cursor_pos + 1] !== '\n') {
         new_body += '\n';
       }
-      // copy is to may fail due to the browser permission, so ignore any exceptions
-      navigator.clipboard?.writeText(new_body).catch(() => undefined);
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(new_body);
+      } else {
+        console.warn('navigator.clipboard is unavailable. Please manually copy below:', new_body);
+      }
     },
     [props.state.body],
   );
