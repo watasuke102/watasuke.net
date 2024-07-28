@@ -6,12 +6,15 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as style from './Body.css';
 import 'highlight.js/styles/atom-one-dark.min.css';
+import 'katex/dist/katex.min.css';
 import {Components} from 'hast-util-to-jsx-runtime';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Highlight from 'rehype-highlight';
+import Katex from 'rehype-katex';
 import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
+import Math from 'remark-math';
 import Slug from 'remark-slug';
 import {AdsInArticle} from '../../Ads';
 import {ImageViewer} from '../ImageViewer/ImageViewer';
@@ -111,8 +114,8 @@ export function Body(props: Props): JSX.Element {
           // eslint-disable-next-line react/prop-types
           img: props => <ImageViewer src={props.src || ''} alt={props.alt} />,
         }}
-        remarkPlugins={[Gfm, Slug, remarkAddFootnoteLabel]}
-        rehypePlugins={[rehypeAddFootnoteLabel, Raw, Highlight]}
+        remarkPlugins={[Gfm, Math, Slug, remarkAddFootnoteLabel]}
+        rehypePlugins={[rehypeAddFootnoteLabel, Katex, Raw, Highlight]}
         // eslint-disable-next-line react/no-children-prop
         children={props.md}
       />
