@@ -6,7 +6,6 @@
         "name": "next"
       }
     ],
-    "baseUrl": "./",
     "paths": {
       "@features/*": [ "./src/features/*" ],
       "@common/*": [ "./src/common/*" ],
@@ -30,7 +29,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/layout.tsx"
+    "src/app/layout.tsx",
   ],
   "exclude": [
     "node_modules"

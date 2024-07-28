@@ -106,6 +106,13 @@ export type ArticleEditPageQueryVariables = Exact<{
 
 export type ArticleEditPageQuery = { __typename?: 'Query', article?: { __typename?: 'Article', slug: string, title: string, tldr: string, tldrReal?: string | null, publishedAt: string, updatedAt: string, isFavorite: boolean, isPublished: boolean, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> } | null, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }> };
 
+export type ArticlePreviewPageQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type ArticlePreviewPageQuery = { __typename?: 'Query', article?: { __typename?: 'Article', slug: string, title: string, body: string } | null };
+
 export type AllTagsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -188,6 +195,15 @@ export const ArticleEditPageDocument = gql`
   }
 }
     `;
+export const ArticlePreviewPageDocument = gql`
+    query articlePreviewPage($slug: String!) {
+  article(slug: $slug) {
+    slug
+    title
+    body
+  }
+}
+    `;
 export const AllTagsDocument = gql`
     query allTags {
   allTags {
@@ -262,6 +278,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     articleEditPage(variables: ArticleEditPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticleEditPageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ArticleEditPageQuery>(ArticleEditPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articleEditPage', 'query', variables);
+    },
+    articlePreviewPage(variables: ArticlePreviewPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticlePreviewPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ArticlePreviewPageQuery>(ArticlePreviewPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articlePreviewPage', 'query', variables);
     },
     allTags(variables?: AllTagsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllTagsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<AllTagsQuery>(AllTagsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allTags', 'query', variables);

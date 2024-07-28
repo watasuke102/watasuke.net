@@ -37,6 +37,14 @@ query articleEditPage($slug: String!) {
   }
 }
 
+query articlePreviewPage($slug: String!) {
+  article(slug: $slug) {
+    slug
+    title
+    body
+  }
+}
+
 query allTags {
   allTags {
     slug
