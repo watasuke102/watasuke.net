@@ -22,4 +22,4 @@ jobs:
           npm install
           sed -e 's|apiUrl =.*|apiUrl = "https://cms.watasuke.net";|' config/sample-config.ts > config/config.ts
       - name: Build
-        run: npm run build
+        run: npm -w main run build
