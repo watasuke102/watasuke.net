@@ -1,6 +1,6 @@
 # watasuke.net
 
-![](/src/assets/thumbnail.jpg)
+![README thumbnail](/main/src/assets/thumbnail.jpg)
 
 [https://watasuke.net](https://watasuke.net)で公開されているページのソース  
 TypeScript, React, vanilla-extract, Gatsby, Next.js, Rust, etc...
