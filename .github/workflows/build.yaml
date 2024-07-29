@@ -20,6 +20,6 @@ jobs:
       - name: Setup
         run: |
           npm install
-          sed -e 's|apiUrl =.*|apiUrl = "https://cms.watasuke.net";|' sample-config.ts > config.ts
+          sed -e 's|apiUrl =.*|apiUrl = "https://cms.watasuke.net";|' config/sample-config.ts > config/config.ts
       - name: Build
         run: npm run build
