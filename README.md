@@ -3,30 +3,49 @@
 ![](/src/assets/thumbnail.jpg)
 
 [https://watasuke.net](https://watasuke.net)で公開されているページのソース  
-TypeScript, React, Gatsby, vanilla-extract, etc
+TypeScript, React, vanilla-extract, Gatsby, Next.js, Rust, etc...
 
 ## 記事について
 
-誤字・脱字・間違い・権利侵害など、記事の中身に関する報告は Issue or PRあるいはTwitter (@Watasuke102)でお願いします
+誤字・脱字・間違い・権利侵害など、記事の中身に関する報告は 記事へのコメント (Discussion) or Issue or Twitter (@Watasuke102)でお願いします
 
-## watasuke.net ecosystems
+## repository structure
 
-- watasuke.net
-  - [watasuke.net](https://watasuke.net/)において公開されるWebサイト
-- [cms.watasuke.net](https://github.com/watasuke102/cms.watasuke.net)
-  - コンテンツの管理・編集サービス
-- contents.watasuke.net (private repo)
-  - cms.watasuke.netに管理されるコンテンツ
+monorepo by npm workspace
+
+- main
+  - `watasuke.net` でホストされているページ本体
+  - Gatsby
+- cms
+  - 記事およびプロフィール等の情報を管理するサーバーサイドソフトウェア
+  - Rust + Rocket + Juniper
+- editor
+  - 記事を編集するページ
+  - Next.js
+- common
+  - `main` および `editor` の両方から用いられるコンポーネント等
+- config
+  - ESLintやTypeScriptの設定とenv file (`config.ts`)
+- graphql
+  - `cms` によって生成されるGraphQLのschema＋ `main` と `editor` で用いるAPIのdocuments
 
 ## how to use
 
-1. `cp sample-config.ts config.ts`
-2. できあがった `config.ts` を編集
+### prepare
+
+1. `cp config/sample-config.ts config/config.ts`
+2. `cp cms/config-sample.toml cms/config.toml`
+3. できあがった `config.ts` を編集
    - `apiUrl`: cms.watasuke.netが動作しているURL
    - `trackingId`: Google Analytics 4 プロパティの「測定 ID」（G-12345 みたいなやつ）
    - `adsenseId`: ca-pub-\d+みたいなやつ
    - `inArticleSlot`: おそらく10桁の数字、記事内広告ユニットを作成して出てくるHTMLの `data-ad-slot`
-3. `npm i` して `npm run dev` する
+4. `npm i`
+
+### launch
+
+3. `cd cms && cargo run &`
+4. main: `npm run dev`, editor: `npm -w editor run dev`
 
 ## LICENSE
 

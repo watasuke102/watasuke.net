@@ -8,6 +8,7 @@ type Article {
   body: String!
   title: String!
   tldr: String!
+  tldrReal: String
   tags: [Tag!]!
   isFavorite: Boolean!
   publishedAt: String!
@@ -19,7 +20,7 @@ type Mutation {
   newTag(slug: String!, title: String!): String!
   newArticle(slug: String!, title: String!): String!
   updateArticle(slug: String!, title: String!, tldr: String!, tags: [String!]!, isFavorite: Boolean!, body: String!): String!
-  publishArticle(slug: String!): String!
+  publishArticle(slug: String!, shouldCommitAndPush: Boolean!): String!
 }
 
 type Query {
@@ -28,6 +29,7 @@ type Query {
   article(slug: String!): Article
   allTags: [Tag!]!
   sitedata: Sitedata!
+  contentsGitHeadHash: String!
 }
 
 type Sitedata {

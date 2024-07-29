@@ -1,0 +1,76 @@
+# documents.graphql
+#
+# CopyRight (c) 2023 Watasuke
+# Email  : <watasuke102@gmail.com>
+# Twitter: @Watasuke102
+# This software is released under the MIT or MIT SUSHI-WARE License.
+query allArticles {
+  allArticles {
+    slug
+    title
+    isFavorite
+    publishedAt
+    updatedAt
+    isPublished
+  }
+}
+
+query articleEditPage($slug: String!) {
+  article(slug: $slug) {
+    slug
+    title
+    tldr
+    tldrReal
+    publishedAt
+    updatedAt
+    isFavorite
+    isPublished
+    tags {
+      slug
+      name
+    }
+    body
+  }
+  allTags {
+    slug
+    name
+  }
+}
+
+query articlePreviewPage($slug: String!) {
+  article(slug: $slug) {
+    slug
+    title
+    body
+  }
+}
+
+query allTags {
+  allTags {
+    slug
+    name
+  }
+}
+
+mutation newTag($slug: String!, $title: String!) {
+  newTag(slug: $slug, title: $title)
+}
+
+mutation newArticle($slug: String!, $title: String!) {
+  newArticle(slug: $slug, title: $title)
+}
+
+mutation updateArticle(
+  $slug: String!
+  $title: String!
+  $tldr: String!
+  $tags: [String!]!
+  $isFavorite: Boolean!
+  $body: String!
+) {
+  updateArticle(slug: $slug, title: $title, tldr: $tldr, tags: $tags, isFavorite: $isFavorite, body: $body)
+}
+
+mutation publishArticle($slug: String!, $should_commit_and_push: Boolean!) {
+  publishArticle(slug: $slug, shouldCommitAndPush: $should_commit_and_push)
+}
