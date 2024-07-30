@@ -52,6 +52,8 @@ export function TocInArticle(): React.ReactElement {
             ease: 'easeOut',
             duration: 0.2 * Number(!should_reduce_motion),
           }}
+          // initial value to prevent layout shift on the first load
+          style={{maxHeight: 300, overflowY: 'scroll'}}
         >
           <TocMapper headings={headings} />
         </motion.div>
