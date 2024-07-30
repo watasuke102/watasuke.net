@@ -19,7 +19,7 @@ export function ProfileCard(): React.ReactElement {
   `);
   return (
     <section className={css.container}>
-      <StaticImage className={css.avatar} width={80} src='@assets/icon.jpg' alt='icon' />
+      <StaticImage className={css.avatar} width={80} src='../../../../assets/icon.jpg' alt='icon' />
       <p>わたすけ</p>
       <p className={css.body}>
         {query.siteData?.body ?? ''}

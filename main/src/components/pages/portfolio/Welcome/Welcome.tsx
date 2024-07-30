@@ -29,7 +29,7 @@ export function Welcome(props: Props): React.ReactElement {
         <h2 className={css.greeting}>Hi there👋</h2>
 
         <div className={css.avatar_and_name}>
-          <StaticImage className={css.avatar} height={240} src='@assets/icon.jpg' alt='icon' />
+          <StaticImage className={css.avatar} height={240} src='../../../../assets/icon.jpg' alt='icon' />
           <div>
             <p className={css.name_main}>わたすけ</p>
             <p className={css.name_sub}>Watasuke</p>
