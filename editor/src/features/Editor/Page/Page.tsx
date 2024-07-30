@@ -33,6 +33,8 @@ type Props = {
   tags: ArticleEditPageQuery['allTags'];
 };
 
+type ToastStatus = {title: string; desc: string};
+
 export function Page({article, tags}: Props): JSX.Element {
   const [state, dispatch] = useImmerReducer(article_reducer, {
     body: article.body,
@@ -43,10 +45,21 @@ export function Page({article, tags}: Props): JSX.Element {
     all_tags: tags,
   });
   const [is_published, set_is_published] = React.useState(article.isPublished);
-  const [toast_status, set_toast_status] = React.useState({title: 'success', desc: ''});
+  const [toast_status, set_toast_status] = React.useState<ToastStatus>({title: 'success', desc: ''});
   const [is_toast_open, set_is_toast_open] = React.useState(false);
   const [should_commit_and_push, set_should_commit_and_push] = React.useState(true);
   const [publish_stat, set_publish_stat] = React.useState<'none' | 'confirmation' | 'waiting' | 'succeeded'>('none');
+
+  function compose_toast_from_err(err: unknown): ToastStatus {
+    if (err.response && Array.isArray(err.response.errors)) {
+      console.log('Following err will be shown as toast', {err});
+      const error = (err as ErrorQL).response.errors[0];
+      return {title: error.message, desc: error.extensions};
+    } else if (err instanceof Error) {
+      return {title: err.name, desc: err.message};
+    }
+    return {title: 'Unknown Error', desc: ''};
+  }
 
   const save = React.useCallback(async () => {
     try {
@@ -61,8 +74,7 @@ export function Page({article, tags}: Props): JSX.Element {
       });
       set_toast_status({title: 'success', desc: ''});
     } catch (err) {
-      const error = (err as ErrorQL).response.errors[0];
-      set_toast_status({title: error.message, desc: error.extensions});
+      set_toast_status(compose_toast_from_err(err));
     }
     set_is_toast_open(true);
   }, [article, state]);
@@ -80,8 +92,7 @@ export function Page({article, tags}: Props): JSX.Element {
       set_is_published(true);
       set_publish_stat('succeeded');
     } catch (err) {
-      const error = (err as ErrorQL).response.errors[0];
-      set_toast_status({title: error.message, desc: error.extensions});
+      set_toast_status(compose_toast_from_err(err));
       set_publish_stat('none');
       set_is_toast_open(true);
     }
