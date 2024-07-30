@@ -16,6 +16,10 @@ export const h3 = style({
   borderLeft: `4px solid ${color.p0}`,
 });
 
+export const h4 = style({
+  borderBottom: `2px dashed ${color.p0}`,
+});
+
 // override
 export const container = style({});
 globalStyle(`${container} .twitter-tweet`, {
@@ -50,8 +54,9 @@ globalStyle(`${container} hr`, {
 });
 
 globalStyle(`${container} blockquote`, {
-  borderLeft: `solid 4px ${color.fg}`,
-  paddingLeft: 8,
+  borderLeft: `3px solid ${color.fg}`,
+  backgroundColor: '#0004',
+  paddingInline: 8,
 });
 
 globalStyle(`${container} pre:not([class])`, {

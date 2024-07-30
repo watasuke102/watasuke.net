@@ -58,3 +58,22 @@ globalStyle('table th', {
 globalStyle('table th,td', {
   padding: '4px 8px',
 });
+
+globalStyle('sup > a', {
+  marginInline: 3,
+});
+
+globalStyle('hr', {
+  opacity: 1,
+});
+
+globalStyle('details', {
+  marginBottom: 12,
+  borderLeft: `4px solid ${color.fg}`,
+});
+globalStyle('details[open] summary', {
+  marginBottom: 12,
+});
+globalStyle('details > *', {
+  marginLeft: 10,
+});

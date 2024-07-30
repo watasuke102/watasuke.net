@@ -53,7 +53,7 @@ const Heading: Components['head'] = props => {
             );
           case 'h4':
             return (
-              <h4 id={props.id}>
+              <h4 id={props.id} className={style.h4}>
                 <>{props.children}</>
               </h4>
             );
