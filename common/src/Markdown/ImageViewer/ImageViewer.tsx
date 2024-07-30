@@ -23,6 +23,7 @@ export const ImageViewer = ({src, alt}: Props): React.ReactElement => {
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
       <img
         className={style.inline_img}
+        loading='lazy'
         src={src}
         alt={alt ?? ''}
         onClick={() => {

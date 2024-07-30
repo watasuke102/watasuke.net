@@ -60,7 +60,7 @@ export function EmbedCard({url}: Props): React.ReactElement {
           <span className={css.img_fallback}>{'[OGP image not found]'}</span>
         ) : (
           <div className={css.img_wrapper}>
-            <img className={css.thumbnail} src={image} alt={title} />
+            <img className={css.thumbnail} src={image} alt={title} loading='lazy' />
           </div>
         )}
         <div className={css.text_container}>
