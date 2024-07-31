@@ -57,6 +57,7 @@ export function BlogContent(props: Props): React.ReactElement {
       />
       <AdsInArticle />
 
+      <hr />
       <nav>
         {props.newer ? (
           <Link to={'/blog/article/' + props.newer.slug} className={css.newer_link}>
