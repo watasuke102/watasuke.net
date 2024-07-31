@@ -57,7 +57,7 @@ export const social_links: LinkRecord = {
   github_account: {
     ...common,
     title: 'GitHub account (watasuke102)',
-    href: 'https://github.com/watasuke102/watasuke.net',
+    href: 'https://github.com/watasuke102',
     children: <IconGithub />,
   },
   github_repo: {
