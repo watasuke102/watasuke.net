@@ -11,8 +11,11 @@ export type UrlEmbedType = {
 };
 
 export function classify_url_embed_type(url: string): UrlEmbedType {
-  if (url.slice(0, 19) === 'https://twitter.com' || url.slice(0, 13) === 'https://x.com') {
-    return {embed_type: 'twitter', data: ''};
+  if (url.slice(0, 19) === 'https://twitter.com') {
+    return {embed_type: 'twitter', data: url};
+  }
+  if (url.slice(0, 13) === 'https://x.com') {
+    return {embed_type: 'twitter', data: `https://twitter.com/${url.slice(14)}`};
   }
   if (url.slice(0, 32) === 'https://www.youtube.com/watch?v=') {
     return {embed_type: 'youtube', data: url.slice(32)};

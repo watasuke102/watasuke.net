@@ -27,7 +27,7 @@ export function Link(EmbedCard: EmbedCardType, InnerEmbedCard: InnerEmbedCardTyp
         return (
           <blockquote className='twitter-tweet' data-theme='dark'>
             <span>
-              <a href={props.href}>ツイート</a>を読み込み中...
+              <a href={embed_type.data}>ツイート</a>を読み込み中...
             </span>
           </blockquote>
         );
