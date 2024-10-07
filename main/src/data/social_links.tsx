@@ -20,7 +20,7 @@ export type LinkType =
   | 'github_account'
   | 'github_repo'
   | 'cosense'
-  | 'retrospring';
+  | 'question_box';
 
 export type LinkRecord = Record<LinkType, JSX.IntrinsicElements['a']>;
 
@@ -73,10 +73,10 @@ export const social_links: LinkRecord = {
     // TODO: replace icon
     children: <IconScrapbox />,
   },
-  retrospring: {
+  question_box: {
     ...common,
-    title: 'Retrospring（質問箱）',
-    href: 'https://retrospring.net/@watasuke',
+    title: 'mond（質問箱）',
+    href: 'https://mond.how/ja/Watasuke102',
     children: <IconBoxOpen />,
   },
 };
@@ -115,7 +115,7 @@ export const social_links_desc: Record<LinkType, LinkDesc> = {
     ja: '自分語りなどをしています',
     en: 'recounting my own story or thought',
   },
-  retrospring: {
+  question_box: {
     ja: '匿名で質問ができます',
     en: 'you can send me some question',
   },

@@ -44,7 +44,7 @@ export default function Index(props: Props): React.ReactElement {
     {data: social_links.instagram, class_name: css.link_entry},
     {data: social_links.soundcloud, class_name: `${css.link_entry} ${css.link_soundcloud}`},
     {data: social_links.cosense, class_name: css.link_entry},
-    {data: social_links.retrospring, class_name: css.link_entry},
+    {data: social_links.question_box, class_name: css.link_entry},
   ];
 
   return (
