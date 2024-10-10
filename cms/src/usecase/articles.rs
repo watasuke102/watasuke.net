@@ -172,18 +172,19 @@ pub fn publish(
     .unwrap_or(-1);
 
   let old_path = Path::new(article.article_path());
-  let new_path = old_path
-    .parent()
-    .context("parent does not exist")?
-    .join(format!("{:02}_{}", max_index + 1, slug));
+  let new_path = old_path.with_file_name(format!("{:02}_{}", max_index + 1, slug));
   let new_path = new_path.as_path();
   std::fs::rename(&old_path, &new_path)?;
 
-  if should_commit_and_push {
-    crate::git::Repo::open(contents_path)?
-      .commit_published_article(slug, [&old_path, &new_path])?
-      .push()?;
+  if !should_commit_and_push {
+    return Ok(());
   }
+  let repo = crate::git::Repo::open(contents_path)?;
+  repo
+    .stage(&old_path)?
+    .stage(&new_path)?
+    .commit(&format!("add: {}", slug))?
+    .push()?;
 
   Ok(())
 }

@@ -29,6 +29,46 @@ impl Repo {
         .collect(),
     )
   }
+  /// return if the repository state is clean (it doesn't have an ongoing operation)
+  // RepositoryState::Clean is equivalent to GIT_REPOSITORY_STATE_NONE in libgit2
+  // see https://docs.rs/git2/0.19.0/src/git2/repo.rs.html#472
+  fn is_clean(&self) -> bool {
+    self.repo.state() == RepositoryState::Clean
+  }
+
+  pub fn stage(&self, path: &Path) -> anyhow::Result<&Self> {
+    ensure!(self.repo.head()?.is_branch(), "Reference is not a branch");
+    ensure!(self.is_clean(), "Repository is dirty");
+
+    let mut index = self.repo.index()?;
+    let repo_path = self.repo.path().parent().unwrap();
+    index.add_all(
+      std::path::absolute(path)?.strip_prefix(repo_path),
+      IndexAddOption::CHECK_PATHSPEC,
+      None,
+    )?;
+    index.write()?;
+    Ok(self)
+  }
+
+  pub fn commit(&self, message: &String) -> anyhow::Result<&Self> {
+    ensure!(self.repo.head()?.is_branch(), "Reference is not a branch");
+    ensure!(self.is_clean(), "Repository is dirty");
+
+    let mut index = self.repo.index()?;
+    let tree = self.repo.find_tree(index.write_tree()?)?;
+    let latest_commit = self.latest_commit()?;
+    let author = latest_commit.author().to_owned();
+    self.repo.commit(
+      Some("HEAD"),
+      &author,
+      &author,
+      &message,
+      &tree,
+      &[&latest_commit],
+    )?;
+    Ok(self)
+  }
 
   pub fn push(&self) -> anyhow::Result<()> {
     ensure!(self.repo.head()?.is_branch(), "Reference is not a branch");
@@ -57,53 +97,5 @@ impl Repo {
       .context("Failed to find remote named `origin`")?
       .push(&[&refspec], Some(&mut push_options))?;
     Ok(())
-  }
-
-  pub fn commit_published_article(
-    &self,
-    slug: &String,
-    paths: [&Path; 2],
-  ) -> anyhow::Result<&Self> {
-    ensure!(
-      self.repo.state() == RepositoryState::Clean,
-      "Repository is dirty"
-    );
-    ensure!(self.repo.head()?.is_branch(), "Reference is not a branch");
-
-    let mut index = self.repo.index()?;
-    // staging
-    {
-      let repo_path = self.repo.path().parent().unwrap();
-      let pathspecs = paths.into_iter().filter_map(|path| {
-        let Ok(abs_path) = std::path::absolute(path) else {
-          return None;
-        };
-        let Ok(path) = abs_path.strip_prefix(repo_path) else {
-          return None;
-        };
-        Some(path.to_owned())
-      });
-      {
-        let v = pathspecs.clone().collect::<Vec<_>>();
-        ensure!(v.len() == 2, "Failed to convert Path to String")
-      }
-      index.add_all(pathspecs, IndexAddOption::CHECK_PATHSPEC, None)?;
-      index.write()?;
-    }
-
-    // commit+push
-    let tree = self.repo.find_tree(index.write_tree()?)?;
-    let latest_commit = self.latest_commit()?;
-    let author = latest_commit.author().to_owned();
-    self.repo.commit(
-      Some("HEAD"),
-      &author,
-      &author,
-      &format!("add: {}", slug),
-      &tree,
-      &[&latest_commit],
-    )?;
-
-    Ok(self)
   }
 }
