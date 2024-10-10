@@ -1,21 +1,9 @@
+use juniper::graphql_object;
 use std::path::Path;
 
-use juniper::graphql_object;
-
+use super::{Article, Frontmatter};
 use crate::{contents::tags, util};
 
-use super::frontmatter::Frontmatter;
-
-#[derive(Clone, Debug)]
-pub struct Article {
-  article_path: String,
-  slug:         String,
-  body:         String,
-  year:         i32,
-  index:        Option<i32>,
-  tags:         Vec<tags::Tag>,
-  frontmatter:  Frontmatter,
-}
 impl Article {
   pub fn new(
     article_path: String,
@@ -86,10 +74,10 @@ impl Article {
       None
     }
   }
-  pub(super) fn index(&self) -> &Option<i32> {
+  pub fn index(&self) -> &Option<i32> {
     &self.index
   }
-  pub(super) fn year(&self) -> i32 {
+  pub fn year(&self) -> i32 {
     self.year
   }
 }

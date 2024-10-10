@@ -1,21 +1,36 @@
 use anyhow::{bail, ensure, Context};
 use regex::Regex;
-use std::path::Path;
-use std::{collections::HashMap, io::ErrorKind};
+use std::{collections::HashMap, io::ErrorKind, path::Path};
 use yaml_front_matter::{Document, YamlFrontMatter};
 
-use crate::usecase;
-use crate::{contents::tags, util};
-use article::Article;
-use frontmatter::Frontmatter;
+use crate::{
+  contents::{Article, ArticleMap, Frontmatter},
+  usecase, util,
+};
 
-pub mod article;
-pub mod frontmatter;
-pub type Articles = HashMap<String, Article>;
+pub fn get(contents_path: &String, slug: &String) -> anyhow::Result<Option<Article>> {
+  Ok(get_map_all(contents_path)?.get(slug).cloned())
+}
+pub fn get_all(contents_path: &String) -> anyhow::Result<Vec<Article>> {
+  Ok(
+    get_map_all(contents_path)?
+      .into_iter()
+      .map(|e| e.1)
+      .collect(),
+  )
+}
+pub fn get_published(contents_path: &String) -> anyhow::Result<Vec<Article>> {
+  Ok(
+    get_map_all(contents_path)?
+      .into_iter()
+      .filter_map(|e| e.1.get_public_or_none())
+      .collect(),
+  )
+}
 
-pub fn read_articles(contents_path: &String, tags: &tags::TagMap) -> anyhow::Result<Articles> {
+fn get_map_all(contents_path: &String) -> anyhow::Result<ArticleMap> {
   let re = Regex::new(r"^(?<index>[0-9]{2})?_(?<slug>[0-9a-z\-]+)")?;
-  let mut articles: Articles = HashMap::new();
+  let mut articles: ArticleMap = HashMap::new();
 
   let year_dirs = std::fs::read_dir(Path::new(&contents_path).join("articles"))?;
   for year_dir in year_dirs {
@@ -32,6 +47,7 @@ pub fn read_articles(contents_path: &String, tags: &tags::TagMap) -> anyhow::Res
       })?
     };
 
+    let tags = usecase::tags::get(contents_path);
     let article_dirs = std::fs::read_dir(year_dir.path())?;
     for article_dir in article_dirs {
       let article_dir = article_dir?;
@@ -82,7 +98,7 @@ pub fn read_articles(contents_path: &String, tags: &tags::TagMap) -> anyhow::Res
           md.content,
           year_num,
           index,
-          usecase::tags::convert_slug_vec(tags, &md.metadata.tags),
+          usecase::tags::convert_slug_vec(&tags, &md.metadata.tags),
           md.metadata,
         ),
       );
@@ -91,12 +107,8 @@ pub fn read_articles(contents_path: &String, tags: &tags::TagMap) -> anyhow::Res
   Ok(articles)
 }
 
-pub fn create_article(contents_path: &String, slug: &String, title: &String) -> anyhow::Result<()> {
-  {
-    let tags = usecase::tags::get(contents_path);
-    let articles = read_articles(contents_path, &tags)?;
-    ensure!(articles.get(slug).is_none(), "already exists");
-  }
+pub fn create(contents_path: &String, slug: &String, title: &String) -> anyhow::Result<()> {
+  ensure!(get(contents_path, slug)?.is_none(), "already exists");
 
   let now = util::now();
   let path = Path::new(contents_path)
@@ -131,13 +143,12 @@ pub fn create_article(contents_path: &String, slug: &String, title: &String) -> 
   Ok(())
 }
 
-pub fn publish_article(
+pub fn publish(
   contents_path: &String,
   slug: &String,
   should_commit_and_push: bool,
 ) -> anyhow::Result<()> {
-  let tags = usecase::tags::get(&contents_path);
-  let articles = read_articles(contents_path, &tags)?;
+  let articles = get_map_all(contents_path)?;
   let Some(article) = articles.get(slug) else {
     bail!("Not found");
   };

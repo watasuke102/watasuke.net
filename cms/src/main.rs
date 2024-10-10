@@ -54,13 +54,8 @@ async fn handle_get_img(
   img_name: &str,
   context: &State<Context>,
 ) -> Option<rocket::fs::NamedFile> {
-  let tags = usecase::tags::get(&context.config.contents_path);
-  let Ok(articles) = contents::articles::read_articles(&context.config.contents_path, &tags) else {
-    return None;
-  };
-  let Some(article) = articles.get(slug) else {
-    return None;
-  };
+  // Result<Option<Article>> -.ok()-> Option>Option<Article> -?-> Option<Article> -?-> Article
+  let article = usecase::articles::get(&context.config.contents_path, &slug.to_string()).ok()??;
   let path = Path::new(article.article_path()).join(img_name);
   rocket::fs::NamedFile::open(path).await.ok()
 }
@@ -74,14 +69,11 @@ async fn save_img(
   if !context.config.allow_private_access {
     return rocket::http::Status::Forbidden;
   }
-  let tags = usecase::tags::get(&context.config.contents_path);
-  let Ok(articles) = contents::articles::read_articles(&context.config.contents_path, &tags) else {
-    return rocket::http::Status::InternalServerError;
+  let article = match usecase::articles::get(&context.config.contents_path, &slug.to_string()) {
+    Err(_) => return rocket::http::Status::InternalServerError,
+    Ok(None) => return rocket::http::Status::NotFound,
+    Ok(Some(res)) => res,
   };
-  let Some(article) = articles.get(slug) else {
-    return rocket::http::Status::NotFound;
-  };
-
   match file
     .persist_to(Path::new(article.article_path()).join(img_name))
     .await

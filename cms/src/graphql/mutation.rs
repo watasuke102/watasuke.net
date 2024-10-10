@@ -1,10 +1,7 @@
 use juniper::{graphql_object, graphql_value};
 
 use super::Mutation;
-use crate::{
-  contents::{self, articles},
-  usecase, Context,
-};
+use crate::{usecase, Context};
 
 #[graphql_object(context = crate::Context)]
 impl Mutation {
@@ -30,10 +27,10 @@ impl Mutation {
         graphql_value!(""),
       ));
     }
-    match articles::create_article(&context.config.contents_path, &slug, &title) {
+    match usecase::articles::create(&context.config.contents_path, &slug, &title) {
       Ok(_) => Ok(slug),
       Err(err) => Err(juniper::FieldError::new(
-        "create_article() failed",
+        "Failed to create an Article",
         graphql_value!(err.to_string()),
       )),
     }
@@ -53,27 +50,22 @@ impl Mutation {
         graphql_value!(""),
       ));
     }
-    let tldr = if tldr.is_empty() { None } else { Some(tldr) };
-    let articles = {
-      let tags = usecase::tags::get(&context.config.contents_path);
-      match contents::articles::read_articles(&context.config.contents_path, &tags) {
-        Ok(articles) => articles,
+    let article = {
+      match usecase::articles::get(&context.config.contents_path, &slug) {
+        Ok(article) => article.ok_or(juniper::FieldError::new(
+          "Article with such a slug not found",
+          graphql_value!("Not Found"),
+        ))?,
         Err(err) => {
           return Err(juniper::FieldError::new(
-            "read_articles() failed",
+            "Failed to get Articles",
             graphql_value!(err.to_string()),
           ));
         }
       }
     };
 
-    let Some(article) = articles.get(&slug) else {
-      return Err(juniper::FieldError::new(
-        "Article with such a slug not found",
-        graphql_value!("Not Found"),
-      ));
-    };
-
+    let tldr = if tldr.is_empty() { None } else { Some(tldr) };
     match article.update(title, tldr, tags, is_favorite, body) {
       Ok(_) => Ok(slug),
       Err(err) => Err(juniper::FieldError::new(
@@ -93,10 +85,10 @@ impl Mutation {
         graphql_value!(""),
       ));
     }
-    match articles::publish_article(&context.config.contents_path, &slug, should_commit_and_push) {
+    match usecase::articles::publish(&context.config.contents_path, &slug, should_commit_and_push) {
       Ok(_) => Ok(slug),
       Err(err) => Err(juniper::FieldError::new(
-        "publish_article() failed",
+        "Failed to publish an Article",
         graphql_value!(err.to_string()),
       )),
     }

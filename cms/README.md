@@ -27,4 +27,4 @@ contents/
 
 `contents/articles/<year>/<index>_<slug>/article.md`, regex: `/^(?<index>[0-9]{2})?_(?<slug>[0-9a-z\-]+)/`
 
-(ref: `cms/article.rs@read_articles`)
+(ref: `usecase/article.rs@get_map_all`)
