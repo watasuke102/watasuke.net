@@ -4,7 +4,7 @@ use std::path::Path;
 use std::{collections::HashMap, io::ErrorKind};
 use yaml_front_matter::{Document, YamlFrontMatter};
 
-use crate::{cms::tags, util};
+use crate::{contents::tags, util};
 use article::Article;
 use frontmatter::Frontmatter;
 

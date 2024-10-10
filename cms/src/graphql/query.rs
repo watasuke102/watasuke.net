@@ -1,15 +1,14 @@
 use juniper::{graphql_object, graphql_value};
 
+use super::Query;
 use crate::{
-  cms::{
+  contents::{
     articles::{self, article},
     sitedata, tags,
   },
   git, Context,
 };
 
-#[derive(Clone, Copy, Debug)]
-pub struct Query;
 #[graphql_object(context = crate::Context)]
 impl Query {
   fn all_public_articles(context: &Context) -> juniper::FieldResult<Vec<article::Article>> {

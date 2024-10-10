@@ -1,15 +1,14 @@
-mod cms;
 mod config;
+mod contents;
 mod git;
-mod mutation;
-mod query;
+mod graphql;
 mod util;
 
 use std::{io::Write, path::Path};
 
 use juniper::{EmptySubscription, RootNode};
 use rocket::{response::content, State};
-type Schema = RootNode<'static, query::Query, mutation::Mutation, EmptySubscription<Context>>;
+type Schema = RootNode<'static, graphql::Query, graphql::Mutation, EmptySubscription<Context>>;
 
 #[derive(Clone, Debug)]
 pub struct Context {
@@ -54,8 +53,8 @@ async fn handle_get_img(
   img_name: &str,
   context: &State<Context>,
 ) -> Option<rocket::fs::NamedFile> {
-  let tags = cms::tags::read_tags(&context.config.contents_path);
-  let Ok(articles) = cms::articles::read_articles(&context.config.contents_path, &tags) else {
+  let tags = contents::tags::read_tags(&context.config.contents_path);
+  let Ok(articles) = contents::articles::read_articles(&context.config.contents_path, &tags) else {
     return None;
   };
   let Some(article) = articles.get(slug) else {
@@ -74,8 +73,8 @@ async fn save_img(
   if !context.config.allow_private_access {
     return rocket::http::Status::Forbidden;
   }
-  let tags = cms::tags::read_tags(&context.config.contents_path);
-  let Ok(articles) = cms::articles::read_articles(&context.config.contents_path, &tags) else {
+  let tags = contents::tags::read_tags(&context.config.contents_path);
+  let Ok(articles) = contents::articles::read_articles(&context.config.contents_path, &tags) else {
     return rocket::http::Status::InternalServerError;
   };
   let Some(article) = articles.get(slug) else {
@@ -112,8 +111,8 @@ async fn handle_post_jpeg(
 #[rocket::main]
 async fn main() -> anyhow::Result<()> {
   let schema = Schema::new(
-    query::Query,
-    mutation::Mutation::default(),
+    graphql::Query,
+    graphql::Mutation::default(),
     EmptySubscription::<Context>::new(),
   );
 

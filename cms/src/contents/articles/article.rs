@@ -2,7 +2,7 @@ use std::path::Path;
 
 use juniper::graphql_object;
 
-use crate::{cms::tags, util};
+use crate::{contents::tags, util};
 
 use super::frontmatter::Frontmatter;
 

@@ -1,12 +1,11 @@
 use juniper::{graphql_object, graphql_value};
 
+use super::Mutation;
 use crate::{
-  cms::{self, articles, tags},
+  contents::{self, articles, tags},
   Context,
 };
 
-#[derive(Clone, Debug, Default)]
-pub struct Mutation;
 #[graphql_object(context = crate::Context)]
 impl Mutation {
   fn new_tag(slug: String, title: String, context: &Context) -> juniper::FieldResult<String> {
@@ -56,8 +55,8 @@ impl Mutation {
     }
     let tldr = if tldr.is_empty() { None } else { Some(tldr) };
     let articles = {
-      let tags = cms::tags::read_tags(&context.config.contents_path);
-      match cms::articles::read_articles(&context.config.contents_path, &tags) {
+      let tags = contents::tags::read_tags(&context.config.contents_path);
+      match contents::articles::read_articles(&context.config.contents_path, &tags) {
         Ok(articles) => articles,
         Err(err) => {
           return Err(juniper::FieldError::new(
