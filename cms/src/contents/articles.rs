@@ -4,6 +4,7 @@ use std::path::Path;
 use std::{collections::HashMap, io::ErrorKind};
 use yaml_front_matter::{Document, YamlFrontMatter};
 
+use crate::usecase;
 use crate::{contents::tags, util};
 use article::Article;
 use frontmatter::Frontmatter;
@@ -12,7 +13,7 @@ pub mod article;
 pub mod frontmatter;
 pub type Articles = HashMap<String, Article>;
 
-pub fn read_articles(contents_path: &String, tags: &tags::Tags) -> anyhow::Result<Articles> {
+pub fn read_articles(contents_path: &String, tags: &tags::TagMap) -> anyhow::Result<Articles> {
   let re = Regex::new(r"^(?<index>[0-9]{2})?_(?<slug>[0-9a-z\-]+)")?;
   let mut articles: Articles = HashMap::new();
 
@@ -81,7 +82,7 @@ pub fn read_articles(contents_path: &String, tags: &tags::Tags) -> anyhow::Resul
           md.content,
           year_num,
           index,
-          tags::convert_slug_vec(tags, &md.metadata.tags),
+          usecase::tags::convert_slug_vec(tags, &md.metadata.tags),
           md.metadata,
         ),
       );
@@ -92,7 +93,7 @@ pub fn read_articles(contents_path: &String, tags: &tags::Tags) -> anyhow::Resul
 
 pub fn create_article(contents_path: &String, slug: &String, title: &String) -> anyhow::Result<()> {
   {
-    let tags = tags::read_tags(contents_path);
+    let tags = usecase::tags::get(contents_path);
     let articles = read_articles(contents_path, &tags)?;
     ensure!(articles.get(slug).is_none(), "already exists");
   }
@@ -135,7 +136,7 @@ pub fn publish_article(
   slug: &String,
   should_commit_and_push: bool,
 ) -> anyhow::Result<()> {
-  let tags = tags::read_tags(&contents_path);
+  let tags = usecase::tags::get(&contents_path);
   let articles = read_articles(contents_path, &tags)?;
   let Some(article) = articles.get(slug) else {
     bail!("Not found");

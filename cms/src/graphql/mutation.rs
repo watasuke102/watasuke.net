@@ -2,8 +2,8 @@ use juniper::{graphql_object, graphql_value};
 
 use super::Mutation;
 use crate::{
-  contents::{self, articles, tags},
-  Context,
+  contents::{self, articles},
+  usecase, Context,
 };
 
 #[graphql_object(context = crate::Context)]
@@ -15,10 +15,10 @@ impl Mutation {
         graphql_value!(""),
       ));
     }
-    match tags::new_tag(&context.config.contents_path, &slug, &title) {
+    match usecase::tags::create(&context.config.contents_path, &slug, &title) {
       Ok(_) => Ok(slug),
       Err(err) => Err(juniper::FieldError::new(
-        "new_tag() failed",
+        "Failed to create a new Tag",
         graphql_value!(err.to_string()),
       )),
     }
@@ -55,7 +55,7 @@ impl Mutation {
     }
     let tldr = if tldr.is_empty() { None } else { Some(tldr) };
     let articles = {
-      let tags = contents::tags::read_tags(&context.config.contents_path);
+      let tags = usecase::tags::get(&context.config.contents_path);
       match contents::articles::read_articles(&context.config.contents_path, &tags) {
         Ok(articles) => articles,
         Err(err) => {

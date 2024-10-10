@@ -3,16 +3,17 @@ use juniper::{graphql_object, graphql_value};
 use super::Query;
 use crate::{
   contents::{
+    self,
     articles::{self, article},
-    sitedata, tags,
+    sitedata,
   },
-  git, Context,
+  git, usecase, Context,
 };
 
 #[graphql_object(context = crate::Context)]
 impl Query {
   fn all_public_articles(context: &Context) -> juniper::FieldResult<Vec<article::Article>> {
-    let tags = tags::read_tags(&context.config.contents_path);
+    let tags = usecase::tags::get(&context.config.contents_path);
     match articles::read_articles(&context.config.contents_path, &tags) {
       Ok(articles) => Ok(
         articles
@@ -33,7 +34,7 @@ impl Query {
         graphql_value!(""),
       ));
     }
-    let tags = tags::read_tags(&context.config.contents_path);
+    let tags = usecase::tags::get(&context.config.contents_path);
     match articles::read_articles(&context.config.contents_path, &tags) {
       Ok(articles) => Ok(articles.into_iter().map(|e| e.1).collect()),
       Err(err) => Err(juniper::FieldError::new(
@@ -43,7 +44,7 @@ impl Query {
     }
   }
   fn article(slug: String, context: &Context) -> juniper::FieldResult<Option<article::Article>> {
-    let tags = tags::read_tags(&context.config.contents_path);
+    let tags = usecase::tags::get(&context.config.contents_path);
     let articles = match articles::read_articles(&context.config.contents_path, &tags) {
       Ok(articles) => articles,
       Err(err) => {
@@ -64,8 +65,8 @@ impl Query {
     // if forbidden, check publicity
     Ok(article.clone().get_public_or_none())
   }
-  fn all_tags(context: &Context) -> Vec<tags::Tag> {
-    tags::read_tags(&context.config.contents_path)
+  fn all_tags(context: &Context) -> Vec<contents::tags::Tag> {
+    usecase::tags::get(&context.config.contents_path)
       .into_iter()
       .map(|e| e.1)
       .collect()

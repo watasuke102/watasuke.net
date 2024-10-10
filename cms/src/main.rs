@@ -2,6 +2,7 @@ mod config;
 mod contents;
 mod git;
 mod graphql;
+mod usecase;
 mod util;
 
 use std::{io::Write, path::Path};
@@ -53,7 +54,7 @@ async fn handle_get_img(
   img_name: &str,
   context: &State<Context>,
 ) -> Option<rocket::fs::NamedFile> {
-  let tags = contents::tags::read_tags(&context.config.contents_path);
+  let tags = usecase::tags::get(&context.config.contents_path);
   let Ok(articles) = contents::articles::read_articles(&context.config.contents_path, &tags) else {
     return None;
   };
@@ -73,7 +74,7 @@ async fn save_img(
   if !context.config.allow_private_access {
     return rocket::http::Status::Forbidden;
   }
-  let tags = contents::tags::read_tags(&context.config.contents_path);
+  let tags = usecase::tags::get(&context.config.contents_path);
   let Ok(articles) = contents::articles::read_articles(&context.config.contents_path, &tags) else {
     return rocket::http::Status::InternalServerError;
   };
