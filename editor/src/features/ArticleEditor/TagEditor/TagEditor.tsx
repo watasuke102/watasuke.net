@@ -15,7 +15,7 @@ import React from 'react';
 import {Button} from '@common/Button';
 import {Dialog} from '@common/Dialog';
 import {getSdk} from '@utils/graphql';
-import * as ArticleReducer from '../ArticleReducer';
+import * as ArticleReducer from '../../../features/ArticleEditor/ArticleReducer';
 import AddIcon from '@assets/add.svg';
 import CheckIcon from '@assets/check.svg';
 import CloseIcon from '@assets/close.svg';

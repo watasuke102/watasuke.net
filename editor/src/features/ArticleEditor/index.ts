@@ -5,5 +5,4 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {Page} from './Page/Page';
-
-export {Page as EditorPage};
+export {Page as ArticleEditor};

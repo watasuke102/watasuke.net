@@ -5,20 +5,8 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {globalStyle, keyframes, style} from '@vanilla-extract/css';
-import {color} from '@watasuke.net/common/src/css/color';
 
 export const css = {
-  editor: style({
-    display: 'grid',
-    gridTemplateRows: 'auto 1fr',
-    height: '100%',
-  }),
-  toolbox: style({
-    width: '100%',
-    padding: '8px 12px',
-    border: `2px solid ${color.fg}`,
-    borderBottom: 'none',
-  }),
   toolbox_header: style({
     display: 'grid',
     gridTemplateColumns: '32px 100px auto 1fr',
@@ -35,16 +23,6 @@ export const css = {
     overflow: 'hidden',
     animationDuration: '0.3s',
     animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-  }),
-  textarea: style({
-    resize: 'none',
-    height: '100%',
-    border: `2px solid ${color.p0}`,
-    scrollbarGutter: 'stable',
-    scrollbarWidth: 'thin',
-    ':focus-visible': {
-      outline: 'none',
-    },
   }),
 };
 

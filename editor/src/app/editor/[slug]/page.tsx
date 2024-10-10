@@ -7,7 +7,7 @@
 import '@watasuke.net/common/src/css/base.css';
 import {GraphQLClient} from 'graphql-request';
 import React from 'react';
-import {EditorPage} from '@features/Editor';
+import {ArticleEditor} from '@features/ArticleEditor';
 import {getSdk} from '@utils/graphql';
 
 type Props = {
@@ -22,5 +22,5 @@ export default async function page(props: Props): Promise<JSX.Element> {
   if (!query.article) {
     throw Error('article is empty');
   }
-  return <EditorPage article={query.article} tags={query.allTags} />;
+  return <ArticleEditor article={query.article} tags={query.allTags} />;
 }

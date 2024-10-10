@@ -35,6 +35,7 @@ export const css = {
     fontSize: '1.4em',
     textAlign: 'right',
   }),
+
   container: style({
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
@@ -44,6 +45,27 @@ export const css = {
     borderRadius: 4,
     borderTopLeftRadius: 0,
   }),
+  editor: style({
+    display: 'grid',
+    gridTemplateRows: 'auto 1fr',
+    height: '100%',
+  }),
+  toolbox_wrapper: style({
+    width: '100%',
+    padding: '8px 12px',
+    border: `2px solid ${color.fg}`,
+    borderBottom: 'none',
+  }),
+  textarea: style({
+    resize: 'none',
+    height: '100%',
+    border: `2px solid ${color.p0}`,
+    scrollbarGutter: 'stable',
+    scrollbarWidth: 'thin',
+    ':focus-visible': {
+      outline: 'none',
+    },
+  }),
   preview: style({
     padding: '8px 4px 8px 12px',
     overflowY: 'scroll',
@@ -52,6 +74,7 @@ export const css = {
     scrollbarGutter: 'stable',
     scrollbarWidth: 'thin',
   }),
+
   dialog: style({
     display: 'flex',
     flexDirection: 'column',
@@ -69,9 +92,6 @@ export const css = {
   }),
   publish_button: style({
     gridRow: '2 / 3',
-  }),
-  warning_text: style({
-    margin: 0,
   }),
   publish_waiting_label: style({
     display: 'block',
