@@ -11,12 +11,12 @@
   },
   "dependencies": {
     "@giscus/react": "^3.0.0",
-    "@types/react": "^18.3.3",
-    "@vanilla-extract/css": "^1.15.3",
-    "@vanilla-extract/webpack-plugin": "^2.3.11",
+    "@types/react": "^18.3.11",
+    "@vanilla-extract/css": "^1.16.0",
+    "@vanilla-extract/webpack-plugin": "^2.3.14",
     "@watasuke.net/common": "^0.0.0",
     "@watasuke.net/config": "^0.0.0",
-    "framer-motion": "^11.3.19",
+    "framer-motion": "^11.11.7",
     "gatsby": "^5.13.7",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-canonical-urls": "^5.13.1",
@@ -37,7 +37,7 @@
     "react-markdown": "^9.0.1",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.6.3"
   },
   "overrides": {
     "gatsby-plugin-react-svg": {
@@ -53,6 +53,6 @@
   },
   "devDependencies": {
     "eslint-plugin-header": "^3.1.1",
-    "scaffdog": "^4.0.0"
+    "scaffdog": "^4.1.0"
   }
 }
