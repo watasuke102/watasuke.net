@@ -112,4 +112,35 @@ impl Mutation {
       )),
     }
   }
+
+  fn update_profile(profile: String, context: &Context) -> juniper::FieldResult<&str> {
+    if !context.config.allow_private_access {
+      return Err(juniper::FieldError::new(
+        "Private access is forbidden",
+        graphql_value!(""),
+      ));
+    }
+    match usecase::sitedata::update_profile(&context.config.contents_path, &profile) {
+      Ok(_) => Ok(""),
+      Err(err) => Err(juniper::FieldError::new(
+        "Failed to update the Profile",
+        graphql_value!(err.to_string()),
+      )),
+    }
+  }
+  fn renew_profile(commit_message: String, context: &Context) -> juniper::FieldResult<&str> {
+    if !context.config.allow_private_access {
+      return Err(juniper::FieldError::new(
+        "Private access is forbidden",
+        graphql_value!(""),
+      ));
+    }
+    match usecase::sitedata::renew_profile(&context.config.contents_path, &commit_message) {
+      Ok(_) => Ok(""),
+      Err(err) => Err(juniper::FieldError::new(
+        "Failed to renew the Profile",
+        graphql_value!(err.to_string()),
+      )),
+    }
+  }
 }

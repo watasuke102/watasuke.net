@@ -52,6 +52,12 @@ query allTags {
   }
 }
 
+query profile {
+  sitedata {
+    profile
+  }
+}
+
 mutation newTag($slug: String!, $title: String!) {
   newTag(slug: $slug, title: $title)
 }
@@ -74,7 +80,13 @@ mutation updateArticle(
 mutation publishArticle($slug: String!, $should_commit_and_push: Boolean!) {
   publishArticle(slug: $slug, shouldCommitAndPush: $should_commit_and_push)
 }
-
 mutation renewArticle($slug: String!, $commit_message: String!) {
   renewArticle(slug: $slug, commitMessage: $commit_message)
+}
+
+mutation updateProfile($profile: String!) {
+  updateProfile(profile: $profile)
+}
+mutation renewProfile($commit_message: String!) {
+  renewProfile(commitMessage: $commit_message)
 }

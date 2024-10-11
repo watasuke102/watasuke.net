@@ -11,6 +11,7 @@ import {getSdk} from '@utils/graphql';
 import {NewArticle} from './_components/NewArticle';
 import {ArticlesTable} from './_components/ArticlesTable';
 import {ErrorQL} from '@mytypes/ErrorQL';
+import Link from 'next/link';
 
 export default async function Top(): Promise<JSX.Element> {
   const sdk = getSdk(new GraphQLClient('http://127.0.0.1:10212/graphql'));
@@ -32,9 +33,13 @@ export default async function Top(): Promise<JSX.Element> {
   }
   return (
     <div className={css.container}>
+      <h2>Sitedata</h2>
+      <Link href='/editor/profile'>Edit profile</Link>
+      <hr />
+      <h2>Article</h2>
       <NewArticle />
       <ArticlesTable articles={data.allArticles.filter(e => !e.isPublished)} />
-      <h2>Published</h2>
+      <h3>Published</h3>
       <ArticlesTable
         articles={data.allArticles.filter(e => e.isPublished).sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))}
       />
