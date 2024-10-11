@@ -15,6 +15,7 @@ import {EditorPage} from '@common/EditorPage';
 import {ModifyStatus} from '@common/EditorPage/EditorPage';
 import {Checkbox} from '@common/Checkbox';
 import {toast_reducer, ToastContext} from '@common/Toast';
+import {useShortcut} from '@common/useShortcut/useShortcut';
 import {Toolbox} from '@features/ArticleEditor/Toolbox/Toolbox';
 import {ArticleEditPageQuery, getSdk} from '@utils/graphql';
 import {article_reducer} from '../ArticleReducer';
@@ -77,6 +78,8 @@ export function Page(props: Props): JSX.Element {
       set_modify_status('none');
     }
   }, [props.article.slug, should_commit_and_push, is_published]);
+
+  useShortcut([{keycode: 'KeyS', handler: save}], {ctrl: true});
 
   return (
     <ToastContext.Provider value={{state: toast_state, dispatch: toast_dispatch}}>
