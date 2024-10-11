@@ -5,7 +5,6 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {css} from './ImageUploader.css';
-import * as Form from '@radix-ui/react-form';
 import React from 'react';
 import {useDropzone, FileWithPath} from 'react-dropzone';
 import {Button} from '@common/Button';
@@ -23,15 +22,23 @@ type ImageInfo = {
 };
 
 export function ImageUploader(props: Props): JSX.Element {
-  const [image_name, set_image_name] = React.useState('image.jpg');
   const [image_info, set_image_info] = React.useState<ImageInfo | undefined>();
+  const [image_name, set_image_name] = React.useState('image');
+  const [image_ext, set_image_ext] = React.useState('jpg');
+  const image_filename = React.useCallback(() => image_name + '.' + image_ext, [image_ext, image_name]);
 
   const handle_drop = React.useCallback((files: FileWithPath[]) => {
     const file = files[0];
     const reader = new FileReader();
     reader.onload = () => {
       if (reader.result instanceof ArrayBuffer) {
-        set_image_name(file.name);
+        const match = file.name.match(/(?<name>.+)\.(?<ext>.*)?/);
+        const name = match?.groups?.name;
+        if (!name) {
+          return;
+        }
+        set_image_name(name);
+        set_image_ext(match?.groups?.ext ?? 'jpg');
         set_image_info({
           url: URL.createObjectURL(new Blob([reader.result])),
           type: file.type,
@@ -43,12 +50,12 @@ export function ImageUploader(props: Props): JSX.Element {
   }, []);
 
   const upload = React.useCallback(async () => {
-    if (!image_info) {
+    if (!image_info || image_name === '') {
       return;
     }
-    await upload_new_image(props.slug, image_name, image_info.type, image_info.buffer);
-    props.on_complete(image_name);
-  }, [image_info, props, image_name]);
+    await upload_new_image(props.slug, image_filename(), image_info.type, image_info.buffer);
+    props.on_complete(image_filename());
+  }, [image_info, image_name, props, image_filename]);
 
   const {getRootProps, getInputProps, isDragActive} = useDropzone({
     onDrop: handle_drop,
@@ -61,27 +68,39 @@ export function ImageUploader(props: Props): JSX.Element {
 
   if (image_info) {
     return (
-      <Form.Root onSubmit={e => e.preventDefault()}>
-        <Form.Field name='slug' className={css.image_info_editor}>
-          <img className={css.img} src={image_info.url} alt='' />
-          <Form.Label className={css.label}>Slug</Form.Label>
-          <Form.Message match='valueMissing'>Cannot be empty</Form.Message>
-          <Form.Control asChild>
-            <input
-              className={css.input}
-              type='text'
-              value={image_name}
-              onChange={e => set_image_name(e.target.value)}
-              required
-              // eslint-disable-next-line jsx-a11y/no-autofocus
-              autoFocus
-            />
-          </Form.Control>
-        </Form.Field>
+      <form onSubmit={upload}>
+        <img className={css.img} src={image_info.url} alt='' />
+        <div className={css.editor}>
+          <input
+            className={css.input}
+            type='text'
+            value={image_name}
+            onChange={e => set_image_name(e.target.value)}
+            required
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus
+          />
+          <span className={css.ext_dot}>.</span>
+          <input
+            className={css.input}
+            type='text'
+            value={image_ext}
+            onChange={e => set_image_ext(e.target.value)}
+            required
+          />
+        </div>
+        <div className={css.copy_area}>
+          <span>copy this:</span>
+          <input className={css.input} type='text' value={`![](/img/${image_filename()})`} readOnly />
+        </div>
         <div className={css.buttons}>
-          <Form.Submit asChild>
-            <Button type='contained' text='Upload' aria_label='upload' on_click={upload} />
-          </Form.Submit>
+          <Button
+            type='contained'
+            text='Upload'
+            aria_label='upload'
+            on_click={upload}
+            disabled={image_name === '' || image_ext === ''}
+          />
           <Button
             type='text'
             text='Discard and start over'
@@ -89,7 +108,7 @@ export function ImageUploader(props: Props): JSX.Element {
             on_click={() => set_image_info(undefined)}
           />
         </div>
-      </Form.Root>
+      </form>
     );
   }
 

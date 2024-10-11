@@ -33,7 +33,7 @@ export function Toolbox(props: Props): JSX.Element {
 
   const insert_image_name = React.useCallback(
     (file_name: string) => {
-      const cursor_pos = props.ref.current?.selectionStart ?? 0;
+      const cursor_pos = props.ref?.current?.selectionStart ?? 0;
       /* ideal: blank lines exist both before and after the image like this:
           <...before>
 
@@ -114,7 +114,9 @@ export function Toolbox(props: Props): JSX.Element {
         desc='You can upload only png or jpeg'
         is_open={is_img_uploader_open}
         set_is_open={set_is_img_uploader_open}
-        on_close={() => props.ref.current?.focus()}
+        on_close={() => {
+          props.ref?.current?.focus();
+        }}
       >
         <ImageUploader
           slug={props.slug}

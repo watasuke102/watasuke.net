@@ -73,7 +73,9 @@ export function EditorPage(props: Props): JSX.Element {
           <div className={css.toolbox_wrapper}>{props.toolbox}</div>
           <textarea
             className={css.textarea}
-            ref={r => (props.textarea_ref.current = r)}
+            ref={r => {
+              props.textarea_ref.current = r;
+            }}
             value={props.body}
             onChange={e => props.set_body(e.target.value)}
           />

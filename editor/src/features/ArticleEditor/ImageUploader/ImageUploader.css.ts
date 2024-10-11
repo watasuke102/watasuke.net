@@ -31,14 +31,12 @@ export const css = {
   }),
   image_info_editor: style({
     maxWidth: '85dvw',
-    display: 'grid',
-    gridTemplateColumns: '1fr auto auto',
-    gridTemplateRows: '1fr auto',
-    gridTemplateAreas: `
-    'img label warn'
-    'img input input'
-    `,
-    alignItems: 'end',
+    display: 'flex',
+    flexDirection: 'column',
+    // display: 'grid',
+    // gridTemplateColumns: '1fr auto auto',
+    // gridTemplateRows: '1fr auto',
+    // alignItems: 'end',
     gap: '0 20px',
   }),
   img: style({
@@ -47,17 +45,26 @@ export const css = {
     padding: 4,
     border: `3px dotted ${color.fg}`,
   }),
-  label: style({
-    gridArea: 'label',
-    fontSize: '1.2em',
-    fontWeight: 'bold',
+  editor: style({
+    display: 'grid',
+    gridTemplateColumns: '1fr 8px auto',
+    alignItems: 'end',
+    marginBlock: 12,
+  }),
+  ext_dot: style({
+    textAlign: 'center',
   }),
   input: style({
-    gridArea: 'input',
     border: `1px solid ${color.fg}`,
     ':focus-visible': {
       outline: 'none',
     },
+  }),
+  copy_area: style({
+    display: 'grid',
+    gridTemplateColumns: 'auto 1fr',
+    alignItems: 'center',
+    gap: 12,
   }),
   buttons: style({
     display: 'grid',
