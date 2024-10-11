@@ -7,9 +7,10 @@
 'use client';
 
 import {css} from './ArticlesTable.css';
-import {useRouter} from 'next/navigation';
 import React from 'react';
+import Link from 'next/link';
 import {AllArticlesQuery} from '@utils/graphql';
+import VisibilityIcon from '@assets/visibility.svg';
 
 type Props = {
   articles: AllArticlesQuery['allArticles'];
@@ -24,12 +25,12 @@ function datetime(s: string) {
 }
 
 export function ArticlesTable(props: Props): JSX.Element {
-  const router = useRouter();
   return (
     <>
       <table className={css.table}>
         <thead>
           <tr>
+            <th></th>
             <th>title</th>
             <th>slug</th>
             <th className={css.datetime}>updated_at</th>
@@ -39,8 +40,15 @@ export function ArticlesTable(props: Props): JSX.Element {
         <tbody>
           {props.articles.map(e => {
             return (
-              <tr key={e.slug} className={css.item} onClick={() => router.push(`/editor/${e.slug}`)}>
-                <td className={css.title}>{e.title}</td>
+              <tr key={e.slug}>
+                <td>
+                  <Link href={`/editor/${e.slug}/preview`} className={css.icon}>
+                    <VisibilityIcon />
+                  </Link>
+                </td>
+                <td className={css.title}>
+                  <Link href={`/editor/${e.slug}`}>{e.title}</Link>
+                </td>
                 <td className={css.slug}>{e.slug}</td>
                 <td className={css.datetime}>{datetime(e.updatedAt)}</td>
                 <td className={css.datetime}>{datetime(e.publishedAt)}</td>

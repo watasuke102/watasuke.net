@@ -11,11 +11,8 @@ export const css = {
   table: style({
     width: '100%',
   }),
-  item: style({
-    ':hover': {
-      cursor: 'pointer',
-      textDecoration: 'underline',
-    },
+  icon: style({
+    color: color.fg,
   }),
   title: style({
     color: color.p0,
