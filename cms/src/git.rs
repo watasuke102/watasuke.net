@@ -3,6 +3,7 @@ use std::path::Path;
 use anyhow::{ensure, Context};
 use git2::{
   Commit, Cred, IndexAddOption, PushOptions, RemoteCallbacks, Repository, RepositoryState,
+  Signature,
 };
 
 pub struct Repo {
@@ -58,7 +59,15 @@ impl Repo {
     let mut index = self.repo.index()?;
     let tree = self.repo.find_tree(index.write_tree()?)?;
     let latest_commit = self.latest_commit()?;
-    let author = latest_commit.author().to_owned();
+    let prev_author = latest_commit.author().to_owned();
+    let author = Signature::now(
+      prev_author
+        .name()
+        .context("Cannot get previous author's name")?,
+      prev_author
+        .email()
+        .context("Cannot get previous author's email")?,
+    )?;
     self.repo.commit(
       Some("HEAD"),
       &author,
