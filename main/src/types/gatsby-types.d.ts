@@ -3478,32 +3478,6 @@ type footerInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 type footerInfoQuery = { readonly site: { readonly buildTime: string | null, readonly siteMetadata: { readonly repo: string | null, readonly title: string | null } | null } | null, readonly buildInfo: { readonly githash: string, readonly contents_githash: string } | null };
 
-type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
-
-type GatsbyImageSharpFixed_noBase64Fragment = { readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
-
-type GatsbyImageSharpFixed_tracedSVGFragment = { readonly tracedSVG: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
-
-type GatsbyImageSharpFixed_withWebpFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string, readonly srcWebp: string | null, readonly srcSetWebp: string | null };
-
-type GatsbyImageSharpFixed_withWebp_noBase64Fragment = { readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string, readonly srcWebp: string | null, readonly srcSetWebp: string | null };
-
-type GatsbyImageSharpFixed_withWebp_tracedSVGFragment = { readonly tracedSVG: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string, readonly srcWebp: string | null, readonly srcSetWebp: string | null };
-
-type GatsbyImageSharpFluidFragment = { readonly base64: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly sizes: string };
-
-type GatsbyImageSharpFluid_noBase64Fragment = { readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly sizes: string };
-
-type GatsbyImageSharpFluid_tracedSVGFragment = { readonly tracedSVG: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly sizes: string };
-
-type GatsbyImageSharpFluid_withWebpFragment = { readonly base64: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly srcWebp: string | null, readonly srcSetWebp: string | null, readonly sizes: string };
-
-type GatsbyImageSharpFluid_withWebp_noBase64Fragment = { readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly srcWebp: string | null, readonly srcSetWebp: string | null, readonly sizes: string };
-
-type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = { readonly tracedSVG: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly srcWebp: string | null, readonly srcSetWebp: string | null, readonly sizes: string };
-
-type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: number, readonly maxWidth: number };
-
 type innerEmbedCardInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
