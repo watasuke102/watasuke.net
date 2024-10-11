@@ -1,0 +1,30 @@
+// watasuke.net > editor
+// CopyRight (c) 2021-2024 watasuke
+//
+// Email  : <watasuke102@gmail.com>
+// Twitter: @Watasuke102
+// This software is released under the MIT or MIT SUSHI-WARE License.
+import React from 'react';
+import type {Meta, StoryObj} from '@storybook/react';
+import '@watasuke.net/common/src/css/base.css';
+import '@common/global.css';
+import {ComboBox} from './ComboBox';
+
+const meta: Meta<typeof ComboBox> = {
+  component: ComboBox,
+  parameters: {
+    layout: 'centered',
+  },
+};
+export default meta;
+
+export const Main: StoryObj<typeof ComboBox> = {
+  args: {
+    options: ['a', 'b'],
+  },
+  render: props => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [selected, set_selected] = React.useState('');
+    return <ComboBox {...props} current={selected} on_change={set_selected} />;
+  },
+};

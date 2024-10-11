@@ -16,6 +16,7 @@
     "@radix-ui/react-checkbox": "^1.1.1",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-form": "^0.1.0",
+    "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-toast": "^1.2.1",
     "@svgr/webpack": "^8.1.0",
     "@types/react": "18.3.3",
