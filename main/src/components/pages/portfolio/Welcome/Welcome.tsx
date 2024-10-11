@@ -49,10 +49,15 @@ export function Welcome(props: Props): React.ReactElement {
             </div>
           </div>
         </div>
+      </motion.div>
 
-        <div className={css.next_page}>
-          <span>Scroll</span>
-        </div>
+      <motion.div
+        className={css.next_page}
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        transition={Transition(props.animation_enabled, {delay: 2.5, duration: 0.5})}
+      >
+        <span>Scroll</span>
       </motion.div>
     </section>
   );
