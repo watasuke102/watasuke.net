@@ -6,8 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 'use client';
 
-import {css, dialog_width, toast} from './EditorPage.css';
-import * as Toast from '@radix-ui/react-toast';
+import {css, dialog_width} from './EditorPage.css';
 import Link from 'next/link';
 import React from 'react';
 import {BarLoader} from 'react-spinners';
@@ -17,9 +16,8 @@ import {Dialog} from '@common/Dialog';
 import {EmbedCard, InnerEmbedCard} from '@common/EmbedCard';
 import {ErrorBoundary} from '@common/ErrorBoundary';
 import {Spinner} from '@common/Spinner';
-import CloseIcon from '@assets/close.svg';
+import {Toast} from '@common/Toast';
 import LeftIcon from '@assets/left.svg';
-import {ErrorQL} from '@mytypes/ErrorQL';
 
 export type ModifyStatus = 'none' | 'confirmation' | 'waiting' | 'succeeded';
 
@@ -39,23 +37,7 @@ type Props = {
   publish: () => void;
 };
 
-type ToastStatus = {title: string; desc: string};
-
 export function EditorPage(props: Props): JSX.Element {
-  const [toast_status, set_toast_status] = React.useState<ToastStatus>({title: 'success', desc: ''});
-  const [is_toast_open, set_is_toast_open] = React.useState(false);
-
-  function compose_toast_from_err(err: unknown): ToastStatus {
-    if (err.response && Array.isArray(err.response.errors)) {
-      console.log('Following err will be shown as toast', {err});
-      const error = (err as ErrorQL).response.errors[0];
-      return {title: error.message, desc: error.extensions};
-    } else if (err instanceof Error) {
-      return {title: err.name, desc: err.message};
-    }
-    return {title: 'Unknown Error', desc: ''};
-  }
-
   // hydration errorが出るのを回避する
   const [is_first_render, set_is_first_render] = React.useState(true);
   React.useEffect(() => set_is_first_render(false), []);
@@ -88,16 +70,7 @@ export function EditorPage(props: Props): JSX.Element {
         </div>
       </section>
 
-      <Toast.Provider swipeDirection='up' duration={3000}>
-        <Toast.Root className={toast.root} open={is_toast_open} onOpenChange={set_is_toast_open}>
-          <Toast.Title className={toast.title}>{toast_status.title}</Toast.Title>
-          <Toast.Description className={toast.desc}>{toast_status.desc}</Toast.Description>
-          <Toast.Close className={toast.close}>
-            <CloseIcon />
-          </Toast.Close>
-        </Toast.Root>
-        <Toast.Viewport className={toast.viewpoint} />
-      </Toast.Provider>
+      <Toast />
 
       <Dialog
         is_open={props.modify_status !== 'none'}

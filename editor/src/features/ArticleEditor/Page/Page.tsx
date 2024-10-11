@@ -14,6 +14,7 @@ import React from 'react';
 import {EditorPage} from '@common/EditorPage';
 import {ModifyStatus} from '@common/EditorPage/EditorPage';
 import {Checkbox} from '@common/Checkbox';
+import {toast_reducer, ToastContext} from '@common/Toast';
 import {Toolbox} from '@features/ArticleEditor/Toolbox/Toolbox';
 import {ArticleEditPageQuery, getSdk} from '@utils/graphql';
 import {article_reducer} from '../ArticleReducer';
@@ -36,6 +37,11 @@ export function Page(props: Props): JSX.Element {
   const [is_published, set_is_published] = React.useState(props.article.isPublished);
   const [modify_status, set_modify_status] = React.useState<ModifyStatus>('none');
   const [should_commit_and_push, set_should_commit_and_push] = React.useState(true);
+  const [toast_state, toast_dispatch] = React.useReducer(toast_reducer, {
+    is_open: false,
+    title: '',
+    desc: '',
+  });
 
   const save = React.useCallback(async () => {
     try {
@@ -48,11 +54,10 @@ export function Page(props: Props): JSX.Element {
         isFavorite: state.is_favorite,
         body: state.body ?? '',
       });
-      // set_toast_status({title: 'success', desc: ''});
+      toast_dispatch({type: 'open/normal', title: 'success'});
     } catch (err) {
-      // set_toast_status(compose_toast_from_err(err));
+      toast_dispatch({type: 'open/err', err});
     }
-    // set_is_toast_open(true);
   }, [props.article, state]);
 
   const publish = React.useCallback(async () => {
@@ -68,66 +73,67 @@ export function Page(props: Props): JSX.Element {
       set_is_published(true);
       set_modify_status('succeeded');
     } catch (err) {
-      // set_toast_status(compose_toast_from_err(err));
+      toast_dispatch({type: 'open/err', err});
       set_modify_status('none');
-      // set_is_toast_open(true);
     }
   }, [props.article.slug, should_commit_and_push, is_published]);
 
   return (
-    <EditorPage
-      body={state.body}
-      preview_body={state.body.replaceAll('/img', `${apiUrl}/img/${props.article.slug}`)}
-      is_published={is_published}
-      modify_status={modify_status}
-      //
-      textarea_ref={textarea_ref}
-      toolbox={
-        <Toolbox
-          slug={props.article.slug}
-          tldr_placeholder={props.article.tldr}
-          is_published={is_published}
-          state={state}
-          dispatcher={dispatch}
-          ref={textarea_ref}
-          publish_button_handler={() => set_modify_status('confirmation')}
-          save_button_handler={save}
-        />
-      }
-      header_text={
-        is_published ? (
-          <a
-            href={`https://watasuke.net/blog/article/${props.article.slug}`}
-            rel='noreferrer'
-            target='_blank'
-            className={css.header_title}
-          >
-            {state.title}
-          </a>
-        ) : (
-          <span className={css.header_title}>{state.title}</span>
-        )
-      }
-      modify_confirming_area={
-        <div>
-          {state.tags.length === 0 && <strong className={css.warning_text}>warn: Tag is empty!</strong>}
-          {/* Google generates summary approximately 80 chars in Japanese */}
-          {state.tldr.length > 80 && (
-            <p className={css.warning_text}>
-              <strong>warn: TL;DR is too long</strong> (len: <strong>{state.tldr.length}</strong>), {/* */}
-              recommend: less than 80
-            </p>
-          )}
-          <Checkbox
-            label='Commit and Push to remote Git repo'
-            checked={should_commit_and_push}
-            on_click={() => set_should_commit_and_push(f => !f)}
+    <ToastContext.Provider value={{state: toast_state, dispatch: toast_dispatch}}>
+      <EditorPage
+        body={state.body}
+        preview_body={state.body.replaceAll('/img', `${apiUrl}/img/${props.article.slug}`)}
+        is_published={is_published}
+        modify_status={modify_status}
+        //
+        textarea_ref={textarea_ref}
+        toolbox={
+          <Toolbox
+            slug={props.article.slug}
+            tldr_placeholder={props.article.tldr}
+            is_published={is_published}
+            state={state}
+            dispatcher={dispatch}
+            ref={textarea_ref}
+            publish_button_handler={() => set_modify_status('confirmation')}
+            save_button_handler={save}
           />
-        </div>
-      }
-      set_body={s => dispatch({type: 'body/update', data: s})}
-      set_modify_status={set_modify_status}
-      publish={publish}
-    />
+        }
+        header_text={
+          is_published ? (
+            <a
+              href={`https://watasuke.net/blog/article/${props.article.slug}`}
+              rel='noreferrer'
+              target='_blank'
+              className={css.header_title}
+            >
+              {state.title}
+            </a>
+          ) : (
+            <span className={css.header_title}>{state.title}</span>
+          )
+        }
+        modify_confirming_area={
+          <div>
+            {state.tags.length === 0 && <strong className={css.warning_text}>warn: Tag is empty!</strong>}
+            {/* Google generates summary approximately 80 chars in Japanese */}
+            {state.tldr.length > 80 && (
+              <p className={css.warning_text}>
+                <strong>warn: TL;DR is too long</strong> (len: <strong>{state.tldr.length}</strong>), {/* */}
+                recommend: less than 80
+              </p>
+            )}
+            <Checkbox
+              label='Commit and Push to remote Git repo'
+              checked={should_commit_and_push}
+              on_click={() => set_should_commit_and_push(f => !f)}
+            />
+          </div>
+        }
+        set_body={s => dispatch({type: 'body/update', data: s})}
+        set_modify_status={set_modify_status}
+        publish={publish}
+      />
+    </ToastContext.Provider>
   );
 }
