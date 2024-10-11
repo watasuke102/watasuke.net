@@ -8,6 +8,22 @@ import {style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const css = {
+  trigger: style({
+    display: 'grid',
+    gridTemplateColumns: '1fr auto',
+    gap: '12px',
+    padding: '4px 8px',
+    alignItems: 'center',
+    textAlign: 'left',
+    border: `1px solid ${color.fg}`,
+  }),
+  content: style({
+    zIndex: 20480,
+  }),
+  viewport: style({
+    backgroundColor: `${color.bg}e0`,
+    padding: '4px 8px',
+  }),
   item: style({
     display: 'grid',
     gridTemplateColumns: '1fr 20px',
@@ -19,19 +35,5 @@ export const css = {
     ':hover': {
       cursor: 'pointer',
     },
-  }),
-  trigger: style({
-    display: 'grid',
-    gridTemplateColumns: '1fr auto',
-    gap: '12px',
-    padding: '4px 8px',
-    alignItems: 'center',
-    textAlign: 'left',
-    border: `1px solid ${color.fg}`,
-  }),
-  viewport: style({
-    zIndex: '1000',
-    backgroundColor: `${color.bg}e0`,
-    padding: '4px 8px',
   }),
 };

@@ -61,23 +61,33 @@ export function Page(props: Props): JSX.Element {
     }
   }, [props.article, state]);
 
-  const publish = React.useCallback(async () => {
-    if (is_published) {
-      return;
-    }
-    try {
-      const sdk = getSdk(new GraphQLClient(`${apiUrl}/graphql`));
-      await sdk.publishArticle({
-        slug: props.article.slug,
-        should_commit_and_push: should_commit_and_push,
-      });
-      set_is_published(true);
-      set_modify_status('succeeded');
-    } catch (err) {
-      toast_dispatch({type: 'open/err', err});
-      set_modify_status('none');
-    }
-  }, [props.article.slug, should_commit_and_push, is_published]);
+  const modify = React.useCallback(
+    async (commit_message: string) => {
+      try {
+        const sdk = getSdk(new GraphQLClient(`${apiUrl}/graphql`));
+        if (is_published) {
+          if (commit_message.length === 0) {
+            throw Error('Commit message is empty');
+          }
+          await sdk.renewArticle({
+            slug: props.article.slug,
+            commit_message,
+          });
+        } else {
+          await sdk.publishArticle({
+            slug: props.article.slug,
+            should_commit_and_push: should_commit_and_push,
+          });
+        }
+        set_is_published(true);
+        set_modify_status('succeeded');
+      } catch (err) {
+        toast_dispatch({type: 'open/err', err});
+        set_modify_status('none');
+      }
+    },
+    [props.article.slug, should_commit_and_push, is_published],
+  );
 
   useShortcut([{keycode: 'KeyS', handler: save}], {ctrl: true});
 
@@ -88,6 +98,7 @@ export function Page(props: Props): JSX.Element {
         preview_body={state.body.replaceAll('/img', `${apiUrl}/img/${props.article.slug}`)}
         is_published={is_published}
         modify_status={modify_status}
+        commit_scope={props.article.slug}
         //
         textarea_ref={textarea_ref}
         toolbox={
@@ -117,25 +128,29 @@ export function Page(props: Props): JSX.Element {
           )
         }
         modify_confirming_area={
-          <div>
-            {state.tags.length === 0 && <strong className={css.warning_text}>warn: Tag is empty!</strong>}
-            {/* Google generates summary approximately 80 chars in Japanese */}
-            {state.tldr.length > 80 && (
-              <p className={css.warning_text}>
-                <strong>warn: TL;DR is too long</strong> (len: <strong>{state.tldr.length}</strong>), {/* */}
-                recommend: less than 80
-              </p>
+          <>
+            <div className={css.warning_container}>
+              {state.tags.length === 0 && <strong className={css.warning_text}>warn: Tag is empty!</strong>}
+              {/* Google generates summary approximately 80 chars in Japanese */}
+              {state.tldr.length > 80 && (
+                <p className={css.warning_text}>
+                  <strong>warn: TL;DR is too long</strong> (len: <strong>{state.tldr.length}</strong>), {/* */}
+                  recommend: less than 80
+                </p>
+              )}
+            </div>
+            {!is_published && (
+              <Checkbox
+                label='Commit and Push to remote Git repo'
+                checked={should_commit_and_push}
+                on_click={() => set_should_commit_and_push(f => !f)}
+              />
             )}
-            <Checkbox
-              label='Commit and Push to remote Git repo'
-              checked={should_commit_and_push}
-              on_click={() => set_should_commit_and_push(f => !f)}
-            />
-          </div>
+          </>
         }
         set_body={s => dispatch({type: 'body/update', data: s})}
         set_modify_status={set_modify_status}
-        publish={publish}
+        modify={modify}
       />
     </ToastContext.Provider>
   );

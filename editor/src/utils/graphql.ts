@@ -36,6 +36,7 @@ export type Mutation = {
   newArticle: Scalars['String']['output'];
   newTag: Scalars['String']['output'];
   publishArticle: Scalars['String']['output'];
+  renewArticle: Scalars['String']['output'];
   updateArticle: Scalars['String']['output'];
 };
 
@@ -54,6 +55,12 @@ export type MutationNewTagArgs = {
 
 export type MutationPublishArticleArgs = {
   shouldCommitAndPush: Scalars['Boolean']['input'];
+  slug: Scalars['String']['input'];
+};
+
+
+export type MutationRenewArticleArgs = {
+  commitMessage: Scalars['String']['input'];
   slug: Scalars['String']['input'];
 };
 
@@ -154,6 +161,14 @@ export type PublishArticleMutationVariables = Exact<{
 
 export type PublishArticleMutation = { __typename?: 'Mutation', publishArticle: string };
 
+export type RenewArticleMutationVariables = Exact<{
+  slug: Scalars['String']['input'];
+  commit_message: Scalars['String']['input'];
+}>;
+
+
+export type RenewArticleMutation = { __typename?: 'Mutation', renewArticle: string };
+
 export type AllQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -239,6 +254,11 @@ export const PublishArticleDocument = gql`
   publishArticle(slug: $slug, shouldCommitAndPush: $should_commit_and_push)
 }
     `;
+export const RenewArticleDocument = gql`
+    mutation renewArticle($slug: String!, $commit_message: String!) {
+  renewArticle(slug: $slug, commitMessage: $commit_message)
+}
+    `;
 export const AllDocument = gql`
     query all {
   allPublicArticles {
@@ -296,6 +316,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     publishArticle(variables: PublishArticleMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<PublishArticleMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<PublishArticleMutation>(PublishArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'publishArticle', 'mutation', variables);
+    },
+    renewArticle(variables: RenewArticleMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<RenewArticleMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<RenewArticleMutation>(RenewArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'renewArticle', 'mutation', variables);
     },
     all(variables?: AllQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<AllQuery>(AllDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'all', 'query', variables);

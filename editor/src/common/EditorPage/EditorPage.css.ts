@@ -82,12 +82,11 @@ export const css = {
     marginTop: 12,
     gap: 8,
     width: dialog_width,
-    height: 100,
   }),
   confirmation: style({
     height: '100%',
     display: 'grid',
-    gap: 8,
+    gap: 16,
     gridTemplateRows: '1fr 36px',
   }),
   publish_button: style({
@@ -97,6 +96,16 @@ export const css = {
     display: 'block',
     textAlign: 'center',
     fontSize: '1.2em',
+  }),
+
+  commit_info_editor: style({
+    display: 'grid',
+    gridTemplateColumns: 'auto 1fr',
+    gap: '4px 12px',
+    alignItems: 'center',
+  }),
+  commit_mes_editor: style({
+    border: `1px solid ${color.fg}`,
   }),
 };
 

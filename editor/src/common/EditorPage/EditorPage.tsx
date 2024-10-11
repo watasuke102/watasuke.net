@@ -17,6 +17,7 @@ import {EmbedCard, InnerEmbedCard} from '@common/EmbedCard';
 import {ErrorBoundary} from '@common/ErrorBoundary';
 import {Spinner} from '@common/Spinner';
 import {Toast} from '@common/Toast';
+import {ComboBox} from '@common/ComboBox';
 import LeftIcon from '@assets/left.svg';
 
 export type ModifyStatus = 'none' | 'confirmation' | 'waiting' | 'succeeded';
@@ -26,6 +27,7 @@ type Props = {
   preview_body?: string;
   is_published: boolean;
   modify_status: ModifyStatus;
+  commit_scope?: string;
 
   textarea_ref: React.MutableRefObject<HTMLTextAreaElement | null | undefined>;
   toolbox: React.ReactElement;
@@ -34,10 +36,23 @@ type Props = {
 
   set_body: (s: string) => void;
   set_modify_status: (s: ModifyStatus) => void;
-  publish: () => void;
+  modify: (commit_mes: string) => void;
 };
 
 export function EditorPage(props: Props): JSX.Element {
+  const [commit_mes_prefix, set_commit_mes_prefix] = React.useState('update');
+  const [commit_mes, set_commit_mes] = React.useState('');
+
+  const build_commit_message = React.useCallback(() => {
+    // build commit message
+    // `[prefix]: ([scope]>)?[message]`
+    let mes = commit_mes_prefix + ': ';
+    if (props.commit_scope) {
+      mes += props.commit_scope + '>';
+    }
+    return mes + commit_mes;
+  }, [commit_mes, commit_mes_prefix, props]);
+
   // hydration errorが出るのを回避する
   const [is_first_render, set_is_first_render] = React.useState(true);
   React.useEffect(() => set_is_first_render(false), []);
@@ -79,8 +94,8 @@ export function EditorPage(props: Props): JSX.Element {
             props.set_modify_status('none');
           }
         }}
-        title='Are you sure to publish?'
-        desc='You cannot undo this change from the CMS (yet)'
+        title='Confirm modification'
+        desc=''
       >
         <div className={css.dialog}>
           {(() => {
@@ -88,16 +103,51 @@ export function EditorPage(props: Props): JSX.Element {
               case 'confirmation':
                 return (
                   <div className={css.confirmation}>
-                    {props.modify_confirming_area}
+                    <div>
+                      {props.is_published ? (
+                        <>
+                          <p>
+                            CMS will commit <strong>all saved changes</strong> and push; are you sure?
+                          </p>
+                          <div className={css.commit_info_editor}>
+                            <span>prefix</span>
+                            <ComboBox
+                              options={['update', 'fix']}
+                              current={commit_mes_prefix}
+                              on_change={set_commit_mes_prefix}
+                            />
+                            <label htmlFor='edit_commit_message'>message</label>
+                            <input
+                              id='edit_commit_message'
+                              type='text'
+                              value={commit_mes}
+                              onChange={e => set_commit_mes(e.target.value)}
+                              className={css.commit_mes_editor}
+                            />
+                            <span>preview</span>
+                            <strong>{build_commit_message()}</strong>
+                          </div>
+                        </>
+                      ) : (
+                        <span>
+                          <strong>This article will be published</strong>; are you sure?
+                          <br />
+                          You cannot undo this change from the CMS (yet)
+                        </span>
+                      )}
+                      {props.modify_confirming_area}
+                    </div>
                     <div className={css.publish_button}>
                       <Button
                         type='contained'
-                        text='Publish'
-                        aria_label='publish'
+                        text='Proceed'
+                        aria_label='proceed'
                         on_click={() => {
                           props.set_modify_status('waiting');
-                          props.publish();
+                          props.modify(build_commit_message());
                         }}
+                        // commit message is required when renewing (not publishing)
+                        disabled={props.is_published && commit_mes === ''}
                       />
                     </div>
                   </div>

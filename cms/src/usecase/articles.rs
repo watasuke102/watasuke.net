@@ -188,3 +188,19 @@ pub fn publish(
 
   Ok(())
 }
+
+pub fn renew(contents_path: &String, slug: &String, commit_message: &String) -> anyhow::Result<()> {
+  let articles = get_map_all(contents_path)?;
+  let Some(article) = articles.get(slug) else {
+    bail!("Not found");
+  };
+  ensure!(article.is_published(), "Article is not published");
+
+  let repo = crate::git::Repo::open(contents_path)?;
+  repo
+    .stage(&Path::new(article.article_path()))?
+    .commit(commit_message)?
+    .push()?;
+
+  Ok(())
+}

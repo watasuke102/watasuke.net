@@ -11,6 +11,9 @@ export const css = {
     fontSize: '1.4em',
     textAlign: 'right',
   }),
+  warning_container: style({
+    marginBlock: 12,
+  }),
   warning_text: style({
     margin: 0,
   }),

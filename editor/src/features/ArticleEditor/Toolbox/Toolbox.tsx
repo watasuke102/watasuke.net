@@ -79,10 +79,9 @@ export function Toolbox(props: Props): JSX.Element {
               </Accordion.Trigger>
               <Button
                 type='outlined'
-                text={props.is_published ? 'published' : 'publish'}
+                text={props.is_published ? 'renew' : 'publish'}
                 aria_label='publish'
                 on_click={props.publish_button_handler}
-                disabled={props.is_published}
               />
               <Button
                 type='outlined'

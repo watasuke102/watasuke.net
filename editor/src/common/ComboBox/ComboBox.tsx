@@ -25,7 +25,7 @@ export function ComboBox(props: Props): JSX.Element {
       </Select.Trigger>
 
       <Select.Portal>
-        <Select.Content position='popper'>
+        <Select.Content position='popper' className={css.content}>
           <Select.Viewport className={css.viewport}>
             {props.options.map((e, i) => (
               <Select.Item key={e + i} value={e} className={css.item}>

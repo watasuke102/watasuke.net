@@ -93,4 +93,23 @@ impl Mutation {
       )),
     }
   }
+  fn renew_article(
+    slug: String,
+    commit_message: String,
+    context: &Context,
+  ) -> juniper::FieldResult<String> {
+    if !context.config.allow_private_access {
+      return Err(juniper::FieldError::new(
+        "Private access is forbidden",
+        graphql_value!(""),
+      ));
+    }
+    match usecase::articles::renew(&context.config.contents_path, &slug, &commit_message) {
+      Ok(_) => Ok(slug),
+      Err(err) => Err(juniper::FieldError::new(
+        "Failed to renew an Article",
+        graphql_value!(err.to_string()),
+      )),
+    }
+  }
 }
