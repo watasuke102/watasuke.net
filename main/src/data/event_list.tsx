@@ -494,8 +494,8 @@ Introduced about watasuke.net in the Lightning Talk event held by Security Camp 
     {
       period: {
         kind: 'period',
-        end: {month: 10, day: 21},
-        begin: {month: 10, day: 22},
+        begin: {month: 10, day: 21},
+        end: {month: 10, day: 22},
       },
       category: 'Event',
       title_ja: 'CAPCOM Hackathon',
