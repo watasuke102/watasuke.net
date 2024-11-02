@@ -15,3 +15,9 @@ export const embed_card = style({
   maxWidth: '100%',
   wordBreak: 'break-all',
 });
+
+export const inner_embed = style({
+  border: `4px solid ${color.p0}`,
+  color: color.fg,
+  backgroundColor: color.bg,
+});

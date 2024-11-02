@@ -4,31 +4,36 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import React from 'react';
+import React, {ErrorInfo} from 'react';
 
-export class ErrorBoundary extends React.Component<{children: React.ReactNode}, {error: string}> {
+export class ErrorBoundary extends React.Component<{children: React.ReactNode}, {error: string[]}> {
   constructor(props: {children: React.ReactNode}) {
     super(props);
-    this.state = {error: ''};
+    this.state = {error: []};
   }
-  componentDidCatch(err, info) {
-    console.log('err', err, info);
-    this.setState({error: info.componentStack.split('\n').slice(0, 6)});
+  componentDidCatch(_: Error, info: ErrorInfo) {
+    this.setState({
+      error: info?.componentStack?.split('\n').slice(0, 8) ?? [],
+    });
   }
-  componentDidUpdate(_: object, prev_state: {error: string}): void {
-    if (prev_state.error !== '') {
-      this.setState({error: ''});
+  componentDidUpdate(_: object, prev_state: {error: string[]}): void {
+    if (prev_state.error.length !== 0) {
+      this.setState({error: []});
     }
   }
   render() {
-    return this.state.error === '' ? (
+    return this.state.error.length === 0 ? (
       this.props.children
     ) : (
-      <p style={{whiteSpace: 'break-spaces'}}>
+      <span>
         [ERROR]
-        <br />
-        {this.state.error}
-      </p>
+        {this.state.error.map((e, i) => (
+          <span key={i}>
+            {e}
+            <br />
+          </span>
+        ))}
+      </span>
     );
   }
 }

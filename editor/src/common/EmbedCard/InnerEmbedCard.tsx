@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {embed_card} from './common.css';
+import {embed_card, inner_embed} from './common.css';
 import React from 'react';
 
 type Props = {
@@ -12,5 +12,5 @@ type Props = {
 };
 
 export function InnerEmbedCard(props: Props): JSX.Element {
-  return <span className={embed_card}>InnerEmbed: /{props.slug}</span>;
+  return <span className={`${embed_card} ${inner_embed}`}>InnerEmbed: /{props.slug}</span>;
 }
