@@ -10,7 +10,7 @@ import Giscus from '@giscus/react';
 import React from 'react';
 import {Link} from 'gatsby';
 import {ShareList} from '@common';
-import {Markdown, AdsInArticle} from '@watasuke.net/common';
+import {Markdown, AdsInArticle, cs} from '@watasuke.net/common';
 import {EmbedCard, InnerEmbedCard} from '@feature/Article';
 import {TagContainer} from '@feature/Tag';
 import {TocInArticle} from '@feature/TableOfContents';
@@ -60,19 +60,20 @@ export function BlogContent(props: Props): React.ReactElement {
       <hr />
       <nav>
         {props.newer ? (
-          <Link to={'/blog/article/' + props.newer.slug} className={css.newer_link}>
+          <Link to={'/blog/article/' + props.newer.slug} className={cs(css.adjacent_article, css.newer_link)}>
             <IconLeft />
             {props.newer.title}
           </Link>
         ) : (
           <span>これより新しい記事はありません</span>
         )}
-        <div>
+        <section className={css.share_box}>
+          <span>Share this article</span>
           <span className={css.current_title}>{props.data.title}</span>
           <ShareList />
-        </div>
+        </section>
         {props.older ? (
-          <Link to={'/blog/article/' + props.older.slug} className={css.older_link}>
+          <Link to={'/blog/article/' + props.older.slug} className={cs(css.adjacent_article, css.older_link)}>
             {props.older.title}
             <IconRight />
           </Link>

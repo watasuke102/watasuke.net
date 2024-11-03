@@ -60,27 +60,31 @@ globalStyle(`${date}:hover:after`, {
   border: `1px solid ${color.fg}`,
 });
 
-export const newer_link = style({
+export const adjacent_article = style({
   width: '100%',
-  marginLeft: -12,
-  display: 'grid',
+  display: 'flex',
   alignItems: 'center',
-  gridTemplateColumns: 'auto 1fr',
 });
-export const current_title = style({
-  display: 'block',
-  textAlign: 'center',
-  fontWeight: 'bold',
+export const newer_link = style({
+  justifyContent: 'left',
+  marginLeft: -12,
 });
 export const older_link = style({
-  width: '100%',
+  justifyContent: 'right',
   marginLeft: 12,
-  display: 'grid',
-  alignItems: 'center',
-  textAlign: 'right',
-  gridTemplateColumns: '1fr auto',
 });
 export const missing_older = style({
   display: 'block',
   textAlign: 'right',
+});
+
+export const share_box = style({
+  marginBlock: 12,
+  paddingTop: 8,
+  textAlign: 'center',
+  border: `1px solid ${color.fg}`,
+});
+export const current_title = style({
+  display: 'block',
+  fontWeight: 'bold',
 });
