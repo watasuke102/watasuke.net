@@ -11,6 +11,7 @@ import React from 'react';
 import Link from 'next/link';
 import {AllArticlesQuery} from '@utils/graphql';
 import VisibilityIcon from '@assets/visibility.svg';
+import LinkIcon from '@assets/link.svg';
 
 type Props = {
   articles: AllArticlesQuery['allArticles'];
@@ -31,6 +32,7 @@ export function ArticlesTable(props: Props): JSX.Element {
         <thead>
           <tr>
             <th></th>
+            <th></th>
             <th>title</th>
             <th>slug</th>
             <th className={css.datetime}>updated_at</th>
@@ -41,6 +43,16 @@ export function ArticlesTable(props: Props): JSX.Element {
           {props.articles.map(e => {
             return (
               <tr key={e.slug}>
+                <td>
+                  <a
+                    className={css.icon}
+                    href={`https://watasuke.net/blog/article/${e.slug}/`}
+                    target='_blank'
+                    rel='nofollow noopener noreferrer'
+                  >
+                    <LinkIcon />
+                  </a>
+                </td>
                 <td>
                   <Link href={`/editor/${e.slug}/preview`} className={css.icon}>
                     <VisibilityIcon />
