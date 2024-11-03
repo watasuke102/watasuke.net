@@ -6,6 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {AdsInArticle} from './src/Ads';
 import {classify_url_embed_type, UrlEmbedType} from './src/ClassifyUrlEmbedType';
+import {classnames} from './src/classnames';
 import {Body} from './src/Markdown/Body/Body';
 import {Switch} from './src/Switch/Switch';
 import {TocMapper} from './src/TocMapper';
@@ -14,6 +15,7 @@ import {ExtractHeading} from './src/ExtractHeading';
 
 export {
   color,
+  classnames as cs,
   Body as Markdown,
   Switch,
   AdsInArticle,
