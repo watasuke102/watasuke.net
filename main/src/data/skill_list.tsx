@@ -102,14 +102,6 @@ Use in backend of TAGether
 `,
   },
   {
-    name: 'vanilla-extract',
-    icon: <></>,
-    tier: 1,
-    category: 'Language',
-    desc_ja: '最近のスタイリングはすべてこれを使っています',
-    desc_en: 'Recently I use this for all styling',
-  },
-  {
     name: '(S)CSS',
     icon: <Sass />,
     tier: 2,
@@ -148,6 +140,14 @@ TAGetherの開発に使用
 Used for TAGether
 It makes easy to configure about routing
 `,
+  },
+  {
+    name: 'vanilla-extract',
+    icon: <></>,
+    tier: 1,
+    category: 'FW/Lib',
+    desc_ja: '最近のスタイリングはすべてこれを使っています',
+    desc_en: 'Recently I use this for all styling',
   },
   {
     name: 'Wayland',
