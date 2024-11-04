@@ -69,20 +69,24 @@ export default function Index(props: Props): React.ReactElement {
           </nav>
         </div>
 
-        <h2 className={css.links_head}>― Social Links ―</h2>
-        <nav className={css.link_container}>
-          {links.map(e => (
-            // eslint-disable-next-line jsx-a11y/anchor-has-content
-            <a key={e.data.title} className={e.class_name} {...e.data} />
-          ))}
-        </nav>
+        <section className={css.links_container}>
+          <h2 className={css.info_head}>― Social Links ―</h2>
+          <nav className={css.link_container}>
+            {links.map(e => (
+              // eslint-disable-next-line jsx-a11y/anchor-has-content
+              <a key={e.data.title} className={e.class_name} {...e.data} />
+            ))}
+          </nav>
+        </section>
 
-        <h2 className={css.articles_head}>― Article recommendation ―</h2>
-        <div className={css.favorite_articles}>
-          {props.data.allArticles.nodes.map(e => (
-            <ArticleCard key={e.slug} article={e} />
-          ))}
-        </div>
+        <section className={css.articles_container}>
+          <h2 className={css.info_head}>― Article Picks ―</h2>
+          <div className={css.favorite_articles}>
+            {props.data.allArticles.nodes.map(e => (
+              <ArticleCard key={e.slug} article={e} />
+            ))}
+          </div>
+        </section>
       </main>
     </>
   );
