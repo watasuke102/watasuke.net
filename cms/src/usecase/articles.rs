@@ -82,8 +82,17 @@ fn get_map_all(contents_path: &String) -> anyhow::Result<ArticleMap> {
         );
         continue;
       };
-      let mut md: Document<Frontmatter> =
-        YamlFrontMatter::parse(article_md.as_str()).expect("Failed to parse article.md");
+      let mut md: Document<Frontmatter> = match YamlFrontMatter::parse(article_md.as_str()) {
+        Ok(f) => f,
+        Err(e) => {
+          println!(
+            "Failed to parse the frontmatter of {}/article.md; ignored\n>> {:?}",
+            article_dir.path().to_str().unwrap_or("<unknown path>"),
+            e
+          );
+          continue;
+        }
+      };
       loop {
         if !md.content.starts_with('\n') {
           break;
