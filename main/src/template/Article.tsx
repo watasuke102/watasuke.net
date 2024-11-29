@@ -29,7 +29,7 @@ interface Props {
 const breadcrumb_list = (title: string) =>
   GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Article', item: '/blog/article'}, {name: title}]);
 
-export default function Articale(props: Props): React.ReactElement {
+export default function Article(props: Props): React.ReactElement {
   const article = props.pageContext.article;
 
   const headings = (() => {
