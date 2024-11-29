@@ -10,7 +10,6 @@ import {EmbedCardType, InnerEmbedCardType} from '../PropsComponent';
 
 export function Link(EmbedCard: EmbedCardType, InnerEmbedCard: InnerEmbedCardType) {
   const link: Components['a'] = props => {
-    /* eslint-disable react/prop-types */
     if (!props.node) return <></>;
 
     const link_text = props.node.children[0].value;

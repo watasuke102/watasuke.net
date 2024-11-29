@@ -4,6 +4,6 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import { TagEditor } from './TagEditor';
+import {TagEditor} from './TagEditor';
 
-export { TagEditor };
+export {TagEditor};

@@ -4,6 +4,6 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import { MenuContents } from './MenuContents';
+import {MenuContents} from './MenuContents';
 
-export { MenuContents };
+export {MenuContents};

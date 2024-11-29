@@ -111,7 +111,6 @@ export function Body(props: Props): JSX.Element {
           h4: Heading,
           h5: Heading,
           h6: Heading,
-          // eslint-disable-next-line react/prop-types
           img: props => <ImageViewer src={props.src || ''} alt={props.alt} />,
         }}
         remarkPlugins={[Gfm, Math, Slug, remarkAddFootnoteLabel]}

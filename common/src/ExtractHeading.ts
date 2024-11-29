@@ -20,7 +20,7 @@ export function ExtractHeading(md: string): Heading[] {
   unified()
     .use(remarkParse)
     .use(() => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return (tree: any) => {
         visit(tree, 'heading', node => {
           const body = node.children[0].value;

@@ -8,7 +8,7 @@ import {visit} from 'unist-util-visit';
 
 const map = new Map<string, string>();
 export const remarkAddFootnoteLabel = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (tree: any) => {
     map.clear();
     visit(tree, 'footnoteDefinition', node => {

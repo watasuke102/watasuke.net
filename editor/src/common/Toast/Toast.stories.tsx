@@ -8,7 +8,7 @@ import React from 'react';
 import type {Meta, StoryObj} from '@storybook/react';
 import '@watasuke.net/common/src/css/base.css';
 import '@common/global.css';
-import { Toast } from './Toast';
+import {Toast} from './Toast';
 
 const meta: Meta<typeof Toast> = {
   component: Toast,

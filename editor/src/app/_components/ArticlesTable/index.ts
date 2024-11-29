@@ -4,6 +4,6 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import { ArticlesTable } from './ArticlesTable';
+import {ArticlesTable} from './ArticlesTable';
 
-export { ArticlesTable };
+export {ArticlesTable};

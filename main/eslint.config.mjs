@@ -7,6 +7,9 @@
 import header from 'eslint-plugin-header';
 import Config from '@watasuke.net/config/eslint.config.mjs';
 
+// https://github.com/Stuk/eslint-plugin-header/issues/57#issuecomment-2378485611
+header.rules.header.meta.schema = false;
+
 export default [
   {
     ignores: ['.cache', 'public'],
