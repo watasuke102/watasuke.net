@@ -7,7 +7,6 @@
 // FIXME: cannot import from '@watasuke.net/{config,common}'
 import * as config from '../config/config';
 import child_process from 'child_process';
-import fs from 'fs';
 import path from 'path';
 import {GatsbyNode, SourceNodesArgs} from 'gatsby';
 import {GraphQLClient} from 'graphql-request';
@@ -248,6 +247,27 @@ export const createPages: GatsbyNode['createPages'] = async ({graphql, actions})
     const articles: Article[] = articles_response.data?.allArticles.nodes ?? [];
     log('info', 'Creating Article pages...');
     articles.forEach((item, index) => {
+      // @common/ExtractHeading cannot be imported from gatsby-node.ts (idk why)
+      // so execute ExtractHeading() via `tsx` and node:child_process,
+      // and parse its stdout from gatsby-node.ts to resolve this issue
+      let headings = [];
+      let process_result;
+      try {
+        process_result = child_process.spawnSync('npx', ['tsx', 'extract-heading-on-node.ts'], {
+          input: item.body.replaceAll('\\n', '\n'),
+        });
+        headings = JSON.parse(process_result.stdout.toString());
+      } catch (e) {
+        const err = e as Error;
+        log(
+          'error',
+          `Failed to get headings: ${item.title}
+  >> message: [${err.name}] ${err.message}
+  >> result: ${process_result?.stdout.toString()}
+  `,
+        );
+        headings = [];
+      }
       actions.createPage({
         path: `/blog/article/${item.slug}`,
         component: path.resolve('./src/template/Article.tsx'),
@@ -256,6 +276,9 @@ export const createPages: GatsbyNode['createPages'] = async ({graphql, actions})
           // [...][-1] === [][1] === undefined
           newer: articles[index - 1],
           older: articles[index + 1],
+          // the article that has only one headings
+          // => no need to show Table of Contents
+          headings: headings.length < 2 ? undefined : headings,
         },
       });
     });

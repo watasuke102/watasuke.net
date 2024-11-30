@@ -9,7 +9,8 @@ import '@watasuke.net/common/src/css/base.css';
 import {Seo, Breadcrumb} from '@common';
 import React from 'react';
 import {Link} from 'gatsby';
-import {TocMapper, ExtractHeading} from '@watasuke.net/common';
+import {TocMapper} from '@watasuke.net/common';
+import Heading from '@watasuke.net/common/src/Heading';
 import {Layout} from '@feature/Layout';
 import {BlogContent, ProfileCard} from '@feature/Article';
 import {AllTagList} from '@feature/Tag';
@@ -23,6 +24,7 @@ interface Props {
     article: Article;
     newer: Article | undefined;
     older: Article | undefined;
+    headings: Heading[];
   };
 }
 
@@ -32,14 +34,8 @@ const breadcrumb_list = (title: string) =>
 export default function ArticleTemplate(props: Props): React.ReactElement {
   const article = props.pageContext.article;
 
-  const headings = (() => {
-    const headings = ExtractHeading(article.body);
-    // 見出しが2個未満だったら目次を出しても違和感がある気がする
-    return headings.length < 2 ? undefined : headings;
-  })();
-
   return (
-    <HeadingContext.Provider value={headings}>
+    <HeadingContext.Provider value={props.pageContext.headings}>
       <Layout>
         <Breadcrumb breadcrumb_list={breadcrumb_list(article.title)} />
         <Link to='/blog' className={css.back_link}>
@@ -59,9 +55,9 @@ export default function ArticleTemplate(props: Props): React.ReactElement {
               <span className={css.head}>タグ</span>
               <AllTagList />
             </section>
-            {headings && (
+            {props.pageContext.headings && (
               <nav className={css.side_toc}>
-                <TocMapper headings={headings} />
+                <TocMapper headings={props.pageContext.headings} />
               </nav>
             )}
           </aside>
