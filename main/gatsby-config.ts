@@ -41,6 +41,12 @@ const gatsby_config: GatsbyConfig = {
         extensions: [],
       },
     },
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+      options: {
+        analyzerMode: 'static',
+      },
+    },
     // マニフェスト設定
     {
       resolve: 'gatsby-plugin-manifest',
