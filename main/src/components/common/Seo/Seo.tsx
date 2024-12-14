@@ -4,7 +4,6 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import * as config from '@watasuke.net/config/config';
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import BreadcrumbItem from '@mytypes/Breadcrumb';
@@ -40,7 +39,6 @@ export function Seo(props: Props): React.ReactElement {
   return (
     <>
       <title>{title}</title>
-      <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${config.adsenseId}`} />
       <meta property='og:type' content='website' />
       <meta property='og:url' content={url} />
       <meta property='og:title' content={title} />

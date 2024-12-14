@@ -4,12 +4,13 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+// FIXME: cannot import from '@watasuke.net/config'
+import * as config from '../config/config';
 import {GatsbySSR} from 'gatsby';
 import React from 'react';
 
 export const onRenderBody: GatsbySSR['onRenderBody'] = ({setHtmlAttributes, setHeadComponents}) => {
-  setHtmlAttributes({lang: 'ja'});
-  setHeadComponents([
+  const heads: React.ReactNode[] = [
     <link
       key='reseter.css'
       rel='stylesheet'
@@ -23,7 +24,17 @@ export const onRenderBody: GatsbySSR['onRenderBody'] = ({setHtmlAttributes, setH
       href='https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap'
       rel='stylesheet'
     />,
-  ]);
+  ];
+  if (config.adsenseId !== '') {
+    heads.push(
+      <script
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${config.adsenseId}`}
+      />,
+    );
+  }
+  setHtmlAttributes({lang: 'ja'});
+  setHeadComponents(heads);
 };
 
 // Twitterカード表示のため、metaタグを上に持っていく
