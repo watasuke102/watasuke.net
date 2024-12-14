@@ -49,9 +49,8 @@ export default function Portfolio(props: Props): React.ReactElement {
             <Switch checked={animation_enabled} on_click={() => set_animation_enabled(f => !f)} id='animation_switch' />
           </form>
           <button className={css.translate_button} onClick={() => set_lang(l => (l === 'ja' ? 'en' : 'ja'))}>
-            <span className={css.button_text}>
-              {lang === 'en' ? '表示を日本語に切り替える' : 'Switch language to English'}
-            </span>
+            {/* a */}
+            <span className={css.button_text}>{lang === 'en' ? '日本語で表示' : 'Show in English'}</span>
             <IconTranslate />
           </button>
         </header>

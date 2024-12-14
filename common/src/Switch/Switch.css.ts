@@ -10,20 +10,19 @@ import {color} from '@watasuke.net/common/src/css/color';
 export const css = {
   root: style({
     width: 72,
-    height: 36,
     padding: 0,
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    border: `3px solid ${color.fg}`,
+    border: `3px solid ${color.bg}`,
     borderRadius: 512,
     backgroundColor: color.fg,
   }),
   thumb: style({
     gridColumn: '1 / 2',
     display: 'block',
-    width: '100%',
-    height: '100%',
+    aspectRatio: '1 / 1',
     borderRadius: 512,
+    border: `3px solid ${color.fg}`,
     backgroundColor: color.bg,
   }),
 };
