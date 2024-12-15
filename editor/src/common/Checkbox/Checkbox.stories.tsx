@@ -5,10 +5,9 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import React from 'react';
+import {Checkbox} from './Checkbox';
 import type {Meta, StoryObj} from '@storybook/react';
 import '@watasuke.net/common/src/css/base.css';
-import '@common/global.css';
-import {Checkbox} from './Checkbox';
 
 const meta: Meta<typeof Checkbox> = {
   component: Checkbox,

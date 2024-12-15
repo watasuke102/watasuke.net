@@ -11,12 +11,6 @@ import React from 'react';
 
 export const onRenderBody: GatsbySSR['onRenderBody'] = ({setHtmlAttributes, setHeadComponents}) => {
   const heads: React.ReactNode[] = [
-    <link
-      key='reseter.css'
-      rel='stylesheet'
-      href='https://cdn.jsdelivr.net/gh/krishdevdb/reseter.css@1.20/css/reseter.min.css'
-      id='reseter.css'
-    />,
     <link key='pre-googleapis' rel='preconnect' href='https://fonts.googleapis.com' />,
     <link key='pre-gstatic' rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />,
     <link
@@ -45,8 +39,6 @@ export const onPreRenderHTML: GatsbySSR['onPreRenderHTML'] = ({getHeadComponents
     if (b.type === 'meta') {
       return 1;
     } else if (a.type === 'meta') {
-      return -1;
-    } else if (a.type === 'link' && a.props.id === 'reseter.css') {
       return -1;
     }
     return 0;

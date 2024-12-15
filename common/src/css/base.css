@@ -1,0 +1,79 @@
+@import 'https://cdn.jsdelivr.net/gh/krishdevdb/reseter.css@1.20/css/reseter.min.css';
+
+* {
+  scroll-behavior: auto;
+}
+
+::before,
+*,
+::after {
+  @media (prefers-reduced-motion: reduce) {
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+  }
+}
+
+:root {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  background-color: #282c34;
+  color: #abb2bf;
+  scrollbar-width: thin;
+  scrollbar-color: #abb2bf transparent;
+}
+
+*::selection {
+  color: #282c34;
+  background-color: #98c379;
+}
+
+a {
+  color: #98c379;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #98c379;
+  transition: color 0.3s;
+}
+
+code {
+  font-family: 'Moralerspace Krypton NF', 'Monaspace Krypton', MyricaM, 'MyricaM M', 'Source Code Pro', 'Ubuntu Mono',
+    'Ubuntu Monospace', Consolas, monospace;
+}
+
+table {
+  margin: 16px 0;
+}
+
+table th {
+  text-align: center;
+  border-bottom: 2px solid #abb2bf;
+}
+
+table th,
+table td {
+  padding: 4px 8px;
+}
+
+sup > a {
+  margin-inline: 3px;
+}
+
+hr {
+  opacity: 1;
+}
+
+details {
+  margin-bottom: 12px;
+  border-left: 4px solid #abb2bf;
+}
+
+details[open] summary {
+  margin-bottom: 12px;
+}
+
+details > * {
+  margin-left: 10px;
+}

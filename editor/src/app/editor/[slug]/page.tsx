@@ -17,9 +17,8 @@ type Props = {
 export const revalidate = 0;
 
 export default async function page(props: Props): Promise<JSX.Element> {
-  const slug = (await props.params).slug;
   const sdk = getSdk(new GraphQLClient('http://127.0.0.1:10212/graphql'));
-  const query = await sdk.articleEditPage({slug});
+  const query = await sdk.articleEditPage({slug: props.params.slug});
   if (!query.article) {
     throw Error('article is empty');
   }
