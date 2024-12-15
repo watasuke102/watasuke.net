@@ -29,7 +29,7 @@ interface Props {
 const breadcrumb_list = (name: string) =>
   GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Tag', item: '/blog/tag'}, {name: name}]);
 
-export default function Tag({pageContext, data}: Props): React.ReactElement {
+export default function Tag({pageContext, data}: Props): JSX.Element {
   return (
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list(pageContext.name)} />
@@ -62,7 +62,7 @@ export const query = graphql`
   }
 `;
 
-export function Head({pageContext}: Props): React.ReactElement {
+export function Head({pageContext}: Props): JSX.Element {
   return (
     <Seo
       title={pageContext.name}

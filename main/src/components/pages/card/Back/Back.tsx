@@ -11,7 +11,7 @@ interface Props {
   hidden: boolean;
 }
 
-export function Back(props: Props): React.ReactElement {
+export function Back(props: Props): JSX.Element {
   return (
     <div className={css.container} style={props.hidden ? {display: 'none'} : {}}>
       <div className={css.separator} />

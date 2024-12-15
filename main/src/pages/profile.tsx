@@ -24,7 +24,7 @@ interface Props {
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Profile'}]);
 
-export default function Profile(props: Props): React.ReactElement {
+export default function Profile(props: Props): JSX.Element {
   const headings = ExtractHeading(props.data.siteData.body);
 
   return (
@@ -56,7 +56,7 @@ export const query = graphql`
   }
 `;
 
-export function Head(): React.ReactElement {
+export function Head(): JSX.Element {
   return (
     <Seo title={'プロフィール'} desc={'わたすけのプロフィール'} url={'/profile'} breadcrumb_list={breadcrumb_list} />
   );

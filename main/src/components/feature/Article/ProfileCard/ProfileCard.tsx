@@ -9,7 +9,7 @@ import {graphql, Link, useStaticQuery} from 'gatsby';
 import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
 
-export function ProfileCard(): React.ReactElement {
+export function ProfileCard(): JSX.Element {
   const query: Queries.shortProfileQuery = useStaticQuery(graphql`
     query shortProfile {
       siteData(slug: {eq: "short_profile"}) {

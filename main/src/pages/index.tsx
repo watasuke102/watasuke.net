@@ -30,7 +30,7 @@ type Props = {
   };
 };
 
-export default function Index(props: Props): React.ReactElement {
+export default function Index(props: Props): JSX.Element {
   const menu_list = [
     {text: 'About', url: '/about', icon: <IconInfo />},
     {text: 'Blog', url: '/blog', icon: <IconEdit />},
@@ -109,7 +109,7 @@ export const query = graphql`
   }
 `;
 
-export function Head(): React.ReactElement {
+export function Head(): JSX.Element {
   return (
     <Seo
       title={''}

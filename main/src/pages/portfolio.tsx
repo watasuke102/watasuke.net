@@ -30,7 +30,7 @@ interface Props {
   };
 }
 
-export default function Portfolio(props: Props): React.ReactElement {
+export default function Portfolio(props: Props): JSX.Element {
   const params = new URLSearchParams(props.location.href);
   const [animation_enabled, set_animation_enabled] = React.useState<boolean>(
     (params.get('animation') ?? '') !== 'false',
@@ -75,7 +75,7 @@ export default function Portfolio(props: Props): React.ReactElement {
   );
 }
 
-export function Head(): React.ReactElement {
+export function Head(): JSX.Element {
   return (
     <Seo title={'ポートフォリオ'} desc={'ポートフォリオです'} url={'/portfolio'} breadcrumb_list={breadcrumb_list} />
   );

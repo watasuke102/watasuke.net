@@ -12,7 +12,7 @@ interface Props {
   breadcrumb_list: BreadcrumbItem[];
 }
 
-export function Breadcrumb(props: Props): React.ReactElement {
+export function Breadcrumb(props: Props): JSX.Element {
   return (
     <nav aria-label='Breadcrumb'>
       {props.breadcrumb_list.map((e, i) => (

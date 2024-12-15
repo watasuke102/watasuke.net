@@ -10,7 +10,7 @@ interface Props {
   str: string;
 }
 
-export function BreakWithCR(props: Props): React.ReactElement {
+export function BreakWithCR(props: Props): JSX.Element {
   let str = props.str;
   if (props.str.slice(-1) === '\n') {
     str = props.str.slice(0, -1);

@@ -17,7 +17,7 @@ import IconHide from '@assets/icons/general/up.svg';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Card'}]);
 
-export default function Card(): React.ReactElement {
+export default function Card(): JSX.Element {
   const [is_fliped, set_is_flipped] = React.useState(false);
   const [is_button_hidden, set_is_button_hidden] = React.useState(false);
   const [is_button_disabled, set_is_button_disabled] = React.useState(false);
@@ -84,6 +84,6 @@ export default function Card(): React.ReactElement {
   );
 }
 
-export function Head(): React.ReactElement {
+export function Head(): JSX.Element {
   return <Seo title={'card'} desc={'名刺'} url={'/card'} breadcrumb_list={breadcrumb_list} />;
 }

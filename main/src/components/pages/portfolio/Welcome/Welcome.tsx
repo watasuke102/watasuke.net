@@ -18,7 +18,7 @@ interface Props {
   lang: string;
 }
 
-export function Welcome(props: Props): React.ReactElement {
+export function Welcome(props: Props): JSX.Element {
   return (
     <section className={css.container}>
       <motion.div

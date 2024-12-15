@@ -16,7 +16,7 @@ interface Props {
 }
 const article_count = 10;
 
-export function ArticleList(props: Props): React.ReactElement {
+export function ArticleList(props: Props): JSX.Element {
   const max_page = Math.ceil(props.list.length / article_count);
   // ページ切り替え用
   const [current_page, SetCurrentPage] = React.useState(1);

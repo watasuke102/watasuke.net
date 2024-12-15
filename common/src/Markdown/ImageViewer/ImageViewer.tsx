@@ -13,7 +13,7 @@ interface Props {
   alt: string | undefined;
 }
 
-export const ImageViewer = ({src, alt}: Props): React.ReactElement => {
+export function ImageViewer({src, alt}: Props): JSX.Element {
   const [is_open, SetIsOpen] = React.useState(false);
   const should_reduce_motion = useReducedMotion();
 
@@ -53,4 +53,4 @@ export const ImageViewer = ({src, alt}: Props): React.ReactElement => {
       </AnimatePresence>
     </>
   );
-};
+}

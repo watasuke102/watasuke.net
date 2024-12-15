@@ -17,7 +17,7 @@ interface Props {
   }[];
 }
 
-export function TagContainer(props: Props): React.ReactElement {
+export function TagContainer(props: Props): JSX.Element {
   return (
     <section className={css.container}>
       {!props.disable_icon && (

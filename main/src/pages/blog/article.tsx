@@ -28,7 +28,7 @@ type Props = {
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Article'}]);
 
-export default function ArticleListPage({data}: Props): React.ReactElement {
+export default function ArticleListPage({data}: Props): JSX.Element {
   return (
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list} />
@@ -62,7 +62,7 @@ export const query = graphql`
   }
 `;
 
-export function Head(): React.ReactElement {
+export function Head(): JSX.Element {
   return (
     <Seo
       title={'記事一覧'}

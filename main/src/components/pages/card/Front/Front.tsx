@@ -16,7 +16,7 @@ interface Props {
   hidden: boolean;
 }
 
-export function Front(props: Props): React.ReactElement {
+export function Front(props: Props): JSX.Element {
   return (
     <div className={css.container} style={props.hidden ? {display: 'none'} : {}}>
       <div className={css.avatar_wrapper}>

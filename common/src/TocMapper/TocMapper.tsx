@@ -5,6 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './TocMapper.css';
+import Link from 'next/link';
 import React from 'react';
 import {Heading} from '@watasuke.net/common';
 
@@ -12,21 +13,13 @@ interface Props {
   headings: Heading[];
 }
 
-export function TocMapper(props: Props): React.ReactElement {
+export function TocMapper(props: Props): JSX.Element {
   return (
     <ol className={css.list_wrapper}>
       {props.headings.map(item => {
-        const jump = () => {
-          const heading = document.getElementById(item.slug);
-          if (heading) {
-            window.scrollTo({top: heading.offsetTop, behavior: 'smooth'});
-          }
-        };
         return (
           <li key={item.slug} className={`${css.item} ${css.toc_list[item.size]}`}>
-            <span role='link' tabIndex={0} onClick={jump} onKeyDown={jump}>
-              {item.body}
-            </span>
+            <Link href={`#${item.slug}`}>{item.body}</Link>
           </li>
         );
       })}

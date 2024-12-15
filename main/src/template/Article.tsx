@@ -31,7 +31,7 @@ interface Props {
 const breadcrumb_list = (title: string) =>
   GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Article', item: '/blog/article'}, {name: title}]);
 
-export default function ArticleTemplate(props: Props): React.ReactElement {
+export default function ArticleTemplate(props: Props): JSX.Element {
   const article = props.pageContext.article;
 
   return (
@@ -67,7 +67,7 @@ export default function ArticleTemplate(props: Props): React.ReactElement {
   );
 }
 
-export function Head({pageContext}: Props): React.ReactElement {
+export function Head({pageContext}: Props): JSX.Element {
   return (
     <Seo
       title={pageContext.article.title}

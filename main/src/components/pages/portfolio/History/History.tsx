@@ -16,7 +16,7 @@ interface Props {
   lang: string;
 }
 
-export function History(props: Props): React.ReactElement {
+export function History(props: Props): JSX.Element {
   const EventList = React.useMemo(() => {
     return Object.keys(event_list).map(year => {
       return (

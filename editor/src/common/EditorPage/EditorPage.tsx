@@ -30,9 +30,9 @@ type Props = {
   commit_scope?: string;
 
   textarea_ref: React.MutableRefObject<HTMLTextAreaElement | null | undefined>;
-  toolbox: React.ReactElement;
-  header_text: React.ReactElement;
-  modify_confirming_area: React.ReactElement;
+  toolbox: JSX.Element;
+  header_text: JSX.Element;
+  modify_confirming_area: JSX.Element;
 
   set_body: (s: string) => void;
   set_modify_status: (s: ModifyStatus) => void;

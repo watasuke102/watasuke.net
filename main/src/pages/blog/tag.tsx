@@ -12,7 +12,7 @@ import {Layout} from '@feature/Layout';
 import {AllTagList} from '@feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 
-export default function TagListPage(): React.ReactElement {
+export default function TagListPage(): JSX.Element {
   return (
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list} />
@@ -27,6 +27,6 @@ export default function TagListPage(): React.ReactElement {
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Tag'}]);
 
-export function Head(): React.ReactElement {
+export function Head(): JSX.Element {
   return <Seo title={'タグ'} desc={'タグの一覧ページです'} url={'/tag'} breadcrumb_list={breadcrumb_list} />;
 }

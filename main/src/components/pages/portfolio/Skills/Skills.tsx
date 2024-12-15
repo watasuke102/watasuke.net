@@ -18,7 +18,7 @@ interface Props {
   lang: string;
 }
 
-export function Skills(props: Props): React.ReactElement {
+export function Skills(props: Props): JSX.Element {
   const [groupby, set_groupby] = React.useState('category');
   const [next_groupby, set_next_groupby] = React.useState('');
   const next_groupby_ref = React.useRef('');
@@ -30,7 +30,7 @@ export function Skills(props: Props): React.ReactElement {
       skill_group.forEach(e => e.sort((a, b) => a.tier - b.tier));
     }
 
-    const cards: {group: string; list: React.ReactElement[]}[] = [];
+    const cards: {group: string; list: JSX.Element[]}[] = [];
     skill_group.forEach(e => {
       cards.push({
         group: groupby !== 'tier' ? e[0].category : `tier ${e[0].tier}`,

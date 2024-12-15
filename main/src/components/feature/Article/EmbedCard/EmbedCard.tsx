@@ -25,7 +25,7 @@ function GetOgpFromUrl(ogp_list: Queries.ogpListQuery['allOgp']['nodes'], url: s
     };
 }
 
-export function EmbedCard({url}: Props): React.ReactElement {
+export function EmbedCard({url}: Props): JSX.Element {
   const ogp_list: Queries.ogpListQuery = useStaticQuery(graphql`
     query ogpList {
       allOgp {

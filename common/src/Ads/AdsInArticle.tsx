@@ -8,7 +8,7 @@ import * as config from '@watasuke.net/config/config';
 import * as style from './AdsInArticle.css';
 import React from 'react';
 
-export const AdsInArticle = (): React.ReactElement => {
+export function AdsInArticle(): JSX.Element {
   React.useEffect(() => {
     if (config.adsenseId.length <= 0 || config.inArticleSlot.length <= 0) {
       return;
@@ -34,4 +34,4 @@ export const AdsInArticle = (): React.ReactElement => {
       )}
     </div>
   );
-};
+}

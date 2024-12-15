@@ -27,7 +27,7 @@ function rand(x: number) {
   return Math.floor(Math.random() * x);
 }
 
-export default function Background(): React.ReactElement {
+export default function Background(): JSX.Element {
   const should_reduce_motion = useReducedMotion();
   const canvas_ref = React.useRef<HTMLCanvasElement>();
   const align = 10;

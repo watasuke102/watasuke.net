@@ -13,7 +13,7 @@ import {GenBreadcrumb} from '@utils/Breadcrumb';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'About'}]);
 
-export default function About(): React.ReactElement {
+export default function About(): JSX.Element {
   return (
     <Layout>
       <Background />
@@ -82,7 +82,7 @@ export default function About(): React.ReactElement {
   );
 }
 
-export function Head(): React.ReactElement {
+export function Head(): JSX.Element {
   return (
     <Seo
       title={'このサイトについて'}

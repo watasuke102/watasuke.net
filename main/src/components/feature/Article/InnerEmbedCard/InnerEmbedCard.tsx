@@ -13,7 +13,7 @@ interface Props {
   slug: string;
 }
 
-export function InnerEmbedCard(props: Props): React.ReactElement {
+export function InnerEmbedCard(props: Props): JSX.Element {
   const articles: Queries.sortedAllArticlesQuery = useStaticQuery(graphql`
     query innerEmbedCardInfo {
       allArticles(sort: {published_at: DESC}) {

@@ -20,7 +20,7 @@ interface Props {
   lang: string;
 }
 
-export function EventCard(props: Props): React.ReactElement {
+export function EventCard(props: Props): JSX.Element {
   const [opening, set_opening] = React.useState(false);
   const body = props.lang !== 'en' ? props.event.body_ja : props.event.body_en;
   const on_click = () => {

@@ -14,7 +14,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export function Layout({children}: Props): React.ReactElement {
+export function Layout({children}: Props): JSX.Element {
   return (
     <div className={css.layout}>
       <Header />

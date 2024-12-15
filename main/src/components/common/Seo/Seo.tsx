@@ -15,7 +15,7 @@ interface Props {
   breadcrumb_list: BreadcrumbItem[];
 }
 
-export function Seo(props: Props): React.ReactElement {
+export function Seo(props: Props): JSX.Element {
   const query = useStaticQuery(graphql`
     query seoInfo {
       file(name: {eq: "thumbnail"}) {

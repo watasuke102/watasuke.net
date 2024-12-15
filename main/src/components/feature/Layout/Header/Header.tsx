@@ -8,7 +8,7 @@ import * as css from './Header.css';
 import {Link} from 'gatsby';
 import React from 'react';
 
-export function Header(): React.ReactElement {
+export function Header(): JSX.Element {
   return (
     <header className={css.container}>
       <div className={css.title}>

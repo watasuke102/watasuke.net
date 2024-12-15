@@ -15,7 +15,7 @@ interface Props {
   article: Article;
 }
 
-export function ArticleCard({article}: Props): React.ReactElement {
+export function ArticleCard({article}: Props): JSX.Element {
   // wrap by <div> twice in order to prevent layout collapse
   // on the first visit or hard reloading
   return (

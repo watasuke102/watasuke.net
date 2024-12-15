@@ -7,18 +7,16 @@
 import * as css from './TocInArticle.css';
 import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
 import React from 'react';
-import {TocMapper} from '@watasuke.net/common';
-import {HeadingContext} from '@feature/TableOfContents';
+import {Heading, TocMapper} from '@watasuke.net/common';
 import IconCollapse from '@assets/icons/general/up.svg';
 
-export function TocInArticle(): React.ReactElement {
-  const [tocOpening, SetTocOpening] = React.useState(true);
-  const headings = React.useContext(HeadingContext);
-  const should_reduce_motion = useReducedMotion();
+interface Props {
+  headings: Heading[];
+}
 
-  if (!headings) {
-    return <></>;
-  }
+export function TocInArticle(props: Props): JSX.Element {
+  const [tocOpening, SetTocOpening] = React.useState(true);
+  const should_reduce_motion = useReducedMotion();
 
   return (
     <nav className={css.container}>
@@ -55,7 +53,7 @@ export function TocInArticle(): React.ReactElement {
           // initial value to prevent layout shift on the first load
           style={{maxHeight: 300, overflowY: 'scroll'}}
         >
-          <TocMapper headings={headings} />
+          <TocMapper headings={props.headings} />
         </motion.div>
       </AnimatePresence>
     </nav>
