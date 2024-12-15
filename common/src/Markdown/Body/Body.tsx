@@ -16,6 +16,7 @@ import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import Math from 'remark-math';
 import Slug from 'remark-slug';
+import {ScriptMounter} from '../ScriptMounter/ScriptMounter';
 import {AdsInArticle} from '../../Ads';
 import {ImageViewer} from '../ImageViewer/ImageViewer';
 import {Link} from '../Link/Link';
@@ -84,24 +85,12 @@ interface Props {
 }
 
 export function Body(props: Props): JSX.Element {
-  React.useEffect(() => {
-    setTimeout(() => {
-      // Twitter embed
-      const script = document.createElement('script');
-      script.src = 'https://platform.twitter.com/widgets.js';
-      script.async = true;
-      script.className = 'twitter-widgets-script';
-      document.body.appendChild(script);
-    }, 0);
-    return () =>
-      Array.from(document.body.getElementsByClassName('twitter-widgets-script') ?? []).forEach(e => e.remove());
-  }, []);
-
   // 再レンダリング時の広告位置変更を抑制
   heading_count = 0;
 
   return (
     <section className={style.container}>
+      <ScriptMounter />
       <ReactMarkdown
         components={{
           a: Link(props.embed_card, props.inner_embed_card),

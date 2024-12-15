@@ -24,7 +24,7 @@ export function ProfileCard(): JSX.Element {
       <p className={css.body}>
         {query.siteData?.body ?? ''}
         <br />
-        プロフィール詳細は<Link to='/profile'>こちら</Link>
+        プロフィール詳細は<Link href='/profile'>こちら</Link>
       </p>
     </section>
   );

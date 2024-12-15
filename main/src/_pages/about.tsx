@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {Seo, Background, Breadcrumb} from '@common';
-import {Link} from 'gatsby';
+import Link from 'next/link';
 import React from 'react';
 import {AdsInArticle} from '@watasuke.net/common';
 import {Layout} from '@feature/Layout';
@@ -22,7 +22,7 @@ export default function About(): JSX.Element {
         <h1>このサイトについて</h1>
         <p>わたすけのへやです</p>
         <p>
-          <Link to='/blog'>ブログ</Link>や<Link to='/profile'>プロフィール</Link>
+          <Link href='/blog'>ブログ</Link>や<Link href='/profile'>プロフィール</Link>
           が置いてあります
         </p>
         <AdsInArticle />

@@ -7,17 +7,9 @@
 import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import {TagContainer} from './TagContainer';
+import {ql} from '@utils/QL';
 
-export function AllTagList(): JSX.Element {
-  const tags: Queries.allTagsQuery = useStaticQuery(graphql`
-    query allTags {
-      allTags {
-        nodes {
-          slug
-          name
-        }
-      }
-    }
-  `);
-  return <TagContainer tags={tags.allTags.nodes} disable_icon={true} />;
+export async function AllTagList(): JSX.Element {
+  const tags = await ql().allTags();
+  return <TagContainer tags={tags.allTags} disable_icon={true} />;
 }

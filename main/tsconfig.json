@@ -22,19 +22,34 @@
       ],
       "@feature/*": [
         "./src/components/feature/*"
-      ],
+      ]
     },
     "typeRoots": [
       "./src/types"
+    ],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "noEmit": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
     ]
   },
   "include": [
-    "./src/**/*",
-    "./gatsby-node.ts",
-    "./gatsby-config.ts",
-    "./plugins/**/*",
+    "../common/src/Heading.d.ts",
     "../common/src/TocMapper",
-    "../common/src/Heading.d.ts"
+    "./gatsby-config.ts",
+    "./gatsby-node.ts",
+    "./plugins/**/*",
+    "./src/**/*",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

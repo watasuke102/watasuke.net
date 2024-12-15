@@ -8,20 +8,22 @@ import {apiUrl} from '@watasuke.net/config/config';
 import * as css from './BlogContent.css';
 import Giscus from '@giscus/react';
 import React from 'react';
-import {Link} from 'gatsby';
 import {ShareList} from '@common';
-import {Markdown, AdsInArticle, cs} from '@watasuke.net/common';
-import {EmbedCard, InnerEmbedCard} from '@feature/Article';
-import {TagContainer} from '@feature/Tag';
+import Link from 'next/link';
+import {AdsInArticle, Heading, Markdown, cs} from '@watasuke.net/common';
+// import {EmbedCard, InnerEmbedCard} from '@feature/Article';
+// import {TagContainer} from '@feature/Tag';
 import {TocInArticle} from '@feature/TableOfContents';
 import IconHistory from '@assets/icons/article/history.svg';
 import IconUpload from '@assets/icons/article/upload.svg';
 import IconLeft from '@assets/icons/general/left.svg';
 import IconRight from '@assets/icons/general/right.svg';
 import Article from '@mytypes/Article';
+import {TagContainer} from '@feature/Tag';
 
 interface Props {
   data: Article;
+  headings: Heading[];
   newer: Article | undefined;
   older: Article | undefined;
 }
@@ -36,33 +38,34 @@ export function BlogContent(props: Props): JSX.Element {
         <div className={css.date_container}>
           <div className={css.date} aria-label='記事の更新日'>
             <IconHistory />
-            <span>{props.data.updated_at.slice(0, 10)}</span>
+            <span>{props.data.updatedAt.slice(0, 10)}</span>
           </div>
           <div className={css.date} aria-label='記事の投稿日'>
             <div>
               <IconUpload />
             </div>
-            <span>{props.data.published_at.slice(0, 10)}</span>
+            <span>{props.data.publishedAt.slice(0, 10)}</span>
           </div>
         </div>
       </section>
 
       <AdsInArticle />
-      <TocInArticle />
+      <TocInArticle headings={props.headings} />
 
       <Markdown
         md={props.data.body.replaceAll('/img', `${apiUrl}/img/${props.data.slug}`)}
-        embed_card={EmbedCard}
-        inner_embed_card={InnerEmbedCard}
+        // embed_card={EmbedCard}
+        // inner_embed_card={InnerEmbedCard}
+        embed_card={() => <></>}
+        inner_embed_card={() => <></>}
       />
       <AdsInArticle />
 
       <hr />
       <nav>
         {props.newer ? (
-          <Link to={'/blog/article/' + props.newer.slug} className={cs(css.adjacent_article, css.newer_link)}>
-            <IconLeft />
-            {props.newer.title}
+          <Link href={'/blog/article/' + props.newer.slug} className={cs(css.adjacent_article, css.newer_link)}>
+            <IconLeft /> {props.newer.title}
           </Link>
         ) : (
           <span>これより新しい記事はありません</span>
@@ -73,7 +76,7 @@ export function BlogContent(props: Props): JSX.Element {
           <ShareList />
         </section>
         {props.older ? (
-          <Link to={'/blog/article/' + props.older.slug} className={cs(css.adjacent_article, css.older_link)}>
+          <Link href={'/blog/article/' + props.older.slug} className={cs(css.adjacent_article, css.older_link)}>
             {props.older.title}
             <IconRight />
           </Link>
@@ -82,7 +85,7 @@ export function BlogContent(props: Props): JSX.Element {
         )}
       </nav>
 
-      <section>
+      {/* <section>
         <h2>Comments</h2>
         <p>
           Powered by <a href='https://github.com/giscus/giscus'>Giscus</a>
@@ -101,7 +104,7 @@ export function BlogContent(props: Props): JSX.Element {
           lang='ja'
           loading='lazy'
         />
-      </section>
+      </section> */}
     </>
   );
 }
