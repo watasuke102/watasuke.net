@@ -7,7 +7,7 @@
 import * as css from '@pages/portfolio/portfolio.css';
 import {Seo} from '@common';
 import React from 'react';
-import {Link} from 'gatsby';
+import Link from 'next/link';
 import {AnimatePresence, motion} from 'framer-motion';
 import {Switch} from '@watasuke.net/common';
 import {color} from '@watasuke.net/common/src/css/color';
@@ -41,7 +41,7 @@ export default function Portfolio(props: Props): JSX.Element {
     <AnimatePresence>
       <div className={css.main_container}>
         <header className={css.header}>
-          <Link to='/'>
+          <Link href='/'>
             <IconLeft />
           </Link>
           <form className={css.animation_form}>

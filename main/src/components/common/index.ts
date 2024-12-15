@@ -7,8 +7,8 @@
 import Background from './Background/Background';
 import {Breadcrumb} from './Breadcrumb/Breadcrumb';
 import {BreakWithCR} from './BreakWithCR/BreakWithCR';
-import {Seo} from './Seo/Seo';
+// import {Seo} from './Seo/Seo';
 import {ShareList} from './ShareList';
 import {SimpleInnerLinks} from './SimpleInnerLinks';
 
-export {Background, Breadcrumb, BreakWithCR, Seo, ShareList, SimpleInnerLinks};
+export {Background, Breadcrumb, BreakWithCR, ShareList, SimpleInnerLinks};

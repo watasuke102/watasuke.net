@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './ArticleCard.css';
 import {initialized_a} from '@utils/initialized_a.css';
-import {Link} from 'gatsby';
+import Link from 'next/link';
 import React from 'react';
 import {TagContainer} from '@feature/Tag';
 import Article from '@mytypes/Article';
@@ -21,7 +21,7 @@ export function ArticleCard({article}: Props): JSX.Element {
   return (
     <div className={css.container}>
       <Link
-        to={'/blog/article/' + article.slug}
+        href={'/blog/article/' + article.slug}
         className={initialized_a}
         key={article.slug}
         aria-label={article.title}

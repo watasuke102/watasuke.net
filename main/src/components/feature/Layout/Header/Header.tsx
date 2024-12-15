@@ -5,25 +5,25 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Header.css';
-import {Link} from 'gatsby';
+import Link from 'next/link';
 import React from 'react';
 
 export function Header(): JSX.Element {
   return (
     <header className={css.container}>
       <div className={css.title}>
-        <Link className={css.site_name} to='/'>
+        <Link className={css.site_name} href='/'>
           わたすけのへや
         </Link>
       </div>
       <div className={css.link_container}>
-        <Link className={css.links} to='/blog'>
+        <Link className={css.links} href='/blog'>
           Blog
         </Link>
-        <Link className={css.links} to='/profile'>
+        <Link className={css.links} href='/profile'>
           Profile
         </Link>
-        <Link className={css.links} to='/about'>
+        <Link className={css.links} href='/about'>
           About this site
         </Link>
       </div>

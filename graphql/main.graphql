@@ -4,7 +4,7 @@
 # Email  : <watasuke102@gmail.com>
 # Twitter: @Watasuke102
 # This software is released under the MIT or MIT SUSHI-WARE License.
-query all {
+query allArticles {
   allPublicArticles {
     slug
     title
@@ -16,15 +16,33 @@ query all {
       slug
       name
     }
+  }
+}
+query allTags {
+  allTags {
+    slug
+    name
+  }
+}
+
+query article($slug: String!) {
+  article(slug: $slug) {
+    slug
+    title
+    tldr
+    tldrReal
+    publishedAt
+    updatedAt
+    isFavorite
+    isPublished
+    tags {
+      slug
+      name
+    }
     body
   }
   allTags {
     slug
     name
   }
-  sitedata {
-    profile
-    shortProfile
-  }
-  contentsGitHeadHash
 }

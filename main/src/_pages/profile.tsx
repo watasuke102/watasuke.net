@@ -36,7 +36,7 @@ export default function Profile(props: Props): JSX.Element {
           <h1>プロフィール</h1>
           <p>
             技術的な項目については
-            <Link to='/portfolio'>ポートフォリオ</Link>
+            <Link href='/portfolio'>ポートフォリオ</Link>
             を御覧ください
           </p>
           <AdsInArticle />

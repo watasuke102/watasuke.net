@@ -200,11 +200,6 @@ export type RenewProfileMutationVariables = Exact<{
 
 export type RenewProfileMutation = { __typename?: 'Mutation', renewProfile: string };
 
-export type AllQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type AllQuery = { __typename?: 'Query', contentsGitHeadHash: string, allPublicArticles: Array<{ __typename?: 'Article', slug: string, title: string, tldr: string, isFavorite: boolean, publishedAt: string, updatedAt: string, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> }>, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }>, sitedata: { __typename?: 'Sitedata', profile: string, shortProfile: string } };
-
 
 export const AllArticlesDocument = gql`
     query allArticles {
@@ -307,32 +302,6 @@ export const RenewProfileDocument = gql`
   renewProfile(commitMessage: $commit_message)
 }
     `;
-export const AllDocument = gql`
-    query all {
-  allPublicArticles {
-    slug
-    title
-    tldr
-    isFavorite
-    publishedAt
-    updatedAt
-    tags {
-      slug
-      name
-    }
-    body
-  }
-  allTags {
-    slug
-    name
-  }
-  sitedata {
-    profile
-    shortProfile
-  }
-  contentsGitHeadHash
-}
-    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
 
@@ -376,9 +345,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     renewProfile(variables: RenewProfileMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<RenewProfileMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<RenewProfileMutation>(RenewProfileDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'renewProfile', 'mutation', variables);
-    },
-    all(variables?: AllQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<AllQuery>(AllDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'all', 'query', variables);
     }
   };
 }

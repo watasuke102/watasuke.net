@@ -33,13 +33,13 @@ export function InnerEmbedCard(props: Props): JSX.Element {
     return (
       <>
         {'[Failed to create InnerEmbedCard] '}
-        <Link to={`/blog/article/${props.slug}`}>{decoded_slug}</Link>
+        <Link href={`/blog/article/${props.slug}`}>{decoded_slug}</Link>
       </>
     );
   }
 
   return (
-    <Link to={`/blog/article/${props.slug}`} className={initialized_a}>
+    <Link href={`/blog/article/${props.slug}`} className={initialized_a}>
       <div className={css.container}>
         <span className={css.title}>{data.title}</span>
         <span className={css.url}>{`watasuke.net - ${decoded_slug}`}</span>

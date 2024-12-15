@@ -4,6 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+'use client';
+
 import * as css from './ShareList.css';
 import IconTwitter from '@assets/icons/Links/twitter.svg';
 import IconMisskey from '@assets/icons/general/misskey.svg';
@@ -12,10 +14,6 @@ import IconHatena from '@assets/icons/general/hatena.svg';
 import IconShare from '@assets/icons/general/share.svg';
 
 export function ShareList(): JSX.Element {
-  if (typeof document === 'undefined') {
-    return <></>;
-  }
-
   return (
     <div className={css.share_container}>
       <a

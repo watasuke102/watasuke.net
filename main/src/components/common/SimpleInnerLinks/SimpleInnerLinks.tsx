@@ -5,7 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './SimpleInnerLinks.css';
-import {Link} from 'gatsby';
+import Link from 'next/link';
 
 export function SimpleInnerLinks(): JSX.Element {
   return (
@@ -13,12 +13,12 @@ export function SimpleInnerLinks(): JSX.Element {
     <>
       {/* prettier-ignore */}
       <ol className={css.links}>
-        <li> <Link to='/'>Top</Link>                </li>
-        <li> <Link to='/blog'>Blog</Link>           </li>
-        <li> <Link to='/portfolio'>Portfolio</Link> </li>
-        <li> <Link to='/profile'>Profile</Link>     </li>
-        <li> <Link to='/card'>Card</Link>           </li>
-        <li> <Link to='/about'>About</Link>         </li>
+        <li> <Link href='/'>Top</Link>                </li>
+        <li> <Link href='/blog'>Blog</Link>           </li>
+        <li> <Link href='/portfolio'>Portfolio</Link> </li>
+        <li> <Link href='/profile'>Profile</Link>     </li>
+        <li> <Link href='/card'>Card</Link>           </li>
+        <li> <Link href='/about'>About</Link>         </li>
       </ol>
     </>
   );

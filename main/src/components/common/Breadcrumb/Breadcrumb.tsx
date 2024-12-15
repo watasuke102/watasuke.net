@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {Link} from 'gatsby';
+import Link from 'next/link';
 import React from 'react';
 import BreadcrumbItem from '@mytypes/Breadcrumb';
 
@@ -18,7 +18,7 @@ export function Breadcrumb(props: Props): JSX.Element {
       {props.breadcrumb_list.map((e, i) => (
         <>
           {e.item ? (
-            <Link key={`a_${i}`} to={e.item}>
+            <Link key={`a_${i}`} href={e.item}>
               {e.name}
             </Link>
           ) : (

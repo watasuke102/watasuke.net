@@ -8,7 +8,7 @@ import * as css from '@feature/Article/Article.css';
 import '@watasuke.net/common/src/css/base.css';
 import {Seo, Breadcrumb} from '@common';
 import React from 'react';
-import {Link} from 'gatsby';
+import Link from 'next/link';
 import {TocMapper} from '@watasuke.net/common';
 import Heading from '@watasuke.net/common/src/Heading';
 import {Layout} from '@feature/Layout';
@@ -38,7 +38,7 @@ export default function ArticleTemplate(props: Props): JSX.Element {
     <HeadingContext.Provider value={props.pageContext.headings}>
       <Layout>
         <Breadcrumb breadcrumb_list={breadcrumb_list(article.title)} />
-        <Link to='/blog' className={css.back_link}>
+        <Link href='/blog' className={css.back_link}>
           <IconLeft />
           記事一覧ページへ移動
         </Link>

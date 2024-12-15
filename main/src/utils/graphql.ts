@@ -116,110 +116,47 @@ export type Tag = {
 export type AllArticlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllArticlesQuery = { __typename?: 'Query', allArticles: Array<{ __typename?: 'Article', slug: string, title: string, isFavorite: boolean, publishedAt: string, updatedAt: string, isPublished: boolean }> };
-
-export type ArticleEditPageQueryVariables = Exact<{
-  slug: Scalars['String']['input'];
-}>;
-
-
-export type ArticleEditPageQuery = { __typename?: 'Query', article?: { __typename?: 'Article', slug: string, title: string, tldr: string, tldrReal?: string | null, publishedAt: string, updatedAt: string, isFavorite: boolean, isPublished: boolean, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> } | null, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }> };
-
-export type ArticlePreviewPageQueryVariables = Exact<{
-  slug: Scalars['String']['input'];
-}>;
-
-
-export type ArticlePreviewPageQuery = { __typename?: 'Query', article?: { __typename?: 'Article', slug: string, title: string, body: string } | null };
+export type AllArticlesQuery = { __typename?: 'Query', allPublicArticles: Array<{ __typename?: 'Article', slug: string, title: string, tldr: string, isFavorite: boolean, publishedAt: string, updatedAt: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> }> };
 
 export type AllTagsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type AllTagsQuery = { __typename?: 'Query', allTags: Array<{ __typename?: 'Tag', slug: string, name: string }> };
 
-export type ProfileQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type ProfileQuery = { __typename?: 'Query', sitedata: { __typename?: 'Sitedata', profile: string } };
-
-export type NewTagMutationVariables = Exact<{
+export type ArticleQueryVariables = Exact<{
   slug: Scalars['String']['input'];
-  title: Scalars['String']['input'];
 }>;
 
 
-export type NewTagMutation = { __typename?: 'Mutation', newTag: string };
-
-export type NewArticleMutationVariables = Exact<{
-  slug: Scalars['String']['input'];
-  title: Scalars['String']['input'];
-}>;
-
-
-export type NewArticleMutation = { __typename?: 'Mutation', newArticle: string };
-
-export type UpdateArticleMutationVariables = Exact<{
-  slug: Scalars['String']['input'];
-  title: Scalars['String']['input'];
-  tldr: Scalars['String']['input'];
-  tags: Array<Scalars['String']['input']> | Scalars['String']['input'];
-  isFavorite: Scalars['Boolean']['input'];
-  body: Scalars['String']['input'];
-}>;
-
-
-export type UpdateArticleMutation = { __typename?: 'Mutation', updateArticle: string };
-
-export type PublishArticleMutationVariables = Exact<{
-  slug: Scalars['String']['input'];
-  should_commit_and_push: Scalars['Boolean']['input'];
-}>;
-
-
-export type PublishArticleMutation = { __typename?: 'Mutation', publishArticle: string };
-
-export type RenewArticleMutationVariables = Exact<{
-  slug: Scalars['String']['input'];
-  commit_message: Scalars['String']['input'];
-}>;
-
-
-export type RenewArticleMutation = { __typename?: 'Mutation', renewArticle: string };
-
-export type UpdateProfileMutationVariables = Exact<{
-  profile: Scalars['String']['input'];
-}>;
-
-
-export type UpdateProfileMutation = { __typename?: 'Mutation', updateProfile: string };
-
-export type RenewProfileMutationVariables = Exact<{
-  commit_message: Scalars['String']['input'];
-}>;
-
-
-export type RenewProfileMutation = { __typename?: 'Mutation', renewProfile: string };
-
-export type AllQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type AllQuery = { __typename?: 'Query', contentsGitHeadHash: string, allPublicArticles: Array<{ __typename?: 'Article', slug: string, title: string, tldr: string, isFavorite: boolean, publishedAt: string, updatedAt: string, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> }>, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }>, sitedata: { __typename?: 'Sitedata', profile: string, shortProfile: string } };
+export type ArticleQuery = { __typename?: 'Query', article?: { __typename?: 'Article', slug: string, title: string, tldr: string, tldrReal?: string | null, publishedAt: string, updatedAt: string, isFavorite: boolean, isPublished: boolean, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> } | null, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }> };
 
 
 export const AllArticlesDocument = gql`
     query allArticles {
-  allArticles {
+  allPublicArticles {
     slug
     title
+    tldr
     isFavorite
     publishedAt
     updatedAt
-    isPublished
+    tags {
+      slug
+      name
+    }
   }
 }
     `;
-export const ArticleEditPageDocument = gql`
-    query articleEditPage($slug: String!) {
+export const AllTagsDocument = gql`
+    query allTags {
+  allTags {
+    slug
+    name
+  }
+}
+    `;
+export const ArticleDocument = gql`
+    query article($slug: String!) {
   article(slug: $slug) {
     slug
     title
@@ -241,98 +178,6 @@ export const ArticleEditPageDocument = gql`
   }
 }
     `;
-export const ArticlePreviewPageDocument = gql`
-    query articlePreviewPage($slug: String!) {
-  article(slug: $slug) {
-    slug
-    title
-    body
-  }
-}
-    `;
-export const AllTagsDocument = gql`
-    query allTags {
-  allTags {
-    slug
-    name
-  }
-}
-    `;
-export const ProfileDocument = gql`
-    query profile {
-  sitedata {
-    profile
-  }
-}
-    `;
-export const NewTagDocument = gql`
-    mutation newTag($slug: String!, $title: String!) {
-  newTag(slug: $slug, title: $title)
-}
-    `;
-export const NewArticleDocument = gql`
-    mutation newArticle($slug: String!, $title: String!) {
-  newArticle(slug: $slug, title: $title)
-}
-    `;
-export const UpdateArticleDocument = gql`
-    mutation updateArticle($slug: String!, $title: String!, $tldr: String!, $tags: [String!]!, $isFavorite: Boolean!, $body: String!) {
-  updateArticle(
-    slug: $slug
-    title: $title
-    tldr: $tldr
-    tags: $tags
-    isFavorite: $isFavorite
-    body: $body
-  )
-}
-    `;
-export const PublishArticleDocument = gql`
-    mutation publishArticle($slug: String!, $should_commit_and_push: Boolean!) {
-  publishArticle(slug: $slug, shouldCommitAndPush: $should_commit_and_push)
-}
-    `;
-export const RenewArticleDocument = gql`
-    mutation renewArticle($slug: String!, $commit_message: String!) {
-  renewArticle(slug: $slug, commitMessage: $commit_message)
-}
-    `;
-export const UpdateProfileDocument = gql`
-    mutation updateProfile($profile: String!) {
-  updateProfile(profile: $profile)
-}
-    `;
-export const RenewProfileDocument = gql`
-    mutation renewProfile($commit_message: String!) {
-  renewProfile(commitMessage: $commit_message)
-}
-    `;
-export const AllDocument = gql`
-    query all {
-  allPublicArticles {
-    slug
-    title
-    tldr
-    isFavorite
-    publishedAt
-    updatedAt
-    tags {
-      slug
-      name
-    }
-    body
-  }
-  allTags {
-    slug
-    name
-  }
-  sitedata {
-    profile
-    shortProfile
-  }
-  contentsGitHeadHash
-}
-    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
 
@@ -344,41 +189,11 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     allArticles(variables?: AllArticlesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllArticlesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<AllArticlesQuery>(AllArticlesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allArticles', 'query', variables);
     },
-    articleEditPage(variables: ArticleEditPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticleEditPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ArticleEditPageQuery>(ArticleEditPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articleEditPage', 'query', variables);
-    },
-    articlePreviewPage(variables: ArticlePreviewPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticlePreviewPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ArticlePreviewPageQuery>(ArticlePreviewPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articlePreviewPage', 'query', variables);
-    },
     allTags(variables?: AllTagsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllTagsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<AllTagsQuery>(AllTagsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allTags', 'query', variables);
     },
-    profile(variables?: ProfileQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ProfileQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ProfileQuery>(ProfileDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'profile', 'query', variables);
-    },
-    newTag(variables: NewTagMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<NewTagMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<NewTagMutation>(NewTagDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'newTag', 'mutation', variables);
-    },
-    newArticle(variables: NewArticleMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<NewArticleMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<NewArticleMutation>(NewArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'newArticle', 'mutation', variables);
-    },
-    updateArticle(variables: UpdateArticleMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<UpdateArticleMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpdateArticleMutation>(UpdateArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'updateArticle', 'mutation', variables);
-    },
-    publishArticle(variables: PublishArticleMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<PublishArticleMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<PublishArticleMutation>(PublishArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'publishArticle', 'mutation', variables);
-    },
-    renewArticle(variables: RenewArticleMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<RenewArticleMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<RenewArticleMutation>(RenewArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'renewArticle', 'mutation', variables);
-    },
-    updateProfile(variables: UpdateProfileMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<UpdateProfileMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpdateProfileMutation>(UpdateProfileDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'updateProfile', 'mutation', variables);
-    },
-    renewProfile(variables: RenewProfileMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<RenewProfileMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<RenewProfileMutation>(RenewProfileDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'renewProfile', 'mutation', variables);
-    },
-    all(variables?: AllQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<AllQuery>(AllDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'all', 'query', variables);
+    article(variables: ArticleQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticleQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ArticleQuery>(ArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'article', 'query', variables);
     }
   };
 }
