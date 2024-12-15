@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './TocMapper.css';
 import React from 'react';
-import Heading from '../Heading';
+import {Heading} from '@watasuke.net/common';
 
 interface Props {
   headings: Heading[];

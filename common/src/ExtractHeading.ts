@@ -10,7 +10,7 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import {unified} from 'unified';
 import {visit} from 'unist-util-visit';
-import Heading from '@watasuke.net/common/src/Heading';
+import {Heading} from '@watasuke.net/common';
 
 export function ExtractHeading(md: string): Heading[] {
   const heads: Heading[] = [];

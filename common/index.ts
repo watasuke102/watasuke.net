@@ -12,6 +12,7 @@ import {Switch} from './src/Switch/Switch';
 import {TocMapper} from './src/TocMapper';
 import {color} from './src/css/color';
 import {ExtractHeading} from './src/ExtractHeading';
+import type Heading from './src/Heading';
 
 export {
   color,
@@ -23,4 +24,5 @@ export {
   UrlEmbedType,
   TocMapper,
   ExtractHeading,
+  Heading,
 };
