@@ -10,7 +10,6 @@
     "new": "scaffdog generate"
   },
   "dependencies": {
-    "@giscus/react": "^3.0.0",
     "@svgr/webpack": "^8.1.0",
     "@types/react": "^19.0.1",
     "@vanilla-extract/css": "^1.16.1",
