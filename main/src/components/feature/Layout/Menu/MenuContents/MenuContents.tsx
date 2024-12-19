@@ -7,23 +7,24 @@
 import * as css from './MenuContents.css';
 import React from 'react';
 import {SimpleInnerLinks, ShareList} from '@common';
-import {TocMapper} from '@watasuke.net/common';
-import {HeadingContext} from '@feature/TableOfContents';
+// import {TocMapper} from '@watasuke.net/common';
+// import {HeadingContext} from '@feature/TableOfContents';
 import IconUp from '@assets/icons/general/up.svg';
 
-export function MenuContents(): JSX.Element {
-  const headings = React.useContext(HeadingContext);
+export function MenuContents() {
+  // FIXME!
+  // const headings = React.useContext(HeadingContext);
 
   return (
     <>
-      {headings && (
+      {/* {headings && (
         <>
           <h2 className={css.heading}>Table of Contents</h2>
           <nav className={css.toc_wrapper}>
             <TocMapper headings={headings} />
           </nav>
         </>
-      )}
+      )} */}
 
       <h2 className={css.heading}>Share this page</h2>
       <ShareList />

@@ -24,6 +24,9 @@ query allTags {
     name
   }
 }
+query contentsGitHash {
+  contentsGitHeadHash
+}
 
 query article($slug: String!) {
   article(slug: $slug) {

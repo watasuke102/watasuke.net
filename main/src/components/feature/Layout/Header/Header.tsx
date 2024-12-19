@@ -8,7 +8,7 @@ import * as css from './Header.css';
 import Link from 'next/link';
 import React from 'react';
 
-export function Header(): JSX.Element {
+export function Header() {
   return (
     <header className={css.container}>
       <div className={css.title}>

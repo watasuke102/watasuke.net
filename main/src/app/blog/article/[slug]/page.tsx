@@ -6,11 +6,16 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from '@feature/Article/Article.css';
 import Link from 'next/link';
+import {Breadcrumb} from '@common';
 import {ExtractHeading, TocMapper} from '@watasuke.net/common';
 import {AllTagList} from '@feature/Tag';
 import {BlogContent} from '@feature/Article';
 import {ql} from '@utils/QL';
+import {GenBreadcrumb} from '@utils/Breadcrumb';
 import IconLeft from '@assets/icons/general/left.svg';
+
+const breadcrumb_list = (title: string) =>
+  GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Article', item: '/blog/article'}, {name: title}]);
 
 export default async function Page({params}: {params: Promise<{slug: string}>}) {
   const slug = (await params).slug;
@@ -23,7 +28,7 @@ export default async function Page({params}: {params: Promise<{slug: string}>}) 
 
   return (
     <>
-      {/* <Breadcrumb breadcrumb_list={breadcrumb_list(article.title)} /> */}
+      <Breadcrumb breadcrumb_list={breadcrumb_list(article.title)} />
       <Link href='/blog' className={css.back_link}>
         <IconLeft />
         記事一覧ページへ移動

@@ -5,7 +5,6 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Layout.css';
-import React from 'react';
 import {Header} from './Header/Header';
 import {Menu} from './Menu';
 import {Footer} from './Footer';
@@ -14,7 +13,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export function Layout({children}: Props): JSX.Element {
+export function Layout({children}: Props) {
   return (
     <div className={css.layout}>
       <Header />
