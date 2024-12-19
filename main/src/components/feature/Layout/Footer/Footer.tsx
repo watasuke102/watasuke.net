@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {siteData} from '@watasuke.net/config/config';
+import * as config from '@watasuke.net/config/config';
 import * as css from './Footer.css';
 import child_process from 'child_process';
 import {SimpleInnerLinks} from '@common';
@@ -30,13 +30,13 @@ export async function Footer() {
 
   return (
     <footer className={css.container}>
-      <h2 className={css.sitename}>{siteData.title}</h2>
+      <h2 className={css.sitename}>{config.site_title}</h2>
 
       <span className={css.buildinfo}>
         Powered by Next.js
         <br />
         Git hash:{' '}
-        <a href={`${siteData.repo}/commit/${githash}`} className={css.githash}>
+        <a href={`${config.site_repo}/commit/${githash}`} className={css.githash}>
           {githash}
         </a>{' '}
         || contents Git hash: {contents_githash}
