@@ -4,13 +4,15 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+'use client';
+
 import * as css from './Menu.css';
 import React from 'react';
 import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
 import {color} from '@watasuke.net/common';
 import {MenuContents} from '../MenuContents';
 
-export function Menu(): JSX.Element {
+export function Menu() {
   const [is_open, set_is_open] = React.useState(false);
   const should_reduce_motion = useReducedMotion();
   const duration = 0.4 * Number(!should_reduce_motion);

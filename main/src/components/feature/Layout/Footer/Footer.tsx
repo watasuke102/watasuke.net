@@ -4,31 +4,22 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import {siteData} from '@watasuke.net/config/config';
 import * as css from './Footer.css';
-import {graphql, useStaticQuery} from 'gatsby';
+import child_process from 'child_process';
 import {SimpleInnerLinks} from '@common';
+import {ql} from '@utils/QL';
 import {social_links} from '@data/social_links';
 
-export function Footer(): JSX.Element {
-  const info: Queries.footerInfoQuery = useStaticQuery(graphql`
-    query footerInfo {
-      site {
-        siteMetadata {
-          repo
-          title
-        }
-        buildTime
-      }
-      buildInfo {
-        githash
-        contents_githash
-      }
-    }
-  `);
-  // siteBuildMetadata.buildTime: ISO 8601 formatted (`YYYY-MM-DDTHH:mm:ss.sssZ`)
-  const jst = 9 /*hours*/ * 60 /*minutes*/ * 60 /*sec*/ * 1000; /*ms*/
-  const build_date = new Date(Date.parse(info.site?.buildTime ?? '') + jst);
-  const build_date_str = build_date.toISOString().replace('T', ' ').slice(0, 19);
+export async function Footer() {
+  let githash = '';
+  try {
+    githash = child_process.execSync('git rev-parse HEAD').toString().slice(0, 7);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (_) {
+    githash = '[unavailable]';
+  }
+  const contents_githash = (await ql().contentsGitHash()).contentsGitHeadHash;
 
   const links = [
     {data: social_links.github_repo, class_name: css.icon},
@@ -39,15 +30,17 @@ export function Footer(): JSX.Element {
 
   return (
     <footer className={css.container}>
-      <h2 className={css.sitename}>{info.site?.siteMetadata?.title ?? ''}</h2>
+      <h2 className={css.sitename}>{siteData.title}</h2>
 
       <span className={css.buildinfo}>
-        Powered by Gatsby, built at {build_date_str} <br />
+        Powered by Next.js
+        <br />
         Git hash:{' '}
-        <a href={`${info.site?.siteMetadata?.repo}/commit/${info.buildInfo?.githash ?? ''}`} className={css.githash}>
-          {info.buildInfo?.githash ?? ''}
+        <a href={`${siteData.repo}/commit/${githash}`} className={css.githash}>
+          {githash}
         </a>{' '}
-        || contents Git hash: {info.buildInfo?.contents_githash /* private repo; hyperlink is not available */ ?? ''}
+        || contents Git hash: {contents_githash}
+        {/* contents are in the private repo; hyperlink is not available */}
       </span>
 
       {/* FIXME: `title` is not working because SVG has <title> */}
