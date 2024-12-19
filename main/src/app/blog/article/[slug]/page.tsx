@@ -12,23 +12,40 @@ import {AllTagList} from '@feature/Tag';
 import {BlogContent} from '@feature/Article';
 import {ql} from '@utils/QL';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
+import {gen_metadata, JsonLd} from '@utils/Metadata';
 import IconLeft from '@assets/icons/general/left.svg';
 
-const breadcrumb_list = (title: string) =>
-  GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Article', item: '/blog/article'}, {name: title}]);
+type Props = {
+  params: Promise<{slug: string}>;
+};
 
-export default async function Page({params}: {params: Promise<{slug: string}>}) {
+export async function generateMetadata({params}: Props) {
+  const slug = (await params).slug;
+  const {article} = await ql().articleMeadata({slug});
+  if (!article) {
+    return {};
+  }
+  return gen_metadata(article.title, article.tldr, `/blog/article/${slug}`);
+}
+
+export default async function Page({params}: Props) {
   const slug = (await params).slug;
   const {article} = await ql().article({slug});
   if (!article) {
     // FIXME: proper error handle
     return <></>;
   }
+  const breadcrumb_list = GenBreadcrumb([
+    {name: 'Blog', item: '/blog'},
+    {name: 'Article', item: '/blog/article'},
+    {name: article.title},
+  ]);
   const headings = ExtractHeading(article.body);
 
   return (
     <>
-      <Breadcrumb breadcrumb_list={breadcrumb_list(article.title)} />
+      <JsonLd breadcrumb_list={breadcrumb_list} />
+      <Breadcrumb breadcrumb_list={breadcrumb_list} />
       <Link href='/blog' className={css.back_link}>
         <IconLeft />
         記事一覧ページへ移動

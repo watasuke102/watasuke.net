@@ -128,6 +128,13 @@ export type ContentsGitHashQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type ContentsGitHashQuery = { __typename?: 'Query', contentsGitHeadHash: string };
 
+export type ArticleMeadataQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type ArticleMeadataQuery = { __typename?: 'Query', article?: { __typename?: 'Article', title: string, tldr: string } | null };
+
 export type ArticleQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
@@ -163,6 +170,14 @@ export const AllTagsDocument = gql`
 export const ContentsGitHashDocument = gql`
     query contentsGitHash {
   contentsGitHeadHash
+}
+    `;
+export const ArticleMeadataDocument = gql`
+    query articleMeadata($slug: String!) {
+  article(slug: $slug) {
+    title
+    tldr
+  }
 }
     `;
 export const ArticleDocument = gql`
@@ -204,6 +219,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     contentsGitHash(variables?: ContentsGitHashQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ContentsGitHashQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ContentsGitHashQuery>(ContentsGitHashDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'contentsGitHash', 'query', variables);
+    },
+    articleMeadata(variables: ArticleMeadataQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticleMeadataQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ArticleMeadataQuery>(ArticleMeadataDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articleMeadata', 'query', variables);
     },
     article(variables: ArticleQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticleQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ArticleQuery>(ArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'article', 'query', variables);

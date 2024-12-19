@@ -28,6 +28,13 @@ query contentsGitHash {
   contentsGitHeadHash
 }
 
+query articleMeadata($slug: String!) {
+  article(slug: $slug) {
+    title
+    tldr
+  }
+}
+
 query article($slug: String!) {
   article(slug: $slug) {
     slug
