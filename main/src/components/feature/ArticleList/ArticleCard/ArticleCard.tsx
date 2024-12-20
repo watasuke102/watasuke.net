@@ -9,13 +9,13 @@ import {initialized_a} from '@utils/initialized_a.css';
 import Link from 'next/link';
 import React from 'react';
 import {TagContainer} from '@feature/Tag';
-import Article from '@mytypes/Article';
+import {AllArticlesQuery} from '@utils/graphql';
 
 interface Props {
-  article: Article;
+  article: AllArticlesQuery['allPublicArticles'][0];
 }
 
-export function ArticleCard({article}: Props): JSX.Element {
+export function ArticleCard({article}: Props) {
   // wrap by <div> twice in order to prevent layout collapse
   // on the first visit or hard reloading
   return (
@@ -28,7 +28,7 @@ export function ArticleCard({article}: Props): JSX.Element {
       >
         <div className={css.inside_link}>
           <div>
-            <span className={css.date}>{article.published_at.slice(0, 10)}</span>
+            <span className={css.date}>{article.publishedAt.slice(0, 10)}</span>
           </div>
 
           <div className={css.tagcontainer_wrapper}>
