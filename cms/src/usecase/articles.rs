@@ -1,4 +1,5 @@
 use anyhow::{bail, ensure, Context};
+use juniper::GraphQLInputObject;
 use regex::Regex;
 use std::{collections::HashMap, io::ErrorKind, path::Path};
 use yaml_front_matter::{Document, YamlFrontMatter};
@@ -8,22 +9,56 @@ use crate::{
   usecase, util,
 };
 
+#[derive(GraphQLInputObject)]
+pub struct ArticleFilter {
+  is_favorite: Option<bool>,
+  /// This fiels is slug[] which is used for OR search
+  tags:        Option<Vec<String>>,
+}
+impl ArticleFilter {
+  fn check(&self, article: &Article) -> bool {
+    let is_favorite = article.is_favorite();
+    if is_favorite != self.is_favorite.unwrap_or(is_favorite) {
+      return false;
+    }
+    if let Some(tags) = self.tags.as_ref() {
+      'search_tag: {
+        for tag in tags {
+          if article.has_tag(tag) {
+            break 'search_tag;
+          }
+        }
+        return false;
+      }
+    }
+    return true;
+  }
+}
+
 pub fn get(contents_path: &String, slug: &String) -> anyhow::Result<Option<Article>> {
   Ok(get_map_all(contents_path)?.get(slug).cloned())
 }
-pub fn get_all(contents_path: &String) -> anyhow::Result<Vec<Article>> {
+pub fn get_all(
+  filter: Option<ArticleFilter>,
+  contents_path: &String,
+) -> anyhow::Result<Vec<Article>> {
   Ok(
     get_map_all(contents_path)?
       .into_iter()
       .map(|e| e.1)
+      .filter(|e| filter.as_ref().map_or(true, |filter| filter.check(e)))
       .collect(),
   )
 }
-pub fn get_published(contents_path: &String) -> anyhow::Result<Vec<Article>> {
+pub fn get_published(
+  filter: Option<ArticleFilter>,
+  contents_path: &String,
+) -> anyhow::Result<Vec<Article>> {
   Ok(
     get_map_all(contents_path)?
       .into_iter()
       .filter_map(|e| e.1.get_public_or_none())
+      .filter(|e| filter.as_ref().map_or(true, |filter| filter.check(e)))
       .collect(),
   )
 }

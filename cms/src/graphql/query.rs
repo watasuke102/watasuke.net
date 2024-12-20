@@ -3,27 +3,35 @@ use juniper::{graphql_object, graphql_value};
 use super::Query;
 use crate::{
   contents::{self, sitedata},
-  git, usecase, Context,
+  git,
+  usecase::{self, articles::ArticleFilter},
+  Context,
 };
 
 #[graphql_object(context = crate::Context)]
 impl Query {
-  fn all_public_articles(context: &Context) -> juniper::FieldResult<Vec<contents::Article>> {
-    usecase::articles::get_published(&context.config.contents_path).map_err(|err| {
+  fn all_public_articles(
+    filter: Option<ArticleFilter>,
+    context: &Context,
+  ) -> juniper::FieldResult<Vec<contents::Article>> {
+    usecase::articles::get_published(filter, &context.config.contents_path).map_err(|err| {
       juniper::FieldError::new(
         "Failed to get published Articles",
         graphql_value!(err.to_string()),
       )
     })
   }
-  fn all_articles(context: &Context) -> juniper::FieldResult<Vec<contents::Article>> {
+  fn all_articles(
+    filter: Option<ArticleFilter>,
+    context: &Context,
+  ) -> juniper::FieldResult<Vec<contents::Article>> {
     if !context.config.allow_private_access {
       return Err(juniper::FieldError::new(
         "You cannot access private articles",
         graphql_value!(""),
       ));
     }
-    usecase::articles::get_all(&context.config.contents_path).map_err(|err| {
+    usecase::articles::get_all(filter, &context.config.contents_path).map_err(|err| {
       juniper::FieldError::new(
         "Failed to get all Articles",
         graphql_value!(err.to_string()),

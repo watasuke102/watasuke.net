@@ -74,6 +74,9 @@ impl Article {
       None
     }
   }
+  pub fn has_tag(&self, slug: &String) -> bool {
+    self.tags.iter().map(|e| e.slug()).any(|e| slug == e)
+  }
   pub fn index(&self) -> &Option<i32> {
     &self.index
   }
@@ -113,7 +116,7 @@ impl Article {
   fn tags(&self) -> &[tags::Tag] {
     &self.tags
   }
-  fn is_favorite(&self) -> bool {
+  pub fn is_favorite(&self) -> bool {
     self.frontmatter.is_favorite
   }
   fn published_at(&self) -> &str {
