@@ -25,7 +25,7 @@ export function gen_metadata(
   desc: string,
   url: string,
 ): Metadata {
-  if (url.at(0) !== '/' || url.at(-1) === '/') {
+  if (url.length !== 0 && (url.at(0) !== '/' || url.at(-1) === '/')) {
     throw Error(
       `Invalid URL (${url}); It should begin with '/' and end without '/'`,
     );

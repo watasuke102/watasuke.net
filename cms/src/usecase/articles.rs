@@ -82,7 +82,7 @@ fn get_map_all(contents_path: &String) -> anyhow::Result<ArticleMap> {
       })?
     };
 
-    let tags = usecase::tags::get(contents_path);
+    let tags = usecase::tags::get_map(contents_path);
     let article_dirs = std::fs::read_dir(year_dir.path())?;
     for article_dir in article_dirs {
       let article_dir = article_dir?;

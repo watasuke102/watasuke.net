@@ -49,11 +49,11 @@ impl Query {
     // if forbidden, check publicity
     Ok(article.and_then(|article| article.get_public_or_none()))
   }
+  fn tag(slug: String, context: &Context) -> Option<contents::tags::Tag> {
+    usecase::tags::get(&context.config.contents_path, &slug)
+  }
   fn all_tags(context: &Context) -> Vec<contents::tags::Tag> {
-    usecase::tags::get(&context.config.contents_path)
-      .into_iter()
-      .map(|e| e.1)
-      .collect()
+    usecase::tags::get_all(&context.config.contents_path)
   }
   fn sitedata(context: &Context) -> juniper::FieldResult<sitedata::Sitedata> {
     match sitedata::read_sitedata(&context.config.contents_path) {
