@@ -29,7 +29,8 @@ type Props = {
 
 export function Toolbox(props: Props): JSX.Element {
   const [accordion_value, set_accordion_value] = React.useState('');
-  const [is_img_uploader_open, set_is_img_uploader_open] = React.useState(false);
+  const [is_img_uploader_open, set_is_img_uploader_open] =
+    React.useState(false);
 
   const insert_image_name = React.useCallback(
     (file_name: string) => {
@@ -43,10 +44,16 @@ export function Toolbox(props: Props): JSX.Element {
         it means: <before>\n\n<image>\n\n<after>
       */
       let new_body = '';
-      if (props.state.body[cursor_pos - 2] && props.state.body[cursor_pos - 2] !== '\n') {
+      if (
+        props.state.body[cursor_pos - 2] &&
+        props.state.body[cursor_pos - 2] !== '\n'
+      ) {
         new_body += '\n';
       }
-      if (props.state.body[cursor_pos - 1] && props.state.body[cursor_pos - 1] !== '\n') {
+      if (
+        props.state.body[cursor_pos - 1] &&
+        props.state.body[cursor_pos - 1] !== '\n'
+      ) {
         new_body += '\n';
       }
       new_body += `![](/img/${file_name})`;
@@ -59,7 +66,10 @@ export function Toolbox(props: Props): JSX.Element {
       if (navigator.clipboard) {
         navigator.clipboard.writeText(new_body);
       } else {
-        console.warn('navigator.clipboard is unavailable. Please manually copy below:', new_body);
+        console.warn(
+          'navigator.clipboard is unavailable. Please manually copy below:',
+          new_body,
+        );
       }
     },
     [props.ref, props.state.body],
@@ -68,7 +78,12 @@ export function Toolbox(props: Props): JSX.Element {
   // FIXME: collapsible is enough
   return (
     <>
-      <Accordion.Root type='single' collapsible value={accordion_value} onValueChange={set_accordion_value}>
+      <Accordion.Root
+        type='single'
+        collapsible
+        value={accordion_value}
+        onValueChange={set_accordion_value}
+      >
         <Accordion.Item value='title_editor'>
           <Accordion.Header asChild>
             <div className={css.toolbox_header}>

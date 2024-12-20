@@ -91,7 +91,12 @@ export default function Card() {
       {!is_button_hidden && !is_button_disabled && (
         <div className={css.button_container}>
           {buttons.map((e, i) => (
-            <button key={i} className={css.button} aria-label={e.label} onClick={e.on_click}>
+            <button
+              key={i}
+              className={css.button}
+              aria-label={e.label}
+              onClick={e.on_click}
+            >
               {e.icon}
             </button>
           ))}
@@ -102,5 +107,12 @@ export default function Card() {
 }
 
 export function Head(): JSX.Element {
-  return <Seo title={'card'} desc={'名刺'} url={'/card'} breadcrumb_list={breadcrumb_list} />;
+  return (
+    <Seo
+      title={'card'}
+      desc={'名刺'}
+      url={'/card'}
+      breadcrumb_list={breadcrumb_list}
+    />
+  );
 }

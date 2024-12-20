@@ -29,7 +29,11 @@ interface Props {
 }
 
 const breadcrumb_list = (title: string) =>
-  GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Article', item: '/blog/article'}, {name: title}]);
+  GenBreadcrumb([
+    {name: 'Blog', item: '/blog'},
+    {name: 'Article', item: '/blog/article'},
+    {name: title},
+  ]);
 
 export default function ArticleTemplate(props: Props): JSX.Element {
   const article = props.pageContext.article;
@@ -45,7 +49,11 @@ export default function ArticleTemplate(props: Props): JSX.Element {
         <main className={css.container}>
           {/* 記事メイン部分 */}
           <article className={css.blogcontent_wrapper}>
-            <BlogContent data={article} newer={props.pageContext.newer} older={props.pageContext.older} />
+            <BlogContent
+              data={article}
+              newer={props.pageContext.newer}
+              older={props.pageContext.older}
+            />
           </article>
 
           {/* サイドバー */}

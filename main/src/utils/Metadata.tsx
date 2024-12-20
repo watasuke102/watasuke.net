@@ -20,11 +20,20 @@ export const viewport: Viewport = {
   colorScheme: 'dark',
 };
 
-export function gen_metadata(title_prefix: string, desc: string, url: string): Metadata {
+export function gen_metadata(
+  title_prefix: string,
+  desc: string,
+  url: string,
+): Metadata {
   if (url.at(0) !== '/' || url.at(-1) === '/') {
-    throw Error(`Invalid URL (${url}); It should begin with '/' and end without '/'`);
+    throw Error(
+      `Invalid URL (${url}); It should begin with '/' and end without '/'`,
+    );
   }
-  const title = title_prefix.length === 0 ? config.site_title : `${title_prefix} - ${config.site_title}`;
+  const title =
+    title_prefix.length === 0
+      ? config.site_title
+      : `${title_prefix} - ${config.site_title}`;
   const description = desc.slice(0, 140) + (desc.length > 140 ? ' ...' : '');
   const image = `${config.site_url}/thumbnail.jpg`;
   return {

@@ -6,7 +6,9 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import BreadcrumbItem from '@mytypes/Breadcrumb';
 
-export const GenBreadcrumb = (list: {name: string; item?: string}[]): BreadcrumbItem[] => {
+export const GenBreadcrumb = (
+  list: {name: string; item?: string}[],
+): BreadcrumbItem[] => {
   const breadcrumb: BreadcrumbItem[] = [
     {
       '@type': 'ListItem',

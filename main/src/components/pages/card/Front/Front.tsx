@@ -18,7 +18,10 @@ interface Props {
 
 export function Front(props: Props) {
   return (
-    <div className={css.container} style={props.hidden ? {display: 'none'} : {}}>
+    <div
+      className={css.container}
+      style={props.hidden ? {display: 'none'} : {}}
+    >
       <div className={css.avatar_wrapper}>
         <img className={css.avatar} src='/icon.jpg' alt='icon' />
       </div>

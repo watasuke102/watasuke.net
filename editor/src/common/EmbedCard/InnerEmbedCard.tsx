@@ -12,5 +12,9 @@ type Props = {
 };
 
 export function InnerEmbedCard(props: Props): JSX.Element {
-  return <span className={`${embed_card} ${inner_embed}`}>InnerEmbed: /{props.slug}</span>;
+  return (
+    <span className={`${embed_card} ${inner_embed}`}>
+      InnerEmbed: /{props.slug}
+    </span>
+  );
 }

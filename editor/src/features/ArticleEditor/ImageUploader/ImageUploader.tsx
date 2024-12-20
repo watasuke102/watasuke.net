@@ -25,7 +25,10 @@ export function ImageUploader(props: Props): JSX.Element {
   const [image_info, set_image_info] = React.useState<ImageInfo | undefined>();
   const [image_name, set_image_name] = React.useState('image');
   const [image_ext, set_image_ext] = React.useState('jpg');
-  const image_filename = React.useCallback(() => image_name + '.' + image_ext, [image_ext, image_name]);
+  const image_filename = React.useCallback(
+    () => image_name + '.' + image_ext,
+    [image_ext, image_name],
+  );
 
   const handle_drop = React.useCallback((files: FileWithPath[]) => {
     const file = files[0];
@@ -53,7 +56,12 @@ export function ImageUploader(props: Props): JSX.Element {
     if (!image_info || image_name === '') {
       return;
     }
-    await upload_new_image(props.slug, image_filename(), image_info.type, image_info.buffer);
+    await upload_new_image(
+      props.slug,
+      image_filename(),
+      image_info.type,
+      image_info.buffer,
+    );
     props.on_complete(image_filename());
   }, [image_info, image_name, props, image_filename]);
 
@@ -91,7 +99,12 @@ export function ImageUploader(props: Props): JSX.Element {
         </div>
         <div className={css.copy_area}>
           <span>copy this:</span>
-          <input className={css.input} type='text' value={`![](/img/${image_filename()})`} readOnly />
+          <input
+            className={css.input}
+            type='text'
+            value={`![](/img/${image_filename()})`}
+            readOnly
+          />
         </div>
         <div className={css.buttons}>
           <Button

@@ -54,7 +54,10 @@ export function Menu() {
         aria-expanded={is_open}
         onClick={() => set_is_open(f => !f)}
       >
-        <span className={`${css.icon} ${is_open ? css.icon_opening : ''}`} aria-hidden />
+        <span
+          className={`${css.icon} ${is_open ? css.icon_opening : ''}`}
+          aria-hidden
+        />
       </button>
     </div>
   );

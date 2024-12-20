@@ -120,7 +120,13 @@ export default function Background() {
         context.lineWidth = 8;
         context.strokeStyle = `rgba(${base_pos.color}, ${base_pos.animation_y})`;
         context.beginPath();
-        context.arc(base_pos.x, base_pos.y, base_pos.size + base_pos.animation_x, 0, 2 * Math.PI);
+        context.arc(
+          base_pos.x,
+          base_pos.y,
+          base_pos.size + base_pos.animation_x,
+          0,
+          2 * Math.PI,
+        );
         context.closePath();
         context.stroke();
 
@@ -178,5 +184,9 @@ export default function Background() {
     return () => window.removeEventListener('resize', UpdateCanvasSize);
   }, []);
 
-  return should_reduce_motion ? <></> : <canvas ref={canvas_ref} className={css.canvas} />;
+  return should_reduce_motion ? (
+    <></>
+  ) : (
+    <canvas ref={canvas_ref} className={css.canvas} />
+  );
 }

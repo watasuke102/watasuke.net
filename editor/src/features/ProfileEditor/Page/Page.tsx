@@ -26,7 +26,8 @@ export function Page(props: Props): JSX.Element {
   const [profile, set_profile] = React.useState(props.profile);
 
   const textarea_ref = React.useRef<HTMLTextAreaElement | null>();
-  const [modify_status, set_modify_status] = React.useState<ModifyStatus>('none');
+  const [modify_status, set_modify_status] =
+    React.useState<ModifyStatus>('none');
   const [toast_state, toast_dispatch] = React.useReducer(toast_reducer, {
     is_open: false,
     title: '',
@@ -59,7 +60,9 @@ export function Page(props: Props): JSX.Element {
   useShortcut([{keycode: 'KeyS', handler: save}], {ctrl: true});
 
   return (
-    <ToastContext.Provider value={{state: toast_state, dispatch: toast_dispatch}}>
+    <ToastContext.Provider
+      value={{state: toast_state, dispatch: toast_dispatch}}
+    >
       <EditorPage
         body={profile}
         is_published
@@ -75,11 +78,22 @@ export function Page(props: Props): JSX.Element {
               aria_label='renew'
               on_click={() => set_modify_status('confirmation')}
             />
-            <Button type='contained' text='save <C-s>' icon={<SaveIcon />} aria_label='save' on_click={save} />
+            <Button
+              type='contained'
+              text='save <C-s>'
+              icon={<SaveIcon />}
+              aria_label='save'
+              on_click={save}
+            />
           </div>
         }
         header_text={
-          <a href='https://watasuke.net/profile' rel='noreferrer' target='_blank' className={css.header_title}>
+          <a
+            href='https://watasuke.net/profile'
+            rel='noreferrer'
+            target='_blank'
+            className={css.header_title}
+          >
             profile
           </a>
         }

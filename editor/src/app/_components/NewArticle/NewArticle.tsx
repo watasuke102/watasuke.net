@@ -69,11 +69,16 @@ export function NewArticle(): JSX.Element {
         title='Add new article'
         desc='Determine slug and title (you can change them later)'
       >
-        <Form.Root onSubmit={e => e.preventDefault()} className={css.dialog_container}>
+        <Form.Root
+          onSubmit={e => e.preventDefault()}
+          className={css.dialog_container}
+        >
           <Form.Field name='slug' className={css.form_field}>
             <Form.Label className={css.label}>Slug</Form.Label>
             <Form.Message match='valueMissing'>Cannot be empty</Form.Message>
-            <Form.Message match={val => !slug_validator.test(val)}>Invaid slug; use {`${slug_validator}`}</Form.Message>
+            <Form.Message match={val => !slug_validator.test(val)}>
+              Invaid slug; use {`${slug_validator}`}
+            </Form.Message>
             <Form.Control asChild>
               <input
                 className={css.input}
@@ -100,7 +105,12 @@ export function NewArticle(): JSX.Element {
             </Form.Control>
           </Form.Field>
           <Form.Submit asChild>
-            <Button type='contained' text='Create' aria_label='create' on_click={new_article} />
+            <Button
+              type='contained'
+              text='Create'
+              aria_label='create'
+              on_click={new_article}
+            />
           </Form.Submit>
         </Form.Root>
       </Dialog>

@@ -53,7 +53,12 @@ export default async function Page({params}: Props) {
       <main className={css.container}>
         {/* 記事メイン部分 */}
         <article className={css.blogcontent_wrapper}>
-          <BlogContent data={article} headings={headings} newer={undefined} older={undefined} />
+          <BlogContent
+            data={article}
+            headings={headings}
+            newer={undefined}
+            older={undefined}
+          />
         </article>
 
         {/* サイドバー */}

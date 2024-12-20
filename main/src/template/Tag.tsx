@@ -27,7 +27,11 @@ interface Props {
 }
 
 const breadcrumb_list = (name: string) =>
-  GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Tag', item: '/blog/tag'}, {name: name}]);
+  GenBreadcrumb([
+    {name: 'Blog', item: '/blog'},
+    {name: 'Tag', item: '/blog/tag'},
+    {name: name},
+  ]);
 
 export default function Tag({pageContext, data}: Props): JSX.Element {
   return (
@@ -45,7 +49,10 @@ export default function Tag({pageContext, data}: Props): JSX.Element {
 
 export const query = graphql`
   query ($slug: String) {
-    allArticles(sort: {published_at: DESC}, filter: {tags: {elemMatch: {slug: {eq: $slug}}}}) {
+    allArticles(
+      sort: {published_at: DESC}
+      filter: {tags: {elemMatch: {slug: {eq: $slug}}}}
+    ) {
       nodes {
         slug
         title

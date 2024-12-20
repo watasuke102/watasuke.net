@@ -25,7 +25,9 @@ export function Skills(props: Props) {
   next_groupby_ref.current = next_groupby;
 
   const SkillCard = React.useMemo(() => {
-    const skill_group = Map.groupBy(skills, e => (groupby !== 'tier' ? e.category : e.tier));
+    const skill_group = Map.groupBy(skills, e =>
+      groupby !== 'tier' ? e.category : e.tier,
+    );
     if (groupby !== 'tier') {
       skill_group.forEach(e => e.sort((a, b) => a.tier - b.tier));
     }
@@ -35,7 +37,12 @@ export function Skills(props: Props) {
       cards.push({
         group: groupby !== 'tier' ? e[0].category : `tier ${e[0].tier}`,
         list: e.map((e, i) => (
-          <SkillCard2 key={`skill_${i}`} animation_enabled={props.animation_enabled} skill={e} lang={props.lang} />
+          <SkillCard2
+            key={`skill_${i}`}
+            animation_enabled={props.animation_enabled}
+            skill={e}
+            lang={props.lang}
+          />
         )),
       });
     });
@@ -79,7 +86,9 @@ export function Skills(props: Props) {
         />
       </div>
 
-      <h3 className={css.tier_desc_heading}>{props.lang !== 'en' ? 'tierについて' : 'about tier'}</h3>
+      <h3 className={css.tier_desc_heading}>
+        {props.lang !== 'en' ? 'tierについて' : 'about tier'}
+      </h3>
       <div className={css.tier_desc_wrapper}>
         <div>
           {Object.keys(tier_description).map(key => {
@@ -95,10 +104,16 @@ export function Skills(props: Props) {
       </div>
 
       {next_groupby === '' && (
-        <motion.div className={css.skill_container} {...(props.animation_enabled ? container_variants : {})}>
+        <motion.div
+          className={css.skill_container}
+          {...(props.animation_enabled ? container_variants : {})}
+        >
           {SkillCard.map((e, i) => (
             <div key={i}>
-              <motion.span className={css.group_name} {...(props.animation_enabled ? FadeWithScroll : {})}>
+              <motion.span
+                className={css.group_name}
+                {...(props.animation_enabled ? FadeWithScroll : {})}
+              >
                 {e.group}
               </motion.span>
               <div className={css.group}>{e.list}</div>

@@ -13,13 +13,20 @@ interface Props {
 
 export function Back(props: Props) {
   return (
-    <div className={css.container} style={props.hidden ? {display: 'none'} : {}}>
+    <div
+      className={css.container}
+      style={props.hidden ? {display: 'none'} : {}}
+    >
       <div className={css.separator} />
       <div className={css.qr_container}>
         {['watasuke.net', 'Twitter', 'GitHub'].map(name => (
           <div className={css.item} key={name}>
             <div className={css.qrcode_wrapper}>
-              <img loading='eager' src={`/qr/${name}.png`} alt={`qrcode (${name})`} />
+              <img
+                loading='eager'
+                src={`/qr/${name}.png`}
+                alt={`qrcode (${name})`}
+              />
             </div>
             <span className={css.url}>{name}</span>
           </div>

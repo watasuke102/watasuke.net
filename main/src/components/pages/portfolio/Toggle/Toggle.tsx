@@ -21,13 +21,17 @@ export function Toggle(props: Props): JSX.Element {
   return (
     <div className={css.container}>
       <span
-        className={css.item + (props.current === props.first ? ` ${css.selected}` : '')}
+        className={
+          css.item + (props.current === props.first ? ` ${css.selected}` : '')
+        }
         onClick={() => props.set_state(props.first)}
       >
         {props.first}
       </span>
       <span
-        className={css.item + (props.current === props.second ? ` ${css.selected}` : '')}
+        className={
+          css.item + (props.current === props.second ? ` ${css.selected}` : '')
+        }
         onClick={() => props.set_state(props.second)}
       >
         {props.second}

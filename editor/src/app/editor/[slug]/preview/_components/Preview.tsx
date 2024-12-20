@@ -26,7 +26,10 @@ export function Preview(props: Props): JSX.Element {
         <TocMapper headings={ExtractHeading(props.article.body)} />
       </div>
       <Markdown
-        md={props.article.body.replaceAll('/img', `${apiUrl}/img/${props.article.slug}`)}
+        md={props.article.body.replaceAll(
+          '/img',
+          `${apiUrl}/img/${props.article.slug}`,
+        )}
         embed_card={EmbedCard}
         inner_embed_card={InnerEmbedCard}
       />

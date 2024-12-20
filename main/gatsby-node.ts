@@ -30,8 +30,9 @@ function log(type: 'info' | 'error' | 'debug' | 'ogp', ...args: any[]) {
 }
 
 // サイトのデータ登録
-export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = ({actions}) => {
-  actions.createTypes(`
+export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
+  ({actions}) => {
+    actions.createTypes(`
     type BuildInfo implements Node @dontInfer {
       contents_githash: String!,
       githash: String!,
@@ -63,9 +64,12 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       name: String!,
     }
   `);
-};
+  };
 
-async function registerSiteDatas(sitedata: AllQuery['sitedata'], {actions, createContentDigest}: SourceNodesArgs) {
+async function registerSiteDatas(
+  sitedata: AllQuery['sitedata'],
+  {actions, createContentDigest}: SourceNodesArgs,
+) {
   actions.createNode({
     id: 'sitedata_profile',
     slug: 'profile',
@@ -107,7 +111,11 @@ async function registerArticle(
   });
 }
 
-async function registerOgp(url: string, i: number, {actions, createContentDigest}: SourceNodesArgs) {
+async function registerOgp(
+  url: string,
+  i: number,
+  {actions, createContentDigest}: SourceNodesArgs,
+) {
   try {
     const ogp = await OgpParser(url);
     let desc = '';
@@ -140,7 +148,10 @@ async function registerOgp(url: string, i: number, {actions, createContentDigest
   }
 }
 
-async function registerTags(tags: AllQuery['allTags'], {actions, createContentDigest}: SourceNodesArgs) {
+async function registerTags(
+  tags: AllQuery['allTags'],
+  {actions, createContentDigest}: SourceNodesArgs,
+) {
   tags.forEach(item => {
     actions.createNode({
       id: item.slug,
@@ -154,7 +165,9 @@ async function registerTags(tags: AllQuery['allTags'], {actions, createContentDi
   });
 }
 
-export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesArgs) => {
+export const sourceNodes: GatsbyNode['sourceNodes'] = async (
+  args: SourceNodesArgs,
+) => {
   const sdk = getSdk(new GraphQLClient(config.apiUrl + '/graphql'));
   const data = await sdk.all();
   if (!data) {
@@ -213,7 +226,10 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesAr
   args.actions.createNode({
     id: 'BuildInfo',
     contents_githash: data.contentsGitHeadHash,
-    githash: child_process.execSync('git rev-parse HEAD').toString().slice(0, 7),
+    githash: child_process
+      .execSync('git rev-parse HEAD')
+      .toString()
+      .slice(0, 7),
     internal: {
       type: 'BuildInfo',
       contentDigest: args.createContentDigest('BuildInfo'),
@@ -222,7 +238,10 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (args: SourceNodesAr
 };
 
 // ページ作成
-export const createPages: GatsbyNode['createPages'] = async ({graphql, actions}) => {
+export const createPages: GatsbyNode['createPages'] = async ({
+  graphql,
+  actions,
+}) => {
   {
     type ArticlesResponse = {data?: {allArticles: {nodes: Article[]}}};
     // 投稿ページ
@@ -253,9 +272,13 @@ export const createPages: GatsbyNode['createPages'] = async ({graphql, actions})
       let headings = [];
       let process_result;
       try {
-        process_result = child_process.spawnSync('npx', ['tsx', 'extract-heading-on-node.ts'], {
-          input: item.body.replaceAll('\\n', '\n'),
-        });
+        process_result = child_process.spawnSync(
+          'npx',
+          ['tsx', 'extract-heading-on-node.ts'],
+          {
+            input: item.body.replaceAll('\\n', '\n'),
+          },
+        );
         headings = JSON.parse(process_result.stdout.toString());
       } catch (e) {
         const err = e as Error;
@@ -285,7 +308,9 @@ export const createPages: GatsbyNode['createPages'] = async ({graphql, actions})
   }
 
   {
-    type TagsResponse = {data?: {allTags: {nodes: {slug: string; name: string}[]}}};
+    type TagsResponse = {
+      data?: {allTags: {nodes: {slug: string; name: string}[]}};
+    };
     const tags_response: TagsResponse = await graphql(`
       query allTags {
         allTags {

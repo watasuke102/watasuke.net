@@ -12,8 +12,15 @@ import {AllTagList} from '@feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template, JsonLd} from '@utils/Metadata';
 
-const breadcrumb_list = GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Tag'}]);
-export const {viewport, metadata} = gen_template('タグ一覧', 'これまでに投稿したタグの一覧ページです', '/blog/tag');
+const breadcrumb_list = GenBreadcrumb([
+  {name: 'Blog', item: '/blog'},
+  {name: 'Tag'},
+]);
+export const {viewport, metadata} = gen_template(
+  'タグ一覧',
+  'これまでに投稿したタグの一覧ページです',
+  '/blog/tag',
+);
 
 export default function TagListPage() {
   return (

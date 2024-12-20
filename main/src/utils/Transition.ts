@@ -6,4 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {Transition as TransitionVar} from 'framer-motion';
 
-export const Transition = (enabled: boolean, props: TransitionVar): TransitionVar => (enabled ? props : {duration: 0});
+export const Transition = (
+  enabled: boolean,
+  props: TransitionVar,
+): TransitionVar => (enabled ? props : {duration: 0});
