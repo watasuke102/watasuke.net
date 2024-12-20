@@ -4,23 +4,40 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+'use client';
 import * as css from '@pages/card/card.css';
-import {Seo} from '@common';
-import {navigate} from 'gatsby';
 import React from 'react';
+import {useRouter} from 'next/navigation';
+import localFont from 'next/font/local';
 import {Back, Front} from '@pages/card';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
+import {gen_template} from '@utils/Metadata';
 import IconFlip from '@assets/icons/card/flip.svg';
 import IconInvisible from '@assets/icons/card/invisible.svg';
 import IconBack from '@assets/icons/general/left.svg';
 import IconHide from '@assets/icons/general/up.svg';
 
+const monaspace = localFont({
+  display: 'swap',
+  src: [
+    {
+      path: './fonts/MonaspaceKrypton-Regular.woff2',
+      weight: '400',
+    },
+    {
+      path: './fonts/MonaspaceKrypton-Bold.woff2',
+      weight: '700',
+    },
+  ],
+});
 const breadcrumb_list = GenBreadcrumb([{name: 'Card'}]);
+export const {viewport, metadata} = gen_template('card', '名刺です', '/about');
 
-export default function Card(): JSX.Element {
+export default function Card() {
   const [is_fliped, set_is_flipped] = React.useState(false);
   const [is_button_hidden, set_is_button_hidden] = React.useState(false);
   const [is_button_disabled, set_is_button_disabled] = React.useState(false);
+  const router = useRouter();
 
   React.useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -31,7 +48,7 @@ export default function Card(): JSX.Element {
     {
       label: 'back to the top page',
       icon: <IconBack />,
-      on_click: () => navigate('/'),
+      on_click: () => router.push('/'),
     },
     {
       label: 'flip over the card',
@@ -48,13 +65,13 @@ export default function Card(): JSX.Element {
       icon: <IconInvisible />,
       on_click: () => {
         set_is_button_disabled(true);
-        navigate('?disable_button=true');
+        router.push('?disable_button=true');
       },
     },
   ];
 
   return (
-    <main>
+    <main className={monaspace.className}>
       {/* FIXME: add `onKeyDown` listener to background does not make sense */}
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
       <div

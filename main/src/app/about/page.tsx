@@ -4,19 +4,25 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {Seo, Background, Breadcrumb} from '@common';
+import {Background, Breadcrumb} from '@common';
 import Link from 'next/link';
 import React from 'react';
 import {AdsInArticle} from '@watasuke.net/common';
-import {Layout} from '@feature/Layout';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
+import {gen_template, JsonLd} from '@utils/Metadata';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'About'}]);
+export const {viewport, metadata} = gen_template(
+  'このサイトについて',
+  'このサイトの説明やプライバシーポリシー、免責事項を掲載しています',
+  '/about',
+);
 
-export default function About(): JSX.Element {
+export default function About() {
   return (
-    <Layout>
+    <>
       <Background />
+      <JsonLd breadcrumb_list={breadcrumb_list} />
       <Breadcrumb breadcrumb_list={breadcrumb_list} />
       <main>
         <h1>このサイトについて</h1>
@@ -25,7 +31,6 @@ export default function About(): JSX.Element {
           <Link href='/blog'>ブログ</Link>や<Link href='/profile'>プロフィール</Link>
           が置いてあります
         </p>
-        <AdsInArticle />
 
         <h2 id='about_privacy'>プライバシーポリシー</h2>
         <ul>
@@ -77,18 +82,8 @@ export default function About(): JSX.Element {
             それらを発見した場合、お手数ですが Twitter (@Watasuke102) への DM 等でお知らせください
           </li>
         </ul>
+        <AdsInArticle />
       </main>
-    </Layout>
-  );
-}
-
-export function Head(): JSX.Element {
-  return (
-    <Seo
-      title={'このサイトについて'}
-      desc={'このサイトについての説明'}
-      url={'/about'}
-      breadcrumb_list={breadcrumb_list}
-    />
+    </>
   );
 }

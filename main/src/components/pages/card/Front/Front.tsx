@@ -16,11 +16,10 @@ interface Props {
   hidden: boolean;
 }
 
-export function Front(props: Props): JSX.Element {
+export function Front(props: Props) {
   return (
     <div className={css.container} style={props.hidden ? {display: 'none'} : {}}>
       <div className={css.avatar_wrapper}>
-        {/* <StaticImage className={css.avatar} loading='eager' placeholder='none' src='../../../../assets/icon.jpg' alt='icon' /> */}
         <img className={css.avatar} src='/icon.jpg' alt='icon' />
       </div>
       <div className={css.info}>

@@ -4,7 +4,6 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {MyricaM} from '../common.css';
 import {style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
@@ -51,7 +50,6 @@ export const url = style({
   display: 'block',
   width: '100%',
   textAlign: 'center',
-  fontFamily: MyricaM,
   fontSize: 'min(3dvw, 6.5dvh)',
   color: `${color.bg}aa`,
 });

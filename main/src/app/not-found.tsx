@@ -9,7 +9,7 @@ import {Background, SimpleInnerLinks} from '@common';
 import React from 'react';
 import {Layout} from '@feature/Layout';
 
-export default function Error404(): JSX.Element {
+export default function Error404() {
   return (
     <Layout>
       <Background />

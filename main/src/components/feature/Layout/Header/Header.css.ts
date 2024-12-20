@@ -8,6 +8,7 @@ import {style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
+  zIndex: 256,
   display: 'flex',
   justifyContent: 'space-around',
   alignItems: 'center',

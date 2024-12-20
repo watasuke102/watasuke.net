@@ -15,11 +15,11 @@ interface Props {
 
 export function Layout({children}: Props) {
   return (
-    <div className={css.layout}>
+    <main className={css.layout}>
       <Header />
       <div className={css.main_area}>{children}</div>
       <Menu />
       <Footer />
-    </div>
+    </main>
   );
 }
