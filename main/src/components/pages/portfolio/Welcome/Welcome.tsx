@@ -6,8 +6,8 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Welcome.css';
 import {motion} from 'framer-motion';
-import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
+import Image from 'next/image';
 import {Transition} from '@utils/Transition';
 import IconEnvelope from '@assets/icons/Links/envelope.svg';
 import IconGitHub from '@assets/icons/Links/github.svg';
@@ -18,7 +18,7 @@ interface Props {
   lang: string;
 }
 
-export function Welcome(props: Props): JSX.Element {
+export function Welcome(props: Props) {
   return (
     <section className={css.container}>
       <motion.div
@@ -29,7 +29,7 @@ export function Welcome(props: Props): JSX.Element {
         <h2 className={css.greeting}>Hi there👋</h2>
 
         <div className={css.avatar_and_name}>
-          <StaticImage className={css.avatar} height={240} src='../../../../assets/icon.jpg' alt='icon' />
+          <Image className={css.avatar} width={240} height={240} src='/icon.jpg' alt='icon' />
           <div>
             <p className={css.name_main}>わたすけ</p>
             <p className={css.name_sub}>Watasuke</p>

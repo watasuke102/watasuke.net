@@ -18,7 +18,7 @@ interface Props {
   lang: string;
 }
 
-export function Skills(props: Props): JSX.Element {
+export function Skills(props: Props) {
   const [groupby, set_groupby] = React.useState('category');
   const [next_groupby, set_next_groupby] = React.useState('');
   const next_groupby_ref = React.useRef('');
@@ -30,7 +30,7 @@ export function Skills(props: Props): JSX.Element {
       skill_group.forEach(e => e.sort((a, b) => a.tier - b.tier));
     }
 
-    const cards: {group: string; list: JSX.Element[]}[] = [];
+    const cards: {group: string; list: React.ReactNode[]}[] = [];
     skill_group.forEach(e => {
       cards.push({
         group: groupby !== 'tier' ? e[0].category : `tier ${e[0].tier}`,
@@ -85,12 +85,10 @@ export function Skills(props: Props): JSX.Element {
           {Object.keys(tier_description).map(key => {
             const desc = tier_description[Number(key)];
             return (
-              <>
-                <div key={key} className={css.tier_desc_item}>
-                  <span>tier {key}</span>
-                  <span>{props.lang !== 'en' ? desc.ja : desc.en}</span>
-                </div>
-              </>
+              <div key={key} className={css.tier_desc_item}>
+                <span>tier {key}</span>
+                <span>{props.lang !== 'en' ? desc.ja : desc.en}</span>
+              </div>
             );
           })}
         </div>
@@ -99,14 +97,12 @@ export function Skills(props: Props): JSX.Element {
       {next_groupby === '' && (
         <motion.div className={css.skill_container} {...(props.animation_enabled ? container_variants : {})}>
           {SkillCard.map((e, i) => (
-            <>
+            <div key={i}>
               <motion.span className={css.group_name} {...(props.animation_enabled ? FadeWithScroll : {})}>
                 {e.group}
               </motion.span>
-              <div className={css.group} key={i}>
-                {e.list}
-              </div>
-            </>
+              <div className={css.group}>{e.list}</div>
+            </div>
           ))}
         </motion.div>
       )}

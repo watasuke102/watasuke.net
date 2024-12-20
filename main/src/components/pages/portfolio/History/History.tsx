@@ -16,18 +16,18 @@ interface Props {
   lang: string;
 }
 
-export function History(props: Props): JSX.Element {
+export function History(props: Props) {
   const EventList = React.useMemo(() => {
     return Object.keys(event_list).map(year => {
       return (
-        <>
-          <div className={css.year_bg} key={year}>
+        <div key={year}>
+          <div className={css.year_bg}>
             <span className={css.year}>{year}</span>
           </div>
           {event_list[year].map((e, i) => (
-            <EventCard key={i} event={e} {...props} />
+            <EventCard key={`${year}_${i}`} event={e} {...props} />
           ))}
-        </>
+        </div>
       );
     });
   }, [props]);
