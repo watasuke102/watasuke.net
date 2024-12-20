@@ -4,8 +4,9 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+'use client';
+
 import * as css from '@pages/portfolio/portfolio.css';
-import {Seo} from '@common';
 import React from 'react';
 import Link from 'next/link';
 import {AnimatePresence, motion} from 'framer-motion';
@@ -13,11 +14,8 @@ import {Switch} from '@watasuke.net/common';
 import {color} from '@watasuke.net/common/src/css/color';
 import {Welcome, Skills, History, Links, End} from '@pages/portfolio';
 import {Whoami} from '@pages/portfolio/Whoami';
-import {GenBreadcrumb} from '@utils/Breadcrumb';
 import IconLeft from '@assets/icons/general/left.svg';
 import IconTranslate from '@assets/icons/general/translate.svg';
-
-const breadcrumb_list = GenBreadcrumb([{name: 'Portfolio'}]);
 
 const blind_width = 60;
 // prettier-ignore
@@ -25,17 +23,13 @@ const visible_mask   = `repeating-linear-gradient(-60deg, ${color.bg} 0px 0px, t
 const invisible_mask = `repeating-linear-gradient(-60deg, ${color.bg} 0px ${blind_width}px, transparent 0px ${blind_width}px)`;
 
 interface Props {
-  location: {
-    href: string;
-  };
+  init_animation?: string | undefined;
+  init_lang: string | undefined;
 }
 
-export default function Portfolio(props: Props): JSX.Element {
-  const params = new URLSearchParams(props.location.href);
-  const [animation_enabled, set_animation_enabled] = React.useState<boolean>(
-    (params.get('animation') ?? '') !== 'false',
-  );
-  const [lang, set_lang] = React.useState<string>(params.get('lang') ?? 'ja');
+export function Portfolio(props: Props) {
+  const [animation_enabled, set_animation_enabled] = React.useState<boolean>(props.init_animation !== 'false');
+  const [lang, set_lang] = React.useState<string>(props.init_lang ?? 'ja');
 
   return (
     <AnimatePresence>
@@ -72,11 +66,5 @@ export default function Portfolio(props: Props): JSX.Element {
         />
       </div>
     </AnimatePresence>
-  );
-}
-
-export function Head(): JSX.Element {
-  return (
-    <Seo title={'ポートフォリオ'} desc={'ポートフォリオです'} url={'/portfolio'} breadcrumb_list={breadcrumb_list} />
   );
 }
