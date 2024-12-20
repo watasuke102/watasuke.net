@@ -53,7 +53,10 @@ export function BlogContent(props: Props): JSX.Element {
       <TocInArticle headings={props.headings} />
 
       <Markdown
-        md={props.data.body.replaceAll('/img', `${apiUrl}/img/${props.data.slug}`)}
+        md={props.data.body.replaceAll(
+          '/img',
+          `${apiUrl}/img/${props.data.slug}`,
+        )}
         // embed_card={EmbedCard}
         // inner_embed_card={InnerEmbedCard}
         embed_card={() => <></>}
@@ -64,7 +67,10 @@ export function BlogContent(props: Props): JSX.Element {
       <hr />
       <nav>
         {props.newer ? (
-          <Link href={'/blog/article/' + props.newer.slug} className={cs(css.adjacent_article, css.newer_link)}>
+          <Link
+            href={'/blog/article/' + props.newer.slug}
+            className={cs(css.adjacent_article, css.newer_link)}
+          >
             <IconLeft /> {props.newer.title}
           </Link>
         ) : (
@@ -76,12 +82,17 @@ export function BlogContent(props: Props): JSX.Element {
           <ShareList />
         </section>
         {props.older ? (
-          <Link href={'/blog/article/' + props.older.slug} className={cs(css.adjacent_article, css.older_link)}>
+          <Link
+            href={'/blog/article/' + props.older.slug}
+            className={cs(css.adjacent_article, css.older_link)}
+          >
             {props.older.title}
             <IconRight />
           </Link>
         ) : (
-          <span className={css.missing_older}>これより古い記事はありません</span>
+          <span className={css.missing_older}>
+            これより古い記事はありません
+          </span>
         )}
       </nav>
 

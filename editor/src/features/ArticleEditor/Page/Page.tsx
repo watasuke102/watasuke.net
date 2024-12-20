@@ -35,9 +35,13 @@ export function Page(props: Props): JSX.Element {
     tags: props.article.tags.map(e => e.slug),
     all_tags: props.tags,
   });
-  const [is_published, set_is_published] = React.useState(props.article.isPublished);
-  const [modify_status, set_modify_status] = React.useState<ModifyStatus>('none');
-  const [should_commit_and_push, set_should_commit_and_push] = React.useState(true);
+  const [is_published, set_is_published] = React.useState(
+    props.article.isPublished,
+  );
+  const [modify_status, set_modify_status] =
+    React.useState<ModifyStatus>('none');
+  const [should_commit_and_push, set_should_commit_and_push] =
+    React.useState(true);
   const [toast_state, toast_dispatch] = React.useReducer(toast_reducer, {
     is_open: false,
     title: '',
@@ -92,10 +96,15 @@ export function Page(props: Props): JSX.Element {
   useShortcut([{keycode: 'KeyS', handler: save}], {ctrl: true});
 
   return (
-    <ToastContext.Provider value={{state: toast_state, dispatch: toast_dispatch}}>
+    <ToastContext.Provider
+      value={{state: toast_state, dispatch: toast_dispatch}}
+    >
       <EditorPage
         body={state.body}
-        preview_body={state.body.replaceAll('/img', `${apiUrl}/img/${props.article.slug}`)}
+        preview_body={state.body.replaceAll(
+          '/img',
+          `${apiUrl}/img/${props.article.slug}`,
+        )}
         is_published={is_published}
         modify_status={modify_status}
         commit_scope={props.article.slug}
@@ -130,11 +139,16 @@ export function Page(props: Props): JSX.Element {
         modify_confirming_area={
           <>
             <div className={css.warning_container}>
-              {state.tags.length === 0 && <strong className={css.warning_text}>warn: Tag is empty!</strong>}
+              {state.tags.length === 0 && (
+                <strong className={css.warning_text}>
+                  warn: Tag is empty!
+                </strong>
+              )}
               {/* Google generates summary approximately 80 chars in Japanese */}
               {state.tldr.length > 80 && (
                 <p className={css.warning_text}>
-                  <strong>warn: TL;DR is too long</strong> (len: <strong>{state.tldr.length}</strong>), {/* */}
+                  <strong>warn: TL;DR is too long</strong> (len:{' '}
+                  <strong>{state.tldr.length}</strong>), {/* */}
                   recommend: less than 80
                 </p>
               )}

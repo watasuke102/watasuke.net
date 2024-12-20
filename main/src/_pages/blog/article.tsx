@@ -26,7 +26,10 @@ type Props = {
   };
 };
 
-const breadcrumb_list = GenBreadcrumb([{name: 'Blog', item: '/blog'}, {name: 'Article'}]);
+const breadcrumb_list = GenBreadcrumb([
+  {name: 'Blog', item: '/blog'},
+  {name: 'Article'},
+]);
 
 export default function ArticleListPage({data}: Props): JSX.Element {
   return (

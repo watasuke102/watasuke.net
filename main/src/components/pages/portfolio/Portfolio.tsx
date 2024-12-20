@@ -28,7 +28,9 @@ interface Props {
 }
 
 export function Portfolio(props: Props) {
-  const [animation_enabled, set_animation_enabled] = React.useState<boolean>(props.init_animation !== 'false');
+  const [animation_enabled, set_animation_enabled] = React.useState<boolean>(
+    props.init_animation !== 'false',
+  );
   const [lang, set_lang] = React.useState<string>(props.init_lang ?? 'ja');
 
   return (
@@ -39,12 +41,23 @@ export function Portfolio(props: Props) {
             <IconLeft />
           </Link>
           <form className={css.animation_form}>
-            <label htmlFor='animation_switch'>{lang === 'en' ? 'アニメーション' : 'Animation'}</label>
-            <Switch checked={animation_enabled} on_click={() => set_animation_enabled(f => !f)} id='animation_switch' />
+            <label htmlFor='animation_switch'>
+              {lang === 'en' ? 'アニメーション' : 'Animation'}
+            </label>
+            <Switch
+              checked={animation_enabled}
+              on_click={() => set_animation_enabled(f => !f)}
+              id='animation_switch'
+            />
           </form>
-          <button className={css.translate_button} onClick={() => set_lang(l => (l === 'ja' ? 'en' : 'ja'))}>
+          <button
+            className={css.translate_button}
+            onClick={() => set_lang(l => (l === 'ja' ? 'en' : 'ja'))}
+          >
             {/* a */}
-            <span className={css.button_text}>{lang === 'en' ? '日本語で表示' : 'Show in English'}</span>
+            <span className={css.button_text}>
+              {lang === 'en' ? '日本語で表示' : 'Show in English'}
+            </span>
             <IconTranslate />
           </button>
         </header>

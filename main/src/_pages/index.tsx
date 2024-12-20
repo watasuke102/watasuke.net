@@ -39,10 +39,16 @@ export default function Index(props: Props): JSX.Element {
     {text: 'Portfolio', url: '/portfolio', icon: <IconRocket />},
   ];
   const links = [
-    {data: social_links.twitter, class_name: `${css.link_entry} ${css.link_twitter}`},
+    {
+      data: social_links.twitter,
+      class_name: `${css.link_entry} ${css.link_twitter}`,
+    },
     {data: social_links.github_account, class_name: css.link_entry},
     {data: social_links.instagram, class_name: css.link_entry},
-    {data: social_links.soundcloud, class_name: `${css.link_entry} ${css.link_soundcloud}`},
+    {
+      data: social_links.soundcloud,
+      class_name: `${css.link_entry} ${css.link_soundcloud}`,
+    },
     {data: social_links.cosense, class_name: css.link_entry},
     {data: social_links.question_box, class_name: css.link_entry},
   ];
@@ -53,15 +59,27 @@ export default function Index(props: Props): JSX.Element {
       <main className={css.container}>
         <div className={css.left}>
           <div className={css.icon_and_welcome}>
-            <StaticImage loading='eager' placeholder='none' width={240} src='../assets/icon.jpg' alt='icon' />
+            <StaticImage
+              loading='eager'
+              placeholder='none'
+              width={240}
+              src='../assets/icon.jpg'
+              alt='icon'
+            />
             <h2 className={css.welcome_head}>Welcome</h2>
           </div>
           <nav className={css.menu}>
             <code className={css.ls}>
-              $ <span className={css.command_name}>ls</span> -1 <span className={css.directory}>watasuke.net</span>
+              $ <span className={css.command_name}>ls</span> -1{' '}
+              <span className={css.directory}>watasuke.net</span>
             </code>
             {menu_list.map(e => (
-              <Link key={e.text} to={e.url} className={css.menu_entry} aria-label={e.text}>
+              <Link
+                key={e.text}
+                to={e.url}
+                className={css.menu_entry}
+                aria-label={e.text}
+              >
                 {e.icon}
                 <span className={css.menu_entry_path}>{e.text}</span>
               </Link>
@@ -113,7 +131,9 @@ export function Head(): JSX.Element {
   return (
     <Seo
       title={''}
-      desc={'プログラミングやゲームについてのブログ、プロフィール、ポートフォリオなど'}
+      desc={
+        'プログラミングやゲームについてのブログ、プロフィール、ポートフォリオなど'
+      }
       url={''}
       breadcrumb_list={breadcrumb_list}
     />

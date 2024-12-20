@@ -33,7 +33,10 @@ export function MenuContents() {
       <SimpleInnerLinks />
       <hr style={{opacity: 1}} />
 
-      <button onClick={() => window.scroll({top: 0, behavior: 'smooth'})} className={css.menu_button}>
+      <button
+        onClick={() => window.scroll({top: 0, behavior: 'smooth'})}
+        className={css.menu_button}
+      >
         <span className={css.menu_button_icon}>
           <IconUp />
         </span>

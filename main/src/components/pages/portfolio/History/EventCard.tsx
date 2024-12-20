@@ -73,9 +73,13 @@ export function EventCard(props: Props): JSX.Element {
       <Period />
       <div className={css.card}>
         <button className={css.header} onClick={on_click}>
-          <span className={css.title}>{props.lang !== 'en' ? props.event.title_ja : props.event.title_en}</span>
+          <span className={css.title}>
+            {props.lang !== 'en' ? props.event.title_ja : props.event.title_en}
+          </span>
           <span className={css.subtitle}>
-            {props.lang !== 'en' ? props.event.subtitle_ja : props.event.subtitle_en}
+            {props.lang !== 'en'
+              ? props.event.subtitle_ja
+              : props.event.subtitle_en}
           </span>
           <span className={css.category}>{props.event.category}</span>
           {body !== '' && (
@@ -102,7 +106,10 @@ export function EventCard(props: Props): JSX.Element {
             transition={{
               opacity: {duration: 0.2 * Number(props.animation_enabled)},
               // easeOutQuint
-              height: {duration: 0.4 * Number(props.animation_enabled), ease: [0.22, 1, 0.36, 1]},
+              height: {
+                duration: 0.4 * Number(props.animation_enabled),
+                ease: [0.22, 1, 0.36, 1],
+              },
             }}
           >
             <hr className={css.body_hr} />

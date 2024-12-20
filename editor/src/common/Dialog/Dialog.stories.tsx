@@ -28,8 +28,18 @@ export const Main: StoryObj<typeof Dialog> = {
     const [is_open, set_is_open] = React.useState(false);
     return (
       <>
-        <Button text='open' aria_label='open' type='contained' on_click={() => set_is_open(true)} />
-        <Dialog is_open={is_open} set_is_open={set_is_open} title={props.title} desc={props.desc}>
+        <Button
+          text='open'
+          aria_label='open'
+          type='contained'
+          on_click={() => set_is_open(true)}
+        />
+        <Dialog
+          is_open={is_open}
+          set_is_open={set_is_open}
+          title={props.title}
+          desc={props.desc}
+        >
           <span>test</span>
         </Dialog>
       </>

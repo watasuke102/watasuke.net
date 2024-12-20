@@ -52,7 +52,9 @@ export function ShareList(): JSX.Element {
       </a>
       {navigator.share && (
         <button
-          onClick={() => navigator.share({title: document.title, url: document.URL})}
+          onClick={() =>
+            navigator.share({title: document.title, url: document.URL})
+          }
           title='Share via...'
           className={css.menu_button}
         >

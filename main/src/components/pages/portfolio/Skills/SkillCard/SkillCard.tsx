@@ -17,13 +17,18 @@ interface Props {
 
 export function SkillCard(props: Props): JSX.Element {
   return (
-    <motion.div className={css.skillcard} {...(props.animation_enabled ? FadeWithScroll : {})}>
+    <motion.div
+      className={css.skillcard}
+      {...(props.animation_enabled ? FadeWithScroll : {})}
+    >
       <span className={css.name}>{props.skill.name}</span>
       <div className={css.right}>
         <span className={css.category}>{props.skill.category}</span>
         <span className={css.tier}>{props.skill.tier}</span>
       </div>
-      <span className={css.desc}>{props.lang !== 'en' ? props.skill.desc_ja : props.skill.desc_en}</span>
+      <span className={css.desc}>
+        {props.lang !== 'en' ? props.skill.desc_ja : props.skill.desc_en}
+      </span>
       <div className={css.icon}>{props.skill.icon}</div>
     </motion.div>
   );

@@ -26,7 +26,9 @@ export function InnerEmbedCard(props: Props): JSX.Element {
   `);
 
   const slug_without_hash = props.slug.replace(/#.+$/, '');
-  const data = articles.allArticles.nodes.filter(e => e.slug === slug_without_hash)[0];
+  const data = articles.allArticles.nodes.filter(
+    e => e.slug === slug_without_hash,
+  )[0];
   const decoded_slug = decodeURI(props.slug);
 
   if (!data) {

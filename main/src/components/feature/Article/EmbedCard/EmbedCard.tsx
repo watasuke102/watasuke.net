@@ -13,7 +13,10 @@ interface Props {
   url: string;
 }
 
-function GetOgpFromUrl(ogp_list: Queries.ogpListQuery['allOgp']['nodes'], url: string) {
+function GetOgpFromUrl(
+  ogp_list: Queries.ogpListQuery['allOgp']['nodes'],
+  url: string,
+) {
   const ogp = ogp_list.filter(e => e.url === url);
   if (ogp) return ogp[0];
   else
@@ -60,7 +63,12 @@ export function EmbedCard({url}: Props): JSX.Element {
           <span className={css.img_fallback}>{'[OGP image not found]'}</span>
         ) : (
           <div className={css.img_wrapper}>
-            <img className={css.thumbnail} src={image} alt={title} loading='lazy' />
+            <img
+              className={css.thumbnail}
+              src={image}
+              alt={title}
+              loading='lazy'
+            />
           </div>
         )}
         <div className={css.text_container}>

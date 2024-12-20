@@ -82,7 +82,11 @@ export function EditorPage(props: Props): JSX.Element {
         </div>
         <div className={css.preview}>
           <ErrorBoundary>
-            <Markdown md={props.preview_body ?? props.body} embed_card={EmbedCard} inner_embed_card={InnerEmbedCard} />
+            <Markdown
+              md={props.preview_body ?? props.body}
+              embed_card={EmbedCard}
+              inner_embed_card={InnerEmbedCard}
+            />
           </ErrorBoundary>
         </div>
       </section>
@@ -109,7 +113,8 @@ export function EditorPage(props: Props): JSX.Element {
                       {props.is_published ? (
                         <>
                           <p>
-                            CMS will commit <strong>all saved changes</strong> and push; are you sure?
+                            CMS will commit <strong>all saved changes</strong>{' '}
+                            and push; are you sure?
                           </p>
                           <div className={css.commit_info_editor}>
                             <span>prefix</span>
@@ -132,7 +137,8 @@ export function EditorPage(props: Props): JSX.Element {
                         </>
                       ) : (
                         <span>
-                          <strong>This article will be published</strong>; are you sure?
+                          <strong>This article will be published</strong>; are
+                          you sure?
                           <br />
                           You cannot undo this change from the CMS (yet)
                         </span>
@@ -158,11 +164,15 @@ export function EditorPage(props: Props): JSX.Element {
                 return (
                   <>
                     <BarLoader color={color.p0} width={dialog_width} />
-                    <span className={css.publish_waiting_label}>Waiting for response from CMS...</span>
+                    <span className={css.publish_waiting_label}>
+                      Waiting for response from CMS...
+                    </span>
                   </>
                 );
               case 'succeeded':
-                return <span className={css.publish_waiting_label}>succeeded!</span>;
+                return (
+                  <span className={css.publish_waiting_label}>succeeded!</span>
+                );
               default:
                 return <></>;
             }

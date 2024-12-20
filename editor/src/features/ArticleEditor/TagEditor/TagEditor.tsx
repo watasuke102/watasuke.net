@@ -68,7 +68,13 @@ export function TagEditor(props: Props): JSX.Element {
       const sdk = getSdk(new GraphQLClient(`${apiUrl}/graphql`));
       sdk
         .newTag({slug: new_tag_slug, title: new_tag_title})
-        .then(() => sdk.allTags().then(res => props.dispatcher({type: 'alltag/update', all_tags: res.allTags})));
+        .then(() =>
+          sdk
+            .allTags()
+            .then(res =>
+              props.dispatcher({type: 'alltag/update', all_tags: res.allTags}),
+            ),
+        );
     }
     const add_tags = selected_tag.concat(is_create_tag ? [new_tag_slug] : []);
     props.dispatcher({type: 'tag/add', add_tags});
@@ -170,7 +176,12 @@ export function TagEditor(props: Props): JSX.Element {
             </Form.Field>
           </div>
           <Form.Submit asChild>
-            <Button type='contained' text='Add' aria_label='add' on_click={handle_add_tag_button} />
+            <Button
+              type='contained'
+              text='Add'
+              aria_label='add'
+              on_click={handle_add_tag_button}
+            />
           </Form.Submit>
         </Form.Root>
       </Dialog>

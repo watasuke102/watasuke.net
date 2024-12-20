@@ -14,7 +14,10 @@ import {social_links} from '@data/social_links';
 export async function Footer() {
   let githash = '';
   try {
-    githash = child_process.execSync('git rev-parse HEAD').toString().slice(0, 7);
+    githash = child_process
+      .execSync('git rev-parse HEAD')
+      .toString()
+      .slice(0, 7);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (_) {
     githash = '[unavailable]';
@@ -25,7 +28,10 @@ export async function Footer() {
     {data: social_links.github_repo, class_name: css.icon},
     {data: social_links.twitter, class_name: `${css.icon} ${css.twitter_icon}`},
     {data: social_links.instagram, class_name: css.icon},
-    {data: social_links.soundcloud, class_name: `${css.icon} ${css.soundcloud_icon}`},
+    {
+      data: social_links.soundcloud,
+      class_name: `${css.icon} ${css.soundcloud_icon}`,
+    },
   ];
 
   return (
@@ -36,7 +42,10 @@ export async function Footer() {
         Powered by Next.js
         <br />
         Git hash:{' '}
-        <a href={`${config.site_repo}/commit/${githash}`} className={css.githash}>
+        <a
+          href={`${config.site_repo}/commit/${githash}`}
+          className={css.githash}
+        >
           {githash}
         </a>{' '}
         || contents Git hash: {contents_githash}

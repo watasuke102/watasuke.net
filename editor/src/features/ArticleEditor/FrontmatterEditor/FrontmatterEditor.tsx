@@ -29,7 +29,9 @@ export function FrontmatterEditor(props: Props): JSX.Element {
           id={id.title}
           type='text'
           value={props.state.title}
-          onChange={e => props.dispatcher({type: 'title/update', data: e.target.value})}
+          onChange={e =>
+            props.dispatcher({type: 'title/update', data: e.target.value})
+          }
           className={css.input_text}
         />
       </div>
@@ -43,7 +45,9 @@ export function FrontmatterEditor(props: Props): JSX.Element {
           id={id.tldr}
           placeholder={props.tldr_placeholder}
           value={props.state.tldr}
-          onChange={e => props.dispatcher({type: 'tldr/update', data: e.target.value})}
+          onChange={e =>
+            props.dispatcher({type: 'tldr/update', data: e.target.value})
+          }
           className={css.input_text}
         />
       </div>
@@ -52,7 +56,11 @@ export function FrontmatterEditor(props: Props): JSX.Element {
         on_click={() => props.dispatcher({type: 'is_favorite/toggle'})}
         label='is favorite?'
       />
-      <TagEditor current_tags={props.state.tags} all_tags={props.state.all_tags} dispatcher={props.dispatcher} />
+      <TagEditor
+        current_tags={props.state.tags}
+        all_tags={props.state.all_tags}
+        dispatcher={props.dispatcher}
+      />
     </section>
   );
 }

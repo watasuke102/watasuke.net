@@ -6,7 +6,10 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import React, {ErrorInfo} from 'react';
 
-export class ErrorBoundary extends React.Component<{children: React.ReactNode}, {error: string[]}> {
+export class ErrorBoundary extends React.Component<
+  {children: React.ReactNode},
+  {error: string[]}
+> {
   constructor(props: {children: React.ReactNode}) {
     super(props);
     this.state = {error: []};

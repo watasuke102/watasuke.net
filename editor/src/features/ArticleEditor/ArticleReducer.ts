@@ -35,7 +35,10 @@ export type StateType = {
 
 type ReducerType = ImmerReducer<StateType, Action>;
 
-export const article_reducer: ReducerType = (current: StateType, action: Action) => {
+export const article_reducer: ReducerType = (
+  current: StateType,
+  action: Action,
+) => {
   switch (action.type) {
     case 'body/update': {
       current.body = action.data;

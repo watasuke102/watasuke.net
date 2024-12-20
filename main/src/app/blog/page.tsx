@@ -15,7 +15,11 @@ import {gen_template, JsonLd} from '@utils/Metadata';
 import {ql} from '@utils/QL';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Blog'}]);
-export const {viewport, metadata} = gen_template('ブログ', 'これまでに投稿した記事やタグの一覧ページです', '/blog');
+export const {viewport, metadata} = gen_template(
+  'ブログ',
+  'これまでに投稿した記事やタグの一覧ページです',
+  '/blog',
+);
 
 export default async function Blog() {
   const {allPublicArticles} = await ql().allArticles();

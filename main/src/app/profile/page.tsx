@@ -41,7 +41,11 @@ export default async function Profile() {
         <AdsInArticle />
         <TocInArticle headings={headings} />
         {/* FIXME */}
-        <Markdown md={sitedata.profile} embed_card={() => <></>} inner_embed_card={() => <></>} />
+        <Markdown
+          md={sitedata.profile}
+          embed_card={() => <></>}
+          inner_embed_card={() => <></>}
+        />
       </main>
     </>
   );

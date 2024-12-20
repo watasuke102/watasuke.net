@@ -29,7 +29,11 @@ export function TagContainer(props: Props): JSX.Element {
       <div className={css.tag_list}>
         {props.tags.map(tag => {
           return (
-            <Link key={tag.slug} className={css.link} href={'/blog/tag/' + tag.slug}>
+            <Link
+              key={tag.slug}
+              className={css.link}
+              href={'/blog/tag/' + tag.slug}
+            >
               {tag.name}
             </Link>
           );

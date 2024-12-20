@@ -15,7 +15,10 @@ type State = {
   title: string;
   desc: string;
 };
-type Action = {type: 'open/normal'; title: string; desc?: string} | {type: 'open/err'; err: unknown} | {type: 'close'};
+type Action =
+  | {type: 'open/normal'; title: string; desc?: string}
+  | {type: 'open/err'; err: unknown}
+  | {type: 'close'};
 
 export function toast_reducer(current: State, action: Action): State {
   switch (action.type) {
@@ -59,7 +62,9 @@ export function Toast(): JSX.Element {
         }}
       >
         <RToast.Title className={css.title}>{state.title}</RToast.Title>
-        <RToast.Description className={css.desc}>{state.desc}</RToast.Description>
+        <RToast.Description className={css.desc}>
+          {state.desc}
+        </RToast.Description>
         <RToast.Close className={css.close}>
           <CloseIcon />
         </RToast.Close>
