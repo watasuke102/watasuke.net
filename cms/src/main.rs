@@ -1,3 +1,5 @@
+#![feature(fn_traits, unboxed_closures)]
+
 mod config;
 mod contents;
 mod git;

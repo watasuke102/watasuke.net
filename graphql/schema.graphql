@@ -3,6 +3,11 @@ schema {
   mutation: Mutation
 }
 
+input ArticleFilter {
+  isFavorite: Boolean
+  "This fiels is slug[] which is used for OR search" tags: [String!]
+}
+
 type Article {
   slug: String!
   body: String!
@@ -27,8 +32,8 @@ type Mutation {
 }
 
 type Query {
-  allPublicArticles: [Article!]!
-  allArticles: [Article!]!
+  allPublicArticles(filter: ArticleFilter): [Article!]!
+  allArticles(filter: ArticleFilter): [Article!]!
   article(slug: String!): Article
   allTags: [Tag!]!
   sitedata: Sitedata!
