@@ -4,19 +4,21 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+'use client';
+
 import * as css from './ArticleList.css';
 import React from 'react';
+import {AllArticlesQuery} from '@utils/graphql';
 import {ArticleCard} from './ArticleCard/ArticleCard';
 import IconLeft from '@assets/icons/general/left.svg';
 import IconRight from '@assets/icons/general/right.svg';
-import Article from '@mytypes/Article';
 
 interface Props {
-  list: Article[];
+  list: AllArticlesQuery['allPublicArticles'];
 }
 const article_count = 10;
 
-export function ArticleList(props: Props): JSX.Element {
+export function ArticleList(props: Props) {
   const max_page = Math.ceil(props.list.length / article_count);
   // ページ切り替え用
   const [current_page, SetCurrentPage] = React.useState(1);

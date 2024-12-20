@@ -28,6 +28,12 @@ query contentsGitHash {
   contentsGitHeadHash
 }
 
+query profile {
+  sitedata {
+    profile
+  }
+}
+
 query articleMeadata($slug: String!) {
   article(slug: $slug) {
     title
