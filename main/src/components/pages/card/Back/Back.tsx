@@ -11,7 +11,7 @@ interface Props {
   hidden: boolean;
 }
 
-export function Back(props: Props): JSX.Element {
+export function Back(props: Props) {
   return (
     <div className={css.container} style={props.hidden ? {display: 'none'} : {}}>
       <div className={css.separator} />
@@ -19,7 +19,7 @@ export function Back(props: Props): JSX.Element {
         {['watasuke.net', 'Twitter', 'GitHub'].map(name => (
           <div className={css.item} key={name}>
             <div className={css.qrcode_wrapper}>
-              <img loading='eager' placeholder='none' src={`/qr/${name}.png`} alt={`qrcode (${name})`} />
+              <img loading='eager' src={`/qr/${name}.png`} alt={`qrcode (${name})`} />
             </div>
             <span className={css.url}>{name}</span>
           </div>

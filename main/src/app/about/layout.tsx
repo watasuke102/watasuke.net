@@ -4,9 +4,6 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {fontFace} from '@vanilla-extract/css';
+import {Layout} from '@feature/Layout';
 
-export const MyricaM = fontFace({
-  src: 'url(/MyricaM.woff)',
-  fontDisplay: 'swap',
-});
+export default Layout;
