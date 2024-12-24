@@ -35,6 +35,7 @@ type Query {
   allPublicArticles(filter: ArticleFilter): [Article!]!
   allArticles(filter: ArticleFilter): [Article!]!
   article(slug: String!): Article
+  tag(slug: String!): Tag
   allTags: [Tag!]!
   sitedata: Sitedata!
   contentsGitHeadHash: String!

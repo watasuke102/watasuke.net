@@ -31,6 +31,12 @@ export type Article = {
   updatedAt: Scalars['String']['output'];
 };
 
+export type ArticleFilter = {
+  isFavorite?: InputMaybe<Scalars['Boolean']['input']>;
+  /** This fiels is slug[] which is used for OR search */
+  tags?: InputMaybe<Array<Scalars['String']['input']>>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   newArticle: Scalars['String']['output'];
@@ -94,10 +100,26 @@ export type Query = {
   article?: Maybe<Article>;
   contentsGitHeadHash: Scalars['String']['output'];
   sitedata: Sitedata;
+  tag?: Maybe<Tag>;
+};
+
+
+export type QueryAllArticlesArgs = {
+  filter?: InputMaybe<ArticleFilter>;
+};
+
+
+export type QueryAllPublicArticlesArgs = {
+  filter?: InputMaybe<ArticleFilter>;
 };
 
 
 export type QueryArticleArgs = {
+  slug: Scalars['String']['input'];
+};
+
+
+export type QueryTagArgs = {
   slug: Scalars['String']['input'];
 };
 

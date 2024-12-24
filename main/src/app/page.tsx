@@ -6,31 +6,30 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from '@pages/top.css';
 import '@watasuke.net/common/src/css/base.css';
-import {Seo, Background} from '@common';
-import {graphql, Link} from 'gatsby';
-import {StaticImage} from 'gatsby-plugin-image';
+import {Background} from '@common';
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import {ArticleCard} from '@feature/ArticleList/ArticleCard/ArticleCard';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
+import {gen_template, JsonLd} from '@utils/Metadata';
+import {ql} from '@utils/QL';
 import {social_links} from '@data/social_links';
 import IconCard from '@assets/icons/top/card.svg';
 import IconEdit from '@assets/icons/top/edit.svg';
 import IconInfo from '@assets/icons/top/info.svg';
 import IconProfile from '@assets/icons/top/profile.svg';
 import IconRocket from '@assets/icons/top/rocket.svg';
-import Article from '@mytypes/Article';
 
 const breadcrumb_list = GenBreadcrumb([]);
+export const {viewport, metadata} = gen_template(
+  '',
+  '「わたすけのへや」へようこそ！プログラミング等についてのブログやプロフィール、ポートフォリオなどを掲載しています',
+  '',
+);
 
-type Props = {
-  data: {
-    allArticles: {
-      nodes: Article[];
-    };
-  };
-};
-
-export default function Index(props: Props): JSX.Element {
+export default async function Index() {
+  const {allPublicArticles} = await ql().allFavoriteArticles();
   const menu_list = [
     {text: 'About', url: '/about', icon: <IconInfo />},
     {text: 'Blog', url: '/blog', icon: <IconEdit />},
@@ -56,14 +55,15 @@ export default function Index(props: Props): JSX.Element {
   return (
     <>
       <Background />
+      <JsonLd breadcrumb_list={breadcrumb_list} />
       <main className={css.container}>
         <div className={css.left}>
           <div className={css.icon_and_welcome}>
-            <StaticImage
+            <Image
               loading='eager'
-              placeholder='none'
               width={240}
-              src='../assets/icon.jpg'
+              height={240}
+              src='/icon.jpg'
               alt='icon'
             />
             <h2 className={css.welcome_head}>Welcome</h2>
@@ -76,7 +76,7 @@ export default function Index(props: Props): JSX.Element {
             {menu_list.map(e => (
               <Link
                 key={e.text}
-                to={e.url}
+                href={e.url}
                 className={css.menu_entry}
                 aria-label={e.text}
               >
@@ -100,42 +100,12 @@ export default function Index(props: Props): JSX.Element {
         <section className={css.articles_container}>
           <h2 className={css.info_head}>― Article Picks ―</h2>
           <div className={css.favorite_articles}>
-            {props.data.allArticles.nodes.map(e => (
+            {allPublicArticles.map(e => (
               <ArticleCard key={e.slug} article={e} />
             ))}
           </div>
         </section>
       </main>
     </>
-  );
-}
-
-export const query = graphql`
-  query favoriteArticles {
-    allArticles(filter: {is_favorite: {eq: true}}, sort: {published_at: DESC}) {
-      nodes {
-        slug
-        title
-        tldr
-        published_at
-        tags {
-          slug
-          name
-        }
-      }
-    }
-  }
-`;
-
-export function Head(): JSX.Element {
-  return (
-    <Seo
-      title={''}
-      desc={
-        'プログラミングやゲームについてのブログ、プロフィール、ポートフォリオなど'
-      }
-      url={''}
-      breadcrumb_list={breadcrumb_list}
-    />
   );
 }

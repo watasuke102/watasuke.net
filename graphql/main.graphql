@@ -18,16 +18,55 @@ query allArticles {
     }
   }
 }
+query allFavoriteArticles {
+  allPublicArticles(filter: {isFavorite: true}) {
+    slug
+    title
+    tldr
+    isFavorite
+    publishedAt
+    updatedAt
+    tags {
+      slug
+      name
+    }
+  }
+}
+query articlesWithTag($tagSlug: String!) {
+  allPublicArticles(filter: {tags: [$tagSlug]}) {
+    slug
+    title
+    tldr
+    isFavorite
+    publishedAt
+    updatedAt
+    tags {
+      slug
+      name
+    }
+  }
+  tag(slug: $tagSlug) {
+    slug
+    name
+  }
+}
+
 query allTags {
   allTags {
     slug
     name
   }
 }
+query tag($slug: String!) {
+  tag(slug: $slug) {
+    slug
+    name
+  }
+}
+
 query contentsGitHash {
   contentsGitHeadHash
 }
-
 query profile {
   sitedata {
     profile

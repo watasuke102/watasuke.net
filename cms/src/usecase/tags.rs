@@ -13,7 +13,15 @@ pub fn convert_slug_vec(tags: &TagMap, slugs: &Vec<String>) -> Vec<Tag> {
     .collect()
 }
 
-pub fn get(contents_path: &String) -> TagMap {
+pub fn get_all(contents_path: &String) -> Vec<Tag> {
+  get_map(contents_path).into_iter().map(|e| e.1).collect()
+}
+pub fn get(contents_path: &String, slug: &String) -> Option<Tag> {
+  get_map(contents_path)
+    .get(slug)
+    .and_then(|tag| Some(tag.to_owned()))
+}
+pub fn get_map(contents_path: &String) -> TagMap {
   #[derive(Clone, Deserialize, Debug)]
   struct TagsToml {
     tags: Vec<Tag>,
@@ -30,7 +38,7 @@ pub fn get(contents_path: &String) -> TagMap {
 
 pub fn create(contents_path: &String, slug: &String, title: &String) -> anyhow::Result<()> {
   {
-    let tags = get(contents_path);
+    let tags = get_map(contents_path);
     ensure!(tags.get(slug).is_none(), "Already exists")
   }
   ensure!(Regex::new(r"^[0-9a-z\-]+$")?.is_match(slug), "Invalid slug");
