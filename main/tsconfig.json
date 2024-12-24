@@ -45,8 +45,6 @@
   "include": [
     "../common/src/Heading.d.ts",
     "../common/src/TocMapper",
-    "./gatsby-config.ts",
-    "./gatsby-node.ts",
     "./plugins/**/*",
     "./src/**/*",
     ".next/types/**/*.ts"

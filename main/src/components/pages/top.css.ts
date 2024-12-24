@@ -4,12 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {style, globalStyle, ComplexStyleRule} from '@vanilla-extract/css';
+import {style, ComplexStyleRule} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
-
-globalStyle('.gatsby-image-wrapper [data-main-image]', {
-  transition: 'none !important',
-});
 
 export const container = style({
   width: '100%',

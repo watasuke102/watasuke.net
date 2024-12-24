@@ -3,7 +3,7 @@
 ![README thumbnail](/main/src/assets/thumbnail.jpg)
 
 [https://watasuke.net](https://watasuke.net)で公開されているページのソース  
-TypeScript, React, vanilla-extract, Gatsby, Next.js, Rust, etc...
+TypeScript, React, vanilla-extract, Next.js, Rust, etc...
 
 ## 記事について
 
@@ -15,7 +15,7 @@ monorepo by npm workspace
 
 - main
   - `watasuke.net` でホストされているページ本体
-  - Gatsby
+  - Next.js
 - cms
   - 記事およびプロフィール等の情報を管理するサーバーサイドソフトウェア
   - Rust + Rocket + Juniper
