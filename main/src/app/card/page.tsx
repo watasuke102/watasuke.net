@@ -10,7 +10,6 @@ import React from 'react';
 import {useRouter} from 'next/navigation';
 import localFont from 'next/font/local';
 import {Back, Front} from '@pages/card';
-import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template} from '@utils/Metadata';
 import IconFlip from '@assets/icons/card/flip.svg';
 import IconInvisible from '@assets/icons/card/invisible.svg';
@@ -30,7 +29,6 @@ const monaspace = localFont({
     },
   ],
 });
-const breadcrumb_list = GenBreadcrumb([{name: 'Card'}]);
 export const {viewport, metadata} = gen_template('card', '名刺です', '/about');
 
 export default function Card() {
@@ -103,16 +101,5 @@ export default function Card() {
         </div>
       )}
     </main>
-  );
-}
-
-export function Head() {
-  return (
-    <Seo
-      title={'card'}
-      desc={'名刺'}
-      url={'/card'}
-      breadcrumb_list={breadcrumb_list}
-    />
   );
 }

@@ -7,6 +7,7 @@
 import {Portfolio} from '@pages/portfolio/Portfolio';
 import {gen_template, JsonLd} from '@utils/Metadata';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
+import {get_params, SearchParams} from '@utils/SearchParams';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Portfolio'}]);
 export const {viewport, metadata} = gen_template(
@@ -15,18 +16,19 @@ export const {viewport, metadata} = gen_template(
   '/portfolio',
 );
 
-interface Props {
-  animation: Promise<string | undefined>;
-  lang: Promise<string | undefined>;
-}
-
-export default async function PortfolioPage(props: Props) {
-  const animation = await props.animation;
-  const lang = await props.lang;
+export default async function PortfolioPage({
+  searchParams,
+}: {
+  searchParams: Promise<SearchParams>;
+}) {
+  const params = await searchParams;
   return (
     <>
       <JsonLd breadcrumb_list={breadcrumb_list} />
-      <Portfolio init_animation={animation} init_lang={lang} />
+      <Portfolio
+        init_animation={get_params(params, 'animation')}
+        init_lang={get_params(params, 'lang')}
+      />
     </>
   );
 }

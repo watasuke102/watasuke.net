@@ -15,7 +15,7 @@ import Katex from 'rehype-katex';
 import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import Math from 'remark-math';
-import Slug from 'remark-slug';
+import Slug from 'rehype-slug';
 import {ScriptMounter} from '../ScriptMounter/ScriptMounter';
 import {AdsInArticle} from '../../Ads';
 import {ImageViewer} from '../ImageViewer/ImageViewer';
@@ -105,8 +105,8 @@ export function Body(props: Props) {
           h6: Heading,
           img: props => <ImageViewer src={props.src || ''} alt={props.alt} />,
         }}
-        remarkPlugins={[Gfm, Math, Slug, remarkAddFootnoteLabel]}
-        rehypePlugins={[rehypeAddFootnoteLabel, Katex, Raw, Highlight]}
+        remarkPlugins={[Gfm, Math, remarkAddFootnoteLabel]}
+        rehypePlugins={[rehypeAddFootnoteLabel, Slug, Katex, Raw, Highlight]}
         // eslint-disable-next-line react/no-children-prop
         children={props.md}
       />

@@ -10,6 +10,13 @@ import * as config from '@watasuke.net/config/config';
 import * as style from './AdsInArticle.css';
 import React from 'react';
 
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    adsbygoogle: any[];
+  }
+}
+
 export function AdsInArticle() {
   React.useEffect(() => {
     if (config.adsenseId.length <= 0 || config.inArticleSlot.length <= 0) {

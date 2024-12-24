@@ -4,7 +4,6 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import React from 'react';
 
 export interface Date {
   month: number;
@@ -34,8 +33,8 @@ export interface Event {
   subtitle_en: string;
   period: Period;
   category: 'General' | 'Work' | 'Event' | 'Presentation';
-  body_ja: React.ReactNode;
-  body_en: React.ReactNode;
+  body_ja: string;
+  body_en: string;
 }
 
 export const event_list: Record<string, Event[]> = {
