@@ -6,47 +6,30 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './InnerEmbedCard.css';
 import {initialized_a} from '@utils/initialized_a.css';
-import {Link, graphql, useStaticQuery} from 'gatsby';
+import Link from 'next/link';
 import React from 'react';
+import {ql} from '@utils/QL';
 
 interface Props {
   slug: string;
 }
 
-export function InnerEmbedCard(props: Props): JSX.Element {
-  const articles: Queries.sortedAllArticlesQuery = useStaticQuery(graphql`
-    query innerEmbedCardInfo {
-      allArticles(sort: {published_at: DESC}) {
-        nodes {
-          slug
-          title
-        }
-      }
-    }
-  `);
+export async function InnerEmbedCard(props: Props) {
+  const slug = decodeURI(props.slug);
+  const {article} = await ql().article({slug});
 
-  const slug_without_hash = props.slug.replace(/#.+$/, '');
-  const data = articles.allArticles.nodes.filter(
-    e => e.slug === slug_without_hash,
-  )[0];
-  const decoded_slug = decodeURI(props.slug);
-
-  if (!data) {
-    return (
-      <>
-        {'[Failed to create InnerEmbedCard] '}
-        <Link href={`/blog/article/${props.slug}`}>{decoded_slug}</Link>
-      </>
-    );
-  }
-
-  return (
+  return article ? (
     <Link href={`/blog/article/${props.slug}`} className={initialized_a}>
       <div className={css.container}>
-        <span className={css.title}>{data.title}</span>
-        <span className={css.url}>{`watasuke.net - ${decoded_slug}`}</span>
-        <span className={css.description}>{data.tldr}</span>
+        <span className={css.title}>{article.title}</span>
+        <span className={css.url}>{`watasuke.net - ${slug}`}</span>
+        <span className={css.description}>{article.tldr}</span>
       </div>
     </Link>
+  ) : (
+    <>
+      {'[Failed to create InnerEmbedCard] '}
+      <Link href={`/blog/article/${props.slug}`}>{slug}</Link>
+    </>
   );
 }

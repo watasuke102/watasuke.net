@@ -9,7 +9,7 @@ import Link from 'next/link';
 import {Breadcrumb} from '@common';
 import {ExtractHeading, TocMapper} from '@watasuke.net/common';
 import {AllTagList} from '@feature/Tag';
-import {BlogContent} from '@feature/Article';
+import {BlogContent, ProfileCard} from '@feature/Article';
 import {ql} from '@utils/QL';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_metadata, JsonLd} from '@utils/Metadata';
@@ -63,7 +63,7 @@ export default async function Page({params}: Props) {
 
         {/* サイドバー */}
         <aside className={css.side}>
-          {/* <ProfileCard /> */}
+          <ProfileCard />
           <section className={css.side_tag}>
             <span className={css.head}>タグ</span>
             <AllTagList />

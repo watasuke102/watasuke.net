@@ -5,29 +5,25 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './ProfileCard.css';
-import {graphql, Link, useStaticQuery} from 'gatsby';
-import {StaticImage} from 'gatsby-plugin-image';
+import Image from 'next/image';
 import React from 'react';
+import Link from 'next/link';
+import {ql} from '@utils/QL';
 
-export function ProfileCard(): JSX.Element {
-  const query: Queries.shortProfileQuery = useStaticQuery(graphql`
-    query shortProfile {
-      siteData(slug: {eq: "short_profile"}) {
-        body
-      }
-    }
-  `);
+export async function ProfileCard() {
+  const {sitedata} = await ql().shortProfile();
   return (
     <section className={css.container}>
-      <StaticImage
+      <Image
         className={css.avatar}
         width={80}
-        src='../../../../assets/icon.jpg'
+        height={80}
+        src='/icon.jpg'
         alt='icon'
       />
       <p>わたすけ</p>
       <p className={css.body}>
-        {query.siteData?.body ?? ''}
+        {sitedata.shortProfile}
         <br />
         プロフィール詳細は<Link href='/profile'>こちら</Link>
       </p>

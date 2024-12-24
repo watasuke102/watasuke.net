@@ -6,20 +6,19 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {apiUrl} from '@watasuke.net/config/config';
 import * as css from './BlogContent.css';
-import Giscus from '@giscus/react';
+// import Giscus from '@giscus/react';
 import React from 'react';
 import {ShareList} from '@common';
 import Link from 'next/link';
 import {AdsInArticle, Heading, Markdown, cs} from '@watasuke.net/common';
-// import {EmbedCard, InnerEmbedCard} from '@feature/Article';
-// import {TagContainer} from '@feature/Tag';
+import {EmbedCard, InnerEmbedCard} from '@feature/Article';
 import {TocInArticle} from '@feature/TableOfContents';
+import {TagContainer} from '@feature/Tag';
 import IconHistory from '@assets/icons/article/history.svg';
 import IconUpload from '@assets/icons/article/upload.svg';
 import IconLeft from '@assets/icons/general/left.svg';
 import IconRight from '@assets/icons/general/right.svg';
 import Article from '@mytypes/Article';
-import {TagContainer} from '@feature/Tag';
 
 interface Props {
   data: Article;
@@ -57,10 +56,8 @@ export function BlogContent(props: Props): JSX.Element {
           '/img',
           `${apiUrl}/img/${props.data.slug}`,
         )}
-        // embed_card={EmbedCard}
-        // inner_embed_card={InnerEmbedCard}
-        embed_card={() => <></>}
-        inner_embed_card={() => <></>}
+        embed_card={EmbedCard}
+        inner_embed_card={InnerEmbedCard}
       />
       <AdsInArticle />
 

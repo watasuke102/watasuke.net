@@ -67,6 +67,11 @@ query tag($slug: String!) {
 query contentsGitHash {
   contentsGitHeadHash
 }
+query shortProfile {
+  sitedata {
+    shortProfile
+  }
+}
 query profile {
   sitedata {
     profile

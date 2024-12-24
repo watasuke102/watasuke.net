@@ -169,6 +169,11 @@ export type ContentsGitHashQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type ContentsGitHashQuery = { __typename?: 'Query', contentsGitHeadHash: string };
 
+export type ShortProfileQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ShortProfileQuery = { __typename?: 'Query', sitedata: { __typename?: 'Sitedata', shortProfile: string } };
+
 export type ProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -262,6 +267,13 @@ export const ContentsGitHashDocument = gql`
   contentsGitHeadHash
 }
     `;
+export const ShortProfileDocument = gql`
+    query shortProfile {
+  sitedata {
+    shortProfile
+  }
+}
+    `;
 export const ProfileDocument = gql`
     query profile {
   sitedata {
@@ -325,6 +337,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     contentsGitHash(variables?: ContentsGitHashQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ContentsGitHashQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ContentsGitHashQuery>(ContentsGitHashDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'contentsGitHash', 'query', variables);
+    },
+    shortProfile(variables?: ShortProfileQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ShortProfileQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ShortProfileQuery>(ShortProfileDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'shortProfile', 'query', variables);
     },
     profile(variables?: ProfileQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ProfileQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ProfileQuery>(ProfileDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'profile', 'query', variables);

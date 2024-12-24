@@ -14,6 +14,7 @@ import {TocInArticle} from '@feature/TableOfContents';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {ql} from '@utils/QL';
 import {gen_template, JsonLd} from '@utils/Metadata';
+import {EmbedCard, InnerEmbedCard} from '@feature/Article';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Profile'}]);
 export const {viewport, metadata} = gen_template(
@@ -40,11 +41,10 @@ export default async function Profile() {
         </p>
         <AdsInArticle />
         <TocInArticle headings={headings} />
-        {/* FIXME */}
         <Markdown
           md={sitedata.profile}
-          embed_card={() => <></>}
-          inner_embed_card={() => <></>}
+          embed_card={EmbedCard}
+          inner_embed_card={InnerEmbedCard}
         />
       </main>
     </>
