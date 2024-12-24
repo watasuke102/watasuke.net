@@ -85,6 +85,30 @@ impl Article {
   }
 }
 
+impl PartialEq for Article {
+  fn eq(&self, other: &Self) -> bool {
+    self.slug == other.slug
+  }
+}
+impl Eq for Article {
+}
+impl PartialOrd for Article {
+  fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+    other
+      .frontmatter
+      .published_at
+      .partial_cmp(&self.frontmatter.published_at)
+  }
+}
+impl Ord for Article {
+  fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+    other
+      .frontmatter
+      .published_at
+      .cmp(&self.frontmatter.published_at)
+  }
+}
+
 #[graphql_object(context = crate::Context)]
 impl Article {
   pub fn slug(&self) -> &str {

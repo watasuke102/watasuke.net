@@ -29,22 +29,7 @@ type Props = {
 export function TagEditor(props: Props): JSX.Element {
   const [is_dialog_open, set_is_dialog_open] = React.useState(false);
   const tags = React.useMemo(
-    () =>
-      new Map(
-        props.all_tags
-          .toSorted((a, b) => {
-            // any order is ok, that is, the order doesn't have any mean
-            // important thing is that the order is **always same**
-            if (a.slug > b.slug) {
-              return 1;
-            }
-            if (a.slug < b.slug) {
-              return -1;
-            }
-            return 0;
-          })
-          .map(e => [e.slug, e.name]),
-      ),
+    () => new Map(props.all_tags.map(e => [e.slug, e.name])),
     [props.all_tags],
   );
   const [selected_tag, set_selected_tag] = React.useState<string[]>([]);

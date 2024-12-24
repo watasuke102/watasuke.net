@@ -38,29 +38,28 @@ impl ArticleFilter {
 pub fn get(contents_path: &String, slug: &String) -> anyhow::Result<Option<Article>> {
   Ok(get_map_all(contents_path)?.get(slug).cloned())
 }
-pub fn get_all(
-  filter: Option<ArticleFilter>,
-  contents_path: &String,
-) -> anyhow::Result<Vec<Article>> {
-  Ok(
-    get_map_all(contents_path)?
-      .into_iter()
-      .map(|e| e.1)
-      .filter(|e| filter.as_ref().map_or(true, |filter| filter.check(e)))
-      .collect(),
-  )
-}
 pub fn get_published(
   filter: Option<ArticleFilter>,
   contents_path: &String,
 ) -> anyhow::Result<Vec<Article>> {
   Ok(
-    get_map_all(contents_path)?
+    get_all(filter, contents_path)?
       .into_iter()
-      .filter_map(|e| e.1.get_public_or_none())
-      .filter(|e| filter.as_ref().map_or(true, |filter| filter.check(e)))
+      .filter(|e| e.is_published())
       .collect(),
   )
+}
+pub fn get_all(
+  filter: Option<ArticleFilter>,
+  contents_path: &String,
+) -> anyhow::Result<Vec<Article>> {
+  let mut vec: Vec<Article> = get_map_all(contents_path)?
+    .into_iter()
+    .map(|e| e.1)
+    .filter(|e| filter.as_ref().map_or(true, |filter| filter.check(e)))
+    .collect();
+  vec.sort();
+  Ok(vec)
 }
 
 fn get_map_all(contents_path: &String) -> anyhow::Result<ArticleMap> {

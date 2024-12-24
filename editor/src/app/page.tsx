@@ -42,11 +42,7 @@ export default async function Top(): Promise<JSX.Element> {
       <NewArticle />
       <ArticlesTable articles={data.allArticles.filter(e => !e.isPublished)} />
       <h3>Published</h3>
-      <ArticlesTable
-        articles={data.allArticles
-          .filter(e => e.isPublished)
-          .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))}
-      />
+      <ArticlesTable articles={data.allArticles.filter(e => e.isPublished)} />
     </div>
   );
 }

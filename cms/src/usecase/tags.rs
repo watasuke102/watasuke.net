@@ -14,7 +14,9 @@ pub fn convert_slug_vec(tags: &TagMap, slugs: &Vec<String>) -> Vec<Tag> {
 }
 
 pub fn get_all(contents_path: &String) -> Vec<Tag> {
-  get_map(contents_path).into_iter().map(|e| e.1).collect()
+  let mut vec: Vec<Tag> = get_map(contents_path).into_iter().map(|e| e.1).collect();
+  vec.sort();
+  vec
 }
 pub fn get(contents_path: &String, slug: &String) -> Option<Tag> {
   get_map(contents_path)
