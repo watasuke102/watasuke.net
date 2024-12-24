@@ -11,10 +11,10 @@ import Link from 'next/link';
 import {AdsInArticle, Markdown, ExtractHeading} from '@watasuke.net/common';
 // import {EmbedCard, InnerEmbedCard} from '@feature/Article';
 import {TocInArticle} from '@feature/TableOfContents';
+import {EmbedCard, InnerEmbedCard} from '@feature/Article';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {ql} from '@utils/QL';
 import {gen_template, JsonLd} from '@utils/Metadata';
-import {EmbedCard, InnerEmbedCard} from '@feature/Article';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Profile'}]);
 export const {viewport, metadata} = gen_template(

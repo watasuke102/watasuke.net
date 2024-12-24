@@ -8,12 +8,12 @@ import * as css from '@pages/blog.css';
 import '@watasuke.net/common/src/css/base.css';
 import {Breadcrumb} from '@common';
 import React from 'react';
+import {AdsInArticle} from '@watasuke.net/common';
 import {ArticleList} from '@feature/ArticleList';
 import {AllTagList} from '@feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template, JsonLd} from '@utils/Metadata';
 import {ql} from '@utils/QL';
-import {AdsInArticle} from '@watasuke.net/common';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Blog'}]);
 export const {viewport, metadata} = gen_template(
