@@ -18,7 +18,7 @@ interface Props {
   article: ArticlePreviewPageQuery['article'];
 }
 
-export function Preview(props: Props): JSX.Element {
+export function Preview(props: Props) {
   return (
     <div className={css.container}>
       <h1>{props.article.title}</h1>

@@ -15,7 +15,7 @@ interface Props {
   label: string;
 }
 
-export function Checkbox(props: Props): JSX.Element {
+export function Checkbox(props: Props) {
   return (
     <div className={css.checkbox_wrapper}>
       <RCheckbox.Root

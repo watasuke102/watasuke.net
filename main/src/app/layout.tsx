@@ -6,11 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import '@watasuke.net/common/src/css/base.css';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}): JSX.Element {
+export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang='ja'>
       <head>

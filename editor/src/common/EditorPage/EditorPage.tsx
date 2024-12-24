@@ -39,7 +39,7 @@ type Props = {
   modify: (commit_mes: string) => void;
 };
 
-export function EditorPage(props: Props): JSX.Element {
+export function EditorPage(props: Props) {
   const [commit_mes_prefix, set_commit_mes_prefix] = React.useState('update');
   const [commit_mes, set_commit_mes] = React.useState('');
 

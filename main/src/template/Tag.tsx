@@ -33,7 +33,7 @@ const breadcrumb_list = (name: string) =>
     {name: name},
   ]);
 
-export default function Tag({pageContext, data}: Props): JSX.Element {
+export default function Tag({pageContext, data}: Props) {
   return (
     <Layout>
       <Breadcrumb breadcrumb_list={breadcrumb_list(pageContext.name)} />
@@ -69,7 +69,7 @@ export const query = graphql`
   }
 `;
 
-export function Head({pageContext}: Props): JSX.Element {
+export function Head({pageContext}: Props) {
   return (
     <Seo
       title={pageContext.name}

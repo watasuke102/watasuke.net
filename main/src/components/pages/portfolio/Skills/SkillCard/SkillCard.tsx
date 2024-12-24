@@ -15,7 +15,7 @@ interface Props {
   skill: Skill;
 }
 
-export function SkillCard(props: Props): JSX.Element {
+export function SkillCard(props: Props) {
   return (
     <motion.div
       className={css.skillcard}

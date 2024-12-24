@@ -10,7 +10,7 @@ import * as config from '@watasuke.net/config/config';
 import * as style from './AdsInArticle.css';
 import React from 'react';
 
-export function AdsInArticle(): JSX.Element {
+export function AdsInArticle() {
   React.useEffect(() => {
     if (config.adsenseId.length <= 0 || config.inArticleSlot.length <= 0) {
       return;

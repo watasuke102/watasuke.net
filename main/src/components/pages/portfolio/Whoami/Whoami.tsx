@@ -12,7 +12,7 @@ interface Props {
   lang: string;
 }
 
-export function Whoami(props: Props): JSX.Element {
+export function Whoami(props: Props) {
   return (
     <section className={css.bio}>
       <h2>

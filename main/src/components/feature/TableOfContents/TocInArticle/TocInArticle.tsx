@@ -16,7 +16,7 @@ interface Props {
   headings: Heading[];
 }
 
-export function TocInArticle(props: Props): JSX.Element {
+export function TocInArticle(props: Props) {
   const [tocOpening, SetTocOpening] = React.useState(true);
   const should_reduce_motion = useReducedMotion();
 

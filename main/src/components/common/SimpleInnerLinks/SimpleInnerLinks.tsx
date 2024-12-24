@@ -7,7 +7,7 @@
 import * as css from './SimpleInnerLinks.css';
 import Link from 'next/link';
 
-export function SimpleInnerLinks(): JSX.Element {
+export function SimpleInnerLinks() {
   return (
     // fragment is needed because of prettier-ignore
     <>

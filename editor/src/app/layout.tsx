@@ -7,11 +7,7 @@
 import '@watasuke.net/common/src/css/base.css';
 import React from 'react';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}): JSX.Element {
+export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang='ja'>
       <head>

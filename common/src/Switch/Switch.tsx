@@ -13,9 +13,14 @@ interface Props {
   on_click: () => void;
 }
 
-export function Switch(props: Props): JSX.Element {
+export function Switch(props: Props) {
   return (
-    <RSwitch.Root id={props.id} className={css.root} checked={props.checked} onClick={props.on_click}>
+    <RSwitch.Root
+      id={props.id}
+      className={css.root}
+      checked={props.checked}
+      onClick={props.on_click}
+    >
       <RSwitch.Thumb className={css.thumb} />
     </RSwitch.Root>
   );

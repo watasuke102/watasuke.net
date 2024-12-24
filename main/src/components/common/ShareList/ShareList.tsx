@@ -13,7 +13,7 @@ import IconMastodon from '@assets/icons/general/mastodon.svg';
 import IconHatena from '@assets/icons/general/hatena.svg';
 import IconShare from '@assets/icons/general/share.svg';
 
-export function ShareList(): JSX.Element {
+export function ShareList() {
   return (
     <div className={css.share_container}>
       <a

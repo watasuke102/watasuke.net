@@ -26,7 +26,7 @@ type Props = {
   dispatcher: React.Dispatch<ArticleReducer.Action>;
 };
 
-export function TagEditor(props: Props): JSX.Element {
+export function TagEditor(props: Props) {
   const [is_dialog_open, set_is_dialog_open] = React.useState(false);
   const tags = React.useMemo(
     () => new Map(props.all_tags.map(e => [e.slug, e.name])),

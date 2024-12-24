@@ -7,6 +7,6 @@
 import React from 'react';
 import {Spinner} from '@common/Spinner';
 
-export default function Loading(): JSX.Element {
+export default function Loading() {
   return <Spinner />;
 }

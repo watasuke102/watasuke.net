@@ -16,7 +16,7 @@ type Props = {
   on_click: () => void;
 };
 
-export function Button(props: Props): JSX.Element {
+export function Button(props: Props) {
   const class_name = (() => {
     switch (props.type) {
       case 'text':

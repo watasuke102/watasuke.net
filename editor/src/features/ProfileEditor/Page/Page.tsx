@@ -22,7 +22,7 @@ type Props = {
   profile: string;
 };
 
-export function Page(props: Props): JSX.Element {
+export function Page(props: Props) {
   const [profile, set_profile] = React.useState(props.profile);
 
   const textarea_ref = React.useRef<HTMLTextAreaElement | null>();

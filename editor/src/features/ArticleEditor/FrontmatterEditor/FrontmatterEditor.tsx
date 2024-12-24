@@ -16,7 +16,7 @@ interface Props {
   tldr_placeholder: string;
 }
 
-export function FrontmatterEditor(props: Props): JSX.Element {
+export function FrontmatterEditor(props: Props) {
   const id = {
     title: 'frontmatter_editor_title',
     tldr: 'frontmatter_editor_tldr',

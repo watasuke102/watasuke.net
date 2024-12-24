@@ -16,7 +16,7 @@ type Props = {
   on_change: (s: string) => void;
 };
 
-export function ComboBox(props: Props): JSX.Element {
+export function ComboBox(props: Props) {
   return (
     <Select.Root value={props.current} onValueChange={props.on_change}>
       <Select.Trigger className={css.trigger} id={props.id ?? ''}>

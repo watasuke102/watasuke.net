@@ -27,7 +27,7 @@ type Props = {
   publish_button_handler: () => void;
 };
 
-export function Toolbox(props: Props): JSX.Element {
+export function Toolbox(props: Props) {
   const [accordion_value, set_accordion_value] = React.useState('');
   const [is_img_uploader_open, set_is_img_uploader_open] =
     React.useState(false);

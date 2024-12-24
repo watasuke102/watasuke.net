@@ -17,7 +17,7 @@ interface Props {
   animation_enabled: boolean;
 }
 
-export function LinkCard(props: Props): JSX.Element {
+export function LinkCard(props: Props) {
   return (
     <motion.a
       href={props.url}

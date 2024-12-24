@@ -16,7 +16,7 @@ interface Props {
   lang: string;
 }
 
-export function Links(props: Props): JSX.Element {
+export function Links(props: Props) {
   return (
     <section>
       <Heading color={color.yellow} text='Links' />

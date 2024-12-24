@@ -20,7 +20,7 @@ type Props = {
   on_close?: () => void;
 };
 
-export function Dialog(props: Props): JSX.Element {
+export function Dialog(props: Props) {
   return (
     <RDialog.Root open={props.is_open} onOpenChange={props.set_is_open}>
       <RDialog.Portal>

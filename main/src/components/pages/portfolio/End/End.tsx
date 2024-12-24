@@ -7,7 +7,7 @@
 import * as css from './End.css';
 import {SimpleInnerLinks} from '@common';
 
-export function End(): JSX.Element {
+export function End() {
   return (
     <section className={css.container}>
       <h2>Thank you for visiting!</h2>

@@ -25,7 +25,7 @@ type Props = {
   tags: ArticleEditPageQuery['allTags'];
 };
 
-export function Page(props: Props): JSX.Element {
+export function Page(props: Props) {
   const textarea_ref = React.useRef<HTMLTextAreaElement | null>();
   const [state, dispatch] = useImmerReducer(article_reducer, {
     body: props.article.body,

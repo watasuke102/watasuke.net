@@ -27,7 +27,7 @@ interface Props {
   older: Article | undefined;
 }
 
-export function BlogContent(props: Props): JSX.Element {
+export function BlogContent(props: Props) {
   return (
     <>
       <h1 className={css.title}>{props.data.title}</h1>

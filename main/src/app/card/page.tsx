@@ -106,7 +106,7 @@ export default function Card() {
   );
 }
 
-export function Head(): JSX.Element {
+export function Head() {
   return (
     <Seo
       title={'card'}

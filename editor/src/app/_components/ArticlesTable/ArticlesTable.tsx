@@ -25,7 +25,7 @@ function datetime(s: string) {
   }
 }
 
-export function ArticlesTable(props: Props): JSX.Element {
+export function ArticlesTable(props: Props) {
   return (
     <>
       <table className={css.table}>

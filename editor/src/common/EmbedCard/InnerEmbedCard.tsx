@@ -11,7 +11,7 @@ type Props = {
   slug: string;
 };
 
-export function InnerEmbedCard(props: Props): JSX.Element {
+export function InnerEmbedCard(props: Props) {
   return (
     <span className={`${embed_card} ${inner_embed}`}>
       InnerEmbed: /{props.slug}

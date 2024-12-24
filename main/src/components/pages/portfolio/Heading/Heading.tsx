@@ -11,7 +11,7 @@ interface Props {
   color: string;
 }
 
-export function Heading(props: Props): JSX.Element {
+export function Heading(props: Props) {
   return (
     <h2 className={css.heading}>
       <span style={{borderLeftColor: props.color}} className={css.heading_text}>

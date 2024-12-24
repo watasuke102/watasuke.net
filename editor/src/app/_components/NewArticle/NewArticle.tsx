@@ -19,7 +19,7 @@ import {getSdk} from '@utils/graphql';
 // FIXME: DRY
 const slug_validator = /^[0-9a-z-]+$/;
 
-export function NewArticle(): JSX.Element {
+export function NewArticle() {
   const [is_dialog_open, set_is_dialog_open] = React.useState(false);
   const [slug, set_slug] = React.useState('');
   const [title, set_title] = React.useState('');

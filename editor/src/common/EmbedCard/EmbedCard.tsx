@@ -11,6 +11,6 @@ type Props = {
   url: string;
 };
 
-export function EmbedCard(props: Props): JSX.Element {
+export function EmbedCard(props: Props) {
   return <span className={embed_card}>Embed: {props.url}</span>;
 }

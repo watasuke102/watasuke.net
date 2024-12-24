@@ -48,7 +48,7 @@ export const ToastContext = React.createContext<ContextType>({
   dispatch: () => {},
 });
 
-export function Toast(): JSX.Element {
+export function Toast() {
   const {state, dispatch} = React.useContext(ToastContext);
   return (
     <RToast.Provider swipeDirection='up' duration={3000}>

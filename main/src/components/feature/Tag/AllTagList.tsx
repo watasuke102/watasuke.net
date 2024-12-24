@@ -9,7 +9,7 @@ import React from 'react';
 import {TagContainer} from './TagContainer';
 import {ql} from '@utils/QL';
 
-export async function AllTagList(): JSX.Element {
+export async function AllTagList() {
   const tags = await ql().allTags();
   return <TagContainer tags={tags.allTags} disable_icon={true} />;
 }

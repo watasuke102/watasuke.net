@@ -20,7 +20,7 @@ interface Props {
   lang: string;
 }
 
-export function EventCard(props: Props): JSX.Element {
+export function EventCard(props: Props) {
   const [opening, set_opening] = React.useState(false);
   const body = props.lang !== 'en' ? props.event.body_ja : props.event.body_en;
   const on_click = () => {
@@ -29,7 +29,7 @@ export function EventCard(props: Props): JSX.Element {
     }
   };
 
-  function Period(): JSX.Element {
+  function Period() {
     const period = props.event.period;
     if (!period) {
       return <></>;

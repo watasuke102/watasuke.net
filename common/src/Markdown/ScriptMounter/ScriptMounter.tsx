@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-export function ScriptMounter(): JSX.Element {
+export function ScriptMounter() {
   React.useEffect(() => {
     setTimeout(() => {
       // Twitter embed
@@ -19,7 +19,9 @@ export function ScriptMounter(): JSX.Element {
       document.body.appendChild(script);
     }, 0);
     return () =>
-      Array.from(document.body.getElementsByClassName('twitter-widgets-script') ?? []).forEach(e => e.remove());
+      Array.from(
+        document.body.getElementsByClassName('twitter-widgets-script') ?? [],
+      ).forEach(e => e.remove());
   }, []);
   return <></>;
 }

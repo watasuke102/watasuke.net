@@ -21,7 +21,10 @@ import {AdsInArticle} from '../../Ads';
 import {ImageViewer} from '../ImageViewer/ImageViewer';
 import {Link} from '../Link/Link';
 import {EmbedCardType, InnerEmbedCardType} from '../PropsComponent';
-import {rehypeAddFootnoteLabel, remarkAddFootnoteLabel} from '../plugins/AddFootnoteLabel';
+import {
+  rehypeAddFootnoteLabel,
+  remarkAddFootnoteLabel,
+} from '../plugins/AddFootnoteLabel';
 
 let heading_count = 0;
 const Heading: Components['head'] = props => {
@@ -84,7 +87,7 @@ interface Props {
   inner_embed_card: InnerEmbedCardType;
 }
 
-export function Body(props: Props): JSX.Element {
+export function Body(props: Props) {
   // 再レンダリング時の広告位置変更を抑制
   heading_count = 0;
 

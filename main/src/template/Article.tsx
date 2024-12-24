@@ -35,7 +35,7 @@ const breadcrumb_list = (title: string) =>
     {name: title},
   ]);
 
-export default function ArticleTemplate(props: Props): JSX.Element {
+export default function ArticleTemplate(props: Props) {
   const article = props.pageContext.article;
 
   return (
@@ -75,7 +75,7 @@ export default function ArticleTemplate(props: Props): JSX.Element {
   );
 }
 
-export function Head({pageContext}: Props): JSX.Element {
+export function Head({pageContext}: Props) {
   return (
     <Seo
       title={pageContext.article.title}

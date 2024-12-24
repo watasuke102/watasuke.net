@@ -11,7 +11,7 @@ import React from 'react';
 import {PuffLoader} from 'react-spinners';
 import {color} from '@watasuke.net/common';
 
-export function Spinner(): JSX.Element {
+export function Spinner() {
   return (
     <div className={css.container}>
       <div>

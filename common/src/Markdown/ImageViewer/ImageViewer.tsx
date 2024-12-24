@@ -15,7 +15,7 @@ interface Props {
   alt: string | undefined;
 }
 
-export function ImageViewer({src, alt}: Props): JSX.Element {
+export function ImageViewer({src, alt}: Props) {
   const [is_open, SetIsOpen] = React.useState(false);
   const should_reduce_motion = useReducedMotion();
 

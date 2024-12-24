@@ -13,12 +13,15 @@ interface Props {
   headings: Heading[];
 }
 
-export function TocMapper(props: Props): JSX.Element {
+export function TocMapper(props: Props) {
   return (
     <ol className={css.list_wrapper}>
       {props.headings.map(item => {
         return (
-          <li key={item.slug} className={`${css.item} ${css.toc_list[item.size]}`}>
+          <li
+            key={item.slug}
+            className={`${css.item} ${css.toc_list[item.size]}`}
+          >
             <Link href={`#${item.slug}`}>{item.body}</Link>
           </li>
         );

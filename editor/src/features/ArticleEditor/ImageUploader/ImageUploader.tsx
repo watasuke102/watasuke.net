@@ -21,7 +21,7 @@ type ImageInfo = {
   buffer: ArrayBuffer;
 };
 
-export function ImageUploader(props: Props): JSX.Element {
+export function ImageUploader(props: Props) {
   const [image_info, set_image_info] = React.useState<ImageInfo | undefined>();
   const [image_name, set_image_name] = React.useState('image');
   const [image_ext, set_image_ext] = React.useState('jpg');
