@@ -26,6 +26,8 @@ export const {viewport, metadata} = gen_template(
 
 export default async function ArticleListPage() {
   const {allPublicArticles} = await ql().allArticles();
+  // FIXME: WHY should I sort `allPublicArticles` which is expected to be sorted in CMS?
+  allPublicArticles.sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1));
   return (
     <>
       <JsonLd breadcrumb_list={breadcrumb_list} />
