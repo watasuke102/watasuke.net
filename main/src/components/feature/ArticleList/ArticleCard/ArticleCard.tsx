@@ -8,6 +8,7 @@ import * as css from './ArticleCard.css';
 import {initialized_a} from '@utils/initialized_a.css';
 import Link from 'next/link';
 import React from 'react';
+import {cs} from '@watasuke.net/common';
 import {TagContainer} from '@feature/Tag';
 import {AllArticlesQuery} from '@utils/graphql';
 
@@ -16,28 +17,21 @@ interface Props {
 }
 
 export function ArticleCard({article}: Props) {
-  // wrap by <div> twice in order to prevent layout collapse
-  // on the first visit or hard reloading
   return (
     <div className={css.container}>
       <Link
         href={'/blog/article/' + article.slug}
-        className={initialized_a}
+        className={cs(initialized_a, css.link)}
         key={article.slug}
         aria-label={article.title}
       >
-        <div className={css.inside_link}>
-          <div>
-            <span className={css.date}>{article.publishedAt.slice(0, 10)}</span>
-          </div>
-
-          <div className={css.tagcontainer_wrapper}>
-            <TagContainer tags={article.tags} />
-          </div>
-          <h2 className={css.title}>{article.title}</h2>
-          <p className={css.description}>{article.tldr}</p>
-        </div>
+        <span className={css.date}>{article.publishedAt.slice(0, 10)}</span>
+        <h2 className={css.title}>{article.title}</h2>
+        <p className={css.description}>{article.tldr}</p>
       </Link>
+      <div className={css.tagcontainer_wrapper}>
+        <TagContainer tags={article.tags} />
+      </div>
     </div>
   );
 }
