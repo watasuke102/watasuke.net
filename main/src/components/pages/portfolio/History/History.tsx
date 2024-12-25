@@ -7,6 +7,7 @@
 import * as css from './History.css';
 import React from 'react';
 import {color} from '@watasuke.net/common/src/css/color';
+import {cs} from '@watasuke.net/common';
 import {EventCard} from './EventCard';
 import {Heading} from '../Heading';
 import {event_list} from '@data/event_list';
@@ -18,10 +19,10 @@ interface Props {
 
 export function History(props: Props) {
   const EventList = React.useMemo(() => {
-    return Object.keys(event_list).map(year => {
+    return Object.keys(event_list).map((year, i) => {
       return (
         <div key={year}>
-          <div className={css.year_bg}>
+          <div className={cs(css.year_bg, i !== 0 && css.year_bg_padding_top)}>
             <span className={css.year}>{year}</span>
           </div>
           {event_list[year].map((e, i) => (

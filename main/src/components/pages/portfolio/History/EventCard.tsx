@@ -7,9 +7,7 @@
 import * as css from './EventCard.css';
 import {motion} from 'framer-motion';
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import Raw from 'rehype-raw';
-import Gfm from 'remark-gfm';
+import {Markdown} from '@watasuke.net/common';
 import {Transition} from '@utils/Transition';
 import {Event} from '@data/event_list';
 import IconCollapse from '@assets/icons/general/up.svg';
@@ -28,6 +26,18 @@ export function EventCard(props: Props) {
       set_opening(s => !s);
     }
   };
+
+  // without this, component fetches every time when `opening` is changed
+  const markdown = React.useMemo(
+    () => (
+      <Markdown
+        md={body}
+        embed_card={() => <></>}
+        inner_embed_card={() => <></>}
+      />
+    ),
+    [body],
+  );
 
   function Period() {
     const period = props.event.period;
@@ -113,12 +123,7 @@ export function EventCard(props: Props) {
             }}
           >
             <hr className={css.body_hr} />
-            <ReactMarkdown
-              remarkPlugins={[Gfm]}
-              rehypePlugins={[Raw]}
-              // eslint-disable-next-line react/no-children-prop
-              children={body}
-            />
+            {markdown}
           </motion.div>
         )}
       </div>

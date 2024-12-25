@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {globalStyle, style} from '@vanilla-extract/css';
+import {style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const timeline_middle_line = style({
@@ -32,10 +32,10 @@ export const year_bg = style({
   alignItems: 'center',
 
   position: 'relative',
-  padding: 80,
+  paddingBottom: 80,
 });
-globalStyle(`${year_bg}:nth-child(1)`, {
-  paddingTop: 0,
+export const year_bg_padding_top = style({
+  paddingTop: 80,
 });
 
 export const year = style({
