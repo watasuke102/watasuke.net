@@ -15,6 +15,7 @@ export const back_link = style({
 export const container = style({
   display: 'grid',
   gridTemplateColumns: '1fr auto',
+  justifyItems: 'center',
 });
 
 const middle_margin = 16;
