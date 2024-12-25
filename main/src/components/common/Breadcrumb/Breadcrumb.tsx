@@ -4,6 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as css from './Breadcrumb.css';
 import Link from 'next/link';
 import React from 'react';
 import BreadcrumbItem from '@mytypes/Breadcrumb';
@@ -15,22 +16,22 @@ interface Props {
 export function Breadcrumb(props: Props) {
   return (
     <nav aria-label='Breadcrumb'>
-      {props.breadcrumb_list.map((e, i) => (
-        <>
-          {e.item ? (
-            <Link key={`a_${i}`} href={e.item}>
-              {e.name}
-            </Link>
-          ) : (
-            <span key={`s_${i}`}>{e.name}</span>
-          )}
-          {i !== props.breadcrumb_list.length - 1 && (
-            <span key={`sep_${i}`} aria-hidden>
-              {' > '}
-            </span>
-          )}
-        </>
-      ))}
+      <ol className={css.list_ol}>
+        {props.breadcrumb_list.map((e, i) => (
+          <li key={i} className={css.list_item}>
+            {e.item ? (
+              <>
+                <Link href={e.item || ''} className={css.list_link}>
+                  {e.name}
+                </Link>
+                <span className={css.list_separator}>&gt;</span>
+              </>
+            ) : (
+              <span>{e.name}</span>
+            )}
+          </li>
+        ))}
+      </ol>
     </nav>
   );
 }
