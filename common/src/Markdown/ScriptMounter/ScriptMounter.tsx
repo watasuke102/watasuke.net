@@ -11,6 +11,12 @@ import React from 'react';
 export function ScriptMounter() {
   React.useEffect(() => {
     setTimeout(() => {
+      if (
+        document.body.getElementsByClassName('twitter-widgets-script')
+          .length !== 0
+      ) {
+        return;
+      }
       // Twitter embed
       const script = document.createElement('script');
       script.src = 'https://platform.twitter.com/widgets.js';
