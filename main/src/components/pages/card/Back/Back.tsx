@@ -23,6 +23,7 @@ export function Back(props: Props) {
           <div className={css.item} key={name}>
             <div className={css.qrcode_wrapper}>
               <img
+                className={css.qrcode_img}
                 loading='eager'
                 src={`/qr/${name}.png`}
                 alt={`qrcode (${name})`}

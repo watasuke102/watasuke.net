@@ -39,7 +39,10 @@ export const qrcode_wrapper = style({
   maxHeight: '60dvh',
   width: '100%',
   objectFit: 'contain',
-  aspectRatio: '1 / 1',
+});
+export const qrcode_img = style({
+  display: 'block',
+  margin: 'auto',
 });
 
 export const separator = style({
