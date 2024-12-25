@@ -16,30 +16,42 @@ interface Ogp {
 }
 
 async function get_ogp_from_url(url: string): Promise<Ogp> {
-  const {error, result} = await ogs({url});
-
-  if (error || !result.ogTitle) {
-    return {
-      title: '[not found]',
-      desc: '',
-      image: '',
-    };
-  } else {
-    let image = '';
-    if (Array.isArray(result.ogImage)) {
-      if (result.ogImage[0].url.charAt(0) === '/') {
-        const url_obj = new URL(url);
-        image = url_obj.origin;
+  const url_obj = new URL(url);
+  const ogp = {
+    title: url_obj.host,
+    desc: '',
+    image: '',
+  };
+  try {
+    const {error, result} = await ogs({url});
+    if (!error && result.ogTitle) {
+      if (Array.isArray(result.ogImage)) {
+        if (result.ogImage[0].url.charAt(0) === '/') {
+          ogp.image = url_obj.origin;
+        }
+        ogp.image += result.ogImage[0].url;
       }
-      image += result.ogImage[0].url;
-    }
 
-    return {
-      title: result.ogTitle,
-      desc: result.ogDescription ?? '',
-      image,
-    };
+      ogp.title = result.ogTitle;
+      ogp.desc = result.ogDescription ?? '';
+    }
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any
+      --
+      open-graph-scraper throws an error which has ErrorResult type, but it isn't exported
+      so I can't use `instanceof` for throwed error
+    */
+  } catch (e: any) {
+    if (
+      'result' in e &&
+      'errorDetails' in e.result &&
+      e.result.errorDetails instanceof Error
+    ) {
+      const err = e.result.errorDetails as Error;
+      console.log(`[OGP error] failed to fetch '${url}'
+        message: [${err.name}] ${err.message}`);
+    }
   }
+  return ogp;
 }
 
 interface Props {

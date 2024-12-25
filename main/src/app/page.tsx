@@ -6,10 +6,9 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from '@pages/top.css';
 import '@watasuke.net/common/src/css/base.css';
-import {Background} from '@common';
+import {Avatar, Background} from '@common';
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import {ArticleCard} from '@feature/ArticleList/ArticleCard/ArticleCard';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template, JsonLd} from '@utils/Metadata';
@@ -59,13 +58,7 @@ export default async function Index() {
       <main className={css.container}>
         <div className={css.left}>
           <div className={css.icon_and_welcome}>
-            <Image
-              loading='eager'
-              width={240}
-              height={240}
-              src='/icon.jpg'
-              alt='icon'
-            />
+            <Avatar size={240} loading='eager' />
             <h2 className={css.welcome_head}>Welcome</h2>
           </div>
           <nav className={css.menu}>

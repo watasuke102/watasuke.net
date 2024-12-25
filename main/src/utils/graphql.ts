@@ -145,6 +145,11 @@ export type AllFavoriteArticlesQueryVariables = Exact<{ [key: string]: never; }>
 
 export type AllFavoriteArticlesQuery = { __typename?: 'Query', allPublicArticles: Array<{ __typename?: 'Article', slug: string, title: string, tldr: string, isFavorite: boolean, publishedAt: string, updatedAt: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> }> };
 
+export type AllArticleSlugsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AllArticleSlugsQuery = { __typename?: 'Query', allPublicArticles: Array<{ __typename?: 'Article', slug: string }> };
+
 export type ArticlesWithTagQueryVariables = Exact<{
   tagSlug: Scalars['String']['input'];
 }>;
@@ -156,6 +161,11 @@ export type AllTagsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type AllTagsQuery = { __typename?: 'Query', allTags: Array<{ __typename?: 'Tag', slug: string, name: string }> };
+
+export type AllTagSlugsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AllTagSlugsQuery = { __typename?: 'Query', allTags: Array<{ __typename?: 'Tag', slug: string }> };
 
 export type TagQueryVariables = Exact<{
   slug: Scalars['String']['input'];
@@ -226,6 +236,13 @@ export const AllFavoriteArticlesDocument = gql`
   }
 }
     `;
+export const AllArticleSlugsDocument = gql`
+    query allArticleSlugs {
+  allPublicArticles {
+    slug
+  }
+}
+    `;
 export const ArticlesWithTagDocument = gql`
     query articlesWithTag($tagSlug: String!) {
   allPublicArticles(filter: {tags: [$tagSlug]}) {
@@ -251,6 +268,13 @@ export const AllTagsDocument = gql`
   allTags {
     slug
     name
+  }
+}
+    `;
+export const AllTagSlugsDocument = gql`
+    query allTagSlugs {
+  allTags {
+    slug
   }
 }
     `;
@@ -326,11 +350,17 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     allFavoriteArticles(variables?: AllFavoriteArticlesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllFavoriteArticlesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<AllFavoriteArticlesQuery>(AllFavoriteArticlesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allFavoriteArticles', 'query', variables);
     },
+    allArticleSlugs(variables?: AllArticleSlugsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllArticleSlugsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<AllArticleSlugsQuery>(AllArticleSlugsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allArticleSlugs', 'query', variables);
+    },
     articlesWithTag(variables: ArticlesWithTagQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticlesWithTagQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ArticlesWithTagQuery>(ArticlesWithTagDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articlesWithTag', 'query', variables);
     },
     allTags(variables?: AllTagsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllTagsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<AllTagsQuery>(AllTagsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allTags', 'query', variables);
+    },
+    allTagSlugs(variables?: AllTagSlugsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllTagSlugsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<AllTagSlugsQuery>(AllTagSlugsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allTagSlugs', 'query', variables);
     },
     tag(variables: TagQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<TagQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<TagQuery>(TagDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'tag', 'query', variables);

@@ -12,6 +12,9 @@ import {ql} from '@utils/QL';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_metadata, JsonLd, viewport} from '@utils/Metadata';
 
+export async function generateStaticParams() {
+  return (await ql().allTagSlugs()).allTags;
+}
 export async function generateMetadata({params}: Props) {
   const slug = (await params).slug;
   const {tag} = await ql().tag({slug});

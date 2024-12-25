@@ -16,6 +16,8 @@ export const {viewport, metadata} = gen_template(
   '/portfolio',
 );
 
+export const dynamic = 'force-static';
+
 export default async function PortfolioPage({
   searchParams,
 }: {

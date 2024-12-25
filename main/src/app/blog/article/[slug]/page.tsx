@@ -19,6 +19,9 @@ type Props = {
   params: Promise<{slug: string}>;
 };
 
+export async function generateStaticParams() {
+  return (await ql().allArticleSlugs()).allPublicArticles;
+}
 export async function generateMetadata({params}: Props) {
   const slug = (await params).slug;
   const {article} = await ql().articleMeadata({slug});

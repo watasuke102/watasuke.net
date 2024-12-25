@@ -7,7 +7,7 @@
 import * as css from './Welcome.css';
 import {motion} from 'framer-motion';
 import React from 'react';
-import Image from 'next/image';
+import {Avatar} from '@common';
 import {Transition} from '@utils/Transition';
 import IconEnvelope from '@assets/icons/Links/envelope.svg';
 import IconGitHub from '@assets/icons/Links/github.svg';
@@ -32,13 +32,7 @@ export function Welcome(props: Props) {
         <h2 className={css.greeting}>Hi there👋</h2>
 
         <div className={css.avatar_and_name}>
-          <Image
-            className={css.avatar}
-            width={240}
-            height={240}
-            src='/icon.jpg'
-            alt='icon'
-          />
+          <Avatar size={240} loading='eager' />
           <div>
             <p className={css.name_main}>わたすけ</p>
             <p className={css.name_sub}>Watasuke</p>

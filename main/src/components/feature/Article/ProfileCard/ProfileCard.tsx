@@ -5,22 +5,16 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './ProfileCard.css';
-import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
+import {Avatar} from '@common';
 import {ql} from '@utils/QL';
 
 export async function ProfileCard() {
   const {sitedata} = await ql().shortProfile();
   return (
     <section className={css.container}>
-      <Image
-        className={css.avatar}
-        width={80}
-        height={80}
-        src='/icon.jpg'
-        alt='icon'
-      />
+      <Avatar size={80} loading='lazy' className={css.avatar} />
       <p>わたすけ</p>
       <p className={css.body}>
         {sitedata.shortProfile}

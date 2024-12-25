@@ -40,9 +40,6 @@ export function gen_metadata(
     title,
     description,
     metadataBase: new URL(config.site_url),
-    icons: {
-      icon: '/icon.jpg',
-    },
     alternates: {
       canonical: url,
       types: {

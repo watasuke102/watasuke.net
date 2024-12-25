@@ -32,6 +32,11 @@ query allFavoriteArticles {
     }
   }
 }
+query allArticleSlugs {
+  allPublicArticles {
+    slug
+  }
+}
 query articlesWithTag($tagSlug: String!) {
   allPublicArticles(filter: {tags: [$tagSlug]}) {
     slug
@@ -55,6 +60,11 @@ query allTags {
   allTags {
     slug
     name
+  }
+}
+query allTagSlugs {
+  allTags {
+    slug
   }
 }
 query tag($slug: String!) {
