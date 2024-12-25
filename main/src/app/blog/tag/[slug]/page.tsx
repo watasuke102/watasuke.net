@@ -22,7 +22,7 @@ export async function generateMetadata({params}: Props) {
     return {};
   }
   return gen_metadata(
-    tag.name,
+    `タグ「${tag.name}」`,
     `タグ「${tag.name}」が付いた記事の一覧ページ`,
     `/blog/tag/${slug}`,
   );

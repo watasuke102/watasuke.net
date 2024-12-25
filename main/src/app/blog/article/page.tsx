@@ -19,7 +19,7 @@ const breadcrumb_list = GenBreadcrumb([
   {name: 'Article'},
 ]);
 export const {viewport, metadata} = gen_template(
-  'ブログ',
+  '記事一覧',
   'これまでに投稿した記事の一覧ページです',
   '/blog/article',
 );
