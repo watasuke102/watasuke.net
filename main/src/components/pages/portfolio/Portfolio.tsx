@@ -23,7 +23,7 @@ const visible_mask   = `repeating-linear-gradient(-60deg, ${color.bg} 0px 0px, t
 const invisible_mask = `repeating-linear-gradient(-60deg, ${color.bg} 0px ${blind_width}px, transparent 0px ${blind_width}px)`;
 
 interface Props {
-  init_animation?: string | undefined;
+  init_animation: string | undefined;
   init_lang: string | undefined;
 }
 

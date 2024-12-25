@@ -5,6 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {Back} from './Back/Back';
+import {CardPage} from './CardPage/CardPage';
 import {Front} from './Front/Front';
 
-export {Front, Back};
+export {CardPage, Front, Back};
