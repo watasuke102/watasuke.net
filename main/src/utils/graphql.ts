@@ -150,12 +150,26 @@ export type AllArticleSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type AllArticleSlugsQuery = { __typename?: 'Query', allPublicArticles: Array<{ __typename?: 'Article', slug: string }> };
 
+export type ArticleQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type ArticleQuery = { __typename?: 'Query', article?: { __typename?: 'Article', slug: string, title: string, tldr: string, tldrReal?: string | null, publishedAt: string, updatedAt: string, isFavorite: boolean, isPublished: boolean, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> } | null, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }> };
+
 export type ArticlesWithTagQueryVariables = Exact<{
   tagSlug: Scalars['String']['input'];
 }>;
 
 
 export type ArticlesWithTagQuery = { __typename?: 'Query', allPublicArticles: Array<{ __typename?: 'Article', slug: string, title: string, tldr: string, isFavorite: boolean, publishedAt: string, updatedAt: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> }>, tag?: { __typename?: 'Tag', slug: string, name: string } | null };
+
+export type ArticleMeadataQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type ArticleMeadataQuery = { __typename?: 'Query', article?: { __typename?: 'Article', title: string, tldr: string } | null };
 
 export type AllTagsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -174,6 +188,11 @@ export type TagQueryVariables = Exact<{
 
 export type TagQuery = { __typename?: 'Query', tag?: { __typename?: 'Tag', slug: string, name: string } | null };
 
+export type SitemapInfoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SitemapInfoQuery = { __typename?: 'Query', allPublicArticles: Array<{ __typename?: 'Article', slug: string, updatedAt: string }>, allTags: Array<{ __typename?: 'Tag', slug: string }> };
+
 export type ContentsGitHashQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -188,20 +207,6 @@ export type ProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type ProfileQuery = { __typename?: 'Query', sitedata: { __typename?: 'Sitedata', profile: string } };
-
-export type ArticleMeadataQueryVariables = Exact<{
-  slug: Scalars['String']['input'];
-}>;
-
-
-export type ArticleMeadataQuery = { __typename?: 'Query', article?: { __typename?: 'Article', title: string, tldr: string } | null };
-
-export type ArticleQueryVariables = Exact<{
-  slug: Scalars['String']['input'];
-}>;
-
-
-export type ArticleQuery = { __typename?: 'Query', article?: { __typename?: 'Article', slug: string, title: string, tldr: string, tldrReal?: string | null, publishedAt: string, updatedAt: string, isFavorite: boolean, isPublished: boolean, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> } | null, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }> };
 
 
 export const AllArticlesDocument = gql`
@@ -243,6 +248,29 @@ export const AllArticleSlugsDocument = gql`
   }
 }
     `;
+export const ArticleDocument = gql`
+    query article($slug: String!) {
+  article(slug: $slug) {
+    slug
+    title
+    tldr
+    tldrReal
+    publishedAt
+    updatedAt
+    isFavorite
+    isPublished
+    tags {
+      slug
+      name
+    }
+    body
+  }
+  allTags {
+    slug
+    name
+  }
+}
+    `;
 export const ArticlesWithTagDocument = gql`
     query articlesWithTag($tagSlug: String!) {
   allPublicArticles(filter: {tags: [$tagSlug]}) {
@@ -260,6 +288,14 @@ export const ArticlesWithTagDocument = gql`
   tag(slug: $tagSlug) {
     slug
     name
+  }
+}
+    `;
+export const ArticleMeadataDocument = gql`
+    query articleMeadata($slug: String!) {
+  article(slug: $slug) {
+    title
+    tldr
   }
 }
     `;
@@ -286,6 +322,17 @@ export const TagDocument = gql`
   }
 }
     `;
+export const SitemapInfoDocument = gql`
+    query sitemapInfo {
+  allPublicArticles {
+    slug
+    updatedAt
+  }
+  allTags {
+    slug
+  }
+}
+    `;
 export const ContentsGitHashDocument = gql`
     query contentsGitHash {
   contentsGitHeadHash
@@ -302,37 +349,6 @@ export const ProfileDocument = gql`
     query profile {
   sitedata {
     profile
-  }
-}
-    `;
-export const ArticleMeadataDocument = gql`
-    query articleMeadata($slug: String!) {
-  article(slug: $slug) {
-    title
-    tldr
-  }
-}
-    `;
-export const ArticleDocument = gql`
-    query article($slug: String!) {
-  article(slug: $slug) {
-    slug
-    title
-    tldr
-    tldrReal
-    publishedAt
-    updatedAt
-    isFavorite
-    isPublished
-    tags {
-      slug
-      name
-    }
-    body
-  }
-  allTags {
-    slug
-    name
   }
 }
     `;
@@ -353,8 +369,14 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     allArticleSlugs(variables?: AllArticleSlugsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllArticleSlugsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<AllArticleSlugsQuery>(AllArticleSlugsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allArticleSlugs', 'query', variables);
     },
+    article(variables: ArticleQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticleQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ArticleQuery>(ArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'article', 'query', variables);
+    },
     articlesWithTag(variables: ArticlesWithTagQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticlesWithTagQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ArticlesWithTagQuery>(ArticlesWithTagDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articlesWithTag', 'query', variables);
+    },
+    articleMeadata(variables: ArticleMeadataQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticleMeadataQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ArticleMeadataQuery>(ArticleMeadataDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articleMeadata', 'query', variables);
     },
     allTags(variables?: AllTagsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllTagsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<AllTagsQuery>(AllTagsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allTags', 'query', variables);
@@ -365,6 +387,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     tag(variables: TagQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<TagQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<TagQuery>(TagDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'tag', 'query', variables);
     },
+    sitemapInfo(variables?: SitemapInfoQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<SitemapInfoQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<SitemapInfoQuery>(SitemapInfoDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'sitemapInfo', 'query', variables);
+    },
     contentsGitHash(variables?: ContentsGitHashQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ContentsGitHashQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ContentsGitHashQuery>(ContentsGitHashDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'contentsGitHash', 'query', variables);
     },
@@ -373,12 +398,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     profile(variables?: ProfileQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ProfileQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ProfileQuery>(ProfileDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'profile', 'query', variables);
-    },
-    articleMeadata(variables: ArticleMeadataQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticleMeadataQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ArticleMeadataQuery>(ArticleMeadataDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articleMeadata', 'query', variables);
-    },
-    article(variables: ArticleQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticleQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ArticleQuery>(ArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'article', 'query', variables);
     }
   };
 }

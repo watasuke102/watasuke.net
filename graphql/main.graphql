@@ -37,6 +37,27 @@ query allArticleSlugs {
     slug
   }
 }
+query article($slug: String!) {
+  article(slug: $slug) {
+    slug
+    title
+    tldr
+    tldrReal
+    publishedAt
+    updatedAt
+    isFavorite
+    isPublished
+    tags {
+      slug
+      name
+    }
+    body
+  }
+  allTags {
+    slug
+    name
+  }
+}
 query articlesWithTag($tagSlug: String!) {
   allPublicArticles(filter: {tags: [$tagSlug]}) {
     slug
@@ -53,6 +74,12 @@ query articlesWithTag($tagSlug: String!) {
   tag(slug: $tagSlug) {
     slug
     name
+  }
+}
+query articleMeadata($slug: String!) {
+  article(slug: $slug) {
+    title
+    tldr
   }
 }
 
@@ -74,6 +101,16 @@ query tag($slug: String!) {
   }
 }
 
+query sitemapInfo {
+  allPublicArticles {
+    slug
+    updatedAt
+  }
+  allTags {
+    slug
+  }
+}
+
 query contentsGitHash {
   contentsGitHeadHash
 }
@@ -85,34 +122,5 @@ query shortProfile {
 query profile {
   sitedata {
     profile
-  }
-}
-
-query articleMeadata($slug: String!) {
-  article(slug: $slug) {
-    title
-    tldr
-  }
-}
-
-query article($slug: String!) {
-  article(slug: $slug) {
-    slug
-    title
-    tldr
-    tldrReal
-    publishedAt
-    updatedAt
-    isFavorite
-    isPublished
-    tags {
-      slug
-      name
-    }
-    body
-  }
-  allTags {
-    slug
-    name
   }
 }
