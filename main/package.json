@@ -10,6 +10,7 @@
     "new": "scaffdog generate"
   },
   "dependencies": {
+    "@next/eslint-plugin-next": "^15.1.2",
     "@svgr/webpack": "^8.1.0",
     "@types/react": "^19.0.1",
     "@vanilla-extract/css": "^1.16.1",

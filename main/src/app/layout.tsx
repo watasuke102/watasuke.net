@@ -5,22 +5,25 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import '@watasuke.net/common/src/css/base.css';
+import {M_PLUS_Rounded_1c} from 'next/font/google';
+
+/* eslint-disable @typescript-eslint/no-unused-vars
+   --
+  * `font-family` is set by `base.css`
+  * `ts-expect-error` prevents from using `eslint-disable-next-line`
+  so I'm forced to use `eslint-disable` here
+*/
+// @ts-expect-error: ?
+const _ = M_PLUS_Rounded_1c({
+  weight: '400',
+  display: 'swap',
+  subsets: ['latin'],
+});
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang='ja'>
-      <head>
-        <link rel='preconnect' href='https://fonts.googleapis.com' />
-        <link
-          rel='preconnect'
-          href='https://fonts.gstatic.com'
-          crossOrigin='anonymous'
-        />
-        <link
-          href='https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=M+PLUS+Rounded+1c&display=swap'
-          rel='stylesheet'
-        ></link>
-      </head>
+      <head></head>
       <body>{children}</body>
     </html>
   );

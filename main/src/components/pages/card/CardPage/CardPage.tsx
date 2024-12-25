@@ -36,7 +36,7 @@ export function CardPage(props: Props) {
   const [is_fliped, set_is_flipped] = React.useState(false);
   const [is_button_hidden, set_is_button_hidden] = React.useState(false);
   const [is_button_disabled, set_is_button_disabled] = React.useState(
-    props.init_disable_button,
+    props.init_disable_button === 'true',
   );
   const router = useRouter();
 
