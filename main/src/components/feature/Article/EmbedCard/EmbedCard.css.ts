@@ -9,7 +9,11 @@ import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
   display: 'grid',
-  gridTemplateColumns: '50% 50%',
+  gridTemplate: `
+    'img title' auto
+    'img url  ' auto
+    'img desc ' 1fr / 1fr 1fr
+  `,
 
   width: '90%',
   margin: '30px auto',
@@ -42,12 +46,15 @@ export const container = style({
 });
 
 export const img_fallback = style({
+  gridArea: 'img',
   display: 'block',
   textAlign: 'center',
   margin: 'auto',
 });
 
 export const img_wrapper = style({
+  gridArea: 'img',
+  display: 'block',
   margin: 'auto',
   width: '90%',
   maxHeight: 260,
@@ -70,6 +77,7 @@ export const text_container = style({
 });
 
 export const title = style({
+  gridArea: 'title',
   fontSize: '1.3em',
   fontWeight: 'bold',
   selectors: {
@@ -80,6 +88,7 @@ export const title = style({
 });
 
 export const url = style({
+  gridArea: 'url',
   color: color.p0,
   fontSize: '0.75em',
   margin: '8px 0',
@@ -87,5 +96,6 @@ export const url = style({
 });
 
 export const description = style({
+  gridArea: 'desc',
   fontSize: '0.85em',
 });

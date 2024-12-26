@@ -8,6 +8,7 @@ import {initialized_a} from '@utils/initialized_a.css';
 import * as css from './EmbedCard.css';
 import ogs from 'open-graph-scraper';
 import React from 'react';
+import {cs} from '@watasuke.net/common';
 
 interface Ogp {
   title: string;
@@ -60,26 +61,22 @@ interface Props {
 export async function EmbedCard({url}: Props) {
   const ogp = await get_ogp_from_url(url);
   return ogp ? (
-    <a href={url} className={initialized_a}>
-      <div className={css.container}>
-        {ogp.image === '' ? (
-          <span className={css.img_fallback}>{'[OGP image not found]'}</span>
-        ) : (
-          <div className={css.img_wrapper}>
-            <img
-              className={css.thumbnail}
-              src={ogp.image}
-              alt={ogp.title}
-              loading='lazy'
-            />
-          </div>
-        )}
-        <div className={css.text_container}>
-          <span className={css.title}>{ogp.title}</span>
-          <span className={css.url}>{decodeURI(url)}</span>
-          <span className={css.description}>{ogp.desc ?? ''}</span>
-        </div>
-      </div>
+    <a href={url} className={cs(initialized_a, css.container)}>
+      {ogp.image === '' ? (
+        <span className={css.img_fallback}>{'[OGP image not found]'}</span>
+      ) : (
+        <span className={css.img_wrapper}>
+          <img
+            className={css.thumbnail}
+            src={ogp.image}
+            alt={ogp.title}
+            loading='lazy'
+          />
+        </span>
+      )}
+      <span className={css.title}>{ogp.title}</span>
+      <span className={css.url}>{decodeURI(url)}</span>
+      <span className={css.description}>{ogp.desc ?? ''}</span>
     </a>
   ) : (
     <span>{url}</span>
