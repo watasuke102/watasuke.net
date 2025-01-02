@@ -5,6 +5,7 @@
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from '@pages/blog.css';
+import Link from 'next/link';
 import '@watasuke.net/common/src/css/base.css';
 import {Breadcrumb} from '@common';
 import React from 'react';
@@ -13,6 +14,7 @@ import {ArticleList} from '@feature/ArticleList';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {ql} from '@utils/QL';
 import {gen_template, JsonLd} from '@utils/Metadata';
+import FeedIcon from '@assets/icons/general/feed.svg';
 
 const breadcrumb_list = GenBreadcrumb([
   {name: 'Blog', item: '/blog'},
@@ -32,7 +34,12 @@ export default async function ArticleListPage() {
     <>
       <JsonLd breadcrumb_list={breadcrumb_list} />
       <Breadcrumb breadcrumb_list={breadcrumb_list} />
-      <h1>記事一覧</h1>
+      <div>
+        <h1 className={css.page_title}>記事一覧</h1>
+        <Link href='/feed' className={css.feed_icon}>
+          <FeedIcon />
+        </Link>
+      </div>
       <div className={css.container}>
         <ArticleList list={allPublicArticles} />
       </div>

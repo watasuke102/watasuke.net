@@ -8,8 +8,10 @@ import * as config from '@watasuke.net/config/config';
 import * as css from './Footer.css';
 import child_process from 'child_process';
 import {SimpleInnerLinks} from '@common';
+import Link from 'next/link';
 import {ql} from '@utils/QL';
 import {social_links} from '@data/social_links';
+import FeedIcon from '@assets/icons/general/feed.svg';
 
 export async function Footer() {
   let githash = '';
@@ -58,6 +60,9 @@ export async function Footer() {
           // eslint-disable-next-line jsx-a11y/anchor-has-content
           return <a key={e.data.title} className={e.class_name} {...e.data} />;
         })}
+        <Link href='/feed' className={css.icon}>
+          <FeedIcon />
+        </Link>
       </div>
 
       <div className={css.link_container}>

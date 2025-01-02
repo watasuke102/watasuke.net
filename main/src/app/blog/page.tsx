@@ -8,12 +8,14 @@ import * as css from '@pages/blog.css';
 import '@watasuke.net/common/src/css/base.css';
 import {Breadcrumb} from '@common';
 import React from 'react';
+import Link from 'next/link';
 import {AdsInArticle} from '@watasuke.net/common';
 import {ArticleList} from '@feature/ArticleList';
 import {AllTagList} from '@feature/Tag';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template, JsonLd} from '@utils/Metadata';
 import {ql} from '@utils/QL';
+import FeedIcon from '@assets/icons/general/feed.svg';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Blog'}]);
 export const {viewport, metadata} = gen_template(
@@ -30,7 +32,12 @@ export default async function Blog() {
     <>
       <JsonLd breadcrumb_list={breadcrumb_list} />
       <Breadcrumb breadcrumb_list={breadcrumb_list} />
-      <h1>ブログ</h1>
+      <div>
+        <h1 className={css.page_title}>ブログ</h1>
+        <Link href='/feed' className={css.feed_icon}>
+          <FeedIcon />
+        </Link>
+      </div>
       <h2>タグ一覧</h2>
       <AllTagList />
 
