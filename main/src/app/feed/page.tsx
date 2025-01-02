@@ -28,13 +28,13 @@ export default function About() {
         <h1>フィード</h1>
         <p>当サイトの更新をAtomで購読することが出来ます！</p>
         <h2>
-          <Link href='/feed/page'>固定ページ</Link>
+          <Link href='/feed/page.xml'>固定ページ</Link>
         </h2>
-        <span>プロフィール等のページ更新を購読できます：</span>
+        <span>プロフィール等のページ更新を購読できます</span>
         <h2>
-          <Link href='/feed/blog'>ブログ記事</Link>
+          <Link href='/feed/blog.xml'>ブログ記事</Link>
         </h2>
-        <span>投稿されたブログ記事を購読できます：</span>
+        <span>投稿されたブログ記事を購読できます</span>
         <AdsInArticle />
       </main>
     </>
