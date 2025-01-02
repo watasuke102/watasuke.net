@@ -6,7 +6,6 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {apiUrl} from '@watasuke.net/config/config';
 import * as css from './BlogContent.css';
-// import Giscus from '@giscus/react';
 import React from 'react';
 import {ShareList} from '@common';
 import Link from 'next/link';
@@ -14,6 +13,7 @@ import {AdsInArticle, Heading, Markdown, cs} from '@watasuke.net/common';
 import {EmbedCard, InnerEmbedCard} from '@feature/Article';
 import {TocInArticle} from '@feature/TableOfContents';
 import {TagContainer} from '@feature/Tag';
+import {CommentArea} from '../CommentArea/CommentArea';
 import IconHistory from '@assets/icons/article/history.svg';
 import IconUpload from '@assets/icons/article/upload.svg';
 import IconLeft from '@assets/icons/general/left.svg';
@@ -92,27 +92,7 @@ export function BlogContent(props: Props) {
           </span>
         )}
       </nav>
-
-      {/* <section>
-        <h2>Comments</h2>
-        <p>
-          Powered by <a href='https://github.com/giscus/giscus'>Giscus</a>
-        </p>
-        <Giscus
-          repo='watasuke102/watasuke.net'
-          repoId='MDEwOlJlcG9zaXRvcnkzNTc4OTQwNzk='
-          category='Article'
-          categoryId='DIC_kwDOFVUHv84CgSPQ'
-          mapping='og:title'
-          strict='0'
-          reactionsEnabled='1'
-          emitMetadata='0'
-          inputPosition='top'
-          theme='dark_dimmed'
-          lang='ja'
-          loading='lazy'
-        />
-      </section> */}
+      <CommentArea />
     </>
   );
 }
