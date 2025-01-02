@@ -11,14 +11,14 @@ import {new_feed_obj} from '../common';
 export const dynamic = 'force-static';
 
 const title_map: Record<string, string> = {
-  '/profile': 'プロフィール',
-  '/portfolio': 'ポートフォリオ',
-  '/feed': 'フィード',
-  '/card': 'card',
-  '/blog': 'ブログ',
-  '/blog/tag': 'タグ一覧',
-  '/blog/article': '記事一覧',
-  '/about': 'このサイトについて',
+  '/profile/': 'プロフィール',
+  '/portfolio/': 'ポートフォリオ',
+  '/feed/': 'フィード',
+  '/card/': 'card',
+  '/blog/': 'ブログ',
+  '/blog/tag/': 'タグ一覧',
+  '/blog/article/': '記事一覧',
+  '/about/': 'このサイトについて',
 };
 
 export async function GET() {
@@ -27,6 +27,7 @@ export async function GET() {
     'watasuke.net の固定ページに関する更新通知',
     '',
   );
+
   const files = globSync('src/app/**/page.tsx')
     // remove dynamic route
     .filter(e => e.indexOf('[') === -1)
@@ -34,12 +35,12 @@ export async function GET() {
     .map(e => {
       return {
         file_path: e,
-        route: e.slice(7).replace('/page.tsx', ''),
+        route: e.slice(7).replace('page.tsx', ''),
       };
     });
   files.forEach(e => {
     let title = config.site_title;
-    if (e.route !== '') {
+    if (e.route !== '/') {
       if (title_map[e.route]) {
         title = title_map[e.route] + ' - ' + title;
       } else {
@@ -48,10 +49,10 @@ export async function GET() {
       }
     }
     feed.addItem({
-      id: e.route === '' ? 'top' : e.route,
+      id: e.route,
       title,
       date: statSync(e.file_path).mtime,
-      link: config.site_url + e.route,
+      link: config.site_url + (e.route === '/' ? '' : e.route),
     });
   });
 

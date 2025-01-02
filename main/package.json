@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "lint": "eslint --fix .",
-    "build": "next build && bash html_to_index.sh",
+    "build": "next build",
     "dev": "next dev -p 10210 -H 0.0.0.0",
-    "serve": "next start -p 2999 -H 0.0.0.0",
     "new": "scaffdog generate"
   },
   "dependencies": {

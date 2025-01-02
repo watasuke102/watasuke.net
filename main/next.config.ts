@@ -11,6 +11,7 @@ const withVanillaExtract = createVanillaExtractPlugin();
 
 const nextConfig: NextConfig = withVanillaExtract({
   output: 'export',
+  trailingSlash: true,
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,

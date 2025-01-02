@@ -18,7 +18,7 @@ export async function GET() {
     '/blog',
   );
   allPublicArticles.forEach(e => {
-    const link = config.site_url + '/blog/article/' + e.slug;
+    const link = config.site_url + '/blog/article/' + e.slug + '/';
     feed.addItem({
       id: e.slug,
       title: e.title,

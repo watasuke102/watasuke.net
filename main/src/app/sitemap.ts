@@ -20,23 +20,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     {lastModified, priority: 1.0, url: config.site_url},
-    {lastModified, priority: 1.0, url: `${config.site_url}/profile`},
-    {lastModified, priority: 1.0, url: `${config.site_url}/portfolio`},
-    {lastModified, priority: 0.8, url: `${config.site_url}/blog`},
-    {lastModified, priority: 0.8, url: `${config.site_url}/card`},
-    {lastModified, priority: 0.5, url: `${config.site_url}/about`},
-    {lastModified, priority: 0.1, url: `${config.site_url}/blog/tag`},
-    {lastModified, priority: 0.1, url: `${config.site_url}/blog/article`},
+    {lastModified, priority: 1.0, url: `${config.site_url}/profile/`},
+    {lastModified, priority: 1.0, url: `${config.site_url}/portfolio/`},
+    {lastModified, priority: 0.8, url: `${config.site_url}/blog/`},
+    {lastModified, priority: 0.8, url: `${config.site_url}/card/`},
+    {lastModified, priority: 0.5, url: `${config.site_url}/about/`},
+    {lastModified, priority: 0.5, url: `${config.site_url}/feed/`},
+    {lastModified, priority: 0.1, url: `${config.site_url}/blog/tag/`},
+    {lastModified, priority: 0.1, url: `${config.site_url}/blog/article/`},
     ...allPublicArticles.map<Entry>(e => {
       return {
-        url: `${config.site_url}/blog/article/${e.slug}`,
+        url: `${config.site_url}/blog/article/${e.slug}/`,
         lastModified: e.updatedAt + '+0900',
         priority: 1.0,
       };
     }),
     ...allTags.map<Entry>(e => {
       return {
-        url: `${config.site_url}/blog/tag/${e.slug}`,
+        url: `${config.site_url}/blog/tag/${e.slug}/`,
         lastModified,
         priority: 0.1,
       };
