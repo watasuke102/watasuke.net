@@ -18,6 +18,7 @@
     "@vanilla-extract/webpack-plugin": "^2.3.15",
     "@watasuke.net/common": "^0.0.0",
     "@watasuke.net/config": "^0.0.0",
+    "feed": "^4.2.2",
     "framer-motion": "^11.14.4",
     "graphql": "^16.9.0",
     "graphql-request": "7.1.2",
