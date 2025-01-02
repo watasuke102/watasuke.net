@@ -6,17 +6,15 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as config from '@watasuke.net/config/config';
 import {ql} from '@utils/QL';
+import {date_to_jst_str} from '@utils/DateToJSTStr';
 import type {MetadataRoute} from 'next';
 
 export const dynamic = 'force-static';
-const jst = 9 /*hours*/ * 60 /*minutes*/ * 60 /*sec*/ * 1000; /*ms*/
 
 type Entry = MetadataRoute.Sitemap[0];
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const {allPublicArticles, allTags} = await ql().sitemapInfo();
-  const now = new Date(Date.now() + jst);
-  // remove `.???Z` (? is msec) and convert JST string
-  const lastModified = now.toISOString().slice(0, -5) + '+0900';
+  const lastModified = date_to_jst_str();
 
   return [
     {lastModified, priority: 1.0, url: config.site_url},
