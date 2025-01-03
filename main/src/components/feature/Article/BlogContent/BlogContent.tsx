@@ -8,21 +8,19 @@ import {apiUrl} from '@watasuke.net/config/config';
 import * as css from './BlogContent.css';
 import React from 'react';
 import {ShareList} from '@common';
-import Link from 'next/link';
-import {AdsInArticle, Heading, Markdown, cs} from '@watasuke.net/common';
+import {AdsInArticle, Heading, Markdown} from '@watasuke.net/common';
 import {EmbedCard, InnerEmbedCard} from '@feature/Article';
 import {TocInArticle} from '@feature/TableOfContents';
 import {TagContainer} from '@feature/Tag';
 import {CommentArea} from '../CommentArea/CommentArea';
 import IconHistory from '@assets/icons/article/history.svg';
 import IconUpload from '@assets/icons/article/upload.svg';
-import IconLeft from '@assets/icons/general/left.svg';
-import IconRight from '@assets/icons/general/right.svg';
 import Article from '@mytypes/Article';
 
 interface Props {
   data: Article;
   headings: Heading[];
+  // FIXME: these are not used
   newer: Article | undefined;
   older: Article | undefined;
 }
@@ -60,38 +58,11 @@ export function BlogContent(props: Props) {
         inner_embed_card={InnerEmbedCard}
       />
       <AdsInArticle />
-
-      <hr />
-      <nav>
-        {props.newer ? (
-          <Link
-            href={'/blog/article/' + props.newer.slug}
-            className={cs(css.adjacent_article, css.newer_link)}
-          >
-            <IconLeft /> {props.newer.title}
-          </Link>
-        ) : (
-          <span>これより新しい記事はありません</span>
-        )}
-        <section className={css.share_box}>
-          <span>Share this article</span>
-          <span className={css.current_title}>{props.data.title}</span>
-          <ShareList />
-        </section>
-        {props.older ? (
-          <Link
-            href={'/blog/article/' + props.older.slug}
-            className={cs(css.adjacent_article, css.older_link)}
-          >
-            {props.older.title}
-            <IconRight />
-          </Link>
-        ) : (
-          <span className={css.missing_older}>
-            これより古い記事はありません
-          </span>
-        )}
-      </nav>
+      <section className={css.share_box}>
+        <span>Share this article</span>
+        <span className={css.current_title}>{props.data.title}</span>
+        <ShareList />
+      </section>
       <CommentArea />
     </>
   );
