@@ -4,8 +4,10 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @Watasuke102
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import * as config from '@watasuke.net/config/config';
 import '@watasuke.net/common/src/css/base.css';
 import {M_PLUS_Rounded_1c} from 'next/font/google';
+import {GoogleAnalytics} from '@next/third-parties/google';
 
 /* eslint-disable @typescript-eslint/no-unused-vars
    --
@@ -25,6 +27,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html lang='ja'>
       <head></head>
       <body>{children}</body>
+      {config.trackingId !== '_' && (
+        <GoogleAnalytics gaId={config.trackingId} />
+      )}
     </html>
   );
 }
