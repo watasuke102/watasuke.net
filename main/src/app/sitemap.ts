@@ -6,7 +6,6 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as config from '@watasuke.net/config/config';
 import {ql} from '@utils/QL';
-import {date_to_jst_str} from '@utils/DateToJSTStr';
 import type {MetadataRoute} from 'next';
 
 export const dynamic = 'force-static';
@@ -14,7 +13,7 @@ export const dynamic = 'force-static';
 type Entry = MetadataRoute.Sitemap[0];
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const {allPublicArticles, allTags} = await ql().sitemapInfo();
-  const lastModified = date_to_jst_str();
+  const lastModified = new Date();
 
   return [
     {lastModified, priority: 1.0, url: config.site_url},
@@ -29,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...allPublicArticles.map<Entry>(e => {
       return {
         url: `${config.site_url}/blog/article/${e.slug}/`,
-        lastModified: e.updatedAt + '+0900',
+        lastModified: e.updatedAt + 'Z', // FIXME?
         priority: 1.0,
       };
     }),
