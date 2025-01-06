@@ -11,14 +11,14 @@ import {ArticleEditor} from '@features/ArticleEditor';
 import {getSdk} from '@utils/graphql';
 
 type Props = {
-  params: {slug: string};
+  params: Promise<{slug: string}>;
 };
 
 export const revalidate = 0;
 
-export default async function page(props: Props): Promise<JSX.Element> {
+export default async function page(props: Props) {
   const sdk = getSdk(new GraphQLClient('http://127.0.0.1:10212/graphql'));
-  const query = await sdk.articleEditPage({slug: props.params.slug});
+  const query = await sdk.articleEditPage({slug: (await props.params).slug});
   if (!query.article) {
     throw Error('article is empty');
   }
