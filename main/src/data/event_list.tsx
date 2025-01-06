@@ -512,5 +512,77 @@ I participated in CAPCOM Hackathon at Osaka, and developed a game using Unity.
 [my thoughts (blog)](https://watasuke.net/blog/article/participated-in-capcom-hackathon/)
 `,
     },
+    {
+      period: {
+        kind: 'period',
+        begin: {month: 11, day: 18},
+        end: {month: 11, day: 19},
+      },
+      category: 'Event',
+      title_ja: '宇部高専 第60回高専祭',
+      title_en: '60th NITUC Fes',
+      subtitle_ja: '広報部長',
+      subtitle_en: 'Public Relations Manager',
+      body_ja: `
+![作成したWebサイト](/works/nituc-fes2023.jpg)
+
+広報部長として高専祭に参加しました。主にロゴ（及びロゴ候補の投票を行うサービス）・ポスター・パンフレット・公式 Web サイト・エンディング映像（及び映像で用いる楽曲）の作成を行いました。
+
+[取り組みの紹介や感想](http://watasuke.net/blog/article/nituc-fes-2023-pr-works/)
+`,
+      body_en: `
+![Website that I created](/works/nituc-fes2023.jpg)
+
+I participated in NITUC Fes as a Public Relations Manager and created a logo (+ its voting system), poster, booklet, official Website, and ending movie (+ its music).
+
+[my works and thoughts (blog)](http://watasuke.net/blog/article/nituc-fes-2023-pr-works/)
+`,
+    },
+  ],
+  '2024': [
+    {
+      period: {
+        kind: 'period',
+        begin: {month: 11, day: 9},
+        end: {month: 11, day: 10},
+      },
+      category: 'Event',
+      title_ja: '宇部高専 第61回高専祭',
+      title_en: '61th NITUC Fes',
+      subtitle_ja: 'Webサイト制作',
+      subtitle_en: 'Developing Website',
+      body_ja: `
+高専祭の公式 Web サイトを作成しました。
+
+[取り組みの紹介や感想](http://watasuke.net/blog/article/nituc-fes-2024-website/)
+`,
+      body_en: `
+I created official Website of NITUC fes.
+
+[my works and thoughts (blog)](http://watasuke.net/blog/article/nituc-fes-2024-website/)
+`,
+    },
+    {
+      period: {
+        kind: 'period',
+        begin: {month: 11, day: 14},
+        end: {month: 11, day: 15},
+      },
+      category: 'Event',
+      title_ja: 'CODE BLUE 2024',
+      title_en: 'CODE BLUE 2024',
+      subtitle_ja: '学生スタッフ',
+      subtitle_en: 'Student Volunteer',
+      body_ja: `
+CODE BLUE 2024 に学生スタッフとして参加しました。
+
+[感想](https://watasuke.net/blog/article/codeblue-2024-as-sv/)
+`,
+      body_en: `
+I participated in CODE BLUE 2024 as a Student Volunteer.
+
+[my thoughts (blog)](https://watasuke.net/blog/article/codeblue-2024-as-sv/)
+`,
+    },
   ],
 };

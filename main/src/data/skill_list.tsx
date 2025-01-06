@@ -9,6 +9,7 @@ import Arch from '@assets/icons/Skills/arch.svg';
 import C from '@assets/icons/Skills/c.svg';
 import Cmake from '@assets/icons/Skills/cmake.svg';
 import Cpp from '@assets/icons/Skills/cpp.svg';
+import OpenGL from '@assets/icons/Skills/opengl.svg';
 import Docker from '@assets/icons/Skills/docker.svg';
 import File from '@assets/icons/Skills/file.svg';
 import Flutter from '@assets/icons/Skills/flutter.svg';
@@ -116,11 +117,50 @@ Use in backend of TAGether
     category: 'Language',
     desc_ja: '書けはしますが、言語仕様の1割も理解していません',
     desc_en: 'I can write but my knowledge of this language is less than 10%',
-
-    // framework / library
   },
   {
-    name: 'React.js',
+    name: '日本語',
+    icon: <></>,
+    tier: 1,
+    category: 'Language',
+    desc_ja: '母語です',
+    desc_en: 'My mother tongue',
+  },
+  {
+    name: 'English',
+    icon: <></>,
+    tier: 1,
+    category: 'Language',
+    desc_ja: `
+TOEFL : 79 [R26, L21, S16, W16] (試験日: 2024-12-21)
+TOEIC L&R : 905 [L465, R440] (試験日: 2024-03-17)
+TOEIC S&W : 280 [S130, W150] (試験日: 2023-11-14)
+`,
+    desc_en: `
+TOEFL : 79 [R26, L21, S16, W16] (Exam date: 2024-12-21)
+TOEIC L&R : 905 [L465, R440] (Exam date: 2024-03-17)
+TOEIC S&W : 280 [S130, W150] (Exam date: 2023-11-14)
+`,
+  },
+  {
+    name: '中文',
+    icon: <></>,
+    tier: 3,
+    category: 'Language',
+    desc_ja: 'まだ勉強中です',
+    desc_en: 'Still studying',
+  },
+  {
+    name: '한국어',
+    icon: <></>,
+    tier: 3,
+    category: 'Language',
+    desc_ja: 'まだ勉強中です',
+    desc_en: 'Still studying',
+  },
+  // framework / library
+  {
+    name: 'React',
     icon: <ReactIcon />,
     tier: 1,
     category: 'FW/Lib',
@@ -133,12 +173,26 @@ Use in backend of TAGether
     tier: 2,
     category: 'FW/Lib',
     desc_ja: `
-TAGetherの開発に使用
+このサイトやTAGetherの開発に使用
 ルーティング周りが楽で良いです
 `,
     desc_en: `
-Used for TAGether
+Used for this site and TAGether
 It makes easy to configure about routing
+`,
+  },
+  {
+    name: 'Gatsby',
+    icon: <></>,
+    tier: 1,
+    category: 'FW/Lib',
+    desc_ja: `
+以前このサイトで使用していました
+速いので好きです
+`,
+    desc_en: `
+Using on this site
+I like Gatsby because it is fast
 `,
   },
   {
@@ -148,6 +202,14 @@ It makes easy to configure about routing
     category: 'FW/Lib',
     desc_ja: '最近のスタイリングはすべてこれを使っています',
     desc_en: 'Recently I use this for all styling',
+  },
+  {
+    name: 'OpenGL',
+    icon: <OpenGL />,
+    tier: 2,
+    category: 'FW/Lib',
+    desc_ja: 'Zwinの開発に使用しました',
+    desc_en: 'I used OpenGL for Zwin',
   },
   {
     name: 'Wayland',
@@ -178,20 +240,6 @@ My knowledge is almost compositor side
     category: 'FW/Lib',
     desc_ja: '中学生時代、ゲームやツール開発に使用していました',
     desc_en: 'I used this for game or tool developing at junior high school',
-  },
-  {
-    name: 'Gatsby',
-    icon: <></>,
-    tier: 1,
-    category: 'FW/Lib',
-    desc_ja: `
-このサイトで使用中
-速いので好きです
-`,
-    desc_en: `
-Using on this site
-I like this because it is fast
-`,
   },
   {
     name: 'Flutter',

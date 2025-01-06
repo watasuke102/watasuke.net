@@ -16,6 +16,8 @@ interface Props {
 }
 
 export function SkillCard(props: Props) {
+  const desc = props.lang !== 'en' ? props.skill.desc_ja : props.skill.desc_en;
+
   return (
     <motion.div
       className={css.skillcard}
@@ -27,7 +29,7 @@ export function SkillCard(props: Props) {
         <span className={css.tier}>{props.skill.tier}</span>
       </div>
       <span className={css.desc}>
-        {props.lang !== 'en' ? props.skill.desc_ja : props.skill.desc_en}
+        {desc.charAt(0) === '\n' ? desc.slice(1) : desc}
       </span>
       <div className={css.icon}>{props.skill.icon}</div>
     </motion.div>

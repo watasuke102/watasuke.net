@@ -8,7 +8,7 @@ import * as css from './Skills.css';
 import {motion} from 'framer-motion';
 import React from 'react';
 import {FadeWithScroll} from '@utils/FadeWithScroll';
-import {SkillCard as SkillCard2} from './SkillCard';
+import {SkillCard} from './SkillCard';
 import {Toggle} from '../Toggle/Toggle';
 import {Heading} from '../Heading';
 import {skills, tier_description} from '@data/skill_list';
@@ -24,7 +24,7 @@ export function Skills(props: Props) {
   const next_groupby_ref = React.useRef('');
   next_groupby_ref.current = next_groupby;
 
-  const SkillCard = React.useMemo(() => {
+  const skill_cards = React.useMemo(() => {
     const skill_group = Map.groupBy(skills, e =>
       groupby !== 'tier' ? e.category : e.tier,
     );
@@ -37,7 +37,7 @@ export function Skills(props: Props) {
       cards.push({
         group: groupby !== 'tier' ? e[0].category : `tier ${e[0].tier}`,
         list: e.map((e, i) => (
-          <SkillCard2
+          <SkillCard
             key={`skill_${i}`}
             animation_enabled={props.animation_enabled}
             skill={e}
@@ -108,7 +108,7 @@ export function Skills(props: Props) {
           className={css.skill_container}
           {...(props.animation_enabled ? container_variants : {})}
         >
-          {SkillCard.map((e, i) => (
+          {skill_cards.map((e, i) => (
             <div key={i}>
               <motion.span
                 className={css.group_name}
