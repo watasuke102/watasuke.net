@@ -20,9 +20,6 @@ interface Props {
 
 export function Skills(props: Props) {
   const [groupby, set_groupby] = React.useState('category');
-  const [next_groupby, set_next_groupby] = React.useState('');
-  const next_groupby_ref = React.useRef('');
-  next_groupby_ref.current = next_groupby;
 
   const skill_cards = React.useMemo(() => {
     const skill_group = Map.groupBy(skills, e =>
@@ -49,30 +46,6 @@ export function Skills(props: Props) {
     return cards;
   }, [props, groupby]);
 
-  const toggle_changed = React.useCallback((next: string) => {
-    set_groupby('');
-    set_next_groupby(next);
-  }, []);
-
-  const animation_completed = React.useCallback(() => {
-    if (next_groupby_ref.current !== '') {
-      set_groupby(next_groupby_ref.current);
-    }
-    set_next_groupby('');
-  }, []);
-
-  const container_variants = {
-    variants: {
-      init: {opacity: 0},
-      main: {opacity: 1},
-    },
-    initial: 'init',
-    animate: 'main',
-    exit: 'init',
-    transition: {duration: 0.1},
-    onAnimationComplete: animation_completed,
-  };
-
   return (
     <section>
       <Heading color='#61afef' text='Skills' />
@@ -82,7 +55,7 @@ export function Skills(props: Props) {
           first='category'
           second='tier'
           current={groupby}
-          set_state={props.animation_enabled ? toggle_changed : set_groupby}
+          set_state={set_groupby}
         />
       </div>
 
@@ -103,24 +76,19 @@ export function Skills(props: Props) {
         </div>
       </div>
 
-      {next_groupby === '' && (
-        <motion.div
-          className={css.skill_container}
-          {...(props.animation_enabled ? container_variants : {})}
-        >
-          {skill_cards.map((e, i) => (
-            <div key={i}>
-              <motion.span
-                className={css.group_name}
-                {...(props.animation_enabled ? FadeWithScroll : {})}
-              >
-                {e.group}
-              </motion.span>
-              <div className={css.group}>{e.list}</div>
-            </div>
-          ))}
-        </motion.div>
-      )}
+      <div className={css.skill_container}>
+        {skill_cards.map((e, i) => (
+          <div key={i}>
+            <motion.span
+              className={css.group_name}
+              {...(props.animation_enabled ? FadeWithScroll : {})}
+            >
+              {e.group}
+            </motion.span>
+            <div className={css.group}>{e.list}</div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
