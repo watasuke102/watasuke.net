@@ -32,9 +32,12 @@ const Heading: Components['head'] = props => {
   if (!props.node) {
     return <></>;
   }
+  console.log(props);
   return (
     <>
-      {++heading_count % 5 === 0 && <AdsInArticle />}
+      {++heading_count % 5 === 0 && props.id !== 'footnote-label' && (
+        <AdsInArticle />
+      )}
       {(() => {
         switch (props.node.tagName) {
           case 'h1':
