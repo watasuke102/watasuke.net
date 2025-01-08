@@ -32,7 +32,6 @@ const Heading: Components['head'] = props => {
   if (!props.node) {
     return <></>;
   }
-  console.log(props);
   return (
     <>
       {++heading_count % 5 === 0 && props.id !== 'footnote-label' && (
