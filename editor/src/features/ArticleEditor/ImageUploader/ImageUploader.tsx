@@ -9,6 +9,7 @@ import React from 'react';
 import {useDropzone, FileWithPath} from 'react-dropzone';
 import {Button} from '@common/Button';
 import {upload_new_image} from '@utils/api';
+import {ToastContext} from '@common/Toast';
 
 type Props = {
   slug: string;
@@ -22,6 +23,7 @@ type ImageInfo = {
 };
 
 export function ImageUploader(props: Props) {
+  const {dispatch} = React.useContext(ToastContext);
   const [image_info, set_image_info] = React.useState<ImageInfo | undefined>();
   const [image_name, set_image_name] = React.useState('image');
   const [image_ext, set_image_ext] = React.useState('jpg');
@@ -131,15 +133,24 @@ export function ImageUploader(props: Props) {
       className={`${css.upload_area} ${isDragActive ? css.dropping_file : ''}`}
       onPaste={e => {
         if (!e.clipboardData.files[0]) {
+          dispatch({type: 'open/err', err: Error('Cannot get pasted data')});
           return;
         }
-        e.clipboardData.files[0].arrayBuffer().then(buf =>
+        const type = e.clipboardData.files[0].type;
+        if (type !== 'image/png' && type !== 'image/jpeg') {
+          dispatch({
+            type: 'open/err',
+            err: Error(`File type (${type}) is not supported`),
+          });
+          return;
+        }
+        e.clipboardData.files[0].arrayBuffer().then(buf => {
           set_image_info({
             url: URL.createObjectURL(new Blob([buf])),
-            type: 'image/jpeg',
+            type,
             buffer: buf,
-          }),
-        );
+          });
+        });
       }}
     >
       <input {...getInputProps()} />
