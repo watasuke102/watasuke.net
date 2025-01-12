@@ -12,7 +12,6 @@ const connector_weight = 4;
 
 export const container = style({
   position: 'relative',
-  zIndex: 128,
   display: 'grid',
   gridTemplate: `
     'left blank_0  blank_0   right' 1fr
