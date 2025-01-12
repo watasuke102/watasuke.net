@@ -1,2 +1,3 @@
 contents_path = "../contents"
 allow_private_access = false
+enable_img_cache     = true

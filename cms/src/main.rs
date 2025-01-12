@@ -7,10 +7,18 @@ mod graphql;
 mod usecase;
 mod util;
 
-use std::{io::Write, path::Path};
+use std::{
+  io::Write,
+  path::{Path, PathBuf},
+};
 
 use juniper::{EmptySubscription, RootNode};
-use rocket::{response::content, State};
+use rocket::{
+  http::ContentType,
+  response::{self, content, Responder},
+  tokio::fs::File,
+  Request, State,
+};
 type Schema = RootNode<'static, graphql::Query, graphql::Mutation, EmptySubscription<Context>>;
 
 #[derive(Clone, Debug)]
@@ -50,16 +58,46 @@ fn post_graphql_handler(
   request.execute_sync(schema, context)
 }
 
+struct FileResponder {
+  ext:          String,
+  file:         File,
+  enable_cache: bool,
+}
+impl FileResponder {
+  async fn new(path: PathBuf, enable_cache: bool) -> Result<Self, std::io::Error> {
+    Ok(Self {
+      ext: path
+        .extension()
+        .map_or("".to_string(), |ext| ext.to_string_lossy().to_string()),
+      file: File::open(path).await?,
+      enable_cache,
+    })
+  }
+}
+impl<'r> Responder<'r, 'static> for FileResponder {
+  fn respond_to(self, req: &'r Request<'_>) -> response::Result<'static> {
+    let mut response = self.file.respond_to(req)?;
+    if let Some(ct) = ContentType::from_extension(&self.ext) {
+      response.set_header(ct);
+    }
+    if self.enable_cache {
+      response.set_raw_header("Cache-Control", "max-age=1800");
+    }
+    Ok(response)
+  }
+}
 #[rocket::get("/img/<slug>/<img_name>")]
 async fn handle_get_img(
   slug: &str,
   img_name: &str,
   context: &State<Context>,
-) -> Option<rocket::fs::NamedFile> {
+) -> Option<FileResponder> {
   // Result<Option<Article>> -.ok()-> Option>Option<Article> -?-> Option<Article> -?-> Article
   let article = usecase::articles::get(&context.config.contents_path, &slug.to_string()).ok()??;
   let path = Path::new(article.article_path()).join(img_name);
-  rocket::fs::NamedFile::open(path).await.ok()
+  FileResponder::new(path, context.config.enable_img_cache)
+    .await
+    .ok()
 }
 
 async fn save_img(

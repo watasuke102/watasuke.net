@@ -6,6 +6,7 @@ use serde::Deserialize;
 pub struct Config {
   pub contents_path:        String,
   pub allow_private_access: bool,
+  pub enable_img_cache:     bool,
 }
 
 impl Config {
