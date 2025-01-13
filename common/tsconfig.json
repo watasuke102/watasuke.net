@@ -1,0 +1,21 @@
+{
+  "extends": "@watasuke.net/config/tsconfig.json",
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "noEmit": true,
+    "incremental": true,
+    "module": "esnext",
+    "isolatedModules": true,
+    "jsx": "preserve"
+  },
+  "include": [
+    "./src/**/*",
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
