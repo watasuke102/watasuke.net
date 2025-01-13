@@ -8,7 +8,10 @@ import {Components} from 'hast-util-to-jsx-runtime';
 import {classify_url_embed_type} from '@watasuke.net/common';
 import {EmbedCardType, InnerEmbedCardType} from '../PropsComponent';
 
-export function Link(EmbedCard: EmbedCardType, InnerEmbedCard: InnerEmbedCardType) {
+export function Link(
+  EmbedCard: EmbedCardType,
+  InnerEmbedCard: InnerEmbedCardType,
+) {
   const link: Components['a'] = props => {
     if (!props.node) return <></>;
 
@@ -24,11 +27,13 @@ export function Link(EmbedCard: EmbedCardType, InnerEmbedCard: InnerEmbedCardTyp
         return <InnerEmbedCard slug={embed_type.data} />;
       case 'twitter':
         return (
-          <blockquote className='twitter-tweet' data-theme='dark'>
-            <span>
-              <a href={embed_type.data}>ツイート</a>を読み込み中...
-            </span>
-          </blockquote>
+          <div className='twitter-wrap'>
+            <blockquote className='twitter-tweet' data-theme='dark'>
+              <span>
+                <a href={embed_type.data}>ツイート</a>を読み込み中...
+              </span>
+            </blockquote>
+          </div>
         );
       case 'youtube':
         return (

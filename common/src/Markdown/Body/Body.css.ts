@@ -22,8 +22,21 @@ export const h4 = style({
 
 // override
 export const container = style({});
-globalStyle(`${container} .twitter-tweet`, {
-  margin: '0 auto',
+globalStyle(`${container} .twitter-wrap`, {
+  minHeight: 216, // single-line tweet has 213px height
+});
+globalStyle(`${container} blockquote.twitter-tweet`, {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100%',
+  height: '100%',
+  minHeight: 'inherit',
+  textAlign: 'center',
+  border: `1px dashed ${color.brand.twitter}`,
+});
+globalStyle(`${container} .twitter-tweet-rendered`, {
+  margin: '0 auto !important',
 });
 
 globalStyle(`${container} .youtube-wrapper`, {
@@ -53,7 +66,7 @@ globalStyle(`${container} hr`, {
   margin: '20px auto',
 });
 
-globalStyle(`${container} blockquote`, {
+globalStyle(`${container} blockquote:not(.twitter-tweet)`, {
   borderLeft: `3px solid ${color.fg}`,
   backgroundColor: '#0004',
   paddingInline: 8,
