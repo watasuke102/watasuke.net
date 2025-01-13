@@ -541,12 +541,42 @@ I participated in NITUC Fes as a Public Relations Manager and created a logo (+ 
   ],
   '2024': [
     {
+      period: {kind: 'day', date: {month: 8, day: 30}}, // Tweet date: https://x.com/Watasuke102/status/1829492560295047609
+      category: 'Work',
+      title_ja: 'Settlang',
+      title_en: 'Settlang',
+      subtitle_ja: 'プログラミング言語',
+      subtitle_en: 'Programming language',
+      body_ja: `
+![Playground で Settlang のプログラムを実行している様子](/works/settlang.jpg)
+
+mutability を setter の有無で表す静的型付き言語です。
+
+処理系はRustで実装されており、テスト以外でcrate (ライブラリ) を使用していません。コンパイル結果はWebAssemblyとして出力されます。
+
+[Playground](https://watasuke102.github.io/settlang/)
+ / [GitHub](https://github.com/watasuke102/settlang)
+ / [紹介記事 (Zenn)](https://zenn.dev/watasuke/articles/a188b2dbd25a1f)
+`,
+      body_en: `
+![screenshot of executing Settlang program on the Playground](/works/settlang.jpg)
+
+A statically typed programming language that expresses mutability by whether variables have setters.
+
+The language processor is implemented by Rust without crate. The compiler outputs WebAssembly.
+
+[Playground](https://watasuke102.github.io/settlang/)
+ / [GitHub](https://github.com/watasuke102/settlang)
+ / [Introductory article (Zenn)](https://zenn.dev/watasuke/articles/a188b2dbd25a1f)
+`,
+    },
+    {
       period: {
         kind: 'period',
         begin: {month: 11, day: 9},
         end: {month: 11, day: 10},
       },
-      category: 'Event',
+      category: 'Work',
       title_ja: '宇部高専 第61回高専祭',
       title_en: '61th NITUC Fes',
       subtitle_ja: 'Webサイト制作',
@@ -554,12 +584,16 @@ I participated in NITUC Fes as a Public Relations Manager and created a logo (+ 
       body_ja: `
 高専祭の公式 Web サイトを作成しました。
 
-[取り組みの紹介や感想](http://watasuke.net/blog/article/nituc-fes-2024-website/)
+[作成したサイト](https://nituc-fes61.org/)
+ / [GitHub](https://github.com/watasuke102/nituc-fes2024)
+ / [取り組みの紹介や感想](http://watasuke.net/blog/article/nituc-fes-2024-website/)
 `,
       body_en: `
 I created official Website of NITUC fes.
 
-[my works and thoughts (blog)](http://watasuke.net/blog/article/nituc-fes-2024-website/)
+[Website](https://nituc-fes61.org/)
+ / [GitHub](https://github.com/watasuke102/nituc-fes2024)
+ / [my works and thoughts (blog)](http://watasuke.net/blog/article/nituc-fes-2024-website/)
 `,
     },
     {
