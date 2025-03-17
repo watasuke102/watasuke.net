@@ -7,9 +7,8 @@
 import * as style from './Body.css';
 import 'highlight.js/styles/atom-one-dark.min.css';
 import 'katex/dist/katex.min.css';
-import {Components} from 'hast-util-to-jsx-runtime';
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import React, {JSX} from 'react';
+import ReactMarkdown, {ExtraProps} from 'react-markdown';
 import Highlight from 'rehype-highlight';
 import Katex from 'rehype-katex';
 import Raw from 'rehype-raw';
@@ -27,8 +26,9 @@ import {
 } from '../plugins/AddFootnoteLabel';
 
 let heading_count = 0;
-const Heading: Components['head'] = props => {
-  /* eslint-disable react/prop-types */
+function Heading(
+  props: JSX.IntrinsicElements['h1'] & ExtraProps,
+): React.ReactNode {
   if (!props.node) {
     return <></>;
   }
@@ -81,7 +81,7 @@ const Heading: Components['head'] = props => {
       })()}
     </>
   );
-};
+}
 
 interface Props {
   md: string;
@@ -105,7 +105,9 @@ export function Body(props: Props) {
           h4: Heading,
           h5: Heading,
           h6: Heading,
-          img: props => <ImageViewer src={props.src || ''} alt={props.alt} />,
+          img: (props: JSX.IntrinsicElements['img'] & ExtraProps) => (
+            <ImageViewer src={props.src || ''} alt={props.alt} />
+          ),
         }}
         remarkPlugins={[Gfm, Math, remarkAddFootnoteLabel]}
         rehypePlugins={[rehypeAddFootnoteLabel, Slug, Katex, Raw, Highlight]}

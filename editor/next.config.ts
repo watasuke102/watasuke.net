@@ -1,4 +1,4 @@
-// watasuke.net
+// watasuke.net > editor
 // CopyRight (c) 2021-2024 watasuke
 //
 // Email  : <watasuke102@gmail.com>
@@ -11,8 +11,6 @@ import type {NextConfig} from 'next';
 const withVanillaExtract = createVanillaExtractPlugin();
 
 const nextConfig: NextConfig = withVanillaExtract({
-  output: 'export',
-  trailingSlash: true,
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
