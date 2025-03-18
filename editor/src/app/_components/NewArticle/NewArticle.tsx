@@ -73,6 +73,21 @@ export function NewArticle() {
           onSubmit={e => e.preventDefault()}
           className={css.dialog_container}
         >
+          <Form.Field name='title' className={css.form_field}>
+            <Form.Label className={css.label}>Title</Form.Label>
+            <Form.Message match='valueMissing'>Cannot be empty</Form.Message>
+            <Form.Control asChild>
+              <input
+                className={css.input}
+                type='text'
+                value={title}
+                placeholder='Article Title Here'
+                onChange={e => set_title(e.target.value)}
+                onKeyDown={proceed_by_ctrl_enter}
+                required
+              />
+            </Form.Control>
+          </Form.Field>
           <Form.Field name='slug' className={css.form_field}>
             <Form.Label className={css.label}>Slug</Form.Label>
             <Form.Message match='valueMissing'>Cannot be empty</Form.Message>
@@ -84,21 +99,8 @@ export function NewArticle() {
                 className={css.input}
                 type='text'
                 value={slug}
+                placeholder='article-slug-here'
                 onChange={e => set_slug(e.target.value)}
-                onKeyDown={proceed_by_ctrl_enter}
-                required
-              />
-            </Form.Control>
-          </Form.Field>
-          <Form.Field name='title' className={css.form_field}>
-            <Form.Label className={css.label}>Title</Form.Label>
-            <Form.Message match='valueMissing'>Cannot be empty</Form.Message>
-            <Form.Control asChild>
-              <input
-                className={css.input}
-                type='text'
-                value={title}
-                onChange={e => set_title(e.target.value)}
                 onKeyDown={proceed_by_ctrl_enter}
                 required
               />

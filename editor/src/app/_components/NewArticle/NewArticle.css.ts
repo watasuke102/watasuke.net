@@ -36,6 +36,9 @@ export const css = {
   input: style({
     gridArea: 'input',
     border: `1px solid ${color.fg}`,
+    '::placeholder': {
+      opacity: 0.5,
+    },
     ':focus-visible': {
       outline: 'none',
     },
