@@ -1,8 +1,8 @@
 // watasuke.net
-// CopyRight (c) 2021-2024 watasuke
+// CopyRight (c) 2021-2025 watasuke
 //
 // Email  : <watasuke102@gmail.com>
-// Twitter: @Watasuke102
+// Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import '@watasuke.net/common/src/css/base.css';
 import {Background, Breadcrumb} from '@common';
