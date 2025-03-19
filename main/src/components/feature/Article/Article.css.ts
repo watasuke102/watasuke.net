@@ -21,13 +21,13 @@ export const container = style({
 const middle_margin = 16;
 
 export const blogcontent_wrapper = style({
+  width: '100%',
   overflowX: 'hidden',
   borderRight: `1px solid ${color.fg}`,
   marginLeft: 4,
   paddingRight: middle_margin,
   '@media': {
     'screen and (max-width: 700px)': {
-      width: '100%',
       margin: 'auto',
       padding: 0,
       border: 'none',
