@@ -619,4 +619,29 @@ I participated in CODE BLUE 2024 as a Student Volunteer.
 `,
     },
   ],
+  '2025': [
+    {
+      period: {
+        kind: 'period',
+        begin: {month: 3, day: 5},
+        end: {month: 3, day: 14},
+      },
+      category: 'Event',
+      title_ja: 'PIXIV SPRING BOOT CAMP 2025',
+      title_en: 'PIXIV SPRING BOOT CAMP 2025',
+      subtitle_ja: 'pixiv ウェブエンジニアリングコース',
+      subtitle_en: 'pixiv Web Engineering Course',
+      body_ja: `
+ピクシブ株式会社が開催するインターンシップに参加し、PHPの静的解析や自動リファクタリングに関連したタスクを行いました。
+
+[感想](https://watasuke.net/blog/article/joined-pixiv-spring-internship-2025/)
+`,
+      body_en: `
+I participated in an internship by pixiv Inc. and did the tasks related to static analysis and automatic refactoring of PHP.
+
+
+[my thoughts (blog)](https://watasuke.net/blog/article/joined-pixiv-spring-internship-2025/)
+`,
+    },
+  ],
 };
