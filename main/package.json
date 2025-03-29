@@ -6,7 +6,8 @@
     "lint": "eslint --fix .",
     "build": "next build",
     "dev": "next dev -p 10210 -H 0.0.0.0",
-    "new": "scaffdog generate"
+    "new": "scaffdog generate",
+    "test:playwright": "playwright test"
   },
   "dependencies": {
     "@giscus/react": "^3.1.0",
@@ -33,6 +34,8 @@
     "typescript": "^5.8.2"
   },
   "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.13.14",
     "eslint-plugin-header": "^3.1.1",
     "scaffdog": "^4.1.0"
   }
