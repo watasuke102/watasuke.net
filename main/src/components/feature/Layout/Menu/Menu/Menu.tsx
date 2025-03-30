@@ -20,7 +20,15 @@ interface Props {
 export function Menu(props: Props) {
   const [is_open, set_is_open] = React.useState(false);
   const should_reduce_motion = useReducedMotion();
-  const duration = 0.4 * Number(!should_reduce_motion);
+  const duration = (() => {
+    if (should_reduce_motion) {
+      return {open: 0, close: 0};
+    }
+    if (props.headings) {
+      return {open: 0.45, close: 0.4};
+    }
+    return {open: 0.3, close: 0.2};
+  })();
 
   return (
     <div className={css.container}>
@@ -29,16 +37,23 @@ export function Menu(props: Props) {
           <motion.nav
             variants={{
               init: {
-                maxHeight: 0,
+                height: 0,
                 borderColor: `${color.fg}00`,
                 boxShadow: '0 0 12px 2px #1110',
-                transition: {duration, ease: [0.22, 1, 0.36, 1]},
+                transition: {
+                  duration: duration.close,
+                  ease: [0.22, 1, 0.36, 1],
+                },
               },
               open: {
-                maxHeight: '80dvh',
+                // maxHeight: '80dvh',
+                height: 'auto',
                 borderColor: `${color.fg}ff`,
                 boxShadow: '0 0 12px 2px #111d',
-                transition: {duration, ease: [0.16, 1, 0.3, 1]},
+                transition: {
+                  duration: duration.open,
+                  ease: [0.16, 1, 0.3, 1],
+                },
               },
             }}
             initial='init'

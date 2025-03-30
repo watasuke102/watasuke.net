@@ -25,9 +25,7 @@ const nextConfig: NextConfig = withVanillaExtract({
 
     return config;
   },
-  experimental: {
-    allowedDevOrigins: config.allowed_dev_origins,
-  },
+  allowedDevOrigins: config.allowed_dev_origins,
 });
 
 export default nextConfig;
