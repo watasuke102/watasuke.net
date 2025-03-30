@@ -11,6 +11,7 @@ import {Breadcrumb} from '@common';
 import React from 'react';
 import {AdsInArticle} from '@watasuke.net/common';
 import {ArticleList} from '@feature/ArticleList';
+import {Menu} from '@feature/Layout';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {ql} from '@utils/QL';
 import {gen_template, JsonLd} from '@utils/Metadata';
@@ -44,6 +45,8 @@ export default async function ArticleListPage() {
         <ArticleList list={allPublicArticles} />
       </div>
       <AdsInArticle />
+
+      <Menu />
     </>
   );
 }

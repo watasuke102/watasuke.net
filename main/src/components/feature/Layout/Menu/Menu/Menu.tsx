@@ -10,9 +10,14 @@ import * as css from './Menu.css';
 import React from 'react';
 import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
 import {color} from '@watasuke.net/common';
+import {Heading} from '@watasuke.net/common';
 import {MenuContents} from '../MenuContents';
 
-export function Menu() {
+interface Props {
+  headings?: Heading[];
+}
+
+export function Menu(props: Props) {
   const [is_open, set_is_open] = React.useState(false);
   const should_reduce_motion = useReducedMotion();
   const duration = 0.4 * Number(!should_reduce_motion);
@@ -44,7 +49,7 @@ export function Menu() {
             <div className={css.padding_top} />
             <div className={css.padding_left} />
             <div className={css.padding_right} />
-            <MenuContents />
+            <MenuContents headings={props.headings} />
           </motion.nav>
         )}
       </AnimatePresence>

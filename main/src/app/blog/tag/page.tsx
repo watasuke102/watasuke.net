@@ -9,6 +9,7 @@ import {Breadcrumb} from '@common';
 import React from 'react';
 import {AdsInArticle} from '@watasuke.net/common';
 import {AllTagList} from '@feature/Tag';
+import {Menu} from '@feature/Layout';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template, JsonLd} from '@utils/Metadata';
 
@@ -32,6 +33,8 @@ export default function TagListPage() {
         <AllTagList />
         <AdsInArticle />
       </main>
+
+      <Menu />
     </>
   );
 }

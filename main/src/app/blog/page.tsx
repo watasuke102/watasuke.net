@@ -12,6 +12,7 @@ import Link from 'next/link';
 import {AdsInArticle} from '@watasuke.net/common';
 import {ArticleList} from '@feature/ArticleList';
 import {AllTagList} from '@feature/Tag';
+import {Menu} from '@feature/Layout';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template, JsonLd} from '@utils/Metadata';
 import {ql} from '@utils/QL';
@@ -48,6 +49,8 @@ export default async function Blog() {
         <ArticleList list={allPublicArticles} />
       </div>
       <AdsInArticle />
+
+      <Menu />
     </>
   );
 }

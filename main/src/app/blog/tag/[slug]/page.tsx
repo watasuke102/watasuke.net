@@ -7,6 +7,7 @@
 import * as css from '@feature/Article/Article.css';
 import {Breadcrumb} from '@common';
 import {AdsInArticle} from '@watasuke.net/common';
+import {Menu} from '@feature/Layout';
 import {ArticleList} from '@feature/ArticleList';
 import {ql} from '@utils/QL';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
@@ -58,6 +59,8 @@ export default async function ArticleListPage({params}: Props) {
         <ArticleList list={allPublicArticles} />
       </div>
       <AdsInArticle />
+
+      <Menu />
     </>
   );
 }

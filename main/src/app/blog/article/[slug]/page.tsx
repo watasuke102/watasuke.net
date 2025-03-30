@@ -10,6 +10,7 @@ import {Breadcrumb} from '@common';
 import {ExtractHeading, TocMapper} from '@watasuke.net/common';
 import {AllTagList} from '@feature/Tag';
 import {BlogContent, ProfileCard} from '@feature/Article';
+import {Menu} from '@feature/Layout';
 import {ql} from '@utils/QL';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_metadata, JsonLd} from '@utils/Metadata';
@@ -78,6 +79,8 @@ export default async function Page({params}: Props) {
           )}
         </aside>
       </main>
+
+      <Menu headings={headings} />
     </>
   );
 }

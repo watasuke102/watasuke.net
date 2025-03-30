@@ -4,6 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {Layout} from './Layout';
+import {Layout, MenuExcludedLayout} from './Layout';
+import {Menu} from './Menu';
 
-export {Layout};
+export {Layout, MenuExcludedLayout, Menu};
