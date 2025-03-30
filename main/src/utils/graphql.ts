@@ -92,6 +92,12 @@ export type MutationUpdateProfileArgs = {
   profile: Scalars['String']['input'];
 };
 
+export type Neighbor = {
+  __typename?: 'Neighbor';
+  newer?: Maybe<Article>;
+  older?: Maybe<Article>;
+};
+
 export type Query = {
   __typename?: 'Query';
   allArticles: Array<Article>;
@@ -99,6 +105,7 @@ export type Query = {
   allTags: Array<Tag>;
   article?: Maybe<Article>;
   contentsGitHeadHash: Scalars['String']['output'];
+  neighbors: Neighbor;
   sitedata: Sitedata;
   tag?: Maybe<Tag>;
 };
@@ -115,6 +122,11 @@ export type QueryAllPublicArticlesArgs = {
 
 
 export type QueryArticleArgs = {
+  slug: Scalars['String']['input'];
+};
+
+
+export type QueryNeighborsArgs = {
   slug: Scalars['String']['input'];
 };
 
@@ -150,12 +162,19 @@ export type AllArticleSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type AllArticleSlugsQuery = { __typename?: 'Query', allPublicArticles: Array<{ __typename?: 'Article', slug: string }> };
 
-export type ArticleQueryVariables = Exact<{
+export type ArticleForArticlePageQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
 
 
-export type ArticleQuery = { __typename?: 'Query', article?: { __typename?: 'Article', slug: string, title: string, tldr: string, tldrReal?: string | null, publishedAt: string, updatedAt: string, isFavorite: boolean, isPublished: boolean, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> } | null, allTags: Array<{ __typename?: 'Tag', slug: string, name: string }> };
+export type ArticleForArticlePageQuery = { __typename?: 'Query', article?: { __typename?: 'Article', slug: string, title: string, publishedAt: string, updatedAt: string, body: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> } | null, neighbors: { __typename?: 'Neighbor', older?: { __typename?: 'Article', slug: string, title: string } | null, newer?: { __typename?: 'Article', slug: string, title: string } | null } };
+
+export type ArticleForInnerEmbedQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type ArticleForInnerEmbedQuery = { __typename?: 'Query', article?: { __typename?: 'Article', title: string, tldr: string } | null };
 
 export type ArticlesWithTagQueryVariables = Exact<{
   tagSlug: Scalars['String']['input'];
@@ -248,26 +267,36 @@ export const AllArticleSlugsDocument = gql`
   }
 }
     `;
-export const ArticleDocument = gql`
-    query article($slug: String!) {
+export const ArticleForArticlePageDocument = gql`
+    query articleForArticlePage($slug: String!) {
   article(slug: $slug) {
     slug
     title
-    tldr
-    tldrReal
     publishedAt
     updatedAt
-    isFavorite
-    isPublished
     tags {
       slug
       name
     }
     body
   }
-  allTags {
-    slug
-    name
+  neighbors(slug: $slug) {
+    older {
+      slug
+      title
+    }
+    newer {
+      slug
+      title
+    }
+  }
+}
+    `;
+export const ArticleForInnerEmbedDocument = gql`
+    query articleForInnerEmbed($slug: String!) {
+  article(slug: $slug) {
+    title
+    tldr
   }
 }
     `;
@@ -369,8 +398,11 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     allArticleSlugs(variables?: AllArticleSlugsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllArticleSlugsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<AllArticleSlugsQuery>(AllArticleSlugsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allArticleSlugs', 'query', variables);
     },
-    article(variables: ArticleQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticleQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ArticleQuery>(ArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'article', 'query', variables);
+    articleForArticlePage(variables: ArticleForArticlePageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticleForArticlePageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ArticleForArticlePageQuery>(ArticleForArticlePageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articleForArticlePage', 'query', variables);
+    },
+    articleForInnerEmbed(variables: ArticleForInnerEmbedQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticleForInnerEmbedQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ArticleForInnerEmbedQuery>(ArticleForInnerEmbedDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articleForInnerEmbed', 'query', variables);
     },
     articlesWithTag(variables: ArticlesWithTagQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticlesWithTagQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ArticlesWithTagQuery>(ArticlesWithTagDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articlesWithTag', 'query', variables);

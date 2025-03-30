@@ -1,7 +1,7 @@
 use juniper::graphql_object;
 use std::path::Path;
 
-use super::{Article, Frontmatter};
+use super::{Article, Frontmatter, Neighbor};
 use crate::{contents::tags, util};
 
 impl Article {
@@ -143,7 +143,7 @@ impl Article {
   pub fn is_favorite(&self) -> bool {
     self.frontmatter.is_favorite
   }
-  fn published_at(&self) -> &str {
+  pub fn published_at(&self) -> &str {
     &self.frontmatter.published_at
   }
   fn updated_at(&self) -> &str {
@@ -151,5 +151,15 @@ impl Article {
   }
   pub(crate) fn is_published(&self) -> bool {
     self.index.is_some()
+  }
+}
+
+#[graphql_object(context = crate::Context)]
+impl Neighbor {
+  pub fn older(&self) -> Option<Article> {
+    self.older.clone()
+  }
+  pub fn newer(&self) -> Option<Article> {
+    self.newer.clone()
   }
 }

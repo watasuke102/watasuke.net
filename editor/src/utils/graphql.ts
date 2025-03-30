@@ -92,6 +92,12 @@ export type MutationUpdateProfileArgs = {
   profile: Scalars['String']['input'];
 };
 
+export type Neighbor = {
+  __typename?: 'Neighbor';
+  newer?: Maybe<Article>;
+  older?: Maybe<Article>;
+};
+
 export type Query = {
   __typename?: 'Query';
   allArticles: Array<Article>;
@@ -99,6 +105,7 @@ export type Query = {
   allTags: Array<Tag>;
   article?: Maybe<Article>;
   contentsGitHeadHash: Scalars['String']['output'];
+  neighbors: Neighbor;
   sitedata: Sitedata;
   tag?: Maybe<Tag>;
 };
@@ -115,6 +122,11 @@ export type QueryAllPublicArticlesArgs = {
 
 
 export type QueryArticleArgs = {
+  slug: Scalars['String']['input'];
+};
+
+
+export type QueryNeighborsArgs = {
   slug: Scalars['String']['input'];
 };
 

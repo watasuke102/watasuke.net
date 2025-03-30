@@ -33,7 +33,7 @@ export async function generateMetadata({params}: Props) {
 
 export default async function Page({params}: Props) {
   const slug = (await params).slug;
-  const {article} = await ql().article({slug});
+  const {article, neighbors} = await ql().articleForArticlePage({slug});
   if (!article) {
     // FIXME: proper error handle
     return <></>;
@@ -59,8 +59,8 @@ export default async function Page({params}: Props) {
           <BlogContent
             data={article}
             headings={headings}
-            newer={undefined}
-            older={undefined}
+            newer={neighbors.newer}
+            older={neighbors.older}
           />
         </article>
 

@@ -17,7 +17,7 @@ interface Props {
 
 export async function InnerEmbedCard(props: Props) {
   const slug = decodeURI(props.slug);
-  const {article} = await ql().article({slug});
+  const {article} = await ql().articleForInnerEmbed({slug});
 
   return article ? (
     <Link

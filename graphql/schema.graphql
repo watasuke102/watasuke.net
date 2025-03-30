@@ -31,10 +31,16 @@ type Mutation {
   renewProfile(commitMessage: String!): String!
 }
 
+type Neighbor {
+  older: Article
+  newer: Article
+}
+
 type Query {
   allPublicArticles(filter: ArticleFilter): [Article!]!
   allArticles(filter: ArticleFilter): [Article!]!
   article(slug: String!): Article
+  neighbors(slug: String!): Neighbor!
   tag(slug: String!): Tag
   allTags: [Tag!]!
   sitedata: Sitedata!

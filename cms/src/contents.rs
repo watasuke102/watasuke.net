@@ -28,3 +28,9 @@ pub struct Article {
   frontmatter:  Frontmatter,
 }
 pub type ArticleMap = HashMap<String, Article>;
+
+#[derive(Clone, Debug)]
+pub struct Neighbor {
+  pub older: Option<Article>,
+  pub newer: Option<Article>,
+}

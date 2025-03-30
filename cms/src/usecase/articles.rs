@@ -5,7 +5,7 @@ use std::{collections::HashMap, io::ErrorKind, path::Path};
 use yaml_front_matter::{Document, YamlFrontMatter};
 
 use crate::{
-  contents::{Article, ArticleMap, Frontmatter},
+  contents::{Article, ArticleMap, Frontmatter, Neighbor},
   usecase, util,
 };
 
@@ -38,18 +38,43 @@ impl ArticleFilter {
 pub fn get(contents_path: &String, slug: &String) -> anyhow::Result<Option<Article>> {
   Ok(get_map_all(contents_path)?.get(slug).cloned())
 }
+pub fn get_neighbors(contents_path: &String, slug: &String) -> anyhow::Result<Neighbor> {
+  let articles: Vec<Article> = get_published(None, contents_path)?;
+  if articles.len() >= 2 {
+    // predication: articles are sorted in descending order (articles[0] is newest article)
+    assert!(articles[0].published_at() > articles[1].published_at(),);
+  }
+  let target_index = articles
+    .iter()
+    .enumerate()
+    .find(|e| e.1.slug() == slug)
+    .context("Cannot find an article that has specified slug")?
+    .0;
+  Ok(Neighbor {
+    older: if target_index == articles.len() - 1 {
+      None
+    } else {
+      Some(articles[target_index + 1].clone())
+    },
+    newer: if target_index == 0 {
+      None
+    } else {
+      Some(articles[target_index - 1].clone())
+    },
+  })
+}
 pub fn get_published(
   filter: Option<ArticleFilter>,
   contents_path: &String,
 ) -> anyhow::Result<Vec<Article>> {
   Ok(
-    get_all(filter, contents_path)?
+    get_all_by_filter(filter, contents_path)?
       .into_iter()
       .filter(|e| e.is_published())
       .collect(),
   )
 }
-pub fn get_all(
+pub fn get_all_by_filter(
   filter: Option<ArticleFilter>,
   contents_path: &String,
 ) -> anyhow::Result<Vec<Article>> {

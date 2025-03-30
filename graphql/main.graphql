@@ -37,25 +37,33 @@ query allArticleSlugs {
     slug
   }
 }
-query article($slug: String!) {
+query articleForArticlePage($slug: String!) {
   article(slug: $slug) {
     slug
     title
-    tldr
-    tldrReal
     publishedAt
     updatedAt
-    isFavorite
-    isPublished
     tags {
       slug
       name
     }
     body
   }
-  allTags {
-    slug
-    name
+  neighbors(slug: $slug) {
+    older {
+      slug
+      title
+    }
+    newer {
+      slug
+      title
+    }
+  }
+}
+query articleForInnerEmbed($slug: String!) {
+  article(slug: $slug) {
+    title
+    tldr
   }
 }
 query articlesWithTag($tagSlug: String!) {

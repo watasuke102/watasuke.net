@@ -31,7 +31,7 @@ impl Query {
         graphql_value!(""),
       ));
     }
-    usecase::articles::get_all(filter, &context.config.contents_path).map_err(|err| {
+    usecase::articles::get_all_by_filter(filter, &context.config.contents_path).map_err(|err| {
       juniper::FieldError::new(
         "Failed to get all Articles",
         graphql_value!(err.to_string()),
@@ -40,7 +40,10 @@ impl Query {
   }
   fn article(slug: String, context: &Context) -> juniper::FieldResult<Option<contents::Article>> {
     let article = usecase::articles::get(&context.config.contents_path, &slug).map_err(|err| {
-      juniper::FieldError::new("read_articles() failed", graphql_value!(err.to_string()))
+      juniper::FieldError::new(
+        "usecase::articles::get() failed",
+        graphql_value!(err.to_string()),
+      )
     })?;
     // if private access is allowed, I can return a found article immediately
     if context.config.allow_private_access {
@@ -48,6 +51,21 @@ impl Query {
     }
     // if forbidden, check publicity
     Ok(article.and_then(|article| article.get_public_or_none()))
+  }
+  fn neighbors(slug: String, context: &Context) -> juniper::FieldResult<contents::Neighbor> {
+    // this query is only for public articles
+    if context.config.allow_private_access {
+      return Err(juniper::FieldError::new(
+        "You cannot access private articles",
+        graphql_value!(""),
+      ));
+    }
+    usecase::articles::get_neighbors(&context.config.contents_path, &slug).map_err(|err| {
+      juniper::FieldError::new(
+        "usecase::articles::get_neighbors() failed",
+        graphql_value!(err.to_string()),
+      )
+    })
   }
   fn tag(slug: String, context: &Context) -> Option<contents::tags::Tag> {
     usecase::tags::get(&context.config.contents_path, &slug)
