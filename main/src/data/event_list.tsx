@@ -334,7 +334,7 @@ CPU自作ゼミで、RISC-V CPUをFPGA上に実装しました。
 [GitHub](https://github.com/watasuke102/seccamp_2022_riscv_cpu)
  / [成果報告時に用いたスライド](https://docs.google.com/presentation/d/1jZhWOtsE-aoRW_FdrEXbnvV6VrNH59Q2q-pH8CTHtDc/edit?usp=sharing)
  / [応募課題晒し](https://watasuke.net/blog/article/seccamp-2022-app-publish/)
- / [感想](https://watasuke.net/blog/article/seccamp-2022-app-publish/)
+ / [感想](https://watasuke.net/blog/article/the-end-of-security-camp/)
 `,
       body_en: `
 Implementing RISC-V CPU on FPGA.
@@ -343,7 +343,7 @@ I implemented UART, character LCD operation, HDMI output.
 [GitHub](https://github.com/watasuke102/seccamp_2022_riscv_cpu)
  / [Slide for final result presentation](https://docs.google.com/presentation/d/1jZhWOtsE-aoRW_FdrEXbnvV6VrNH59Q2q-pH8CTHtDc/edit?usp=sharing)
  / [my application](https://watasuke.net/blog/article/seccamp-2022-app-publish/)
- / [my thoughts (blog)](https://watasuke.net/blog/article/seccamp-2022-app-publish/)
+ / [my thoughts (blog)](https://watasuke.net/blog/article/the-end-of-security-camp/)
 `,
     },
     {
