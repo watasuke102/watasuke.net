@@ -16,6 +16,7 @@ import {ModifyStatus} from '@common/EditorPage/EditorPage';
 import {toast_reducer, ToastContext} from '@common/Toast';
 import {useShortcut} from '@common/useShortcut/useShortcut';
 import {getSdk} from '@utils/graphql';
+import {useConfirmBeforeLeave} from '@utils/ConfirmBeforeLeave';
 import SaveIcon from '@assets/save.svg';
 
 type Props = {
@@ -24,8 +25,6 @@ type Props = {
 
 export function Page(props: Props) {
   const [profile, set_profile] = React.useState(props.profile);
-
-  const textarea_ref = React.useRef<HTMLTextAreaElement | null>();
   const [modify_status, set_modify_status] =
     React.useState<ModifyStatus>('none');
   const [toast_state, toast_dispatch] = React.useReducer(toast_reducer, {
@@ -34,15 +33,31 @@ export function Page(props: Props) {
     desc: '',
   });
 
+  const textarea_ref = React.useRef<HTMLTextAreaElement | null>(null);
+  const is_first_rendering = React.useRef(true);
+  const set_confirmation = useConfirmBeforeLeave();
+  // prevent execution on the first rendering
+  React.useEffect(() => {
+    is_first_rendering.current = true;
+  }, []);
+  React.useEffect(() => {
+    if (is_first_rendering.current) {
+      is_first_rendering.current = false;
+    } else {
+      set_confirmation(true);
+    }
+  }, [set_confirmation, profile]);
+
   const save = React.useCallback(async () => {
     try {
       const sdk = getSdk(new GraphQLClient(`${apiUrl}/graphql`));
       await sdk.updateProfile({profile});
       toast_dispatch({type: 'open/normal', title: 'success'});
+      set_confirmation(false);
     } catch (err) {
       toast_dispatch({type: 'open/err', err});
     }
-  }, [profile]);
+  }, [set_confirmation, profile]);
   const modify = async (commit_message: string) => {
     try {
       const sdk = getSdk(new GraphQLClient(`${apiUrl}/graphql`));

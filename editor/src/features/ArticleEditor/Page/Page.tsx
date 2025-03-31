@@ -18,6 +18,7 @@ import {toast_reducer, ToastContext} from '@common/Toast';
 import {useShortcut} from '@common/useShortcut/useShortcut';
 import {Toolbox} from '@features/ArticleEditor/Toolbox/Toolbox';
 import {ArticleEditPageQuery, getSdk} from '@utils/graphql';
+import {useConfirmBeforeLeave} from '@utils/ConfirmBeforeLeave';
 import {article_reducer} from '../ArticleReducer';
 
 type Props = {
@@ -26,7 +27,6 @@ type Props = {
 };
 
 export function Page(props: Props) {
-  const textarea_ref = React.useRef<HTMLTextAreaElement | null>();
   const [state, dispatch] = useImmerReducer(article_reducer, {
     body: props.article.body,
     title: props.article.title,
@@ -48,6 +48,21 @@ export function Page(props: Props) {
     desc: '',
   });
 
+  const textarea_ref = React.useRef<HTMLTextAreaElement | null>(null);
+  const is_first_rendering = React.useRef(true);
+  const set_confirmation = useConfirmBeforeLeave();
+  // prevent execution on the first rendering
+  React.useEffect(() => {
+    is_first_rendering.current = true;
+  }, []);
+  React.useEffect(() => {
+    if (is_first_rendering.current) {
+      is_first_rendering.current = false;
+    } else {
+      set_confirmation(true);
+    }
+  }, [set_confirmation, state]);
+
   const save = React.useCallback(async () => {
     try {
       const sdk = getSdk(new GraphQLClient(`${apiUrl}/graphql`));
@@ -60,10 +75,11 @@ export function Page(props: Props) {
         body: state.body ?? '',
       });
       toast_dispatch({type: 'open/normal', title: 'success'});
+      set_confirmation(false);
     } catch (err) {
       toast_dispatch({type: 'open/err', err});
     }
-  }, [props.article, state]);
+  }, [props.article.slug, set_confirmation, state]);
 
   const modify = React.useCallback(
     async (commit_message: string) => {
@@ -108,7 +124,6 @@ export function Page(props: Props) {
         is_published={is_published}
         modify_status={modify_status}
         commit_scope={props.article.slug}
-        //
         textarea_ref={textarea_ref}
         toolbox={
           <Toolbox
