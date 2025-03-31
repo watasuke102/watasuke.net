@@ -54,7 +54,7 @@ impl Query {
   }
   fn neighbors(slug: String, context: &Context) -> juniper::FieldResult<contents::Neighbor> {
     // this query is only for public articles
-    if context.config.allow_private_access {
+    if !context.config.allow_private_access {
       return Err(juniper::FieldError::new(
         "You cannot access private articles",
         graphql_value!(""),
