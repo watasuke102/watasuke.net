@@ -42,6 +42,7 @@ export const menu_opener = style({
 export const menu = style({
   position: 'absolute',
   minWidth: 440,
+  maxHeight: '80dvh',
   bottom: 32,
   right: 32,
   overflow: 'hidden',
