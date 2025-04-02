@@ -23,11 +23,11 @@ export function MenuExcludedLayout({children}: Props) {
 
 function LayoutFactory(children: React.ReactNode, is_menu_enabled: boolean) {
   return (
-    <main className={css.layout}>
+    <div className={css.layout}>
       <Header />
       <div className={css.main_area}>{children}</div>
       {is_menu_enabled ? <Menu /> : <></>}
       <Footer />
-    </main>
+    </div>
   );
 }
