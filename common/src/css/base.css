@@ -39,8 +39,9 @@ a:hover {
 }
 
 code {
-  font-family: 'Moralerspace Krypton NF', 'Monaspace Krypton', MyricaM, 'MyricaM M', 'Source Code Pro', 'Ubuntu Mono',
-    'Ubuntu Monospace', Consolas, monospace;
+  font-family:
+    'Moralerspace Krypton NF', 'Monaspace Krypton', MyricaM, 'MyricaM M',
+    'Source Code Pro', 'Ubuntu Mono', 'Ubuntu Monospace', Consolas, monospace;
 }
 
 table {

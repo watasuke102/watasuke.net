@@ -18,6 +18,7 @@ import {ErrorBoundary} from '@common/ErrorBoundary';
 import {Spinner} from '@common/Spinner';
 import {Toast} from '@common/Toast';
 import {ComboBox} from '@common/ComboBox';
+import {MonacoEditor} from '@features/MonacoEditor';
 import LeftIcon from '@assets/left.svg';
 
 export type ModifyStatus = 'none' | 'confirmation' | 'waiting' | 'succeeded';
@@ -71,14 +72,9 @@ export function EditorPage(props: Props) {
       <section className={css.container}>
         <div className={css.editor}>
           <div className={css.toolbox_wrapper}>{props.toolbox}</div>
-          <textarea
-            className={css.textarea}
-            ref={r => {
-              props.textarea_ref.current = r;
-            }}
-            value={props.body}
-            onChange={e => props.set_body(e.target.value)}
-          />
+          <div className={css.edit_area}>
+            <MonacoEditor body={props.body} on_change={props.set_body} />
+          </div>
         </div>
         <div className={css.preview}>
           <ErrorBoundary>

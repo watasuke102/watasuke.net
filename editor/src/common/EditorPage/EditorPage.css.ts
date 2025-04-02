@@ -56,15 +56,10 @@ export const css = {
     border: `2px solid ${color.fg}`,
     borderBottom: 'none',
   }),
-  textarea: style({
-    resize: 'none',
+  edit_area: style({
+    width: '100%',
     height: '100%',
     border: `2px solid ${color.p0}`,
-    scrollbarGutter: 'stable',
-    scrollbarWidth: 'thin',
-    ':focus-visible': {
-      outline: 'none',
-    },
   }),
   preview: style({
     padding: '8px 4px 8px 12px',

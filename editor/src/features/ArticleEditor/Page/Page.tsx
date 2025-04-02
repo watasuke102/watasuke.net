@@ -124,6 +124,7 @@ export function Page(props: Props) {
         is_published={is_published}
         modify_status={modify_status}
         commit_scope={props.article.slug}
+        //
         textarea_ref={textarea_ref}
         toolbox={
           <Toolbox
