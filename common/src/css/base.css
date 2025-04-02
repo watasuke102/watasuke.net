@@ -1,7 +1,7 @@
 @import 'https://cdn.jsdelivr.net/gh/krishdevdb/reseter.css@1.20/css/reseter.min.css';
 
 * {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
 }
 
 ::before,
