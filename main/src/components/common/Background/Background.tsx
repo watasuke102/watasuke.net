@@ -36,11 +36,12 @@ export default function Background() {
 
   React.useEffect(() => {
     const pos: FigureInfo[] = [];
+    // 透明度を変更するために、色指定を0～255のrgbで指定する必要があるらしい
     pos[Figure.triangle] = {
       x: 0,
       y: 0,
       size: 170 + rand(align),
-      color: '#61afef',
+      color: '97, 175, 239',
       animation_x: rand(360),
       animation_y: rand(360),
     };
@@ -48,7 +49,6 @@ export default function Background() {
       x: 0,
       y: 0,
       size: 0,
-      // 透明度を変更するために、色指定を0～255のrgbで指定する必要があるらしい
       color: '224, 108, 117',
       animation_x: 0,
       animation_y: 1,
@@ -57,10 +57,11 @@ export default function Background() {
       x: 0,
       y: 0,
       size: 400 + rand(align),
-      color: '#98c379',
+      color: '152, 195, 121',
       animation_x: 0,
       animation_y: 0,
     };
+    let entire_alpha = 0;
 
     const InitToBasePositions = () => {
       if (typeof window !== 'undefined') {
@@ -95,7 +96,7 @@ export default function Background() {
         // ちょっと変えたかったので、x, yでそれぞれsin, cosを使ってる
         base_pos.x += Math.cos((base_pos.animation_x / 180) * Math.PI) * 6;
         base_pos.y += Math.sin((base_pos.animation_y / 180) * Math.PI) * 6;
-        context.strokeStyle = base_pos.color;
+        context.strokeStyle = `rgba(${base_pos.color}, ${entire_alpha})`;
         context.lineWidth = 14;
         context.lineCap = 'round';
         context.beginPath();
@@ -114,11 +115,11 @@ export default function Background() {
         pos[Figure.triangle].animation_y += 0.8;
       }
 
-      // animation_x -> 半径 (増加量), animation_y -> unused
+      // animation_x -> 半径 (増加量), animation_y -> alpha
       {
         base_pos = pos[Figure.circle];
         context.lineWidth = 8;
-        context.strokeStyle = `rgba(${base_pos.color}, ${base_pos.animation_y})`;
+        context.strokeStyle = `rgba(${base_pos.color}, ${base_pos.animation_y * entire_alpha})`;
         context.beginPath();
         context.arc(
           base_pos.x,
@@ -148,7 +149,7 @@ export default function Background() {
           context.translate(base_pos.x, base_pos.y);
           context.rotate((base_pos.animation_x / 180) * Math.PI);
 
-          context.strokeStyle = base_pos.color;
+          context.strokeStyle = `rgba(${base_pos.color}, ${entire_alpha})`;
           context.lineWidth = 24;
           context.lineCap = 'round';
           context.beginPath();
@@ -165,6 +166,10 @@ export default function Background() {
         context.restore();
         // アニメーション
         pos[Figure.hexagon].animation_x += 0.03;
+      }
+
+      if (entire_alpha < 1) {
+        entire_alpha = Math.min(entire_alpha + 0.002, 1);
       }
     };
 
