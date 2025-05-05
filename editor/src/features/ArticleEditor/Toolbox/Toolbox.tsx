@@ -10,6 +10,7 @@ import React from 'react';
 import {Button} from '@common/Button';
 import {Dialog} from '@common/Dialog';
 import {ImageUploader} from '@features/ArticleEditor/ImageUploader';
+import {MonacoContext} from '@features/MonacoEditor';
 import {FrontmatterEditor} from '../FrontmatterEditor/FrontmatterEditor';
 import * as ArticleReducer from '../ArticleReducer';
 import AddPhotoIcon from '@assets/add_photo.svg';
@@ -22,19 +23,48 @@ type Props = {
   is_published: boolean;
   state: ArticleReducer.StateType;
   dispatcher: React.Dispatch<ArticleReducer.Action>;
-  ref: React.MutableRefObject<HTMLTextAreaElement | null | undefined>;
   save_button_handler: () => void;
   publish_button_handler: () => void;
 };
 
 export function Toolbox(props: Props) {
+  const monaco = React.useContext(MonacoContext);
   const [accordion_value, set_accordion_value] = React.useState('');
   const [is_img_uploader_open, set_is_img_uploader_open] =
     React.useState(false);
 
   const insert_image_name = React.useCallback(
     (file_name: string) => {
-      const cursor_pos = props.ref?.current?.selectionStart ?? 0;
+      if (!monaco) {
+        return;
+      }
+      const editor = monaco.editor.getEditors()[0];
+      if (!editor) {
+        return;
+      }
+      const model = editor.getModel();
+      const selection = editor.getSelection();
+      if (!model || !selection) {
+        return;
+      }
+      const pos = selection.getPosition();
+      const current_line = pos.lineNumber;
+
+      let prev_cursor = '';
+      for (let i = -2; i < 0; i++) {
+        if (current_line + i > 0) {
+          prev_cursor += model.getLineContent(current_line + i) + '\n';
+        }
+      }
+      let after_cursor = '';
+      for (let i = 0; i <= 2; i++) {
+        if (current_line + i < model.getLineCount()) {
+          after_cursor += model.getLineContent(current_line + i) + '\n';
+        }
+      }
+      const nearby_contents = prev_cursor + after_cursor;
+      const cursor_pos = prev_cursor.length + pos.column - 1;
+
       /* ideal: blank lines exist both before and after the image like this:
           <...before>
 
@@ -43,36 +73,37 @@ export function Toolbox(props: Props) {
           <after...>
         it means: <before>\n\n<image>\n\n<after>
       */
-      let new_body = '';
+      let insert_content = '';
       if (
-        props.state.body[cursor_pos - 2] &&
-        props.state.body[cursor_pos - 2] !== '\n'
+        nearby_contents[cursor_pos - 2] &&
+        nearby_contents[cursor_pos - 2] !== '\n'
       ) {
-        new_body += '\n';
+        insert_content += '\n';
       }
       if (
-        props.state.body[cursor_pos - 1] &&
-        props.state.body[cursor_pos - 1] !== '\n'
+        nearby_contents[cursor_pos - 1] &&
+        nearby_contents[cursor_pos - 1] !== '\n'
       ) {
-        new_body += '\n';
+        insert_content += '\n';
       }
-      new_body += `![](/img/${file_name})`;
-      if (props.state.body[cursor_pos] !== '\n') {
-        new_body += '\n';
+      insert_content += `![](/img/${file_name})`;
+      if (nearby_contents[cursor_pos] !== '\n') {
+        insert_content += '\n';
       }
-      if (props.state.body[cursor_pos + 1] !== '\n') {
-        new_body += '\n';
+      if (nearby_contents[cursor_pos + 1] !== '\n') {
+        insert_content += '\n';
       }
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(new_body);
-      } else {
-        console.warn(
-          'navigator.clipboard is unavailable. Please manually copy below:',
-          new_body,
-        );
-      }
+
+      editor.executeEdits('insert-image', [
+        {
+          range: selection,
+          text: insert_content,
+          forceMoveMarkers: true,
+        },
+      ]);
+      editor.focus();
     },
-    [props.ref, props.state.body],
+    [monaco],
   );
 
   // FIXME: collapsible is enough
@@ -130,7 +161,7 @@ export function Toolbox(props: Props) {
         is_open={is_img_uploader_open}
         set_is_open={set_is_img_uploader_open}
         on_close={() => {
-          props.ref?.current?.focus();
+          monaco?.editor.getEditors()[0].focus();
         }}
       >
         <ImageUploader

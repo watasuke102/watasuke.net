@@ -30,7 +30,6 @@ type Props = {
   modify_status: ModifyStatus;
   commit_scope?: string;
 
-  textarea_ref: React.MutableRefObject<HTMLTextAreaElement | null | undefined>;
   toolbox: JSX.Element;
   header_text: JSX.Element;
   modify_confirming_area: JSX.Element;

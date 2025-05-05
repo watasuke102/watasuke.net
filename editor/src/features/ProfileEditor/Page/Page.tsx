@@ -10,11 +10,13 @@ import {apiUrl} from '@watasuke.net/config/config';
 import {css} from './Page.css';
 import {GraphQLClient} from 'graphql-request';
 import React from 'react';
+import {useMonaco} from '@monaco-editor/react';
 import {Button} from '@common/Button';
 import {EditorPage} from '@common/EditorPage';
 import {ModifyStatus} from '@common/EditorPage/EditorPage';
 import {toast_reducer, ToastContext} from '@common/Toast';
 import {useShortcut} from '@common/useShortcut/useShortcut';
+import {MonacoContext} from '@features/MonacoEditor';
 import {getSdk} from '@utils/graphql';
 import {useConfirmBeforeLeave} from '@utils/ConfirmBeforeLeave';
 import SaveIcon from '@assets/save.svg';
@@ -32,8 +34,8 @@ export function Page(props: Props) {
     title: '',
     desc: '',
   });
+  const monaco = useMonaco();
 
-  const textarea_ref = React.useRef<HTMLTextAreaElement | null>(null);
   const is_first_rendering = React.useRef(true);
   const set_confirmation = useConfirmBeforeLeave();
   // prevent execution on the first rendering
@@ -78,45 +80,45 @@ export function Page(props: Props) {
     <ToastContext.Provider
       value={{state: toast_state, dispatch: toast_dispatch}}
     >
-      <EditorPage
-        body={profile}
-        is_published
-        modify_status={modify_status}
-        commit_scope='profile'
-        //
-        textarea_ref={textarea_ref}
-        toolbox={
-          <div className={css.toolbox}>
-            <Button
-              type='outlined'
-              text='renew'
-              aria_label='renew'
-              on_click={() => set_modify_status('confirmation')}
-            />
-            <Button
-              type='contained'
-              text='save <C-s>'
-              icon={<SaveIcon />}
-              aria_label='save'
-              on_click={save}
-            />
-          </div>
-        }
-        header_text={
-          <a
-            href='https://watasuke.net/profile'
-            rel='noreferrer'
-            target='_blank'
-            className={css.header_title}
-          >
-            profile
-          </a>
-        }
-        modify_confirming_area={<></>}
-        set_body={set_profile}
-        set_modify_status={set_modify_status}
-        modify={modify}
-      />
+      <MonacoContext.Provider value={monaco}>
+        <EditorPage
+          body={profile}
+          is_published
+          modify_status={modify_status}
+          commit_scope='profile'
+          toolbox={
+            <div className={css.toolbox}>
+              <Button
+                type='outlined'
+                text='renew'
+                aria_label='renew'
+                on_click={() => set_modify_status('confirmation')}
+              />
+              <Button
+                type='contained'
+                text='save <C-s>'
+                icon={<SaveIcon />}
+                aria_label='save'
+                on_click={save}
+              />
+            </div>
+          }
+          header_text={
+            <a
+              href='https://watasuke.net/profile'
+              rel='noreferrer'
+              target='_blank'
+              className={css.header_title}
+            >
+              profile
+            </a>
+          }
+          modify_confirming_area={<></>}
+          set_body={set_profile}
+          set_modify_status={set_modify_status}
+          modify={modify}
+        />
+      </MonacoContext.Provider>
     </ToastContext.Provider>
   );
 }

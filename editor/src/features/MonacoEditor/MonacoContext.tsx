@@ -4,7 +4,9 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {MonacoContext} from './MonacoContext';
-import {MonacoEditor} from './MonacoEditor';
+import {useMonaco} from '@monaco-editor/react';
+import React from 'react';
 
-export {MonacoContext, MonacoEditor};
+export const MonacoContext = React.createContext<ReturnType<
+  typeof useMonaco
+> | null>(null);
