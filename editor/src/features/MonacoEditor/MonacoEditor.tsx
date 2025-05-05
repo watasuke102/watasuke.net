@@ -4,9 +4,11 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import Editor, {useMonaco} from '@monaco-editor/react';
+import Editor from '@monaco-editor/react';
+import React from 'react';
 import {onedark} from './onedark';
 import {generate_suggestions} from './suggestions';
+import {MonacoContext} from './MonacoContext';
 
 interface Props {
   body: string;
@@ -14,7 +16,7 @@ interface Props {
 }
 
 export function MonacoEditor(props: Props) {
-  const monaco = useMonaco();
+  const monaco = React.useContext(MonacoContext);
   if (monaco) {
     monaco.editor.defineTheme('onedark', onedark);
     monaco.languages.registerCompletionItemProvider('markdown', {

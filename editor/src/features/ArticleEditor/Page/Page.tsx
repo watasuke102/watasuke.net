@@ -11,12 +11,14 @@ import {css} from './Page.css';
 import {GraphQLClient} from 'graphql-request';
 import {useImmerReducer} from 'use-immer';
 import React from 'react';
+import {useMonaco} from '@monaco-editor/react';
 import {EditorPage} from '@common/EditorPage';
 import {ModifyStatus} from '@common/EditorPage/EditorPage';
 import {Checkbox} from '@common/Checkbox';
 import {toast_reducer, ToastContext} from '@common/Toast';
 import {useShortcut} from '@common/useShortcut/useShortcut';
 import {Toolbox} from '@features/ArticleEditor/Toolbox/Toolbox';
+import {MonacoContext} from '@features/MonacoEditor';
 import {ArticleEditPageQuery, getSdk} from '@utils/graphql';
 import {useConfirmBeforeLeave} from '@utils/ConfirmBeforeLeave';
 import {article_reducer} from '../ArticleReducer';
@@ -47,8 +49,8 @@ export function Page(props: Props) {
     title: '',
     desc: '',
   });
+  const monaco = useMonaco();
 
-  const textarea_ref = React.useRef<HTMLTextAreaElement | null>(null);
   const is_first_rendering = React.useRef(true);
   const set_confirmation = useConfirmBeforeLeave();
   // prevent execution on the first rendering
@@ -115,73 +117,72 @@ export function Page(props: Props) {
     <ToastContext.Provider
       value={{state: toast_state, dispatch: toast_dispatch}}
     >
-      <EditorPage
-        body={state.body}
-        preview_body={state.body.replaceAll(
-          '/img',
-          `${apiUrl}/img/${props.article.slug}`,
-        )}
-        is_published={is_published}
-        modify_status={modify_status}
-        commit_scope={props.article.slug}
-        //
-        textarea_ref={textarea_ref}
-        toolbox={
-          <Toolbox
-            slug={props.article.slug}
-            tldr_placeholder={props.article.tldr}
-            is_published={is_published}
-            state={state}
-            dispatcher={dispatch}
-            ref={textarea_ref}
-            publish_button_handler={() => set_modify_status('confirmation')}
-            save_button_handler={save}
-          />
-        }
-        header_text={
-          is_published ? (
-            <a
-              href={`https://watasuke.net/blog/article/${props.article.slug}`}
-              rel='noreferrer'
-              target='_blank'
-              className={css.header_title}
-            >
-              {state.title}
-            </a>
-          ) : (
-            <span className={css.header_title}>{state.title}</span>
-          )
-        }
-        modify_confirming_area={
-          <>
-            <div className={css.warning_container}>
-              {state.tags.length === 0 && (
-                <strong className={css.warning_text}>
-                  warn: Tag is empty!
-                </strong>
+      <MonacoContext.Provider value={monaco}>
+        <EditorPage
+          body={state.body}
+          preview_body={state.body.replaceAll(
+            '/img',
+            `${apiUrl}/img/${props.article.slug}`,
+          )}
+          is_published={is_published}
+          modify_status={modify_status}
+          commit_scope={props.article.slug}
+          toolbox={
+            <Toolbox
+              slug={props.article.slug}
+              tldr_placeholder={props.article.tldr}
+              is_published={is_published}
+              state={state}
+              dispatcher={dispatch}
+              publish_button_handler={() => set_modify_status('confirmation')}
+              save_button_handler={save}
+            />
+          }
+          header_text={
+            is_published ? (
+              <a
+                href={`https://watasuke.net/blog/article/${props.article.slug}`}
+                rel='noreferrer'
+                target='_blank'
+                className={css.header_title}
+              >
+                {state.title}
+              </a>
+            ) : (
+              <span className={css.header_title}>{state.title}</span>
+            )
+          }
+          modify_confirming_area={
+            <>
+              <div className={css.warning_container}>
+                {state.tags.length === 0 && (
+                  <strong className={css.warning_text}>
+                    warn: Tag is empty!
+                  </strong>
+                )}
+                {/* Google generates summary approximately 80 chars in Japanese */}
+                {state.tldr.length > 80 && (
+                  <p className={css.warning_text}>
+                    <strong>warn: TL;DR is too long</strong> (len:{' '}
+                    <strong>{state.tldr.length}</strong>), {/* */}
+                    recommend: less than 80
+                  </p>
+                )}
+              </div>
+              {!is_published && (
+                <Checkbox
+                  label='Commit and Push to remote Git repo'
+                  checked={should_commit_and_push}
+                  on_click={() => set_should_commit_and_push(f => !f)}
+                />
               )}
-              {/* Google generates summary approximately 80 chars in Japanese */}
-              {state.tldr.length > 80 && (
-                <p className={css.warning_text}>
-                  <strong>warn: TL;DR is too long</strong> (len:{' '}
-                  <strong>{state.tldr.length}</strong>), {/* */}
-                  recommend: less than 80
-                </p>
-              )}
-            </div>
-            {!is_published && (
-              <Checkbox
-                label='Commit and Push to remote Git repo'
-                checked={should_commit_and_push}
-                on_click={() => set_should_commit_and_push(f => !f)}
-              />
-            )}
-          </>
-        }
-        set_body={s => dispatch({type: 'body/update', data: s})}
-        set_modify_status={set_modify_status}
-        modify={modify}
-      />
+            </>
+          }
+          set_body={s => dispatch({type: 'body/update', data: s})}
+          set_modify_status={set_modify_status}
+          modify={modify}
+        />
+      </MonacoContext.Provider>
     </ToastContext.Provider>
   );
 }
