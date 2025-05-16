@@ -182,20 +182,6 @@ It makes easy to configure about routing
 `,
   },
   {
-    name: 'Gatsby',
-    icon: <></>,
-    tier: 1,
-    category: 'FW/Lib',
-    desc_ja: `
-以前このサイトで使用していました
-速いので好きです
-`,
-    desc_en: `
-Using on this site
-I like Gatsby because it is fast
-`,
-  },
-  {
     name: 'vanilla-extract',
     icon: <></>,
     tier: 1,
