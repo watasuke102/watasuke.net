@@ -27,10 +27,7 @@ export default async function PortfolioPage({
   return (
     <>
       <JsonLd breadcrumb_list={breadcrumb_list} />
-      <Portfolio
-        init_animation={get_params(params, 'animation')}
-        init_lang={get_params(params, 'lang')}
-      />
+      <Portfolio init_lang={get_params(params, 'lang')} />
     </>
   );
 }
