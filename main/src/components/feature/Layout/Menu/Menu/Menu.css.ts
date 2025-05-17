@@ -5,6 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {ComplexStyleRule, style} from '@vanilla-extract/css';
+import {easing} from '@watasuke.net/common/src/easing';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
@@ -83,7 +84,7 @@ export const padding_right = style({
 const animation: ComplexStyleRule = {
   transitionDuration: '0.4s',
   transitionProperty: 'transform, top, background-color',
-  transitionTimingFunction: 'cubic-bezier(0.075, 0.82, 0.165, 1)',
+  transitionTimingFunction: `${easing.out_circ.cubic_bezier}`,
 };
 const bar_style: ComplexStyleRule = {
   content: '',

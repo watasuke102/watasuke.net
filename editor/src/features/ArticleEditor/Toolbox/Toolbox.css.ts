@@ -5,6 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {globalStyle, keyframes, style} from '@vanilla-extract/css';
+import {easing} from '@watasuke.net/common/src/easing';
 
 export const css = {
   toolbox_header: style({
@@ -17,12 +18,12 @@ export const css = {
     margin: 'auto',
     width: '100%',
     height: '100%',
-    transition: '0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+    transition: `0.4s ${easing.out_expo.cubic_bezier}`,
   }),
   accordion_content: style({
     overflow: 'hidden',
     animationDuration: '0.3s',
-    animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    animationTimingFunction: easing.out_expo.cubic_bezier,
   }),
 };
 
@@ -42,7 +43,7 @@ globalStyle(`${css.accordion_content}[data-state='closed']`, {
 });
 globalStyle(`${css.expand_icon}[data-state='open']`, {
   transform: 'rotate(180deg)',
-  transition: '0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+  transition: `0.4s ${easing.out_expo.cubic_bezier}`,
 });
 globalStyle(`${css.expand_icon} svg`, {
   width: '100%',

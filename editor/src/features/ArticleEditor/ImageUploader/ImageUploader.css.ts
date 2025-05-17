@@ -5,6 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {style} from '@vanilla-extract/css';
+import {easing} from '@watasuke.net/common/src/easing';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const css = {
@@ -16,14 +17,14 @@ export const css = {
     padding: '4px 8px',
     textAlign: 'center',
     borderColor: color.fg,
-    transition: 'border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+    transition: `border-color 0.5s ${easing.out_expo.cubic_bezier}`,
     ':hover': {
       cursor: 'pointer',
     },
   }),
   dropping_file: style({
     borderColor: color.p0,
-    transition: 'border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+    transition: `border-color 0.5s ${easing.out_expo.cubic_bezier}`,
   }),
   dnd_prompt: style({
     fontSize: '1.3em',

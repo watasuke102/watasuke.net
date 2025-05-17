@@ -23,9 +23,8 @@ const nextConfig: NextConfig = withVanillaExtract({
 
     return config;
   },
-  experimental: {
-    allowedDevOrigins: config.allowed_dev_origins,
-  },
+  allowedDevOrigins: config.allowed_dev_origins,
+  transpilePackages: ['@watasuke.net/common'],
 });
 
 export default nextConfig;

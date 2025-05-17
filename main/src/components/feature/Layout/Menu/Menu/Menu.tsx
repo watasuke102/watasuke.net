@@ -9,8 +9,7 @@
 import * as css from './Menu.css';
 import React from 'react';
 import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
-import {color} from '@watasuke.net/common';
-import {Heading} from '@watasuke.net/common';
+import {color, Heading, easing} from '@watasuke.net/common';
 import {MenuContents} from '../MenuContents';
 
 interface Props {
@@ -42,7 +41,7 @@ export function Menu(props: Props) {
                 boxShadow: '0 0 12px 2px #1110',
                 transition: {
                   duration: duration.close,
-                  ease: [0.22, 1, 0.36, 1],
+                  ease: easing.out_quint.array,
                 },
               },
               open: {
@@ -52,7 +51,7 @@ export function Menu(props: Props) {
                 boxShadow: '0 0 12px 2px #111d',
                 transition: {
                   duration: duration.open,
-                  ease: [0.16, 1, 0.3, 1],
+                  ease: easing.out_expo.array,
                 },
               },
             }}
