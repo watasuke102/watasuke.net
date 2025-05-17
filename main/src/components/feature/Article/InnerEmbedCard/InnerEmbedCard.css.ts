@@ -5,6 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {style} from '@vanilla-extract/css';
+import {easing} from '@watasuke.net/common/src/easing';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
@@ -21,11 +22,11 @@ export const container = style({
   border: `2px solid ${color.p0}`,
   '@media': {
     '(prefers-reduced-motion: no-preference)': {
-      transition: 'transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
+      transition: `transform 0.5s ${easing.out_circ.cubic_bezier}`,
       ':hover': {
         cursor: 'pointer',
         transform: 'translateY(-4px)',
-        transition: 'transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
+        transition: `transform 0.5s ${easing.out_circ.cubic_bezier}`,
       },
     },
   },

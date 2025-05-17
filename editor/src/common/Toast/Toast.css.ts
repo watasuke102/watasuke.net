@@ -5,12 +5,17 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {globalStyle, keyframes, style} from '@vanilla-extract/css';
+import {easing} from '@watasuke.net/common/src/easing';
 import {color} from '@watasuke.net/common/src/css/color';
+
+function x() {
+  return 1;
+}
 
 export const css = {
   viewpoint: style({
     position: 'fixed',
-    top: 12,
+    top: 12 * x(),
     left: '50dvw',
     transform: 'translateX(-50%)',
     listStyle: 'none',
@@ -22,7 +27,7 @@ export const css = {
     color: color.bg,
     backgroundColor: color.p0,
     animationDuration: '0.3s',
-    animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    animationTimingFunction: easing.out_expo.cubic_bezier,
 
     display: 'grid',
     gridTemplateRows: 'auto auto',
