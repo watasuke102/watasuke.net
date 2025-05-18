@@ -80,7 +80,16 @@ export default async function Page({params}: Props) {
         </aside>
       </main>
 
-      <Menu headings={headings} />
+      <Menu
+        additional_item={
+          <>
+            <h2 className={css.heading}>Table of Contents</h2>
+            <nav className={css.toc_wrapper}>
+              <TocMapper headings={headings} />
+            </nav>
+          </>
+        }
+      />
     </>
   );
 }

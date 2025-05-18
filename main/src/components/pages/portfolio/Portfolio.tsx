@@ -8,8 +8,14 @@
 
 import * as css from '@pages/portfolio/portfolio.css';
 import React from 'react';
-import {AnimatePresence, motion} from 'framer-motion';
-import {color} from '@watasuke.net/common/src/css/color';
+import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
+import {easing, color} from '@watasuke.net/common';
+import {constant} from './constant';
+
+// do not import from 'Layout' because it imports 'Footer'
+// that depends 'child_process' despite this page is client component
+// eslint-disable-next-line import/order
+import {Menu} from '@feature/Layout/Menu';
 
 const blind_width = 50;
 // prettier-ignore
@@ -21,17 +27,32 @@ interface Props {
 }
 
 export function Portfolio(props: Props) {
+  const disable_animation = useReducedMotion() ?? false;
+
   return (
-    <AnimatePresence>
-      <main className={css.container}></main>
-      {/* page cut in animation */}
-      <motion.div
-        initial={{background: invisible_mask}}
-        animate={{background: visible_mask, display: 'none'}}
-        // easeOutExpo
-        transition={{delay: 0.6, duration: 0.3, ease: [0.16, 1, 0.3, 1]}}
-        className={css.cutin_animation}
-      />
-    </AnimatePresence>
+    <>
+      <AnimatePresence initial={!disable_animation}>
+        <div className={css.container}>
+          <main>{/* TODO */}</main>
+
+          {
+            /* page cut in animation */
+            !disable_animation && (
+              <motion.div
+                initial={{background: invisible_mask}}
+                animate={{background: visible_mask, display: 'none'}}
+                transition={{
+                  delay: constant.page_cutin_delay,
+                  duration: constant.page_cutin_duration,
+                  ease: easing.out_expo.array,
+                }}
+                className={css.cutin_animation}
+              />
+            )
+          }
+        </div>
+      </AnimatePresence>
+      <Menu additional_item={<></>} />
+    </>
   );
 }

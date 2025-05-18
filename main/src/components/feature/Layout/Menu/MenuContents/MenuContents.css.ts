@@ -12,16 +12,6 @@ export const heading = style({
   marginBottom: 0,
 });
 
-export const toc_wrapper = style({
-  textAlign: 'left',
-  overflowY: 'scroll',
-  paddingBlock: 4,
-  paddingLeft: 8,
-  marginBottom: 8,
-  scrollbarWidth: 'thin',
-  border: `1px solid ${color.fg}`,
-});
-
 export const menu_button = style({
   paddingBlock: 0,
   borderRadius: 4,
