@@ -5,13 +5,12 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {style} from '@vanilla-extract/css';
-import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
-  width: '100dvw',
+  padding: 12,
+  width: '100%',
   overflowX: 'hidden',
-  height: '100dvh',
-  backgroundColor: color.p0,
+  minHeight: '100dvh',
 });
 
 export const cutin_animation = style({
@@ -21,5 +20,4 @@ export const cutin_animation = style({
   height: '100dvh',
   top: 0,
   left: 0,
-  backgroundColor: color.bg,
 });

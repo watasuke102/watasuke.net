@@ -7,25 +7,18 @@
 import * as css from './MenuContents.css';
 import React from 'react';
 import {SimpleInnerLinks, ShareList} from '@common';
-import {TocMapper} from '@watasuke.net/common';
 import {Heading} from '@watasuke.net/common';
 import IconUp from '@assets/icons/general/up.svg';
 
 interface Props {
+  additional_item?: React.ReactNode;
   headings?: Heading[];
 }
 
 export function MenuContents(props: Props) {
   return (
     <>
-      {props.headings && (
-        <>
-          <h2 className={css.heading}>Table of Contents</h2>
-          <nav className={css.toc_wrapper}>
-            <TocMapper headings={props.headings} />
-          </nav>
-        </>
-      )}
+      {props.additional_item}
 
       <h2 className={css.heading}>Share this page</h2>
       <ShareList />

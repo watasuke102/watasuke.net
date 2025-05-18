@@ -5,6 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {Portfolio} from '@pages/portfolio/Portfolio';
+import {Footer} from '@feature/Layout/Footer';
 import {gen_template, JsonLd} from '@utils/Metadata';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {get_params, SearchParams} from '@utils/SearchParams';
@@ -28,6 +29,7 @@ export default async function PortfolioPage({
     <>
       <JsonLd breadcrumb_list={breadcrumb_list} />
       <Portfolio init_lang={get_params(params, 'lang')} />
+      <Footer />
     </>
   );
 }

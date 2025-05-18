@@ -71,3 +71,18 @@ export const head = style({
   marginBottom: 16,
   textAlign: 'center',
 });
+
+export const heading = style({
+  fontSize: '1.5em',
+  marginBottom: 0,
+});
+
+export const toc_wrapper = style({
+  textAlign: 'left',
+  overflowY: 'scroll',
+  paddingBlock: 4,
+  paddingLeft: 8,
+  marginBottom: 8,
+  scrollbarWidth: 'thin',
+  border: `1px solid ${color.fg}`,
+});

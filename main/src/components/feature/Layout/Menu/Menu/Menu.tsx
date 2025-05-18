@@ -9,11 +9,11 @@
 import * as css from './Menu.css';
 import React from 'react';
 import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
-import {color, Heading, easing} from '@watasuke.net/common';
+import {color, easing} from '@watasuke.net/common';
 import {MenuContents} from '../MenuContents';
 
 interface Props {
-  headings?: Heading[];
+  additional_item?: React.ReactNode;
 }
 
 export function Menu(props: Props) {
@@ -23,7 +23,7 @@ export function Menu(props: Props) {
     if (should_reduce_motion) {
       return {open: 0, close: 0};
     }
-    if (props.headings) {
+    if (props.additional_item) {
       return {open: 0.45, close: 0.4};
     }
     return {open: 0.3, close: 0.2};
@@ -63,7 +63,7 @@ export function Menu(props: Props) {
             <div className={css.padding_top} />
             <div className={css.padding_left} />
             <div className={css.padding_right} />
-            <MenuContents headings={props.headings} />
+            <MenuContents additional_item={props.additional_item} />
           </motion.nav>
         )}
       </AnimatePresence>
