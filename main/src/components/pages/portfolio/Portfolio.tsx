@@ -6,16 +6,18 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 'use client';
 
+// do not import from 'Layout' because it imports 'Footer'
+// that depends 'child_process' despite this page is client component
+// eslint-disable-next-line import/order
+import {Menu} from '@feature/Layout/Menu';
+
 import * as css from '@pages/portfolio/portfolio.css';
 import React from 'react';
 import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
 import {easing, color} from '@watasuke.net/common';
 import {constant} from './constant';
 
-// do not import from 'Layout' because it imports 'Footer'
-// that depends 'child_process' despite this page is client component
-// eslint-disable-next-line import/order
-import {Menu} from '@feature/Layout/Menu';
+import {Welcome} from './sections';
 
 const blind_width = 50;
 // prettier-ignore
@@ -33,7 +35,9 @@ export function Portfolio(props: Props) {
     <>
       <AnimatePresence initial={!disable_animation}>
         <div className={css.container}>
-          <main>{/* TODO */}</main>
+          <main>
+            <Welcome />
+          </main>
 
           {
             /* page cut in animation */
@@ -42,8 +46,8 @@ export function Portfolio(props: Props) {
                 initial={{background: invisible_mask}}
                 animate={{background: visible_mask, display: 'none'}}
                 transition={{
-                  delay: constant.page_cutin_delay,
-                  duration: constant.page_cutin_duration,
+                  delay: constant.page_cutin.delay,
+                  duration: constant.page_cutin.duration,
                   ease: easing.out_expo.array,
                 }}
                 className={css.cutin_animation}
