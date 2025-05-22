@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {keyframes, style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
-import {constant} from '../../constant';
+import {welcome_container_section_size} from '../../constant';
 
 export const background = style({
   width: '100%',
@@ -24,28 +24,22 @@ export const container = style({
   display: 'flex',
   gap: 16,
   '@media': {
-    [`screen and (width < ${constant.welcome_container_section_size * 2 + 8 /* gap */ + 64 /* margin */}px)`]:
+    [`screen and (width < ${welcome_container_section_size * 2 + 8 /* gap */ + 64 /* margin */}px)`]:
       {
         flexDirection: 'column',
       },
   },
 });
 
-const ids_border_length_percent = 12;
 export const ids = style({
-  width: constant.welcome_container_section_size,
-  height: constant.welcome_container_section_size,
+  width: welcome_container_section_size,
+  height: welcome_container_section_size,
   padding: 8,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
   border: '3px solid',
   borderImageSlice: 1,
-  borderImageSource: `linear-gradient(45deg,
-    ${color.bg} ${ids_border_length_percent}%,
-    transparent ${ids_border_length_percent}%,
-    transparent ${100 - ids_border_length_percent}%,
-    ${color.bg} ${100 - ids_border_length_percent}%)`,
 });
 
 export const name_primary = style({

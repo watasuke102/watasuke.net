@@ -5,37 +5,46 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 
-export const constant = {
-  page_cutin: {
-    delay: 0.2,
-    duration: 0.3,
-    total: 0.2 + 0.3,
-  },
+export const page_cutin = {
+  delay: 0.2,
+  duration: 0.3,
+  total: 0.2 + 0.3,
+} as const;
 
-  welcome_container_section_size: 240,
-  welcome_zoom: {
-    delay: 0.05,
-    duration: 0.6,
-    total: 0.05 + 0.6,
-  },
-  welcome_ids_expand: {
-    delay: -0.3,
-    duration: 0.4,
-    total: -0.3 + 0.4,
-  },
-  welcome_name_emerge: {
-    delay: -0.25,
-    duration: 0.7,
-    total: -0.25 + 0.7,
-  },
-  welcome_ids_float: {
-    delay: -0.2,
-    duration: 0.4,
-    total: -0.2 + 0.4,
-  },
-  welcome_last_fadein: {
-    delay: 0,
-    duration: 0.4,
-    total: 0 + 0.4,
-  },
+export const welcome_container_section_size = 240;
+export const welcome_zoom = {
+  base: page_cutin.total,
+  delay: 0.0,
+  duration: 0.6,
+  total: 0.0 + 0.6,
+} as const;
+export const welcome_ids_expand = {
+  base: welcome_zoom.base + welcome_zoom.total,
+  delay: -0.35,
+  duration: 0.4,
+  total: -0.35 + 0.4,
+} as const;
+export const welcome_name_emerge = {
+  base: welcome_ids_expand.base + welcome_ids_expand.total,
+  delay: -0.3,
+  duration: 0.7,
+  total: -0.3 + 0.7,
+} as const;
+export const welcome_ids_float = {
+  base: welcome_name_emerge.base + welcome_name_emerge.total,
+  delay: -0.4,
+  duration: 0.4,
+  total: -0.4 + 0.4,
+} as const;
+export const welcome_ids_border_fadein = {
+  base: welcome_ids_float.base + welcome_ids_float.total,
+  delay: -0.1,
+  duration: 0.5,
+  total: -0.1 + 0.5,
+} as const;
+export const welcome_last_fadein = {
+  base: welcome_ids_border_fadein.base + welcome_ids_border_fadein.total,
+  delay: -0.0,
+  duration: 0.4,
+  total: -0.0 + 0.4,
 } as const;

@@ -7,16 +7,16 @@
 import * as css from './HorizontalEmerge.css';
 import {motion, MotionProps} from 'framer-motion';
 import {easing} from '@watasuke.net/common';
-import {constant} from '@pages/portfolio/constant';
 
 interface Props {
   delay: number;
+  duration: number;
   children: React.ReactNode;
 }
 
 export function HorizontalEmerge(props: Props) {
   const motion_props: MotionProps['transition'] = {
-    duration: constant.welcome_name_emerge.duration,
+    duration: props.duration,
     delay: props.delay,
   };
 

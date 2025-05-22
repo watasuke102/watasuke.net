@@ -7,15 +7,25 @@
 import * as css from './Welcome.css';
 import {motion} from 'framer-motion';
 import {Avatar} from '@common';
-import {easing} from '@watasuke.net/common';
+import {color, easing} from '@watasuke.net/common';
 import {HorizontalEmerge} from '@pages/portfolio/components/HorizontalEmerge';
 import {FadeFloatIn} from '@pages/portfolio/components/FadeFloatIn';
-import {constant} from '../../constant';
+import * as constant from '@pages/portfolio/constant';
 import IconDoubleDown from '@assets/icons/general/double-down.svg';
 import IconGitHub from '@assets/icons/Links/github.svg';
 import IconTwitter from '@assets/icons/Links/twitter.svg';
 import IconInstagram from '@assets/icons/Links/instagram.svg';
 import IconSoundcloud from '@assets/icons/Links/soundcloud.svg';
+
+const ids_border_length_percent = 12;
+const [ids_border_initial, ids_border_final] = ['00', 'ff'].map(
+  alpha =>
+    `linear-gradient(45deg,
+      ${color.bg}${alpha} ${ids_border_length_percent}%,
+      transparent         ${ids_border_length_percent}%,
+      transparent         ${100 - ids_border_length_percent}%,
+      ${color.bg}${alpha} ${100 - ids_border_length_percent}%)`,
+);
 
 export function Welcome() {
   return (
@@ -25,11 +35,7 @@ export function Welcome() {
         animate={{opacity: 1}}
         transition={{
           delay:
-            constant.page_cutin.total +
-            constant.welcome_zoom.total +
-            constant.welcome_ids_expand.total +
-            constant.welcome_name_emerge.total +
-            constant.welcome_ids_float.total +
+            constant.welcome_last_fadein.base +
             constant.welcome_last_fadein.delay,
           duration: constant.welcome_last_fadein.duration,
         }}
@@ -44,7 +50,7 @@ export function Welcome() {
           transform: 'scale(1.0)',
         }}
         transition={{
-          delay: constant.page_cutin.total + constant.welcome_zoom.delay,
+          delay: constant.welcome_zoom.base + constant.welcome_zoom.delay,
           duration: constant.welcome_zoom.duration,
           ease: easing.out_expo.array,
         }}
@@ -62,34 +68,41 @@ export function Welcome() {
           }}
           transition={{
             delay:
-              constant.page_cutin.total +
-              constant.welcome_zoom.total +
+              constant.welcome_ids_expand.base +
               constant.welcome_ids_expand.delay,
             duration: constant.welcome_ids_expand.duration,
             ease: easing.out_circ.array,
           }}
         >
           {/* to keep contents display regardless of wrapper size that is changed by animation */}
-          <div className={css.ids}>
+          <motion.div
+            initial={{borderImageSource: ids_border_initial}}
+            animate={{borderImageSource: ids_border_final}}
+            transition={{
+              delay:
+                constant.welcome_ids_border_fadein.base +
+                constant.welcome_ids_border_fadein.delay,
+              duration: 0.3,
+            }}
+            className={css.ids}
+          >
             <div>
               <HorizontalEmerge
                 delay={
-                  constant.page_cutin.total +
-                  constant.welcome_zoom.total +
-                  constant.welcome_ids_expand.total +
+                  constant.welcome_name_emerge.base +
                   constant.welcome_name_emerge.delay
                 }
+                duration={constant.welcome_name_emerge.duration}
               >
                 <div className={css.name_primary}>わたすけ</div>
               </HorizontalEmerge>
               <HorizontalEmerge
                 delay={
-                  constant.page_cutin.total +
-                  constant.welcome_zoom.total +
-                  constant.welcome_ids_expand.total +
+                  constant.welcome_name_emerge.base +
                   constant.welcome_name_emerge.delay +
                   0.1
                 }
+                duration={constant.welcome_name_emerge.duration}
               >
                 <div className={css.name_secondary}>watasuke</div>
               </HorizontalEmerge>
@@ -97,12 +110,10 @@ export function Welcome() {
 
             <FadeFloatIn
               delay={
-                constant.page_cutin.total +
-                constant.welcome_zoom.total +
-                constant.welcome_ids_expand.total +
-                constant.welcome_name_emerge.total +
+                constant.welcome_ids_float.base +
                 constant.welcome_ids_float.delay
               }
+              duration={constant.welcome_ids_float.duration}
             >
               <div className={css.icon_container}>
                 <a href='https://github.com/watasuke102' className={css.icon}>
@@ -119,13 +130,11 @@ export function Welcome() {
             </FadeFloatIn>
             <FadeFloatIn
               delay={
-                constant.page_cutin.total +
-                constant.welcome_zoom.total +
-                constant.welcome_ids_expand.total +
-                constant.welcome_name_emerge.total +
+                constant.welcome_ids_float.base +
                 constant.welcome_ids_float.delay +
                 0.1
               }
+              duration={constant.welcome_ids_float.duration}
             >
               <div className={css.icon_container}>
                 <a href='https://x.com/watasuke1024' className={css.icon}>
@@ -136,13 +145,11 @@ export function Welcome() {
             </FadeFloatIn>
             <FadeFloatIn
               delay={
-                constant.page_cutin.total +
-                constant.welcome_zoom.total +
-                constant.welcome_ids_expand.total +
-                constant.welcome_name_emerge.total +
+                constant.welcome_ids_float.base +
                 constant.welcome_ids_float.delay +
                 0.2
               }
+              duration={constant.welcome_ids_float.duration}
             >
               <div className={css.icon_container}>
                 <a href='https://soundcloud.com/watasuke' className={css.icon}>
@@ -151,7 +158,7 @@ export function Welcome() {
                 <span className={css.id_text}>watasuke</span>
               </div>
             </FadeFloatIn>
-          </div>
+          </motion.div>
         </motion.div>
       </motion.div>
 
@@ -160,11 +167,7 @@ export function Welcome() {
         animate={{opacity: 1}}
         transition={{
           delay:
-            constant.page_cutin.total +
-            constant.welcome_zoom.total +
-            constant.welcome_ids_expand.total +
-            constant.welcome_name_emerge.total +
-            constant.welcome_ids_float.total +
+            constant.welcome_last_fadein.base +
             constant.welcome_last_fadein.delay,
           duration: constant.welcome_last_fadein.duration,
         }}
