@@ -77,10 +77,15 @@ export function JsonLd(props: {breadcrumb_list: BreadcrumbItem[]}) {
           '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',
           itemListElement: props.breadcrumb_list.map(e => {
-            if (e.item) {
-              e.item = config.site_url + e.item;
+            if (!e.item) {
+              return e;
             }
-            return e;
+
+            let item = config.site_url + e.item;
+            if (item.at(-1) !== '/') {
+              item += '/';
+            }
+            return {...e, item};
           }),
         }),
       }}
