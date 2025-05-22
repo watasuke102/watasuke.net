@@ -60,7 +60,7 @@ export const icon_container = style({
 export const id_text = style({
   display: 'inline-block',
   marginLeft: 'auto',
-  fontSize: '1.2em',
+  fontSize: '1.15em',
   fontWeight: 'bold',
 });
 export const icon = style({
@@ -68,7 +68,7 @@ export const icon = style({
   justifyContent: 'center',
   alignItems: 'center',
   padding: 5,
-  height: 32,
+  height: 28,
   aspectRatio: '1 / 1',
   color: color.fg,
   backgroundColor: color.bg,
