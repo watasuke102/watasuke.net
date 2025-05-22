@@ -11,10 +11,10 @@ questions:
 
 ```tsx
 // watasuke.net
-// CopyRight (c) 2021-2024 watasuke
+// CopyRight (c) 2021-2025 watasuke
 //
 // Email  : <watasuke102@gmail.com>
-// Twitter: @Watasuke102
+// Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import React from 'react';
 import * as css from './{{ pascal(inputs.name) }}.css';
@@ -31,10 +31,10 @@ export function {{ pascal(inputs.name) }}() {
 
 ```ts
 // watasuke.net
-// CopyRight (c) 2021-2024 watasuke
+// CopyRight (c) 2021-2025 watasuke
 //
 // Email  : <watasuke102@gmail.com>
-// Twitter: @Watasuke102
+// Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {style} from '@vanilla-extract/css';
 
@@ -45,10 +45,10 @@ export const a = style({});
 
 ```ts
 // watasuke.net
-// CopyRight (c) 2021-2024 watasuke
+// CopyRight (c) 2021-2025 watasuke
 //
 // Email  : <watasuke102@gmail.com>
-// Twitter: @Watasuke102
+// Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import { {{ pascal(inputs.name) }} } from './{{ pascal(inputs.name) }}';
 
