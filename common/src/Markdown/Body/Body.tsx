@@ -106,7 +106,7 @@ export function Body(props: Props) {
           h5: Heading,
           h6: Heading,
           img: (props: JSX.IntrinsicElements['img'] & ExtraProps) => (
-            <ImageViewer src={props.src || ''} alt={props.alt} />
+            <ImageViewer src={props.src?.toString() ?? ''} alt={props.alt} />
           ),
         }}
         remarkPlugins={[Gfm, Math, remarkAddFootnoteLabel]}
