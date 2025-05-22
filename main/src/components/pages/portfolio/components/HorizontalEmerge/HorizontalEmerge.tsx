@@ -16,7 +16,7 @@ interface Props {
 
 export function HorizontalEmerge(props: Props) {
   const motion_props: MotionProps['transition'] = {
-    duration: constant.welcome_info_emerge.duration,
+    duration: constant.welcome_name_emerge.duration,
     delay: props.delay,
   };
 

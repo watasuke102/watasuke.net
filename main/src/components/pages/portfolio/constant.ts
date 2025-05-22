@@ -23,9 +23,19 @@ export const constant = {
     duration: 0.4,
     total: -0.3 + 0.4,
   },
-  welcome_info_emerge: {
+  welcome_name_emerge: {
     delay: -0.25,
     duration: 0.7,
     total: -0.25 + 0.7,
+  },
+  welcome_ids_float: {
+    delay: -0.2,
+    duration: 0.4,
+    total: -0.2 + 0.4,
+  },
+  welcome_last_fadein: {
+    delay: 0,
+    duration: 0.4,
+    total: 0 + 0.4,
   },
 } as const;
