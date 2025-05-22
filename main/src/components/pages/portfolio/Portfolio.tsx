@@ -15,7 +15,7 @@ import * as css from '@pages/portfolio/portfolio.css';
 import React from 'react';
 import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
 import {easing, color} from '@watasuke.net/common';
-import {constant} from './constant';
+import * as constant from '@pages/portfolio/constant';
 
 import {Welcome} from './sections';
 

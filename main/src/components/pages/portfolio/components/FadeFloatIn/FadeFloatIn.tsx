@@ -7,10 +7,10 @@
 import React from 'react';
 import {motion} from 'framer-motion';
 import {easing} from '@watasuke.net/common';
-import {constant} from '@pages/portfolio/constant';
 
 interface Props {
   delay: number;
+  duration: number;
   children: React.ReactNode;
 }
 
@@ -21,7 +21,7 @@ export function FadeFloatIn(props: Props) {
       animate={{opacity: 1, y: 0}}
       transition={{
         delay: props.delay,
-        duration: constant.welcome_ids_float.duration,
+        duration: props.duration,
         ease: easing.out_expo.array,
       }}
     >
