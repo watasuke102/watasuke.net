@@ -6,6 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {keyframes, style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
+import {easing} from '@watasuke.net/common/src/easing';
 import {welcome_container_section_size} from '../../constant';
 
 export const background = style({
@@ -83,9 +84,39 @@ export const icon = style({
   },
 });
 
+export const scroll_prompt = style({
+  overflow: 'hidden',
+  display: 'grid',
+  gap: 4,
+  gridTemplateColumns: '28px auto',
+  alignItems: 'center',
+  color: color.bg,
+});
+
+const rolling = keyframes({
+  '0%': {
+    transform: 'translateY(-90%)',
+  },
+  '45%': {
+    transform: 'translateY(0%)',
+  },
+  '70%': {
+    transform: 'translateY(0%)',
+  },
+  '100%': {
+    transform: 'translateY(90%)',
+  },
+});
+export const down_arrow = style({
+  animationName: rolling,
+  animationDuration: '3s',
+  animationIterationCount: 'infinite',
+  animationTimingFunction: easing.out_expo.cubic_bezier,
+});
+
 const blink = keyframes({
   '0%': {
-    opacity: 0,
+    opacity: 0.1,
   },
   '45%': {
     opacity: 1,
@@ -93,21 +124,13 @@ const blink = keyframes({
   '55%': {
     opacity: 1,
   },
-  '95%': {
-    opacity: 0,
-  },
   '100%': {
-    opacity: 0,
+    opacity: 0.1,
   },
 });
-export const scroll_prompt = style({
-  display: 'grid',
-  gap: 4,
-  gridTemplateColumns: '28px auto 28px',
-  alignItems: 'center',
-  color: color.bg,
+export const scroll_prompt_text = style({
   fontSize: '1.1em',
   animationName: blink,
-  animationDuration: '8s',
+  animationDuration: '9s',
   animationIterationCount: 'infinite',
 });

@@ -173,11 +173,10 @@ export function Welcome() {
         }}
         className={css.scroll_prompt}
       >
-        <span>
+        <span className={css.down_arrow}>
           <IconDoubleDown />
         </span>
-        <span>scroll down</span>
-        <IconDoubleDown />
+        <span className={css.scroll_prompt_text}>scroll down</span>
       </motion.div>
     </section>
   );
