@@ -24,11 +24,7 @@ const blind_width = 50;
 const visible_mask   = `repeating-linear-gradient(55deg, ${color.bg} 0px 0px, transparent 0px ${blind_width}px)`;
 const invisible_mask = `repeating-linear-gradient(55deg, ${color.bg} 0px ${blind_width}px, transparent 0px ${blind_width}px)`;
 
-interface Props {
-  init_lang: string | undefined;
-}
-
-export function Portfolio(props: Props) {
+export function Portfolio() {
   const disable_animation = useReducedMotion() ?? false;
 
   return (
