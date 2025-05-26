@@ -14,10 +14,10 @@ import {Menu} from '@feature/Layout/Menu';
 import * as css from '@pages/portfolio/portfolio.css';
 import React from 'react';
 import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
-import {easing, color} from '@watasuke.net/common';
+import {easing, color, Switch} from '@watasuke.net/common';
 import * as constant from '@pages/portfolio/constant';
 
-import {Welcome} from './sections';
+import {Welcome, Whoami} from './sections';
 
 const blind_width = 50;
 // prettier-ignore
@@ -26,6 +26,7 @@ const invisible_mask = `repeating-linear-gradient(55deg, ${color.bg} 0px ${blind
 
 export function Portfolio() {
   const disable_animation = useReducedMotion() ?? false;
+  const [lang, set_lang] = React.useState<'ja' | 'en'>('ja');
 
   return (
     <>
@@ -33,6 +34,7 @@ export function Portfolio() {
         <div className={css.container}>
           <main>
             <Welcome />
+            <Whoami lang={lang} />
           </main>
 
           {
@@ -52,7 +54,23 @@ export function Portfolio() {
           }
         </div>
       </AnimatePresence>
-      <Menu additional_item={<></>} />
+      <Menu
+        additional_item={
+          <>
+            <div className={css.selector}>
+              <span className={css.selector_label}>Language</span>
+              <span>English</span>
+              <Switch
+                checked={lang !== 'en'}
+                on_click={() => set_lang(prev => (prev !== 'ja' ? 'ja' : 'en'))}
+                same_color
+              />
+              <span>日本語</span>
+            </div>
+            <hr />
+          </>
+        }
+      />
     </>
   );
 }
