@@ -17,7 +17,7 @@ import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
 import {easing, color, Switch} from '@watasuke.net/common';
 import * as constant from '@pages/portfolio/constant';
 
-import {Welcome, Whoami} from './sections';
+import {Welcome, Whoami, History} from './sections';
 
 const blind_width = 50;
 // prettier-ignore
@@ -35,6 +35,8 @@ export function Portfolio() {
           <main>
             <Welcome />
             <Whoami lang={lang} />
+            {/* TODO: skills */}
+            <History lang={lang} />
           </main>
 
           {
