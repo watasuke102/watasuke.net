@@ -5,5 +5,6 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {Welcome} from './Welcome/Welcome';
+import {Whoami} from './Whoami/Whoami';
 
-export {Welcome};
+export {Welcome, Whoami};

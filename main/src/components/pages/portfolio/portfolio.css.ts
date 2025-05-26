@@ -20,3 +20,15 @@ export const cutin_animation = style({
   top: 0,
   left: 0,
 });
+
+export const selector = style({
+  display: 'grid',
+  gridTemplateColumns: '1fr auto auto auto',
+  gap: 12,
+  alignItems: 'center',
+  textAlign: 'left',
+});
+export const selector_label = style({
+  fontSize: '1.2em',
+  fontWeight: 'bold',
+});
