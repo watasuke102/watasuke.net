@@ -5,20 +5,47 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Whoami.css';
-import {cs} from '@watasuke.net/common';
-import {FadeFloatIn} from '@pages/portfolio/components/FadeFloatIn';
+import {motion, MotionProps} from 'framer-motion';
+import {cs, easing} from '@watasuke.net/common';
 import {BioEn, BioJa} from '@data/bio';
 import IconClose from '@assets/icons/general/close.svg';
 import IconExpand from '@assets/icons/general/expand.svg';
 
 export function Whoami(props: {lang: 'ja' | 'en'}) {
+  const item = (delay: number) => {
+    return {
+      variants: {
+        initial: {opacity: 0, y: 20},
+        animate: {opacity: 1, y: 0},
+      },
+      transition: {
+        delay,
+        duration: 0.4,
+        ease: easing.out_expo.array,
+      },
+    } as MotionProps;
+  };
   const prefix = (
     <>
       <span className={css.host}>watasuke@watasuke.net</span>:~${' '}
     </>
   );
   return (
-    <section className={css.container}>
+    <motion.section
+      variants={{
+        initial: {opacity: 0, y: 20},
+        animate: {opacity: 1, y: 0},
+      }}
+      initial='initial'
+      whileInView='animate'
+      viewport={{once: true, amount: 1.0}}
+      transition={{
+        when: 'beforeChildren',
+        duration: 0.4,
+        ease: easing.out_expo.array,
+      }}
+      className={css.container}
+    >
       <div className={css.tabbar}>
         <div className={cs(css.tabbar_button, css.tabbar_close_button)}>
           <IconClose />
@@ -31,15 +58,15 @@ export function Whoami(props: {lang: 'ja' | 'en'}) {
         </div>
         <span>/usr/bin/zsh - terminal</span>
       </div>
-      <FadeFloatIn delay={1.0} duration={0.4}>
+      <motion.div {...item(0.0)}>
         <span>
           {prefix}
           <span className={css.command}>~/.local/whoami</span>
         </span>
-      </FadeFloatIn>
-      <FadeFloatIn delay={1.3} duration={0.4}>
+      </motion.div>
+      <motion.div {...item(0.4)}>
         {props.lang === 'en' ? <BioEn /> : <BioJa />}
-      </FadeFloatIn>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
