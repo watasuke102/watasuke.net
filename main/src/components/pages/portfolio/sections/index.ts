@@ -4,7 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import {History} from './History/History';
 import {Welcome} from './Welcome/Welcome';
 import {Whoami} from './Whoami/Whoami';
 
-export {Welcome, Whoami};
+export {Welcome, Whoami, History};
