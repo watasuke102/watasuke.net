@@ -9,6 +9,7 @@
 import * as config from '@watasuke.net/config/config';
 import * as style from './AdsInArticle.css';
 import React from 'react';
+import { usePathname } from "next/navigation";
 
 declare global {
   interface Window {
@@ -18,13 +19,14 @@ declare global {
 }
 
 export function AdsInArticle() {
+  const pathname = usePathname();
   React.useEffect(() => {
     if (config.adsenseId.length <= 0 || config.inArticleSlot.length <= 0) {
       return;
     }
     window.adsbygoogle = window.adsbygoogle || [];
     window.adsbygoogle.push({});
-  }, []);
+  }, [pathname]);
 
   return (
     <div className={style.wrapper}>
@@ -33,7 +35,7 @@ export function AdsInArticle() {
       ) : (
         <ins
           className='adsbygoogle'
-          style={{display: 'block', textAlign: 'center'}}
+          style={{ display: 'block', textAlign: 'center' }}
           data-ad-layout='in-article'
           data-ad-format='fluid'
           data-ad-client={config.adsenseId}
