@@ -30,6 +30,7 @@ function ja_en(ja: string, en: string): (lang: 'ja' | 'en') => string {
   return (lang: 'ja' | 'en') => (lang === 'en' ? en : ja);
 }
 
+export type WorkListKey = keyof typeof work_list;
 export const work_list = {
   watasukenet: {
     title: () => 'watasuke.net',
@@ -121,6 +122,7 @@ The language processor is implemented by Rust without crate. The compiler output
     tags: [
       {kind: 'lang', name: 'C'},
       {kind: 'fw/lib', name: 'Wayland'},
+      {kind: 'fw/lib', name: 'OpenGL'},
     ],
     desc_md: ja_en(
       `

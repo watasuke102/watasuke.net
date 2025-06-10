@@ -12,6 +12,7 @@ import {
   work_list,
   WorkCategory,
   WorkCategoryArray as work_category_array,
+  WorkListKey,
 } from '@data/work_list';
 
 export function Works(props: {lang: 'ja' | 'en'}) {
@@ -31,21 +32,29 @@ export function Works(props: {lang: 'ja' | 'en'}) {
   };
 
   const groupby = React.useMemo(() => {
-    return Object.values(work_list).reduce(
-      (acc, work) => {
-        work.category.forEach(category => {
-          acc[category].push(work);
-        });
+    const initial_acc = work_category_array.reduce(
+      (acc, category) => {
+        acc[category] = [];
         return acc;
       },
-      work_category_array.reduce(
-        (acc, category) => {
-          acc[category] = [];
-          return acc;
-        },
-        {} as Record<WorkCategory, Work[]>,
-      ),
+      {} as Record<
+        WorkCategory,
+        {
+          key: WorkListKey;
+          work: Work;
+        }[]
+      >,
     );
+    return Object.keys(work_list).reduce((acc, key) => {
+      const work = work_list[key as keyof typeof work_list];
+      work.category.forEach(category => {
+        acc[category].push({
+          key: key as WorkListKey,
+          work,
+        });
+      });
+      return acc;
+    }, initial_acc);
   }, []);
 
   return (
@@ -68,13 +77,19 @@ export function Works(props: {lang: 'ja' | 'en'}) {
             </span>
           </summary>
           <div className={css.grid_view}>
-            {groupby[category as WorkCategory].map((work, index) => (
-              <div key={`${category}work${index}`} className={css.item}>
+            {groupby[category as WorkCategory].map((e, index) => (
+              <div
+                key={`${category}work${index}`}
+                // give key in order to make possible to scroll into this item
+                // item can own multiple categories, so same item can appear multiple times,
+                // so use class instead of id
+                className={cs(e.key, css.item)}
+              >
                 <div className={css.img_wrapper}>
-                  {work.img ? (
+                  {e.work.img ? (
                     <img
-                      src={work.img}
-                      alt={work.title(props.lang)}
+                      src={e.work.img}
+                      alt={e.work.title(props.lang)}
                       loading='lazy'
                       decoding='async'
                       className={css.item_thumbnail}
@@ -85,11 +100,11 @@ export function Works(props: {lang: 'ja' | 'en'}) {
                 </div>
                 <div className={css.properties}>
                   <span className={css.property_title}>
-                    {work.title(props.lang)}
+                    {e.work.title(props.lang)}
                   </span>
                   <div>
                     <div className={css.multiselect}>
-                      {work.tags.map((tag, i) => (
+                      {e.work.tags.map((tag, i) => (
                         <span
                           key={`${index}tag${i}`}
                           className={cs(
