@@ -54,8 +54,12 @@ export const history_line_horizontal = style({
 export const history_info_container = style({
   padding: '4px 8px',
   marginBlock: 8,
+  textAlign: 'left',
   border: `3px solid ${color.p0}`,
   borderRadius: 4,
+  ':focus': {
+    outline: `2px dashed ${color.fg}`,
+  },
 
   gridArea: 'item_r',
   selectors: {

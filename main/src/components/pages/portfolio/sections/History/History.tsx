@@ -38,12 +38,28 @@ export function History(props: {lang: 'ja' | 'en'}) {
                 <div key={`${year}-${index}`} className={css.history_item}>
                   <div className={css.history_line_vertical} />
                   <div className={css.history_line_horizontal} />
-                  <div className={css.history_info_container}>
+                  <button
+                    className={css.history_info_container}
+                    onClick={
+                      event.category === 'Dev'
+                        ? () =>
+                            window.scroll({
+                              top:
+                                window.pageYOffset +
+                                document
+                                  .getElementsByClassName(event.key)[0]
+                                  ?.getBoundingClientRect().top -
+                                20,
+                              behavior: 'smooth',
+                            })
+                        : undefined
+                    }
+                  >
                     <h4 className={css.history_title}>{event.title}</h4>
                     <span className={css.history_subtitle}>
                       {event.subtitle}
                     </span>
-                  </div>
+                  </button>
                 </div>
               );
             })}
