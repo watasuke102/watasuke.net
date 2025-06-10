@@ -34,5 +34,6 @@ export const color = {
 
   brand: {
     twitter: '#1da1f2',
+    soundcloud: '#ff5500',
   },
 };

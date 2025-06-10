@@ -7,5 +7,6 @@
 import {History} from './History/History';
 import {Welcome} from './Welcome/Welcome';
 import {Whoami} from './Whoami/Whoami';
+import {Works} from './Works/Works';
 
-export {Welcome, Whoami, History};
+export {Welcome, Whoami, History, Works};
