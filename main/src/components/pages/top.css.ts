@@ -164,7 +164,7 @@ export const link_soundcloud = style({
   '@media': {
     '(hover: hover)': {
       ':hover': {
-        color: '#ff5500',
+        color: color.brand.soundcloud,
       },
     },
   },

@@ -28,7 +28,7 @@ export const css = {
   switch_bg: style({}),
 };
 
-globalStyle(`${css.switch_bg}[data-state!='checked']`, {
+globalStyle(`${css.switch_bg}:not([data-state='checked'])`, {
   backgroundColor: color.fg,
 });
 globalStyle(`${css.thumb}[data-state='checked']`, {

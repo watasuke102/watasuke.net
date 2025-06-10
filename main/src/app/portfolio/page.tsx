@@ -28,7 +28,12 @@ export default async function PortfolioPage({
   return (
     <>
       <JsonLd breadcrumb_list={breadcrumb_list} />
-      <Portfolio init_lang={get_params(params, 'lang')} />
+      <Portfolio
+        init_lang={
+          // init_lang becomes only when `lang` param is EXACTLY equals to 'en'
+          get_params(params, 'lang') === 'en' ? 'en' : 'ja'
+        }
+      />
       <Footer />
     </>
   );

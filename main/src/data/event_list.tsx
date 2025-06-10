@@ -4,6 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
+import {work_list} from './work_list';
 
 export interface Date {
   month: number;
@@ -26,13 +27,20 @@ export type Period =
       end: Date;
     };
 
-export interface Event {
+export type Event = {
   title: string;
   subtitle: string;
   period: Period;
-  category: 'General' | 'Work' | 'Event' | 'Presentation';
-  body: string;
-}
+} & (
+  | {
+      category: 'General' | 'Event' | 'Presentation';
+      body: string;
+    }
+  | {
+      category: 'Dev';
+      key: keyof typeof work_list;
+    }
+);
 
 export function gen_event_list(lang: 'ja' | 'en'): Record<string, Event[]> {
   const ja = lang !== 'en';
@@ -41,74 +49,27 @@ export function gen_event_list(lang: 'ja' | 'en'): Record<string, Event[]> {
       {
         // U-22への提出日
         period: {kind: 'day', date: {month: 8, day: 15}},
-        category: 'Work',
+        category: 'Dev',
         title: 'MarkStudy',
         subtitle: ja ? '学習特化テキストエディタ' : 'text editor for study',
-        body: ja
-          ? `
-2019年U-22プロコン応募作品（事前審査落ち）
-
-マークアップ形式でWYSIWYGライクに編集し、単語に重要度を設定し、
-非表示にしたり強調したりして復習することができます。
-
-[GitHub](https://github.com/watasuke102/MarkStudy) / 
-[Scrapbox](https://scrapbox.io/watasuke/U-22%E3%83%97%E3%83%AD%E3%82%B3%E3%83%B3%EF%BC%9A2019%E5%B9%B4)
-`
-          : `
-Submitted to 2019 U-22 Programming Contest (lose by a pre-election)
-
-Edit with markup language like WYSIWYG, set importance and hide / emphasize the words.
-
-[GitHub](https://github.com/watasuke102/MarkStudy) / 
-[Scrapbox](https://scrapbox.io/watasuke/U-22%E3%83%97%E3%83%AD%E3%82%B3%E3%83%B3%EF%BC%9A2019%E5%B9%B4)
-`,
+        key: 'markstudy',
       },
       {
         // "完成" ツイートをした日
         period: {kind: 'day', date: {month: 8, day: 26}},
-        category: 'Work',
+        category: 'Dev',
         title: ja ? 'Arduinoで時計を作成する' : 'Create the clock by Arduino',
         subtitle: ja ? '夏休みの自由研究' : 'Research of summer vacation',
-        body: ja
-          ? `
-![完成品](/works/arduino-clock.jpg)
-
-ArduinoでRTCおよびOLEDを制御し、ストップウォッチ機能つきの時計を作成しました。
-夏休みの自由研究として学校に提出を行いました。
-
-[開発の様子（Togetter）](https://togetter.com/li/2161192)
-`
-          : `
-![final product](/works/arduino-clock.jpg)
-
-I created the clock with stopwatch function by controlling RTC and OLED by Arduino.
-I also created the report and submitted as research of summer vacation.
-
-[Developing log (JA, Togetter)](https://togetter.com/li/2161192)
-`,
+        key: 'arduino_clock',
       },
       {
         period: {kind: 'day', date: {month: 10, day: 25}},
-        category: 'Work',
+        category: 'Dev',
         title: 'STG',
         subtitle: ja
           ? '文化祭用のシューティングゲーム'
           : 'Shooting Game for School festival',
-        body: ja
-          ? `
-![プレイ中のスクリーンショット](/works/schoolfest-stg.jpg)
-
-OpenSiv3Dでグレイズをコンセプトにした弾幕シューティングゲームを作ろうとしていました。
-
-[GitHub](https://github.com/watasuke102/SchoolFestSTG)
-`
-          : `
-![screenshot of TAGether usage](/works/schoolfest-stg.jpg)
-
-Trying to make Bullet Hell STG with Graze as a concept
-
-[GitHub](https://github.com/watasuke102/SchoolFestSTG)
-`,
+        key: 'school_fest_stg',
       },
     ],
     '2020': [
@@ -122,58 +83,21 @@ Trying to make Bullet Hell STG with Graze as a concept
       {
         // join to Fascode
         period: {kind: 'doing', begin: {month: 5, day: 11}},
-        category: 'Work',
+        category: 'Dev',
         title: 'Alter Linux (i3wm edition)',
         subtitle: ja
           ? 'Arch Linuxベースの国産Linuxディストリビューション'
           : 'Arch Linux derived Linux distribution made in Japan',
-        body: ja
-          ? `
-![alterlinux-i3-manager](/works/alterlinux-i3-manager.jpg)
-（画像は i3wmエディション用のGUI設定ツール、
-[alterlinux-i3-manager](https://github.com/FascodeNet/alterlinux-i3-manager)）
-
-学生団体[FascodeNetwork](https://fascode.net/) に[参加](https://twitter.com/Watasuke102/status/1259835713991802881)し、
-Alter Linux i3wmエディションの開発などを行いました。
-
-[GitHub](https://github.com/FascodeNet/alterlinux)
-`
-          : `
-![alterlinux-i3-manager](/works/alterlinux-i3-manager.jpg)
-(This image is [alterlinux-i3-manager](https://github.com/FascodeNet/alterlinux-i3-manager), 
-a GUI configuration tool for i3wm edition)
-
-Join [FascodeNetwork](https://fascode.net/) (student organization), and developing Alter Linux i3wm edition.
-
-[GitHub](https://github.com/FascodeNet/alterlinux)
-`,
+        key: 'alterlinux',
       },
       {
         period: undefined,
-        category: 'Work',
+        category: 'Dev',
         title: 'ExpNote',
         subtitle: ja
           ? '簡易的な所持金管理アプリ'
           : 'A simple household account book',
-        body: ja
-          ? `
-![ExpNoteを使用している様子](/works/expnote.jpg)
-
-Flutterを用いて作った所持金管理アプリです。
-
-日付・イベント名・収支を入力すると、全体の収支が分かります。
-
-[GitHub](https://github.com/watasuke102/ExpNote)
-`
-          : `
-![screenshot of ExpNote usage](/works/expnote.jpg)
-
-Household account book application with Flutter
-
-Add date, event name, and payment amounts to check the total balance.
-
-[GitHub](https://github.com/watasuke102/ExpNote)
-`,
+        key: 'expnote',
       },
       {
         period: {kind: 'day', date: {month: 10, day: 31}},
@@ -197,86 +121,30 @@ Lightning Talk to roughly recommend Flutter.
       {
         // initial commit
         period: {kind: 'doing', begin: {month: 12, day: 19}},
-        category: 'Work',
+        category: 'Dev',
         title: 'TAGether',
         subtitle: ja
           ? 'テスト対策問題の共有サービス'
           : 'Service to share self-made exam',
-        body: ja
-          ? `
-![TAGetherを実際に使用している様子](/works/tagether.jpg)
-
-テスト対策問題を作ってクラス内に共有することが出来るサービスです。
-
-フロントエンドにNext.js、バックエンドにExpress・MySQLを使用して作成しました。
-
-[GitHub](https://github.com/watasuke102/TAGether) / 
-[Scrapbox](https://scrapbox.io/watasuke/TAGether)
-`
-          : `
-![screenshot of TAGether usage](/works/tagether.jpg)
-
-The service makes possible to share self-made exam for classmates.
-
-Use Next.js as frontend, Express / MySQL as backend
-
-[GitHub](https://github.com/watasuke102/TAGether) / 
-[Scrapbox](https://scrapbox.io/watasuke/TAGether)
-`,
+        key: 'tagether',
       },
     ],
     '2021': [
       {
         period: {kind: 'day', date: {month: 9, day: 5}},
-        category: 'Work',
+        category: 'Dev',
         title: 'TimeTree-NoticeBot',
         subtitle: ja
           ? 'TimeTreeの予定をDiscordに通知'
           : 'Notify schedule on TimeTree',
-        body: ja
-          ? `
-![TimeTree-NoticeBotからの通知](/works/timetree-noticebot.jpg)
-
-Rustを用いて作成したDiscord用Botです。
-
-TimeTreeからその日の予定を確認し、そのイベントの開始前に指定されたチャンネルに通知します。
-
-[GitHub](https://github.com/watasuke102/TimeTree-NoticeBot-rust)
-`
-          : `
-![Notice from TimeTree-NoticeBot](/works/timetree-noticebot.jpg)
-
-Discord Bot with Rust.
-
-Check toperiod's schedule in TimeTree and notify by sending a message before the event starts.
-
-[GitHub](https://github.com/watasuke102/TimeTree-NoticeBot-rust)
-`,
+        key: 'timetree_noticebot',
       },
       {
         period: {kind: 'day', date: {month: 12, day: 5}},
-        category: 'Work',
+        category: 'Dev',
         title: 'discord-voicechat-notice',
         subtitle: ja ? 'VCの様子を通知' : 'Notify VC status',
-        body: ja
-          ? `
-![実際のメッセージ](/works/discord-voicechat-notice.jpg)
-
-RustおよびSerenityを用いて作成したDiscord用Botです。
-
-Discordのボイスチャットチャンネルに誰かが入ったり出たりするとメッセージを送信して通知します。
-
-[GitHub](https://github.com/watasuke102/discord-voicechat-notice)
-`
-          : `
-![actual message](/works/discord-voicechat-notice.jpg)
-
-Discord Bot with Rust + Serenity.
-
-Notify by sending a message when someone joins or leaves the Discord Voice Chat channel.
-
-[GitHub](https://github.com/watasuke102/discord-voicechat-notice)
-`,
+        key: 'discord_voicechat_notice',
       },
     ],
     '2022': [
@@ -287,32 +155,12 @@ Notify by sending a message when someone joins or leaves the Discord Voice Chat 
           begin: {month: 7, day: 4},
           end: {month: 2, day: 28},
         },
-        category: 'Work',
+        category: 'Dev',
         title: 'Zwin : XR windowing system',
         subtitle: ja
           ? '2022年度 未踏アドバンスト事業採択'
           : '2022 Mitou Advanced',
-        body: ja
-          ? `
-![zen: Zwinプロトコルのリファレンス実装](/works/zwin-zen.jpg)
-
-Linux上で動作する、Waylandを用いたXR向けwindowing systemです。
-VR HMDを用いて、仮想空間に2Dウィンドウを配置したり、3Dアプリケーションを動かしたりすることが出来ます。
-
-2022年度の未踏アドバンスト事業に採択されました。主に2Dデスクトップ環境において必要とされる機能を実装しています。
-
-[Official site](https://www.zwin.dev/ja) / [GitHub](https://github.com/zwin-project)
-`
-          : `
-![zen: the reference compositor implementation of Zwin protocol](/works/zwin-zen.jpg)
-
-Windowing system for XR on Linux using Wayland.
-By using VR HMD, you can place 2D window in the virtual space and launch 3D application.
-
-Adoped by 2022 Mitou Advanced. I implemented the feature for 2D desktop environment.
-
-[Official site](https://www.zwin.dev) / [GitHub](https://github.com/zwin-project)
-`,
+        key: 'zwin',
       },
       {
         period: {
@@ -516,55 +364,19 @@ I participated in CAPCOM Hackathon at Osaka, and developed a game using Unity.
           begin: {month: 11, day: 18},
           end: {month: 11, day: 19},
         },
-        category: 'Event',
+        category: 'Dev',
         title: ja ? '宇部高専 第60回高専祭' : '60th NITUC Fes',
         subtitle: ja ? '広報部長' : 'Public Relations Manager',
-        body: ja
-          ? `
-![作成したWebサイト](/works/nituc-fes2023.jpg)
-
-広報部長として高専祭に参加しました。主にロゴ（及びロゴ候補の投票を行うサービス）・ポスター・パンフレット・公式 Web サイト・エンディング映像（及び映像で用いる楽曲）の作成を行いました。
-
-[取り組みの紹介や感想](http://watasuke.net/blog/article/nituc-fes-2023-pr-works/)
-`
-          : `
-![Website that I created](/works/nituc-fes2023.jpg)
-
-I participated in NITUC Fes as a Public Relations Manager and created a logo (+ its voting system), poster, booklet, official Website, and ending movie (+ its music).
-
-[my works and thoughts (blog)](http://watasuke.net/blog/article/nituc-fes-2023-pr-works/)
-`,
+        key: 'nituc_fes2023',
       },
     ],
     '2024': [
       {
         period: {kind: 'day', date: {month: 8, day: 30}}, // Tweet date: https://x.com/Watasuke102/status/1829492560295047609
-        category: 'Work',
+        category: 'Dev',
         title: 'Settlang',
         subtitle: ja ? 'プログラミング言語' : 'Programming language',
-        body: ja
-          ? `
-![Playground で Settlang のプログラムを実行している様子](/works/settlang.jpg)
-
-mutability を setter の有無で表す静的型付き言語です。
-
-処理系はRustで実装されており、テスト以外でcrate (ライブラリ) を使用していません。コンパイル結果はWebAssemblyとして出力されます。
-
-[Playground](https://watasuke102.github.io/settlang/)
- / [GitHub](https://github.com/watasuke102/settlang)
- / [紹介記事 (Zenn)](https://zenn.dev/watasuke/articles/a188b2dbd25a1f)
-`
-          : `
-![screenshot of executing Settlang program on the Playground](/works/settlang.jpg)
-
-A statically typed programming language that expresses mutability by whether variables have setters.
-
-The language processor is implemented by Rust without crate. The compiler outputs WebAssembly.
-
-[Playground](https://watasuke102.github.io/settlang/)
- / [GitHub](https://github.com/watasuke102/settlang)
- / [Introductory article (Zenn)](https://zenn.dev/watasuke/articles/a188b2dbd25a1f)
-`,
+        key: 'settlang',
       },
       {
         period: {
@@ -572,24 +384,10 @@ The language processor is implemented by Rust without crate. The compiler output
           begin: {month: 11, day: 9},
           end: {month: 11, day: 10},
         },
-        category: 'Work',
+        category: 'Dev',
         title: ja ? '宇部高専 第61回高専祭' : '61th NITUC Fes',
         subtitle: ja ? 'Webサイト制作' : 'Developing Website',
-        body: ja
-          ? `
-高専祭の公式 Web サイトを作成しました。
-
-[作成したサイト](https://nituc-fes61.org/)
- / [GitHub](https://github.com/watasuke102/nituc-fes2024)
- / [取り組みの紹介や感想](http://watasuke.net/blog/article/nituc-fes-2024-website/)
-`
-          : `
-I created official Website of NITUC fes.
-
-[Website](https://nituc-fes61.org/)
- / [GitHub](https://github.com/watasuke102/nituc-fes2024)
- / [my works and thoughts (blog)](http://watasuke.net/blog/article/nituc-fes-2024-website/)
-`,
+        key: 'nituc_fes2024',
       },
       {
         period: {
@@ -633,7 +431,6 @@ I participated in CODE BLUE 2024 as a Student Volunteer.
 `
           : `
 I participated in an internship by pixiv Inc. and did the tasks related to static analysis and automatic refactoring of PHP.
-
 
 [my thoughts (blog)](https://watasuke.net/blog/article/joined-pixiv-spring-internship-2025/)
 `,

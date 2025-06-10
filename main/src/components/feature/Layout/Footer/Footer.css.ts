@@ -106,7 +106,7 @@ export const twitter_icon = style({
 });
 export const soundcloud_icon = style({
   ':hover': {
-    color: '#ff5500',
+    color: color.brand.soundcloud,
   },
 });
 

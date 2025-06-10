@@ -17,16 +17,16 @@ import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
 import {easing, color, Switch} from '@watasuke.net/common';
 import * as constant from '@pages/portfolio/constant';
 
-import {Welcome, Whoami, History} from './sections';
+import {Welcome, Whoami, History, Works} from './sections';
 
 const blind_width = 50;
 // prettier-ignore
 const visible_mask   = `repeating-linear-gradient(55deg, ${color.bg} 0px 0px, transparent 0px ${blind_width}px)`;
 const invisible_mask = `repeating-linear-gradient(55deg, ${color.bg} 0px ${blind_width}px, transparent 0px ${blind_width}px)`;
 
-export function Portfolio() {
+export function Portfolio(props: {init_lang: 'ja' | 'en'}) {
   const disable_animation = useReducedMotion() ?? false;
-  const [lang, set_lang] = React.useState<'ja' | 'en'>('ja');
+  const [lang, set_lang] = React.useState<'ja' | 'en'>(props.init_lang);
 
   return (
     <>
@@ -36,6 +36,7 @@ export function Portfolio() {
             <Welcome />
             <Whoami lang={lang} />
             {/* TODO: skills */}
+            <Works lang={lang} />
             <History lang={lang} />
           </main>
 
