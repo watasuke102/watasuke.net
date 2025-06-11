@@ -88,7 +88,7 @@ export function Works(props: Props) {
       <h2>Works</h2>
       {Object.keys(groupby).map(category => (
         <details open key={category} className={css.category_section}>
-          <summary>
+          <summary style={{marginBottom: 8}}>
             {/* 
               If give className to <summary>, the triangle that shows open/close status will disappear,
               so category name is wrapped by <span> 
