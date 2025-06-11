@@ -6,10 +6,16 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './History.css';
 import React from 'react';
-import {color} from '@watasuke.net/common';
+import {color, Markdown} from '@watasuke.net/common';
+import {useSidepeak} from '../../components/SidePeak';
 import {gen_event_list} from '@data/event_list';
 
-export function History(props: {lang: 'ja' | 'en'}) {
+interface Props {
+  lang: 'ja' | 'en';
+}
+
+export function History(props: Props) {
+  const {open_sidepeak} = useSidepeak();
   const event_list = React.useMemo(
     () => gen_event_list(props.lang),
     [props.lang],
@@ -40,20 +46,27 @@ export function History(props: {lang: 'ja' | 'en'}) {
                   <div className={css.history_line_horizontal} />
                   <button
                     className={css.history_info_container}
-                    onClick={
-                      event.category === 'Dev'
-                        ? () =>
-                            window.scroll({
-                              top:
-                                window.pageYOffset +
-                                document
-                                  .getElementsByClassName(event.key)[0]
-                                  ?.getBoundingClientRect().top -
-                                20,
-                              behavior: 'smooth',
-                            })
-                        : undefined
-                    }
+                    onClick={() => {
+                      if (event.category === 'Dev') {
+                        window.scroll({
+                          top:
+                            window.pageYOffset +
+                            document
+                              .getElementsByClassName(event.key)[0]
+                              ?.getBoundingClientRect().top -
+                            20,
+                          behavior: 'smooth',
+                        });
+                      } else if (event.body) {
+                        open_sidepeak(
+                          <Markdown
+                            embed_card={() => <></>}
+                            inner_embed_card={() => <></>}
+                            md={event.body}
+                          />,
+                        );
+                      }
+                    }}
                   >
                     <h4 className={css.history_title}>{event.title}</h4>
                     <span className={css.history_subtitle}>

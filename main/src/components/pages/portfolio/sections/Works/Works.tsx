@@ -6,7 +6,8 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Works.css';
 import React from 'react';
-import {cs} from '@watasuke.net/common';
+import {cs, Markdown} from '@watasuke.net/common';
+import {useSidepeak} from '../../components/SidePeak';
 import {
   Work,
   work_list,
@@ -15,7 +16,11 @@ import {
   WorkListKey,
 } from '@data/work_list';
 
-export function Works(props: {lang: 'ja' | 'en'}) {
+interface Props {
+  lang: 'ja' | 'en';
+}
+
+export function Works(props: Props) {
   const category_classname: Record<WorkCategory, string> = {
     Pickup: css.multiselect_green,
     Website: css.multiselect_blue,
@@ -30,6 +35,27 @@ export function Works(props: {lang: 'ja' | 'en'}) {
     tool: css.multiselect_purple,
     other: css.multiselect_gray,
   };
+
+  const {open_sidepeak} = useSidepeak();
+  const desc_map = React.useMemo(
+    () =>
+      Object.keys(work_list).reduce(
+        (acc, key) => {
+          return {
+            ...acc,
+            [key]: (
+              <Markdown
+                embed_card={() => <></>}
+                inner_embed_card={() => <></>}
+                md={work_list[key as WorkListKey].desc_md(props.lang)}
+              />
+            ),
+          };
+        },
+        {} as Record<WorkListKey, React.ReactNode>,
+      ),
+    [props.lang],
+  );
 
   const groupby = React.useMemo(() => {
     const initial_acc = work_category_array.reduce(
@@ -78,8 +104,9 @@ export function Works(props: {lang: 'ja' | 'en'}) {
           </summary>
           <div className={css.grid_view}>
             {groupby[category as WorkCategory].map((e, index) => (
-              <div
+              <button
                 key={`${category}work${index}`}
+                onClick={() => open_sidepeak(desc_map[e.key])}
                 // give key in order to make possible to scroll into this item
                 // item can own multiple categories, so same item can appear multiple times,
                 // so use class instead of id
@@ -118,7 +145,7 @@ export function Works(props: {lang: 'ja' | 'en'}) {
                     </div>
                   </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </details>
