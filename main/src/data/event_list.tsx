@@ -34,7 +34,7 @@ export type Event = {
 } & (
   | {
       category: 'General' | 'Event' | 'Presentation';
-      body: string;
+      body: string | null;
     }
   | {
       category: 'Dev';

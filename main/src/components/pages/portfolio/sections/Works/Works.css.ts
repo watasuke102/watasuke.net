@@ -26,6 +26,8 @@ export const grid_view = style({
 export const item = style({
   display: 'grid',
   gridTemplateRows: '140px auto auto auto',
+  padding: 0,
+  textAlign: 'left',
   borderRadius: 10,
   border: `2px solid ${color.g0}`,
   backgroundColor: color.g0,

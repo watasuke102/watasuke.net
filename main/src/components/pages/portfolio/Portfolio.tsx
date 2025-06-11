@@ -18,6 +18,7 @@ import {easing, color, Switch} from '@watasuke.net/common';
 import * as constant from '@pages/portfolio/constant';
 
 import {Welcome, Whoami, History, Works} from './sections';
+import {SidepeakComponent, SidepeakProvider} from './components/SidePeak';
 
 const blind_width = 50;
 // prettier-ignore
@@ -29,8 +30,8 @@ export function Portfolio(props: {init_lang: 'ja' | 'en'}) {
   const [lang, set_lang] = React.useState<'ja' | 'en'>(props.init_lang);
 
   return (
-    <>
-      <AnimatePresence initial={!disable_animation}>
+    <AnimatePresence initial={!disable_animation}>
+      <SidepeakProvider>
         <div className={css.container}>
           <main>
             <Welcome />
@@ -56,7 +57,8 @@ export function Portfolio(props: {init_lang: 'ja' | 'en'}) {
             )
           }
         </div>
-      </AnimatePresence>
+        <SidepeakComponent />
+      </SidepeakProvider>
       <Menu
         additional_item={
           <>
@@ -74,6 +76,6 @@ export function Portfolio(props: {init_lang: 'ja' | 'en'}) {
           </>
         }
       />
-    </>
+    </AnimatePresence>
   );
 }
