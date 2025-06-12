@@ -47,10 +47,10 @@ export function History(props: Props) {
                   <div className={css.history_line_vertical} />
                   <div className={css.history_line_horizontal} />
                   <button
-                    disabled={event.category !== 'Dev' && !event.body}
+                    disabled={event.category !== 'Work' && !event.body}
                     className={css.history_info_container}
                     onClick={() => {
-                      if (event.category === 'Dev') {
+                      if (event.category === 'Work') {
                         window.scroll({
                           top:
                             window.pageYOffset +
@@ -80,7 +80,7 @@ export function History(props: Props) {
                     </div>
                     <div className={css.history_icon}>
                       {(() => {
-                        if (event.category === 'Dev') {
+                        if (event.category === 'Work') {
                           return (
                             <div style={{transform: 'rotate(180deg)'}}>
                               <IconDoubleDown />

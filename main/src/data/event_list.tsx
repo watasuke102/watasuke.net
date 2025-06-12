@@ -37,7 +37,7 @@ export type Event = {
       body: string | null;
     }
   | {
-      category: 'Dev';
+      category: 'Work';
       key: keyof typeof work_list;
     }
 );
@@ -49,7 +49,7 @@ export function gen_event_list(lang: 'ja' | 'en'): Record<string, Event[]> {
       {
         // U-22への提出日
         period: {kind: 'day', date: {month: 8, day: 15}},
-        category: 'Dev',
+        category: 'Work',
         title: 'MarkStudy',
         subtitle: ja ? '学習特化テキストエディタ' : 'text editor for study',
         key: 'markstudy',
@@ -57,14 +57,14 @@ export function gen_event_list(lang: 'ja' | 'en'): Record<string, Event[]> {
       {
         // "完成" ツイートをした日
         period: {kind: 'day', date: {month: 8, day: 26}},
-        category: 'Dev',
+        category: 'Work',
         title: ja ? 'Arduinoで時計を作成する' : 'Create the clock by Arduino',
         subtitle: ja ? '夏休みの自由研究' : 'Research of summer vacation',
         key: 'arduino_clock',
       },
       {
         period: {kind: 'day', date: {month: 10, day: 25}},
-        category: 'Dev',
+        category: 'Work',
         title: 'STG',
         subtitle: ja
           ? '文化祭用のシューティングゲーム'
@@ -83,7 +83,7 @@ export function gen_event_list(lang: 'ja' | 'en'): Record<string, Event[]> {
       {
         // join to Fascode
         period: {kind: 'doing', begin: {month: 5, day: 11}},
-        category: 'Dev',
+        category: 'Work',
         title: 'Alter Linux (i3wm edition)',
         subtitle: ja
           ? 'Arch Linuxベースの国産Linuxディストリビューション'
@@ -92,7 +92,7 @@ export function gen_event_list(lang: 'ja' | 'en'): Record<string, Event[]> {
       },
       {
         period: undefined,
-        category: 'Dev',
+        category: 'Work',
         title: 'ExpNote',
         subtitle: ja
           ? '簡易的な所持金管理アプリ'
@@ -121,7 +121,7 @@ Lightning Talk to roughly recommend Flutter.
       {
         // initial commit
         period: {kind: 'doing', begin: {month: 12, day: 19}},
-        category: 'Dev',
+        category: 'Work',
         title: 'TAGether',
         subtitle: ja
           ? 'テスト対策問題の共有サービス'
@@ -132,7 +132,7 @@ Lightning Talk to roughly recommend Flutter.
     '2021': [
       {
         period: {kind: 'day', date: {month: 9, day: 5}},
-        category: 'Dev',
+        category: 'Work',
         title: 'TimeTree-NoticeBot',
         subtitle: ja
           ? 'TimeTreeの予定をDiscordに通知'
@@ -141,7 +141,7 @@ Lightning Talk to roughly recommend Flutter.
       },
       {
         period: {kind: 'day', date: {month: 12, day: 5}},
-        category: 'Dev',
+        category: 'Work',
         title: 'discord-voicechat-notice',
         subtitle: ja ? 'VCの様子を通知' : 'Notify VC status',
         key: 'discord_voicechat_notice',
@@ -155,7 +155,7 @@ Lightning Talk to roughly recommend Flutter.
           begin: {month: 7, day: 4},
           end: {month: 2, day: 28},
         },
-        category: 'Dev',
+        category: 'Work',
         title: 'Zwin : XR windowing system',
         subtitle: ja
           ? '2022年度 未踏アドバンスト事業採択'
@@ -231,7 +231,7 @@ Zwinは当該テーマにおいて最優秀賞を獲得しました。
 `
           : `
 Introduce TAGether in "Make the world more convenience" theme,
-Zwin (ZIGEN at that time) in "Development/Skill assist" theme.
+Zwin (ZIGEN at that time) in "Workelopment/Skill assist" theme.
 
 Zwin won at that theme.
 `,
@@ -364,7 +364,7 @@ I participated in CAPCOM Hackathon at Osaka, and developed a game using Unity.
           begin: {month: 11, day: 18},
           end: {month: 11, day: 19},
         },
-        category: 'Dev',
+        category: 'Work',
         title: ja ? '宇部高専 第60回高専祭' : '60th NITUC Fes',
         subtitle: ja ? '広報部長' : 'Public Relations Manager',
         key: 'nituc_fes2023',
@@ -373,7 +373,7 @@ I participated in CAPCOM Hackathon at Osaka, and developed a game using Unity.
     '2024': [
       {
         period: {kind: 'day', date: {month: 8, day: 30}}, // Tweet date: https://x.com/Watasuke102/status/1829492560295047609
-        category: 'Dev',
+        category: 'Work',
         title: 'Settlang',
         subtitle: ja ? 'プログラミング言語' : 'Programming language',
         key: 'settlang',
@@ -384,9 +384,9 @@ I participated in CAPCOM Hackathon at Osaka, and developed a game using Unity.
           begin: {month: 11, day: 9},
           end: {month: 11, day: 10},
         },
-        category: 'Dev',
+        category: 'Work',
         title: ja ? '宇部高専 第61回高専祭' : '61th NITUC Fes',
-        subtitle: ja ? 'Webサイト制作' : 'Developing Website',
+        subtitle: ja ? 'Webサイト制作' : 'Workeloping Website',
         key: 'nituc_fes2024',
       },
       {
