@@ -8,7 +8,7 @@ import * as css from './SidePeak.css';
 import React from 'react';
 import {motion} from 'framer-motion';
 import {color, easing} from '@watasuke.net/common';
-import IconDoubleRight from '@assets/icons/general/double-right.svg';
+import IconDoubleDown from '@assets/icons/general/double-down.svg';
 
 interface SidepeakState {
   open: boolean;
@@ -108,7 +108,7 @@ export function SidepeakComponent() {
     >
       <div className={css.sidepeak_top}>
         <button className={css.sidepeak_close_icon} onClick={close_sidepeak}>
-          <IconDoubleRight />
+          <IconDoubleDown />
         </button>
       </div>
       {sidepeak_state.content && (

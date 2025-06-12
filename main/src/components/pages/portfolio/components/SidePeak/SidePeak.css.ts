@@ -30,6 +30,7 @@ export const sidepeak_close_icon = style({
   padding: 0,
   width: 24,
   height: 24,
+  transform: 'rotate(-90deg)',
   border: 'none',
   borderRadius: 2,
   outline: 'none',
