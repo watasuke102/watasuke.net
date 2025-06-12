@@ -7,6 +7,8 @@
 import {style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
+const breakpoint = 'screen and (width < 700px)';
+
 export const container = style({
   position: 'relative',
   width: '90%',
@@ -17,6 +19,16 @@ export const container = style({
     'item_l line_h_l period   line_h_r item_r' 4px
     'item_l .        line_v_b .        item_r' auto / 1fr 32px 2px 32px 1fr
   `,
+  '@media': {
+    [breakpoint]: {
+      gridTemplate: `
+        '.    line_v_u .   ' 28px
+        '.    period   .   ' 12px
+        'item item     item' auto
+        '.    line_v_b .   ' 16px / 1fr 2px 1fr
+      `,
+    },
+  },
 });
 const left_selector = `${container}:nth-child(odd) &`;
 export const line_vertical = style({
@@ -50,6 +62,12 @@ export const period = style({
   border: `1px solid ${color.fg}`,
   borderRadius: 2,
   backgroundColor: color.bg,
+  '@media': {
+    [breakpoint]: {
+      flexDirection: 'row',
+      gap: 4,
+    },
+  },
 });
 export const empty_period = style({
   gridArea: 'period',
@@ -64,6 +82,12 @@ export const range_separator = style({
   height: length,
   margin: 'auto',
   backgroundColor: color.fg,
+  '@media': {
+    [breakpoint]: {
+      width: length,
+      height: weight,
+    },
+  },
 });
 
 export const info_area = style({
@@ -83,6 +107,12 @@ export const info_area = style({
     },
     '&:disabled': {
       cursor: 'initial',
+    },
+  },
+  '@media': {
+    [breakpoint]: {
+      gridArea: 'item !important',
+      margin: 0,
     },
   },
 });
