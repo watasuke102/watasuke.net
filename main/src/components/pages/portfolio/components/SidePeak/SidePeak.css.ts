@@ -11,6 +11,7 @@ export const sidepeak = style({
   position: 'fixed',
   top: 0,
   right: 0,
+  zIndex: 64,
   height: '100dvh',
   padding: '8px 12px',
   overflowX: 'hidden',

@@ -6,11 +6,10 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './History.css';
 import React from 'react';
-import {color, Markdown} from '@watasuke.net/common';
+import {color} from '@watasuke.net/common';
+import {HistoryItem} from './HistoryItem';
 import {useSidepeak} from '../../components/SidePeak';
 import {gen_event_list} from '@data/event_list';
-import IconDoubleDown from '@assets/icons/general/double-down.svg';
-import IconMoreHorizon from '@assets/icons/general/more-horizon.svg';
 
 interface Props {
   lang: 'ja' | 'en';
@@ -41,67 +40,13 @@ export function History(props: Props) {
               </svg>
               <h3 className={css.year}>{year}</h3>
             </div>
-            {event_list[year].map((event, index) => {
-              return (
-                <div key={`${year}-${index}`} className={css.history_item}>
-                  <div className={css.history_line_vertical} />
-                  <div className={css.history_line_horizontal} />
-                  <button
-                    disabled={event.category !== 'Work' && !event.body}
-                    className={css.history_info_container}
-                    onClick={() => {
-                      if (event.category === 'Work') {
-                        window.scroll({
-                          top:
-                            window.pageYOffset +
-                            document
-                              .getElementsByClassName(event.key)[0]
-                              ?.getBoundingClientRect().top -
-                            20,
-                          behavior: 'smooth',
-                        });
-                      } else if (event.body) {
-                        open_sidepeak(
-                          <Markdown
-                            embed_card={() => <></>}
-                            inner_embed_card={() => <></>}
-                            md={event.body}
-                          />,
-                        );
-                      }
-                    }}
-                  >
-                    <div className={css.history_info_row}>
-                      <h4 className={css.history_title}>{event.title}</h4>
-                      <div>
-                        <span className={css.history_tag}>
-                          {event.category}
-                        </span>
-                      </div>
-                    </div>
-                    <div className={css.history_info_row}>
-                      <span className={css.history_subtitle}>
-                        {event.subtitle}
-                      </span>
-                      <div className={css.history_icon}>
-                        {(() => {
-                          if (event.category === 'Work') {
-                            return (
-                              <div style={{transform: 'rotate(180deg)'}}>
-                                <IconDoubleDown />
-                              </div>
-                            );
-                          } else if (event.body !== '') {
-                            return <IconMoreHorizon />;
-                          }
-                          return <></>;
-                        })()}
-                      </div>
-                    </div>
-                  </button>
-                </div>
-              );
-            })}
+            {event_list[year].map((event, index) => (
+              <HistoryItem
+                key={`${year}-${index}`}
+                event={event}
+                open_sidepeak={open_sidepeak}
+              />
+            ))}
           </section>
         );
       })}
