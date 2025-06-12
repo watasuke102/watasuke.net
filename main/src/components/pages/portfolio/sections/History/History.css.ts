@@ -52,12 +52,6 @@ export const history_line_horizontal = style({
   },
 });
 export const history_info_container = style({
-  display: 'grid',
-  gridTemplate: `
-    '   title tag'  auto
-    'subtitle icon' auto / 1fr auto
-  `,
-  columnGap: 12,
   padding: '4px 8px',
   marginBlock: 8,
   textAlign: 'left',
@@ -77,25 +71,27 @@ export const history_info_container = style({
     },
   },
 });
+export const history_info_row = style({
+  display: 'flex',
+  justifyContent: 'space-between',
+  columnGap: 8,
+});
 export const history_title = style({
-  gridArea: 'title',
   margin: 0,
 });
 export const history_subtitle = style({
-  gridArea: 'subtitle',
   color: `${color.fg}b0`,
 });
 export const history_tag = style({
-  gridArea: 'tag',
-  height: 'auto',
   padding: '0 4px',
   border: `1px solid ${color.fg}`,
   borderRadius: 2,
 });
 export const history_icon = style({
-  gridArea: 'icon',
+  display: 'block',
   marginTop: 'auto',
   marginLeft: 'auto',
   width: 24,
   height: 24,
+  aspectRatio: '1 / 1',
 });

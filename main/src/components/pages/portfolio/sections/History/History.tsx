@@ -71,26 +71,32 @@ export function History(props: Props) {
                       }
                     }}
                   >
-                    <h4 className={css.history_title}>{event.title}</h4>
-                    <span className={css.history_subtitle}>
-                      {event.subtitle}
-                    </span>
-                    <div>
-                      <span className={css.history_tag}>{event.category}</span>
+                    <div className={css.history_info_row}>
+                      <h4 className={css.history_title}>{event.title}</h4>
+                      <div>
+                        <span className={css.history_tag}>
+                          {event.category}
+                        </span>
+                      </div>
                     </div>
-                    <div className={css.history_icon}>
-                      {(() => {
-                        if (event.category === 'Work') {
-                          return (
-                            <div style={{transform: 'rotate(180deg)'}}>
-                              <IconDoubleDown />
-                            </div>
-                          );
-                        } else if (event.body !== '') {
-                          return <IconMoreHorizon />;
-                        }
-                        return <></>;
-                      })()}
+                    <div className={css.history_info_row}>
+                      <span className={css.history_subtitle}>
+                        {event.subtitle}
+                      </span>
+                      <div className={css.history_icon}>
+                        {(() => {
+                          if (event.category === 'Work') {
+                            return (
+                              <div style={{transform: 'rotate(180deg)'}}>
+                                <IconDoubleDown />
+                              </div>
+                            );
+                          } else if (event.body !== '') {
+                            return <IconMoreHorizon />;
+                          }
+                          return <></>;
+                        })()}
+                      </div>
                     </div>
                   </button>
                 </div>
