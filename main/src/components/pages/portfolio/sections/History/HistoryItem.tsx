@@ -5,7 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './HistoryItem.css';
-import {Markdown} from '@watasuke.net/common';
+import {cs, Markdown} from '@watasuke.net/common';
 import {Event} from '@data/event_list';
 import IconDoubleDown from '@assets/icons/general/double-down.svg';
 import IconMoreHorizon from '@assets/icons/general/more-horizon.svg';
@@ -87,6 +87,12 @@ export function HistoryItem(props: Props) {
     }
     return <></>;
   };
+  const info_classname: Record<Event['category'], string> = {
+    Work: css.info_green,
+    Event: css.info_blue,
+    General: css.info_cyan,
+    Talk: css.info_yellow,
+  };
 
   return (
     <div className={css.container}>
@@ -96,7 +102,7 @@ export function HistoryItem(props: Props) {
       <Period />
       <button
         disabled={props.event.category !== 'Work' && !props.event.body}
-        className={css.info_area}
+        className={cs(css.info_area, info_classname[props.event.category])}
         onClick={on_click}
       >
         <div className={css.info_row}>
