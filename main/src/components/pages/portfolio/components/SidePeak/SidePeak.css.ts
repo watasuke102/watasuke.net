@@ -17,20 +17,21 @@ export const sidepeak = style({
   overflowX: 'hidden',
   overflowY: 'scroll',
   backgroundColor: `${color.bg}f6`,
+  borderLeft: `1px solid ${color.fg}88`,
 
   width: 'min(500px, 95dvw)',
 });
 export const sidepeak_top = style({
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'start',
+  justifyContent: 'flex-start',
   marginBottom: 4,
 });
 
 export const sidepeak_close_icon = style({
   padding: 0,
-  width: 24,
-  height: 24,
+  width: 40,
+  height: 40,
   transform: 'rotate(-90deg)',
   border: 'none',
   borderRadius: 2,

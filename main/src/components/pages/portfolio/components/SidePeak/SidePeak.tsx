@@ -7,7 +7,7 @@
 import * as css from './SidePeak.css';
 import React from 'react';
 import {motion} from 'framer-motion';
-import {color, easing} from '@watasuke.net/common';
+import {easing} from '@watasuke.net/common';
 import IconDoubleDown from '@assets/icons/general/double-down.svg';
 
 interface SidepeakState {
@@ -91,7 +91,7 @@ export function SidepeakComponent() {
       variants={{
         opened: {
           transform: 'translateX(0)',
-          boxShadow: `-4px 0 12px ${color.bg}dd`,
+          boxShadow: `-4px 0 28px #000000e9`,
         },
         closed: {
           transform: 'translateX(100%)',
