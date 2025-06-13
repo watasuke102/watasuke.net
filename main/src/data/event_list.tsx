@@ -33,7 +33,7 @@ export type Event = {
   period: Period;
 } & (
   | {
-      category: 'General' | 'Event' | 'Presentation';
+      category: 'General' | 'Event' | 'Talk';
       body: string | null;
     }
   | {
@@ -101,7 +101,7 @@ export function gen_event_list(lang: 'ja' | 'en'): Record<string, Event[]> {
       },
       {
         period: {kind: 'day', date: {month: 10, day: 31}},
-        category: 'Presentation',
+        category: 'Talk',
         title: ja ? '第1回 限界LT feat.Fascode' : '1st 限界LT feat.Fascode',
         subtitle: ja ? 'LT「Flutterはいいぞ」' : 'LT "Flutterはいいぞ"',
         body: ja
@@ -197,7 +197,7 @@ I implemented UART, character LCD operation, HDMI output.
       },
       {
         period: {kind: 'day', date: {month: 8, day: 8}},
-        category: 'Presentation',
+        category: 'Talk',
         title: ja
           ? 'セキュリティ・キャンプ 2022 LT大会'
           : 'Security Camp 2022 LT',
@@ -307,7 +307,7 @@ I participated as a student.
       },
       {
         period: {kind: 'day', date: {month: 8, day: 10}},
-        category: 'Presentation',
+        category: 'Talk',
         title: ja
           ? 'セキュリティ・キャンプ 2023 LT大会'
           : 'Security Camp 2023 LT',
