@@ -30,35 +30,37 @@ export function Portfolio(props: {init_lang: 'ja' | 'en'}) {
   const [lang, set_lang] = React.useState<'ja' | 'en'>(props.init_lang);
 
   return (
-    <AnimatePresence initial={!disable_animation}>
-      <SidepeakProvider>
-        <div className={css.container}>
-          <main>
-            <Welcome />
-            <Whoami lang={lang} />
-            {/* TODO: skills */}
-            <Works lang={lang} />
-            <History lang={lang} />
-          </main>
+    <>
+      <AnimatePresence initial={!disable_animation}>
+        <SidepeakProvider>
+          <div className={css.container}>
+            <main>
+              <Welcome />
+              <Whoami lang={lang} />
+              {/* TODO: skills */}
+              <Works lang={lang} />
+              <History lang={lang} />
+            </main>
 
-          {
-            /* page cut in animation */
-            !disable_animation && (
-              <motion.div
-                initial={{background: invisible_mask}}
-                animate={{background: visible_mask, display: 'none'}}
-                transition={{
-                  delay: constant.page_cutin.delay,
-                  duration: constant.page_cutin.duration,
-                  ease: easing.out_expo.array,
-                }}
-                className={css.cutin_animation}
-              />
-            )
-          }
-        </div>
-        <SidepeakComponent />
-      </SidepeakProvider>
+            {
+              /* page cut in animation */
+              !disable_animation && (
+                <motion.div
+                  initial={{background: invisible_mask}}
+                  animate={{background: visible_mask, display: 'none'}}
+                  transition={{
+                    delay: constant.page_cutin.delay,
+                    duration: constant.page_cutin.duration,
+                    ease: easing.out_expo.array,
+                  }}
+                  className={css.cutin_animation}
+                />
+              )
+            }
+          </div>
+          <SidepeakComponent />
+        </SidepeakProvider>
+      </AnimatePresence>
       <Menu
         additional_item={
           <>
@@ -76,6 +78,6 @@ export function Portfolio(props: {init_lang: 'ja' | 'en'}) {
           </>
         }
       />
-    </AnimatePresence>
+    </>
   );
 }
