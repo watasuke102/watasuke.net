@@ -5,6 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {style} from '@vanilla-extract/css';
+import {easing} from '@watasuke.net/common/src/easing';
 import {color} from '@watasuke.net/common/src/css/color';
 
 const breakpoint = 'screen and (width < 700px)';
@@ -91,13 +92,28 @@ export const range_separator = style({
 });
 
 export const info_area = style({
+  position: 'relative',
   padding: '4px 8px',
   marginBlock: 8,
   textAlign: 'left',
-  border: `3px solid ${color.p0}`,
+  border: '3px solid',
   borderRadius: 4,
   ':focus': {
     outline: `2px dashed ${color.fg}`,
+  },
+  ':disabled': {
+    cursor: 'initial',
+  },
+  '::before': {
+    content: '',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    display: 'block',
+    width: 0,
+    height: '100%',
+    backgroundColor: `${color.fg}18`,
+    transition: `width 0.3s ${easing.out_circ.cubic_bezier}`,
   },
 
   gridArea: 'item_r',
@@ -105,17 +121,36 @@ export const info_area = style({
     [left_selector]: {
       gridArea: 'item_l',
     },
-    '&:disabled': {
-      cursor: 'initial',
-    },
   },
+
   '@media': {
     [breakpoint]: {
       gridArea: 'item !important',
       margin: 0,
     },
+    '(hover: hover)': {
+      selectors: {
+        '&:not(:disabled):hover::before': {
+          width: '100%',
+        },
+      },
+    },
   },
 });
+
+export const info_green = style({
+  borderColor: color.p0,
+});
+export const info_blue = style({
+  borderColor: color.blue,
+});
+export const info_cyan = style({
+  borderColor: color.cyan,
+});
+export const info_yellow = style({
+  borderColor: color.yellow,
+});
+
 export const info_row = style({
   display: 'flex',
   justifyContent: 'space-between',
@@ -128,7 +163,9 @@ export const info_subtitle = style({
   color: `${color.fg}b0`,
 });
 export const info_tag = style({
+  display: 'inline-block',
   padding: '0 4px',
+  marginTop: 2,
   border: `1px solid ${color.fg}`,
   borderRadius: 2,
 });
