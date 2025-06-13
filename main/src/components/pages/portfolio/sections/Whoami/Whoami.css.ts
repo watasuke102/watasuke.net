@@ -73,3 +73,31 @@ export const command = style({
   color: color.p0,
   fontWeight: 'bold',
 });
+
+export const link_container = style({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(156px, 1fr))',
+  columnGap: 8,
+});
+export const link_item = style({
+  display: 'grid',
+  gridTemplateColumns: '20px 1fr',
+  alignItems: 'center',
+  gap: 7,
+  padding: 4,
+  borderRadius: 2,
+
+  border: '1px solid',
+  borderColor: 'transparent',
+  transition: 'border-color 0.4s',
+  '@media': {
+    '(hover: hover)': {
+      ':hover': {
+        borderColor: color.fg,
+      },
+    },
+  },
+});
+globalStyle(`${link_item} svg`, {
+  color: color.fg,
+});
