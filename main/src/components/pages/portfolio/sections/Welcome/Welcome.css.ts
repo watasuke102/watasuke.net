@@ -9,7 +9,17 @@ import {color} from '@watasuke.net/common/src/css/color';
 import {easing} from '@watasuke.net/common/src/easing';
 import {welcome_container_section_size} from '../../constant';
 
+export const dummy = style({
+  // the height of background varies because its unit is dvh,
+  // but that change causes layout shift for components placed after Welcome
+  // so make `background` position absolute and put bigger element to avoid this issue
+  height: '102vh',
+});
+
 export const background = style({
+  position: 'absolute',
+  top: 0,
+  left: 0,
   width: '100%',
   height: '100dvh',
   color: color.bg,
@@ -18,6 +28,7 @@ export const background = style({
   flexDirection: 'column',
   justifyContent: 'space-around',
   alignItems: 'center',
+  transition: `height 0.4s ${easing.out_quint.cubic_bezier}`,
 });
 
 export const container = style({

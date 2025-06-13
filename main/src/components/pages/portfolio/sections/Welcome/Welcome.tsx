@@ -29,155 +29,161 @@ const [ids_border_initial, ids_border_final] = ['00', 'ff'].map(
 
 export function Welcome() {
   return (
-    <section className={css.background}>
-      <motion.h1
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        transition={{
-          delay:
-            constant.welcome_last_fadein.base +
-            constant.welcome_last_fadein.delay,
-          duration: constant.welcome_last_fadein.duration,
-        }}
-      >
-        Hi there 👋
-      </motion.h1>
-
-      <motion.div
-        initial={{opacity: 0, transform: 'scale(1.3)'}}
-        animate={{
-          opacity: 1,
-          transform: 'scale(1.0)',
-        }}
-        transition={{
-          delay: constant.welcome_zoom.base + constant.welcome_zoom.delay,
-          duration: constant.welcome_zoom.duration,
-          ease: easing.out_expo.array,
-        }}
-        className={css.container}
-      >
-        <Avatar
-          size={constant.welcome_container_section_size as 80 | 240}
-          loading='eager'
-        />
-        <motion.div
-          initial={{width: 0, height: 0}}
-          animate={{
-            width: constant.welcome_container_section_size,
-            height: constant.welcome_container_section_size,
-          }}
+    <>
+      <div className={css.dummy} />
+      <section className={css.background}>
+        <motion.h1
+          initial={{opacity: 0}}
+          animate={{opacity: 1}}
           transition={{
             delay:
-              constant.welcome_ids_expand.base +
-              constant.welcome_ids_expand.delay,
-            duration: constant.welcome_ids_expand.duration,
-            ease: easing.out_circ.array,
+              constant.welcome_last_fadein.base +
+              constant.welcome_last_fadein.delay,
+            duration: constant.welcome_last_fadein.duration,
           }}
         >
-          {/* to keep contents display regardless of wrapper size that is changed by animation */}
+          Hi there 👋
+        </motion.h1>
+
+        <motion.div
+          initial={{opacity: 0, transform: 'scale(1.3)'}}
+          animate={{
+            opacity: 1,
+            transform: 'scale(1.0)',
+          }}
+          transition={{
+            delay: constant.welcome_zoom.base + constant.welcome_zoom.delay,
+            duration: constant.welcome_zoom.duration,
+            ease: easing.out_expo.array,
+          }}
+          className={css.container}
+        >
+          <Avatar
+            size={constant.welcome_container_section_size as 80 | 240}
+            loading='eager'
+          />
           <motion.div
-            initial={{borderImageSource: ids_border_initial}}
-            animate={{borderImageSource: ids_border_final}}
+            initial={{width: 0, height: 0}}
+            animate={{
+              width: constant.welcome_container_section_size,
+              height: constant.welcome_container_section_size,
+            }}
             transition={{
               delay:
-                constant.welcome_ids_border_fadein.base +
-                constant.welcome_ids_border_fadein.delay,
-              duration: 0.3,
+                constant.welcome_ids_expand.base +
+                constant.welcome_ids_expand.delay,
+              duration: constant.welcome_ids_expand.duration,
+              ease: easing.out_circ.array,
             }}
-            className={css.ids}
           >
-            <div>
-              <HorizontalEmerge
+            {/* to keep contents display regardless of wrapper size that is changed by animation */}
+            <motion.div
+              initial={{borderImageSource: ids_border_initial}}
+              animate={{borderImageSource: ids_border_final}}
+              transition={{
+                delay:
+                  constant.welcome_ids_border_fadein.base +
+                  constant.welcome_ids_border_fadein.delay,
+                duration: 0.3,
+              }}
+              className={css.ids}
+            >
+              <div>
+                <HorizontalEmerge
+                  delay={
+                    constant.welcome_name_emerge.base +
+                    constant.welcome_name_emerge.delay
+                  }
+                  duration={constant.welcome_name_emerge.duration}
+                >
+                  <div className={css.name_primary}>わたすけ</div>
+                </HorizontalEmerge>
+                <HorizontalEmerge
+                  delay={
+                    constant.welcome_name_emerge.base +
+                    constant.welcome_name_emerge.delay +
+                    0.1
+                  }
+                  duration={constant.welcome_name_emerge.duration}
+                >
+                  <div className={css.name_secondary}>watasuke</div>
+                </HorizontalEmerge>
+              </div>
+
+              <FadeFloatIn
                 delay={
-                  constant.welcome_name_emerge.base +
-                  constant.welcome_name_emerge.delay
+                  constant.welcome_ids_float.base +
+                  constant.welcome_ids_float.delay
                 }
-                duration={constant.welcome_name_emerge.duration}
+                duration={constant.welcome_ids_float.duration}
               >
-                <div className={css.name_primary}>わたすけ</div>
-              </HorizontalEmerge>
-              <HorizontalEmerge
+                <div className={css.icon_container}>
+                  <a href='https://github.com/watasuke102' className={css.icon}>
+                    <IconGitHub />
+                  </a>
+                  <a
+                    href='https://instagram.com/watasuke102'
+                    className={css.icon}
+                  >
+                    <IconInstagram />
+                  </a>
+                  <span className={css.id_text}>@watasuke102</span>
+                </div>
+              </FadeFloatIn>
+              <FadeFloatIn
                 delay={
-                  constant.welcome_name_emerge.base +
-                  constant.welcome_name_emerge.delay +
+                  constant.welcome_ids_float.base +
+                  constant.welcome_ids_float.delay +
                   0.1
                 }
-                duration={constant.welcome_name_emerge.duration}
+                duration={constant.welcome_ids_float.duration}
               >
-                <div className={css.name_secondary}>watasuke</div>
-              </HorizontalEmerge>
-            </div>
-
-            <FadeFloatIn
-              delay={
-                constant.welcome_ids_float.base +
-                constant.welcome_ids_float.delay
-              }
-              duration={constant.welcome_ids_float.duration}
-            >
-              <div className={css.icon_container}>
-                <a href='https://github.com/watasuke102' className={css.icon}>
-                  <IconGitHub />
-                </a>
-                <a
-                  href='https://instagram.com/watasuke102'
-                  className={css.icon}
-                >
-                  <IconInstagram />
-                </a>
-                <span className={css.id_text}>@watasuke102</span>
-              </div>
-            </FadeFloatIn>
-            <FadeFloatIn
-              delay={
-                constant.welcome_ids_float.base +
-                constant.welcome_ids_float.delay +
-                0.1
-              }
-              duration={constant.welcome_ids_float.duration}
-            >
-              <div className={css.icon_container}>
-                <a href='https://x.com/watasuke1024' className={css.icon}>
-                  <IconTwitter />
-                </a>
-                <span className={css.id_text}>@watasuke1024</span>
-              </div>
-            </FadeFloatIn>
-            <FadeFloatIn
-              delay={
-                constant.welcome_ids_float.base +
-                constant.welcome_ids_float.delay +
-                0.2
-              }
-              duration={constant.welcome_ids_float.duration}
-            >
-              <div className={css.icon_container}>
-                <a href='https://soundcloud.com/watasuke' className={css.icon}>
-                  <IconSoundcloud />
-                </a>
-                <span className={css.id_text}>watasuke</span>
-              </div>
-            </FadeFloatIn>
+                <div className={css.icon_container}>
+                  <a href='https://x.com/watasuke1024' className={css.icon}>
+                    <IconTwitter />
+                  </a>
+                  <span className={css.id_text}>@watasuke1024</span>
+                </div>
+              </FadeFloatIn>
+              <FadeFloatIn
+                delay={
+                  constant.welcome_ids_float.base +
+                  constant.welcome_ids_float.delay +
+                  0.2
+                }
+                duration={constant.welcome_ids_float.duration}
+              >
+                <div className={css.icon_container}>
+                  <a
+                    href='https://soundcloud.com/watasuke'
+                    className={css.icon}
+                  >
+                    <IconSoundcloud />
+                  </a>
+                  <span className={css.id_text}>watasuke</span>
+                </div>
+              </FadeFloatIn>
+            </motion.div>
           </motion.div>
         </motion.div>
-      </motion.div>
 
-      <motion.div
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        transition={{
-          delay:
-            constant.welcome_last_fadein.base +
-            constant.welcome_last_fadein.delay,
-          duration: constant.welcome_last_fadein.duration,
-        }}
-        className={css.scroll_prompt}
-      >
-        <span className={css.down_arrow}>
-          <IconDoubleDown />
-        </span>
-        <span className={css.scroll_prompt_text}>scroll down</span>
-      </motion.div>
-    </section>
+        <motion.div
+          initial={{opacity: 0}}
+          animate={{opacity: 1}}
+          transition={{
+            delay:
+              constant.welcome_last_fadein.base +
+              constant.welcome_last_fadein.delay,
+            duration: constant.welcome_last_fadein.duration,
+          }}
+          className={css.scroll_prompt}
+        >
+          <span className={css.down_arrow}>
+            <IconDoubleDown />
+          </span>
+          <span className={css.scroll_prompt_text}>scroll down</span>
+        </motion.div>
+      </section>
+    </>
   );
 }
