@@ -87,10 +87,10 @@ export function Skills(props: Props) {
       <GridView<Skill>
         group_color={group_color}
         items={skills}
-        renderer={({item, index}) => (
+        renderer={({group, item, index}) => (
           <motion.section
+            key={`skill-${group}${index}`}
             {...floatup_with_scroll}
-            key={index}
             className={css.item}
           >
             <div className={css.title_area}>

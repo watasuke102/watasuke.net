@@ -94,8 +94,8 @@ export function Works(props: Props) {
         items={groupby}
         renderer={({group, item, index}) => (
           <motion.button
-            {...floatup_with_scroll}
             key={`${group}work${index}`}
+            {...floatup_with_scroll}
             onClick={() => open_sidepeak(desc_map[item.key])}
             // give key in order to make possible to scroll into this item
             // item can own multiple categories, so same item can appear multiple times,
