@@ -14,6 +14,7 @@ export const sidepeak = style({
   zIndex: 64,
   height: '100dvh',
   padding: '8px 12px',
+  paddingBottom: 60, // for floating button
   overflowX: 'hidden',
   overflowY: 'scroll',
   backgroundColor: `${color.bg}f6`,
