@@ -5,6 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './HistoryItem.css';
+import {classname_for_jumped_from_history} from '../Works/Works.css';
 import {cs, Markdown} from '@watasuke.net/common';
 import {Event} from '@data/event_list';
 import IconDoubleDown from '@assets/icons/general/double-down.svg';
@@ -18,15 +19,25 @@ interface Props {
 export function HistoryItem(props: Props) {
   const on_click = () => {
     if (props.event.category === 'Work') {
+      const elements = document.getElementsByClassName(props.event.key);
+      if (!elements) {
+        return;
+      }
+      const target = elements[0] as HTMLElement;
       window.scroll({
-        top:
-          window.pageYOffset +
-          document
-            .getElementsByClassName(props.event.key)[0]
-            ?.getBoundingClientRect().top -
-          20,
+        top: window.pageYOffset + target.getBoundingClientRect().top - 20,
         behavior: 'smooth',
       });
+      setTimeout(() => {
+        // Blink the target element after scrolling
+        // I don't know how to distinguish whether the element is focused via `target.focus()` or by Tab key,
+        // so I add className, not using `:focus` pseudo-class
+        target.classList.add(classname_for_jumped_from_history);
+        setTimeout(
+          () => target.classList.remove(classname_for_jumped_from_history),
+          1000,
+        );
+      }, 700);
     } else if (props.event.body) {
       props.open_sidepeak(
         <Markdown
