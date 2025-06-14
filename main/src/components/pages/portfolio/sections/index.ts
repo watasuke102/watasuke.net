@@ -5,8 +5,9 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {History} from './History/History';
+import {Skills} from './Skills/Skills';
 import {Welcome} from './Welcome/Welcome';
 import {Whoami} from './Whoami/Whoami';
 import {Works} from './Works/Works';
 
-export {Welcome, Whoami, History, Works};
+export {Welcome, Whoami, Skills, Works, History};
