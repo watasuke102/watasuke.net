@@ -29,5 +29,6 @@ export const grid_view = style({
   gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
   gap: 12,
   margin: 0,
+  paddingBottom: 20, // without this, FloatUpWithScroll will not work properly
   width: '100%',
 });

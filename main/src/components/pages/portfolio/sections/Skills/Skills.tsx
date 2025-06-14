@@ -6,8 +6,10 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Skills.css';
 import React from 'react';
+import {motion} from 'framer-motion';
 import {color, Switch} from '@watasuke.net/common';
 import {GridView, SelectItem} from '@pages/portfolio/components/NotionLike';
+import {floatup_with_scroll} from '@pages/portfolio/components/FloatUpWithScroll/FloatUpWithScroll';
 import {gen_skills, Skill, tier_description} from '@data/skill_list';
 
 interface Props {
@@ -86,7 +88,11 @@ export function Skills(props: Props) {
         group_color={group_color}
         items={skills}
         renderer={({item, index}) => (
-          <section key={index} className={css.item}>
+          <motion.section
+            {...floatup_with_scroll}
+            key={index}
+            className={css.item}
+          >
             <div className={css.title_area}>
               {item.icon && <div className={css.icon}>{item.icon}</div>}
               <h3 className={css.title}>{item.name}</h3>
@@ -105,7 +111,7 @@ export function Skills(props: Props) {
               )}
             </div>
             <p className={css.desc}>{item.desc}</p>
-          </section>
+          </motion.section>
         )}
       />
     </section>

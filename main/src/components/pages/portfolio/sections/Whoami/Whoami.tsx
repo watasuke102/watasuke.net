@@ -7,13 +7,14 @@
 import * as css from './Whoami.css';
 import {motion, MotionProps} from 'framer-motion';
 import {cs, easing} from '@watasuke.net/common';
+import {floatup_with_scroll} from '@pages/portfolio/components/FloatUpWithScroll/FloatUpWithScroll';
 import {BioEn, BioJa} from '@data/bio';
 import {social_links} from '@data/social_links';
 import IconClose from '@assets/icons/general/close.svg';
 import IconExpand from '@assets/icons/general/expand.svg';
 
 export function Whoami(props: {lang: 'ja' | 'en'}) {
-  const item = (delay: number) => {
+  const item = (delay?: number) => {
     return {
       variants: {
         initial: {opacity: 0, y: 20},
@@ -32,21 +33,7 @@ export function Whoami(props: {lang: 'ja' | 'en'}) {
     </>
   );
   return (
-    <motion.section
-      variants={{
-        initial: {opacity: 0, y: 20},
-        animate: {opacity: 1, y: 0},
-      }}
-      initial='initial'
-      whileInView='animate'
-      viewport={{once: true, amount: 1.0}}
-      transition={{
-        when: 'beforeChildren',
-        duration: 0.4,
-        ease: easing.out_expo.array,
-      }}
-      className={css.container}
-    >
+    <motion.section {...floatup_with_scroll} className={css.container}>
       <div className={css.tabbar}>
         <div className={cs(css.tabbar_button, css.tabbar_close_button)}>
           <IconClose />
