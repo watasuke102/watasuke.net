@@ -6,13 +6,14 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Works.css';
 import React from 'react';
-import {cs, Markdown} from '@watasuke.net/common';
+import {color, cs, Markdown} from '@watasuke.net/common';
+import {SelectItem, GridView} from '@pages/portfolio/components/NotionLike';
 import {useSidepeak} from '../../components/SidePeak';
 import {
   Work,
   work_list,
   WorkCategory,
-  WorkCategoryArray as work_category_array,
+  WorkCategoryArray,
   WorkListKey,
 } from '@data/work_list';
 
@@ -21,19 +22,19 @@ interface Props {
 }
 
 export function Works(props: Props) {
-  const category_classname: Record<WorkCategory, string> = {
-    Pickup: css.multiselect_green,
-    Website: css.multiselect_blue,
-    'Web App': css.multiselect_cyan,
-    Tool: css.multiselect_purple,
-    Music: css.multiselect_soundcloud,
-    Other: css.multiselect_gray,
+  const category_color: Record<WorkCategory, string> = {
+    Pickup: color.p0,
+    Website: color.blue,
+    'Web App': color.cyan,
+    Tool: color.purple,
+    Music: color.brand.soundcloud,
+    Other: color.g3,
   };
-  const tag_classname: Record<Work['tags'][number]['kind'], string> = {
-    lang: css.multiselect_green,
-    'fw/lib': css.multiselect_blue,
-    tool: css.multiselect_purple,
-    other: css.multiselect_gray,
+  const tag_color: Record<Work['tags'][number]['kind'], string> = {
+    lang: color.p0,
+    'fw/lib': color.blue,
+    tool: color.purple,
+    other: color.g3,
   };
 
   const {open_sidepeak} = useSidepeak();
@@ -57,19 +58,19 @@ export function Works(props: Props) {
     [props.lang],
   );
 
+  type WorkAndKey = {
+    key: WorkListKey;
+    work: Work;
+  };
+  // object.groupBy() cannot create the object whose item is duplicated
   const groupby = React.useMemo(() => {
-    const initial_acc = work_category_array.reduce(
+    // initialize acc in order to ensure the order of the categories
+    const initial_acc = WorkCategoryArray.reduce(
       (acc, category) => {
         acc[category] = [];
         return acc;
       },
-      {} as Record<
-        WorkCategory,
-        {
-          key: WorkListKey;
-          work: Work;
-        }[]
-      >,
+      {} as Record<WorkCategory, WorkAndKey[]>,
     );
     return Object.keys(work_list).reduce((acc, key) => {
       const work = work_list[key as keyof typeof work_list];
@@ -86,70 +87,50 @@ export function Works(props: Props) {
   return (
     <section className={css.container}>
       <h2>Works</h2>
-      {Object.keys(groupby).map(category => (
-        <details open key={category} className={css.category_section}>
-          <summary style={{marginBottom: 8}}>
-            {/* 
-              If give className to <summary>, the triangle that shows open/close status will disappear,
-              so category name is wrapped by <span> 
-            */}
-            <span
-              className={cs(
-                css.multiselect_item,
-                category_classname[category as WorkCategory],
+      <GridView<WorkAndKey>
+        group_color={category_color}
+        items={groupby}
+        renderer={({group, item, index}) => (
+          <button
+            key={`${group}work${index}`}
+            onClick={() => open_sidepeak(desc_map[item.key])}
+            // give key in order to make possible to scroll into this item
+            // item can own multiple categories, so same item can appear multiple times,
+            // so use class instead of id
+            className={cs(item.key, css.item)}
+          >
+            <div className={css.img_wrapper}>
+              {item.work.img ? (
+                <img
+                  src={item.work.img}
+                  alt={item.work.title(props.lang)}
+                  loading='lazy'
+                  decoding='async'
+                  className={css.item_thumbnail}
+                />
+              ) : (
+                <div className={css.dummy_img} />
               )}
-            >
-              {category}
-            </span>
-          </summary>
-          <div className={css.grid_view}>
-            {groupby[category as WorkCategory].map((e, index) => (
-              <button
-                key={`${category}work${index}`}
-                onClick={() => open_sidepeak(desc_map[e.key])}
-                // give key in order to make possible to scroll into this item
-                // item can own multiple categories, so same item can appear multiple times,
-                // so use class instead of id
-                className={cs(e.key, css.item)}
-              >
-                <div className={css.img_wrapper}>
-                  {e.work.img ? (
-                    <img
-                      src={e.work.img}
-                      alt={e.work.title(props.lang)}
-                      loading='lazy'
-                      decoding='async'
-                      className={css.item_thumbnail}
+            </div>
+            <div className={css.properties}>
+              <span className={css.property_title}>
+                {item.work.title(props.lang)}
+              </span>
+              <div>
+                <div className={css.multiselect}>
+                  {item.work.tags.map((tag, i) => (
+                    <SelectItem
+                      color={tag_color[tag.kind]}
+                      label={tag.name}
+                      key={`${index}tag${i}`}
                     />
-                  ) : (
-                    <div className={css.dummy_img} />
-                  )}
+                  ))}
                 </div>
-                <div className={css.properties}>
-                  <span className={css.property_title}>
-                    {e.work.title(props.lang)}
-                  </span>
-                  <div>
-                    <div className={css.multiselect}>
-                      {e.work.tags.map((tag, i) => (
-                        <span
-                          key={`${index}tag${i}`}
-                          className={cs(
-                            css.multiselect_item,
-                            tag_classname[tag.kind],
-                          )}
-                        >
-                          {tag.name}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </button>
-            ))}
-          </div>
-        </details>
-      ))}
+              </div>
+            </div>
+          </button>
+        )}
+      />
     </section>
   );
 }
