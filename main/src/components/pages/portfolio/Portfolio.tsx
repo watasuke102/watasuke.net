@@ -17,7 +17,7 @@ import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
 import {easing, color, Switch} from '@watasuke.net/common';
 import * as constant from '@pages/portfolio/constant';
 
-import {Welcome, Whoami, Skills, Works, History} from './sections';
+import {Welcome, Whoami, Skills, Works, History, End} from './sections';
 import {SidepeakComponent, SidepeakProvider} from './components/SidePeak';
 
 const blind_width = 50;
@@ -40,6 +40,7 @@ export function Portfolio(props: {init_lang: 'ja' | 'en'}) {
               <Skills lang={lang} />
               <Works lang={lang} />
               <History lang={lang} />
+              <End />
             </main>
 
             {
