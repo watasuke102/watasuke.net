@@ -6,8 +6,10 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Works.css';
 import React from 'react';
+import {motion} from 'framer-motion';
 import {color, cs, Markdown} from '@watasuke.net/common';
 import {SelectItem, GridView} from '@pages/portfolio/components/NotionLike';
+import {floatup_with_scroll} from '@pages/portfolio/components/FloatUpWithScroll/FloatUpWithScroll';
 import {useSidepeak} from '../../components/SidePeak';
 import {
   Work,
@@ -91,7 +93,8 @@ export function Works(props: Props) {
         group_color={category_color}
         items={groupby}
         renderer={({group, item, index}) => (
-          <button
+          <motion.button
+            {...floatup_with_scroll}
             key={`${group}work${index}`}
             onClick={() => open_sidepeak(desc_map[item.key])}
             // give key in order to make possible to scroll into this item
@@ -128,7 +131,7 @@ export function Works(props: Props) {
                 </div>
               </div>
             </div>
-          </button>
+          </motion.button>
         )}
       />
     </section>

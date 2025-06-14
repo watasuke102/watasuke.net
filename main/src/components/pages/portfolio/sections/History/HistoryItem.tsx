@@ -6,7 +6,9 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './HistoryItem.css';
 import {classname_for_jumped_from_history} from '../Works/Works.css';
+import {motion} from 'framer-motion';
 import {cs, Markdown} from '@watasuke.net/common';
+import {floatup_with_scroll} from '@pages/portfolio/components/FloatUpWithScroll/FloatUpWithScroll';
 import {Event} from '@data/event_list';
 import IconDoubleDown from '@assets/icons/general/double-down.svg';
 import IconMoreHorizon from '@assets/icons/general/more-horizon.svg';
@@ -106,7 +108,7 @@ export function HistoryItem(props: Props) {
   };
 
   return (
-    <div className={css.container}>
+    <motion.div {...floatup_with_scroll} className={css.container}>
       <div className={css.line_vertical} />
       <div className={css.line_vertical} />
       <div className={css.line_horizontal} />
@@ -129,6 +131,6 @@ export function HistoryItem(props: Props) {
           </div>
         </div>
       </button>
-    </div>
+    </motion.div>
   );
 }

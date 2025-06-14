@@ -6,6 +6,9 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {style} from '@vanilla-extract/css';
 
+export const container = style({
+  paddingBottom: 36,
+});
 export const heading = style({
   textAlign: 'center',
 });
