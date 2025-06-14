@@ -5,35 +5,11 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {globalStyle, keyframes, style} from '@vanilla-extract/css';
-import {easing} from '@watasuke.net/common/src/easing';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
   marginInline: 32,
   marginBottom: 16,
-});
-
-export const category_section = style({
-  border: 'none !important',
-});
-globalStyle(`${container} details::details-content`, {
-  overflowY: 'clip',
-  height: 0,
-  transitionProperty: 'height, content-visibility',
-  transitionDuration: '0.3s',
-  transitionTimingFunction: easing.out_expo.cubic_bezier,
-  transitionBehavior: 'allow-discrete',
-});
-globalStyle(`${container} details[open]::details-content`, {
-  height: 'auto',
-});
-
-export const grid_view = style({
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-  gap: 12,
-  margin: 0,
-  width: '100%',
 });
 
 export const classname_for_jumped_from_history = 'jumped_from_history';
@@ -48,7 +24,7 @@ const target_keyframes = keyframes({
     borderColor: color.transparent,
   },
 });
-globalStyle(`${grid_view} .${classname_for_jumped_from_history}`, {
+globalStyle(`${container} .${classname_for_jumped_from_history}`, {
   border: '2px solid',
   animationName: target_keyframes,
   animationDuration: '0.25s',
@@ -103,29 +79,4 @@ export const multiselect = style({
   flexWrap: 'wrap',
   gap: '4px',
   marginTop: '4px',
-});
-export const multiselect_item = style({
-  fontSize: '0.8em',
-  fontWeight: 'bold',
-  padding: '0 4px',
-  color: color.g0,
-  borderRadius: 3,
-});
-export const multiselect_green = style({
-  backgroundColor: color.p0,
-});
-export const multiselect_blue = style({
-  backgroundColor: color.blue,
-});
-export const multiselect_cyan = style({
-  backgroundColor: color.cyan,
-});
-export const multiselect_purple = style({
-  backgroundColor: color.purple,
-});
-export const multiselect_gray = style({
-  backgroundColor: color.g3,
-});
-export const multiselect_soundcloud = style({
-  backgroundColor: color.brand.soundcloud,
 });
