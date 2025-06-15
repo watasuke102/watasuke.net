@@ -2,7 +2,7 @@
 #
 # CopyRight (c) 2023 Watasuke
 # Email  : <watasuke102@gmail.com>
-# Twitter: @Watasuke102
+# Twitter: @watasuke1024
 # This software is released under the MIT or MIT SUSHI-WARE License.
 query allArticles {
   allArticles {
@@ -74,7 +74,14 @@ mutation updateArticle(
   $isFavorite: Boolean!
   $body: String!
 ) {
-  updateArticle(slug: $slug, title: $title, tldr: $tldr, tags: $tags, isFavorite: $isFavorite, body: $body)
+  updateArticle(
+    slug: $slug
+    title: $title
+    tldr: $tldr
+    tags: $tags
+    isFavorite: $isFavorite
+    body: $body
+  )
 }
 
 mutation publishArticle($slug: String!, $should_commit_and_push: Boolean!) {

@@ -17,7 +17,7 @@ questions:
 // CopyRight (c) 2021-2024 watasuke
 //
 // Email  : <watasuke102@gmail.com>
-// Twitter: @Watasuke102
+// Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import React from 'react';
 import {css} from './{{ pascal(inputs.name) }}.css';
@@ -37,7 +37,7 @@ export function {{ pascal(inputs.name) }}() {
 // CopyRight (c) 2021-2024 watasuke
 //
 // Email  : <watasuke102@gmail.com>
-// Twitter: @Watasuke102
+// Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {style} from '@vanilla-extract/css';
 
@@ -53,7 +53,7 @@ export const css = {
 // CopyRight (c) 2021-2024 watasuke
 //
 // Email  : <watasuke102@gmail.com>
-// Twitter: @Watasuke102
+// Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import { {{ pascal(inputs.name) }} } from './{{ pascal(inputs.name) }}';
 
@@ -68,7 +68,7 @@ export { {{ pascal(inputs.name) }} };
 // CopyRight (c) 2021-2024 watasuke
 //
 // Email  : <watasuke102@gmail.com>
-// Twitter: @Watasuke102
+// Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import React from 'react';
 import type {Meta, StoryObj} from '@storybook/react';
