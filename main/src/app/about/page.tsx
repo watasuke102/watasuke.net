@@ -101,7 +101,7 @@ export default function About() {
           </li>
           <li>
             当サイトで発生したあらゆる権利侵害・違法行為等は意図したものではありません。
-            それらを発見した場合、お手数ですが Twitter (@Watasuke102) への DM
+            それらを発見した場合、お手数ですが Twitter (@watasuke1024) への DM
             等でお知らせください
           </li>
         </ul>

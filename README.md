@@ -7,7 +7,7 @@ TypeScript, React, vanilla-extract, Next.js, Rust, etc...
 
 ## 記事について
 
-誤字・脱字・間違い・権利侵害など、記事の中身に関する報告は 記事へのコメント (Discussion) or Issue or Twitter (@Watasuke102)でお願いします
+誤字・脱字・間違い・権利侵害など、記事の中身に関する報告は 記事へのコメント (Discussion) or Issue or Twitter (@watasuke1024)でお願いします
 
 ## repository structure
 

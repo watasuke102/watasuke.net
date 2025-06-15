@@ -33,8 +33,8 @@ const common: JSX.IntrinsicElements['a'] = {
 export const social_links: LinkRecord = {
   twitter: {
     ...common,
-    title: 'Twitter (@Watasuke102)',
-    href: 'https://x.com/Watasuke102',
+    title: 'Twitter (@watasuke1024)',
+    href: 'https://x.com/watasuke1024',
     children: <IconTwitter />,
   },
   instagram: {

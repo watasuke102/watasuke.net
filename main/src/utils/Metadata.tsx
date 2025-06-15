@@ -61,8 +61,8 @@ export function gen_metadata(
       card: 'summary',
       title,
       description,
-      site: '@Watasuke102',
-      creator: '@Watasuke102',
+      site: '@watasuke1024',
+      creator: '@watasuke1024',
       images: [image],
     },
   };

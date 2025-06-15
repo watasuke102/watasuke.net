@@ -32,7 +32,7 @@ export function Front(props: Props) {
         {/* prettier-ignore */}
         <div className={`${css.icon_and_link} ${css.primary}`}>
           <div><IconEnvelope /></div> <div className={css.separator} /> <span>watasuke102@gmail.com</span>
-          <div><IconTwitter /></div>  <div className={css.separator} /> <span>Watasuke102</span>
+          <div><IconTwitter /></div>  <div className={css.separator} /> <span>watasuke1024</span>
           <div><IconGitHub /></div>   <div className={css.separator} /> <span>watasuke102</span>
         </div>
 
