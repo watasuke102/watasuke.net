@@ -76,8 +76,12 @@ export function gen_event_list(lang: 'ja' | 'en'): Record<string, Event[]> {
       {
         period: {kind: 'day', date: {month: 4, day: 1}},
         category: 'General',
-        title: ja ? '高専入学' : 'Enter KOSEN',
-        subtitle: ja ? '情報系の学科' : 'Department about information',
+        title: ja
+          ? '宇部高専 入学'
+          : 'Enter National Institute of Technology, Ube College',
+        subtitle: ja
+          ? '制御情報工学科'
+          : 'Department of Intelligent System Engineering',
         body: '',
       },
       {
@@ -108,14 +112,14 @@ export function gen_event_list(lang: 'ja' | 'en'): Record<string, Event[]> {
           ? `
 ExpNoteの開発を経てFlutterを布教したくなったので、LTで雑に布教しました。
 
-[スライド](https://docs.google.com/presentation/d/1vUuO9ZfyuO-fTv9cP9IfHdoXK1sQzAmNS05QJO-iRq0/edit?usp=share_link)
- / [発表の様子 (YouTube)](https://www.youtube.com/live/LetsnbqNA-U?feature=share&t=12701)
+- [スライド (Google Slides)](https://docs.google.com/presentation/d/1vUuO9ZfyuO-fTv9cP9IfHdoXK1sQzAmNS05QJO-iRq0/edit?usp=share_link)
+- [発表の様子 (YouTube)](https://www.youtube.com/live/LetsnbqNA-U?feature=share&t=12701)
 `
           : `
 Lightning Talk to roughly recommend Flutter.
 
-[Slide](https://docs.google.com/presentation/d/1vUuO9ZfyuO-fTv9cP9IfHdoXK1sQzAmNS05QJO-iRq0/edit?usp=share_link)
- / [発表の様子 (YouTube)](https://www.youtube.com/live/LetsnbqNA-U?feature=share&t=12701)
+- [Slides (Google Slides)](https://docs.google.com/presentation/d/1vUuO9ZfyuO-fTv9cP9IfHdoXK1sQzAmNS05QJO-iRq0/edit?usp=share_link)
+- [発表の様子 (YouTube)](https://www.youtube.com/live/LetsnbqNA-U?feature=share&t=12701)
 `,
       },
       {
@@ -180,19 +184,19 @@ Lightning Talk to roughly recommend Flutter.
 CPU自作ゼミで、RISC-V CPUをFPGA上に実装しました。
 講義中はUARTの実装・キャラクタLCDの制御・HDMI出力を行いました。
 
-[GitHub](https://github.com/watasuke102/seccamp_2022_riscv_cpu)
- / [成果報告時に用いたスライド](https://docs.google.com/presentation/d/1jZhWOtsE-aoRW_FdrEXbnvV6VrNH59Q2q-pH8CTHtDc/edit?usp=sharing)
- / [応募課題晒し](https://watasuke.net/blog/article/seccamp-2022-app-publish/)
- / [感想](https://watasuke.net/blog/article/the-end-of-security-camp/)
+- [CPUの実装 (GitHub)](https://github.com/watasuke102/seccamp_2022_riscv_cpu)
+- [成果報告時に用いたスライド (Google Slides)](https://docs.google.com/presentation/d/1jZhWOtsE-aoRW_FdrEXbnvV6VrNH59Q2q-pH8CTHtDc/edit?usp=sharing)
+- [応募課題晒し](https://watasuke.net/blog/article/seccamp-2022-app-publish/)
+- [感想](https://watasuke.net/blog/article/the-end-of-security-camp/)
 `
           : `
 Implementing RISC-V CPU on FPGA.
 I implemented UART, character LCD operation, HDMI output.
 
-[GitHub](https://github.com/watasuke102/seccamp_2022_riscv_cpu)
- / [Slide for final result presentation](https://docs.google.com/presentation/d/1jZhWOtsE-aoRW_FdrEXbnvV6VrNH59Q2q-pH8CTHtDc/edit?usp=sharing)
- / [my application](https://watasuke.net/blog/article/seccamp-2022-app-publish/)
- / [my thoughts (blog)](https://watasuke.net/blog/article/the-end-of-security-camp/)
+- [CPU implementation (GitHub)](https://github.com/watasuke102/seccamp_2022_riscv_cpu)
+- [Slides for final result presentation (Google Slides)](https://docs.google.com/presentation/d/1jZhWOtsE-aoRW_FdrEXbnvV6VrNH59Q2q-pH8CTHtDc/edit?usp=sharing)
+- [my application](https://watasuke.net/blog/article/seccamp-2022-app-publish/)
+- [my thoughts (blog)](https://watasuke.net/blog/article/the-end-of-security-camp/)
 `,
       },
       {
@@ -209,12 +213,12 @@ I implemented UART, character LCD operation, HDMI output.
 セキュリティ・キャンプ 2022のプログラムとしてLT大会が開催され、
 そこでTAGetherについて紹介しました。
 
-[スライド](https://docs.google.com/presentation/d/1KDI_VyW8FBDn1HOIMIsVJAuwtDEI6TzFuUhQJHcE-8k/edit?usp=share_link)
+[スライド (Google Slides)](https://docs.google.com/presentation/d/1KDI_VyW8FBDn1HOIMIsVJAuwtDEI6TzFuUhQJHcE-8k/edit?usp=share_link)
 `
           : `
 Lightning Talk event is held by Security Camp 2022, and I introduced about TAGether.
 
-[Slide](https://docs.google.com/presentation/d/1KDI_VyW8FBDn1HOIMIsVJAuwtDEI6TzFuUhQJHcE-8k/edit?usp=share_link)
+[Slide (Google Slides)](https://docs.google.com/presentation/d/1KDI_VyW8FBDn1HOIMIsVJAuwtDEI6TzFuUhQJHcE-8k/edit?usp=share_link)
 `,
       },
       {
@@ -228,12 +232,16 @@ Lightning Talk event is held by Security Camp 2022, and I introduced about TAGet
 「世の中を便利にする」テーマでTAGetherを、「開発/スキル支援」テーマで Zwin （当時ZIGEN）をそれぞれ紹介しました。
 
 Zwinは当該テーマにおいて最優秀賞を獲得しました。
+
+- [TAGetherの発表スライド (Google Slides)](https://docs.google.com/presentation/d/1wgm5F7gCZnGjSQ2yVQmgi7oVazUC1wWspEui3KikIJY/edit?usp=drive_link)
 `
           : `
 Introduce TAGether in "Make the world more convenience" theme,
 Zwin (ZIGEN at that time) in "Workelopment/Skill assist" theme.
 
 Zwin won at that theme.
+
+- [Presentation slides of TAGether (Google Slides)](https://docs.google.com/presentation/d/1wgm5F7gCZnGjSQ2yVQmgi7oVazUC1wWspEui3KikIJY/edit?usp=drive_link)
 `,
       },
     ],
@@ -272,14 +280,14 @@ Join as staff, and assist student / moderate groupwork.
           ? `
 台湾の国立聯合大学に留学し、画像処理に関する研究を行いました。
 
-[開発したもの](https://github.com/watasuke102/measure-vehicle-distance)
- / [感想](https://watasuke.net/blog/article/internship-in-taiwan-nuu/)
+- [研究成果](https://github.com/watasuke102/measure-vehicle-distance)
+- [感想](https://watasuke.net/blog/article/internship-in-taiwan-nuu/)
 `
           : `
 Go to National United University in Taiwan, do the research about Image Processing.
 
-[works](https://github.com/watasuke102/measure-vehicle-distance)
- / [my thoughts (blog)](https://watasuke.net/blog/article/internship-in-taiwan-nuu/)
+- [research results](https://github.com/watasuke102/measure-vehicle-distance)
+- [my thoughts (blog)](https://watasuke.net/blog/article/internship-in-taiwan-nuu/)
 `,
       },
       {
@@ -295,14 +303,14 @@ Go to National United University in Taiwan, do the research about Image Processi
           ? `
 受講生として参加しました。
 
-[応募課題晒し](https://watasuke.net/blog/article/nextcamp-23-app-revealing/)
- / [感想](https://watasuke.net/blog/article/the-end-of-nextcamp-23/)
+- [応募課題晒し](https://watasuke.net/blog/article/nextcamp-23-app-revealing/)
+- [感想](https://watasuke.net/blog/article/the-end-of-nextcamp-23/)
 `
           : `
 I participated as a student.
 
-[my application](https://watasuke.net/blog/article/nextcamp-23-app-revealing/)
- / [my thoughts (blog](https://watasuke.net/blog/article/the-end-of-nextcamp-23/)
+- [my application](https://watasuke.net/blog/article/nextcamp-23-app-revealing/)
+- [my thoughts (blog](https://watasuke.net/blog/article/the-end-of-nextcamp-23/)
 `,
       },
       {
@@ -321,7 +329,7 @@ I participated as a student.
           : `
 Introduced about watasuke.net in the Lightning Talk event held by Security Camp 2023.
 
-[Slide](https://docs.google.com/presentation/d/11Z0c9Mo95BC2r71_lEYe37K3P4eBYsQdOkmdEWlOfd0/edit?usp=sharing)
+[Slides](https://docs.google.com/presentation/d/11Z0c9Mo95BC2r71_lEYe37K3P4eBYsQdOkmdEWlOfd0/edit?usp=sharing)
 `,
       },
       {
@@ -372,11 +380,52 @@ I participated in CAPCOM Hackathon at Osaka, and developed a game using Unity.
     ],
     '2024': [
       {
+        period: {kind: 'day', date: {month: 6, day: 25}},
+        category: 'Talk',
+        title: ja ? '進学講話' : 'Talk about going to university',
+        subtitle: '「学生向け事業のすゝめ」',
+        body: ja
+          ? `
+宇部高専の1年生に向け、「学生向け事業のすゝめ」というタイトルで発表を行い、セキュリティ・キャンプや未踏ジュニアなどを紹介し、応募の際に心がけると良いことを説明しました。
+
+- [発表スライド (Google Slides)](https://docs.google.com/presentation/d/1hjeEemqmPwhzLpVapBHn5QpPvll-KfhJDLonadH-CX8/edit?usp=sharing)
+- [学生向け事業 (Cosense)](https://scrapbox.io/watasuke/%E5%AD%A6%E7%94%9F%E5%90%91%E3%81%91%E4%BA%8B%E6%A5%AD)
+`
+          : `
+I talked titled "学生向け事業のすゝめ" (Invitation of students-targeted project) to 1st grade students of NITUC, introduced projects such as Security Camp and Mitou Junior, and descibed what to keep in mind when applying for them.
+          
+- [Presentation slides (Google Drive)](https://drive.google.com/drive/folders/1vTiDzJm19ykinLq1kv3aUFQSXo3Fz5iP?usp=drive_link)
+- [高専からの編入学について (Cosense)](https://scrapbox.io/watasuke/%E9%AB%98%E5%B0%82%E3%81%8B%E3%82%89%E3%81%AE%E7%B7%A8%E5%85%A5%E5%AD%A6%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
+          `,
+      },
+      {
         period: {kind: 'day', date: {month: 8, day: 30}}, // Tweet date: https://x.com/Watasuke102/status/1829492560295047609
         category: 'Work',
         title: 'Settlang',
         subtitle: ja ? 'プログラミング言語' : 'Programming language',
         key: 'settlang',
+      },
+      {
+        period: {
+          kind: 'day',
+          date: {month: 11, day: 5},
+        },
+        category: 'Talk',
+        title: ja ? '進学講話' : 'Talk about going to university',
+        subtitle: '「進学は情報収集が9割」&「受験対策まとめ」',
+        body: ja
+          ? `
+宇部高専の1～3年生に向け、進学講話を行いました。1・2年生には「進学は情報収集が9割」というタイトルで、進路全般についてのアドバイスを行いました。3年生には「受験対策まとめ」というタイトルで、受験勉強やTOEIC対策についてのアドバイスを行いました。
+
+- [発表スライド一覧 (Google Drive)](https://drive.google.com/drive/folders/1vTiDzJm19ykinLq1kv3aUFQSXo3Fz5iP?usp=drive_link)
+- [高専からの編入学について (Cosense)](https://scrapbox.io/watasuke/%E9%AB%98%E5%B0%82%E3%81%8B%E3%82%89%E3%81%AE%E7%B7%A8%E5%85%A5%E5%AD%A6%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
+`
+          : `
+I talked about going to university from Kosen for 1st to 3rd grade students of NITUC. For 1st and 2nd grade students, I talked titled "進学は情報収集が9割" (90% of going to university is information gathering), giving advice about general career paths. For 3rd grade students, I talked titled "受験対策まとめ" (Summary of exam preparation), giving advice about study for the entrance exam and TOEIC preparation.
+          
+- [The list of presentation slides (Google Drive)](https://drive.google.com/drive/folders/1vTiDzJm19ykinLq1kv3aUFQSXo3Fz5iP?usp=drive_link)
+- [高専からの編入学について (Cosense)](https://scrapbox.io/watasuke/%E9%AB%98%E5%B0%82%E3%81%8B%E3%82%89%E3%81%AE%E7%B7%A8%E5%85%A5%E5%AD%A6%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
+          `,
       },
       {
         period: {
@@ -415,6 +464,19 @@ I participated in CODE BLUE 2024 as a Student Volunteer.
       {
         period: {
           kind: 'period',
+          begin: {month: 1, day: 7},
+          end: {month: 2, day: 4}, // graduate research presentation day
+        },
+        category: 'Work',
+        title: 'yaza',
+        subtitle: ja
+          ? 'XREAL Air 2向けwindowing system'
+          : 'Windowing system for XREAL Air 2',
+        key: 'yaza',
+      },
+      {
+        period: {
+          kind: 'period',
           begin: {month: 3, day: 5},
           end: {month: 3, day: 14},
         },
@@ -434,6 +496,17 @@ I participated in an internship by pixiv Inc. and did the tasks related to stati
 
 [my thoughts (blog)](https://watasuke.net/blog/article/joined-pixiv-spring-internship-2025/)
 `,
+      },
+      {
+        period: {kind: 'day', date: {month: 4, day: 1}},
+        category: 'General',
+        title: ja
+          ? '筑波大学 3年次編入'
+          : 'Transfer to University of Tsukuba as junior',
+        subtitle: ja
+          ? '情報学群 情報メディア創成学類'
+          : 'School of Informatics, college of Media Arts, Science and Technology',
+        body: '',
       },
     ],
   };
