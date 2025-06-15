@@ -35,7 +35,9 @@ globalStyle(`${container} .${classname_for_jumped_from_history}`, {
 
 export const item = style({
   display: 'grid',
-  gridTemplateRows: '140px auto auto auto',
+  gridRow: 'span 4',
+  gridTemplateRows: 'subgrid',
+  gap: 0,
   padding: 0,
   textAlign: 'left',
   borderRadius: 10,
@@ -47,6 +49,7 @@ export const item = style({
 });
 
 export const img_wrapper = style({
+  height: 140,
   borderTopLeftRadius: 10,
   borderTopRightRadius: 10,
   overflow: 'hidden',
@@ -64,10 +67,11 @@ export const dummy_img = style({
 
 export const properties = style({
   display: 'grid',
-  gridRow: '2 / 5',
+  gridRow: 'span 3',
   gridTemplateRows: 'subgrid',
-  paddingInline: 6,
-  paddingBottom: 12,
+  gap: 12,
+  paddingInline: 4,
+  paddingBottom: 8,
 });
 export const property_title = style({
   fontSize: '1.2em',
@@ -77,6 +81,5 @@ export const property_title = style({
 export const multiselect = style({
   display: 'flex',
   flexWrap: 'wrap',
-  gap: '4px',
-  marginTop: '4px',
+  gap: 4,
 });

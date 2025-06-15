@@ -119,16 +119,23 @@ export function Works(props: Props) {
               <span className={css.property_title}>
                 {item.work.title(props.lang)}
               </span>
-              <div>
-                <div className={css.multiselect}>
-                  {item.work.tags.map((tag, i) => (
-                    <SelectItem
-                      color={tag_color[tag.kind]}
-                      label={tag.name}
-                      key={`${index}tag${i}`}
-                    />
-                  ))}
-                </div>
+              <div className={css.multiselect}>
+                {item.work.category.map((category, i) => (
+                  <SelectItem
+                    color={category_color[category]}
+                    label={category}
+                    key={`${index}category${i}`}
+                  />
+                ))}
+              </div>
+              <div className={css.multiselect}>
+                {item.work.tags.map((tag, i) => (
+                  <SelectItem
+                    color={tag_color[tag.kind]}
+                    label={tag.name}
+                    key={`${index}tag${i}`}
+                  />
+                ))}
               </div>
             </div>
           </motion.button>
