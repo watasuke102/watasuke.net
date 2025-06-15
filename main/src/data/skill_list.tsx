@@ -9,20 +9,21 @@ import Arch from '@assets/icons/Skills/arch.svg';
 import C from '@assets/icons/Skills/c.svg';
 import Cmake from '@assets/icons/Skills/cmake.svg';
 import Cpp from '@assets/icons/Skills/cpp.svg';
-import OpenGL from '@assets/icons/Skills/opengl.svg';
 import Docker from '@assets/icons/Skills/docker.svg';
+import Figma from '@assets/icons/Skills/figma.svg';
 import File from '@assets/icons/Skills/file.svg';
-import Flutter from '@assets/icons/Skills/flutter.svg';
 import Git from '@assets/icons/Skills/git.svg';
 import MySQL from '@assets/icons/Skills/mysql.svg';
 import Neovim from '@assets/icons/Skills/neovim.svg';
 import Nextjs from '@assets/icons/Skills/nextjs.svg';
+import OpenGL from '@assets/icons/Skills/opengl.svg';
 import Qt from '@assets/icons/Skills/qt.svg';
 import ReactIcon from '@assets/icons/Skills/react-logo.svg';
 import Rust from '@assets/icons/Skills/rust.svg';
 import Sass from '@assets/icons/Skills/sass.svg';
 import TypeScript from '@assets/icons/Skills/typescript.svg';
 import VSCode from '@assets/icons/Skills/vscode.svg';
+import Wasm from '@assets/icons/Skills/wasm.svg';
 import Wayland from '@assets/icons/Skills/wayland.svg';
 
 type ValidTier = '1' | '2' | '3';
@@ -64,14 +65,8 @@ export function gen_skills(lang: 'ja' | 'en'): Skill[] {
       tier: '1',
       category: 'Language',
       desc: ja_en(
-        `
-最も長い期間触れている言語です
-言語仕様はまだあまり深く把握できていません
-`,
-        `
-I use this for the longest time
-I still don't have a deep knowledge of language specification
-`,
+        '最も長い期間触れている言語です。低めのレイヤを触る際に使用します',
+        'I use this for the longest time. I use this for low-layer programming',
       ),
     },
     {
@@ -81,14 +76,12 @@ I still don't have a deep knowledge of language specification
       category: 'Language',
       desc: ja_en(
         `
-個人的に最も好きな言語です
-match・Result・if式など好きなポイントが豊富
-自作OS・DiscordのBot作成・TUIツール開発に使用
+match・Result・if式など好きなポイントが豊富で、最も好きな言語です。
+自作OS・DiscordのBot作成・TUIツール開発に使用しています。
 `,
         `
-My most favorite language
-I like match, Result, if expression
-For OS, Discord bot, or TUI tool development
+My most favorite language because there are many favorite features such as match, Result, if expression.
+I use this for OS development, Discord bot, or TUI tool.
 `,
       ),
     },
@@ -98,15 +91,8 @@ For OS, Discord bot, or TUI tool development
       tier: '1',
       category: 'Language',
       desc: ja_en(
-        `
-そこそこ楽に書けるところが良いと思います
-基本的にReact.jsを書く際に使用します
-`,
-        `
-I can write this somewhat confortably
-basicaly I use this with React.js
-Use in backend of TAGether
-`,
+        '主にWebフロントエンドで使用しています。Denoを用いて簡易的なスクリプトを書くこともあります。',
+        'I use this mainly for Web frontend but also for simple scripts with Deno.',
       ),
     },
     {
@@ -115,8 +101,8 @@ Use in backend of TAGether
       tier: '2',
       category: 'Language',
       desc: ja_en(
-        '以前 CSS Module を愛用していました',
-        'Previously I loved CSS Module',
+        '以前 CSS Module を愛用していました。このサイトを作成できる程度には理解しています。',
+        'Previously I loved CSS Module. I understand it enough to create this site.',
       ),
     },
     {
@@ -125,8 +111,8 @@ Use in backend of TAGether
       tier: '2',
       category: 'Language',
       desc: ja_en(
-        '書けはしますが、言語仕様の1割も理解していません',
-        'I can write but my knowledge of this language is less than 10%',
+        `言語仕様やSTLのごく一部を把握しています。Better Cとして利用しています。`,
+        `I understand few parts of language specification and STL. I use this as Better C`,
       ),
     },
     {
@@ -171,8 +157,17 @@ TOEIC S&W : 280 [S130, W150] (Exam date: 2023-11-14)
       tier: '1',
       category: 'FW/Lib',
       desc: ja_en(
-        '基本的にNext.js等と一緒に使っています',
-        'Usually I use this with Next.js',
+        'Next.jsあるいはViteと一緒に使っています。',
+        'I use this with Next.js or Vite.',
+      ),
+    },
+    {
+      name: 'vanilla-extract',
+      tier: '1',
+      category: 'FW/Lib',
+      desc: ja_en(
+        '最近のWebフロントエンド開発はおよそ全てにおいて導入しています',
+        'I use this for almost all recent web frontend development',
       ),
     },
     {
@@ -181,23 +176,18 @@ TOEIC S&W : 280 [S130, W150] (Exam date: 2023-11-14)
       tier: '2',
       category: 'FW/Lib',
       desc: ja_en(
-        `
-このサイトやTAGetherの開発に使用
-ルーティング周りが楽で良いです
-`,
-        `
-Used for this site and TAGether
-It makes easy to configure about routing
-`,
+        'このサイトやTAGetherの開発に使用しています。',
+        'I use this for this site and TAGether.',
       ),
     },
     {
-      name: 'vanilla-extract',
-      tier: '1',
+      name: 'WebAssembly',
+      icon: <Wasm />,
+      tier: '2',
       category: 'FW/Lib',
       desc: ja_en(
-        '最近のスタイリングはすべてこれを使っています',
-        'Recently I use this for all styling',
+        'Wasmを出力結果とする自作言語 (Settlang) の作成経験があります。',
+        'I have experience by creating a programming language that outputs Wasm (Settlang).',
       ),
     },
     {
@@ -205,7 +195,10 @@ It makes easy to configure about routing
       icon: <OpenGL />,
       tier: '2',
       category: 'FW/Lib',
-      desc: ja_en('Zwinの開発に使用しました', 'I used OpenGL for Zwin'),
+      desc: ja_en(
+        'Zwinやyazaの開発に使用しました。基本的な描画手法を理解しています。',
+        'I used this for Zwin and yaza development. I understand basic rendering techniques.',
+      ),
     },
     {
       name: 'Wayland',
@@ -214,12 +207,12 @@ It makes easy to configure about routing
       category: 'FW/Lib',
       desc: ja_en(
         `
-wlrootsを用いてZwinを開発していました
-知識はほぼコンポジッタ側のもの
+wlrootsを用いてZwinを、Waylandを直接用いてyazaを開発していました。
+クライアントというよりはコンポジタ側の知識を持っています。
 `,
         `
-We developed Zwin with wlroots
-My knowledge is almost compositor side
+We developed Zwin with wlroots and yaza with Wayland directly.
+My knowledge is not client side but compositor side.
 `,
       ),
     },
@@ -229,51 +222,20 @@ My knowledge is almost compositor side
       tier: '3',
       category: 'FW/Lib',
       desc: ja_en(
-        'しっかりとしたGUIツールを作りたいときに',
-        'For GUI tool developing',
+        'しっかりとしたGUIツールを作りたいときに利用していました。',
+        'I used this for GUI tool developing.',
       ),
     },
-    {
-      name: 'OpenSiv3D',
-      tier: '3',
-      category: 'FW/Lib',
-      desc: ja_en(
-        '中学生時代、ゲームやツール開発に使用していました',
-        'I used this for game or tool developing at junior high school',
-      ),
-    },
-    {
-      name: 'Flutter',
-      icon: <Flutter />,
-      tier: '3',
-      category: 'FW/Lib',
-      desc: ja_en(
-        `
-ExpNoteの開発に使用
-かなり好きなライブラリです（最近は使ってませんが）
-`,
-        `
-For ExpNote developing
-favorite library (but recently I don't use this)
-`,
-      ),
 
-      // tool
-    },
+    // tool
     {
       name: 'VSCode',
       icon: <VSCode />,
       tier: '1',
       category: 'Tool',
       desc: ja_en(
-        `
-最強のエディタ
-GitLensやRemote Developmentなど、多数の拡張機能に助けられています
-`,
-        `
-Strongest editor
-I'm helped by many extensions like GitLens, Remote Development, etc
-`,
+        'VSCodeVim と併せて、Web開発などに使用しています。',
+        'I use this with VSCodeVim for web development and more.',
       ),
     },
     {
@@ -282,14 +244,8 @@ I'm helped by many extensions like GitLens, Remote Development, etc
       tier: '1',
       category: 'Tool',
       desc: ja_en(
-        `
-CUIでファイルを編集する必要が生じた時に
-Vimキーバインドそれ自体はVSCodeVimで使用しています
-`,
-        `
-When edit the file on CUI
-I usually use vim keybind on VSCode with VSCodeVim
-`,
+        'CUIにおける開発の際に利用しています。',
+        'I use this for development in CUI.',
       ),
     },
     {
@@ -298,12 +254,8 @@ I usually use vim keybind on VSCode with VSCodeVim
       tier: '1',
       category: 'Tool',
       desc: ja_en(
-        `
-commit, push, fetchといった基本的な動作なら問題なくこなすことができます
-`,
-        `
-I can use basic command such as commit, push, fetch
-`,
+        'commit, push, fetchといった基本的な動作や、複数人開発におけるブランチの運用について、実践を踏まえて理解しています。',
+        'I have knowledge not only basic operations (such as commit, push, fetch) but also branch management in multi-person development, understood by actual practice.',
       ),
     },
     {
@@ -311,7 +263,28 @@ I can use basic command such as commit, push, fetch
       icon: <Arch />,
       tier: '1',
       category: 'Tool',
-      desc: ja_en('Arch Linuxを使っています', 'btw I use arch'),
+      desc: ja_en(
+        'Arch Linux で Hyprland を使っています。VPSやローカルマシンによるサーバー運用も行っています。',
+        'btw I use arch (and Hyprland). I also run servers on VPS and local machines.',
+      ),
+    },
+    {
+      name: 'Typst',
+      tier: '1',
+      category: 'Tool',
+      desc: ja_en(
+        'レポートのような文書を作成する際に利用しています。基本的なスクリプティングについて理解しています。',
+        'I use this for creating documents like reports. I understand basic scripting.',
+      ),
+    },
+    {
+      name: 'AviUtl',
+      tier: '1',
+      category: 'Tool',
+      desc: ja_en(
+        '動画編集に使用しています。モーショングラフィックスを取り入れた映像制作の経験があります。',
+        'I use this for video editing. I have experience in creating videos with motion graphics.',
+      ),
     },
     {
       name: 'CMake',
@@ -319,8 +292,45 @@ I can use basic command such as commit, push, fetch
       tier: '2',
       category: 'Tool',
       desc: ja_en(
-        '複数ファイルからビルドする必要がある場合に',
-        'For build from multiple files',
+        '自分で以前書いた CMakeLists.txt やドキュメントを参照しつつ CMakeLists.txt の設定を行うことができます。',
+        'I can create CMakeLists.txt while referring to the document and the CMakeLists.txt I wrote before.',
+      ),
+    },
+    {
+      name: 'Studio One',
+      tier: '2',
+      category: 'Tool',
+      desc: ja_en(
+        'Studio One 6 Pro を楽曲制作に使用しています。',
+        'I use Studio One 6 Pro to create music.',
+      ),
+    },
+    {
+      name: 'Figma',
+      icon: <Figma />,
+      tier: '2',
+      category: 'Tool',
+      desc: ja_en(
+        '個人開発におけるUIデザインでの使用経験があります。',
+        'I use this for UI design in personal projects.',
+      ),
+    },
+    {
+      name: 'Illustrator',
+      tier: '2',
+      category: 'Tool',
+      desc: ja_en(
+        '高専祭のポスターや各種素材の作成に利用しました。',
+        'I used this for creating the poster and some materials for my school festival.',
+      ),
+    },
+    {
+      name: 'InDesign',
+      tier: '2',
+      category: 'Tool',
+      desc: ja_en(
+        '高専祭のパンフレット作成に利用しました。',
+        'I used this for creating the pamphlet for my school festival.',
       ),
     },
     {
@@ -329,13 +339,8 @@ I can use basic command such as commit, push, fetch
       tier: '2',
       category: 'Tool',
       desc: ja_en(
-        `ビルドツールとしてのMakefileは人間が書くものではない
-便利コマンドまとめのような使い方をしています
-`,
-        `
-Human should not write Makefile as build tool
-Used for command set
-`,
+        'ビルドツールとしてではなく、コマンドまとめのような使い方をしています。',
+        'I use this not as a build tool but as a way to shorthand commands.',
       ),
     },
     {
@@ -344,11 +349,8 @@ Used for command set
       tier: '3',
       category: 'Tool',
       desc: ja_en(
-        `
-TAGetherのバックエンドとして使用経験あり
-初歩的なSQL文を書くことができます
-`,
-        'Used as TAGether backend',
+        'TAGetherのバックエンドとして使用していました。初歩的なSQL文を書くことができます',
+        'I used this as TAGether backend. I can write basic SQL statements.',
       ),
     },
     {
@@ -358,7 +360,7 @@ TAGetherのバックエンドとして使用経験あり
       category: 'Tool',
       desc: ja_en(
         'Web関連の環境構築に使っています',
-        'For web developing environment',
+        'I use this for web developing environment',
       ),
     },
   ];
