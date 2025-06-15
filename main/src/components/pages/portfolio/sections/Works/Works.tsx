@@ -30,6 +30,7 @@ export function Works(props: Props) {
     'Web App': color.cyan,
     Tool: color.purple,
     Music: color.brand.soundcloud,
+    Video: color.yellow,
     Other: color.g3,
   };
   const tag_color: Record<Work['tags'][number]['kind'], string> = {
