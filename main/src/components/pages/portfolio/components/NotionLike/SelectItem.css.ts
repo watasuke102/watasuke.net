@@ -8,6 +8,7 @@ import {style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const select_item = style({
+  height: 'fit-content',
   fontSize: '0.8em',
   fontWeight: 'bold',
   padding: '0 4px',
