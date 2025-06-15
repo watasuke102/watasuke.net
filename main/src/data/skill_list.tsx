@@ -321,7 +321,7 @@ My knowledge is not client side but compositor side.
       category: 'Tool',
       desc: ja_en(
         '高専祭のポスターや各種素材の作成に利用しました。',
-        'I used this for creating the poster and some materials for my school festival.',
+        'I used this for creating the poster and some materials for the Kosen fes.',
       ),
     },
     {
@@ -330,7 +330,7 @@ My knowledge is not client side but compositor side.
       category: 'Tool',
       desc: ja_en(
         '高専祭のパンフレット作成に利用しました。',
-        'I used this for creating the pamphlet for my school festival.',
+        'I used this for creating the pamphlet for the Kosen fes.',
       ),
     },
     {

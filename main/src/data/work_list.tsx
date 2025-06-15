@@ -244,7 +244,7 @@ Adoped by 2022 Mitou Advanced. I implemented the feature for 2D desktop environm
     ],
     desc_md: ja_en(
       `
-広報部長として高専祭に参加しました。主にロゴ（及びロゴ候補の投票を行うサービス）・ポスター・パンフレット・公式 Web サイト・エンディング映像（及び映像で用いる楽曲）の作成を行いました。
+広報部長として高専祭に参加しました。主にロゴ（及びロゴ候補の投票を行うサービス "ImGrate"）・ポスター・パンフレット・公式 Web サイト・エンディング映像（及び映像で用いる楽曲）の作成を行いました。
 
 WebサイトはGatsbyを用いて作成しました。パンフレットはInDesignで、そこで用いた素材の一部とポスターはIllustratorで作成しました。エンディング映像はAviUtlで、そこで用いた楽曲「Reactiv」はCubaseで作成しました。
 
@@ -267,7 +267,7 @@ https://www.youtube.com/watch?v=ka-el8zNck0
 ${soundcloud(1670022474)}
 `,
       `
-I participated in NITUC Fes as a Public Relations Manager and created a logo (+ its voting system), poster, booklet, official Website, and ending movie (+ its music).
+I participated in NITUC Fes as a Public Relations Manager and created a logo (+ its voting system "ImGrate"), poster, booklet, official Website, and ending movie (+ its music).
 
 The website was created with Gatsby. The booklet was made with InDesign, and some of the materials used in it and the poster were created with Illustrator. The ending movie was made with AviUtl, and the music "Reactiv" was created with Cubase.
 
@@ -325,16 +325,73 @@ ${soundcloud(1670022474)}
       `
 宇部高専 第61回高専祭の公式 Web サイトをGatsbyで作成しました。
 
-[作成したサイト](https://nituc-fes61.org/)
- / [GitHub](https://github.com/watasuke102/nituc-fes2024)
- / [取り組みの紹介や感想](http://watasuke.net/blog/article/nituc-fes-2024-website/)
+- [作成したサイト](https://nituc-fes61.org/)
+- [GitHub](https://github.com/watasuke102/nituc-fes2024)
+- [取り組みの紹介や感想](http://watasuke.net/blog/article/nituc-fes-2024-website/)
 `,
       `
 I created official Website of 61st NITUC fes with Gatsby.
 
-[Website](https://nituc-fes61.org/)
- / [GitHub](https://github.com/watasuke102/nituc-fes2024)
- / [my works and thoughts (blog)](http://watasuke.net/blog/article/nituc-fes-2024-website/)
+- [Website](https://nituc-fes61.org/)
+- [GitHub](https://github.com/watasuke102/nituc-fes2024)
+- [my works and thoughts (blog)](http://watasuke.net/blog/article/nituc-fes-2024-website/)
+`,
+    ),
+  },
+  remind4f: {
+    title: () => 'Remind4F',
+    category: ['Tool'],
+    img: '/works/remind4f.jpg',
+    tags: [
+      {kind: 'lang', name: 'Rust'},
+      {kind: 'fw/lib', name: 'Serenity'},
+    ],
+    desc_md: ja_en(
+      `
+![Remind4Fのスクリーンショット](/works/remind4f.jpg)
+
+イベントの日時を登録すると、そのイベントまでの日数を毎日リマインドしてくれるDiscord Botです。受験期間に試験日までのカウントダウンを行うために作成しました。現在は、完成までに時間がかかるような提出物の締め切りを登録して使用しています。
+
+[GitHub](https://github.com/watasuke102/remind4f)
+`,
+      `
+![screenshot of Remind4F](/works/remind4f.jpg)
+
+This is a Discord Bot that reminds users of remaining days until the registered event date. I created it to count down the university entrance exam dates. Now I register deadlines for submissions that take a long time to complete.
+
+[GitHub](https://github.com/watasuke102/remind4f)
+`,
+    ),
+  },
+  imgrate: {
+    title: () => 'ImGrate',
+    category: ['Web App'],
+    img: '/works/imgrate/thumbnail.jpg',
+    tags: [
+      {kind: 'lang', name: 'TypeScript'},
+      {kind: 'lang', name: 'Go'},
+      {kind: 'fw/lib', name: 'Next.js'},
+      {kind: 'fw/lib', name: 'Chakra UI'},
+      {kind: 'tool', name: 'SQLite'},
+    ],
+    desc_md: ja_en(
+      `
+![ImGrateの画面](/works/imgrate/screens.jpg)
+
+画像ギャラリーを共有したり、閲覧者に評価してもらったりすることができる Web アプリです。評価はコメントやスターの付与で行うことができ、管理者はスターの数やコメントを一覧表示で確認することができます。
+
+高専祭のロゴ案を共有し、実行委員による投票で決定するために作成しました。
+
+[GitHub](https://github.com/watasuke102/ImGrate)
+`,
+      `
+![screenshot of ImGrate](/works/imgrate/screens.jpg)
+
+This is a web app to share image galleries and receive feedback from viewers. Feedback can be given by comments and/or stars, and administrators can check them as a list.
+
+I created this to share logo proposals for the Kosen fes and to determine actual logo by voting from the executive committee.
+
+[GitHub](https://github.com/watasuke102/ImGrate)
 `,
     ),
   },
@@ -442,7 +499,7 @@ Flutterを用いて作った所持金管理アプリです。
       `
 ![screenshot of ExpNote screen](/works/expnote/screen.jpg)
 
-Household account book application with Flutter
+This is a household account book application with Flutter.
 
 Add date, event name, and payment amounts to check the total balance.
 

@@ -293,6 +293,19 @@ Go to National United University in Taiwan, do the research about Image Processi
       {
         period: {
           kind: 'period',
+          begin: {month: 5, day: 27},
+          end: {month: 6, day: 9},
+        },
+        title: 'ImGrate',
+        subtitle: ja
+          ? 'お気に入りとコメントで即座に評価される画像ギャラリー'
+          : 'Image gallery that is immediately rated by favorites and comments',
+        category: 'Work',
+        key: 'imgrate',
+      },
+      {
+        period: {
+          kind: 'period',
           begin: {month: 8, day: 7},
           end: {month: 8, day: 11},
         },
@@ -379,6 +392,19 @@ I participated in CAPCOM Hackathon at Osaka, and developed a game using Unity.
       },
     ],
     '2024': [
+      {
+        period: {
+          kind: 'period',
+          begin: {month: 4, day: 14},
+          end: {month: 4, day: 21},
+        },
+        title: 'Remind4F',
+        subtitle: ja
+          ? 'イベントまでの日数をリマインドするDiscord Bot'
+          : 'Discord Bot that reminds users of remaining days for events',
+        category: 'Work',
+        key: 'remind4f',
+      },
       {
         period: {kind: 'day', date: {month: 6, day: 25}},
         category: 'Talk',
