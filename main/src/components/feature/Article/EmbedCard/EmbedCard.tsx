@@ -48,7 +48,7 @@ async function get_ogp_from_url(url: string): Promise<Ogp> {
       e.result.errorDetails instanceof Error
     ) {
       const err = e.result.errorDetails as Error;
-      console.log(`[OGP error] failed to fetch '${url}'
+      console.log(`\x1b[31m[OGP error]\x1b[m failed to fetch: \x1b[2m'${url}'\x1b[m
             message: [${err.name}] ${err.message}`);
     }
   }
