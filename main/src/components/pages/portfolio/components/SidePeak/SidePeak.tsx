@@ -75,6 +75,8 @@ export function SidepeakComponent() {
       const target = e.target as HTMLElement;
       if (
         sidepeak_state.open &&
+        target.id !== 'img_in_imageviewer' &&
+        target.id !== 'imageviewer_content_wrapper' &&
         !target.closest(`#${id}`) &&
         !target.closest(`.${css.sidepeak_close_icon}`)
       ) {

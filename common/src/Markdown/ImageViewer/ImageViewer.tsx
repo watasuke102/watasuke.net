@@ -31,10 +31,16 @@ export function ImageViewer({src, alt}: Props) {
       <Dialog.Portal>
         <Dialog.Overlay className={css.modal_overlay} />
         <Dialog.Content
+          id='imageviewer_content_wrapper'
           className={css.modal_content}
           onClick={() => SetIsOpen(false)}
         >
-          <img className={css.dialog_img} src={src} alt={alt ?? ''} />
+          <img
+            id='img_in_imageviewer'
+            className={css.dialog_img}
+            src={src}
+            alt={alt ?? ''}
+          />
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
