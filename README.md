@@ -47,6 +47,14 @@ monorepo by npm workspace
 3. `cd cms && cargo run &`
 4. main: `npm run dev`, editor: `npm -w editor run dev`
 
+## Release
+
+ポートフォリオを基準としたバージョニング
+
+最新のリリースがv{N}のとき、watasuke.netはv{N+1}
+
+ポートフォリオをリニューアルする際は別branchで作業し、最新コミットにタグを付与＆リリースを発行した後にマージする
+
 ## LICENSE
 
 Dual-licensed; MIT (`LICENSE-MIT` or [The MIT License – Open Source Initiative](https://opensource.org/license/mit/)) or MIT SUSHI-WARE LICENSE (`LICENSE-MIT_SUSHI.md`)
