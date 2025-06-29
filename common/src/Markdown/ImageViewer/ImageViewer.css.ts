@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {style} from '@vanilla-extract/css';
+import {keyframes, style} from '@vanilla-extract/css';
 
 export const img_wrapper = style({
   width: '100%',
@@ -17,33 +17,34 @@ export const inline_img = style({
   },
 });
 
-export const dialog_img = style({
-  objectFit: 'contain',
-  width: '95%',
-  height: '95%',
-
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translateY(-50%) translateX(-50%)',
+const fadein = keyframes({
+  from: {
+    opacity: 0,
+  },
+  to: {
+    opacity: 1,
+  },
 });
-
-export const modal = style({
-  zIndex: 9999,
+export const modal_overlay = style({
+  zIndex: 40960,
   position: 'fixed',
-  left: 0,
-  top: 0,
-  width: '100%',
-  height: '100%',
-
-  // reset
-  border: 'none',
-  padding: 'none !important',
-  margin: 'none !important',
-
+  inset: 0,
   backgroundColor: '#000000cc',
-
+  animation: `${fadein} 0.2s linear`,
+});
+export const modal_content = style({
+  zIndex: 40961,
+  position: 'fixed',
+  inset: 0,
+  padding: 24,
   ':hover': {
     cursor: 'zoom-out',
   },
+  animation: `${fadein} 0.2s linear`,
+});
+
+export const dialog_img = style({
+  objectFit: 'contain',
+  width: '100%',
+  height: '100%',
 });

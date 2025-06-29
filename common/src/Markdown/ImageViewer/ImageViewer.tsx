@@ -6,8 +6,8 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 'use client';
 
-import * as style from './ImageViewer.css';
-import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
+import * as css from './ImageViewer.css';
+import * as Dialog from '@radix-ui/react-dialog';
 import React from 'react';
 
 interface Props {
@@ -17,42 +17,26 @@ interface Props {
 
 export function ImageViewer({src, alt}: Props) {
   const [is_open, SetIsOpen] = React.useState(false);
-  const should_reduce_motion = useReducedMotion();
 
   return (
-    <>
-      {/* FIXME? idk how to handle this rule for ImageViewer */}
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
-      <img
-        className={style.inline_img}
-        loading='lazy'
-        src={src}
-        alt={alt ?? ''}
-        onClick={() => {
-          SetIsOpen(true);
-        }}
-      />
-
-      <AnimatePresence>
-        {is_open && (
-          <motion.div
-            variants={{
-              init: {opacity: 0},
-              main: {opacity: 1},
-            }}
-            initial='init'
-            animate='main'
-            exit='init'
-            transition={{duration: 0.2 * Number(!should_reduce_motion)}}
-            onClick={() => SetIsOpen(false)}
-            className={style.modal}
-          >
-            <div className={style.img_wrapper}>
-              <img className={style.dialog_img} src={src} alt={alt ?? ''} />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+    <Dialog.Root open={is_open} onOpenChange={SetIsOpen}>
+      <Dialog.Trigger asChild>
+        <img
+          className={css.inline_img}
+          loading='lazy'
+          src={src}
+          alt={alt ?? ''}
+        />
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className={css.modal_overlay} />
+        <Dialog.Content
+          className={css.modal_content}
+          onClick={() => SetIsOpen(false)}
+        >
+          <img className={css.dialog_img} src={src} alt={alt ?? ''} />
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 }
