@@ -6,8 +6,8 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as config from '@watasuke.net/config/config';
 import '@watasuke.net/common/src/css/base.css';
-import { M_PLUS_Rounded_1c } from 'next/font/google';
-import { GoogleAnalytics } from '@next/third-parties/google';
+import {M_PLUS_Rounded_1c} from 'next/font/google';
+import {GoogleAnalytics} from '@next/third-parties/google';
 import Script from 'next/script';
 
 /* eslint-disable @typescript-eslint/ban-ts-comment
@@ -32,7 +32,7 @@ const _ = M_PLUS_Rounded_1c({
   subsets: ['latin'],
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang='ja'>
       <head></head>

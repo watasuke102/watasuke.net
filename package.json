@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "npm -w common -w main -w editor run lint",
-    "fmt": "prettier --write main/gatsby-config.ts main/gatsby-node.ts main/gatsby-ssr.tsx main/src editor/src",
+    "fmt": "prettier --write main/src editor/src",
     "dev": "npm -w main run dev",
     "gen": "gql-gen --config graphql/codegen.ts"
   },
