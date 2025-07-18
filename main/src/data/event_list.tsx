@@ -408,7 +408,7 @@ I participated in CAPCOM Hackathon at Osaka, and developed a game using Unity.
       {
         period: {kind: 'day', date: {month: 6, day: 25}},
         category: 'Talk',
-        title: ja ? '進学講話' : 'Talk about going to university',
+        title: ja ? '1年生向け講話' : 'Talk for 1st grade students',
         subtitle: '「学生向け事業のすゝめ」',
         body: ja
           ? `
