@@ -51,7 +51,7 @@ monorepo by npm workspace
 
 ポートフォリオを基準としたバージョニング
 
-最新のリリースがv{N}のとき、watasuke.netはv{N+1}
+GitHubにおける最新のreleaseがv{N}のとき、 https://watasuke.net で公開されているサイトはv{N+1}
 
 ポートフォリオをリニューアルする際は別branchで作業し、最新コミットにタグを付与＆リリースを発行した後にマージする
 
