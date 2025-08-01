@@ -7,7 +7,8 @@
     "build": "next build",
     "dev": "next dev -p 10210 -H 0.0.0.0",
     "new": "scaffdog generate",
-    "test:playwright": "playwright test"
+    "test:playwright": "playwright test",
+    "test_renew:playwright": "playwright test --update-snapshots"
   },
   "dependencies": {
     "@giscus/react": "^3.1.0",
