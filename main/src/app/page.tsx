@@ -12,6 +12,7 @@ import Link from 'next/link';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template, JsonLd} from '@utils/Metadata';
 import IconCard from '@assets/icons/top/card.svg';
+import IconLink from '@assets/icons/top/link.svg';
 import IconEdit from '@assets/icons/top/edit.svg';
 import IconInfo from '@assets/icons/top/info.svg';
 import IconProfile from '@assets/icons/top/profile.svg';
@@ -25,11 +26,13 @@ export const {viewport, metadata} = gen_template(
 );
 
 export default function Index() {
+  // prettier-ignore
   const menu_list = [
-    {text: 'About', url: '/about', icon: <IconInfo />},
-    {text: 'Blog', url: '/blog', icon: <IconEdit />},
-    {text: 'Card', url: '/card', icon: <IconCard />},
-    {text: 'Profile', url: '/profile', icon: <IconProfile />},
+    {text: 'About',     url: '/about',     icon: <IconInfo />},
+    {text: 'Links',     url: '/links',     icon: <IconLink />},
+    {text: 'Blog',      url: '/blog',      icon: <IconEdit />},
+    {text: 'Card',      url: '/card',      icon: <IconCard />},
+    {text: 'Profile',   url: '/profile',   icon: <IconProfile />},
     {text: 'Portfolio', url: '/portfolio', icon: <IconRocket />},
   ];
 

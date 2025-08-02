@@ -80,4 +80,16 @@ export const social_links: LinkRecord = {
     href: 'https://mond.how/ja/Watasuke102',
     children: <IconBoxOpen />,
   },
+} as const;
+
+export const social_links_desc: Record<keyof typeof social_links, string> = {
+  twitter:
+    'メンションもしくはDMに反応します\n（恐らく最速で反応できる連絡手段です）',
+  instagram: 'ときどき写真とか作品とかを上げます',
+  soundcloud: '今までに作った曲を投稿しています',
+  google_slide: 'これまでの発表に用いた資料です',
+  github_account: 'いろいろつくってます',
+  github_repo: 'このサイトのリポジトリです',
+  cosense: '自分語りなどをしています',
+  question_box: '匿名で質問ができます',
 };

@@ -13,6 +13,7 @@ export const dynamic = 'force-static';
 const title_map: Record<string, string> = {
   '/profile/': 'プロフィール',
   '/portfolio/': 'ポートフォリオ',
+  '/links/': 'リンク集',
   '/feed/': 'フィード',
   '/card/': 'card',
   '/blog/': 'ブログ',
