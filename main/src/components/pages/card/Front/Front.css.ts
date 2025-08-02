@@ -15,9 +15,8 @@ export const container = style({
   transform: 'translateX(-50%) translateY(-50%)',
   maxHeight: '85dvh',
 
-  display: 'flex',
-  // display: 'grid',
-  // gridTemplateColumns: '1fr 1fr',
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
   gap: 32,
 });
 
@@ -42,49 +41,59 @@ export const info = style({
 });
 
 export const name = style({
-  lineHeight: '120%',
+  lineHeight: '90%',
   marginLeft: -4,
-  fontSize: '5.8em',
+  marginBottom: 12,
+  fontSize: '6.3em',
   fontFamily: '"M PLUS Rounded 1c"',
   fontWeight: 'bold',
 });
-
-export const url = style({
-  fontSize: '2.3em',
+export const name_sub = style({
+  fontSize: '3.3em',
   color: `${color.bg}cc`,
 });
 
-export const icon_and_link = style({
-  display: 'grid',
+export const hr = style({
+  height: '2px !important',
+});
+
+export const icon_and_id = style({
+  display: 'flex',
+  flexDirection: 'column',
   alignItems: 'center',
-  gridTemplateColumns: 'min(3dvw, 8dvh) 4px 1fr',
-});
-globalStyle(`${icon_and_link} svg`, {
-  height: '100%',
-  margin: 'auto',
-});
-
-export const separator = style({
-  backgroundColor: color.bg,
-  height: '100%',
-});
-
-export const primary = style({
-  fontSize: '2.3em',
+  gap: 12,
+  marginTop: 'auto',
+  fontSize: 'min(2.7dvw, 6.9dvh)',
   fontWeight: 'bold',
-  gap: 'min(6px, 2dvh) 1.2dvw',
-  margin: 'auto 0',
   '@media': {
     'screen and (min-width: 1501px)': {
       margin: '16px 0',
     },
   },
 });
-
-export const secondary = style({
-  fontSize: '1.9em',
-  gap: '4px 1.2dvw',
+export const row = style({
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'space-between',
 });
-globalStyle(`${secondary} div:first-child`, {
-  transform: 'scale(80%)',
+export const icon = style({
+  height: '100%',
+  display: 'flex',
+  gap: 8,
+});
+globalStyle(`${icon} svg`, {
+  height: '100%',
+  padding: '4px 6px',
+  borderRadius: 2,
+  color: color.fg,
+  backgroundColor: color.bg,
+});
+export const id = style({
+  textAlign: 'right',
+  paddingRight: 8,
+  borderRight: `6px solid ${color.bg}`,
+  borderRadius: 2,
+});
+export const link = style({
+  textDecoration: 'underline',
 });
