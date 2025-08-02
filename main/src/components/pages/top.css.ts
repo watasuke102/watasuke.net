@@ -4,187 +4,108 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {style, ComplexStyleRule} from '@vanilla-extract/css';
+import {globalStyle, style} from '@vanilla-extract/css';
+import {easing} from '@watasuke.net/common/src/easing';
 import {color} from '@watasuke.net/common/src/css/color';
 
-export const container = style({
+export const wrapper = style({
   width: '100%',
   height: '100dvh',
   overflow: 'hidden',
-  display: 'grid',
-  gridTemplate: `
-    'left links'    auto
-    'left articles' 1fr  / auto 1fr
-  `,
-  columnGap: 40,
-  padding: 40,
-  '@media': {
-    'screen and (width < 750px)': {
-      height: 'auto',
-      padding: 0,
-      paddingBottom: 60,
-      // links_container.height + articles_header.height
-      // = 122 + 42
-      // = 164
-      gridTemplate: `
-        'left'          max(720px, calc(100vh - 164px))
-        'links'         auto
-        'articles'      auto / 1fr
-      `,
-    },
-  },
-});
-
-export const left = style({
-  gridArea: 'left',
-  justifySelf: 'center',
-  alignSelf: 'center',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 32,
-  '@media': {
-    'screen and (width >= 750px)': {
-      padding: '24px 28px',
-      borderRadius: 2,
-      border: `4px solid ${color.p0}`,
-    },
-  },
-});
-export const icon_and_welcome = style({
-  marginInline: 'auto',
-  textAlign: 'center',
-});
-export const welcome_head = style({
-  textAlign: 'center',
-  fontSize: '2.2em',
-  margin: 0,
-});
-export const ls = style({
-  fontSize: '1.6em',
-  fontWeight: 'normal',
-  marginBottom: 12,
-});
-export const command_name = style({
-  color: color.p0,
-  fontWeight: 'bold',
-});
-export const directory = style({
-  textDecoration: 'underline',
-});
-
-export const menu = style({
-  display: 'flex',
-  flexDirection: 'column',
-});
-export const menu_entry = style({
-  display: 'grid',
-  gridTemplateColumns: '40px auto',
-  alignItems: 'center',
-  gap: 16,
-  paddingBlock: 8,
-  color: color.fg,
-  textDecorationColor: color.p0,
-});
-export const menu_entry_path = style({
-  fontSize: '1.9em',
-  fontWeight: 'bold',
-  color: color.p0,
-});
-
-const info_container: ComplexStyleRule = {
-  overflow: 'hidden',
-  // translucent only non-touch device
-  '@media': {
-    '(hover: hover)': {
-      opacity: 0.5,
-      transition: 'opacity 0.3s',
-      ':hover': {
-        opacity: 1,
-      },
-    },
-  },
-};
-export const links_container = style({
-  ...info_container,
-  gridArea: 'links',
-});
-export const articles_container = style({
-  ...info_container,
-  gridArea: 'articles',
-  display: 'grid',
-  gridTemplateRows: 'auto 1fr',
-});
-export const info_head = style({
-  textAlign: 'center',
-  backgroundColor: `${color.bg}cc`,
-});
-
-export const link_container = style({
-  gridArea: 'links',
   display: 'flex',
   justifyContent: 'center',
-  flexWrap: 'wrap',
-  marginBottom: 20,
-  rowGap: 8,
-  columnGap: 28,
-  marginInline: 'auto',
+  alignContent: 'center',
+  flexWrap: 'wrap', // align-content does not take effect without this
 });
-export const link_entry = style({
-  width: 52,
-  aspectRatio: '1 / 1',
-  padding: 8,
-  border: `2px solid ${color.fg}`,
-  borderRadius: 8,
-  color: color.fg,
-  backgroundColor: color.bg,
-  transition: 'background-color 0.3s',
-  ':hover': {
-    color: color.fg,
+
+export const main_contents = style({
+  width: '80%',
+  display: 'flex',
+  flexDirection: 'column',
+  rowGap: 40,
+});
+export const welcome_area = style({
+  display: 'flex',
+  flexDirection: 'column',
+  textAlign: 'center',
+  gap: 4,
+});
+
+const hoverAnimationDuration = '.3s';
+export const links = style({
+  display: 'flex',
+  gap: 8,
+  flexWrap: 'wrap',
+  justifyContent: 'space-around',
+  '@media': {
+    'screen and (width < 440px)': {
+      flexDirection: 'column',
+    },
   },
+});
+export const links_item = style({
+  display: 'grid',
+  gridTemplateRows: '100px auto',
+  alignItems: 'center',
+  textAlign: 'center',
+  padding: '4px 8px',
+  backgroundColor: `${color.bg}aa`,
+  borderRadius: 4,
+  boxShadow: `4px 4px 6px 2px #1f1f1f`,
+
+  position: 'relative',
+  overflow: 'hidden',
+  '::before': {
+    zIndex: 4,
+    content: '',
+    position: 'absolute',
+    top: 0,
+    left: -26,
+    display: 'block',
+    width: 0,
+    height: '100%',
+    padding: '4px 8px',
+    backgroundColor: `${color.fg}`,
+    transition: `width ${hoverAnimationDuration} ${easing.out_circ.cubic_bezier}`,
+    transform: 'skewX(-8deg)',
+  },
+  transition: `color ${hoverAnimationDuration}`,
   '@media': {
     '(hover: hover)': {
       ':hover': {
         color: color.bg,
-        backgroundColor: color.p0,
-        transition: 'background-color 0.3s',
       },
+      selectors: {
+        '&:hover::before': {
+          width: '132%',
+        },
+      },
+    },
+    'screen and (width < 440px)': {
+      gridTemplateRows: '1fr',
+      gridTemplateColumns: `48px  1fr`,
     },
   },
 });
-export const link_twitter = style({
-  '@media': {
-    '(hover: hover)': {
-      ':hover': {
-        color: color.brand.twitter,
-      },
-    },
-  },
-});
-export const link_soundcloud = style({
-  '@media': {
-    '(hover: hover)': {
-      ':hover': {
-        color: color.brand.soundcloud,
-      },
-    },
-  },
-});
-
-export const favorite_articles = style({
+export const links_item_icon = style({
+  zIndex: 4,
   height: '100%',
-  overflowY: 'auto',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 16,
-  border: `2px solid ${color.fg}`,
-  backgroundColor: `${color.bg}aa`,
-  padding: 12,
-  fontSize: '0.9em',
-  scrollbarWidth: 'thin',
-  scrollbarColor: `${color.bg} ${color.fg}`,
+  transition: `color ${hoverAnimationDuration}`,
+  color: color.fg,
   '@media': {
-    'screen and (width < 750px)': {
-      marginInline: 16,
+    '(hover: hover)': {
+      selectors: {
+        [`${links_item}:hover &`]: {
+          color: color.bg,
+        },
+      },
     },
   },
+});
+globalStyle(`${links_item_icon} svg`, {
+  height: '100%',
+});
+export const links_item_text = style({
+  zIndex: 4,
+  fontSize: '1.5em',
 });
