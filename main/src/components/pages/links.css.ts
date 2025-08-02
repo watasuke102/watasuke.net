@@ -11,6 +11,12 @@ export const container = style({
   display: 'grid',
   gridTemplateColumns: 'repeat(auto-fill, minmax(480px, 1fr))',
   gap: 24,
+  '@media': {
+    'screen and (width < 520px)': {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+  },
 });
 
 export const link_item = style({
