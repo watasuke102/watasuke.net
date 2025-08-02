@@ -83,7 +83,7 @@ export const icon = style({
 });
 globalStyle(`${icon} svg`, {
   height: '100%',
-  padding: '4px 6px',
+  padding: 8,
   borderRadius: 2,
   color: color.fg,
   backgroundColor: color.bg,
