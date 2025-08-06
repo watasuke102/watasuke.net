@@ -15,7 +15,7 @@ import {EmbedCard, InnerEmbedCard} from '@common/EmbedCard';
 import {ArticlePreviewPageQuery} from '@utils/graphql';
 
 interface Props {
-  article: ArticlePreviewPageQuery['article'];
+  article: NonNullable<ArticlePreviewPageQuery['article']>;
 }
 
 export function Preview(props: Props) {

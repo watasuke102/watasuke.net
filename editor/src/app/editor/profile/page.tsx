@@ -12,7 +12,7 @@ import {getSdk} from '@utils/graphql';
 
 export const revalidate = 0;
 
-export default async function page(): Promise<JSX.Element> {
+export default async function page() {
   const sdk = getSdk(new GraphQLClient('http://127.0.0.1:10212/graphql'));
   const query = await sdk.profile();
   if (!query.sitedata?.profile) {

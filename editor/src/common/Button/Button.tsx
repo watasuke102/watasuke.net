@@ -10,7 +10,7 @@ import React from 'react';
 type Props = {
   type: 'text' | 'outlined' | 'contained';
   text?: string;
-  icon?: JSX.Element;
+  icon?: React.ReactNode;
   aria_label: string;
   disabled?: boolean;
   on_click: () => void;

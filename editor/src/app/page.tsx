@@ -5,29 +5,28 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {css} from './index.css';
-import {GraphQLClient} from 'graphql-request';
+import {ClientError, GraphQLClient} from 'graphql-request';
 import React from 'react';
 import Link from 'next/link';
 import {getSdk} from '@utils/graphql';
 import {NewArticle} from './_components/NewArticle';
 import {ArticlesTable} from './_components/ArticlesTable';
-import {ErrorQL} from '@mytypes/ErrorQL';
 
 export const revalidate = 0;
 
-export default async function Top(): Promise<JSX.Element> {
+export default async function Top() {
   const sdk = getSdk(new GraphQLClient('http://127.0.0.1:10212/graphql'));
   let data;
   try {
     data = await sdk.allArticles();
   } catch (err) {
-    const error = err as ErrorQL;
+    const error = err as ClientError;
     return (
       <>
-        {error.response.errors.map((e, i) => (
+        {error.response?.errors?.map((e, i) => (
           <p key={i}>
             {e.message} <br />
-            {e.extensions}
+            {e.extensions.toString()}
           </p>
         ))}
       </>

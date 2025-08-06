@@ -34,10 +34,6 @@ export const css = {
     maxWidth: '85dvw',
     display: 'flex',
     flexDirection: 'column',
-    // display: 'grid',
-    // gridTemplateColumns: '1fr auto auto',
-    // gridTemplateRows: '1fr auto',
-    // alignItems: 'end',
     gap: '0 20px',
   }),
   img: style({
@@ -49,7 +45,7 @@ export const css = {
   editor: style({
     display: 'grid',
     gridTemplateColumns: '1fr 8px auto',
-    alignItems: 'end',
+    alignItems: 'flex-end',
     marginBlock: 12,
   }),
   ext_dot: style({

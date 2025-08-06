@@ -30,9 +30,9 @@ type Props = {
   modify_status: ModifyStatus;
   commit_scope?: string;
 
-  toolbox: JSX.Element;
-  header_text: JSX.Element;
-  modify_confirming_area: JSX.Element;
+  toolbox: React.ReactNode;
+  header_text: React.ReactNode;
+  modify_confirming_area: React.ReactNode;
 
   set_body: (s: string) => void;
   set_modify_status: (s: ModifyStatus) => void;

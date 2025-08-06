@@ -7,8 +7,8 @@
 import {css} from './Toast.css';
 import React from 'react';
 import * as RToast from '@radix-ui/react-toast';
+import {ClientError} from 'graphql-request';
 import CloseIcon from '@assets/close.svg';
-import {ErrorQL} from '@mytypes/ErrorQL';
 
 type State = {
   is_open: boolean;
@@ -29,10 +29,18 @@ export function toast_reducer(current: State, action: Action): State {
       return {is_open: true, title: action.title, desc: action.desc ?? ''};
   }
   const err = action.err;
-  if (err.response && Array.isArray(err.response.errors)) {
+  if (
+    err instanceof ClientError &&
+    err.response &&
+    Array.isArray(err.response.errors)
+  ) {
     console.log('Following err will be shown as toast', {err});
-    const error = (err as ErrorQL).response.errors[0];
-    return {is_open: true, title: error.message, desc: error.extensions};
+    const error = err.response.errors[0];
+    return {
+      is_open: true,
+      title: error.message,
+      desc: error.extensions.toString(),
+    };
   } else if (err instanceof Error) {
     return {is_open: true, title: err.name, desc: err.message};
   }
