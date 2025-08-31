@@ -254,7 +254,7 @@ Zwin won at that theme.
         },
         category: 'Event',
         title: 'Global Cybersecurity Camp 2023 Singapore',
-        subtitle: ja ? 'チューター' : 'Staff',
+        subtitle: ja ? 'チューター' : 'Tutor',
         body: ja
           ? `
 チューターとして参加し、受講生の支援・グループワークのモデレーションを行いました。
@@ -533,6 +533,45 @@ I participated in an internship by pixiv Inc. and did the tasks related to stati
           ? '情報学群 情報メディア創成学類'
           : 'School of Informatics, college of Media Arts, Science and Technology',
         body: '',
+      },
+      {
+        period: {
+          kind: 'period',
+          begin: {month: 8, day: 11},
+          end: {month: 8, day: 15},
+        },
+        category: 'Event',
+        title: ja ? 'セキュリティ・キャンプ 2025' : 'Security Camp 2025',
+        subtitle: ja ? '全国大会 Lゼミ チューター' : 'L seminar Tutor',
+        body: ja
+          ? `
+Lゼミのチューターとして参加しました。主にL4「Cコンパイラゼミ」において受講者のデバッグや設計に関する支援を行いました。
+`
+          : `
+I participated as a tutor of L seminar, mainly L4 "C Compiler Seminar". I supported students about debugging and design.
+`,
+      },
+      {
+        period: {
+          kind: 'day',
+          date: {month: 8, day: 14},
+        },
+        category: 'Talk',
+        title: ja
+          ? 'セキュリティ・キャンプ 2025 LT大会'
+          : 'Security Camp 2025 LT',
+        subtitle: 'LT "純粋関数型言語 Idris で 「正しい」プログラムを書く"',
+        body: ja
+          ? `
+セキュリティ・キャンプ 2025のLT大会で、プログラミング言語Idrisを紹介するLT発表を行いました。
+
+[スライド](https://docs.google.com/presentation/d/1j7JZ-Ca0xbWkfmPn7cBuTCUu_kv4pZ8MJizq6V7ts0M/edit?usp=sharing)
+`
+          : `
+I introduced about the programming language Idris in the Lightning Talk event held by Security Camp 2025.
+
+[Slides](https://docs.google.com/presentation/d/1j7JZ-Ca0xbWkfmPn7cBuTCUu_kv4pZ8MJizq6V7ts0M/edit?usp=sharing)
+`,
       },
     ],
   };

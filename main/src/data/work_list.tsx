@@ -306,6 +306,20 @@ ${soundcloud(1670022474)}
     desc_md: () => soundcloud(1393272700),
   },
   // --- end of pickup -----------------------------------------
+  place_to_go_back_is_always: {
+    title: () => '帰る場所はいつも',
+    category: ['Music'],
+    img: null,
+    tags: [{kind: 'tool', name: 'Studio One'}],
+    desc_md: () => soundcloud(2161898373),
+  },
+  starbase: {
+    title: () => 'starbase',
+    category: ['Music'],
+    img: null,
+    tags: [{kind: 'tool', name: 'Studio One'}],
+    desc_md: () => soundcloud(2148151380),
+  },
   snowcarpet: {
     title: () => 'SnowCarpet',
     category: ['Music'],
