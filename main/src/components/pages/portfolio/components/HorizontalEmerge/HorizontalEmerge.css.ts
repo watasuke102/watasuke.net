@@ -9,6 +9,7 @@ import {color} from '@watasuke.net/common/src/css/color';
 
 export const animator = style({
   position: 'absolute',
+  display: 'inline-block',
   top: 0,
   height: '100%',
   backgroundColor: color.bg,

@@ -9,6 +9,7 @@ import {motion, MotionProps} from 'framer-motion';
 import {easing} from '@watasuke.net/common';
 
 interface Props {
+  height?: number;
   delay: number;
   duration: number;
   children: React.ReactNode;
@@ -21,10 +22,10 @@ export function HorizontalEmerge(props: Props) {
   };
 
   return (
-    <motion.span style={{position: 'relative'}}>
+    <motion.span style={{position: 'relative', display: 'block', height: props.height ?? 'auto'}}>
       <motion.span
         animate={{
-          opacity: [0, 0, 1, 1],
+          opacity: [0, 0, 0.9, 1],
         }}
         transition={{
           ...motion_props,

@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {keyframes, style} from '@vanilla-extract/css';
+import {globalStyle, keyframes, style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 import {easing} from '@watasuke.net/common/src/easing';
 import {welcome_container_section_size} from '../../constant';
@@ -93,6 +93,10 @@ export const icon = style({
     transform: 'scale(1.03)',
     transition: 'transform 0.2s ease-out',
   },
+});
+globalStyle(`${icon} svg`, {
+  width:  '100%',
+  height: '100%',
 });
 
 export const scroll_prompt = style({

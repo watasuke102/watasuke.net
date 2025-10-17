@@ -76,12 +76,13 @@ export const command = style({
 
 export const link_container = style({
   display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fill, minmax(156px, 1fr))',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
   columnGap: 8,
 });
 export const link_item = style({
   display: 'grid',
-  gridTemplateColumns: '20px 1fr',
+  maxHeight: 36,
+  gridTemplateColumns: 'auto 1fr',
   alignItems: 'center',
   gap: 7,
   padding: 4,
@@ -100,4 +101,5 @@ export const link_item = style({
 });
 globalStyle(`${link_item} svg`, {
   color: color.fg,
+  height: '100%',
 });
