@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {globalStyle, style} from '@vanilla-extract/css';
+import {style} from '@vanilla-extract/css';
 import {easing} from '@watasuke.net/common/src/easing';
 import {color} from '@watasuke.net/common/src/css/color';
 
@@ -81,7 +81,7 @@ export const links_item = style({
         },
       },
     },
-    'screen and (width < 440px)': {
+    'screen and (width < 460px)': {
       gridTemplateRows: '1fr',
       gridTemplateColumns: `48px  1fr`,
     },
@@ -89,6 +89,7 @@ export const links_item = style({
 });
 export const links_item_icon = style({
   zIndex: 4,
+  width: '100%',
   height: '100%',
   transition: `color ${hoverAnimationDuration}`,
   color: color.fg,
@@ -101,9 +102,6 @@ export const links_item_icon = style({
       },
     },
   },
-});
-globalStyle(`${links_item_icon} svg`, {
-  height: '100%',
 });
 export const links_item_text = style({
   zIndex: 4,

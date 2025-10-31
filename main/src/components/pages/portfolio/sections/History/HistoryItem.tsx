@@ -5,12 +5,12 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './HistoryItem.css';
-import { classname_for_jumped_from_history } from '../Works/Works.css';
+import {classname_for_jumped_from_history} from '../Works/Works.css';
 import React from 'react';
-import { motion } from 'framer-motion';
-import { cs, Markdown } from '@watasuke.net/common';
-import { floatup_with_scroll } from '@pages/portfolio/components/FloatUpWithScroll/FloatUpWithScroll';
-import { Event } from '@data/event_list';
+import {motion} from 'framer-motion';
+import {cs, Markdown} from '@watasuke.net/common';
+import {floatup_with_scroll} from '@pages/portfolio/components/FloatUpWithScroll/FloatUpWithScroll';
+import {Event} from '@data/event_list';
 import IconDoubleDown from '@assets/icons/general/double-down.svg';
 import IconMoreHorizon from '@assets/icons/general/more-horizon.svg';
 
@@ -84,7 +84,7 @@ export function HistoryItem(props: Props) {
               {period.begin.month}/{period.begin.day}
             </span>
             <span className={css.range_separator} />
-            <span style={{ height: 4 }} />
+            <span style={{height: 4}} />
           </div>
         );
     }
@@ -92,7 +92,7 @@ export function HistoryItem(props: Props) {
   const icon = React.useMemo(() => {
     if (props.event.category === 'Work') {
       return (
-        <div style={{ transform: 'rotate(180deg)' }}>
+        <div style={{transform: 'rotate(180deg)'}}>
           <IconDoubleDown />
         </div>
       );
@@ -127,9 +127,7 @@ export function HistoryItem(props: Props) {
         </div>
         <div className={css.info_row}>
           <span className={css.info_subtitle}>{props.event.subtitle}</span>
-          <div className={css.info_icon}>
-            {icon}
-          </div>
+          <div className={css.info_icon}>{icon}</div>
         </div>
       </button>
     </motion.div>

@@ -34,26 +34,37 @@ export function Front(props: Props) {
 
         <div className={css.icon_and_id}>
           <div className={css.row}>
-            <div className={css.icon}>
-              <IconHouse />
+            <div className={css.icon_container}>
+              <div className={css.icon}>
+                <IconHouse />
+              </div>
             </div>
             <span className={cs(css.id, css.link)}>watasuke.net</span>
           </div>
           <div className={css.row}>
-            <div className={css.icon}>
-              <IconTwitter />
+            <div className={css.icon_container}>
+              <div className={css.icon}>
+                <IconTwitter />
+              </div>
             </div>
             <span className={css.id}>@watasuke1024</span>
           </div>
           <div className={css.row}>
-            <div className={css.icon}>
-              <IconGitHub /> <IconInstagram />
+            <div className={css.icon_container}>
+              <div className={css.icon}>
+                <IconGitHub />
+              </div>
+              <div className={css.icon}>
+                <IconInstagram />
+              </div>
             </div>
             <span className={css.id}>@watasuke102</span>
           </div>
           <div className={css.row}>
-            <div className={css.icon}>
-              <IconSoundcloud />
+            <div className={css.icon_container}>
+              <div className={css.icon}>
+                <IconSoundcloud />
+              </div>
             </div>
             <span className={css.id}>watasuke</span>
           </div>

@@ -8,7 +8,7 @@ import {style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
-  position: 'relative',
+  position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translateX(-50%) translateY(-50%)',
@@ -17,23 +17,6 @@ export const container = style({
   display: 'inline-grid',
   gridTemplateRows: '1fr auto',
   gap: 8,
-});
-
-export const qr_container = style({
-  width: '95%',
-  margin: 'auto',
-  display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
-  justifyContent: 'space-between',
-  gap: '0 8dvw',
-});
-
-export const item = style({
-  display: 'flex',
-  flexDirection: 'column',
-  paddingTop: '3dvh',
-  paddingBottom: '1.5dvh',
-  margin: 'auto',
 });
 
 export const qrcode_wrapper = style({

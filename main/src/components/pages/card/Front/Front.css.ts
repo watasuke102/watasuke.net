@@ -76,13 +76,20 @@ export const row = style({
   display: 'flex',
   justifyContent: 'space-between',
 });
-export const icon = style({
+export const icon_container = style({
   height: '100%',
-  display: 'flex',
+  display: 'inline-flex',
   gap: 8,
+  alignItems: 'stretch',
+});
+export const icon = style({
+  aspectRatio: '1 / 1',
+  // FIXME: uncomment when Webkit supports container queries
+  //        (currently icons are wrapped only on Safari)
+  // containerType: 'inline-size',
 });
 globalStyle(`${icon} svg`, {
-  height: '100%',
+  // padding: 'max(4px, 15cqw)',
   padding: 8,
   borderRadius: 2,
   color: color.fg,

@@ -39,6 +39,11 @@ a:hover {
   transition: color 0.3s;
 }
 
+svg {
+  width: auto;
+  height: 100%;
+}
+
 code {
   font-family:
     'Moralerspace Krypton NF', 'Monaspace Krypton', MyricaM, 'MyricaM M',

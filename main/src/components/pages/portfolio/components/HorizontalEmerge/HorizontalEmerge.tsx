@@ -22,7 +22,13 @@ export function HorizontalEmerge(props: Props) {
   };
 
   return (
-    <motion.span style={{position: 'relative', display: 'block', height: props.height ?? 'auto'}}>
+    <motion.span
+      style={{
+        position: 'relative',
+        display: 'block',
+        height: props.height ?? 'auto',
+      }}
+    >
       <motion.span
         animate={{
           opacity: [0, 0, 0.9, 1],
