@@ -4,8 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {style} from '@vanilla-extract/css';
-import {color} from '@watasuke.net/common/src/css/color';
+import { globalStyle, style } from '@vanilla-extract/css';
+import { color } from '@watasuke.net/common/src/css/color';
 
 export const share_container = style({
   display: 'flex',
@@ -35,7 +35,7 @@ export const hatena_icon = style({
 });
 
 export const menu_button = style({
-  paddingBlock: 0,
+  // FIXME: padding is too wide
   borderRadius: 4,
   boxShadow: '4px 4px 6px 2px #1a1a1a',
   borderColor: color.fg,
@@ -49,4 +49,8 @@ export const menu_button = style({
     transitionDuration: '0.2s',
     transform: 'translate(1px, 1px)',
   },
+});
+globalStyle(`${menu_button} svg`, {
+  width: '100%',
+  height: '100%',
 });
