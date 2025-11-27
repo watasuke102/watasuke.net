@@ -15,7 +15,7 @@ impl Repo {
       .with_context(|| format!("Failed to open `{}` as a git repository", git_path))?;
     Ok(Repo { repo })
   }
-  fn latest_commit(&self) -> anyhow::Result<Commit> {
+  fn latest_commit<'a>(&'a self) -> anyhow::Result<Commit<'a>> {
     let head = self.repo.head()?;
     Ok(head.peel_to_commit()?)
   }
