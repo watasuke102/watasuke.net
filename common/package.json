@@ -2,9 +2,6 @@
   "name": "@watasuke.net/common",
   "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "lint": "eslint --fix ."
-  },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-switch": "^1.2.6",

@@ -1,17 +1,15 @@
-// watasuke.net > editor
+// watasuke.net
 // CopyRight (c) 2021-2025 watasuke
 //
 // Email  : <watasuke102@gmail.com>
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {useRouter} from 'next/navigation';
 import React from 'react';
 
 const message = 'Are you sure you want to leave?';
 
 /// prevent
 export function useConfirmBeforeLeave(): (enable: boolean) => void {
-  const router = useRouter();
   const enable = React.useRef(false);
 
   // for reloading
@@ -31,20 +29,9 @@ export function useConfirmBeforeLeave(): (enable: boolean) => void {
     return () => {
       window.removeEventListener('beforeunload', handle_unload);
     };
-  }, []);
+  }, [handle_unload]);
 
-  // for <Link>
-  React.useEffect(() => {
-    const next_push = router.push;
-    router.push = (href, options) => {
-      if (!enable.current || (confirm && confirm(message))) {
-        next_push(href, options);
-      }
-    };
-    return () => {
-      router.push = next_push;
-    };
-  }, [router, enable]);
+  // TODO: prevent for <Link>
 
   return (e: boolean) => (enable.current = e);
 }

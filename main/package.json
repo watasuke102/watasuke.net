@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "lint": "eslint --fix .",
     "build": "next build",
     "dev": "next dev -p 10210 -H 0.0.0.0",
     "new": "scaffdog generate",

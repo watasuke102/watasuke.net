@@ -8,7 +8,7 @@
 
 import * as config from '@watasuke.net/config/config';
 import * as css from './ShareList.css';
-import { usePathname } from 'next/navigation';
+import {usePathname} from 'next/navigation';
 import React from 'react';
 import IconTwitter from '@assets/icons/Links/twitter.svg';
 import IconMisskey from '@assets/icons/general/misskey.svg';
@@ -63,7 +63,7 @@ export function ShareList() {
       </a>
       {navigator && navigator.share && (
         <button
-          onClick={() => navigator.share({ title, url })}
+          onClick={() => navigator.share({title, url})}
           title='Share via...'
           className={css.menu_button}
         >

@@ -6,8 +6,7 @@
     "dev": "next dev -p 10211",
     "build": "next build",
     "start": "next start -p 10211",
-    "new": "scaffdog generate",
-    "lint": "eslint --fix ."
+    "new": "scaffdog generate"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",

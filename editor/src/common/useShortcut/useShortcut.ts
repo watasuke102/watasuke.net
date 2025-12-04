@@ -1,4 +1,4 @@
-// watasuke.net > editor
+// watasuke.net
 // CopyRight (c) 2021-2025 watasuke
 //
 // Email  : <watasuke102@gmail.com>
@@ -10,8 +10,8 @@ export function useShortcut(
   actions: {keycode: string; handler: () => void}[],
   opt?: {ctrl?: boolean; shift?: boolean},
 ): void {
-  const shortcut = React.useCallback(
-    (event: KeyboardEvent) => {
+  React.useEffect(() => {
+    const shortcut = (event: KeyboardEvent) => {
       if (event.repeat) {
         return;
       }
@@ -27,13 +27,10 @@ export function useShortcut(
           action.handler();
         }
       });
-    },
-    [actions],
-  );
-  React.useEffect(() => {
+    };
     window.addEventListener('keydown', shortcut);
     return () => {
       window.removeEventListener('keydown', shortcut);
     };
-  }, [actions]);
+  }, [actions, opt]);
 }

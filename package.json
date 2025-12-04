@@ -4,7 +4,7 @@
   "description": "[https://watasuke.net](https://watasuke.net)で公開されているページ",
   "main": "index.js",
   "scripts": {
-    "lint": "npm -w common -w main -w editor run lint",
+    "lint": "eslint --fix .",
     "fmt": "prettier --write main/src editor/src",
     "dev": "npm -w main run dev",
     "gen": "gql-gen --config graphql/codegen.ts"
@@ -23,6 +23,14 @@
     "@graphql-codegen/typescript": "^4.1.2",
     "@graphql-codegen/typescript-graphql-request": "^6.2.0",
     "@graphql-codegen/typescript-operations": "^4.4.0",
+    "@tony.ganchev/eslint-plugin-header": "^3.1.11",
+    "@types/eslint": "^9.6.1",
+    "@typescript-eslint/eslint-plugin": "^8.48.1",
+    "@typescript-eslint/parser": "^8.48.1",
+    "eslint": "^9.37.0",
+    "eslint-config-next": "^16.0.6",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "prettier": "^3.4.2"
   },
   "workspaces": [

@@ -1,4 +1,4 @@
-// watasuke.net > editor
+// watasuke.net
 // CopyRight (c) 2021-2025 watasuke
 //
 // Email  : <watasuke102@gmail.com>
@@ -6,6 +6,16 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import '@watasuke.net/common/src/css/base.css';
 import React from 'react';
+import {M_PLUS_Rounded_1c} from 'next/font/google';
+
+// same trick with `main/src/app/layout.tsx`
+/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-expect-error: ?
+const _ = M_PLUS_Rounded_1c({
+  weight: '400',
+  display: 'swap',
+  subsets: ['latin'],
+});
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
@@ -17,10 +27,6 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           href='https://fonts.gstatic.com'
           crossOrigin='anonymous'
         />
-        <link
-          href='https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=M+PLUS+Rounded+1c&display=swap'
-          rel='stylesheet'
-        ></link>
       </head>
       <body>
         <main>{children}</main>

@@ -1,4 +1,4 @@
-// watasuke.net > editor
+// watasuke.net
 // CopyRight (c) 2021-2025 watasuke
 //
 // Email  : <watasuke102@gmail.com>

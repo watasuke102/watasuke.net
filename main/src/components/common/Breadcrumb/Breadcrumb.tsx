@@ -21,7 +21,10 @@ export function Breadcrumb(props: Props) {
           <li key={i} className={css.list_item}>
             {e.item ? (
               <>
-                <Link href={e.item || ''} aria-current={e.item ? undefined : 'page'}>
+                <Link
+                  href={e.item || ''}
+                  aria-current={e.item ? undefined : 'page'}
+                >
                   {e.name}
                 </Link>
               </>

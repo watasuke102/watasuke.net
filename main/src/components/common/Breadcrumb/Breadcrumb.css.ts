@@ -4,8 +4,8 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import { style } from '@vanilla-extract/css';
-import { color } from '@watasuke.net/common/src/css/color';
+import {style} from '@vanilla-extract/css';
+import {color} from '@watasuke.net/common/src/css/color';
 
 export const list_ol = style({
   listStyleType: 'none',
@@ -26,6 +26,6 @@ export const list_item = style({
       fontWeight: 'bold',
       opacity: '0.7',
       transform: 'rotate(20deg) translateY(3px)',
-    }
-  }
+    },
+  },
 });
