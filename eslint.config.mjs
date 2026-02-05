@@ -84,7 +84,7 @@ export default defineConfig(
         'line',
         [
           ' watasuke.net',
-          ' CopyRight (c) 2021-2025 watasuke',
+          ' CopyRight (c) 2021-2026 watasuke',
           '',
           ' Email  : <watasuke102@gmail.com>',
           ' Twitter: @watasuke1024',
