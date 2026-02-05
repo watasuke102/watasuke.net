@@ -1,8 +1,0 @@
-[global]
-address = "0.0.0.0"
-port = 10212
-
-[default.limits]
-graphql = "1 MiB"
-"file/jpg" = "256 KiB"
-"file/png" = "256 KiB"

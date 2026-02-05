@@ -25,3 +25,9 @@ impl Config {
     }
   }
 }
+
+impl Default for Config {
+  fn default() -> Self {
+    Config::get()
+  }
+}
