@@ -50,8 +50,8 @@ pub struct Monthly {
   pub(crate) frontmatter: MonthlyFrontmatter,
 }
 #[derive(Clone, Debug, Hash, PartialEq, Eq)]
-pub struct MonthlyKey {
+pub(crate) struct MonthlyKey {
   pub year:  i32,
   pub month: i32,
 }
-pub type MonthlyMap = HashMap<MonthlyKey, Monthly>;
+pub(crate) type MonthlyMap = HashMap<MonthlyKey, Monthly>;

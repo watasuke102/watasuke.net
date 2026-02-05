@@ -79,11 +79,7 @@ impl Query {
     month: i32,
     context: &Context,
   ) -> juniper::FieldResult<Option<contents::Monthly>> {
-    usecase::monthly::get(
-      &context.config.contents_path,
-      contents::MonthlyKey { year, month },
-    )
-    .map_err(|err| {
+    usecase::monthly::get(&context.config.contents_path, year, month).map_err(|err| {
       juniper::FieldError::new(
         "usecase::monthly::get() failed",
         graphql_value!(err.to_string()),

@@ -36,6 +36,10 @@ type Mutation {
   updateArticle(slug: String!, title: String!, tldr: String!, tags: [String!]!, isFavorite: Boolean!, body: String!): String!
   publishArticle(slug: String!, shouldCommitAndPush: Boolean!): String!
   renewArticle(slug: String!, commitMessage: String!): String!
+  newMonthly(year: Int!, month: Int!): String!
+  updateMonthly(year: Int!, month: Int!, tldr: String!, body: String!): String!
+  publishMonthly(year: Int!, month: Int!, shouldCommitAndPush: Boolean!): String!
+  renewMonthly(year: Int!, month: Int!, commitMessage: String!): String!
   updateProfile(profile: String!): String!
   renewProfile(commitMessage: String!): String!
 }

@@ -1,7 +1,7 @@
 use juniper::{graphql_object, graphql_value};
 
 use super::Mutation;
-use crate::{usecase, Context};
+use crate::{Context, usecase};
 
 #[graphql_object(context = crate::Context)]
 impl Mutation {
@@ -108,6 +108,100 @@ impl Mutation {
       Ok(_) => Ok(slug),
       Err(err) => Err(juniper::FieldError::new(
         "Failed to renew an Article",
+        graphql_value!(err.to_string()),
+      )),
+    }
+  }
+
+  fn new_monthly(year: i32, month: i32, context: &Context) -> juniper::FieldResult<String> {
+    if !context.config.allow_private_access {
+      return Err(juniper::FieldError::new(
+        "Private access is forbidden",
+        graphql_value!(""),
+      ));
+    }
+    match usecase::monthly::create(&context.config.contents_path, year, month) {
+      Ok(_) => Ok("".to_string()),
+      Err(err) => Err(juniper::FieldError::new(
+        "Failed to create new Monthly",
+        graphql_value!(err.to_string()),
+      )),
+    }
+  }
+  fn update_monthly(
+    year: i32,
+    month: i32,
+    tldr: String,
+    body: String,
+    context: &Context,
+  ) -> juniper::FieldResult<String> {
+    if !context.config.allow_private_access {
+      return Err(juniper::FieldError::new(
+        "Private access is forbidden",
+        graphql_value!(""),
+      ));
+    }
+    let monthly = match usecase::monthly::get(&context.config.contents_path, year, month) {
+      Ok(article) => article.ok_or(juniper::FieldError::new(
+        "Article with such a slug not found",
+        graphql_value!("Not Found"),
+      ))?,
+      Err(err) => {
+        return Err(juniper::FieldError::new(
+          "Failed to get Articles",
+          graphql_value!(err.to_string()),
+        ));
+      }
+    };
+    match monthly.update(&context.config.contents_path, tldr, body) {
+      Ok(_) => Ok("".to_string()),
+      Err(err) => Err(juniper::FieldError::new(
+        "article.update() failed",
+        graphql_value!(err.to_string()),
+      )),
+    }
+  }
+  fn publish_monthly(
+    year: i32,
+    month: i32,
+    context: &Context,
+    should_commit_and_push: bool,
+  ) -> juniper::FieldResult<String> {
+    if !context.config.allow_private_access {
+      return Err(juniper::FieldError::new(
+        "Private access is forbidden",
+        graphql_value!(""),
+      ));
+    }
+    match usecase::monthly::publish(
+      &context.config.contents_path,
+      year,
+      month,
+      should_commit_and_push,
+    ) {
+      Ok(_) => Ok("".to_string()),
+      Err(err) => Err(juniper::FieldError::new(
+        "Failed to publish the Monthly",
+        graphql_value!(err.to_string()),
+      )),
+    }
+  }
+  fn renew_monthly(
+    year: i32,
+    month: i32,
+    commit_message: String,
+    context: &Context,
+  ) -> juniper::FieldResult<String> {
+    if !context.config.allow_private_access {
+      return Err(juniper::FieldError::new(
+        "Private access is forbidden",
+        graphql_value!(""),
+      ));
+    }
+    match usecase::monthly::renew(&context.config.contents_path, year, month, &commit_message) {
+      Ok(_) => Ok("".to_string()),
+      Err(err) => Err(juniper::FieldError::new(
+        "Failed to renew the Monthly",
         graphql_value!(err.to_string()),
       )),
     }
