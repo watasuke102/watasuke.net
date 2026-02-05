@@ -1,11 +1,11 @@
-use anyhow::{bail, ensure, Context};
+use anyhow::{Context, bail, ensure};
 use juniper::GraphQLInputObject;
 use regex::Regex;
 use std::{collections::HashMap, io::ErrorKind, path::Path};
 use yaml_front_matter::{Document, YamlFrontMatter};
 
 use crate::{
-  contents::{Article, ArticleMap, Frontmatter, Neighbor},
+  contents::{Article, ArticleFrontmatter, ArticleMap, Neighbor},
   usecase, util,
 };
 
@@ -141,7 +141,7 @@ fn get_map_all(contents_path: &String) -> anyhow::Result<ArticleMap> {
         );
         continue;
       };
-      let mut md: Document<Frontmatter> = match YamlFrontMatter::parse(article_md.as_str()) {
+      let mut md: Document<ArticleFrontmatter> = match YamlFrontMatter::parse(article_md.as_str()) {
         Ok(f) => f,
         Err(e) => {
           println!(
@@ -185,7 +185,7 @@ pub fn create(contents_path: &String, slug: &String, title: &String) -> anyhow::
     .join(format!("_{slug}"));
   std::fs::create_dir_all(&path)?;
 
-  let frontmatter = Frontmatter {
+  let frontmatter = ArticleFrontmatter {
     title:        title.clone(),
     tldr:         None,
     tags:         Vec::new(),

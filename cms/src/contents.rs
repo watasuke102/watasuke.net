@@ -8,7 +8,7 @@ pub mod sitedata;
 pub mod tags;
 
 #[derive(Clone, Debug, Deserialize)]
-pub(crate) struct Frontmatter {
+pub(crate) struct ArticleFrontmatter {
   pub(crate) title:        String,
   pub(crate) tldr:         Option<String>,
   pub(crate) tags:         Vec<String>,
@@ -25,7 +25,7 @@ pub struct Article {
   year:         i32,
   index:        Option<i32>,
   tags:         Vec<tags::Tag>,
-  frontmatter:  Frontmatter,
+  frontmatter:  ArticleFrontmatter,
 }
 pub type ArticleMap = HashMap<String, Article>;
 

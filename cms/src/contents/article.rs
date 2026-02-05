@@ -1,7 +1,7 @@
 use juniper::graphql_object;
 use std::path::Path;
 
-use super::{Article, Frontmatter, Neighbor};
+use super::{Article, ArticleFrontmatter, Neighbor};
 use crate::{contents::tags, util};
 
 impl Article {
@@ -12,7 +12,7 @@ impl Article {
     year: i32,
     index: Option<i32>,
     tags: Vec<tags::Tag>,
-    frontmatter: Frontmatter,
+    frontmatter: ArticleFrontmatter,
   ) -> Self {
     Article {
       article_path,
@@ -36,7 +36,7 @@ impl Article {
     is_favorite: bool,
     body: String,
   ) -> anyhow::Result<()> {
-    let frontmatter = Frontmatter {
+    let frontmatter = ArticleFrontmatter {
       title,
       tldr,
       tags,
@@ -54,7 +54,7 @@ impl Article {
   }
   pub fn set_published_at(&self) -> anyhow::Result<()> {
     let datetime = util::now().format("%Y-%m-%dT%H:%M:%S").to_string();
-    let frontmatter = Frontmatter {
+    let frontmatter = ArticleFrontmatter {
       published_at: datetime.clone(),
       updated_at: datetime,
       ..self.frontmatter.clone()

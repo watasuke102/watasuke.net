@@ -1,6 +1,6 @@
-use super::Frontmatter;
+use super::ArticleFrontmatter;
 
-impl std::fmt::Display for Frontmatter {
+impl std::fmt::Display for ArticleFrontmatter {
   fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
     let tags = self
       .tags
