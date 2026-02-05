@@ -1,6 +1,6 @@
 use std::path::Path;
 
-use anyhow::{ensure, Context};
+use anyhow::{Context, ensure};
 use git2::{
   Commit, Cred, IndexAddOption, PushOptions, RemoteCallbacks, Repository, RepositoryState,
   Signature,
@@ -44,7 +44,7 @@ impl Repo {
     let mut index = self.repo.index()?;
     let repo_path = self.repo.path().parent().unwrap();
     index.add_all(
-      std::path::absolute(path)?.strip_prefix(repo_path),
+      [path.canonicalize()?.strip_prefix(repo_path)?].into_iter(),
       IndexAddOption::CHECK_PATHSPEC,
       None,
     )?;
