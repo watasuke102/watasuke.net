@@ -4,6 +4,7 @@ use serde::Deserialize;
 
 pub mod article;
 mod frontmatter;
+pub mod monthly;
 pub mod sitedata;
 pub mod tags;
 
@@ -34,3 +35,23 @@ pub struct Neighbor {
   pub older: Option<Article>,
   pub newer: Option<Article>,
 }
+
+#[derive(Clone, Debug, Deserialize)]
+pub(crate) struct MonthlyFrontmatter {
+  pub(crate) tldr:         String,
+  pub(crate) published_at: String,
+  pub(crate) updated_at:   String,
+}
+#[derive(Clone, Debug)]
+pub struct Monthly {
+  pub(crate) body:        String,
+  pub(crate) year:        i32,
+  pub(crate) month:       i32,
+  pub(crate) frontmatter: MonthlyFrontmatter,
+}
+#[derive(Clone, Debug, Hash, PartialEq, Eq)]
+pub struct MonthlyKey {
+  pub year:  i32,
+  pub month: i32,
+}
+pub type MonthlyMap = HashMap<MonthlyKey, Monthly>;

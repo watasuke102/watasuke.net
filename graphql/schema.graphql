@@ -21,6 +21,15 @@ type Article {
   isPublished: Boolean!
 }
 
+type Monthly {
+  body: String!
+  year: Int!
+  month: Int!
+  tldr: String!
+  publishedAt: String!
+  updatedAt: String!
+}
+
 type Mutation {
   newTag(slug: String!, title: String!): String!
   newArticle(slug: String!, title: String!): String!
@@ -43,6 +52,8 @@ type Query {
   neighbors(slug: String!): Neighbor!
   tag(slug: String!): Tag
   allTags: [Tag!]!
+  allMonthlies: [Monthly!]!
+  monthly(year: Int!, month: Int!): Monthly
   sitedata: Sitedata!
   contentsGitHeadHash: String!
 }

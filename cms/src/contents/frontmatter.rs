@@ -1,3 +1,5 @@
+use crate::contents::MonthlyFrontmatter;
+
 use super::ArticleFrontmatter;
 
 impl std::fmt::Display for ArticleFrontmatter {
@@ -27,6 +29,20 @@ updated_at:   '{}'
       self.is_favorite,
       self.published_at,
       self.updated_at
+    )
+  }
+}
+
+impl std::fmt::Display for MonthlyFrontmatter {
+  fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    write!(
+      f,
+      r"---
+tldr:         '{}'
+published_at: '{}'
+updated_at:   '{}'
+---",
+      self.tldr, self.published_at, self.updated_at
     )
   }
 }

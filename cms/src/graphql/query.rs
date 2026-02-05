@@ -2,10 +2,10 @@ use juniper::{graphql_object, graphql_value};
 
 use super::Query;
 use crate::{
+  Context,
   contents::{self, sitedata},
   git,
   usecase::{self, articles::ArticleFilter},
-  Context,
 };
 
 #[graphql_object(context = crate::Context)]
@@ -66,6 +66,30 @@ impl Query {
   fn all_tags(context: &Context) -> Vec<contents::tags::Tag> {
     usecase::tags::get_all(&context.config.contents_path)
   }
+  fn all_monthlies(context: &Context) -> juniper::FieldResult<Vec<contents::Monthly>> {
+    usecase::monthly::get_all(&context.config.contents_path).map_err(|err| {
+      juniper::FieldError::new(
+        "usecase::monthly::get_all() failed",
+        graphql_value!(err.to_string()),
+      )
+    })
+  }
+  fn monthly(
+    year: i32,
+    month: i32,
+    context: &Context,
+  ) -> juniper::FieldResult<Option<contents::Monthly>> {
+    usecase::monthly::get(
+      &context.config.contents_path,
+      contents::MonthlyKey { year, month },
+    )
+    .map_err(|err| {
+      juniper::FieldError::new(
+        "usecase::monthly::get() failed",
+        graphql_value!(err.to_string()),
+      )
+    })
+  }
   fn sitedata(context: &Context) -> juniper::FieldResult<sitedata::Sitedata> {
     match sitedata::read_sitedata(&context.config.contents_path) {
       Ok(sitedata) => Ok(sitedata),
@@ -82,7 +106,7 @@ impl Query {
         return Err(juniper::FieldError::new(
           "Cannot open a git repo",
           graphql_value!(err.to_string()),
-        ))
+        ));
       }
     };
 
@@ -92,7 +116,7 @@ impl Query {
         return Err(juniper::FieldError::new(
           "repo.head_hash() failed",
           graphql_value!(err.to_string()),
-        ))
+        ));
       }
     }
   }
