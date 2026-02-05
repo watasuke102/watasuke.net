@@ -12,7 +12,7 @@ import {ToastContext} from '@common/Toast';
 import {upload_new_image} from '@utils/api';
 
 type Props = {
-  slug: string;
+  post_base_url: string;
   on_complete: (file_name: string) => void;
 };
 
@@ -59,7 +59,7 @@ export function ImageUploader(props: Props) {
       return;
     }
     await upload_new_image(
-      props.slug,
+      props.post_base_url,
       image_filename(),
       image_info.type,
       image_info.buffer,

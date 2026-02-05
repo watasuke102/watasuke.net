@@ -18,7 +18,9 @@ import {ErrorBoundary} from '@common/ErrorBoundary';
 import {Spinner} from '@common/Spinner';
 import {Toast} from '@common/Toast';
 import {ComboBox} from '@common/ComboBox';
+import {useShortcut} from '@common/useShortcut/useShortcut';
 import {MonacoEditor} from '@features/MonacoEditor';
+import {Toolbox} from './Toolbox/Toolbox';
 import LeftIcon from '@assets/left.svg';
 
 export type ModifyStatus = 'none' | 'confirmation' | 'waiting' | 'succeeded';
@@ -26,18 +28,33 @@ export type ModifyStatus = 'none' | 'confirmation' | 'waiting' | 'succeeded';
 type Props = {
   body: string;
   preview_body?: string;
-  is_published: boolean;
-  modify_status: ModifyStatus;
-  commit_scope?: string;
-
-  toolbox: React.ReactNode;
-  header_text: React.ReactNode;
-  modify_confirming_area: React.ReactNode;
-
   set_body: (s: string) => void;
+  save_handler: () => Promise<void>;
+
+  is_published: boolean;
+  toolbox_contents?: React.ReactNode;
+
+  /// header text will be a link to this URL after publishing
+  header_url: string;
+  header_text: string;
+
+  /// props related to modification (publish/renew)
+  modify_status: ModifyStatus;
   set_modify_status: (s: ModifyStatus) => void;
-  modify: (commit_mes: string) => void;
-};
+  modify_confirming_area: React.ReactNode;
+  modify_handler: (commit_mes: string) => void;
+  /// ``{prefix}: {scope}>{message}`
+  commit_scope?: string;
+} & (
+  | {
+      is_image_uploader_enabled: false;
+    }
+  | {
+      is_image_uploader_enabled: true;
+      /// image will posted to /img/{image_post_base_url}/{file_name}
+      image_post_base_url: string;
+    }
+);
 
 export function EditorPage(props: Props) {
   const [commit_mes_prefix, set_commit_mes_prefix] = React.useState('update');
@@ -53,6 +70,8 @@ export function EditorPage(props: Props) {
     return mes + commit_mes;
   }, [commit_mes, commit_mes_prefix, props]);
 
+  useShortcut([{keycode: 'KeyS', handler: props.save_handler}], {ctrl: true});
+
   // hydration errorが出るのを回避する
   const [is_first_render, set_is_first_render] = React.useState(true);
   React.useEffect(() => set_is_first_render(false), []);
@@ -66,11 +85,33 @@ export function EditorPage(props: Props) {
         <Link href='/' className={css.back_button}>
           <LeftIcon />
         </Link>
-        {props.header_text}
+        {props.is_published ? (
+          <a
+            href={props.header_url}
+            rel='noreferrer'
+            target='_blank'
+            className={css.header_title}
+          >
+            {props.header_text}
+          </a>
+        ) : (
+          <span className={css.header_title}>{props.header_text}</span>
+        )}
       </header>
       <section className={css.container}>
         <div className={css.editor}>
-          <div className={css.toolbox_wrapper}>{props.toolbox}</div>
+          <div className={css.toolbox_wrapper}>
+            <Toolbox
+              contents={props.toolbox_contents}
+              is_published={props.is_published}
+              save_button_handler={props.save_handler}
+              publish_button_handler={() =>
+                props.set_modify_status('confirmation')
+              }
+              is_image_uploader_enabled={props.is_image_uploader_enabled}
+              image_post_base_url={props.image_post_base_url}
+            />
+          </div>
           <div className={css.edit_area}>
             <MonacoEditor body={props.body} on_change={props.set_body} />
           </div>
@@ -147,7 +188,7 @@ export function EditorPage(props: Props) {
                         aria_label='proceed'
                         on_click={() => {
                           props.set_modify_status('waiting');
-                          props.modify(build_commit_message());
+                          props.modify_handler(build_commit_message());
                         }}
                         // commit message is required when renewing (not publishing)
                         disabled={props.is_published && commit_mes === ''}

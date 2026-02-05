@@ -16,12 +16,11 @@ import {EditorPage} from '@common/EditorPage';
 import {ModifyStatus} from '@common/EditorPage/EditorPage';
 import {Checkbox} from '@common/Checkbox';
 import {toast_reducer, ToastContext} from '@common/Toast';
-import {useShortcut} from '@common/useShortcut/useShortcut';
-import {Toolbox} from '@features/ArticleEditor/Toolbox/Toolbox';
 import {MonacoContext} from '@features/MonacoEditor';
 import {ArticleEditPageQuery, getSdk} from '@utils/graphql';
 import {useConfirmBeforeLeave} from '@utils/ConfirmBeforeLeave';
 import {article_reducer} from '../ArticleReducer';
+import {FrontmatterEditor} from '../FrontmatterEditor/FrontmatterEditor';
 
 type Props = {
   article: NonNullable<ArticleEditPageQuery['article']>;
@@ -111,8 +110,6 @@ export function Page(props: Props) {
     [props.article.slug, should_commit_and_push, is_published],
   );
 
-  useShortcut([{keycode: 'KeyS', handler: save}], {ctrl: true});
-
   return (
     <ToastContext.Provider
       value={{state: toast_state, dispatch: toast_dispatch}}
@@ -124,34 +121,23 @@ export function Page(props: Props) {
             '/img',
             `${apiUrl}/img/${props.article.slug}`,
           )}
+          set_body={s => dispatch({type: 'body/update', data: s})}
+          save_handler={save}
+          //
           is_published={is_published}
-          modify_status={modify_status}
-          commit_scope={props.article.slug}
-          toolbox={
-            <Toolbox
-              slug={props.article.slug}
-              tldr_placeholder={props.article.tldr}
-              is_published={is_published}
+          toolbox_contents={
+            <FrontmatterEditor
               state={state}
               dispatcher={dispatch}
-              publish_button_handler={() => set_modify_status('confirmation')}
-              save_button_handler={save}
+              tldr_placeholder={props.article.tldr}
             />
           }
-          header_text={
-            is_published ? (
-              <a
-                href={`https://watasuke.net/blog/article/${props.article.slug}`}
-                rel='noreferrer'
-                target='_blank'
-                className={css.header_title}
-              >
-                {state.title}
-              </a>
-            ) : (
-              <span className={css.header_title}>{state.title}</span>
-            )
-          }
+          header_url={`https://watasuke.net/blog/article/${props.article.slug}`}
+          header_text={state.title}
+          //
+          commit_scope={props.article.slug}
+          modify_status={modify_status}
+          set_modify_status={set_modify_status}
           modify_confirming_area={
             <>
               <div className={css.warning_container}>
@@ -178,9 +164,10 @@ export function Page(props: Props) {
               )}
             </>
           }
-          set_body={s => dispatch({type: 'body/update', data: s})}
-          set_modify_status={set_modify_status}
-          modify={modify}
+          modify_handler={modify}
+          //
+          is_image_uploader_enabled={true}
+          image_post_base_url={props.article.slug}
         />
       </MonacoContext.Provider>
     </ToastContext.Provider>

@@ -9,14 +9,23 @@ import {easing} from '@watasuke.net/common/src/easing';
 
 export const css = {
   toolbox_header: style({
+    display: 'flex',
+    width: '100%',
+    gap: 8,
+  }),
+  buttons: style({
     display: 'grid',
-    gridTemplateColumns: '32px 100px auto 1fr',
     width: '100%',
     gap: 12,
   }),
+  with_img_button: style({
+    gridTemplateColumns: '100px auto 1fr',
+  }),
+  without_img_button: style({
+    gridTemplateColumns: '100px 1fr',
+  }),
   expand_icon: style({
     margin: 'auto',
-    width: '100%',
     height: '100%',
     transition: `0.4s ${easing.out_expo.cubic_bezier}`,
   }),
@@ -44,8 +53,4 @@ globalStyle(`${css.accordion_content}[data-state='closed']`, {
 globalStyle(`${css.expand_icon}[data-state='open']`, {
   transform: 'rotate(180deg)',
   transition: `0.4s ${easing.out_expo.cubic_bezier}`,
-});
-globalStyle(`${css.expand_icon} svg`, {
-  width: '100%',
-  height: '100%',
 });
