@@ -10,10 +10,10 @@ import * as css from './MonthlyTable.css';
 import Link from 'next/link';
 import React from 'react';
 import {cs} from '@watasuke.net/common';
-import {AllMonthliesQuery} from '@utils/graphql';
+import {BlogPageQuery} from '@utils/graphql';
 
 type Props = {
-  monthlies: AllMonthliesQuery['allPublicMonthlies'];
+  monthlies: BlogPageQuery['allPublicMonthlies'];
   year?: number;
 };
 

@@ -134,7 +134,7 @@ query allMonthlies($year: Int) {
     year
     month
     tldr
-    publishedAt
+    publishedAt # for feed field
   }
 }
 query monthlyPage($year: Int!, $month: Int!) {
