@@ -17,7 +17,7 @@ query blogPage {
       name
     }
   }
-  allMonthlies {
+  allPublicMonthlies {
     year
     month
     tldr

@@ -27,7 +27,7 @@ export const {viewport, metadata} = gen_template(
 );
 
 export default async function Blog() {
-  const {allPublicArticles, allMonthlies} = await ql().blogPage();
+  const {allPublicArticles, allPublicMonthlies} = await ql().blogPage();
   // FIXME: WHY should I sort `allPublicArticles` which is expected to be sorted in CMS?
   allPublicArticles.sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1));
   return (
@@ -42,7 +42,7 @@ export default async function Blog() {
       </div>
 
       <h2 className={css.heading}>月報</h2>
-      <MonthlyTable monthlies={allMonthlies} />
+      <MonthlyTable monthlies={allPublicMonthlies} />
 
       <h2 className={css.heading}>タグ一覧</h2>
       <AllTagList />

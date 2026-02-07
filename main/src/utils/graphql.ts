@@ -211,7 +211,7 @@ export type Tag = {
 export type BlogPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type BlogPageQuery = { __typename?: 'Query', allPublicArticles: Array<{ __typename?: 'Article', slug: string, title: string, tldr: string, isFavorite: boolean, publishedAt: string, updatedAt: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> }>, allMonthlies: Array<{ __typename?: 'Monthly', year: number, month: number, tldr: string }> };
+export type BlogPageQuery = { __typename?: 'Query', allPublicArticles: Array<{ __typename?: 'Article', slug: string, title: string, tldr: string, isFavorite: boolean, publishedAt: string, updatedAt: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> }>, allPublicMonthlies: Array<{ __typename?: 'Monthly', year: number, month: number, tldr: string }> };
 
 export type AllArticlesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -321,7 +321,7 @@ export const BlogPageDocument = gql`
       name
     }
   }
-  allMonthlies {
+  allPublicMonthlies {
     year
     month
     tldr
