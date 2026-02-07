@@ -8,6 +8,7 @@ import {apiUrl} from '@watasuke.net/config/config';
 import * as css from '@feature/Article/Article.css';
 import Link from 'next/link';
 import {Breadcrumb} from '@common';
+import {redirect, RedirectType} from 'next/navigation';
 import {
   AdsInArticle,
   ExtractHeading,
@@ -54,6 +55,14 @@ export async function generateMetadata(props: Props) {
 
 export default async function Page(props: Props) {
   const params = await props.params;
+  const year_str = params.year;
+  const month_str = params.month;
+  if (month_str.length !== 2) {
+    redirect(
+      `/blog/monthly/${year_str}/${month_str.padStart(2, '0')}`,
+      RedirectType.replace,
+    );
+  }
   const year = Number(params.year);
   const month = Number(params.month);
   const {monthly} = await ql().monthlyPage({year, month});
@@ -61,8 +70,6 @@ export default async function Page(props: Props) {
     // FIXME: proper error handle
     return <></>;
   }
-  const year_str = monthly.year.toString();
-  const month_str = monthly.month.toString().padStart(2, '0');
 
   const breadcrumb_list = GenBreadcrumb([
     {name: 'Blog', item: '/blog'},

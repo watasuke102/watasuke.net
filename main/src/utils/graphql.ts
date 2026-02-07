@@ -208,6 +208,11 @@ export type Tag = {
   slug: Scalars['String']['output'];
 };
 
+export type BlogPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type BlogPageQuery = { __typename?: 'Query', allPublicArticles: Array<{ __typename?: 'Article', slug: string, title: string, tldr: string, isFavorite: boolean, publishedAt: string, updatedAt: string, tags: Array<{ __typename?: 'Tag', slug: string, name: string }> }>, allMonthlies: Array<{ __typename?: 'Monthly', year: number, month: number, tldr: string }> };
+
 export type AllArticlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -302,6 +307,27 @@ export type ProfileQueryVariables = Exact<{ [key: string]: never; }>;
 export type ProfileQuery = { __typename?: 'Query', sitedata: { __typename?: 'Sitedata', profile: string } };
 
 
+export const BlogPageDocument = gql`
+    query blogPage {
+  allPublicArticles {
+    slug
+    title
+    tldr
+    isFavorite
+    publishedAt
+    updatedAt
+    tags {
+      slug
+      name
+    }
+  }
+  allMonthlies {
+    year
+    month
+    tldr
+  }
+}
+    `;
 export const AllArticlesDocument = gql`
     query allArticles {
   allPublicArticles {
@@ -485,6 +511,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    blogPage(variables?: BlogPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<BlogPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<BlogPageQuery>({ document: BlogPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'blogPage', 'query', variables);
+    },
     allArticles(variables?: AllArticlesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<AllArticlesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<AllArticlesQuery>({ document: AllArticlesDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'allArticles', 'query', variables);
     },

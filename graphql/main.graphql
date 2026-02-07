@@ -4,6 +4,26 @@
 # Email  : <watasuke102@gmail.com>
 # Twitter: @watasuke1024
 # This software is released under the MIT or MIT SUSHI-WARE License.
+query blogPage {
+  allPublicArticles {
+    slug
+    title
+    tldr
+    isFavorite
+    publishedAt
+    updatedAt
+    tags {
+      slug
+      name
+    }
+  }
+  allMonthlies {
+    year
+    month
+    tldr
+  }
+}
+
 query allArticles {
   allPublicArticles {
     slug
