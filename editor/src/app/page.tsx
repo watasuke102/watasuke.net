@@ -11,6 +11,8 @@ import Link from 'next/link';
 import {getSdk} from '@utils/graphql';
 import {NewArticle} from './_components/NewArticle';
 import {ArticlesTable} from './_components/ArticlesTable';
+import {MonthlyEditor} from '@features/MonthlyEditor';
+import {MonthliesTable} from './_components/MonthliesTable';
 
 export const revalidate = 0;
 
@@ -18,7 +20,7 @@ export default async function Top() {
   const sdk = getSdk(new GraphQLClient('http://127.0.0.1:10212/graphql'));
   let data;
   try {
-    data = await sdk.allArticles();
+    data = await sdk.indexPage();
   } catch (err) {
     const error = err as ClientError;
     return (
@@ -37,6 +39,8 @@ export default async function Top() {
       <h2 className={css.heading}>Sitedata</h2>
       <Link href='/editor/profile'>Edit profile</Link>
       <hr />
+      <h2 className={css.heading}>Monthly</h2>
+      <MonthliesTable monthlies={data.allMonthlies} />
       <h2 className={css.heading}>Article</h2>
       <NewArticle />
       <ArticlesTable articles={data.allArticles.filter(e => !e.isPublished)} />

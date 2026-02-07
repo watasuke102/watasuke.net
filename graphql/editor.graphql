@@ -4,7 +4,7 @@
 # Email  : <watasuke102@gmail.com>
 # Twitter: @watasuke1024
 # This software is released under the MIT or MIT SUSHI-WARE License.
-query allArticles {
+query indexPage {
   allArticles {
     slug
     title
@@ -12,6 +12,12 @@ query allArticles {
     publishedAt
     updatedAt
     isPublished
+  }
+  allMonthlies {
+    year
+    month
+    updatedAt
+    publishedAt
   }
 }
 
@@ -52,6 +58,17 @@ query allTags {
   }
 }
 
+query monthlyEditPage($year: Int!, $month: Int!) {
+  monthly(year: $year, month: $month) {
+    year
+    month
+    tldr
+    body
+    updatedAt
+    publishedAt
+  }
+}
+
 query profile {
   sitedata {
     profile
@@ -89,6 +106,32 @@ mutation publishArticle($slug: String!, $should_commit_and_push: Boolean!) {
 }
 mutation renewArticle($slug: String!, $commit_message: String!) {
   renewArticle(slug: $slug, commitMessage: $commit_message)
+}
+
+mutation newMonthly($year: Int!, $month: Int!) {
+  newMonthly(year: $year, month: $month)
+}
+mutation updateMonthly(
+  $year: Int!
+  $month: Int!
+  $tldr: String!
+  $body: String!
+) {
+  updateMonthly(year: $year, month: $month, tldr: $tldr, body: $body)
+}
+mutation publishMonthly(
+  $year: Int!
+  $month: Int!
+  $should_commit_and_push: Boolean!
+) {
+  publishMonthly(
+    year: $year
+    month: $month
+    shouldCommitAndPush: $should_commit_and_push
+  )
+}
+mutation renewMonthly($year: Int!, $month: Int!, $commit_message: String!) {
+  renewMonthly(year: $year, month: $month, commitMessage: $commit_message)
 }
 
 mutation updateProfile($profile: String!) {

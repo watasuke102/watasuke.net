@@ -37,14 +37,28 @@ export type ArticleFilter = {
   tags?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
+export type Monthly = {
+  __typename?: 'Monthly';
+  body: Scalars['String']['output'];
+  month: Scalars['Int']['output'];
+  publishedAt: Scalars['String']['output'];
+  tldr: Scalars['String']['output'];
+  updatedAt: Scalars['String']['output'];
+  year: Scalars['Int']['output'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   newArticle: Scalars['String']['output'];
+  newMonthly: Scalars['String']['output'];
   newTag: Scalars['String']['output'];
   publishArticle: Scalars['String']['output'];
+  publishMonthly: Scalars['String']['output'];
   renewArticle: Scalars['String']['output'];
+  renewMonthly: Scalars['String']['output'];
   renewProfile: Scalars['String']['output'];
   updateArticle: Scalars['String']['output'];
+  updateMonthly: Scalars['String']['output'];
   updateProfile: Scalars['String']['output'];
 };
 
@@ -52,6 +66,12 @@ export type Mutation = {
 export type MutationNewArticleArgs = {
   slug: Scalars['String']['input'];
   title: Scalars['String']['input'];
+};
+
+
+export type MutationNewMonthlyArgs = {
+  month: Scalars['Int']['input'];
+  year: Scalars['Int']['input'];
 };
 
 
@@ -67,9 +87,23 @@ export type MutationPublishArticleArgs = {
 };
 
 
+export type MutationPublishMonthlyArgs = {
+  month: Scalars['Int']['input'];
+  shouldCommitAndPush: Scalars['Boolean']['input'];
+  year: Scalars['Int']['input'];
+};
+
+
 export type MutationRenewArticleArgs = {
   commitMessage: Scalars['String']['input'];
   slug: Scalars['String']['input'];
+};
+
+
+export type MutationRenewMonthlyArgs = {
+  commitMessage: Scalars['String']['input'];
+  month: Scalars['Int']['input'];
+  year: Scalars['Int']['input'];
 };
 
 
@@ -88,6 +122,14 @@ export type MutationUpdateArticleArgs = {
 };
 
 
+export type MutationUpdateMonthlyArgs = {
+  body: Scalars['String']['input'];
+  month: Scalars['Int']['input'];
+  tldr: Scalars['String']['input'];
+  year: Scalars['Int']['input'];
+};
+
+
 export type MutationUpdateProfileArgs = {
   profile: Scalars['String']['input'];
 };
@@ -101,10 +143,12 @@ export type Neighbor = {
 export type Query = {
   __typename?: 'Query';
   allArticles: Array<Article>;
+  allMonthlies: Array<Monthly>;
   allPublicArticles: Array<Article>;
   allTags: Array<Tag>;
   article?: Maybe<Article>;
   contentsGitHeadHash: Scalars['String']['output'];
+  monthly?: Maybe<Monthly>;
   neighbors: Neighbor;
   sitedata: Sitedata;
   tag?: Maybe<Tag>;
@@ -123,6 +167,12 @@ export type QueryAllPublicArticlesArgs = {
 
 export type QueryArticleArgs = {
   slug: Scalars['String']['input'];
+};
+
+
+export type QueryMonthlyArgs = {
+  month: Scalars['Int']['input'];
+  year: Scalars['Int']['input'];
 };
 
 
@@ -389,47 +439,47 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    allArticles(variables?: AllArticlesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllArticlesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<AllArticlesQuery>(AllArticlesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allArticles', 'query', variables);
+    allArticles(variables?: AllArticlesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<AllArticlesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<AllArticlesQuery>({ document: AllArticlesDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'allArticles', 'query', variables);
     },
-    allFavoriteArticles(variables?: AllFavoriteArticlesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllFavoriteArticlesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<AllFavoriteArticlesQuery>(AllFavoriteArticlesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allFavoriteArticles', 'query', variables);
+    allFavoriteArticles(variables?: AllFavoriteArticlesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<AllFavoriteArticlesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<AllFavoriteArticlesQuery>({ document: AllFavoriteArticlesDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'allFavoriteArticles', 'query', variables);
     },
-    allArticleSlugs(variables?: AllArticleSlugsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllArticleSlugsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<AllArticleSlugsQuery>(AllArticleSlugsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allArticleSlugs', 'query', variables);
+    allArticleSlugs(variables?: AllArticleSlugsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<AllArticleSlugsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<AllArticleSlugsQuery>({ document: AllArticleSlugsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'allArticleSlugs', 'query', variables);
     },
-    articleForArticlePage(variables: ArticleForArticlePageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticleForArticlePageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ArticleForArticlePageQuery>(ArticleForArticlePageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articleForArticlePage', 'query', variables);
+    articleForArticlePage(variables: ArticleForArticlePageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ArticleForArticlePageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ArticleForArticlePageQuery>({ document: ArticleForArticlePageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'articleForArticlePage', 'query', variables);
     },
-    articleForInnerEmbed(variables: ArticleForInnerEmbedQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticleForInnerEmbedQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ArticleForInnerEmbedQuery>(ArticleForInnerEmbedDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articleForInnerEmbed', 'query', variables);
+    articleForInnerEmbed(variables: ArticleForInnerEmbedQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ArticleForInnerEmbedQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ArticleForInnerEmbedQuery>({ document: ArticleForInnerEmbedDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'articleForInnerEmbed', 'query', variables);
     },
-    articlesWithTag(variables: ArticlesWithTagQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticlesWithTagQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ArticlesWithTagQuery>(ArticlesWithTagDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articlesWithTag', 'query', variables);
+    articlesWithTag(variables: ArticlesWithTagQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ArticlesWithTagQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ArticlesWithTagQuery>({ document: ArticlesWithTagDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'articlesWithTag', 'query', variables);
     },
-    articleMeadata(variables: ArticleMeadataQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticleMeadataQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ArticleMeadataQuery>(ArticleMeadataDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articleMeadata', 'query', variables);
+    articleMeadata(variables: ArticleMeadataQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ArticleMeadataQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ArticleMeadataQuery>({ document: ArticleMeadataDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'articleMeadata', 'query', variables);
     },
-    allTags(variables?: AllTagsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllTagsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<AllTagsQuery>(AllTagsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allTags', 'query', variables);
+    allTags(variables?: AllTagsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<AllTagsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<AllTagsQuery>({ document: AllTagsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'allTags', 'query', variables);
     },
-    allTagSlugs(variables?: AllTagSlugsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllTagSlugsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<AllTagSlugsQuery>(AllTagSlugsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allTagSlugs', 'query', variables);
+    allTagSlugs(variables?: AllTagSlugsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<AllTagSlugsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<AllTagSlugsQuery>({ document: AllTagSlugsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'allTagSlugs', 'query', variables);
     },
-    tag(variables: TagQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<TagQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<TagQuery>(TagDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'tag', 'query', variables);
+    tag(variables: TagQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<TagQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<TagQuery>({ document: TagDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'tag', 'query', variables);
     },
-    sitemapInfo(variables?: SitemapInfoQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<SitemapInfoQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<SitemapInfoQuery>(SitemapInfoDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'sitemapInfo', 'query', variables);
+    sitemapInfo(variables?: SitemapInfoQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<SitemapInfoQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<SitemapInfoQuery>({ document: SitemapInfoDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'sitemapInfo', 'query', variables);
     },
-    contentsGitHash(variables?: ContentsGitHashQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ContentsGitHashQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ContentsGitHashQuery>(ContentsGitHashDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'contentsGitHash', 'query', variables);
+    contentsGitHash(variables?: ContentsGitHashQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ContentsGitHashQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ContentsGitHashQuery>({ document: ContentsGitHashDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'contentsGitHash', 'query', variables);
     },
-    shortProfile(variables?: ShortProfileQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ShortProfileQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ShortProfileQuery>(ShortProfileDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'shortProfile', 'query', variables);
+    shortProfile(variables?: ShortProfileQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ShortProfileQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ShortProfileQuery>({ document: ShortProfileDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'shortProfile', 'query', variables);
     },
-    profile(variables?: ProfileQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ProfileQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ProfileQuery>(ProfileDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'profile', 'query', variables);
+    profile(variables?: ProfileQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ProfileQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ProfileQuery>({ document: ProfileDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'profile', 'query', variables);
     }
   };
 }

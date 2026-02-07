@@ -4,17 +4,14 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
-'use client';
-
-import {css} from './ArticlesTable.css';
+import {css} from './MonthliesTable.css';
 import React from 'react';
 import Link from 'next/link';
 import {IndexPageQuery} from '@utils/graphql';
-import VisibilityIcon from '@assets/visibility.svg';
 import LinkIcon from '@assets/link.svg';
 
 type Props = {
-  articles: IndexPageQuery['allArticles'];
+  monthlies: IndexPageQuery['allMonthlies'];
 };
 
 function datetime(s: string) {
@@ -25,28 +22,28 @@ function datetime(s: string) {
   }
 }
 
-export function ArticlesTable(props: Props) {
+export function MonthliesTable(props: Props) {
   return (
     <>
       <table className={css.table}>
         <thead>
           <tr>
             <th></th>
-            <th></th>
-            <th>title</th>
-            <th>slug</th>
-            <th className={css.datetime}>updated_at</th>
-            <th className={css.datetime}>published_at</th>
+            <th>year/month</th>
+            <th>updated_at</th>
+            <th>published_at</th>
           </tr>
         </thead>
         <tbody>
-          {props.articles.map(e => {
+          {props.monthlies.map(e => {
+            const year_str = e.year.toString();
+            const month_str = e.month.toString().padStart(2, '0');
             return (
-              <tr key={e.slug}>
+              <tr key={year_str + month_str}>
                 <td>
                   <a
                     className={css.icon}
-                    href={`https://watasuke.net/blog/article/${e.slug}/`}
+                    href={`https://watasuke.net/blog/monthly/${year_str}/${month_str}`}
                     target='_blank'
                     rel='nofollow noopener noreferrer'
                   >
@@ -54,16 +51,12 @@ export function ArticlesTable(props: Props) {
                   </a>
                 </td>
                 <td>
-                  <Link href={`/editor/${e.slug}/preview`} className={css.icon}>
-                    <VisibilityIcon />
+                  <Link href={`/editor/monthly/${year_str}/${month_str}`}>
+                    {year_str}/{month_str}
                   </Link>
                 </td>
-                <td className={css.title}>
-                  <Link href={`/editor/${e.slug}`}>{e.title}</Link>
-                </td>
-                <td className={css.slug}>{e.slug}</td>
-                <td className={css.datetime}>{datetime(e.updatedAt)}</td>
-                <td className={css.datetime}>{datetime(e.publishedAt)}</td>
+                <td>{datetime(e.updatedAt)}</td>
+                <td>{datetime(e.publishedAt)}</td>
               </tr>
             );
           })}

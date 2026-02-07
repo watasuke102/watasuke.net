@@ -37,14 +37,28 @@ export type ArticleFilter = {
   tags?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
+export type Monthly = {
+  __typename?: 'Monthly';
+  body: Scalars['String']['output'];
+  month: Scalars['Int']['output'];
+  publishedAt: Scalars['String']['output'];
+  tldr: Scalars['String']['output'];
+  updatedAt: Scalars['String']['output'];
+  year: Scalars['Int']['output'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   newArticle: Scalars['String']['output'];
+  newMonthly: Scalars['String']['output'];
   newTag: Scalars['String']['output'];
   publishArticle: Scalars['String']['output'];
+  publishMonthly: Scalars['String']['output'];
   renewArticle: Scalars['String']['output'];
+  renewMonthly: Scalars['String']['output'];
   renewProfile: Scalars['String']['output'];
   updateArticle: Scalars['String']['output'];
+  updateMonthly: Scalars['String']['output'];
   updateProfile: Scalars['String']['output'];
 };
 
@@ -52,6 +66,12 @@ export type Mutation = {
 export type MutationNewArticleArgs = {
   slug: Scalars['String']['input'];
   title: Scalars['String']['input'];
+};
+
+
+export type MutationNewMonthlyArgs = {
+  month: Scalars['Int']['input'];
+  year: Scalars['Int']['input'];
 };
 
 
@@ -67,9 +87,23 @@ export type MutationPublishArticleArgs = {
 };
 
 
+export type MutationPublishMonthlyArgs = {
+  month: Scalars['Int']['input'];
+  shouldCommitAndPush: Scalars['Boolean']['input'];
+  year: Scalars['Int']['input'];
+};
+
+
 export type MutationRenewArticleArgs = {
   commitMessage: Scalars['String']['input'];
   slug: Scalars['String']['input'];
+};
+
+
+export type MutationRenewMonthlyArgs = {
+  commitMessage: Scalars['String']['input'];
+  month: Scalars['Int']['input'];
+  year: Scalars['Int']['input'];
 };
 
 
@@ -88,6 +122,14 @@ export type MutationUpdateArticleArgs = {
 };
 
 
+export type MutationUpdateMonthlyArgs = {
+  body: Scalars['String']['input'];
+  month: Scalars['Int']['input'];
+  tldr: Scalars['String']['input'];
+  year: Scalars['Int']['input'];
+};
+
+
 export type MutationUpdateProfileArgs = {
   profile: Scalars['String']['input'];
 };
@@ -101,10 +143,12 @@ export type Neighbor = {
 export type Query = {
   __typename?: 'Query';
   allArticles: Array<Article>;
+  allMonthlies: Array<Monthly>;
   allPublicArticles: Array<Article>;
   allTags: Array<Tag>;
   article?: Maybe<Article>;
   contentsGitHeadHash: Scalars['String']['output'];
+  monthly?: Maybe<Monthly>;
   neighbors: Neighbor;
   sitedata: Sitedata;
   tag?: Maybe<Tag>;
@@ -123,6 +167,12 @@ export type QueryAllPublicArticlesArgs = {
 
 export type QueryArticleArgs = {
   slug: Scalars['String']['input'];
+};
+
+
+export type QueryMonthlyArgs = {
+  month: Scalars['Int']['input'];
+  year: Scalars['Int']['input'];
 };
 
 
@@ -147,10 +197,10 @@ export type Tag = {
   slug: Scalars['String']['output'];
 };
 
-export type AllArticlesQueryVariables = Exact<{ [key: string]: never; }>;
+export type IndexPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllArticlesQuery = { __typename?: 'Query', allArticles: Array<{ __typename?: 'Article', slug: string, title: string, isFavorite: boolean, publishedAt: string, updatedAt: string, isPublished: boolean }> };
+export type IndexPageQuery = { __typename?: 'Query', allArticles: Array<{ __typename?: 'Article', slug: string, title: string, isFavorite: boolean, publishedAt: string, updatedAt: string, isPublished: boolean }>, allMonthlies: Array<{ __typename?: 'Monthly', year: number, month: number, updatedAt: string, publishedAt: string }> };
 
 export type ArticleEditPageQueryVariables = Exact<{
   slug: Scalars['String']['input'];
@@ -170,6 +220,14 @@ export type AllTagsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type AllTagsQuery = { __typename?: 'Query', allTags: Array<{ __typename?: 'Tag', slug: string, name: string }> };
+
+export type MonthlyEditPageQueryVariables = Exact<{
+  year: Scalars['Int']['input'];
+  month: Scalars['Int']['input'];
+}>;
+
+
+export type MonthlyEditPageQuery = { __typename?: 'Query', monthly?: { __typename?: 'Monthly', year: number, month: number, tldr: string, body: string, updatedAt: string, publishedAt: string } | null };
 
 export type ProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -220,6 +278,42 @@ export type RenewArticleMutationVariables = Exact<{
 
 export type RenewArticleMutation = { __typename?: 'Mutation', renewArticle: string };
 
+export type NewMonthlyMutationVariables = Exact<{
+  year: Scalars['Int']['input'];
+  month: Scalars['Int']['input'];
+}>;
+
+
+export type NewMonthlyMutation = { __typename?: 'Mutation', newMonthly: string };
+
+export type UpdateMonthlyMutationVariables = Exact<{
+  year: Scalars['Int']['input'];
+  month: Scalars['Int']['input'];
+  tldr: Scalars['String']['input'];
+  body: Scalars['String']['input'];
+}>;
+
+
+export type UpdateMonthlyMutation = { __typename?: 'Mutation', updateMonthly: string };
+
+export type PublishMonthlyMutationVariables = Exact<{
+  year: Scalars['Int']['input'];
+  month: Scalars['Int']['input'];
+  should_commit_and_push: Scalars['Boolean']['input'];
+}>;
+
+
+export type PublishMonthlyMutation = { __typename?: 'Mutation', publishMonthly: string };
+
+export type RenewMonthlyMutationVariables = Exact<{
+  year: Scalars['Int']['input'];
+  month: Scalars['Int']['input'];
+  commit_message: Scalars['String']['input'];
+}>;
+
+
+export type RenewMonthlyMutation = { __typename?: 'Mutation', renewMonthly: string };
+
 export type UpdateProfileMutationVariables = Exact<{
   profile: Scalars['String']['input'];
 }>;
@@ -235,8 +329,8 @@ export type RenewProfileMutationVariables = Exact<{
 export type RenewProfileMutation = { __typename?: 'Mutation', renewProfile: string };
 
 
-export const AllArticlesDocument = gql`
-    query allArticles {
+export const IndexPageDocument = gql`
+    query indexPage {
   allArticles {
     slug
     title
@@ -244,6 +338,12 @@ export const AllArticlesDocument = gql`
     publishedAt
     updatedAt
     isPublished
+  }
+  allMonthlies {
+    year
+    month
+    updatedAt
+    publishedAt
   }
 }
     `;
@@ -287,6 +387,18 @@ export const AllTagsDocument = gql`
   }
 }
     `;
+export const MonthlyEditPageDocument = gql`
+    query monthlyEditPage($year: Int!, $month: Int!) {
+  monthly(year: $year, month: $month) {
+    year
+    month
+    tldr
+    body
+    updatedAt
+    publishedAt
+  }
+}
+    `;
 export const ProfileDocument = gql`
     query profile {
   sitedata {
@@ -326,6 +438,30 @@ export const RenewArticleDocument = gql`
   renewArticle(slug: $slug, commitMessage: $commit_message)
 }
     `;
+export const NewMonthlyDocument = gql`
+    mutation newMonthly($year: Int!, $month: Int!) {
+  newMonthly(year: $year, month: $month)
+}
+    `;
+export const UpdateMonthlyDocument = gql`
+    mutation updateMonthly($year: Int!, $month: Int!, $tldr: String!, $body: String!) {
+  updateMonthly(year: $year, month: $month, tldr: $tldr, body: $body)
+}
+    `;
+export const PublishMonthlyDocument = gql`
+    mutation publishMonthly($year: Int!, $month: Int!, $should_commit_and_push: Boolean!) {
+  publishMonthly(
+    year: $year
+    month: $month
+    shouldCommitAndPush: $should_commit_and_push
+  )
+}
+    `;
+export const RenewMonthlyDocument = gql`
+    mutation renewMonthly($year: Int!, $month: Int!, $commit_message: String!) {
+  renewMonthly(year: $year, month: $month, commitMessage: $commit_message)
+}
+    `;
 export const UpdateProfileDocument = gql`
     mutation updateProfile($profile: String!) {
   updateProfile(profile: $profile)
@@ -344,41 +480,56 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    allArticles(variables?: AllArticlesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllArticlesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<AllArticlesQuery>(AllArticlesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allArticles', 'query', variables);
+    indexPage(variables?: IndexPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<IndexPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<IndexPageQuery>({ document: IndexPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'indexPage', 'query', variables);
     },
-    articleEditPage(variables: ArticleEditPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticleEditPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ArticleEditPageQuery>(ArticleEditPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articleEditPage', 'query', variables);
+    articleEditPage(variables: ArticleEditPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ArticleEditPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ArticleEditPageQuery>({ document: ArticleEditPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'articleEditPage', 'query', variables);
     },
-    articlePreviewPage(variables: ArticlePreviewPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ArticlePreviewPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ArticlePreviewPageQuery>(ArticlePreviewPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'articlePreviewPage', 'query', variables);
+    articlePreviewPage(variables: ArticlePreviewPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ArticlePreviewPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ArticlePreviewPageQuery>({ document: ArticlePreviewPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'articlePreviewPage', 'query', variables);
     },
-    allTags(variables?: AllTagsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AllTagsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<AllTagsQuery>(AllTagsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'allTags', 'query', variables);
+    allTags(variables?: AllTagsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<AllTagsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<AllTagsQuery>({ document: AllTagsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'allTags', 'query', variables);
     },
-    profile(variables?: ProfileQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ProfileQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ProfileQuery>(ProfileDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'profile', 'query', variables);
+    monthlyEditPage(variables: MonthlyEditPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<MonthlyEditPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<MonthlyEditPageQuery>({ document: MonthlyEditPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'monthlyEditPage', 'query', variables);
     },
-    newTag(variables: NewTagMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<NewTagMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<NewTagMutation>(NewTagDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'newTag', 'mutation', variables);
+    profile(variables?: ProfileQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ProfileQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ProfileQuery>({ document: ProfileDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'profile', 'query', variables);
     },
-    newArticle(variables: NewArticleMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<NewArticleMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<NewArticleMutation>(NewArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'newArticle', 'mutation', variables);
+    newTag(variables: NewTagMutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<NewTagMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<NewTagMutation>({ document: NewTagDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'newTag', 'mutation', variables);
     },
-    updateArticle(variables: UpdateArticleMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<UpdateArticleMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpdateArticleMutation>(UpdateArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'updateArticle', 'mutation', variables);
+    newArticle(variables: NewArticleMutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<NewArticleMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<NewArticleMutation>({ document: NewArticleDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'newArticle', 'mutation', variables);
     },
-    publishArticle(variables: PublishArticleMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<PublishArticleMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<PublishArticleMutation>(PublishArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'publishArticle', 'mutation', variables);
+    updateArticle(variables: UpdateArticleMutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<UpdateArticleMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<UpdateArticleMutation>({ document: UpdateArticleDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'updateArticle', 'mutation', variables);
     },
-    renewArticle(variables: RenewArticleMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<RenewArticleMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<RenewArticleMutation>(RenewArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'renewArticle', 'mutation', variables);
+    publishArticle(variables: PublishArticleMutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<PublishArticleMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PublishArticleMutation>({ document: PublishArticleDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'publishArticle', 'mutation', variables);
     },
-    updateProfile(variables: UpdateProfileMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<UpdateProfileMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpdateProfileMutation>(UpdateProfileDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'updateProfile', 'mutation', variables);
+    renewArticle(variables: RenewArticleMutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<RenewArticleMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<RenewArticleMutation>({ document: RenewArticleDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'renewArticle', 'mutation', variables);
     },
-    renewProfile(variables: RenewProfileMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<RenewProfileMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<RenewProfileMutation>(RenewProfileDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'renewProfile', 'mutation', variables);
+    newMonthly(variables: NewMonthlyMutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<NewMonthlyMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<NewMonthlyMutation>({ document: NewMonthlyDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'newMonthly', 'mutation', variables);
+    },
+    updateMonthly(variables: UpdateMonthlyMutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<UpdateMonthlyMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<UpdateMonthlyMutation>({ document: UpdateMonthlyDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'updateMonthly', 'mutation', variables);
+    },
+    publishMonthly(variables: PublishMonthlyMutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<PublishMonthlyMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PublishMonthlyMutation>({ document: PublishMonthlyDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'publishMonthly', 'mutation', variables);
+    },
+    renewMonthly(variables: RenewMonthlyMutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<RenewMonthlyMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<RenewMonthlyMutation>({ document: RenewMonthlyDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'renewMonthly', 'mutation', variables);
+    },
+    updateProfile(variables: UpdateProfileMutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<UpdateProfileMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<UpdateProfileMutation>({ document: UpdateProfileDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'updateProfile', 'mutation', variables);
+    },
+    renewProfile(variables: RenewProfileMutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<RenewProfileMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<RenewProfileMutation>({ document: RenewProfileDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'renewProfile', 'mutation', variables);
     }
   };
 }
