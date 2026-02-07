@@ -41,15 +41,13 @@ export default async function Blog() {
         </Link>
       </div>
 
-      <h2>月報</h2>
+      <h2 className={css.heading}>月報</h2>
       <MonthlyTable monthlies={allMonthlies} />
 
-      <h2>タグ一覧</h2>
+      <h2 className={css.heading}>タグ一覧</h2>
       <AllTagList />
 
-      <hr />
-
-      <h2>記事一覧</h2>
+      <h2 className={css.heading}>記事一覧</h2>
       <div className={css.container}>
         <ArticleList list={allPublicArticles} />
       </div>

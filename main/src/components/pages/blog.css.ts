@@ -15,6 +15,14 @@ export const container = style({
 
 export const page_title = style({
   display: 'inline',
+  paddingLeft: 8,
+  borderLeft: `8px solid ${color.p0}`,
+  borderRadius: 4,
+});
+
+export const heading = style({
+  marginTop: 16,
+  borderBottom: `3px solid ${color.p0}`,
 });
 
 export const feed_icon = style({
