@@ -129,8 +129,8 @@ query tag($slug: String!) {
   }
 }
 
-query allMonthlies {
-  allPublicMonthlies {
+query allMonthlies($year: Int) {
+  allPublicMonthlies(year: $year) {
     year
     month
     tldr

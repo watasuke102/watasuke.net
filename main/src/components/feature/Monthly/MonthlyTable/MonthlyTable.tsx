@@ -14,16 +14,16 @@ import {AllMonthliesQuery} from '@utils/graphql';
 
 type Props = {
   monthlies: AllMonthliesQuery['allPublicMonthlies'];
+  year?: number;
 };
 
 export function MonthlyTable(props: Props) {
-  const [year, set_year] = React.useState(2026);
+  const [year, set_year] = React.useState(props.year ?? 2026);
 
   const per_year = Object.groupBy(props.monthlies, e => e.year);
   const years = Object.keys(per_year)
     .map(Number)
     .sort((a, b) => b - a);
-
   return (
     <div className={css.root}>
       {years.length > 1 && (

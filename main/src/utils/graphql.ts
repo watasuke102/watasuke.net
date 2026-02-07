@@ -273,7 +273,9 @@ export type TagQueryVariables = Exact<{
 
 export type TagQuery = { __typename?: 'Query', tag?: { __typename?: 'Tag', slug: string, name: string } | null };
 
-export type AllMonthliesQueryVariables = Exact<{ [key: string]: never; }>;
+export type AllMonthliesQueryVariables = Exact<{
+  year?: InputMaybe<Scalars['Int']['input']>;
+}>;
 
 
 export type AllMonthliesQuery = { __typename?: 'Query', allPublicMonthlies: Array<{ __typename?: 'Monthly', year: number, month: number, tldr: string, publishedAt: string }> };
@@ -452,8 +454,8 @@ export const TagDocument = gql`
 }
     `;
 export const AllMonthliesDocument = gql`
-    query allMonthlies {
-  allPublicMonthlies {
+    query allMonthlies($year: Int) {
+  allPublicMonthlies(year: $year) {
     year
     month
     tldr
