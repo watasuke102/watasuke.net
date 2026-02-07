@@ -34,10 +34,10 @@ export default async function Top() {
   }
   return (
     <div className={css.container}>
-      <h2>Sitedata</h2>
+      <h2 className={css.heading}>Sitedata</h2>
       <Link href='/editor/profile'>Edit profile</Link>
       <hr />
-      <h2>Article</h2>
+      <h2 className={css.heading}>Article</h2>
       <NewArticle />
       <ArticlesTable articles={data.allArticles.filter(e => !e.isPublished)} />
       <h3>Published</h3>
