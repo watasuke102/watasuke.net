@@ -25,7 +25,7 @@ export function MonthlyTable(props: Props) {
     .sort((a, b) => b - a);
 
   return (
-    <div>
+    <div className={css.root}>
       {years.length > 1 && (
         <div className={css.header}>
           {years.map(y => (

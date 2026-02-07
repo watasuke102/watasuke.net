@@ -7,6 +7,10 @@
 import {style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/src/css/color';
 
+export const root = style({
+  marginTop: 12,
+});
+
 export const header = style({
   display: 'flex',
   gap: '8px',
@@ -23,7 +27,7 @@ export const header_button = style({
 export const header_button_selected = style({
   color: color.bg,
   backgroundColor: color.p0,
-  border: 'none',
+  borderColor: 'transparent',
 });
 
 export const container = style({
