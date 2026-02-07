@@ -154,7 +154,7 @@ pub fn publish(
   // stage monthly/<year> dir, it may contains img/ directory
   git::Repo::open(contents_path)?
     .stage(dir.as_path())?
-    .commit(&format!("add monthly {}/{}", year, month))?
+    .commit(&format!("add: monthly {}/{}", year, month))?
     .push()?;
 
   Ok(())
