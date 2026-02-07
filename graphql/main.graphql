@@ -134,6 +134,7 @@ query allMonthlies {
     year
     month
     tldr
+    publishedAt
   }
 }
 query monthlyPage($year: Int!, $month: Int!) {

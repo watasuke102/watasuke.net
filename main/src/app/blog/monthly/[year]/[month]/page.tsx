@@ -7,7 +7,6 @@
 import {apiUrl} from '@watasuke.net/config/config';
 import * as css from '@feature/Article/Article.css';
 import Link from 'next/link';
-import {Breadcrumb} from '@common';
 import {redirect, RedirectType} from 'next/navigation';
 import {
   AdsInArticle,
@@ -22,6 +21,7 @@ import {TocInArticle} from '@feature/TableOfContents';
 import {ql} from '@utils/QL';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_metadata, JsonLd} from '@utils/Metadata';
+import {Breadcrumb} from '@common';
 import IconLeft from '@assets/icons/general/left.svg';
 
 type Props = {

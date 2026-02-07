@@ -4,12 +4,12 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import {Background, Breadcrumb} from '@common';
 import Link from 'next/link';
 import React from 'react';
 import {AdsInArticle} from '@watasuke.net/common';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template, JsonLd} from '@utils/Metadata';
+import {Background, Breadcrumb} from '@common';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Feed'}]);
 export const {viewport, metadata} = gen_template(
@@ -32,9 +32,13 @@ export default function About() {
         </h2>
         <span>プロフィール等のページ更新を購読できます</span>
         <h2>
-          <Link href='/feed/blog.xml'>ブログ記事</Link>
+          <Link href='/feed/blog.xml'>ブログ記事 (/blog/article)</Link>
         </h2>
         <span>投稿されたブログ記事を購読できます</span>
+        <h2>
+          <Link href='/feed/monthly.xml'>月報 (/blog/monthly)</Link>
+        </h2>
+        <span>投稿された月報を購読できます</span>
         <AdsInArticle />
       </main>
     </>

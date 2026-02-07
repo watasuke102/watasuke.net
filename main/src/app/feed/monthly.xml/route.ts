@@ -11,23 +11,22 @@ import {new_feed_obj} from '../common';
 export const dynamic = 'force-static';
 
 export async function GET() {
-  const {allPublicArticles} = await ql().allArticles();
+  const {allPublicMonthlies} = await ql().allMonthlies();
   const feed = new_feed_obj(
-    'ブログ - わたすけのへや',
-    'watasuke.net/blog/article の更新通知',
-    '/blog/article',
+    '月報 - わたすけのへや',
+    'watasuke.net/blog/monthly の更新通知',
+    '/blog/monthly',
   );
-  allPublicArticles.forEach(e => {
-    const link = config.site_url + '/blog/article/' + e.slug + '/';
+  allPublicMonthlies.forEach(e => {
+    const month_str = e.month.toString().padStart(2, '0');
+    const id = `${e.year}/${month_str}`;
+    const link = `${config.site_url}/blog/monthly/${id}/`;
     feed.addItem({
-      id: e.slug,
-      title: e.title,
+      id,
+      title: '月報：' + id,
       date: new Date(e.publishedAt),
       description: e.tldr + `<br><a href="${link}">続きを読む</a>`,
       link,
-      category: e.tags.map(e => {
-        return {name: e.name};
-      }),
     });
   });
 
