@@ -85,3 +85,7 @@ details[open] summary {
 details > * {
   margin-left: 10px;
 }
+
+li {
+  margin-block: 8px;
+}
