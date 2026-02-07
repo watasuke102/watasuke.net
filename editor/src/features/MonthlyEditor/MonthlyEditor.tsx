@@ -102,7 +102,12 @@ export function MonthlyEditor(props: Props) {
         set_modify_status('none');
       }
     },
-    [is_published, should_commit_and_push],
+    [
+      is_published,
+      props.monthly.month,
+      props.monthly.year,
+      should_commit_and_push,
+    ],
   );
 
   return (
