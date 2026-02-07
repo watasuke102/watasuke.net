@@ -171,7 +171,6 @@ export function MonthlyEditor(props: Props) {
           }
           modify_handler={modify}
           //
-          is_image_uploader_enabled={true}
           image_post_base_url={`monthly/${year_str}/${month_str}`}
         />
       </MonacoContext.Provider>

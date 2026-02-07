@@ -166,7 +166,6 @@ export function Page(props: Props) {
           }
           modify_handler={modify}
           //
-          is_image_uploader_enabled={true}
           image_post_base_url={props.article.slug}
         />
       </MonacoContext.Provider>

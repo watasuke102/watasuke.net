@@ -21,15 +21,8 @@ type Props = {
   is_published: boolean;
   save_button_handler: () => void;
   publish_button_handler: () => void;
-} & (
-  | {
-      is_image_uploader_enabled: false;
-    }
-  | {
-      is_image_uploader_enabled: true;
-      image_post_base_url: string;
-    }
-);
+  image_post_base_url?: string;
+};
 
 export function Toolbox(props: Props) {
   const monaco = React.useContext(MonacoContext);
@@ -110,7 +103,6 @@ export function Toolbox(props: Props) {
     [monaco],
   );
 
-  // FIXME: collapsible is enough
   return (
     <>
       <Collapsible.Root open={open} onOpenChange={set_open}>
@@ -125,9 +117,9 @@ export function Toolbox(props: Props) {
           <div
             className={cs(
               css.buttons,
-              props.is_image_uploader_enabled
-                ? css.with_img_button
-                : css.without_img_button,
+              props.image_post_base_url === undefined
+                ? css.without_img_button
+                : css.with_img_button,
             )}
           >
             <Button
@@ -136,7 +128,7 @@ export function Toolbox(props: Props) {
               aria_label='publish'
               on_click={props.publish_button_handler}
             />
-            {props.is_image_uploader_enabled && (
+            {props.image_post_base_url !== undefined && (
               <Button
                 type='outlined'
                 icon={<AddPhotoIcon />}
@@ -161,23 +153,25 @@ export function Toolbox(props: Props) {
         )}
       </Collapsible.Root>
 
-      <Dialog
-        title='Upload the image'
-        desc='You can upload only png or jpeg'
-        is_open={is_img_uploader_open}
-        set_is_open={set_is_img_uploader_open}
-        on_close={() => {
-          monaco?.editor.getEditors()[0].focus();
-        }}
-      >
-        <ImageUploader
-          post_base_url={props.image_post_base_url}
-          on_complete={file_name => {
-            set_is_img_uploader_open(false);
-            insert_image_name(file_name);
+      {props.image_post_base_url !== undefined && (
+        <Dialog
+          title='Upload the image'
+          desc='You can upload only png or jpeg'
+          is_open={is_img_uploader_open}
+          set_is_open={set_is_img_uploader_open}
+          on_close={() => {
+            monaco?.editor.getEditors()[0].focus();
           }}
-        />
-      </Dialog>
+        >
+          <ImageUploader
+            post_base_url={props.image_post_base_url}
+            on_complete={file_name => {
+              set_is_img_uploader_open(false);
+              insert_image_name(file_name);
+            }}
+          />
+        </Dialog>
+      )}
     </>
   );
 }

@@ -45,16 +45,10 @@ type Props = {
   modify_handler: (commit_mes: string) => void;
   /// ``{prefix}: {scope}>{message}`
   commit_scope?: string;
-} & (
-  | {
-      is_image_uploader_enabled: false;
-    }
-  | {
-      is_image_uploader_enabled: true;
-      /// image will posted to /img/{image_post_base_url}/{file_name}
-      image_post_base_url: string;
-    }
-);
+
+  /// image will posted to /img/{image_post_base_url}/{file_name}
+  image_post_base_url?: string;
+};
 
 export function EditorPage(props: Props) {
   const [commit_mes_prefix, set_commit_mes_prefix] = React.useState('update');
@@ -108,7 +102,6 @@ export function EditorPage(props: Props) {
               publish_button_handler={() =>
                 props.set_modify_status('confirmation')
               }
-              is_image_uploader_enabled={props.is_image_uploader_enabled}
               image_post_base_url={props.image_post_base_url}
             />
           </div>
