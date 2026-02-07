@@ -90,7 +90,7 @@ export function BlogContent(props: Props) {
           </span>
         )}
       </nav>
-      <CommentArea />
+      <CommentArea category='Article' />
     </>
   );
 }

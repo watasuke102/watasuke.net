@@ -145,6 +145,7 @@ export type Query = {
   allArticles: Array<Article>;
   allMonthlies: Array<Monthly>;
   allPublicArticles: Array<Article>;
+  allPublicMonthlies: Array<Monthly>;
   allTags: Array<Tag>;
   article?: Maybe<Article>;
   contentsGitHeadHash: Scalars['String']['output'];
@@ -160,8 +161,18 @@ export type QueryAllArticlesArgs = {
 };
 
 
+export type QueryAllMonthliesArgs = {
+  year?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
 export type QueryAllPublicArticlesArgs = {
   filter?: InputMaybe<ArticleFilter>;
+};
+
+
+export type QueryAllPublicMonthliesArgs = {
+  year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -256,6 +267,19 @@ export type TagQueryVariables = Exact<{
 
 
 export type TagQuery = { __typename?: 'Query', tag?: { __typename?: 'Tag', slug: string, name: string } | null };
+
+export type AllMonthliesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AllMonthliesQuery = { __typename?: 'Query', allPublicMonthlies: Array<{ __typename?: 'Monthly', year: number, month: number, tldr: string }> };
+
+export type MonthlyPageQueryVariables = Exact<{
+  year: Scalars['Int']['input'];
+  month: Scalars['Int']['input'];
+}>;
+
+
+export type MonthlyPageQuery = { __typename?: 'Query', monthly?: { __typename?: 'Monthly', year: number, month: number, tldr: string, body: string } | null, allPublicMonthlies: Array<{ __typename?: 'Monthly', month: number }> };
 
 export type SitemapInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -401,6 +425,28 @@ export const TagDocument = gql`
   }
 }
     `;
+export const AllMonthliesDocument = gql`
+    query allMonthlies {
+  allPublicMonthlies {
+    year
+    month
+    tldr
+  }
+}
+    `;
+export const MonthlyPageDocument = gql`
+    query monthlyPage($year: Int!, $month: Int!) {
+  monthly(year: $year, month: $month) {
+    year
+    month
+    tldr
+    body
+  }
+  allPublicMonthlies(year: $year) {
+    month
+  }
+}
+    `;
 export const SitemapInfoDocument = gql`
     query sitemapInfo {
   allPublicArticles {
@@ -468,6 +514,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     tag(variables: TagQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<TagQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<TagQuery>({ document: TagDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'tag', 'query', variables);
+    },
+    allMonthlies(variables?: AllMonthliesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<AllMonthliesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<AllMonthliesQuery>({ document: AllMonthliesDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'allMonthlies', 'query', variables);
+    },
+    monthlyPage(variables: MonthlyPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<MonthlyPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<MonthlyPageQuery>({ document: MonthlyPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'monthlyPage', 'query', variables);
     },
     sitemapInfo(variables?: SitemapInfoQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<SitemapInfoQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<SitemapInfoQuery>({ document: SitemapInfoDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'sitemapInfo', 'query', variables);

@@ -109,6 +109,25 @@ query tag($slug: String!) {
   }
 }
 
+query allMonthlies {
+  allPublicMonthlies {
+    year
+    month
+    tldr
+  }
+}
+query monthlyPage($year: Int!, $month: Int!) {
+  monthly(year: $year, month: $month) {
+    year
+    month
+    tldr
+    body
+  }
+  allPublicMonthlies(year: $year) {
+    month
+  }
+}
+
 query sitemapInfo {
   allPublicArticles {
     slug

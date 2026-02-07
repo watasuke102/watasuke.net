@@ -56,7 +56,8 @@ type Query {
   neighbors(slug: String!): Neighbor!
   tag(slug: String!): Tag
   allTags: [Tag!]!
-  allMonthlies: [Monthly!]!
+  allPublicMonthlies(year: Int): [Monthly!]!
+  allMonthlies(year: Int): [Monthly!]!
   monthly(year: Int!, month: Int!): Monthly
   sitedata: Sitedata!
   contentsGitHeadHash: String!

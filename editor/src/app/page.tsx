@@ -8,10 +8,10 @@ import {css} from './index.css';
 import {ClientError, GraphQLClient} from 'graphql-request';
 import React from 'react';
 import Link from 'next/link';
+import {MonthlyEditor} from '@features/MonthlyEditor';
 import {getSdk} from '@utils/graphql';
 import {NewArticle} from './_components/NewArticle';
 import {ArticlesTable} from './_components/ArticlesTable';
-import {MonthlyEditor} from '@features/MonthlyEditor';
 import {MonthliesTable} from './_components/MonthliesTable';
 
 export const revalidate = 0;

@@ -20,6 +20,10 @@ export function TocInArticle(props: Props) {
   const [tocOpening, SetTocOpening] = React.useState(true);
   const should_reduce_motion = useReducedMotion();
 
+  if (props.headings.length === 0) {
+    return <></>;
+  }
+
   return (
     <nav className={css.container}>
       <AnimatePresence>

@@ -7,8 +7,8 @@
 import '@watasuke.net/common/src/css/base.css';
 import {GraphQLClient} from 'graphql-request';
 import React from 'react';
-import {getSdk} from '@utils/graphql';
 import {MonthlyEditor} from '@features/MonthlyEditor';
+import {getSdk} from '@utils/graphql';
 
 type Props = {
   params: Promise<{year: string; month: string}>;

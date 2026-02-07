@@ -14,8 +14,23 @@ pub fn get(contents_path: &String, year: i32, month: i32) -> anyhow::Result<Opti
       .cloned(),
   )
 }
-pub fn get_all(contents_path: &String) -> anyhow::Result<Vec<Monthly>> {
-  let mut monthlies: Vec<Monthly> = get_map_all(contents_path)?.into_values().collect();
+pub fn get_all(year: Option<i32>, contents_path: &String) -> anyhow::Result<Vec<Monthly>> {
+  let mut monthlies: Vec<Monthly> = if let Some(year) = year {
+    get_map_all(contents_path)?
+      .into_values()
+      .filter(|e| e.year() == year)
+      .collect()
+  } else {
+    get_map_all(contents_path)?.into_values().collect()
+  };
+  monthlies.sort();
+  Ok(monthlies)
+}
+pub fn get_published(year: Option<i32>, contents_path: &String) -> anyhow::Result<Vec<Monthly>> {
+  let mut monthlies: Vec<Monthly> = get_map_all(contents_path)?
+    .into_values()
+    .filter(|e| !e.published_at().is_empty() && year.map_or(true, |y| e.year() == y))
+    .collect();
   monthlies.sort();
   Ok(monthlies)
 }

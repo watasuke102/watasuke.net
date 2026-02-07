@@ -66,8 +66,23 @@ impl Query {
   fn all_tags(context: &Context) -> Vec<contents::tags::Tag> {
     usecase::tags::get_all(&context.config.contents_path)
   }
-  fn all_monthlies(context: &Context) -> juniper::FieldResult<Vec<contents::Monthly>> {
-    usecase::monthly::get_all(&context.config.contents_path).map_err(|err| {
+
+  fn all_public_monthlies(
+    year: Option<i32>,
+    context: &Context,
+  ) -> juniper::FieldResult<Vec<contents::Monthly>> {
+    usecase::monthly::get_published(year, &context.config.contents_path).map_err(|err| {
+      juniper::FieldError::new(
+        "usecase::monthly::get_published() failed",
+        graphql_value!(err.to_string()),
+      )
+    })
+  }
+  fn all_monthlies(
+    year: Option<i32>,
+    context: &Context,
+  ) -> juniper::FieldResult<Vec<contents::Monthly>> {
+    usecase::monthly::get_all(year, &context.config.contents_path).map_err(|err| {
       juniper::FieldError::new(
         "usecase::monthly::get_all() failed",
         graphql_value!(err.to_string()),
@@ -86,6 +101,7 @@ impl Query {
       )
     })
   }
+
   fn sitedata(context: &Context) -> juniper::FieldResult<sitedata::Sitedata> {
     match sitedata::read_sitedata(&context.config.contents_path) {
       Ok(sitedata) => Ok(sitedata),

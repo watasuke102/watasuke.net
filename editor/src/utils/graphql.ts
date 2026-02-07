@@ -145,6 +145,7 @@ export type Query = {
   allArticles: Array<Article>;
   allMonthlies: Array<Monthly>;
   allPublicArticles: Array<Article>;
+  allPublicMonthlies: Array<Monthly>;
   allTags: Array<Tag>;
   article?: Maybe<Article>;
   contentsGitHeadHash: Scalars['String']['output'];
@@ -160,8 +161,18 @@ export type QueryAllArticlesArgs = {
 };
 
 
+export type QueryAllMonthliesArgs = {
+  year?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
 export type QueryAllPublicArticlesArgs = {
   filter?: InputMaybe<ArticleFilter>;
+};
+
+
+export type QueryAllPublicMonthliesArgs = {
+  year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
