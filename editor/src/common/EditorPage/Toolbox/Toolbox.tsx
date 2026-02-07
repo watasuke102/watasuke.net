@@ -125,7 +125,7 @@ export function Toolbox(props: Props) {
           <div
             className={cs(
               css.buttons,
-              is_img_uploader_open
+              props.is_image_uploader_enabled
                 ? css.with_img_button
                 : css.without_img_button,
             )}
