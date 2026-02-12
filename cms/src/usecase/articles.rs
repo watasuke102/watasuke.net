@@ -249,7 +249,6 @@ pub fn publish(
   }
   let repo = crate::git::Repo::open(contents_path)?;
   repo
-    .stage(&old_path)?
     .stage(&new_path)?
     .commit(&format!("add: {}", slug))?
     .push()?;
