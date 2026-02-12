@@ -24,7 +24,6 @@
     "@vanilla-extract/next-plugin": "^2.4.14",
     "@watasuke.net/common": "^0.0.0",
     "@watasuke.net/config": "^0.0.0",
-    "axios": "^1.12.2",
     "graphql-request": "7.3.0",
     "graphql-tag": "^2.12.6",
     "monaco-editor": "^0.54.0",

@@ -78,7 +78,12 @@ export function ImageUploader(props: Props) {
 
   if (image_info) {
     return (
-      <form onSubmit={upload}>
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          upload();
+        }}
+      >
         <img className={css.img} src={image_info.url} alt='' />
         <div className={css.editor}>
           <input
@@ -113,13 +118,17 @@ export function ImageUploader(props: Props) {
             type='contained'
             text='Upload'
             aria_label='upload'
-            on_click={upload}
+            // clicking this button submits the form
+            // because buttons inside form are assumed as type='submit'
+            on_click={() => undefined}
             disabled={image_name === '' || image_ext === ''}
           />
           <Button
             type='text'
             text='Discard and start over'
             aria_label='discard and start over'
+            // upload() is not called on pushing this button
+            // because calling this disposes form element (maybe)
             on_click={() => set_image_info(undefined)}
           />
         </div>
