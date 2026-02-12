@@ -83,7 +83,7 @@ export function Page(props: Props) {
           is_published={true}
           //
           header_url='https://watasuke.net/profile/'
-          header_text={profile}
+          header_text='profile'
           //
           modify_status={modify_status}
           set_modify_status={set_modify_status}
