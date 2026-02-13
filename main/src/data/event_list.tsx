@@ -579,7 +579,7 @@ I introduced about the programming language Idris in the Lightning Talk event he
           date: {month: 11, day: 28},
         },
         category: 'Talk',
-        title: 'Terminal Night #1'
+        title: 'Terminal Night #1',
         subtitle: '"作業環境の可搬性を高めるCLI"',
         body: ja
           ? `
