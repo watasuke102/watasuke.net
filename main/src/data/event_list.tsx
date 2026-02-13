@@ -573,6 +573,46 @@ I introduced about the programming language Idris in the Lightning Talk event he
 [Slides](https://docs.google.com/presentation/d/1j7JZ-Ca0xbWkfmPn7cBuTCUu_kv4pZ8MJizq6V7ts0M/edit?usp=sharing)
 `,
       },
+      {
+        period: {
+          kind: 'day',
+          date: {month: 11, day: 28},
+        },
+        category: 'Talk',
+        title: 'Terminal Night #1'
+        subtitle: '"作業環境の可搬性を高めるCLI"',
+        body: ja
+          ? `
+ターミナル・CLI環境に関連した知見を共有するイベント 「Terminal Night #1」 にて、「作業環境の可搬性を高めるCLI」というタイトルで発表を行いました。
+
+[スライド](https://docs.google.com/presentation/d/1X27AEzed67hrQ9imimVfisMGlsdr7D_dVjRN9dzYsCw/edit?usp=sharing)
+`
+          : `
+I talked about my CLI environment in the event "Terminal Night #1", which shares knowledge related to terminal and CLI environment.
+
+[Slides](https://docs.google.com/presentation/d/1X27AEzed67hrQ9imimVfisMGlsdr7D_dVjRN9dzYsCw/edit?usp=sharing)
+`,
+      },
+      {
+        period: {
+          kind: 'day',
+          date: {month: 2, day: 1},
+        },
+        category: 'Talk',
+        title: 'UNTIL. LT #0x09',
+        subtitle: 'LT "自宅サーバーでぜんぶやる"',
+        body: ja
+          ? `
+筑波大学の情報系技術者コミュニティが開催するイベント 「UNTIL. LT #0x09」 にて、「自宅サーバーでぜんぶやる」というタイトルで発表を行いました。
+
+[スライド](https://docs.google.com/presentation/d/19nq0H1IFbT0j4EghE3joi61npFyR981LDHHosvCBsrg/edit?usp=sharing)
+`
+          : `
+I talked what I do with my home server in the event "UNTIL. LT #0x09", held by the information technology community of University of Tsukuba.
+
+[Slides](https://docs.google.com/presentation/d/19nq0H1IFbT0j4EghE3joi61npFyR981LDHHosvCBsrg/edit?usp=sharing)
+`,
+      },
     ],
   };
 }
