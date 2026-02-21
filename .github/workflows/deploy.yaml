@@ -13,13 +13,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Ensure rsync
-        run: sudo apt-get update && sudo apt-get install -y rsync
-
       - name: Checkout
         uses: actions/checkout@v6
         with:
           ref: main
+
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            **/node_modules
+            ~/.ssh
+            ~/.cargo
+            ~/.rustup
+          key: ${{ hashFiles('~/.rustup/**/*', '**/Cargo.lock', '**/package-lock.json', '.ssh/*') }}
+
+      - name: Ensure rsync
+        run: sudo apt-get update && sudo apt-get install -y rsync
 
       - name: Use Node.js
         uses: actions/setup-node@v3
@@ -50,16 +60,6 @@ jobs:
           echo "$CONFIG_TS" > config/config.ts
           # create cms config
           cp cms/config-sample.toml cms/config.toml
-
-      - name: Cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            **/node_modules
-            ~/.ssh
-            ~/.cargo
-            ~/.rustup
-          key: ${{ runner.os }}-${{ hashFiles('~/.rustup/**/*', '**/Cargo.lock', '**/package-lock.json', '.ssh/*') }}
 
       - name: Clone contents repository
         env:
