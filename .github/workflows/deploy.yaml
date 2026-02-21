@@ -22,10 +22,11 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
+            **/node_modules
             ~/.ssh
             ~/.cargo
             ~/.rustup
-          key: ${{ hashFiles('~/.rustup/**/*', '**/Cargo.lock', '.ssh/*') }}
+          key: ${{ hashFiles('**/package-lock.json', ~/.rustup/**/*', '**/Cargo.lock', '.ssh/*') }}
 
       - name: Ensure rsync
         run: sudo apt-get update && sudo apt-get install -y rsync
@@ -65,7 +66,7 @@ jobs:
           GIT_SSH_COMMAND: 'ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=yes'
         run: |
           git clone --depth=1 git@github.com:watasuke102/contents.watasuke.net.git contents
-          echo ">> Clone finished; hash: $(git -C contents rev-parse HEAD)"
+          echo -e "\e[32mClone finished\e[m; hash: $(git -C contents rev-parse HEAD)"
 
       - name: Build cms
         working-directory: cms
@@ -87,4 +88,4 @@ jobs:
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
         run: |
           RSYNC_RSH="ssh -p ${DEPLOY_PORT:-22} -o StrictHostKeyChecking=yes -i ~/.ssh/id_rsa"
-          rsync -azv --checksum --delete -e "$RSYNC_RSH" "main/out/" "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}"
+          rsync -az --progress --checksum --delete -e "$RSYNC_RSH" "main/out/" "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}"
