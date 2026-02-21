@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Ensure rsync
-        run: sudo apt-get update && sudo apt-get install -y rsync
+      - name: Ensure tools
+        run: sudo apt-get update && sudo apt-get install -y git rsync
 
       - name: Checkout
         uses: actions/checkout@v6
@@ -51,11 +51,6 @@ jobs:
           # create cms config
           cp cms/config-sample.toml cms/config.toml
 
-      - name: Clone contents repository
-        run:
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=yes" \
-          git clone --depth=1 git@github.com:watasuke102/contents.watasuke.net.git contents
-
       - name: Cache
         uses: actions/cache@v4
         with:
@@ -65,6 +60,11 @@ jobs:
             ~/.cargo
             ~/.rustup
           key: ${{ runner.os }}-${{ hashFiles('~/.rustup/**/*', '**/Cargo.lock', '**/package-lock.json', '.ssh/*') }}
+
+      - name: Clone contents repository
+        run:
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=yes" \
+          git clone --depth=1 git@github.com:watasuke102/contents.watasuke.net.git contents
 
       - name: Build cms
         working-directory: cms
