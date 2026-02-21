@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Ensure tools
-        run: sudo apt-get update && sudo apt-get install -y git rsync
+      - name: Ensure rsync
+        run: sudo apt-get update && sudo apt-get install -y rsync
 
       - name: Checkout
         uses: actions/checkout@v6
@@ -62,9 +62,9 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('~/.rustup/**/*', '**/Cargo.lock', '**/package-lock.json', '.ssh/*') }}
 
       - name: Clone contents repository
-        run:
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=yes" \
-          git clone --depth=1 git@github.com:watasuke102/contents.watasuke.net.git contents
+        env:
+          GIT_SSH_COMMAND: 'ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=yes'
+        run: git clone --depth=1 git@github.com:watasuke102/contents.watasuke.net.git contents
 
       - name: Build cms
         working-directory: cms
