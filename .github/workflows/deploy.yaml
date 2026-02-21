@@ -1,0 +1,78 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  repository_dispatch:
+    types: [contents-updated]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ensure rsync
+        run: sudo apt-get update && sudo apt-get install -y rsync
+
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Use Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+
+      - name: Setup
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          CONFIG_TS: ${{ secrets.CONFIG_TS }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+        run: |
+          # setup SSH
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p ${DEPLOY_PORT:-22} ${DEPLOY_HOST} >> ~/.ssh/known_hosts
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          # Clone contents repository
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=yes" \
+            git clone --depth=1 git@github.com:watasuke102/contents.watasuke.net.git contents
+          # setup Node.js env
+          npm install
+          echo "$CONFIG_TS" > config/config.ts
+          # create cms config
+          cp cms/config-sample.toml cms/config.toml
+
+      - name: Build cms
+        working-directory: cms
+        run: cargo build --release
+
+      - name: Start cms
+        working-directory: cms
+        run: |
+          nohup ./target/release/cms &
+
+      - name: Build
+        run: npm -w main run build
+
+      - name: Rsync deploy
+        env:
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+        run: |
+          RSYNC_RSH="ssh -p ${DEPLOY_PORT:-22} -o StrictHostKeyChecking=yes -i ~/.ssh/id_rsa"
+          rsync -azv --checksum --delete -e "$RSYNC_RSH" "main/out/" "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}"
