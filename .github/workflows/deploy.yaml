@@ -27,12 +27,8 @@ jobs:
           node-version: 22
           cache: 'npm'
 
-      - name: Use Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          profile: minimal
-          override: true
+      - name: Use Rust nightly
+        run: rustup override set nightly
 
       - name: Setup
         env:
@@ -58,7 +54,7 @@ jobs:
 
       - name: Build cms
         working-directory: cms
-        run: cargo build --release
+        run: cargo build --quiet --release
 
       - name: Start cms
         working-directory: cms
