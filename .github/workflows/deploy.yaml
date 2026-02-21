@@ -52,6 +52,15 @@ jobs:
           # create cms config
           cp cms/config-sample.toml cms/config.toml
 
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            **/node_modules
+            ~/.cargo/git
+            ~/.cargo/registry
+          key: ${{ runner.os }}-${{ hashFiles('**/Cargo.lock', '**/package-lock.json') }}
+
       - name: Build cms
         working-directory: cms
         run: cargo build --quiet --release
