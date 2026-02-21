@@ -38,28 +38,33 @@ jobs:
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
         run: |
           # setup SSH
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p ${DEPLOY_PORT:-22} ${DEPLOY_HOST} >> ~/.ssh/known_hosts
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          # Clone contents repository
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=yes" \
-            git clone --depth=1 git@github.com:watasuke102/contents.watasuke.net.git contents
+          if [ ! -d ~/.ssh ]; then
+            mkdir -p ~/.ssh
+            echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
+            ssh-keyscan -p ${DEPLOY_PORT:-22} ${DEPLOY_HOST} >> ~/.ssh/known_hosts
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+          fi
           # setup Node.js env
           npm install
           echo "$CONFIG_TS" > config/config.ts
           # create cms config
           cp cms/config-sample.toml cms/config.toml
 
+      - name: Clone contents repository
+        run:
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=yes" \
+          git clone --depth=1 git@github.com:watasuke102/contents.watasuke.net.git contents
+
       - name: Cache
         uses: actions/cache@v4
         with:
           path: |
             **/node_modules
-            ~/.cargo/git
-            ~/.cargo/registry
-          key: ${{ runner.os }}-${{ hashFiles('**/Cargo.lock', '**/package-lock.json') }}
+            ~/.ssh
+            ~/.cargo
+            ~/.rustup
+          key: ${{ runner.os }}-${{ hashFiles('~/.rustup/**/*', '**/Cargo.lock', '**/package-lock.json', '.ssh/*') }}
 
       - name: Build cms
         working-directory: cms
