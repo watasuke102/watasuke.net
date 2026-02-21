@@ -12,6 +12,7 @@ import {getSdk} from '@utils/graphql';
 import {NewArticle} from './_components/NewArticle';
 import {ArticlesTable} from './_components/ArticlesTable';
 import {MonthliesTable} from './_components/MonthliesTable';
+import {NewMonthly} from './_components/NewMonthly';
 
 export const revalidate = 0;
 
@@ -39,6 +40,7 @@ export default async function Top() {
       <Link href='/editor/profile'>Edit profile</Link>
       <hr />
       <h2 className={css.heading}>Monthly</h2>
+      <NewMonthly />
       <MonthliesTable monthlies={data.allMonthlies} />
       <h2 className={css.heading}>Article</h2>
       <NewArticle />
