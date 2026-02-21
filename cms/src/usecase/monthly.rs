@@ -23,7 +23,11 @@ pub fn get_all(year: Option<i32>, contents_path: &String) -> anyhow::Result<Vec<
   } else {
     get_map_all(contents_path)?.into_values().collect()
   };
-  monthlies.sort();
+  monthlies.sort_by(|a, b| {
+    b.published_at()
+      .cmp(a.published_at())
+      .then_with(|| (b.year(), b.month()).cmp(&(a.year(), a.month())))
+  });
   Ok(monthlies)
 }
 pub fn get_published(year: Option<i32>, contents_path: &String) -> anyhow::Result<Vec<Monthly>> {
@@ -31,7 +35,11 @@ pub fn get_published(year: Option<i32>, contents_path: &String) -> anyhow::Resul
     .into_values()
     .filter(|e| !e.published_at().is_empty() && year.map_or(true, |y| e.year() == y))
     .collect();
-  monthlies.sort();
+  monthlies.sort_by(|a, b| {
+    b.published_at()
+      .cmp(a.published_at())
+      .then_with(|| (b.year(), b.month()).cmp(&(a.year(), a.month())))
+  });
   Ok(monthlies)
 }
 
