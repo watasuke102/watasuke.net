@@ -121,7 +121,20 @@ pub fn create(contents_path: &String, year: i32, month: i32) -> anyhow::Result<(
     updated_at:   util::now().format("%Y-%m-%dT%H:%M:%S").to_string(),
   };
 
-  std::fs::write(md_file, format!("{}\n\n", frontmatter))?;
+  let template_path = std::path::Path::new(contents_path)
+    .join("sitedata")
+    .join("monthly_template.md");
+
+  if !template_path.exists() {
+    std::fs::write(&template_path, "")?;
+  }
+
+  let body = match std::fs::read_to_string(&template_path) {
+    Ok(s) => s,
+    Err(e) => bail!("Failed to read the monthly template file: {:?}", e),
+  };
+
+  std::fs::write(md_file, format!("{}\n\n{}", frontmatter, body))?;
   Ok(())
 }
 
