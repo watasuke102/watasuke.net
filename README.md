@@ -18,7 +18,7 @@ monorepo by npm workspace
   - Next.js
 - cms
   - 記事およびプロフィール等の情報を管理するサーバーサイドソフトウェア
-  - Rust + Rocket + Juniper
+  - Rust + Axum + Juniper
 - editor
   - 記事を編集するページ
   - Next.js
