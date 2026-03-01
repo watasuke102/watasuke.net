@@ -7,11 +7,7 @@
 'use client';
 import Giscus from '@giscus/react';
 
-type Props = {
-  category: 'Article' | 'Monthly';
-};
-
-export function CommentArea(props: Props) {
+export function CommentArea() {
   return (
     <section>
       <h2>Comments</h2>
@@ -21,7 +17,7 @@ export function CommentArea(props: Props) {
       <Giscus
         repo='watasuke102/watasuke.net'
         repoId='MDEwOlJlcG9zaXRvcnkzNTc4OTQwNzk='
-        category={props.category}
+        category='Article'
         categoryId='DIC_kwDOFVUHv84CgSPQ'
         mapping='og:title'
         strict='0'

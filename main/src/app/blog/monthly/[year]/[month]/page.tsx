@@ -105,7 +105,7 @@ export default async function Page(props: Props) {
             inner_embed_card={InnerEmbedCard}
           />
           <AdsInArticle />
-          <CommentArea category='Monthly' />
+          <CommentArea />
         </article>
         <aside className={css.side}>
           <ProfileCard />
