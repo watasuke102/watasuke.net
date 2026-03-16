@@ -34,6 +34,9 @@ function soundcloud(id: number) {
     src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${id}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
   ></iframe>`;
 }
+function soundcloud_with_ja_en(id: number, ja: string, en: string) {
+  return ja_en(`${ja}\n\n${soundcloud(id)}`, `${en}\n\n${soundcloud(id)}`);
+}
 
 export type WorkListKey = keyof typeof work_list;
 export const work_list = {
@@ -291,6 +294,28 @@ ${soundcloud(1670022474)}
 `,
     ),
   },
+  chick_gazing_castle_town: {
+    title: () => '雛鳥が眼下に収む城下町',
+    category: ['Pickup', 'Music'],
+    img: null,
+    tags: [{kind: 'tool', name: 'Studio One'}],
+    desc_md: soundcloud_with_ja_en(
+      2281401698,
+      'Tsukuba DTM Lab. による EP [exp.97「夏の終わり、あの道の先」](https://tsukubadtm.bandcamp.com/album/exp-97) に収録されている曲です。',
+      'The music included in EP [exp.97「夏の終わり、あの道の先」](https://tsukubadtm.bandcamp.com/album/exp-97) from Tsukuba DTM Lab.',
+    ),
+  },
+  september_coast: {
+    title: () => '夜長月の海岸',
+    category: ['Pickup', 'Music'],
+    img: null,
+    tags: [{kind: 'tool', name: 'Studio One'}],
+    desc_md: soundcloud_with_ja_en(
+      2236649258,
+      'Tsukuba DTM Lab. による EP [exp.98「夏の終わり、夏の終わり、夏の終わり、夏の終わり」](https://tsukubadtm.bandcamp.com/album/exp-98) に収録されている曲です。',
+      'The music included in EP [exp.98「夏の終わり、夏の終わり、夏の終わり、夏の終わり」](https://tsukubadtm.bandcamp.com/album/exp-98) from Tsukuba DTM Lab.',
+    ),
+  },
   water_city_undersea_cave: {
     title: () => '水中都市と海底洞窟',
     category: ['Pickup', 'Music'],
@@ -298,27 +323,45 @@ ${soundcloud(1670022474)}
     tags: [{kind: 'tool', name: 'Cubase'}],
     desc_md: () => soundcloud(1339266721),
   },
-  corridor_drive: {
-    title: () => 'CorridorDrive',
-    category: ['Pickup', 'Music'],
-    img: null,
-    tags: [{kind: 'tool', name: 'Cubase'}],
-    desc_md: () => soundcloud(1393272700),
-  },
   // --- end of pickup -----------------------------------------
+  crystalized_cosmos: {
+    title: () => 'CrystalizedCosmos',
+    category: ['Music'],
+    img: null,
+    tags: [{kind: 'tool', name: 'Studio One'}],
+    desc_md: ja_en(
+      '六大学合同コンピレーション [「Frontier」](https://6univ2026.propromp.workers.dev/) に収録されている曲です。',
+      'The music included in the compilation album ["Frontier"](https://6univ2026.propromp.workers.dev/).',
+    ),
+  },
   place_to_go_back_is_always: {
     title: () => '帰る場所はいつも',
     category: ['Music'],
     img: null,
     tags: [{kind: 'tool', name: 'Studio One'}],
-    desc_md: () => soundcloud(2165856282),
+    desc_md: soundcloud_with_ja_en(
+      2165856282,
+      'Tsukuba DTM Lab. による EP [exp.97「夏の終わり、あの道の先」](https://tsukubadtm.bandcamp.com/album/exp-97) に収録されている曲です。',
+      'The music included in EP [exp.97「夏の終わり、あの道の先」](https://tsukubadtm.bandcamp.com/album/exp-97) from Tsukuba DTM Lab.',
+    ),
   },
   starbase: {
     title: () => 'starbase',
     category: ['Music'],
     img: null,
     tags: [{kind: 'tool', name: 'Studio One'}],
-    desc_md: () => soundcloud(2148151380),
+    desc_md: soundcloud_with_ja_en(
+      2148151380,
+      "Tsukuba DTM Lab. による EP [exp.95「star(t)'」](https://tsukubadtm.bandcamp.com/album/exp-95-star-t) に収録されている曲です。",
+      "The music included in EP [exp.95「star(t)'」](https://tsukubadtm.bandcamp.com/album/exp-95-star-t) from Tsukuba DTM Lab.",
+    ),
+  },
+  corridor_drive: {
+    title: () => 'CorridorDrive',
+    category: ['Music'],
+    img: null,
+    tags: [{kind: 'tool', name: 'Cubase'}],
+    desc_md: () => soundcloud(1393272700),
   },
   snowcarpet: {
     title: () => 'SnowCarpet',
