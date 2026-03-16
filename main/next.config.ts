@@ -8,25 +8,23 @@ import * as config from '@watasuke.net/config/config';
 import {createVanillaExtractPlugin} from '@vanilla-extract/next-plugin';
 import type {NextConfig} from 'next';
 
-const withVanillaExtract = createVanillaExtractPlugin();
+const withVanillaExtract = createVanillaExtractPlugin({
+  unstable_turbopack: {mode: 'on'},
+});
 
 const nextConfig: NextConfig = withVanillaExtract({
   output: 'export',
   trailingSlash: true,
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      use: [
-        {
-          loader: '@svgr/webpack',
-        },
-      ],
-    });
-
-    return config;
-  },
   allowedDevOrigins: config.allowed_dev_origins,
   transpilePackages: ['@watasuke.net/common'],
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
+      },
+    },
+  },
 });
 
 export default nextConfig;
