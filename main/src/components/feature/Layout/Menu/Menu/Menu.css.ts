@@ -12,9 +12,9 @@ export const container = style({
   zIndex: 4096,
   display: 'inline-block',
   position: 'sticky',
-  bottom: 44,
+  bottom: 52,
   // right is not available (why?)
-  left: '100%',
+  left: '98%',
   transform: 'translateX(-24px)',
 });
 
@@ -22,21 +22,61 @@ export const menu_opener = style({
   position: 'absolute',
   bottom: 0,
   right: 0,
-  width: 56,
-  height: 56,
+  width: '4rem',
+  height: '4rem',
   aspectRatio: '1 / 1',
   padding: '12px 12px',
   border: 'none',
-  borderRadius: 12,
+  borderRadius: 8,
   color: color.bg,
   backgroundColor: color.p0,
   boxShadow: '2px 3px 16px 4px #111d',
   ':focus': {
     outline: 'none',
   },
+
+  overflow: 'hidden',
+  transition: `transform 0.3s ${easing.out_expo.cubic_bezier}, filter 0.5s ease-out, box-shadow 0.4s ease-out`,
+  '::before': {
+    content: '',
+    display: 'block',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    width: 0,
+    height: 0,
+    borderRadius: '100%',
+    backgroundColor: '#fff',
+    opacity: 0.3,
+    transform: 'translate(-50%, -50%)',
+    transitionProperty: 'width, height',
+    transitionDuration: '.5s',
+    transitionTimingFunction: 'ease-in',
+  },
+  '@media': {
+    '(hover: hover)': {
+      ':hover': {
+        transform: 'scale(1.15)',
+      },
+      selectors: {
+        '&:hover::before': {
+          width: '130%',
+          height: '130%',
+          transform: 'translate(-50%, -50%)',
+        },
+      },
+      // when button is being pressed on desktop
+      // scale() is already applied by :hover, so `!important` is needed to override it
+      ':active': {
+        transform: 'scale(1.05) !important',
+      },
+    },
+  },
   ':active': {
-    transitionDuration: '0.2s',
     filter: 'brightness(75%)',
+    boxShadow: 'none',
+    // when button is being pressed on smartphone
+    transform: 'scale(0.9)',
   },
 });
 
