@@ -11,31 +11,31 @@
   },
   "dependencies": {
     "@giscus/react": "^3.1.0",
-    "@next/eslint-plugin-next": "^16.1.6",
-    "@next/third-parties": "^16.1.6",
+    "@next/eslint-plugin-next": "^16.2.2",
+    "@next/third-parties": "^16.2.2",
     "@svgr/webpack": "^8.1.0",
     "@types/react": "^19.2.14",
-    "@vanilla-extract/css": "^1.19.1",
+    "@vanilla-extract/css": "^1.20.1",
     "@vanilla-extract/next-plugin": "^2.5.1",
     "@vanilla-extract/webpack-plugin": "^2.3.26",
     "@watasuke.net/common": "^0.0.0",
     "@watasuke.net/config": "^0.0.0",
     "feed": "^5.2.0",
     "framer-motion": "^12.38.0",
-    "graphql": "^16.13.1",
+    "graphql": "^16.13.2",
     "graphql-request": "7.4.0",
-    "next": "^16.2.0",
+    "next": "^16.2.2",
     "open-graph-scraper": "^6.11.0",
     "react": "^19.2.4",
     "react-markdown": "^10.1.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
-    "@types/node": "^25.5.0",
+    "@types/node": "^25.5.2",
     "eslint-plugin-header": "^3.1.1",
     "scaffdog": "^4.1.0"
   }
