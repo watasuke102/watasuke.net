@@ -23,6 +23,12 @@ export const links = style({
   textAlign: 'center',
 });
 
-export const text = style({
+export const code = style({
   fontSize: '10em',
+  margin: 0,
+  lineHeight: 1.1,
+});
+export const text = style({
+  fontSize: '2.2em',
+  marginBottom: '1.2em',
 });

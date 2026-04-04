@@ -13,7 +13,8 @@ export default function Error404() {
     <Layout>
       <Background />
       <div className={css.container}>
-        <h1 className={css.text}>404</h1>
+        <h1 className={css.code}>404</h1>
+        <p className={css.text}>Not Found</p>
         <div className={css.links}>
           <h2>Links</h2>
           <SimpleInnerLinks />
