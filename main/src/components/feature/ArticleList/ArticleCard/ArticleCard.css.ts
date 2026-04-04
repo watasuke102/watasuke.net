@@ -5,6 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {style} from '@vanilla-extract/css';
+import {easing} from '@watasuke.net/common/src/easing';
 import {color} from '@watasuke.net/common/src/css/color';
 
 // container (<Link>) cannot have padding
@@ -19,9 +20,31 @@ export const container = style({
 export const link = style({
   height: '100%',
   transition: 'background-color 0.3s',
-  ':hover': {
-    backgroundColor: `${color.fg}26`,
-    transition: 'background-color 0.3s',
+
+  position: 'relative',
+  '::before': {
+    content: '',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    display: 'block',
+    width: 0,
+    height: '100%',
+    backgroundColor: `${color.p0}`,
+    opacity: 0.18,
+    transition: `width .3s ${easing.out_circ.cubic_bezier}`,
+  },
+  '@media': {
+    '(hover: hover)': {
+      ':hover': {
+        color: color.bg,
+      },
+      selectors: {
+        '&:hover::before': {
+          width: '100%',
+        },
+      },
+    },
   },
 });
 

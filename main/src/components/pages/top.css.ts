@@ -43,6 +43,7 @@ export const links = style({
     },
   },
 });
+const skew_func = 'skewX(-8deg)';
 export const links_item = style({
   display: 'grid',
   gridTemplateRows: '100px auto',
@@ -62,12 +63,13 @@ export const links_item = style({
     top: 0,
     left: -26,
     display: 'block',
-    width: 0,
+    width: '132%',
     height: '100%',
     padding: '4px 8px',
     backgroundColor: `${color.fg}`,
-    transition: `width ${hoverAnimationDuration} ${easing.out_circ.cubic_bezier}`,
-    transform: 'skewX(-8deg)',
+    transition: `transform ${hoverAnimationDuration} ${easing.out_circ.cubic_bezier}`,
+    transform: `${skew_func} scaleX(0)`,
+    transformOrigin: 'right',
   },
   transition: `color ${hoverAnimationDuration}`,
   '@media': {
@@ -77,7 +79,8 @@ export const links_item = style({
       },
       selectors: {
         '&:hover::before': {
-          width: '132%',
+          transform: `${skew_func} scaleX(1)`,
+          transformOrigin: 'left',
         },
       },
     },

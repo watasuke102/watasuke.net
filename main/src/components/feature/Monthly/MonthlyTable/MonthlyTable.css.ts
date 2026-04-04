@@ -5,6 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {style} from '@vanilla-extract/css';
+import {easing} from '@watasuke.net/common/src/easing';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const root = style({
@@ -50,14 +51,52 @@ export const item = style({
   border: `2px solid ${color.fg}`,
   borderRadius: 2,
   textDecoration: 'none',
+  ':hover': {
+    textDecoration: 'none',
+  },
+
+  position: 'relative',
+  '::before': {
+    content: '',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    display: 'block',
+    width: '100%',
+    height: '100%',
+    backgroundColor: `${color.fg}`,
+    opacity: 0.1,
+    transition: `transform .4s ${easing.out_circ.cubic_bezier}`,
+    transform: 'scaleY(0)',
+    transformOrigin: 'top',
+  },
+  '@media': {
+    '(hover: hover)': {
+      selectors: {
+        '&:hover::before': {
+          transform: 'scaleY(1)',
+          transformOrigin: 'bottom',
+        },
+      },
+    },
+  },
 });
 export const item_title = style({
   fontWeight: 'bold',
   fontSize: '1.2em',
   paddingBottom: 1,
   borderBottom: `2px solid ${color.p0}`,
+  '@media': {
+    '(hover: hover)': {
+      selectors: {
+        [`${item}:hover > &`]: {
+          textDecoration: 'underline',
+        },
+      },
+    },
+  },
 });
 export const item_tldr = style({
   color: color.fg,
-  textDecorationColor: color.fg,
+  textDecoration: 'none',
 });
