@@ -5,6 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {globalStyle, keyframes, style} from '@vanilla-extract/css';
+import {easing} from '@watasuke.net/common/src/easing';
 import {color} from '@watasuke.net/common/src/css/color';
 
 export const container = style({
@@ -43,8 +44,19 @@ export const item = style({
   borderRadius: 10,
   border: `2px solid ${color.g0}`,
   backgroundColor: color.g0,
-  ':hover': {
-    cursor: 'pointer',
+
+  transform: 'scale(1)',
+  transition: `transform 0.5s ${easing.out_expo.cubic_bezier}`,
+  '@media': {
+    '(hover: hover)': {
+      cursor: 'pointer',
+      ':hover': {
+        // framer-motion applies `transform` property at the inline
+        // to perform appearance animation (`floatup_with_scroll`)
+        // It must be overridden by this `!important`
+        transform: 'scale(1.03) !important',
+      },
+    },
   },
 });
 

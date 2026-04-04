@@ -112,7 +112,7 @@ export const info_area = style({
     display: 'block',
     width: 0,
     height: '100%',
-    backgroundColor: `${color.fg}18`,
+    opacity: 0.07,
     transition: `width 0.3s ${easing.out_circ.cubic_bezier}`,
   },
 
@@ -140,15 +140,27 @@ export const info_area = style({
 
 export const info_green = style({
   borderColor: color.p0,
+  '::before': {
+    backgroundColor: color.p0,
+  },
 });
 export const info_blue = style({
   borderColor: color.blue,
+  '::before': {
+    backgroundColor: color.blue,
+  },
 });
 export const info_cyan = style({
   borderColor: color.cyan,
+  '::before': {
+    backgroundColor: color.cyan,
+  },
 });
 export const info_yellow = style({
   borderColor: color.yellow,
+  '::before': {
+    backgroundColor: color.yellow,
+  },
 });
 
 export const info_row = style({
