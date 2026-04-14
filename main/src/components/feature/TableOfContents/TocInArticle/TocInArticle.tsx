@@ -49,8 +49,10 @@ export function TocInArticle(props: Props) {
           className={css.toc}
           animate={{
             opacity: tocOpening ? 1 : 0,
-            maxHeight: tocOpening ? 300 : 0,
             overflowY: tocOpening ? 'scroll' : 'hidden',
+            // if toc was too long, the page itself cannot be scrolled
+            // 84px == almost two items
+            maxHeight: tocOpening ? 'min(max(84px, 50dvh), 300px)' : 0,
           }}
           transition={{
             ease: 'easeOut',
