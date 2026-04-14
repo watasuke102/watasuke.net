@@ -50,8 +50,8 @@ export const menu_opener = style({
     opacity: 0.3,
     transform: 'translate(-50%, -50%)',
     transitionProperty: 'width, height',
-    transitionDuration: '.5s',
-    transitionTimingFunction: 'ease-in',
+    transitionDuration: '.4s',
+    transitionTimingFunction: easing.out_circ.cubic_bezier,
   },
   '@media': {
     '(hover: hover)': {
