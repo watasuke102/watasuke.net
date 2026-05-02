@@ -54,7 +54,7 @@ export const menu_opener = style({
     transitionTimingFunction: easing.out_circ.cubic_bezier,
   },
   '@media': {
-    '(hover: hover)': {
+    '(hover: hover) and (not (prefers-reduced-motion: reduce))': {
       ':hover': {
         transform: 'scale(1.15)',
       },
@@ -65,18 +65,20 @@ export const menu_opener = style({
           transform: 'translate(-50%, -50%)',
         },
       },
-      // when button is being pressed on desktop
+      // when button is being pressed on desktop,
       // scale() is already applied by :hover, so `!important` is needed to override it
       ':active': {
         transform: 'scale(1.05) !important',
       },
     },
-  },
-  ':active': {
-    filter: 'brightness(75%)',
-    boxShadow: 'none',
-    // when button is being pressed on smartphone
-    transform: 'scale(0.9)',
+    '(not (prefers-reduced-motion: reduce))': {
+      ':active': {
+        filter: 'brightness(75%)',
+        boxShadow: 'none',
+        // when button is being pressed on smartphone
+        transform: 'scale(0.9)',
+      },
+    },
   },
 });
 
