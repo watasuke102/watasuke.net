@@ -22,6 +22,8 @@ import {useShortcut} from '@common/useShortcut/useShortcut';
 import {MonacoEditor} from '@features/MonacoEditor';
 import {Toolbox} from './Toolbox/Toolbox';
 import LeftIcon from '@assets/left.svg';
+import VisibilityIcon from '@assets/visibility.svg';
+import EditIcon from '@assets/edit.svg';
 
 export type ModifyStatus = 'none' | 'confirmation' | 'waiting' | 'succeeded';
 
@@ -51,6 +53,9 @@ type Props = {
 };
 
 export function EditorPage(props: Props) {
+  // only for smartphone
+  const [is_preview_shown, set_is_preview_shown] = React.useState(true);
+
   const [commit_mes_prefix, set_commit_mes_prefix] = React.useState('update');
   const [commit_mes, set_commit_mes] = React.useState('');
 
@@ -109,16 +114,26 @@ export function EditorPage(props: Props) {
             <MonacoEditor body={props.body} on_change={props.set_body} />
           </div>
         </div>
-        <div className={css.preview}>
-          <ErrorBoundary>
-            <Markdown
-              md={props.preview_body ?? props.body}
-              embed_card={EmbedCard}
-              inner_embed_card={InnerEmbedCard}
-            />
-          </ErrorBoundary>
-        </div>
+        {is_preview_shown && (
+          <div className={css.preview}>
+            <ErrorBoundary>
+              <Markdown
+                md={props.preview_body ?? props.body}
+                embed_card={EmbedCard}
+                inner_embed_card={InnerEmbedCard}
+              />
+            </ErrorBoundary>
+          </div>
+        )}
       </section>
+
+      <button
+        type='button'
+        className={css.mobile_preview_toggle}
+        onClick={() => set_is_preview_shown(s => !s)}
+      >
+        {is_preview_shown ? <EditIcon /> : <VisibilityIcon />}
+      </button>
 
       <Toast />
 

@@ -44,7 +44,37 @@ export const css = {
     height: `calc(100dvh - ${header_height + editor_area_margin * 2}px)`,
     borderRadius: 4,
     borderTopLeftRadius: 0,
+    '@media': {
+      '(orientation: portrait)': {
+        gridTemplateColumns: '1fr',
+      },
+    },
   }),
+
+  container_current_item: style({
+    grid: '1 / 2',
+  }),
+  mobile_preview_toggle: style({
+    position: 'absolute',
+    bottom: 32,
+    right: 32,
+    zIndex: 16,
+    width: 48,
+    height: 48,
+    borderRadius: 4,
+    color: color.bg,
+    backgroundColor: color.p0,
+    border: 'none',
+    display: 'none',
+    '@media': {
+      '(orientation: portrait)': {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+    },
+  }),
+
   editor: style({
     display: 'grid',
     gridTemplateRows: 'auto 1fr',
@@ -68,6 +98,20 @@ export const css = {
     borderLeft: 'none',
     scrollbarGutter: 'stable',
     scrollbarWidth: 'thin',
+    '@media': {
+      '(orientation: portrait)': {
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        width: '100dvw',
+        height: '100dvh',
+        paddingInline: 12,
+        paddingBottom: 100, // toggle button
+        zIndex: 15,
+        border: 'none',
+        background: `${color.bg}dd`,
+      },
+    },
   }),
 
   dialog: style({
