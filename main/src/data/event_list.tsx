@@ -593,6 +593,41 @@ I talked about my CLI environment in the event "Terminal Night #1", which shares
 [Slides](https://docs.google.com/presentation/d/1X27AEzed67hrQ9imimVfisMGlsdr7D_dVjRN9dzYsCw/edit?usp=sharing)
 `,
       },
+    ],
+    '2026': [
+      {
+        period: {
+          kind: 'day',
+          date: {month: 1, day: 30},
+        },
+        category: 'Event',
+        title: ja
+          ? '筑波大学情報学群 組み込み技術キャンパスOJT'
+          : 'Campus OJT in University of Tsukuba',
+        subtitle: ja
+          ? 'ハードウェアレンダリングを行うLinuxウィンドウマネージャ'
+          : 'Linux window manager with hardware rendering',
+        body: ja
+          ? `
+筑波大学の情報学群にて開講される授業「組み込み技術キャンパスOJT（COJT）」のハードウェアコースを履修し、1年にわたって System Verilog を用いた回路設計について学びました。
+
+年度末に行われた成果発表会では、「ハードウェアレンダリングを行うLinuxウィンドウマネージャ」というタイトルで発表を行いました。
+
+![授業課題を実行している様子。FPGAから出力されたカラーバーのような映像がモニターに出力されている](/works/cojt/pattern.avif)
+![発表している様子](/works/cojt/presentation.avif)
+
+- [作成したコンポジタのGitHubリポジトリ](https://github.com/watasuke102/cojt-compositor)
+- [スライド](https://docs.google.com/presentation/d/1HIclk1e5krx4W6PU3xKNloiI-ou8lpdrRN1oceZS3vs/edit?usp=sharing)
+`
+          : `
+I took a course "Campus OJT (COJT)" at University of Tsukuba, and learned about circuit design using System Verilog for one year.
+
+At the final presentation, I talked titled "Linux window manager with hardware rendering".
+
+- [The GitHub repository of the compositor I created](https://github.com/watasuke102/cojt-compositor)
+- [Slides](https://docs.google.com/presentation/d/1HIclk1e5krx4W6PU3xKNloiI-ou8lpdrRN1oceZS3vs/edit?usp=sharing)
+`,
+      },
       {
         period: {
           kind: 'day',
@@ -611,6 +646,62 @@ I talked about my CLI environment in the event "Terminal Night #1", which shares
 I talked what I do with my home server in the event "UNTIL. LT #0x09", held by the information technology community of University of Tsukuba.
 
 [Slides](https://docs.google.com/presentation/d/19nq0H1IFbT0j4EghE3joi61npFyR981LDHHosvCBsrg/edit?usp=sharing)
+`,
+      },
+      {
+        period: {
+          kind: 'day',
+          date: {month: 3, day: 20},
+        },
+        category: 'Talk',
+        title: 'Kernel/VM探検隊＠つくば No3',
+        subtitle:
+          (ja ? '発表' : 'Preseitation') +
+          ' "FPGA でレンダリングを行うWayland コンポジタ"',
+        body: ja
+          ? `
+技術系イベント「Kernel/VM探検隊＠つくば No3」にて、「FPGA でレンダリングを行うWayland コンポジタ」というタイトルで発表を行いました。
+
+[スライド](https://docs.google.com/presentation/d/19nq0H1IFbT0j4EghE3joi61npFyR981LDHHosvCBsrg/edit?usp=sharing)
+`
+          : `
+I talked what I do with my home server in the event "UNTIL. LT #0x09", held by the information technology community of University of Tsukuba.
+
+[Slides](https://docs.google.com/presentation/d/19nq0H1IFbT0j4EghE3joi61npFyR981LDHHosvCBsrg/edit?usp=sharing)
+`,
+      },
+      {
+        period: {
+          kind: 'day',
+          date: {month: 3, day: 27},
+        },
+        category: 'Event',
+        title: ja
+          ? '筑波大学 情報メディア創成学類 オープンキャンパス'
+          : 'University of Tsukuba (college of Media Arts, Science and Technology) Open Campus',
+        subtitle: ja ? '在校生として参加' : 'Join as a student',
+        body: ja
+          ? `筑波大学 情報メディア創成学類のオープンキャンパスに在校生として参加し、5分間の活動紹介および質疑応答を行いました。`
+          : `I participated in the open campus of University of Tsukuba (college of Media Arts, Science and Technology) as a student, and introduced about my activities for 5 minutes and answered questions.`,
+      },
+      {
+        period: {
+          kind: 'day',
+          date: {month: 4, day: 19},
+        },
+        category: 'Talk',
+        title: 'UNTIL. LT #0x0A',
+        subtitle: (ja ? '発表' : 'Preseitation') + ' "seL4 Walkthrough"',
+        body: ja
+          ? `
+筑波大学の情報系技術者コミュニティが開催するイベント 「UNTIL. LT #0x0A」 にて、「seL4 Walkthrough」というタイトルで発表を行いました。
+
+[スライド](https://github.com/watasuke102/slides/blob/3ce38dbfb2881a6567f7f77718dec9c240433493/2026-04-19_UNTIL.LT_seL4-Walkthrough/slide.pdf)
+`
+          : `
+I talked what I do with my home server in the event "UNTIL. LT #0x0A", held by the information technology community of University of Tsukuba.
+
+[Slides](https://github.com/watasuke102/slides/blob/3ce38dbfb2881a6567f7f77718dec9c240433493/2026-04-19_UNTIL.LT_seL4-Walkthrough/slide.pdf)
 `,
       },
     ],
