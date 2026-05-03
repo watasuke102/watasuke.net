@@ -9,9 +9,11 @@
 import * as css from './ArticleList.css';
 import React from 'react';
 import {AllArticlesQuery} from '@utils/graphql';
-import {ArticleCard} from './ArticleCard/ArticleCard';
 import IconLeft from '@assets/icons/general/left.svg';
 import IconRight from '@assets/icons/general/right.svg';
+import Link from 'next/link';
+import {cs} from '@watasuke.net/common';
+import {initialized_a} from '@utils/initialized_a.css';
 
 interface Props {
   list: AllArticlesQuery['allPublicArticles'];
@@ -66,7 +68,32 @@ export function ArticleList(props: Props) {
         {props.list
           .slice(begin, last) // 記事からarticle_count個取り出す
           .map(article => (
-            <ArticleCard key={article.slug} article={article} />
+            <>
+              <Link
+                href={'/blog/article/' + article.slug}
+                className={cs(initialized_a, css.card_link)}
+                key={article.slug}
+                aria-label={article.title}
+              >
+                <h2 className={css.card_title}>{article.title}</h2>
+                <span className={css.card_date}>
+                  {article.publishedAt.slice(0, 10)}
+                </span>
+                <span className={css.card_tag_container}>
+                  {
+                    // <TagContainer> uses <section>, <Link>, etc. which cannot be used in <Link> (Card's tag)
+                    article.tags.map(tag => {
+                      return (
+                        <span key={tag.slug} className={css.card_tag}>
+                          {tag.name}
+                        </span>
+                      );
+                    })
+                  }
+                </span>
+                <p className={css.card_description}>{article.tldr}</p>
+              </Link>
+            </>
           ))}
       </section>
       {page_status}
