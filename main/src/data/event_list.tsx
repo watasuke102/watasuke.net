@@ -616,6 +616,7 @@ I talked about my CLI environment in the event "Terminal Night #1", which shares
 ![授業課題を実行している様子。FPGAから出力されたカラーバーのような映像がモニターに出力されている](/works/cojt/pattern.avif)
 ![発表している様子](/works/cojt/presentation.avif)
 
+- [発表動画 (YouTube)](https://youtu.be/rrmmJRnIuxc?si=jj24hqZN77OQDqlx&t=938)
 - [作成したコンポジタのGitHubリポジトリ](https://github.com/watasuke102/cojt-compositor)
 - [スライド](https://docs.google.com/presentation/d/1HIclk1e5krx4W6PU3xKNloiI-ou8lpdrRN1oceZS3vs/edit?usp=sharing)
 `
@@ -624,6 +625,7 @@ I took a course "Campus OJT (COJT)" at University of Tsukuba, and learned about 
 
 At the final presentation, I talked titled "Linux window manager with hardware rendering".
 
+- [Presentation Video (YouTube)](https://youtu.be/rrmmJRnIuxc?si=jj24hqZN77OQDqlx&t=938)
 - [The GitHub repository of the compositor I created](https://github.com/watasuke102/cojt-compositor)
 - [Slides](https://docs.google.com/presentation/d/1HIclk1e5krx4W6PU3xKNloiI-ou8lpdrRN1oceZS3vs/edit?usp=sharing)
 `,
