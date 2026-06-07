@@ -82,20 +82,23 @@ export type MutationNewTagArgs = {
 
 
 export type MutationPublishArticleArgs = {
-  shouldCommitAndPush: Scalars['Boolean']['input'];
+  shouldCommit: Scalars['Boolean']['input'];
+  shouldPush: Scalars['Boolean']['input'];
   slug: Scalars['String']['input'];
 };
 
 
 export type MutationPublishMonthlyArgs = {
   month: Scalars['Int']['input'];
-  shouldCommitAndPush: Scalars['Boolean']['input'];
+  shouldCommit: Scalars['Boolean']['input'];
+  shouldPush: Scalars['Boolean']['input'];
   year: Scalars['Int']['input'];
 };
 
 
 export type MutationRenewArticleArgs = {
   commitMessage: Scalars['String']['input'];
+  shouldPush: Scalars['Boolean']['input'];
   slug: Scalars['String']['input'];
 };
 
@@ -103,6 +106,7 @@ export type MutationRenewArticleArgs = {
 export type MutationRenewMonthlyArgs = {
   commitMessage: Scalars['String']['input'];
   month: Scalars['Int']['input'];
+  shouldPush: Scalars['Boolean']['input'];
   year: Scalars['Int']['input'];
 };
 

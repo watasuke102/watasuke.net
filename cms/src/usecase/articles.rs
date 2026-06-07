@@ -214,7 +214,8 @@ pub fn create(contents_path: &String, slug: &String, title: &String) -> anyhow::
 pub fn publish(
   contents_path: &String,
   slug: &String,
-  should_commit_and_push: bool,
+  should_commit: bool,
+  should_push: bool,
 ) -> anyhow::Result<()> {
   let articles = get_map_all(contents_path)?;
   let Some(article) = articles.get(slug) else {
@@ -244,24 +245,34 @@ pub fn publish(
   let new_path = new_path.as_path();
   std::fs::rename(&old_path, &new_path)?;
 
-  if !should_commit_and_push {
+  if !should_commit {
     return Ok(());
   }
   let repo = crate::git::Repo::open(contents_path)?;
-  repo
-    .stage(&new_path)?
-    .commit(&format!("add: {}", slug))?
-    .push()?;
+  repo.stage(&new_path)?.commit(&format!("add: {}", slug))?;
+
+  if should_push {
+    repo.push()?;
+  }
 
   Ok(())
 }
 
-pub fn renew(contents_path: &String, slug: &String, commit_message: &String) -> anyhow::Result<()> {
+pub fn renew(
+  contents_path: &String,
+  slug: &String,
+  commit_message: &String,
+  should_push: bool,
+) -> anyhow::Result<()> {
   let articles = get_map_all(contents_path)?;
   let Some(article) = articles.get(slug) else {
     bail!("Not found");
   };
   ensure!(article.is_published(), "Article is not published");
+
+  if !should_push {
+    return Ok(());
+  }
 
   let repo = crate::git::Repo::open(contents_path)?;
   repo

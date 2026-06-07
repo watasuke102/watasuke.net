@@ -77,7 +77,8 @@ impl Mutation {
   fn publish_article(
     slug: String,
     context: &Context,
-    should_commit_and_push: bool,
+    should_commit: bool,
+    should_push: bool,
   ) -> juniper::FieldResult<String> {
     if !context.config.allow_private_access {
       return Err(juniper::FieldError::new(
@@ -85,7 +86,18 @@ impl Mutation {
         graphql_value!(""),
       ));
     }
-    match usecase::articles::publish(&context.config.contents_path, &slug, should_commit_and_push) {
+    if !should_commit && should_push {
+      return Err(juniper::FieldError::new(
+        "If you want to push, you must commit",
+        graphql_value!(""),
+      ));
+    }
+    match usecase::articles::publish(
+      &context.config.contents_path,
+      &slug,
+      should_commit,
+      should_push,
+    ) {
       Ok(_) => Ok(slug),
       Err(err) => Err(juniper::FieldError::new(
         "Failed to publish an Article",
@@ -96,6 +108,7 @@ impl Mutation {
   fn renew_article(
     slug: String,
     commit_message: String,
+    should_push: bool,
     context: &Context,
   ) -> juniper::FieldResult<String> {
     if !context.config.allow_private_access {
@@ -104,7 +117,12 @@ impl Mutation {
         graphql_value!(""),
       ));
     }
-    match usecase::articles::renew(&context.config.contents_path, &slug, &commit_message) {
+    match usecase::articles::renew(
+      &context.config.contents_path,
+      &slug,
+      &commit_message,
+      should_push,
+    ) {
       Ok(_) => Ok(slug),
       Err(err) => Err(juniper::FieldError::new(
         "Failed to renew an Article",
@@ -165,7 +183,8 @@ impl Mutation {
     year: i32,
     month: i32,
     context: &Context,
-    should_commit_and_push: bool,
+    should_commit: bool,
+    should_push: bool,
   ) -> juniper::FieldResult<String> {
     if !context.config.allow_private_access {
       return Err(juniper::FieldError::new(
@@ -173,11 +192,18 @@ impl Mutation {
         graphql_value!(""),
       ));
     }
+    if !should_commit && should_push {
+      return Err(juniper::FieldError::new(
+        "If you want to push, you must commit",
+        graphql_value!(""),
+      ));
+    }
     match usecase::monthly::publish(
       &context.config.contents_path,
       year,
       month,
-      should_commit_and_push,
+      should_commit,
+      should_push,
     ) {
       Ok(_) => Ok("".to_string()),
       Err(err) => Err(juniper::FieldError::new(
@@ -190,6 +216,7 @@ impl Mutation {
     year: i32,
     month: i32,
     commit_message: String,
+    should_push: bool,
     context: &Context,
   ) -> juniper::FieldResult<String> {
     if !context.config.allow_private_access {
@@ -198,7 +225,13 @@ impl Mutation {
         graphql_value!(""),
       ));
     }
-    match usecase::monthly::renew(&context.config.contents_path, year, month, &commit_message) {
+    match usecase::monthly::renew(
+      &context.config.contents_path,
+      year,
+      month,
+      &commit_message,
+      should_push,
+    ) {
       Ok(_) => Ok("".to_string()),
       Err(err) => Err(juniper::FieldError::new(
         "Failed to renew the Monthly",

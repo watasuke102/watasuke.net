@@ -41,8 +41,8 @@ export function Page(props: Props) {
   );
   const [modify_status, set_modify_status] =
     React.useState<ModifyStatus>('none');
-  const [should_commit_and_push, set_should_commit_and_push] =
-    React.useState(true);
+  const [should_commit, set_should_commit] = React.useState(true);
+  const [should_push, set_should_push] = React.useState(true);
   const [toast_state, toast_dispatch] = React.useReducer(toast_reducer, {
     is_open: false,
     title: '',
@@ -93,11 +93,13 @@ export function Page(props: Props) {
           await sdk.renewArticle({
             slug: props.article.slug,
             commit_message,
+            should_push,
           });
         } else {
           await sdk.publishArticle({
             slug: props.article.slug,
-            should_commit_and_push: should_commit_and_push,
+            should_commit,
+            should_push,
           });
         }
         set_is_published(true);
@@ -107,7 +109,7 @@ export function Page(props: Props) {
         set_modify_status('none');
       }
     },
-    [props.article.slug, should_commit_and_push, is_published],
+    [props.article.slug, should_commit, should_push, is_published],
   );
 
   return (
@@ -155,13 +157,20 @@ export function Page(props: Props) {
                   </p>
                 )}
               </div>
-              {!is_published && (
+              <div className={css.checkbox_container}>
+                {!is_published && (
+                  <Checkbox
+                    label='Commit'
+                    checked={should_commit}
+                    on_click={() => set_should_commit(f => !f)}
+                  />
+                )}
                 <Checkbox
-                  label='Commit and Push to remote Git repo'
-                  checked={should_commit_and_push}
-                  on_click={() => set_should_commit_and_push(f => !f)}
+                  label='Push'
+                  checked={should_push}
+                  on_click={() => set_should_push(f => !f)}
                 />
-              )}
+              </div>
             </>
           }
           modify_handler={modify}

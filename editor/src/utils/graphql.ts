@@ -82,20 +82,23 @@ export type MutationNewTagArgs = {
 
 
 export type MutationPublishArticleArgs = {
-  shouldCommitAndPush: Scalars['Boolean']['input'];
+  shouldCommit: Scalars['Boolean']['input'];
+  shouldPush: Scalars['Boolean']['input'];
   slug: Scalars['String']['input'];
 };
 
 
 export type MutationPublishMonthlyArgs = {
   month: Scalars['Int']['input'];
-  shouldCommitAndPush: Scalars['Boolean']['input'];
+  shouldCommit: Scalars['Boolean']['input'];
+  shouldPush: Scalars['Boolean']['input'];
   year: Scalars['Int']['input'];
 };
 
 
 export type MutationRenewArticleArgs = {
   commitMessage: Scalars['String']['input'];
+  shouldPush: Scalars['Boolean']['input'];
   slug: Scalars['String']['input'];
 };
 
@@ -103,6 +106,7 @@ export type MutationRenewArticleArgs = {
 export type MutationRenewMonthlyArgs = {
   commitMessage: Scalars['String']['input'];
   month: Scalars['Int']['input'];
+  shouldPush: Scalars['Boolean']['input'];
   year: Scalars['Int']['input'];
 };
 
@@ -275,7 +279,8 @@ export type UpdateArticleMutation = { __typename?: 'Mutation', updateArticle: st
 
 export type PublishArticleMutationVariables = Exact<{
   slug: Scalars['String']['input'];
-  should_commit_and_push: Scalars['Boolean']['input'];
+  should_commit: Scalars['Boolean']['input'];
+  should_push: Scalars['Boolean']['input'];
 }>;
 
 
@@ -284,6 +289,7 @@ export type PublishArticleMutation = { __typename?: 'Mutation', publishArticle: 
 export type RenewArticleMutationVariables = Exact<{
   slug: Scalars['String']['input'];
   commit_message: Scalars['String']['input'];
+  should_push: Scalars['Boolean']['input'];
 }>;
 
 
@@ -310,7 +316,8 @@ export type UpdateMonthlyMutation = { __typename?: 'Mutation', updateMonthly: st
 export type PublishMonthlyMutationVariables = Exact<{
   year: Scalars['Int']['input'];
   month: Scalars['Int']['input'];
-  should_commit_and_push: Scalars['Boolean']['input'];
+  should_commit: Scalars['Boolean']['input'];
+  should_push: Scalars['Boolean']['input'];
 }>;
 
 
@@ -320,6 +327,7 @@ export type RenewMonthlyMutationVariables = Exact<{
   year: Scalars['Int']['input'];
   month: Scalars['Int']['input'];
   commit_message: Scalars['String']['input'];
+  should_push: Scalars['Boolean']['input'];
 }>;
 
 
@@ -440,13 +448,21 @@ export const UpdateArticleDocument = gql`
 }
     `;
 export const PublishArticleDocument = gql`
-    mutation publishArticle($slug: String!, $should_commit_and_push: Boolean!) {
-  publishArticle(slug: $slug, shouldCommitAndPush: $should_commit_and_push)
+    mutation publishArticle($slug: String!, $should_commit: Boolean!, $should_push: Boolean!) {
+  publishArticle(
+    slug: $slug
+    shouldCommit: $should_commit
+    shouldPush: $should_push
+  )
 }
     `;
 export const RenewArticleDocument = gql`
-    mutation renewArticle($slug: String!, $commit_message: String!) {
-  renewArticle(slug: $slug, commitMessage: $commit_message)
+    mutation renewArticle($slug: String!, $commit_message: String!, $should_push: Boolean!) {
+  renewArticle(
+    slug: $slug
+    commitMessage: $commit_message
+    shouldPush: $should_push
+  )
 }
     `;
 export const NewMonthlyDocument = gql`
@@ -460,17 +476,23 @@ export const UpdateMonthlyDocument = gql`
 }
     `;
 export const PublishMonthlyDocument = gql`
-    mutation publishMonthly($year: Int!, $month: Int!, $should_commit_and_push: Boolean!) {
+    mutation publishMonthly($year: Int!, $month: Int!, $should_commit: Boolean!, $should_push: Boolean!) {
   publishMonthly(
     year: $year
     month: $month
-    shouldCommitAndPush: $should_commit_and_push
+    shouldCommit: $should_commit
+    shouldPush: $should_push
   )
 }
     `;
 export const RenewMonthlyDocument = gql`
-    mutation renewMonthly($year: Int!, $month: Int!, $commit_message: String!) {
-  renewMonthly(year: $year, month: $month, commitMessage: $commit_message)
+    mutation renewMonthly($year: Int!, $month: Int!, $commit_message: String!, $should_push: Boolean!) {
+  renewMonthly(
+    year: $year
+    month: $month
+    commitMessage: $commit_message
+    shouldPush: $should_push
+  )
 }
     `;
 export const UpdateProfileDocument = gql`

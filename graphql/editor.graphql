@@ -101,11 +101,27 @@ mutation updateArticle(
   )
 }
 
-mutation publishArticle($slug: String!, $should_commit_and_push: Boolean!) {
-  publishArticle(slug: $slug, shouldCommitAndPush: $should_commit_and_push)
+mutation publishArticle(
+  $slug: String!
+  $should_commit: Boolean!
+  $should_push: Boolean!
+) {
+  publishArticle(
+    slug: $slug
+    shouldCommit: $should_commit
+    shouldPush: $should_push
+  )
 }
-mutation renewArticle($slug: String!, $commit_message: String!) {
-  renewArticle(slug: $slug, commitMessage: $commit_message)
+mutation renewArticle(
+  $slug: String!
+  $commit_message: String!
+  $should_push: Boolean!
+) {
+  renewArticle(
+    slug: $slug
+    commitMessage: $commit_message
+    shouldPush: $should_push
+  )
 }
 
 mutation newMonthly($year: Int!, $month: Int!) {
@@ -122,16 +138,28 @@ mutation updateMonthly(
 mutation publishMonthly(
   $year: Int!
   $month: Int!
-  $should_commit_and_push: Boolean!
+  $should_commit: Boolean!
+  $should_push: Boolean!
 ) {
   publishMonthly(
     year: $year
     month: $month
-    shouldCommitAndPush: $should_commit_and_push
+    shouldCommit: $should_commit
+    shouldPush: $should_push
   )
 }
-mutation renewMonthly($year: Int!, $month: Int!, $commit_message: String!) {
-  renewMonthly(year: $year, month: $month, commitMessage: $commit_message)
+mutation renewMonthly(
+  $year: Int!
+  $month: Int!
+  $commit_message: String!
+  $should_push: Boolean!
+) {
+  renewMonthly(
+    year: $year
+    month: $month
+    commitMessage: $commit_message
+    shouldPush: $should_push
+  )
 }
 
 mutation updateProfile($profile: String!) {

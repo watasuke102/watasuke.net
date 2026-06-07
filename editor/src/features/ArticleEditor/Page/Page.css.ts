@@ -17,4 +17,9 @@ export const css = {
   warning_text: style({
     margin: 0,
   }),
+  checkbox_container: style({
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 8,
+  }),
 };

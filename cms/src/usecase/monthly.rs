@@ -150,7 +150,8 @@ pub fn publish(
   contents_path: &String,
   year: i32,
   month: i32,
-  should_commit_and_push: bool,
+  should_commit: bool,
+  should_push: bool,
 ) -> anyhow::Result<()> {
   let Some(monthly) = get(contents_path, year, month)? else {
     bail!("Monthly {}/{} is not found", year, month);
@@ -164,7 +165,7 @@ pub fn publish(
 
   monthly.set_published_at(contents_path)?;
 
-  if !should_commit_and_push {
+  if !should_commit {
     return Ok(());
   }
 
@@ -173,10 +174,14 @@ pub fn publish(
     .join(format!("{}", year));
 
   // stage monthly/<year> dir, it may contains img/ directory
-  git::Repo::open(contents_path)?
+  let repo = git::Repo::open(contents_path)?;
+  repo
     .stage(dir.as_path())?
-    .commit(&format!("add: monthly {}/{}", year, month))?
-    .push()?;
+    .commit(&format!("add: monthly {}/{}", year, month))?;
+
+  if should_push {
+    repo.push()?;
+  }
 
   Ok(())
 }
@@ -186,6 +191,7 @@ pub fn renew(
   year: i32,
   month: i32,
   commit_message: &String,
+  should_push: bool,
 ) -> anyhow::Result<()> {
   let Some(monthly) = get(contents_path, year, month)? else {
     bail!("Monthly {}/{} is not found", year, month);
@@ -196,6 +202,10 @@ pub fn renew(
     year,
     month
   );
+
+  if !should_push {
+    return Ok(());
+  }
 
   let dir = std::path::Path::new(contents_path)
     .join("monthly")

@@ -18,6 +18,11 @@ export const css = {
   warning_text: style({
     margin: 0,
   }),
+  checkbox_container: style({
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 8,
+  }),
   input: style({
     display: 'grid',
     gridTemplateColumns: '60px 1fr',
