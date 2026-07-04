@@ -9,16 +9,23 @@
 // do not import from 'Layout' because it imports 'Footer'
 // that depends 'child_process' despite this page is client component
 // eslint-disable-next-line import/order
-import {Menu} from '@feature/Layout/Menu';
+import {Menu} from '@feature/Layout/Menu/Menu/Menu';
 
 import * as css from '@pages/portfolio/portfolio.css';
 import React from 'react';
 import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
-import {easing, color, Switch} from '@watasuke.net/common';
+import {easing} from '@watasuke.net/common/src/easing';
+import {color} from '@watasuke.net/common/src/css/color';
+import {Switch} from '@watasuke.net/common/src/Switch/Switch';
 import * as constant from '@pages/portfolio/constant';
 
-import {Welcome, Whoami, Skills, Works, History, End} from './sections';
-import {SidepeakComponent, SidepeakProvider} from './components/SidePeak';
+import {Welcome} from './sections/Welcome/Welcome';
+import {Whoami} from './sections/Whoami/Whoami';
+import {Skills} from './sections/Skills/Skills';
+import {Works} from './sections/Works/Works';
+import {History} from './sections/History/History';
+import {End} from './sections/End/End';
+import {SidepeakComponent, SidepeakProvider} from './components/SidePeak/SidePeak';
 
 const blind_width = 50;
 // prettier-ignore

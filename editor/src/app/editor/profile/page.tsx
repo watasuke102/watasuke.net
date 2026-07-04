@@ -7,7 +7,7 @@
 import '@watasuke.net/common/src/css/base.css';
 import {GraphQLClient} from 'graphql-request';
 import React from 'react';
-import {ProfileEditor} from '@features/ProfileEditor';
+import {Page as ProfileEditor} from '@features/ProfileEditor/Page/Page';
 import {getSdk} from '@utils/graphql';
 
 export const revalidate = 0;

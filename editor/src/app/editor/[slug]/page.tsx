@@ -7,7 +7,7 @@
 import '@watasuke.net/common/src/css/base.css';
 import {GraphQLClient} from 'graphql-request';
 import React from 'react';
-import {ArticleEditor} from '@features/ArticleEditor';
+import {Page as ArticleEditor} from '@features/ArticleEditor/Page/Page';
 import {getSdk} from '@utils/graphql';
 
 type Props = {

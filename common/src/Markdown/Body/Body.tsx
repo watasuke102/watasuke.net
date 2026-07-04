@@ -16,7 +16,7 @@ import Gfm from 'remark-gfm';
 import Math from 'remark-math';
 import Slug from 'rehype-slug';
 import {ScriptMounter} from '../ScriptMounter/ScriptMounter';
-import {AdsInArticle} from '../../Ads';
+import {AdsInArticle} from '../../Ads/AdsInArticle';
 import {ImageViewer} from '../ImageViewer/ImageViewer';
 import {Link} from '../Link/Link';
 import {EmbedCardType, InnerEmbedCardType} from '../PropsComponent';
@@ -89,7 +89,7 @@ interface Props {
   inner_embed_card: InnerEmbedCardType;
 }
 
-export function Body(props: Props) {
+export function Markdown(props: Props) {
   // 再レンダリング時の広告位置変更を抑制
   heading_count = 0;
 

@@ -5,7 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import React from 'react';
-import {Spinner} from '@common/Spinner';
+import {Spinner} from '@common/Spinner/Spinner';
 
 export default function Loading() {
   return <Spinner />;

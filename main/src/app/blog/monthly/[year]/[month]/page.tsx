@@ -8,20 +8,20 @@ import {apiUrl} from '@watasuke.net/config/config';
 import * as css from '@feature/Article/Article.css';
 import Link from 'next/link';
 import {redirect, RedirectType} from 'next/navigation';
-import {
-  AdsInArticle,
-  ExtractHeading,
-  Markdown,
-  TocMapper,
-} from '@watasuke.net/common';
-import {EmbedCard, InnerEmbedCard, ProfileCard} from '@feature/Article';
-import {Menu} from '@feature/Layout';
+import {AdsInArticle} from '@watasuke.net/common/src/Ads/AdsInArticle';
+import {ExtractHeading} from '@watasuke.net/common/src/ExtractHeading';
+import {Markdown} from '@watasuke.net/common/src/Markdown/Body/Body';
+import {TocMapper} from '@watasuke.net/common/src/TocMapper/TocMapper';
+import {EmbedCard} from '@feature/Article/EmbedCard/EmbedCard';
+import {InnerEmbedCard} from '@feature/Article/InnerEmbedCard/InnerEmbedCard';
+import {ProfileCard} from '@feature/Article/ProfileCard/ProfileCard';
+import {Menu} from '@feature/Layout/Menu/Menu/Menu';
 import {CommentArea} from '@feature/Article/CommentArea/CommentArea';
-import {TocInArticle} from '@feature/TableOfContents';
+import {TocInArticle} from '@feature/TableOfContents/TocInArticle/TocInArticle';
 import {ql} from '@utils/QL';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_metadata, JsonLd} from '@utils/Metadata';
-import {Breadcrumb} from '@common';
+import {Breadcrumb} from '@common/Breadcrumb/Breadcrumb';
 import IconLeft from '@assets/icons/general/left.svg';
 
 type Props = {

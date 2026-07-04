@@ -9,8 +9,9 @@
 import * as css from './Menu.css';
 import React from 'react';
 import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
-import {color, easing} from '@watasuke.net/common';
-import {MenuContents} from '../MenuContents';
+import {color} from '@watasuke.net/common/src/css/color';
+import {easing} from '@watasuke.net/common/src/easing';
+import {MenuContents} from '../MenuContents/MenuContents';
 
 interface Props {
   additional_item?: React.ReactNode;

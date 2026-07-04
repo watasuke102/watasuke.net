@@ -6,11 +6,13 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from '@feature/Article/Article.css';
 import Link from 'next/link';
-import {Breadcrumb} from '@common';
-import {ExtractHeading, TocMapper} from '@watasuke.net/common';
-import {AllTagList} from '@feature/Tag';
-import {BlogContent, ProfileCard} from '@feature/Article';
-import {Menu} from '@feature/Layout';
+import {Breadcrumb} from '@common/Breadcrumb/Breadcrumb';
+import {ExtractHeading} from '@watasuke.net/common/src/ExtractHeading';
+import {TocMapper} from '@watasuke.net/common/src/TocMapper/TocMapper';
+import {AllTagList} from '@feature/Tag/AllTagList';
+import {BlogContent} from '@feature/Article/BlogContent/BlogContent';
+import {ProfileCard} from '@feature/Article/ProfileCard/ProfileCard';
+import {Menu} from '@feature/Layout/Menu/Menu/Menu';
 import {ql} from '@utils/QL';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_metadata, JsonLd} from '@utils/Metadata';

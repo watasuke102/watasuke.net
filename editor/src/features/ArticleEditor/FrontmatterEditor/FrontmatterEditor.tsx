@@ -6,9 +6,9 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {css} from './FrontmatterEditor.css';
 import React from 'react';
-import {Checkbox} from '@common/Checkbox';
+import {Checkbox} from '@common/Checkbox/Checkbox';
 import * as ArticleReducer from '../ArticleReducer';
-import {TagEditor} from '../TagEditor';
+import {TagEditor} from '../TagEditor/TagEditor';
 
 interface Props {
   state: ArticleReducer.StateType;

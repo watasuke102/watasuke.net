@@ -12,7 +12,7 @@ import {AllArticlesQuery} from '@utils/graphql';
 import IconLeft from '@assets/icons/general/left.svg';
 import IconRight from '@assets/icons/general/right.svg';
 import Link from 'next/link';
-import {cs} from '@watasuke.net/common';
+import {classnames as cs} from '@watasuke.net/common/src/classnames';
 import {initialized_a} from '@utils/initialized_a.css';
 
 interface Props {

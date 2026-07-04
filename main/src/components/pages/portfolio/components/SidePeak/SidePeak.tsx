@@ -7,7 +7,7 @@
 import * as css from './SidePeak.css';
 import React from 'react';
 import {motion} from 'framer-motion';
-import {easing} from '@watasuke.net/common';
+import {easing} from '@watasuke.net/common/src/easing';
 import IconDoubleDown from '@assets/icons/general/double-down.svg';
 
 interface SidepeakState {

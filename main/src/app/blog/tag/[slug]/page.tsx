@@ -5,10 +5,10 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from '@feature/Article/Article.css';
-import {Breadcrumb} from '@common';
-import {AdsInArticle} from '@watasuke.net/common';
-import {Menu} from '@feature/Layout';
-import {ArticleList} from '@feature/ArticleList';
+import {Breadcrumb} from '@common/Breadcrumb/Breadcrumb';
+import {AdsInArticle} from '@watasuke.net/common/src/Ads/AdsInArticle';
+import {Menu} from '@feature/Layout/Menu/Menu/Menu';
+import {ArticleList} from '@feature/ArticleList/ArticleList';
 import {ql} from '@utils/QL';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_metadata, JsonLd, viewport} from '@utils/Metadata';

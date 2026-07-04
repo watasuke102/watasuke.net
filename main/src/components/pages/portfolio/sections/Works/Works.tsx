@@ -7,10 +7,13 @@
 import * as css from './Works.css';
 import React from 'react';
 import {motion} from 'framer-motion';
-import {color, cs, Markdown} from '@watasuke.net/common';
-import {SelectItem, GridView} from '@pages/portfolio/components/NotionLike';
+import {color} from '@watasuke.net/common/src/css/color';
+import {classnames as cs} from '@watasuke.net/common/src/classnames';
+import {Markdown} from '@watasuke.net/common/src/Markdown/Body/Body';
+import {SelectItem} from '@pages/portfolio/components/NotionLike/SelectItem';
+import {GridView} from '@pages/portfolio/components/NotionLike/GridView';
 import {floatup_with_scroll} from '@pages/portfolio/components/FloatUpWithScroll/FloatUpWithScroll';
-import {useSidepeak} from '../../components/SidePeak';
+import {useSidepeak} from '../../components/SidePeak/SidePeak';
 import {
   Work,
   work_list,

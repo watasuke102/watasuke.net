@@ -5,13 +5,17 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import '@watasuke.net/common/src/css/base.css';
-import {Background, Breadcrumb} from '@common';
+import Background from '@common/Background/Background';
+import {Breadcrumb} from '@common/Breadcrumb/Breadcrumb';
 import React from 'react';
 import Link from 'next/link';
-import {AdsInArticle, Markdown, ExtractHeading} from '@watasuke.net/common';
+import {AdsInArticle} from '@watasuke.net/common/src/Ads/AdsInArticle';
+import {Markdown} from '@watasuke.net/common/src/Markdown/Body/Body';
+import {ExtractHeading} from '@watasuke.net/common/src/ExtractHeading';
 // import {EmbedCard, InnerEmbedCard} from '@feature/Article';
-import {TocInArticle} from '@feature/TableOfContents';
-import {EmbedCard, InnerEmbedCard} from '@feature/Article';
+import {TocInArticle} from '@feature/TableOfContents/TocInArticle/TocInArticle';
+import {EmbedCard} from '@feature/Article/EmbedCard/EmbedCard';
+import {InnerEmbedCard} from '@feature/Article/InnerEmbedCard/InnerEmbedCard';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {ql} from '@utils/QL';
 import {gen_template, JsonLd} from '@utils/Metadata';

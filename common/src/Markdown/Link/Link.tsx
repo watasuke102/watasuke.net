@@ -5,7 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {Components} from 'hast-util-to-jsx-runtime';
-import {classify_url_embed_type} from '@watasuke.net/common';
+import {classify_url_embed_type} from '../../ClassifyUrlEmbedType';
 import {EmbedCardType, InnerEmbedCardType} from '../PropsComponent';
 
 export function Link(

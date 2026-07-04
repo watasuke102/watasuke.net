@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Front.css';
 import React from 'react';
-import {cs} from '@watasuke.net/common';
+import {classnames as cs} from '@watasuke.net/common/src/classnames';
 import IconHouse from '@assets/icons/general/house.svg';
 import IconGitHub from '@assets/icons/Links/github.svg';
 import IconInstagram from '@assets/icons/Links/instagram.svg';

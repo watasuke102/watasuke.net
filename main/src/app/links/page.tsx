@@ -5,7 +5,8 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from '@pages/links.css';
-import {Background, Breadcrumb} from '@common';
+import Background from '@common/Background/Background';
+import {Breadcrumb} from '@common/Breadcrumb/Breadcrumb';
 import React from 'react';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template, JsonLd} from '@utils/Metadata';

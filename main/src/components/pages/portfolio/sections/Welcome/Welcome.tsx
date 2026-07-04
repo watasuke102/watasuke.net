@@ -6,10 +6,11 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Welcome.css';
 import {motion} from 'framer-motion';
-import {Avatar} from '@common';
-import {color, easing} from '@watasuke.net/common';
-import {HorizontalEmerge} from '@pages/portfolio/components/HorizontalEmerge';
-import {FadeFloatIn} from '@pages/portfolio/components/FadeFloatIn';
+import {Avatar} from '@common/Avatar/Avatar';
+import {color} from '@watasuke.net/common/src/css/color';
+import {easing} from '@watasuke.net/common/src/easing';
+import {HorizontalEmerge} from '@pages/portfolio/components/HorizontalEmerge/HorizontalEmerge';
+import {FadeFloatIn} from '@pages/portfolio/components/FadeFloatIn/FadeFloatIn';
 import * as constant from '@pages/portfolio/constant';
 import IconDoubleDown from '@assets/icons/general/double-down.svg';
 import IconGitHub from '@assets/icons/Links/github.svg';

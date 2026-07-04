@@ -8,7 +8,7 @@ import {initialized_a} from '@utils/initialized_a.css';
 import * as css from './EmbedCard.css';
 import ogs from 'open-graph-scraper';
 import React from 'react';
-import {cs} from '@watasuke.net/common';
+import {classnames as cs} from '@watasuke.net/common/src/classnames';
 
 interface Ogp {
   title: string;

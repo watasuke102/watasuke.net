@@ -9,7 +9,8 @@
 import * as css from './TocInArticle.css';
 import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
 import React from 'react';
-import {Heading, TocMapper} from '@watasuke.net/common';
+import Heading from '@watasuke.net/common/src/Heading';
+import {TocMapper} from '@watasuke.net/common/src/TocMapper/TocMapper';
 import IconCollapse from '@assets/icons/general/up.svg';
 
 interface Props {

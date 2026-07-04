@@ -7,7 +7,7 @@
 import '@watasuke.net/common/src/css/base.css';
 import {GraphQLClient} from 'graphql-request';
 import React from 'react';
-import {MonthlyEditor} from '@features/MonthlyEditor';
+import {MonthlyEditor} from '@features/MonthlyEditor/MonthlyEditor';
 import {getSdk} from '@utils/graphql';
 
 type Props = {

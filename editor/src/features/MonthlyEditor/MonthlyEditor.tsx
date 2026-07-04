@@ -11,11 +11,11 @@ import {css} from './MonthlyEditor.css';
 import {GraphQLClient} from 'graphql-request';
 import React from 'react';
 import {useMonaco} from '@monaco-editor/react';
-import {EditorPage} from '@common/EditorPage';
+import {EditorPage} from '@common/EditorPage/EditorPage';
 import {ModifyStatus} from '@common/EditorPage/EditorPage';
-import {Checkbox} from '@common/Checkbox';
-import {toast_reducer, ToastContext} from '@common/Toast';
-import {MonacoContext} from '@features/MonacoEditor';
+import {Checkbox} from '@common/Checkbox/Checkbox';
+import {toast_reducer, ToastContext} from '@common/Toast/Toast';
+import {MonacoContext} from '@features/MonacoEditor/MonacoContext';
 import {MonthlyEditPageQuery, getSdk} from '@utils/graphql';
 import {useConfirmBeforeLeave} from '@utils/ConfirmBeforeLeave';
 

@@ -6,8 +6,9 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './MenuContents.css';
 import React from 'react';
-import {SimpleInnerLinks, ShareList} from '@common';
-import {Heading} from '@watasuke.net/common';
+import {SimpleInnerLinks} from '@common/SimpleInnerLinks/SimpleInnerLinks';
+import {ShareList} from '@common/ShareList/ShareList';
+import Heading from '@watasuke.net/common/src/Heading';
 import IconUp from '@assets/icons/general/up.svg';
 
 interface Props {

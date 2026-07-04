@@ -7,8 +7,10 @@
 import * as css from './Skills.css';
 import React from 'react';
 import {motion} from 'framer-motion';
-import {color, Switch} from '@watasuke.net/common';
-import {GridView, SelectItem} from '@pages/portfolio/components/NotionLike';
+import {color} from '@watasuke.net/common/src/css/color';
+import {Switch} from '@watasuke.net/common/src/Switch/Switch';
+import {GridView} from '@pages/portfolio/components/NotionLike/GridView';
+import {SelectItem} from '@pages/portfolio/components/NotionLike/SelectItem';
 import {floatup_with_scroll} from '@pages/portfolio/components/FloatUpWithScroll/FloatUpWithScroll';
 import {gen_skills, Skill, tier_description} from '@data/skill_list';
 

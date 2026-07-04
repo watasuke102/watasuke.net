@@ -7,10 +7,10 @@
 import * as css from './History.css';
 import React from 'react';
 import {motion} from 'framer-motion';
-import {color} from '@watasuke.net/common';
+import {color} from '@watasuke.net/common/src/css/color';
 import {floatup_with_scroll} from '@pages/portfolio/components/FloatUpWithScroll/FloatUpWithScroll';
 import {HistoryItem} from './HistoryItem';
-import {useSidepeak} from '../../components/SidePeak';
+import {useSidepeak} from '../../components/SidePeak/SidePeak';
 import {gen_event_list} from '@data/event_list';
 
 interface Props {

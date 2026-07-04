@@ -6,7 +6,8 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from '@pages/top.css';
 import '@watasuke.net/common/src/css/base.css';
-import {Avatar, Background} from '@common';
+import {Avatar} from '@common/Avatar/Avatar';
+import Background from '@common/Background/Background';
 import React from 'react';
 import Link from 'next/link';
 import {GenBreadcrumb} from '@utils/Breadcrumb';

@@ -7,7 +7,7 @@
 import * as css from './ProfileCard.css';
 import React from 'react';
 import Link from 'next/link';
-import {Avatar} from '@common';
+import {Avatar} from '@common/Avatar/Avatar';
 import {ql} from '@utils/QL';
 
 export async function ProfileCard() {

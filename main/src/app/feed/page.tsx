@@ -6,10 +6,11 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import Link from 'next/link';
 import React from 'react';
-import {AdsInArticle} from '@watasuke.net/common';
+import {AdsInArticle} from '@watasuke.net/common/src/Ads/AdsInArticle';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template, JsonLd} from '@utils/Metadata';
-import {Background, Breadcrumb} from '@common';
+import Background from '@common/Background/Background';
+import {Breadcrumb} from '@common/Breadcrumb/Breadcrumb';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Feed'}]);
 export const {viewport, metadata} = gen_template(

@@ -7,7 +7,7 @@
 import * as config from '@watasuke.net/config/config';
 import * as css from './Footer.css';
 import child_process from 'child_process';
-import {SimpleInnerLinks} from '@common';
+import {SimpleInnerLinks} from '@common/SimpleInnerLinks/SimpleInnerLinks';
 import Link from 'next/link';
 import {ql} from '@utils/QL';
 import {social_links} from '@data/social_links';

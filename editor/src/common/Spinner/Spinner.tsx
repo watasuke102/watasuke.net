@@ -9,7 +9,7 @@
 import {css} from './Spinner.css';
 import React from 'react';
 import {PuffLoader} from 'react-spinners';
-import {color} from '@watasuke.net/common';
+import {color} from '@watasuke.net/common/src/css/color';
 
 export function Spinner() {
   return (

@@ -9,10 +9,10 @@ import {ClientError, GraphQLClient} from 'graphql-request';
 import React from 'react';
 import Link from 'next/link';
 import {getSdk} from '@utils/graphql';
-import {NewArticle} from './_components/NewArticle';
-import {ArticlesTable} from './_components/ArticlesTable';
-import {MonthliesTable} from './_components/MonthliesTable';
-import {NewMonthly} from './_components/NewMonthly';
+import {NewArticle} from './_components/NewArticle/NewArticle';
+import {ArticlesTable} from './_components/ArticlesTable/ArticlesTable';
+import {MonthliesTable} from './_components/MonthliesTable/MonthliesTable';
+import {NewMonthly} from './_components/NewMonthly/NewMonthly';
 
 export const revalidate = 0;
 

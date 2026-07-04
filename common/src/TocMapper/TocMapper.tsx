@@ -7,7 +7,7 @@
 import * as css from './TocMapper.css';
 import Link from 'next/link';
 import React from 'react';
-import {Heading} from '@watasuke.net/common';
+import Heading from '../Heading';
 
 interface Props {
   headings: Heading[];

@@ -10,10 +10,10 @@ import {apiUrl} from '@watasuke.net/config/config';
 import {GraphQLClient} from 'graphql-request';
 import React from 'react';
 import {useMonaco} from '@monaco-editor/react';
-import {EditorPage} from '@common/EditorPage';
+import {EditorPage} from '@common/EditorPage/EditorPage';
 import {ModifyStatus} from '@common/EditorPage/EditorPage';
-import {toast_reducer, ToastContext} from '@common/Toast';
-import {MonacoContext} from '@features/MonacoEditor';
+import {toast_reducer, ToastContext} from '@common/Toast/Toast';
+import {MonacoContext} from '@features/MonacoEditor/MonacoContext';
 import {getSdk} from '@utils/graphql';
 import {useConfirmBeforeLeave} from '@utils/ConfirmBeforeLeave';
 

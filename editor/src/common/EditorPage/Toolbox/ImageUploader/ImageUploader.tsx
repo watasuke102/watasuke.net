@@ -7,8 +7,8 @@
 import {css} from './ImageUploader.css';
 import React from 'react';
 import {useDropzone, FileWithPath} from 'react-dropzone';
-import {Button} from '@common/Button';
-import {ToastContext} from '@common/Toast';
+import {Button} from '@common/Button/Button';
+import {ToastContext} from '@common/Toast/Toast';
 import {upload_new_image} from '@utils/api';
 
 type Props = {

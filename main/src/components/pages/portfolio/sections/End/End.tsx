@@ -5,7 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './End.css';
-import {SimpleInnerLinks} from '@common';
+import {SimpleInnerLinks} from '@common/SimpleInnerLinks/SimpleInnerLinks';
 
 export function End() {
   return (

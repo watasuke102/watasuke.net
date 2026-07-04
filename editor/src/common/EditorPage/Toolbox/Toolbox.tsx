@@ -7,10 +7,10 @@
 import {css} from './Toolbox.css';
 import * as Collapsible from '@radix-ui/react-collapsible';
 import React from 'react';
-import {cs} from '@watasuke.net/common';
-import {Button} from '@common/Button';
-import {Dialog} from '@common/Dialog';
-import {MonacoContext} from '@features/MonacoEditor';
+import {classnames as cs} from '@watasuke.net/common/src/classnames';
+import {Button} from '@common/Button/Button';
+import {Dialog} from '@common/Dialog/Dialog';
+import {MonacoContext} from '@features/MonacoEditor/MonacoContext';
 import {ImageUploader} from './ImageUploader/ImageUploader';
 import AddPhotoIcon from '@assets/add_photo.svg';
 import ExpandIcon from '@assets/expand.svg';

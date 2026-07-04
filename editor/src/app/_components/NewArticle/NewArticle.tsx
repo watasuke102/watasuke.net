@@ -12,8 +12,8 @@ import * as Form from '@radix-ui/react-form';
 import {GraphQLClient} from 'graphql-request';
 import {useRouter} from 'next/navigation';
 import React from 'react';
-import {Button} from '@common/Button';
-import {Dialog} from '@common/Dialog';
+import {Button} from '@common/Button/Button';
+import {Dialog} from '@common/Dialog/Dialog';
 import {getSdk} from '@utils/graphql';
 
 // FIXME: DRY

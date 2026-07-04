@@ -7,11 +7,11 @@
 import * as css from '@pages/blog.css';
 import Link from 'next/link';
 import '@watasuke.net/common/src/css/base.css';
-import {Breadcrumb} from '@common';
+import {Breadcrumb} from '@common/Breadcrumb/Breadcrumb';
 import React from 'react';
-import {AdsInArticle} from '@watasuke.net/common';
-import {ArticleList} from '@feature/ArticleList';
-import {Menu} from '@feature/Layout';
+import {AdsInArticle} from '@watasuke.net/common/src/Ads/AdsInArticle';
+import {ArticleList} from '@feature/ArticleList/ArticleList';
+import {Menu} from '@feature/Layout/Menu/Menu/Menu';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {ql} from '@utils/QL';
 import {gen_template, JsonLd} from '@utils/Metadata';
