@@ -9,8 +9,8 @@
 import * as css from './Menu.css';
 import React from 'react';
 import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
-import {color} from '@watasuke.net/common/src/css/color';
-import {easing} from '@watasuke.net/common/src/easing';
+import {color} from '@watasuke.net/common/style/color';
+import {easing} from '@watasuke.net/common/style/easing';
 import {MenuContents} from '../MenuContents/MenuContents';
 
 interface Props {

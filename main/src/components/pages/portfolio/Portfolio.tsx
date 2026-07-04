@@ -14,9 +14,9 @@ import {Menu} from '@feature/Layout/Menu/Menu/Menu';
 import * as css from '@pages/portfolio/portfolio.css';
 import React from 'react';
 import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
-import {easing} from '@watasuke.net/common/src/easing';
-import {color} from '@watasuke.net/common/src/css/color';
-import {Switch} from '@watasuke.net/common/src/Switch/Switch';
+import {easing} from '@watasuke.net/common/style/easing';
+import {color} from '@watasuke.net/common/style/color';
+import {Switch} from '@watasuke.net/common/Switch/Switch';
 import * as constant from '@pages/portfolio/constant';
 
 import {Welcome} from './sections/Welcome/Welcome';

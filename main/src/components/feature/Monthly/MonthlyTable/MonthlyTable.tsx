@@ -9,7 +9,7 @@
 import * as css from './MonthlyTable.css';
 import Link from 'next/link';
 import React from 'react';
-import {classnames as cs} from '@watasuke.net/common/src/classnames';
+import {classnames as cs} from '@watasuke.net/common/style/classnames';
 import {BlogPageQuery} from '@utils/graphql';
 
 type Props = {

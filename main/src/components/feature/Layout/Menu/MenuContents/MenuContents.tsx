@@ -8,7 +8,7 @@ import * as css from './MenuContents.css';
 import React from 'react';
 import {SimpleInnerLinks} from '@common/SimpleInnerLinks/SimpleInnerLinks';
 import {ShareList} from '@common/ShareList/ShareList';
-import Heading from '@watasuke.net/common/src/Heading';
+import Heading from '@watasuke.net/common/Heading/Heading';
 import IconUp from '@assets/icons/general/up.svg';
 
 interface Props {

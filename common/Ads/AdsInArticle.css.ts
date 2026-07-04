@@ -5,7 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {style} from '@vanilla-extract/css';
-import {color} from '../css/color';
+import {color} from '../style/color';
 
 export const wrapper = style({
   zIndex: -1,

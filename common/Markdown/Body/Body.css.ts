@@ -5,7 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {globalStyle, style} from '@vanilla-extract/css';
-import {color} from '../../css/color';
+import {color} from '../../style/color';
 
 export const h2 = style({
   borderBottom: `4px solid ${color.p0}`,

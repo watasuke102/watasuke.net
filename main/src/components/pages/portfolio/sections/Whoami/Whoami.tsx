@@ -6,8 +6,8 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './Whoami.css';
 import {motion, MotionProps} from 'framer-motion';
-import {classnames as cs} from '@watasuke.net/common/src/classnames';
-import {easing} from '@watasuke.net/common/src/easing';
+import {classnames as cs} from '@watasuke.net/common/style/classnames';
+import {easing} from '@watasuke.net/common/style/easing';
 import {floatup_with_scroll} from '@pages/portfolio/components/FloatUpWithScroll/FloatUpWithScroll';
 import {BioEn, BioJa} from '@data/bio';
 import {social_links} from '@data/social_links';

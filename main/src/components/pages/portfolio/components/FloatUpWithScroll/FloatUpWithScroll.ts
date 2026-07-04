@@ -5,7 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {MotionProps} from 'framer-motion';
-import {easing} from '@watasuke.net/common/src/easing';
+import {easing} from '@watasuke.net/common/style/easing';
 
 export const floatup_with_scroll: MotionProps = {
   variants: {

@@ -5,7 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as config from '@watasuke.net/config/config';
-import '@watasuke.net/common/src/css/base.css';
+import '@watasuke.net/common/style/base.css';
 import {M_PLUS_Rounded_1c} from 'next/font/google';
 import {GoogleAnalytics} from '@next/third-parties/google';
 import Script from 'next/script';

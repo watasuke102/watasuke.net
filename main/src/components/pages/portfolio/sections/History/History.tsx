@@ -7,7 +7,7 @@
 import * as css from './History.css';
 import React from 'react';
 import {motion} from 'framer-motion';
-import {color} from '@watasuke.net/common/src/css/color';
+import {color} from '@watasuke.net/common/style/color';
 import {floatup_with_scroll} from '@pages/portfolio/components/FloatUpWithScroll/FloatUpWithScroll';
 import {HistoryItem} from './HistoryItem';
 import {useSidepeak} from '../../components/SidePeak/SidePeak';

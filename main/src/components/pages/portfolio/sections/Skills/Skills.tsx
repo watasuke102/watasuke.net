@@ -7,8 +7,8 @@
 import * as css from './Skills.css';
 import React from 'react';
 import {motion} from 'framer-motion';
-import {color} from '@watasuke.net/common/src/css/color';
-import {Switch} from '@watasuke.net/common/src/Switch/Switch';
+import {color} from '@watasuke.net/common/style/color';
+import {Switch} from '@watasuke.net/common/Switch/Switch';
 import {GridView} from '@pages/portfolio/components/NotionLike/GridView';
 import {SelectItem} from '@pages/portfolio/components/NotionLike/SelectItem';
 import {floatup_with_scroll} from '@pages/portfolio/components/FloatUpWithScroll/FloatUpWithScroll';

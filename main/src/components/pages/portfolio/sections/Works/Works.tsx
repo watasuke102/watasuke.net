@@ -7,9 +7,9 @@
 import * as css from './Works.css';
 import React from 'react';
 import {motion} from 'framer-motion';
-import {color} from '@watasuke.net/common/src/css/color';
-import {classnames as cs} from '@watasuke.net/common/src/classnames';
-import {Markdown} from '@watasuke.net/common/src/Markdown/Body/Body';
+import {color} from '@watasuke.net/common/style/color';
+import {classnames as cs} from '@watasuke.net/common/style/classnames';
+import {Markdown} from '@watasuke.net/common/Markdown/Body/Body';
 import {SelectItem} from '@pages/portfolio/components/NotionLike/SelectItem';
 import {GridView} from '@pages/portfolio/components/NotionLike/GridView';
 import {floatup_with_scroll} from '@pages/portfolio/components/FloatUpWithScroll/FloatUpWithScroll';

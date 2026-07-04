@@ -5,7 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from '@pages/top.css';
-import '@watasuke.net/common/src/css/base.css';
+import '@watasuke.net/common/style/base.css';
 import {Avatar} from '@common/Avatar/Avatar';
 import Background from '@common/Background/Background';
 import React from 'react';

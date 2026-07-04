@@ -7,8 +7,8 @@
 import * as css from './Welcome.css';
 import {motion} from 'framer-motion';
 import {Avatar} from '@common/Avatar/Avatar';
-import {color} from '@watasuke.net/common/src/css/color';
-import {easing} from '@watasuke.net/common/src/easing';
+import {color} from '@watasuke.net/common/style/color';
+import {easing} from '@watasuke.net/common/style/easing';
 import {HorizontalEmerge} from '@pages/portfolio/components/HorizontalEmerge/HorizontalEmerge';
 import {FadeFloatIn} from '@pages/portfolio/components/FadeFloatIn/FadeFloatIn';
 import * as constant from '@pages/portfolio/constant';

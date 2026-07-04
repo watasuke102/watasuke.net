@@ -4,7 +4,7 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import '@watasuke.net/common/src/css/base.css';
+import '@watasuke.net/common/style/base.css';
 import {GraphQLClient} from 'graphql-request';
 import React from 'react';
 import {Page as ProfileEditor} from '@features/ProfileEditor/Page/Page';

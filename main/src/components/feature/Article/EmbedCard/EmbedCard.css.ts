@@ -5,8 +5,8 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {style} from '@vanilla-extract/css';
-import {easing} from '@watasuke.net/common/src/easing';
-import {color} from '@watasuke.net/common/src/css/color';
+import {easing} from '@watasuke.net/common/style/easing';
+import {color} from '@watasuke.net/common/style/color';
 
 export const container = style({
   display: 'grid',

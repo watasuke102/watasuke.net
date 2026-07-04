@@ -7,8 +7,8 @@
 import * as css from '@feature/Article/Article.css';
 import Link from 'next/link';
 import {Breadcrumb} from '@common/Breadcrumb/Breadcrumb';
-import {ExtractHeading} from '@watasuke.net/common/src/ExtractHeading';
-import {TocMapper} from '@watasuke.net/common/src/TocMapper/TocMapper';
+import {ExtractHeading} from '@watasuke.net/common/Heading/ExtractHeading';
+import {TocMapper} from '@watasuke.net/common/TocMapper/TocMapper';
 import {AllTagList} from '@feature/Tag/AllTagList';
 import {BlogContent} from '@feature/Article/BlogContent/BlogContent';
 import {ProfileCard} from '@feature/Article/ProfileCard/ProfileCard';

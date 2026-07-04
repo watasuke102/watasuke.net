@@ -5,7 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {globalStyle, keyframes, style} from '@vanilla-extract/css';
-import {easing} from '@watasuke.net/common/src/easing';
+import {easing} from '@watasuke.net/common/style/easing';
 
 export const css = {
   toolbox_header: style({

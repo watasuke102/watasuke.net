@@ -4,14 +4,14 @@
 // Email  : <watasuke102@gmail.com>
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
-import '@watasuke.net/common/src/css/base.css';
+import '@watasuke.net/common/style/base.css';
 import Background from '@common/Background/Background';
 import {Breadcrumb} from '@common/Breadcrumb/Breadcrumb';
 import React from 'react';
 import Link from 'next/link';
-import {AdsInArticle} from '@watasuke.net/common/src/Ads/AdsInArticle';
-import {Markdown} from '@watasuke.net/common/src/Markdown/Body/Body';
-import {ExtractHeading} from '@watasuke.net/common/src/ExtractHeading';
+import {AdsInArticle} from '@watasuke.net/common/Ads/AdsInArticle';
+import {Markdown} from '@watasuke.net/common/Markdown/Body/Body';
+import {ExtractHeading} from '@watasuke.net/common/Heading/ExtractHeading';
 // import {EmbedCard, InnerEmbedCard} from '@feature/Article';
 import {TocInArticle} from '@feature/TableOfContents/TocInArticle/TocInArticle';
 import {EmbedCard} from '@feature/Article/EmbedCard/EmbedCard';

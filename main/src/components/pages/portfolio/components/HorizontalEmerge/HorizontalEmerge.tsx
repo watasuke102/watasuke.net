@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from './HorizontalEmerge.css';
 import {motion, MotionProps} from 'framer-motion';
-import {easing} from '@watasuke.net/common/src/easing';
+import {easing} from '@watasuke.net/common/style/easing';
 
 interface Props {
   height?: number;

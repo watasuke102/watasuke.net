@@ -43,8 +43,8 @@
     ]
   },
   "include": [
-    "../common/src/Heading.d.ts",
-    "../common/src/TocMapper",
+    "../common/Heading/Heading.d.ts",
+    "../common/TocMapper",
     "./plugins/**/*",
     "./src/**/*",
     ".next/types/**/*.ts"

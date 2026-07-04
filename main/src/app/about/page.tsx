@@ -8,7 +8,7 @@ import Background from '@common/Background/Background';
 import {Breadcrumb} from '@common/Breadcrumb/Breadcrumb';
 import Link from 'next/link';
 import React from 'react';
-import {AdsInArticle} from '@watasuke.net/common/src/Ads/AdsInArticle';
+import {AdsInArticle} from '@watasuke.net/common/Ads/AdsInArticle';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template, JsonLd} from '@utils/Metadata';
 

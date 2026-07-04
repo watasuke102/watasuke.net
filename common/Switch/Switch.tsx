@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {css} from './Switch.css';
 import * as RSwitch from '@radix-ui/react-switch';
-import {classnames as cs} from '../classnames';
+import {classnames as cs} from '../style/classnames';
 
 interface Props {
   id?: string;

@@ -7,7 +7,7 @@
 import {css} from './Toolbox.css';
 import * as Collapsible from '@radix-ui/react-collapsible';
 import React from 'react';
-import {classnames as cs} from '@watasuke.net/common/src/classnames';
+import {classnames as cs} from '@watasuke.net/common/style/classnames';
 import {Button} from '@common/Button/Button';
 import {Dialog} from '@common/Dialog/Dialog';
 import {MonacoContext} from '@features/MonacoEditor/MonacoContext';

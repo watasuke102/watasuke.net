@@ -8,11 +8,11 @@
 
 import {apiUrl} from '@watasuke.net/config/config';
 import {css} from './Preview.css';
-import '@watasuke.net/common/src/css/base.css';
+import '@watasuke.net/common/style/base.css';
 import React from 'react';
-import {ExtractHeading} from '@watasuke.net/common/src/ExtractHeading';
-import {Markdown} from '@watasuke.net/common/src/Markdown/Body/Body';
-import {TocMapper} from '@watasuke.net/common/src/TocMapper/TocMapper';
+import {ExtractHeading} from '@watasuke.net/common/Heading/ExtractHeading';
+import {Markdown} from '@watasuke.net/common/Markdown/Body/Body';
+import {TocMapper} from '@watasuke.net/common/TocMapper/TocMapper';
 import {EmbedCard} from '@common/EmbedCard/EmbedCard';
 import {InnerEmbedCard} from '@common/EmbedCard/InnerEmbedCard';
 import {ArticlePreviewPageQuery} from '@utils/graphql';

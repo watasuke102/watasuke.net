@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import Link from 'next/link';
 import React from 'react';
-import {AdsInArticle} from '@watasuke.net/common/src/Ads/AdsInArticle';
+import {AdsInArticle} from '@watasuke.net/common/Ads/AdsInArticle';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template, JsonLd} from '@utils/Metadata';
 import Background from '@common/Background/Background';

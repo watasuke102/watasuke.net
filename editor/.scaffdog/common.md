@@ -72,7 +72,7 @@ export { {{ pascal(inputs.name) }} };
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import React from 'react';
 import type {Meta, StoryObj} from '@storybook/react';
-import '@watasuke.net/common/src/css/base.css';
+import '@watasuke.net/common/style/base.css';
 import { {{ pascal(inputs.name) }} } from './{{ pascal(inputs.name) }}';
 
 const meta: Meta<typeof {{ pascal(inputs.name) }}> = {

@@ -5,7 +5,7 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {globalStyle, style} from '@vanilla-extract/css';
-import {color} from '@watasuke.net/common/src/css/color';
+import {color} from '@watasuke.net/common/style/color';
 
 const header_height = 48;
 const editor_area_margin = 12;

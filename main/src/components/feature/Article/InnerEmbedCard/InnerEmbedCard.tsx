@@ -8,7 +8,7 @@ import * as css from './InnerEmbedCard.css';
 import {initialized_a} from '@utils/initialized_a.css';
 import Link from 'next/link';
 import React from 'react';
-import {classnames as cs} from '@watasuke.net/common/src/classnames';
+import {classnames as cs} from '@watasuke.net/common/style/classnames';
 import {ql} from '@utils/QL';
 
 interface Props {
