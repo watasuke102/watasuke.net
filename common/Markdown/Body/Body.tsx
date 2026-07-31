@@ -5,16 +5,34 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as style from './Body.css';
-import 'highlight.js/styles/atom-one-dark.min.css';
 import 'katex/dist/katex.min.css';
+import asm from '@shikijs/langs/asm';
+import bash from '@shikijs/langs/bash';
+import bat from '@shikijs/langs/bat';
+import c from '@shikijs/langs/c';
+import cpp from '@shikijs/langs/cpp';
+import diff from '@shikijs/langs/diff';
+import html from '@shikijs/langs/html';
+import ini from '@shikijs/langs/ini';
+import javascript from '@shikijs/langs/javascript';
+import json from '@shikijs/langs/json';
+import lua from '@shikijs/langs/lua';
+import php from '@shikijs/langs/php';
+import rust from '@shikijs/langs/rust';
+import scss from '@shikijs/langs/scss';
+import toml from '@shikijs/langs/toml';
+import typ from '@shikijs/langs/typ';
+import Shiki from '@shikijs/rehype/core';
+import oneDarkPro from '@shikijs/themes/one-dark-pro';
 import React, {JSX} from 'react';
 import ReactMarkdown, {ExtraProps} from 'react-markdown';
-import Highlight from 'rehype-highlight';
 import Katex from 'rehype-katex';
 import Raw from 'rehype-raw';
 import Gfm from 'remark-gfm';
 import Math from 'remark-math';
 import Slug from 'rehype-slug';
+import {createHighlighterCoreSync} from 'shiki/core';
+import {createJavaScriptRegexEngine} from 'shiki/engine/javascript';
 import {ScriptMounter} from '../ScriptMounter/ScriptMounter';
 import {AdsInArticle} from '../../Ads/AdsInArticle';
 import {ImageViewer} from '../ImageViewer/ImageViewer';
@@ -24,6 +42,30 @@ import {
   rehypeAddFootnoteLabel,
   remarkAddFootnoteLabel,
 } from '../plugins/AddFootnoteLabel';
+
+const highlighter = createHighlighterCoreSync({
+  themes: [oneDarkPro],
+  langs: [
+    bash,
+    bat,
+    c,
+    cpp,
+    diff,
+    html,
+    ini,
+    javascript,
+    json,
+    lua,
+    asm,
+    php,
+    rust,
+    scss,
+    toml,
+    typ,
+  ],
+  langAlias: {nasm: 'asm'},
+  engine: createJavaScriptRegexEngine(),
+});
 
 let heading_count = 0;
 function Heading(
@@ -110,7 +152,13 @@ export function Markdown(props: Props) {
           ),
         }}
         remarkPlugins={[Gfm, Math, remarkAddFootnoteLabel]}
-        rehypePlugins={[rehypeAddFootnoteLabel, Slug, Katex, Raw, Highlight]}
+        rehypePlugins={[
+          rehypeAddFootnoteLabel,
+          Slug,
+          Katex,
+          Raw,
+          [Shiki, highlighter, {theme: oneDarkPro}],
+        ]}
         // eslint-disable-next-line react/no-children-prop
         children={props.md}
       />

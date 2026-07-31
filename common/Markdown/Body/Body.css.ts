@@ -72,11 +72,8 @@ globalStyle(`${container} blockquote:not(.twitter-tweet)`, {
   paddingInline: 8,
 });
 
-globalStyle(`${container} pre:not([class])`, {
+globalStyle(`${container} pre.shiki`, {
   border: `1px solid ${color.fg}`,
   padding: '12px 16px',
   borderRadius: 4,
-});
-globalStyle(`${container} pre:has(>code.hljs)`, {
-  padding: '0 !important',
 });
