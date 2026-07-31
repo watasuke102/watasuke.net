@@ -119,7 +119,7 @@ ExpNoteの開発を経てFlutterを布教したくなったので、LTで雑に�
 Lightning Talk to roughly recommend Flutter.
 
 - [Slides (Google Slides)](https://docs.google.com/presentation/d/1vUuO9ZfyuO-fTv9cP9IfHdoXK1sQzAmNS05QJO-iRq0/edit?usp=share_link)
-- [発表の様子 (YouTube)](https://www.youtube.com/live/LetsnbqNA-U?feature=share&t=12701)
+- [Presentation Video (YouTube)](https://www.youtube.com/live/LetsnbqNA-U?feature=share&t=12701)
 `,
       },
       {
@@ -408,17 +408,19 @@ I participated in CAPCOM Hackathon at Osaka, and developed a game using Unity.
       {
         period: {kind: 'day', date: {month: 6, day: 25}},
         category: 'Talk',
-        title: ja ? '1年生向け講話' : 'Talk for 1st grade students',
+        title: ja
+          ? '宇部高専 リサーチワークショップ (2025)'
+          : 'NITUC Research Workshop (2025)',
         subtitle: '「学生向け事業のすゝめ」',
         body: ja
           ? `
-宇部高専の1年生に向け、「学生向け事業のすゝめ」というタイトルで発表を行い、セキュリティ・キャンプや未踏ジュニアなどを紹介し、応募の際に心がけると良いことを説明しました。
+宇部高専の1年生が受講する授業「リサーチワークショップ」において、「学生向け事業のすゝめ」というタイトルで発表を行いました。セキュリティ・キャンプや未踏ジュニアなどを紹介し、応募の際に心がけると良いことを説明しました。
 
 - [発表スライド (Google Slides)](https://docs.google.com/presentation/d/1hjeEemqmPwhzLpVapBHn5QpPvll-KfhJDLonadH-CX8/edit?usp=sharing)
 - [学生向け事業 (Cosense)](https://scrapbox.io/watasuke/%E5%AD%A6%E7%94%9F%E5%90%91%E3%81%91%E4%BA%8B%E6%A5%AD)
 `
           : `
-I talked titled "学生向け事業のすゝめ" (Invitation of students-targeted project) to 1st grade students of NITUC, introduced projects such as Security Camp and Mitou Junior, and descibed what to keep in mind when applying for them.
+I talked titled "学生向け事業のすゝめ" (Invitation of students-targeted project) at class "Research Workshop", which is for 1st grade students of NITUC. I introduced projects such as Security Camp and Mitou Junior, and descibed what to keep in mind when applying for them.
           
 - [Presentation slides (Google Drive)](https://drive.google.com/drive/folders/1vTiDzJm19ykinLq1kv3aUFQSXo3Fz5iP?usp=drive_link)
 - [高専からの編入学について (Cosense)](https://scrapbox.io/watasuke/%E9%AB%98%E5%B0%82%E3%81%8B%E3%82%89%E3%81%AE%E7%B7%A8%E5%85%A5%E5%AD%A6%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
@@ -437,7 +439,7 @@ I talked titled "学生向け事業のすゝめ" (Invitation of students-targete
           date: {month: 11, day: 5},
         },
         category: 'Talk',
-        title: ja ? '進学講話' : 'Talk about going to university',
+        title: ja ? '宇部高専 進学講話' : 'Talk about going to university',
         subtitle: '「進学は情報収集が9割」&「受験対策まとめ」',
         body: ja
           ? `
@@ -652,8 +654,21 @@ I talked what I do with my home server in the event "UNTIL. LT #0x09", held by t
       },
       {
         period: {
+          kind: 'period',
+          begin: {month: 3, day: 3},
+          end: {month: 3, day: 5},
+        },
+        category: 'Event',
+        title: 'インタラクション 2026',
+        subtitle: ja ? '学生スタッフ' : 'Student Staff',
+        body: ja
+          ? 'インタラクション 2026 に学生スタッフとして参加しました。'
+          : 'I participated in Interaction 2026 as a student staff.',
+      },
+      {
+        period: {
           kind: 'day',
-          date: {month: 3, day: 20},
+          date: {month: 3, day: 21},
         },
         category: 'Talk',
         title: 'Kernel/VM探検隊＠つくば No3',
@@ -664,12 +679,14 @@ I talked what I do with my home server in the event "UNTIL. LT #0x09", held by t
           ? `
 技術系イベント「Kernel/VM探検隊＠つくば No3」にて、「FPGA でレンダリングを行うWayland コンポジタ」というタイトルで発表を行いました。
 
-[スライド](https://docs.google.com/presentation/d/19nq0H1IFbT0j4EghE3joi61npFyR981LDHHosvCBsrg/edit?usp=sharing)
+- [スライド](https://docs.google.com/presentation/d/19nq0H1IFbT0j4EghE3joi61npFyR981LDHHosvCBsrg/edit?usp=sharing)
+- [発表の様子 (YouTube)](https://www.youtube.com/live/U6YqSfRKIRs?si=5hnqmJwmceV0qbIZ&t=620)
 `
           : `
 I talked what I do with my home server in the event "UNTIL. LT #0x09", held by the information technology community of University of Tsukuba.
 
-[Slides](https://docs.google.com/presentation/d/19nq0H1IFbT0j4EghE3joi61npFyR981LDHHosvCBsrg/edit?usp=sharing)
+- [Slides](https://docs.google.com/presentation/d/19nq0H1IFbT0j4EghE3joi61npFyR981LDHHosvCBsrg/edit?usp=sharing)
+- [Presentation Video (YouTube)](https://www.youtube.com/live/U6YqSfRKIRs?si=5hnqmJwmceV0qbIZ&t=620)
 `,
       },
       {
@@ -683,8 +700,16 @@ I talked what I do with my home server in the event "UNTIL. LT #0x09", held by t
           : 'University of Tsukuba (college of Media Arts, Science and Technology) Open Campus',
         subtitle: ja ? '在校生として参加' : 'Join as a student',
         body: ja
-          ? `筑波大学 情報メディア創成学類のオープンキャンパスに在校生として参加し、5分間の活動紹介および質疑応答を行いました。`
-          : `I participated in the open campus of University of Tsukuba (college of Media Arts, Science and Technology) as a student, and introduced about my activities for 5 minutes and answered questions.`,
+          ? `
+筑波大学 情報メディア創成学類のオープンキャンパスに在校生として参加し、5分間の活動紹介および質疑応答を行いました。
+
+[スライド](https://github.com/watasuke102/slides/blob/1603977/2026-03-27_tsukubaOpenCampus2026Spring/slide.pdf)
+`
+          : `
+I participated in the open campus of University of Tsukuba (college of Media Arts, Science and Technology) as a student, and introduced about my activities for 5 minutes and answered questions.
+
+[Slides](https://github.com/watasuke102/slides/blob/1603977/2026-03-27_tsukubaOpenCampus2026Spring/slide.pdf)
+`,
       },
       {
         period: {
@@ -705,6 +730,63 @@ I talked what I do with my home server in the event "UNTIL. LT #0x0A", held by t
 
 [Slides](https://github.com/watasuke102/slides/blob/3ce38dbfb2881a6567f7f77718dec9c240433493/2026-04-19_UNTIL.LT_seL4-Walkthrough/slide.pdf)
 `,
+      },
+      {
+        period: {
+          kind: 'period',
+          begin: {month: 7, day: 11},
+          end: {month: 7, day: 12},
+        },
+        category: 'Event',
+        title: '関数型まつり 2026',
+        subtitle: ja ? '当日スタッフ' : 'Staff',
+        body: ja
+          ? '関数型まつり 2026 に当日スタッフとして参加しました。'
+          : 'I participated in Functional Programming Festival 2026 as a staff.',
+      },
+      {
+        period: {
+          kind: 'day',
+          date: {month: 7, day: 13},
+        },
+        category: 'Talk',
+        title: ja
+          ? '宇部高専 リサーチワークショップ (2025)'
+          : 'NITUC Research Workshop (2025)',
+        subtitle:
+          (ja ? '発表' : 'Preseitation') +
+          ' "1年生から始める！進路探索と課外活動のすすめ"',
+        body: ja
+          ? `
+宇部高専の1年生が受講する授業「リサーチワークショップ」において、「1年生から始める！進路探索と課外活動のすすめ」というタイトルで発表を行いました。進路の考え方、セキュリティ・キャンプおよび未踏ジュニア等の学生向け事業の布教、1年生のうちから意識しておくと良いことを説明しました。
+
+[スライド](https://github.com/watasuke102/slides/blob/962dd55b4c07cafb26210d9a4f1ce207653c9446/2026-07-13_NITUC-researchWorkShop_1%E5%B9%B4%E7%94%9F%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%EF%BC%81%E9%80%B2%E8%B7%AF%E6%8E%A2%E7%B4%A2%E3%81%A8%E8%AA%B2%E5%A4%96%E6%B4%BB%E5%8B%95%E3%81%AE%E3%81%99%E3%81%99%E3%82%81/slide.pdf)
+`
+          : `
+I talked titled "1年生から始める！進路探索と課外活動のすすめ" (Start from 1st grade: invitation of career exploration and students-targeted projects) at class "Research Workshop", which is for 1st grade students of NITUC. I introduced how to seek future careear, projects such as Security Camp and Mitou Junior, and things that are better to keep in mind at 1st grade.
+          
+[Slides](https://github.com/watasuke102/slides/blob/962dd55b4c07cafb26210d9a4f1ce207653c9446/2026-07-13_NITUC-researchWorkShop_1%E5%B9%B4%E7%94%9F%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%EF%BC%81%E9%80%B2%E8%B7%AF%E6%8E%A2%E7%B4%A2%E3%81%A8%E8%AA%B2%E5%A4%96%E6%B4%BB%E5%8B%95%E3%81%AE%E3%81%99%E3%81%99%E3%82%81/slide.pdf)
+          `,
+      },
+      {
+        period: {
+          kind: 'day',
+          date: {month: 7, day: 25},
+        },
+        category: 'Talk',
+        title: 're:master-LT #1',
+        subtitle: (ja ? '発表' : 'Preseitation') + ' "情報デザインⅡの話2"',
+        body: ja
+          ? `
+筑波大学の学生によるLTイベント「re:master-LT #1」にて、「情報デザインⅡの話2」というタイトルで発表を行いました。
+
+[スライド](https://github.com/watasuke102/slides/blob/6703083084f6ba56a44f6d3c0b7094c6678e3b93/2026-07-25_remaster-lt-1_%E6%83%85%E5%A0%B1%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E2%85%A1%E3%81%AE%E8%A9%B12/slide.typ)
+`
+          : `
+I talked titled "情報デザインⅡの話2" (Talk about Information Design II 2) at the LT event "re:master-LT #1" by students in University of Tsukuba.
+          
+[Slides](https://github.com/watasuke102/slides/blob/6703083084f6ba56a44f6d3c0b7094c6678e3b93/2026-07-25_remaster-lt-1_%E6%83%85%E5%A0%B1%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E2%85%A1%E3%81%AE%E8%A9%B12/slide.typ)
+          `,
       },
     ],
   };
