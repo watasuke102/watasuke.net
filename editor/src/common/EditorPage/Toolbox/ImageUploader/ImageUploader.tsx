@@ -6,7 +6,7 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {css} from './ImageUploader.css';
 import React from 'react';
-import {useDropzone, FileWithPath} from 'react-dropzone';
+import {useDropzone} from 'react-dropzone';
 import {Button} from '@common/Button/Button';
 import {ToastContext} from '@common/Toast/Toast';
 import {upload_new_image} from '@utils/api';
@@ -32,7 +32,7 @@ export function ImageUploader(props: Props) {
     [image_ext, image_name],
   );
 
-  const handle_drop = React.useCallback((files: FileWithPath[]) => {
+  const handle_drop = React.useCallback((files: File[]) => {
     const file = files[0];
     const reader = new FileReader();
     reader.onload = () => {

@@ -22,7 +22,7 @@ export async function GET() {
     const id = `${e.year}/${month_str}`;
     const link = `${config.site_url}/blog/monthly/${id}/`;
     feed.addItem({
-      id,
+      id: link,
       title: '月報：' + id,
       date: new Date(e.publishedAt),
       description: e.tldr + `<br><a href="${link}">続きを読む</a>`,

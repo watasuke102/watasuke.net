@@ -49,11 +49,12 @@ export async function GET() {
         return;
       }
     }
+    const link = config.site_url + (e.route === '/' ? '' : e.route);
     feed.addItem({
-      id: e.route,
+      id: link,
       title,
       date: statSync(e.file_path).mtime,
-      link: config.site_url + (e.route === '/' ? '' : e.route),
+      link,
     });
   });
 

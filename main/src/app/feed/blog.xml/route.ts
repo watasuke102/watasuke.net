@@ -20,7 +20,7 @@ export async function GET() {
   allPublicArticles.forEach(e => {
     const link = config.site_url + '/blog/article/' + e.slug + '/';
     feed.addItem({
-      id: e.slug,
+      id: link,
       title: e.title,
       date: new Date(e.publishedAt),
       description: e.tldr + `<br><a href="${link}">続きを読む</a>`,
