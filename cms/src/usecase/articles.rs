@@ -249,7 +249,10 @@ pub fn publish(
     return Ok(());
   }
   let repo = crate::git::Repo::open(contents_path)?;
-  repo.stage(&new_path)?.commit(&format!("add: {}", slug))?;
+  repo
+    .stage(&new_path)?
+    .stage(&Path::new(&contents_path).join("tags.toml"))?
+    .commit(&format!("add: {}", slug))?;
 
   if should_push {
     repo.push()?;
@@ -277,6 +280,7 @@ pub fn renew(
   let repo = crate::git::Repo::open(contents_path)?;
   repo
     .stage(&Path::new(article.article_path()))?
+    .stage(&Path::new(&contents_path).join("tags.toml"))?
     .commit(commit_message)?
     .push()?;
 
