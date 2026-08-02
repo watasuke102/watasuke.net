@@ -65,6 +65,7 @@ export function Page(props: Props) {
   }, [set_confirmation, state]);
 
   const save = React.useCallback(async () => {
+    toast_dispatch({type: 'close'});
     try {
       const sdk = getSdk(new GraphQLClient(`${apiUrl}/graphql`));
       await sdk.updateArticle({
