@@ -8,7 +8,6 @@
 
 import * as css from './Background.css';
 import {useReducedMotion} from 'framer-motion';
-import {usePathname} from 'next/navigation';
 import React from 'react';
 
 interface FigureInfo {
@@ -31,7 +30,6 @@ function rand(x: number) {
 }
 
 export default function Background() {
-  const path = usePathname();
   const should_reduce_motion = useReducedMotion();
   const canvas_ref = React.useRef<HTMLCanvasElement>(null);
   const align = 10;
