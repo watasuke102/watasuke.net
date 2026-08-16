@@ -6,10 +6,11 @@
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from '@pages/top.css';
 import '@watasuke.net/common/style/base.css';
-import {Avatar} from '@common/Avatar/Avatar';
-import Background from '@common/Background/Background';
 import React from 'react';
 import Link from 'next/link';
+import {classnames as cs} from '@watasuke.net/common/style/classnames';
+import {Avatar} from '@common/Avatar/Avatar';
+import Background from '@common/Background/Background';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template, JsonLd} from '@utils/Metadata';
 import IconCard from '@assets/icons/top/card.svg';
@@ -18,6 +19,7 @@ import IconEdit from '@assets/icons/top/edit.svg';
 import IconInfo from '@assets/icons/top/info.svg';
 import IconProfile from '@assets/icons/top/profile.svg';
 import IconRocket from '@assets/icons/top/rocket.svg';
+import IconFeed from '@assets/icons/general/feed.svg';
 
 const breadcrumb_list = GenBreadcrumb([]);
 export const {viewport, metadata} = gen_template(
@@ -28,13 +30,16 @@ export const {viewport, metadata} = gen_template(
 
 export default function Index() {
   // prettier-ignore
-  const menu_list = [
-    {text: 'About',     url: '/about',     icon: <IconInfo />},
-    {text: 'Links',     url: '/links',     icon: <IconLink />},
+  const primary_menu_list = [
     {text: 'Blog',      url: '/blog',      icon: <IconEdit />},
-    {text: 'Card',      url: '/card',      icon: <IconCard />},
+    {text: 'Links', url: '/links', icon: <IconLink />},
     {text: 'Profile',   url: '/profile',   icon: <IconProfile />},
     {text: 'Portfolio', url: '/portfolio', icon: <IconRocket />},
+  ];
+  const secondary_menu_list = [
+    {text: 'About', url: '/about', icon: <IconInfo />},
+    {text: 'Feeds', url: '/feeds', icon: <IconFeed />},
+    {text: 'Card', url: '/card', icon: <IconCard />},
   ];
 
   return (
@@ -47,11 +52,35 @@ export default function Index() {
             <Avatar size={240} loading='eager' />
             <h2>Welcome!</h2>
           </div>
-          <nav className={css.links}>
-            {menu_list.map(e => (
-              <Link key={e.url} href={e.url} className={css.links_item}>
+          <nav className={cs(css.links, css.primary_links)}>
+            {primary_menu_list.map(e => (
+              <Link
+                key={e.url}
+                href={e.url}
+                className={cs(css.links_item, css.primary_item)}
+              >
                 <div className={css.links_item_icon}>{e.icon}</div>
-                <span className={css.links_item_text}>{e.text}</span>
+                <span
+                  className={cs(css.links_item_text, css.primary_item_text)}
+                >
+                  {e.text}
+                </span>
+              </Link>
+            ))}
+          </nav>
+          <nav className={css.links}>
+            {secondary_menu_list.map(e => (
+              <Link
+                key={e.url}
+                href={e.url}
+                className={cs(css.links_item, css.secondary_item)}
+              >
+                <div className={css.links_item_icon}>{e.icon}</div>
+                <span
+                  className={cs(css.links_item_text, css.secondary_item_text)}
+                >
+                  {e.text}
+                </span>
               </Link>
             ))}
           </nav>
