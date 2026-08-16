@@ -50,6 +50,7 @@ export const item = style({
   marginBottom: 8,
   border: `2px solid ${color.fg}`,
   borderRadius: 2,
+  backgroundColor: `${color.bg}e9`,
   textDecoration: 'none',
   ':hover': {
     textDecoration: 'none',

@@ -5,9 +5,8 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from '@pages/links.css';
-import Background from '@common/Background/Background';
-import {Breadcrumb} from '@common/Breadcrumb/Breadcrumb';
 import React from 'react';
+import {Breadcrumb} from '@common/Breadcrumb/Breadcrumb';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template, JsonLd} from '@utils/Metadata';
 import {social_links, social_links_desc} from '@data/social_links';
@@ -22,7 +21,6 @@ export const {viewport, metadata} = gen_template(
 export default function Links() {
   return (
     <>
-      <Background />
       <JsonLd breadcrumb_list={breadcrumb_list} />
       <Breadcrumb breadcrumb_list={breadcrumb_list} />
       <main>

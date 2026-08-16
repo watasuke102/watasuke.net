@@ -98,6 +98,7 @@ export const info_area = style({
   textAlign: 'left',
   border: '3px solid',
   borderRadius: 4,
+  backgroundColor: `${color.bg}d0`,
   ':focus': {
     outline: `2px dashed ${color.fg}`,
   },

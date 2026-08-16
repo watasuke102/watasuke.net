@@ -7,13 +7,13 @@
 'use client';
 
 import * as css from './ArticleList.css';
+import {initialized_a} from '@utils/initialized_a.css';
 import React from 'react';
+import Link from 'next/link';
+import {classnames as cs} from '@watasuke.net/common/style/classnames';
 import {AllArticlesQuery} from '@utils/graphql';
 import IconLeft from '@assets/icons/general/left.svg';
 import IconRight from '@assets/icons/general/right.svg';
-import Link from 'next/link';
-import {classnames as cs} from '@watasuke.net/common/style/classnames';
-import {initialized_a} from '@utils/initialized_a.css';
 
 interface Props {
   list: AllArticlesQuery['allPublicArticles'];

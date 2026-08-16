@@ -8,10 +8,11 @@ import {style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/style/color';
 
 export const container = style({
+  minHeight: 'max-content', // ?
   width: '100%',
   marginTop: 64,
-  padding: 12,
-  backgroundColor: `${color.bg}dd`,
+  padding: 8,
+  backgroundColor: `${color.bg}e9`,
   borderTop: `dotted 1px ${color.fg}`,
 
   display: 'grid',

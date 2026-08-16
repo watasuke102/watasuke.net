@@ -10,7 +10,6 @@ import React from 'react';
 import Link from 'next/link';
 import {classnames as cs} from '@watasuke.net/common/style/classnames';
 import {Avatar} from '@common/Avatar/Avatar';
-import Background from '@common/Background/Background';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template, JsonLd} from '@utils/Metadata';
 import IconCard from '@assets/icons/top/card.svg';
@@ -44,7 +43,6 @@ export default function Index() {
 
   return (
     <>
-      <Background />
       <JsonLd breadcrumb_list={breadcrumb_list} />
       <div className={css.wrapper}>
         <main className={css.main_contents}>

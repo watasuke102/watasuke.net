@@ -13,6 +13,7 @@ export const back_link = style({
 });
 
 export const container = style({
+  backgroundColor: `${color.bg}e9`,
   display: 'grid',
   gridTemplateColumns: '1fr auto',
   justifyItems: 'center',

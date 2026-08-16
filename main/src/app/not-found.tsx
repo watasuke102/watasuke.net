@@ -5,14 +5,12 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import * as css from '@pages/404.css';
-import {Layout} from '@feature/Layout/Layout';
-import Background from '@common/Background/Background';
 import {SimpleInnerLinks} from '@common/SimpleInnerLinks/SimpleInnerLinks';
+import {Layout} from '@feature/Layout/Layout';
 
 export default function Error404() {
   return (
     <Layout>
-      <Background />
       <div className={css.container}>
         <h1 className={css.code}>404</h1>
         <p className={css.text}>Not Found</p>

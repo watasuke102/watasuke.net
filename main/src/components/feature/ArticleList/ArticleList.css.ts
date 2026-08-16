@@ -71,6 +71,7 @@ export const card_link = style({
   gridRow: 'span 3',
   gap: 4,
   border: `1px solid ${color.fg}`,
+  backgroundColor: `${color.bg}e9`,
 
   position: 'relative',
   '::before': {

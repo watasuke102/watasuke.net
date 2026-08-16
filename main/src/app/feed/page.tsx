@@ -7,10 +7,9 @@
 import Link from 'next/link';
 import React from 'react';
 import {AdsInArticle} from '@watasuke.net/common/Ads/AdsInArticle';
+import {Breadcrumb} from '@common/Breadcrumb/Breadcrumb';
 import {GenBreadcrumb} from '@utils/Breadcrumb';
 import {gen_template, JsonLd} from '@utils/Metadata';
-import Background from '@common/Background/Background';
-import {Breadcrumb} from '@common/Breadcrumb/Breadcrumb';
 
 const breadcrumb_list = GenBreadcrumb([{name: 'Feed'}]);
 export const {viewport, metadata} = gen_template(
@@ -22,7 +21,6 @@ export const {viewport, metadata} = gen_template(
 export default function About() {
   return (
     <>
-      <Background />
       <JsonLd breadcrumb_list={breadcrumb_list} />
       <Breadcrumb breadcrumb_list={breadcrumb_list} />
       <main>

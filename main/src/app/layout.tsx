@@ -9,6 +9,7 @@ import '@watasuke.net/common/style/base.css';
 import {M_PLUS_Rounded_1c} from 'next/font/google';
 import {GoogleAnalytics} from '@next/third-parties/google';
 import Script from 'next/script';
+import Background from '@common/Background/Background';
 
 /* eslint-disable @typescript-eslint/ban-ts-comment
 --
@@ -36,7 +37,10 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang='ja'>
       <head></head>
-      <body>{children}</body>
+      <body>
+        <Background />
+        {children}
+      </body>
       {/* @ts-ignore: ??? */}
       {config.trackingId !== '_' && (
         <GoogleAnalytics gaId={config.trackingId} />
