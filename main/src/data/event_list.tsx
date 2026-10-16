@@ -409,8 +409,8 @@ I participated in CAPCOM Hackathon at Osaka, and developed a game using Unity.
         period: {kind: 'day', date: {month: 6, day: 25}},
         category: 'Talk',
         title: ja
-          ? '宇部高専 リサーチワークショップ (2025)'
-          : 'NITUC Research Workshop (2025)',
+          ? '宇部高専 リサーチワークショップ (2024)'
+          : 'NITUC Research Workshop (2024)',
         subtitle: '「学生向け事業のすゝめ」',
         body: ja
           ? `
@@ -679,13 +679,13 @@ I talked what I do with my home server in the event "UNTIL. LT #0x09", held by t
           ? `
 技術系イベント「Kernel/VM探検隊＠つくば No3」にて、「FPGA でレンダリングを行うWayland コンポジタ」というタイトルで発表を行いました。
 
-- [スライド](https://docs.google.com/presentation/d/19nq0H1IFbT0j4EghE3joi61npFyR981LDHHosvCBsrg/edit?usp=sharing)
+- [スライド](https://github.com/watasuke102/slides/blob/main/2026-03-20_kernelvm_FPGA%E3%81%A7%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0%E3%82%92%E8%A1%8C%E3%81%86Wayland%E3%82%B3%E3%83%B3%E3%83%9D%E3%82%B8%E3%82%BF/slide.pdf)
 - [発表の様子 (YouTube)](https://www.youtube.com/live/U6YqSfRKIRs?si=5hnqmJwmceV0qbIZ&t=620)
 `
           : `
 I talked what I do with my home server in the event "UNTIL. LT #0x09", held by the information technology community of University of Tsukuba.
 
-- [Slides](https://docs.google.com/presentation/d/19nq0H1IFbT0j4EghE3joi61npFyR981LDHHosvCBsrg/edit?usp=sharing)
+- [Slides](https://github.com/watasuke102/slides/blob/main/2026-03-20_kernelvm_FPGA%E3%81%A7%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0%E3%82%92%E8%A1%8C%E3%81%86Wayland%E3%82%B3%E3%83%B3%E3%83%9D%E3%82%B8%E3%82%BF/slide.pdf)
 - [Presentation Video (YouTube)](https://www.youtube.com/live/U6YqSfRKIRs?si=5hnqmJwmceV0qbIZ&t=620)
 `,
       },
@@ -780,12 +780,12 @@ I talked titled "1年生から始める！進路探索と課外活動のすす�
           ? `
 筑波大学の学生によるLTイベント「re:master-LT #1」にて、「情報デザインⅡの話2」というタイトルで発表を行いました。
 
-[スライド](https://github.com/watasuke102/slides/blob/6703083084f6ba56a44f6d3c0b7094c6678e3b93/2026-07-25_remaster-lt-1_%E6%83%85%E5%A0%B1%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E2%85%A1%E3%81%AE%E8%A9%B12/slide.typ)
+[スライド](https://github.com/watasuke102/slides/blob/6703083084f6ba56a44f6d3c0b7094c6678e3b93/2026-07-25_remaster-lt-1_%E6%83%85%E5%A0%B1%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E2%85%A1%E3%81%AE%E8%A9%B12/slide.pdf)
 `
           : `
 I talked titled "情報デザインⅡの話2" (Talk about Information Design II 2) at the LT event "re:master-LT #1" by students in University of Tsukuba.
           
-[Slides](https://github.com/watasuke102/slides/blob/6703083084f6ba56a44f6d3c0b7094c6678e3b93/2026-07-25_remaster-lt-1_%E6%83%85%E5%A0%B1%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E2%85%A1%E3%81%AE%E8%A9%B12/slide.typ)
+[Slides](https://github.com/watasuke102/slides/blob/6703083084f6ba56a44f6d3c0b7094c6678e3b93/2026-07-25_remaster-lt-1_%E6%83%85%E5%A0%B1%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E2%85%A1%E3%81%AE%E8%A9%B12/slide.pdf)
           `,
       },
     ],
