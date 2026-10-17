@@ -149,6 +149,22 @@ query monthlyPage($year: Int!, $month: Int!) {
   }
 }
 
+query allSlides {
+  allSlides {
+    title
+    event
+    date
+    content {
+      ... on GoogleSlide {
+        embedId
+      }
+      ... on TypstSlide {
+        pages
+      }
+    }
+  }
+}
+
 query sitemapInfo {
   allPublicArticles {
     slug

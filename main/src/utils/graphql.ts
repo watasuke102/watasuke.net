@@ -1,4 +1,4 @@
-import { GraphQLClient, RequestOptions } from 'graphql-request';
+import { GraphQLClient, type RequestOptions } from 'graphql-request';
 import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -35,6 +35,12 @@ export type ArticleFilter = {
   isFavorite?: InputMaybe<Scalars['Boolean']['input']>;
   /** This fiels is slug[] which is used for OR search */
   tags?: InputMaybe<Array<Scalars['String']['input']>>;
+};
+
+export type GoogleSlide = {
+  __typename?: 'GoogleSlide';
+  /** https://docs.google.com/presentation/d/${embed_id}/edit */
+  embedId: Scalars['String']['output'];
 };
 
 export type Monthly = {
@@ -150,6 +156,7 @@ export type Query = {
   allMonthlies: Array<Monthly>;
   allPublicArticles: Array<Article>;
   allPublicMonthlies: Array<Monthly>;
+  allSlides: Array<Slide>;
   allTags: Array<Tag>;
   article?: Maybe<Article>;
   contentsGitHeadHash: Scalars['String']['output'];
@@ -206,10 +213,26 @@ export type Sitedata = {
   shortProfile: Scalars['String']['output'];
 };
 
+export type Slide = {
+  __typename?: 'Slide';
+  content: SlideContent;
+  date: Scalars['String']['output'];
+  event?: Maybe<Scalars['String']['output']>;
+  title: Scalars['String']['output'];
+};
+
+export type SlideContent = GoogleSlide | TypstSlide;
+
 export type Tag = {
   __typename?: 'Tag';
   name: Scalars['String']['output'];
   slug: Scalars['String']['output'];
+};
+
+export type TypstSlide = {
+  __typename?: 'TypstSlide';
+  /** XXH3-64 hash of each page; the SVG file is `${hash}.svg` */
+  pages: Array<Scalars['String']['output']>;
 };
 
 export type BlogPageQueryVariables = Exact<{ [key: string]: never; }>;
@@ -291,6 +314,14 @@ export type MonthlyPageQueryVariables = Exact<{
 
 
 export type MonthlyPageQuery = { __typename?: 'Query', monthly?: { __typename?: 'Monthly', year: number, month: number, tldr: string, body: string } | null, allPublicMonthlies: Array<{ __typename?: 'Monthly', month: number }> };
+
+export type AllSlidesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AllSlidesQuery = { __typename?: 'Query', allSlides: Array<{ __typename?: 'Slide', title: string, event?: string | null, date: string, content:
+      | { __typename?: 'GoogleSlide', embedId: string }
+      | { __typename?: 'TypstSlide', pages: Array<string> }
+     }> };
 
 export type SitemapInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -480,6 +511,23 @@ export const MonthlyPageDocument = gql`
   }
 }
     `;
+export const AllSlidesDocument = gql`
+    query allSlides {
+  allSlides {
+    title
+    event
+    date
+    content {
+      ... on GoogleSlide {
+        embedId
+      }
+      ... on TypstSlide {
+        pages
+      }
+    }
+  }
+}
+    `;
 export const SitemapInfoDocument = gql`
     query sitemapInfo {
   allPublicArticles {
@@ -556,6 +604,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     monthlyPage(variables: MonthlyPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<MonthlyPageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<MonthlyPageQuery>({ document: MonthlyPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'monthlyPage', 'query', variables);
+    },
+    allSlides(variables?: AllSlidesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<AllSlidesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<AllSlidesQuery>({ document: AllSlidesDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'allSlides', 'query', variables);
     },
     sitemapInfo(variables?: SitemapInfoQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<SitemapInfoQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<SitemapInfoQuery>({ document: SitemapInfoDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'sitemapInfo', 'query', variables);

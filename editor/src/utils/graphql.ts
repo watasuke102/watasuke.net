@@ -1,4 +1,4 @@
-import { GraphQLClient, RequestOptions } from 'graphql-request';
+import { GraphQLClient, type RequestOptions } from 'graphql-request';
 import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -35,6 +35,12 @@ export type ArticleFilter = {
   isFavorite?: InputMaybe<Scalars['Boolean']['input']>;
   /** This fiels is slug[] which is used for OR search */
   tags?: InputMaybe<Array<Scalars['String']['input']>>;
+};
+
+export type GoogleSlide = {
+  __typename?: 'GoogleSlide';
+  /** https://docs.google.com/presentation/d/${embed_id}/edit */
+  embedId: Scalars['String']['output'];
 };
 
 export type Monthly = {
@@ -150,6 +156,7 @@ export type Query = {
   allMonthlies: Array<Monthly>;
   allPublicArticles: Array<Article>;
   allPublicMonthlies: Array<Monthly>;
+  allSlides: Array<Slide>;
   allTags: Array<Tag>;
   article?: Maybe<Article>;
   contentsGitHeadHash: Scalars['String']['output'];
@@ -206,10 +213,26 @@ export type Sitedata = {
   shortProfile: Scalars['String']['output'];
 };
 
+export type Slide = {
+  __typename?: 'Slide';
+  content: SlideContent;
+  date: Scalars['String']['output'];
+  event?: Maybe<Scalars['String']['output']>;
+  title: Scalars['String']['output'];
+};
+
+export type SlideContent = GoogleSlide | TypstSlide;
+
 export type Tag = {
   __typename?: 'Tag';
   name: Scalars['String']['output'];
   slug: Scalars['String']['output'];
+};
+
+export type TypstSlide = {
+  __typename?: 'TypstSlide';
+  /** XXH3-64 hash of each page; the SVG file is `${hash}.svg` */
+  pages: Array<Scalars['String']['output']>;
 };
 
 export type IndexPageQueryVariables = Exact<{ [key: string]: never; }>;
