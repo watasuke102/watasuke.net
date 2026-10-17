@@ -102,6 +102,13 @@ impl Query {
     })
   }
 
+  async fn all_slides(context: &Context) -> juniper::FieldResult<Vec<contents::Slide>> {
+    let slides = context.slides().await.map_err(|err| {
+      juniper::FieldError::new("Failed to build slides", graphql_value!(err.to_string()))
+    })?;
+    Ok(slides.as_ref().clone())
+  }
+
   fn sitedata(context: &Context) -> juniper::FieldResult<sitedata::Sitedata> {
     match sitedata::read_sitedata(&context.config.contents_path) {
       Ok(sitedata) => Ok(sitedata),
