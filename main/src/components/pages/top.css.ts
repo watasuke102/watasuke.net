@@ -36,11 +36,12 @@ const breakpoint = 'screen and (width < 430px)';
 export const links = style({
   display: 'grid',
   columnGap: 12,
-  rowGap: 16,
-  gridTemplateColumns: 'repeat(auto-fit, minmax(164px, 1fr))',
+  rowGap: 8,
+  gridTemplateColumns: 'repeat(2, 1fr)',
   justifyContent: 'space-around',
 });
 export const primary_links = style({
+  gridTemplateColumns: 'repeat(auto-fit, minmax(164px, 1fr))',
   '@media': {
     [breakpoint]: {
       width: 'fit-content',

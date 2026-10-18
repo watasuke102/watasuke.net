@@ -19,6 +19,7 @@ import IconInfo from '@assets/icons/top/info.svg';
 import IconProfile from '@assets/icons/top/profile.svg';
 import IconRocket from '@assets/icons/top/rocket.svg';
 import IconFeed from '@assets/icons/general/feed.svg';
+import IconPresentation from '@assets/icons/Links/presentation.svg';
 
 const breadcrumb_list = GenBreadcrumb([]);
 export const {viewport, metadata} = gen_template(
@@ -37,6 +38,7 @@ export default function Index() {
   ];
   const secondary_menu_list = [
     {text: 'About', url: '/about', icon: <IconInfo />},
+    {text: 'Slides', url: '/slides', icon: <IconPresentation />},
     {text: 'Feeds', url: '/feeds', icon: <IconFeed />},
     {text: 'Card', url: '/card', icon: <IconCard />},
   ];
