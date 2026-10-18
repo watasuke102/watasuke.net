@@ -36,10 +36,7 @@ jobs:
         with:
           path: |
             **/node_modules
-            ~/.ssh
-            ~/.cargo
-            ~/.rustup
-          key: ${{ hashFiles('**/package-lock.json', '~/.rustup/**/*', '**/Cargo.lock', '.ssh/*') }}
+          key: ${{ hashFiles('**/package-lock.json') }}
 
       - name: Ensure rsync
         run: sudo apt-get update && sudo apt-get install -y rsync
@@ -50,9 +47,6 @@ jobs:
           node-version: 22
           cache: 'npm'
 
-      - name: Use Rust nightly
-        run: rustup override set nightly
-
       - name: Setup
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -60,38 +54,8 @@ jobs:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
         run: |
-          # setup SSH
-          if [ ! -d ~/.ssh ]; then
-            mkdir -p ~/.ssh
-            echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-            chmod 600 ~/.ssh/id_rsa
-            ssh-keyscan -p ${DEPLOY_PORT:-22} ${DEPLOY_HOST} >> ~/.ssh/known_hosts
-            ssh-keyscan github.com >> ~/.ssh/known_hosts
-          fi
-          # setup Node.js env
           npm install
           echo "$CONFIG_TS" > config/config.ts
-          # create cms config
-          cp cms/config-sample.toml cms/config.toml
-
-      - name: Clone contents repository
-        env:
-          GIT_SSH_COMMAND: 'ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=yes'
-        run: |
-          git clone --depth=1 git@github.com:watasuke102/contents.watasuke.net.git contents
-          echo -e "\e[32mClone finished\e[m; hash: $(git -C contents rev-parse HEAD)"
-
-      - name: Build cms
-        working-directory: cms
-        run: cargo build --quiet --release
-
-      - name: Start cms
-        working-directory: cms
-        run: |
-          nohup ./target/release/cms &
-
-      - name: Build
-        run: npm -w main run build
 
       - name: Rsync deploy
         env:
