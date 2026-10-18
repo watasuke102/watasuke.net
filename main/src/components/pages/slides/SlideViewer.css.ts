@@ -8,6 +8,7 @@ import {globalStyle, style} from '@vanilla-extract/css';
 import {color} from '@watasuke.net/common/style/color';
 
 export const container = style({
+  position: 'relative',
   display: 'grid',
   gridTemplateRows: '1fr 32px',
   width: '100%',
@@ -16,6 +17,10 @@ export const container = style({
 
 export const svg_viewer = style({
   position: 'relative',
+  backgroundColor: '#000',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 });
 globalStyle(`${svg_viewer} img`, {
   position: 'absolute',
@@ -42,4 +47,23 @@ export const button = style({
   ':disabled': {
     color: color.g2,
   },
+});
+
+export const jump_to_overlay = style({
+  position: 'absolute',
+  top: 0,
+  bottom: 0,
+  left: 0,
+  right: 0,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: `${color.fg}88`,
+});
+export const jump_to = style({
+  paddingInline: 12,
+  fontSize: '3.5em',
+  fontWeight: 'bold',
+  backgroundColor: `${color.bg}`,
+  boxShadow: '0px 0px 10px 4px #0005',
 });
