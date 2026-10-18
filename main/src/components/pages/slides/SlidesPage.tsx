@@ -11,6 +11,8 @@ import {classnames as cs} from '@watasuke.net/common/style/classnames';
 import {AllSlidesQuery} from '@utils/graphql';
 import {SlideViewer} from './SlideViewer';
 
+const viewer_id = 'SlideViewer';
+
 function desc(e: AllSlidesQuery['allSlides'][number]) {
   return e.date + (e.event ? ` | ${e.event}` : '');
 }
@@ -19,11 +21,21 @@ interface Props {
   slides: AllSlidesQuery['allSlides'];
 }
 export function SlidesPage({slides}: Props) {
-  const [selected, set_selected] = React.useState(-1);
+  const [selected, set_selected_raw] = React.useState(-1);
+  const set_selected = (i: number) => {
+    set_selected_raw(i);
+    const element = document.getElementById(viewer_id);
+    if (element) {
+      window.scroll({
+        top: window.pageYOffset + element.getBoundingClientRect().top - 20,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   return (
     <div className={css.container}>
-      <div className={css.selected}>
+      <div id={viewer_id} className={css.selected}>
         <div className={css.selected_presentation}>
           {selected === -1
             ? '発表名をクリックすると、スライド資料がここに表示されます'
