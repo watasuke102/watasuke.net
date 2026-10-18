@@ -8,11 +8,24 @@ on:
   repository_dispatch:
     types: [contents-updated]
 
+permissions:
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Notify server to renew contents
+        env:
+          RENEW_NOTIFICATION_ENDPOINT: ${{ secrets.RENEW_NOTIFICATION_ENDPOINT }}
+        run: |
+          TOKEN=$(curl -sS -G\
+            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            --data-urlencode "audience=$RENEW_NOTIFICATION_ENDPOINT" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL" | jq -r .value)
+          curl -fsS -X POST -H "Authorization: Bearer $TOKEN" $RENEW_NOTIFICATION_ENDPOINT
+
       - name: Checkout
         uses: actions/checkout@v6
         with:
