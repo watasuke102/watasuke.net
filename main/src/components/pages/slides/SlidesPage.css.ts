@@ -25,7 +25,7 @@ export const selected = style({
   flexDirection: 'column',
   marginInline: 'auto',
   marginBottom: 24,
-  width: 'min(100dvw, 900px)',
+  width: 'min(100%, 900px)',
   height: 'fit-content',
   backgroundColor: `${color.bg}ee`,
   '@media': {
