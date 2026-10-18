@@ -50,7 +50,9 @@ export function SlidesPage({slides}: Props) {
                     />
                   );
                 } else {
-                  return <SlideViewer slide={slides[selected]} />;
+                  return (
+                    <SlideViewer key={selected} slide={slides[selected]} />
+                  );
                 }
               })()}
         </div>
