@@ -5,8 +5,11 @@
 // Twitter: @watasuke1024
 // This software is released under the MIT or MIT SUSHI-WARE License.
 import {style} from '@vanilla-extract/css';
+import {color} from '@watasuke.net/common/style/color';
 
 export const container = style({
-  paddingBottom: 52, // for floating button
+  padding: 8,
+  backgroundColor: `${color.bg}ee`,
+  marginBottom: 68, // for floating button
   textAlign: 'center',
 });
