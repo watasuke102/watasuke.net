@@ -20,12 +20,12 @@ export function SlideViewer({slide}: Props) {
       "invalid slide value (it does not have `pages` field; isn't it GoogleSlide entry?)",
     );
   }
+  const pages = slide.content.pages;
 
   const [index, set_index_raw] = React.useState(0);
   const [jump_to, set_jump_to] = React.useState<number | null>(null);
   function set_index(next: ((j: number) => number) | number) {
-    const clamp = (j: number) =>
-      Math.min(Math.max(0, j), slide.content.pages.length - 1);
+    const clamp = (j: number) => Math.min(Math.max(0, j), pages.length - 1);
     if (typeof next === 'function') {
       set_index_raw(j => clamp(next(j)));
     } else {
@@ -83,7 +83,7 @@ export function SlideViewer({slide}: Props) {
     <div className={css.container}>
       <div className={css.svg_viewer}>
         <span>読み込み中...</span>
-        {slide.content.pages.map((e, i) => (
+        {pages.map((e, i) => (
           // alt text cannot be determined for slide images
           // eslint-disable-next-line jsx-a11y/alt-text
           <img
@@ -105,7 +105,7 @@ export function SlideViewer({slide}: Props) {
         <span className={css.index_text}>{index + 1}</span>
         <button
           className={css.button}
-          disabled={index === slide.content.pages.length - 1}
+          disabled={index === pages.length - 1}
           onClick={() => set_index(i => i + 1)}
         >
           <IconRight />
