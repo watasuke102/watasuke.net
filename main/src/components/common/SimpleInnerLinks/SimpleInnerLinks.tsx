@@ -17,6 +17,7 @@ export function SimpleInnerLinks() {
         <li> <Link href='/blog'>Blog</Link>           </li>
         <li> <Link href='/portfolio'>Portfolio</Link> </li>
         <li> <Link href='/profile'>Profile</Link>     </li>
+        <li> <Link href='/slides'>Slides</Link>       </li>
         <li> <Link href='/card'>Card</Link>           </li>
         <li> <Link href='/about'>About</Link>         </li>
       </ol>
